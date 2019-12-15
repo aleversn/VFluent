@@ -1,5 +1,5 @@
 <template>
-<div :class="'fv-'+$fvTheme+'-button'">
+<div :class="'fv-'+theme+'-button'">
     <div class="reveal-border" :class="{disabled:(disabled||disabled=='disabled'||disabled=='')}">
         <button :disabled="disabled" class="button-container">
             <span class="content-block">
@@ -34,7 +34,7 @@ export default {
     },
     computed: {
         theme () {
-            return this.$fvTheme;
+            return this.$fvGlobal.state.theme;
         },
         borderLightColor () {
             if(this.theme == 'light') {
@@ -54,6 +54,7 @@ export default {
         }
     },
     mounted () {
+        this.$fvGlobal.commit('changeTheme','dark')
         this.FRInit();
     },
     methods: {
