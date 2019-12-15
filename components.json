@@ -1,0 +1,10 @@
+{
+  "Button": {
+    "entry": "@/Button/index.js",
+    "theme": {
+      "Light": "@/light-theme/Button.scss",
+      "Dark": "@/dark-theme/Button.scss",
+      "Custom": "@/custom-theme/Button.scss"
+    }
+  }
+}
