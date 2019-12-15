@@ -1,5 +1,18 @@
 @import '../common-theme/Button.scss';
 .fv-dark-button{
-  @include fv-button();
+    @include fv-button();
+
+    div.reveal-border
+    {
+        button.button-container
+        {
+            background: #605e5c;
+            
+            span.content-block
+            {
+                color: whitesmoke;
+            }
+        }
+    }
 }
     

@@ -1,2 +1,44 @@
 @mixin fv-button {
+    position: relative;
+    width: 80px;
+    height: 30px;
+
+    div.reveal-border
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 2px;
+        display: flex;
+
+        &:hover
+        {
+            background: rgba(121, 119, 117, 0.6);
+            transition: all 0.6s;
+        }
+        
+        &.disabled
+        {
+            background: transparent;
+        }
+
+        button.button-container
+        {
+            width: 100%;
+            height: 100%;
+            background: #edebe9;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s;
+
+            span.content-block
+            {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
 }
