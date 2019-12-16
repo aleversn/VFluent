@@ -59,19 +59,19 @@ export default {
         }
     },
     watch: {
-        theme (val) {
+        theme () {
             this.FRInit();
         },
-        borderWidth (val) {
+        borderWidth () {
             this.stylesInit();
         },
-        foreground (val) {
+        foreground () {
             this.stylesInit();
         },
-        background (val) {
+        background () {
             this.stylesInit();
         },
-        fontWeight (val) {
+        fontWeight () {
             this.stylesInit();
         }
     },
@@ -88,6 +88,7 @@ export default {
             if(this.$theme == 'dark' || this.$theme == 'custom') {
                 return 'rgba(255, 255, 255, 0.6)';
             }
+             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
             if(this.$theme == 'light') {
@@ -96,6 +97,7 @@ export default {
             if(this.$theme == 'dark' || this.$theme == 'custom') {
                 return 'rgba(255, 255, 255, 0.3)';
             }
+            return 'rgba(121, 119, 117, 0.3)';
         }
     },
     mounted () {
