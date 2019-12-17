@@ -1,6 +1,6 @@
 <template>
 <div :class="'fv-'+$theme+'-button'">
-    <div class="reveal-border" :class="{disabled:(disabled||disabled=='disabled'||disabled=='')}" :style="styles.revealBorder">
+    <div class="reveal-border" :class="{disabled: isDisabled}" :style="styles.revealBorder">
         <button :disabled="disabled" class="button-container" :style="styles.buttonContainer" @click="onClick">
             <span class="content-block" :style="styles.contentBlock">
                 <i class="ms-Icon" :class="`ms-Icon--${icon}`" :style="{'margin-right': icon != '' ? '5px': ''}"></i>
@@ -96,6 +96,9 @@ export default {
             if(this.$theme == 'dark' || this.$theme == 'custom') {
                 return 'rgba(255, 255, 255, 0.3)';
             }
+        },
+        isDisabled () {
+            return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
         }
     },
     mounted () {

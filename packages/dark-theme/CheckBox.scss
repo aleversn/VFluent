@@ -1,0 +1,11 @@
+@import '../common-theme/CheckBox.scss';
+.fv-dark-checkBox {
+    @include fv-checkBox();
+    .checkbox-rec
+    {
+        .border
+        {
+          border-color: white;
+        }
+    }
+}

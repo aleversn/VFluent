@@ -6,5 +6,21 @@
       "Dark": "@/dark-theme/Button.scss",
       "Custom": "@/custom-theme/Button.scss"
     }
+  },
+  "ProgressRing": {
+    "entry": "@/ProgressRing/index.js",
+    "theme": {
+      "Light": "@/light-theme/ProgressRing.scss",
+      "Dark": "@/dark-theme/ProgressRing.scss",
+      "Custom": "@/custom-theme/ProgressRing.scss"
+    }
+  },
+  "CheckBox": {
+    "entry": "@/CheckBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/CheckBox.scss",
+      "Dark": "@/dark-theme/CheckBox.scss",
+      "Custom": "@/custom-theme/CheckBox.scss"
+    }
   }
 }

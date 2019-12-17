@@ -25,6 +25,12 @@
 | foreground  |              [string]              |       No       |       N/A       |    Button foreground    |
 | background  |              [string]              |       No       |       N/A       |    Button background    |
 | fontWeight  |              [string]              |       No       |     normal      | Button text font weight |
-|  disabled   |               [bool]               |       No       |      false      |     Disabled Button     |
+|  disabled   |             [boolean]              |       No       |      false      |     Disabled button     |
 | borderWidth |              [number]              |       No       |        2        |   Button border width   |
 |    theme    | ['light','dark','custom','system'] |       No       |     system      |      Custom theme       |
+
+### Events
+---
+| 事件名(Name) | 参数类型(args) | 说明(statement) |
+|:------------:|:--------------:|:---------------:|
+|    click     |     event      | Button onclick  |

@@ -4,10 +4,14 @@ import './custom-theme/index.scss'
 // Auto generate by New.js
 import global from './global.js'
 import Button from '@/Button/index.js'
+import ProgressRing from '@/ProgressRing/index.js'
+import CheckBox from '@/CheckBox/index.js'
 
 
 let components = [
   Button,
+  ProgressRing,
+  CheckBox,
 
 ]
 
@@ -24,6 +28,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
     Button,
+  ProgressRing,
+  CheckBox,
 
 }
 
