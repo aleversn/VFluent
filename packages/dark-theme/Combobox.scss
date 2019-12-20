@@ -1,0 +1,5 @@
+@import '../common-theme/Combobox.scss';
+.fv-dark-combobox{
+  @include fv-combobox();
+}
+    

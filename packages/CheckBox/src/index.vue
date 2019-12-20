@@ -68,6 +68,9 @@ export default {
         };
     },
     watch: {
+        value (val) {
+            this.isCheck = val;
+        },
         borderWidth (val) {
             this.stylesInit();
         },

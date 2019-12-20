@@ -2,5 +2,7 @@
   "/",
   "/zh/Button/",
   "/zh/ProgressRing/",
-  "/zh/CheckBox/"
+  "/zh/CheckBox/",
+  "/zh/Combobox/",
+  "/zh/DropDown/"
 ]

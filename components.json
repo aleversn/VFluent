@@ -22,5 +22,21 @@
       "Dark": "@/dark-theme/CheckBox.scss",
       "Custom": "@/custom-theme/CheckBox.scss"
     }
+  },
+  "Combobox": {
+    "entry": "@/Combobox/index.js",
+    "theme": {
+      "Light": "@/light-theme/Combobox.scss",
+      "Dark": "@/dark-theme/Combobox.scss",
+      "Custom": "@/custom-theme/Combobox.scss"
+    }
+  },
+  "DropDown": {
+    "entry": "@/DropDown/index.js",
+    "theme": {
+      "Light": "@/light-theme/DropDown.scss",
+      "Dark": "@/dark-theme/DropDown.scss",
+      "Custom": "@/custom-theme/DropDown.scss"
+    }
   }
 }

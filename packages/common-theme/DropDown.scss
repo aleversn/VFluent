@@ -1,0 +1,247 @@
+@mixin fv-DropDown {
+
+    position: relative;
+    width: 300px;
+
+    &:hover
+    {
+        .drop-down-box
+        {
+            background: rgba(36,36,36,0.2);
+        }
+    }
+
+    .drop-down-box
+    {
+        position: relative;
+        width: 100%;
+        height: 36px;
+        padding: 2px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        transition: all 0.8s;
+        overflow: hidden;
+
+        &.error
+        {
+            background: rgba(164,38,44,1);
+        }
+
+        .drop-down-container
+        {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+
+            input
+            {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                padding: 0px 36px 0px 8px;
+                border: none;
+                outline: none;
+                font-size: 13.5px;
+                font-weight: 400;
+                color: rgba(32,31,30,1);
+                box-sizing: border-box;
+                user-select: none;
+                cursor: default;
+            }
+
+            i.left-icon
+            {
+                position: absolute;
+                width: 36px;
+                height: 100%;
+                left: 0px;
+                font-size: 13px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+            }
+
+            i.right-icon
+            {
+                position: absolute;
+                width: 36px;
+                height: 100%;
+                right: 0px;
+                font-size: 13px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .list-container
+    {
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        width: 100%;
+        height: auto;
+        background: rgba(255,255,255,0.95);
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+        overflow: hidden;
+
+        .list-item
+        {
+            position: relative;
+            width: 100%;
+            height: 36px;
+            padding: 0px 8px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+
+            &.normal
+            {
+                cursor: pointer;
+
+                p
+                {
+                    cursor: pointer;
+
+                    &:hover
+                    {
+                        color: rgba(0,120,212,1);
+                    }
+                }
+
+                &:hover
+                {
+                    background-color: rgba(237,235,233,0.6);
+                }
+            }
+
+            &.disabled
+            {
+                cursor: default;
+                
+                p
+                {
+                    color: rgba(95,95,95,0.6);
+                }
+
+                &:hover
+                {
+                    background-color: transparent;
+                }
+            }
+
+            &.choose
+            {
+                background-color: rgba(237,235,233,0.6);
+            }
+
+            &.hr
+            {
+                height: 1px;
+                border-bottom: rgba(36,36,36,0.1) solid thin;
+            }
+
+            p
+            {
+                font-size: 15px;
+                font-weight: 400;
+                color: rgba(32,31,30,1);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                user-select: none;
+                overflow: hidden;
+
+                &.title
+                {
+                    color: rgba(0,120,212,1);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    p.err-msg
+    {
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        width: 100%;
+        margin-top: 3px;
+        font-size: 12px;
+        color: rgba(164,38,44,1);
+    }
+
+    &.disabled
+    {
+        &:hover
+        {
+            .drop-down-box
+            {
+                background: transparent;
+            }
+        }
+
+        .drop-down-box
+        {
+            .drop-down-container
+            {
+                background: rgba(243,242,241,1);
+                box-shadow: none;
+
+                input
+                {
+                    background: rgba(243,242,241,1);
+                    color: rgba(161,159,157,0.6);
+                    cursor: no-drop;
+                }
+
+                i
+                {
+                    color: rgba(50,49,48,0.6);
+                }
+            }
+        }
+    }
+
+    .fv-drop-down-enter
+    {
+        margin-top: -3px;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .fv-drop-down-enter-to
+    {
+        margin-top: 0px;
+        opacity: 1;
+        transition: all 0.3s;
+    }
+
+    .fv-drop-down-leave
+    {
+        opacity: 1;
+        transition: all 0.1s;
+    }
+
+    .fv-drop-down-leave-to
+    {
+        opacity: 0;
+        transition: all 0.1s;
+    }
+}

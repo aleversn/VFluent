@@ -6,12 +6,16 @@ import global from './global.js'
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
 import CheckBox from '@/CheckBox/index.js'
+import Combobox from '@/Combobox/index.js'
+import DropDown from '@/DropDown/index.js'
 
 
 let components = [
   Button,
   ProgressRing,
   CheckBox,
+  Combobox,
+  DropDown,
 
 ]
 
@@ -30,6 +34,8 @@ export default {
     Button,
   ProgressRing,
   CheckBox,
+  Combobox,
+  DropDown,
 
 }
 
