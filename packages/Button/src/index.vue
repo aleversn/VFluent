@@ -21,25 +21,32 @@ export default {
     name: "FvButton",
     props: {
         icon: {
-            default: ''
+            default: '',
+            type: String
         },
         theme: {
-            default: 'system'
+            default: 'system',
+            type: String
         },
         foreground: {
-            default: ''
+            default: '',
+            type: String
         },
         background: {
-            default: ''
+            default: '',
+            type: String
         },
         fontWeight: {
-            default: 'normal'
+            default: 'normal',
+            type: String
         },
         disabled: {
-            default: false
+            default: false,
+            type: Boolean
         },
         borderWidth: {
-            default: 2
+            default: 2,
+            type: Number
         }
     },
     data () {
