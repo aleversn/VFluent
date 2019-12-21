@@ -46,6 +46,9 @@ export default {
         multiple: {
             default: false
         },
+        maxHeight: {
+            default: ''
+        },
         borderRadius: {
             default: '3'
         },
@@ -54,6 +57,17 @@ export default {
         },
         dropDownListBackground: {
             default: ""
+        },
+        showStatus: {
+            default: () => {
+                return {
+                    position: "bottom",
+                    top: "100%",
+                    bottom: "",
+                    height: "auto",
+                    overflow: "hidden"
+                };
+            }
         },
         theme: {
             default: "system"
@@ -64,6 +78,10 @@ export default {
             choosenValue: this.value,
             styles: {
                 listContainer: {
+                    top: "100%",
+                    bottom: "",
+                    height: "auto",
+                    maxHeight: "",
                     background: "",
                     borderRadius: ""
                 },
@@ -80,6 +98,9 @@ export default {
         choosenValue(val) {
             this.$emit("input", val);
         },
+        maxHeight () {
+            this.stylesInit();
+        },
         borderRadius () {
             this.stylesInit();
         },
@@ -87,6 +108,18 @@ export default {
             this.stylesInit();
         },
         dropDownListBackground() {
+            this.stylesInit();
+        },
+        'showStatus.top' () {
+            this.stylesInit();
+        },
+        'showStatus.bottom' () {
+            this.stylesInit();
+        },
+        'showStatus.height' () {
+            this.stylesInit();
+        },
+        'showStatus.overflow' () {
             this.stylesInit();
         }
     },
@@ -103,6 +136,11 @@ export default {
         stylesInit() {
             this.styles.listContainer.borderRadius = `${this.borderRadius}px`;
             this.styles.listContainer.background = this.dropDownListBackground;
+            this.styles.listContainer.top = this.showStatus.top;
+            this.styles.listContainer.bottom = this.showStatus.bottom;
+            this.styles.listContainer.height = this.showStatus.height;
+            this.styles.listContainer.maxHeight = `${this.showStatus.maxHeight}px`;
+            this.styles.listContainer.overflow = this.showStatus.overflow;
             this.styles.title.color = this.dropDownListForeground;
         },
         onClick(cur) {

@@ -14,6 +14,7 @@
             :dropDownIcon="dropDownIcon"
             :dropDownIconForeground="dropDownIconForeground"
             :class="{error: showError}"
+            ref="input"
             @click.native="show.listContainer = !isDisabled ? !show.listContainer : false"
         >
             <template v-slot:input="x">
@@ -28,7 +29,7 @@
             v-show="showError"
             class="err-msg"
         >{{errorMessage}}</p>
-        <transition name="fv-drop-down">
+        <transition :name="`fv-drop-down-${dropDownListShowStatus.position}`">
             <list-container
                 v-show="show.listContainer"
                 v-model="choosenValue"
@@ -37,6 +38,7 @@
                 :borderRadius="borderRadius"
                 :dropDownListForeground="dropDownListForeground"
                 :dropDownListBackground="dropDownListBackground"
+                :showStatus="dropDownListShowStatus"
                 :theme="$theme"
                 @chooseItem="onChange"
             >
@@ -67,18 +69,7 @@ export default {
             default: () => []
         },
         options: {
-            default: () => [
-                { key: "fruitsHeader", text: "Fruits", type: "header" },
-                { key: "apple", text: "Apple" },
-                { key: "banana", text: "Banana" },
-                { key: "orange", text: "Orange", disabled: true },
-                { key: "grape", text: "Grape" },
-                { key: "divider_1", text: "-", type: "divider" },
-                { key: "vegetablesHeader", text: "Vegetables", type: "header" },
-                { key: "broccoli", text: "Broccoli" },
-                { key: "carrot", text: "Carrot" },
-                { key: "lettuce", text: "Lettuce" }
-            ]
+            default: () => []
         },
         multiple: {
             default: false
@@ -91,6 +82,9 @@ export default {
         },
         placeholder: {
             default: "Dropdown"
+        },
+        maxHeight: {
+            default: ""
         },
         inputForeground: {
             default: ""
@@ -119,6 +113,9 @@ export default {
         disabled: {
             default: false
         },
+        setFocus: {
+            default: false
+        },
         theme: {
             default: "system"
         }
@@ -126,6 +123,9 @@ export default {
     data() {
         return {
             choosenValue: this.value,
+            topRemainHeight: window.innerHeight,
+            bottomRemainHeight: window.innerHeight,
+            timer: {},
             styles: {
                 dropDown: {
                     zIndex: 0
@@ -143,10 +143,14 @@ export default {
         choosenValue(val) {
             this.$emit("input", val);
         },
+        setFocus (val) {
+            this.show.listContainer = val;
+        },
         "show.listContainer"(val) {
             if (val) {
                 this.styles.dropDown.zIndex = 1;
             } else this.styles.dropDown.zIndex = 0;
+            this.$emit('visible-change', val);
         }
     },
     computed: {
@@ -161,10 +165,47 @@ export default {
                 this.disabled == "disabled" ||
                 this.disabled === ""
             );
+        },
+        dropDownListHeight() {
+            return 36 * this.options.length;
+        },
+        dropDownListShowStatus() {
+            if (this.dropDownListHeight < this.bottomRemainHeight)
+                return {
+                    position: "bottom",
+                    top: "100%",
+                    bottom: "",
+                    height: "auto",
+                    overflow: "hidden"
+                };
+            if (this.dropDownListHeight < this.topRemainHeight)
+                return {
+                    position: "top",
+                    top: "",
+                    bottom: "100%",
+                    height: "auto",
+                    overflow: "hidden"
+                };
+            if (this.topRemainHeight > this.bottomRemainHeight)
+                return {
+                    position: "top",
+                    top: "",
+                    bottom: "100%",
+                    height: `${this.topRemainHeight}px`,
+                    overflow: "auto"
+                };
+            return {
+                position: "bottom",
+                top: "100%",
+                bottom: "",
+                height: `${this.bottomRemainHeight}px`,
+                overflow: "auto"
+            };
         }
     },
     mounted() {
         this.outSideClick();
+        this.heightSenseInit();
     },
     methods: {
         outSideClick() {
@@ -181,9 +222,29 @@ export default {
                 if (!_self) this.show.listContainer = false;
             });
         },
+        heightSenseInit() {
+            clearInterval(this.timer);
+            this.timer = setInterval(() => {
+                try {
+                    this.topRemainHeight = this.$refs.input.$el.getBoundingClientRect().top;
+                } catch (e) {
+                    this.topRemainHeight = window.innerHeight;
+                }
+                try {
+                    this.bottomRemainHeight =
+                        window.innerHeight -
+                        this.$refs.input.$el.getBoundingClientRect().bottom;
+                } catch (e) {
+                    this.bottomRemainHeight = window.innerHeight;
+                }
+            }, 300);
+        },
         onChange(event) {
             this.show.listContainer = this.multiple;
             this.$emit("change", event);
+        },
+        beforeDestroy() {
+            clearInterval(this.timer);
         }
     }
 };

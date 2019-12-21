@@ -88,7 +88,6 @@
     {
         position: absolute;
         left: 0px;
-        top: 100%;
         width: 100%;
         height: auto;
         background: rgba(255,255,255,0.95);
@@ -219,27 +218,53 @@
         }
     }
 
-    .fv-drop-down-enter
+    .fv-drop-down-top-enter
     {
         margin-top: -3px;
         opacity: 0;
         transition: all 0.3s;
     }
 
-    .fv-drop-down-enter-to
+    .fv-drop-down-top-enter-to
     {
         margin-top: 0px;
         opacity: 1;
         transition: all 0.3s;
     }
 
-    .fv-drop-down-leave
+    .fv-drop-down-top-leave
     {
         opacity: 1;
         transition: all 0.1s;
     }
 
-    .fv-drop-down-leave-to
+    .fv-drop-down-top-leave-to
+    {
+        opacity: 0;
+        transition: all 0.1s;
+    }
+
+    .fv-drop-down-bottom-enter
+    {
+        margin-top: -3px;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .fv-drop-down-bottom-enter-to
+    {
+        margin-top: 0px;
+        opacity: 1;
+        transition: all 0.3s;
+    }
+
+    .fv-drop-down-bottom-leave
+    {
+        opacity: 1;
+        transition: all 0.1s;
+    }
+
+    .fv-drop-down-bottom-leave-to
     {
         opacity: 0;
         transition: all 0.1s;
