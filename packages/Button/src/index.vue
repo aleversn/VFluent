@@ -1,6 +1,6 @@
 <template>
 <div :class="'fv-'+$theme+'-button'">
-    <div class="reveal-border" :class="{disabled:(disabled||disabled=='disabled'||disabled=='')}" :style="styles.revealBorder">
+    <div class="reveal-border" :class="{disabled: isDisabled}" :style="styles.revealBorder">
         <button :disabled="disabled" class="button-container" :style="styles.buttonContainer" @click="onClick">
             <span class="content-block" :style="styles.contentBlock">
                 <i class="ms-Icon" :class="`ms-Icon--${icon}`" :style="{'margin-right': icon != '' ? '5px': ''}"></i>
@@ -66,19 +66,19 @@ export default {
         }
     },
     watch: {
-        theme () {
+        theme (val) {
             this.FRInit();
         },
-        borderWidth () {
+        borderWidth (val) {
             this.stylesInit();
         },
-        foreground () {
+        foreground (val) {
             this.stylesInit();
         },
-        background () {
+        background (val) {
             this.stylesInit();
         },
-        fontWeight () {
+        fontWeight (val) {
             this.stylesInit();
         }
     },
@@ -95,7 +95,6 @@ export default {
             if(this.$theme == 'dark' || this.$theme == 'custom') {
                 return 'rgba(255, 255, 255, 0.6)';
             }
-             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
             if(this.$theme == 'light') {
@@ -104,7 +103,9 @@ export default {
             if(this.$theme == 'dark' || this.$theme == 'custom') {
                 return 'rgba(255, 255, 255, 0.3)';
             }
-            return 'rgba(121, 119, 117, 0.3)';
+        },
+        isDisabled () {
+            return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
         }
     },
     mounted () {

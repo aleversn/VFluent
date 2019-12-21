@@ -1,0 +1,5 @@
+@import '../common-theme/CheckBox.scss';
+.fv-custom-checkBox{
+  @include fv-checkBox();
+}
+    

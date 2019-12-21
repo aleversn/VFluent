@@ -6,5 +6,37 @@
       "Dark": "@/dark-theme/Button.scss",
       "Custom": "@/custom-theme/Button.scss"
     }
+  },
+  "ProgressRing": {
+    "entry": "@/ProgressRing/index.js",
+    "theme": {
+      "Light": "@/light-theme/ProgressRing.scss",
+      "Dark": "@/dark-theme/ProgressRing.scss",
+      "Custom": "@/custom-theme/ProgressRing.scss"
+    }
+  },
+  "CheckBox": {
+    "entry": "@/CheckBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/CheckBox.scss",
+      "Dark": "@/dark-theme/CheckBox.scss",
+      "Custom": "@/custom-theme/CheckBox.scss"
+    }
+  },
+  "Combobox": {
+    "entry": "@/Combobox/index.js",
+    "theme": {
+      "Light": "@/light-theme/Combobox.scss",
+      "Dark": "@/dark-theme/Combobox.scss",
+      "Custom": "@/custom-theme/Combobox.scss"
+    }
+  },
+  "DropDown": {
+    "entry": "@/DropDown/index.js",
+    "theme": {
+      "Light": "@/light-theme/DropDown.scss",
+      "Dark": "@/dark-theme/DropDown.scss",
+      "Custom": "@/custom-theme/DropDown.scss"
+    }
   }
 }

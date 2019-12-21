@@ -1,0 +1,81 @@
+@import "../common-theme/DropDown.scss";
+.fv-dark-DropDown {
+    @include fv-DropDown();
+    
+    &:hover
+    {
+        .drop-down-box
+        {
+            background: rgba(226, 226, 226, 0.2);
+        }
+    }
+
+    .drop-down-box
+    {
+        .drop-down-container
+        {
+            box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
+
+            input
+            {
+                background: rgba(36,35,34,0.9);
+                color: whitesmoke;
+                user-select: none;
+
+                &::placeholder
+                {
+                    color: rgba(179, 179, 179, 1);
+                }
+            }
+
+            i
+            {
+                color: whitesmoke;
+            }
+        }
+    }
+
+    .list-container
+    {
+        background: rgba(36,36,36,0.9);
+
+        .list-item
+        {
+            &.normal
+            {
+                p
+                {
+                    &:hover
+                    {
+                        color: rgba(0,153,204,1);
+                    }
+                }
+            }
+
+            &.disabled
+            {
+                cursor: default;
+                
+                p
+                {
+                    color: rgba(212, 212, 212, 0.6);
+                }
+            }
+
+            &.hr
+            {
+                border-bottom: rgba(216, 216, 216, 0.1) solid thin;
+            }
+
+            p
+            {
+                color: whitesmoke;
+
+                &.title
+                {
+                    color: rgba(0,153,204,1);
+                }
+            }
+        }
+    }
+}

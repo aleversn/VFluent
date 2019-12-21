@@ -1,0 +1,97 @@
+@mixin fv-checkBox {
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+    &.box-side-end
+    {
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+
+        .text-content-block
+        {
+            margin-right: 5px;
+        }
+    }
+
+    .checkbox-rec
+    {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        transition: all 0.5s;
+
+        &.disabled
+        {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .border
+        {
+            width: 100%;
+            height: 100%;
+            border: solid 2px;
+            border-color: black;
+            box-sizing: border-box;
+
+            .check
+            {
+                border-color: transparent;
+
+                &:hover
+                {
+                    border-color: inherit;
+                }
+            }
+        }
+
+        .checkbox-content
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            font-size: 13px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &:hover
+        {
+            .content
+            {
+                z-index: -1;
+            }
+        }
+        
+        .font-scale-in-enter,.font-scale-in-leave-to
+        {
+            transition: all 0.5s;
+            transform: scale(0);
+        }
+        .font-scale-in-enter-to,.font-scale-in-leave
+        {
+            transition: all 0.5s;
+            transform: scale(1);
+        }
+    }
+
+    .text-content-block
+    {
+        margin-left: 5px;
+        font-size: 15px;
+        user-select: none;
+        cursor: default;
+    }
+}

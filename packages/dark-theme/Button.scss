@@ -4,6 +4,11 @@
 
     div.reveal-border
     {
+        &:hover
+        {
+            background: rgba(243, 242, 241, 0.6);
+        }
+        
         button.button-container
         {
             background: #605e5c;

@@ -1,0 +1,5 @@
+@import '../common-theme/ProgressRing.scss';
+.fv-light-progressRing{
+  @include fv-progressRing();
+}
+    

@@ -1,0 +1,5 @@
+@import '../common-theme/DropDown.scss';
+.fv-light-DropDown{
+  @include fv-DropDown();
+}
+    
