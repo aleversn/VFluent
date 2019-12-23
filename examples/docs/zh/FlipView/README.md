@@ -12,7 +12,7 @@ export default {
     data () {
         return {
             value: [1,2,3,4,5],
-            images: ['https://ae01.alicdn.com/kf/HTB1eE2mXPlxYKJjSZFuq6yYlVXay/Laeacco-Seaside-Wooden-View-Bridge-Platform-Scenic-Photography-Backgrounds-Vinyl-Custom-Photographic-Backdrops-For-Photo-Studio.jpg_640x640.jpg', 'https://ae01.alicdn.com/kf/HTB1eE2mXPlxYKJjSZFuq6yYlVXay/Laeacco-Seaside-Wooden-View-Bridge-Platform-Scenic-Photography-Backgrounds-Vinyl-Custom-Photographic-Backdrops-For-Photo-Studio.jpg_640x640.jpg', 'https://ae01.alicdn.com/kf/HTB1eE2mXPlxYKJjSZFuq6yYlVXay/Laeacco-Seaside-Wooden-View-Bridge-Platform-Scenic-Photography-Backgrounds-Vinyl-Custom-Photographic-Backdrops-For-Photo-Studio.jpg_640x640.jpg']
+            images: ['https://github.com/aleversn/VFluent/blob/master/examples/assert/sample/1.jpg?raw=true', 'https://github.com/aleversn/VFluent/blob/master/examples/assert/sample/2.jpg?raw=true', 'https://github.com/aleversn/VFluent/blob/master/examples/assert/sample/3.jpg?raw=true']
         }
     }
 }
