@@ -1,0 +1,5 @@
+@import '../common-theme/ProgressBar.scss';
+.fv-light-ProgressBar{
+  @include fv-ProgressBar();
+}
+    

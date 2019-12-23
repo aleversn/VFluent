@@ -1,0 +1,5 @@
+@import '../common-theme/FlipView.scss';
+.fv-custom-FlipView{
+  @include fv-FlipView();
+}
+    

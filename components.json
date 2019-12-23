@@ -38,5 +38,21 @@
       "Dark": "@/dark-theme/DropDown.scss",
       "Custom": "@/custom-theme/DropDown.scss"
     }
+  },
+  "ProgressBar": {
+    "entry": "@/ProgressBar/index.js",
+    "theme": {
+      "Light": "@/light-theme/ProgressBar.scss",
+      "Dark": "@/dark-theme/ProgressBar.scss",
+      "Custom": "@/custom-theme/ProgressBar.scss"
+    }
+  },
+  "FlipView": {
+    "entry": "@/FlipView/index.js",
+    "theme": {
+      "Light": "@/light-theme/FlipView.scss",
+      "Dark": "@/dark-theme/FlipView.scss",
+      "Custom": "@/custom-theme/FlipView.scss"
+    }
   }
 }

@@ -1,0 +1,5 @@
+@import '../common-theme/ProgressBar.scss';
+.fv-dark-ProgressBar{
+  @include fv-ProgressBar();
+}
+    

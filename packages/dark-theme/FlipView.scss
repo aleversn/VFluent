@@ -1,0 +1,36 @@
+@import "../common-theme/FlipView.scss";
+.fv-dark-FlipView {
+    
+    @include fv-FlipView();
+
+    .control-panel
+    {
+        .slidebtn
+        {
+            color: whitesmoke;
+
+            &:hover
+            {
+                background: rgba(242,242,242,0.1);
+            }
+        }
+
+        .bottom-controller
+        {
+            .fst
+            {
+                color: whitesmoke;
+            }
+
+            .sec
+            {
+                color: whitesmoke;
+
+                &:hover
+                {
+                    background: rgba(242,242,242,0.1);
+                }
+            }
+        }
+    }
+}
