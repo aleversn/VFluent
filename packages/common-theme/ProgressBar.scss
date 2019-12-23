@@ -1,0 +1,70 @@
+@mixin fv-ProgressBar
+{
+	position: relative;
+	width: 300px;
+	height: 5px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: visible;
+	transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+    
+    &.normal
+    {
+		background: rgba(120,120,120,0.35);
+        justify-content: flex-start;
+        
+        i
+        {
+			height: 100%;
+			background: rgba(0,120,215,0.8);
+			transition: all 0.8s;
+			transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+			-webkit-transition: all 0.8s;
+		}
+	}
+	
+	&.disabled
+	{
+		opacity: 0.3;
+		filter: grayscale(1);
+	}
+    
+    p.unit
+    {
+		position: absolute;
+		left: calc(50% - 2.5px);
+		top: calc(50% - 2.5px);
+		width: 5px;
+		height: 5px;
+		margin: 0px;
+		background: cornflowerblue;
+		border-radius: 50%;
+		opacity: 0;
+		animation: progressbar 6s infinite;
+        
+		&:nth-of-type(1) {
+			animation-delay: 0.16s;
+		}
+		&:nth-of-type(2) {
+			animation-delay: 0.32s;
+		}
+		&:nth-of-type(3) {
+			animation-delay: 0.48s;
+		}
+		&:nth-of-type(4) {
+			animation-delay: 0.64s;
+		}
+		&:nth-of-type(5) {
+			animation-delay: 0.8s;
+		}
+    }
+    
+    @keyframes progressbar {
+        0%{opacity: 0; margin-left: -100%;}
+        50%{opacity: 1; margin-left: 0%;}
+        100%{opacity: 0; margin-left: 100%;}
+    }
+}

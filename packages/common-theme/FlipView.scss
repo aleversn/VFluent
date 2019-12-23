@@ -1,0 +1,169 @@
+@mixin fv-FlipView {
+    
+    position: relative;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .container-panel
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+        
+        .container-item
+        {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            min-width: 100%;
+            width: 100%;
+            min-height: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .control-panel
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        &.hidden
+        {
+            display: none;
+        }
+
+        &.hover
+        {
+            opacity: 0;
+            transition: all 0.6s;
+            transition-delay: 0.3s;
+
+            &:hover
+            {
+                opacity: 1;
+            }
+        }
+
+        .slidebtn
+        {
+            position: absolute;
+            top: calc(50% - 25px);
+            width: 25px;
+            height: 50px;
+            margin: 0px;
+            background: rgba(242, 242, 242, 0.01);
+            color: rgba(36,36,36,1);
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s, color 0.01s;
+            -webkit-user-select: none;
+
+            &:hover
+            {
+                background: rgba(36,36,36,0.1);
+            }
+
+            &.fst
+            {
+                left: 0px;
+            }
+
+            &.sec
+            {
+                right: 0px;
+            }
+
+            &.vertical
+            {
+                left: calc(50% - 25px);
+                width: 50px;
+                height: 25px;
+
+                &.fst
+                {
+                    top: 0px;
+                }
+
+                &.sec
+                {
+                    top: calc(100% - 25px);
+                }
+            }
+        }
+
+        .bottom-controller
+        {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            height: 60px;
+            padding: 15px;
+            font-size: 12px;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            .fst
+            {
+                margin: 2px;
+                cursor: pointer;
+            }
+
+            .sec
+            {
+                width: 30px;
+                height: 30px;
+                margin: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s;
+                cursor: pointer;
+
+                &:hover
+                {
+                    background: rgba(36,36,36,0.1);
+                }
+            }
+
+            &.vertical
+            {
+                left: calc(100% - 60px);
+                width: 60px;
+                height: 100%;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .fade-in-enter,.fade-in-leave-to
+    {
+        opacity: 0;
+        transition: all 0.8s;
+    }
+    .fade-in-enter-to,.fade-in-leave
+    {
+        opacity: 1;
+        transition: all 0.8s;
+    }
+}
