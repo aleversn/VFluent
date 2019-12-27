@@ -3,7 +3,6 @@ import './dark-theme/index.scss'
 import './custom-theme/index.scss'
 // Auto generate by New.js
 import global from './global.js'
-import '../examples/style/global-transition.css';
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
 import CheckBox from '@/CheckBox/index.js'
@@ -11,6 +10,7 @@ import Combobox from '@/Combobox/index.js'
 import DropDown from '@/DropDown/index.js'
 import ProgressBar from '@/ProgressBar/index.js'
 import FlipView from '@/FlipView/index.js'
+import ToggleSwitch from '@/ToggleSwitch/index.js'
 
 
 let components = [
@@ -21,6 +21,7 @@ let components = [
   DropDown,
   ProgressBar,
   FlipView,
+  ToggleSwitch,
 
 ]
 
@@ -43,6 +44,7 @@ export default {
   DropDown,
   ProgressBar,
   FlipView,
+  ToggleSwitch,
 
 }
 

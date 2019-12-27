@@ -39,6 +39,6 @@
 
 ### Events
 ---
-| 事件名(Name) | 参数类型(args) | 说明(statement) |
-|:------------:|:--------------:|:---------------:|
-|    click     |     event      | Checkbox onclick  |
+| 事件名(Name) | 参数类型(args) | 说明(statement)  |
+|:------------:|:--------------:|:----------------:|
+|    click     |     value      | Checkbox onclick |

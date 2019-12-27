@@ -92,8 +92,8 @@ export default {
 ---
 |  事件名(Name)  | 参数类型(args) |       说明(statement)        |
 |:--------------:|:--------------:|:----------------------------:|
-|     change     |     event      |     Dropdown choose item     |
-| visible-change |     event      | Dropdown list show or hidden |
+|     change     |     value      |     Dropdown choose item     |
+| visible-change |    visible     | Dropdown list show or hidden |
 
 ### Slot
 ---

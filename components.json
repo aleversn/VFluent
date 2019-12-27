@@ -54,5 +54,13 @@
       "Dark": "@/dark-theme/FlipView.scss",
       "Custom": "@/custom-theme/FlipView.scss"
     }
+  },
+  "ToggleSwitch": {
+    "entry": "@/ToggleSwitch/index.js",
+    "theme": {
+      "Light": "@/light-theme/ToggleSwitch.scss",
+      "Dark": "@/dark-theme/ToggleSwitch.scss",
+      "Custom": "@/custom-theme/ToggleSwitch.scss"
+    }
   }
 }
