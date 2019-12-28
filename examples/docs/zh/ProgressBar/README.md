@@ -71,5 +71,5 @@ export default {
 ---
 |   事件名(Name)    | 参数类型(args) | 说明(statement) |
 |:-----------------:|:--------------:|:---------------:|
-|  progress-change  |     event      |                 |
-| progress-finished |     event      |                 |
+|  progress-change  |    percent     |                 |
+| progress-finished |    percent     |                 |
