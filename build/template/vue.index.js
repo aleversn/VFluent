@@ -16,9 +16,17 @@ export default {
   data(){
     return {}
   },
+  props:{
+    theme:{
+      type:String,
+      default:"system"
+    }
+  },
   computed:{
-    $theme(){
-      return this.\${{prefix}}Global.state.theme
+    $theme() {
+      if (this.theme=='system')
+        return this.\${{prefix}}Global.state.theme;
+      return this.theme;
     }
   }
 }

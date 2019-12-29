@@ -2,8 +2,8 @@ const path = require('path')
 const sidebar = require('../sidebar.json')
 
 module.exports={
-  title : 'ComponentTemplate',
-  description: 'ComponentTemplate',
+  title : 'FluentVueDesign',
+  description: 'FluentVueDesign',
   configureWebpack:{
     resolve:{
       alias:{
