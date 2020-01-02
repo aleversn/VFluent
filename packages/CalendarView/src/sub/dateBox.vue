@@ -140,7 +140,7 @@ export default {
                 ];
                 j++
             ) {
-                d.push({ year: nowday.getFullYear(), month: lastday.getMonth(), no: j + 1 });
+                d.push({ year: lastday.getFullYear(), month: lastday.getMonth(), no: j + 1 });
             }
             for(let i = 0; i < 2; i++) {
                 for(let j = 0; j < this.dayList[this.leapYear(nowday.getFullYear())][nowday.getMonth()]; j++) {
@@ -198,8 +198,8 @@ export default {
             }
             if(nowday.getFullYear() == this.start && nowday.getMonth() == 0)
                 return 0;
-            nowday.setMonth(this.days[0].month - 1);
             nowday.setDate(1);
+            nowday.setMonth(this.days[0].month - 1);
             for(let j = this.dayList[this.leapYear(nowday.getFullYear())][nowday.getMonth()] - 1; j >= 0; j--) {
                 this.days.splice(0, 0, { year: nowday.getFullYear(), month: nowday.getMonth(), no: j + 1});
                 count++;
@@ -219,7 +219,7 @@ export default {
                     ] - remain;
                 j--
             ) {
-                this.days.splice(0, 0, { year: nowday.getFullYear(), month: lastday.getMonth(), no: j + 1 });
+                this.days.splice(0, 0, { year: lastday.getFullYear(), month: lastday.getMonth(), no: j + 1 });
                 count++;
             }
             

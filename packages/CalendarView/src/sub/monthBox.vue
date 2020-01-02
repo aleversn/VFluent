@@ -186,6 +186,7 @@ export default {
             let num = this.months[this.months.length - 1].year;
             if(num == this.end)
                 return 0;
+            num++;
             for(let j = 0; j < this.monthList.length; j++) {
                 this.months.push({ year: num, no: j, name: this.monthList[j][this.lan]});
             }
