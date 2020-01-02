@@ -63,6 +63,14 @@
       "Custom": "@/custom-theme/ToggleSwitch.scss"
     }
   },
+  "Slider": {
+    "entry": "@/Slider/index.js",
+    "theme": {
+      "Light": "@/light-theme/Slider.scss",
+      "Dark": "@/dark-theme/Slider.scss",
+      "Custom": "@/custom-theme/Slider.scss"
+    }
+  },
   "CalendarView": {
     "entry": "@/CalendarView/index.js",
     "theme": {

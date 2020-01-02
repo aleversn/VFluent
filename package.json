@@ -1,29 +1,33 @@
 {
-  "name": "template",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vfluentdesign",
+  "version": "0.0.2",
   "author": {
-    "name": "minskiter",
-    "email": "minskiter@outlook.com",
-    "url": "https://blog.leavessoft.cn"
+    "name": "creatersn"
   },
   "bugs": {
-    "email": "minskiter@gmail.com"
+    "url": "https://github.com/aleversn/VFluent/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aleversn/VFluent"
+  },
+  "homepage": "https://aleversn.github.io",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "lib": "vue-cli-service build --target lib --name Template --dest lib examples/index.js",
+    "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev examples/docs",
     "bin:new": "node build/new.js",
     "bin:rm": "node build/remove.js",
-    "bin:entry": "node build/entry.js"
+    "bin:entry": "node build/entry.js",
+    "pub": "yarn lib && yarn publish"
   },
   "dependencies": {
     "core-js": "^3.4.3",
     "fluent-reveal-effect": "^1.1.1",
     "office-ui-fabric-core": "^11.0.0",
-    "vue": "^2.6.10",
+    "onecolor": "^3.1.0",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
@@ -37,6 +41,7 @@
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
     "uppercamelcase": "^3.0.0",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "vuepress": "^1.2.0"
   },

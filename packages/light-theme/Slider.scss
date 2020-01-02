@@ -1,0 +1,40 @@
+@import '../common-theme/Slider.scss';
+.fv-light-slider{
+  @include fv-slider();
+   //region:color begin
+   .fv-slider__bar {
+    .fv-slider__bar-bg {
+      background-color: #d6d5d4;
+    }
+    .fv-slider__button {
+      color: #0075d1;
+    }
+    .fv-slider__scale-up,
+    .fv-slider__scale-down {
+      background-color: rgba(153, 153, 153, 0.8);
+    }
+    .fv-slider__progress{
+      background-color: #0075d1;
+    }
+  }
+  &:hover {
+    .fv-slider__bar {
+      .fv-slider__bar-bg {
+        background-color: #deecf9;
+      }
+      
+      .fv-slider__button {
+        color: #0075d1;
+      }
+    }
+  }
+  &.active {
+    .fv-slider__bar {
+      .fv-slider__button {
+        color: #0075d1;
+      }
+    }
+  }
+  //region:end of color
+}
+    

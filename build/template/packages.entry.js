@@ -4,8 +4,9 @@
  * @param theme
  * @param prefix
  */
-module.exports=`// Auto generate by New.js
+module.exports=`// Script Gen, Wanring: Edit template instead of it
 import global from './global.js'
+import '../examples/style/global-transition.css'
 {{imports}}
 
 let components = [
