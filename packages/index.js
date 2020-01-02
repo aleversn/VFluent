@@ -3,6 +3,7 @@ import './dark-theme/index.scss'
 import './custom-theme/index.scss'
 // Auto generate by New.js
 import global from './global.js'
+import {SDate} from './usual.js'
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
 import CheckBox from '@/CheckBox/index.js'
@@ -11,6 +12,8 @@ import DropDown from '@/DropDown/index.js'
 import ProgressBar from '@/ProgressBar/index.js'
 import FlipView from '@/FlipView/index.js'
 import ToggleSwitch from '@/ToggleSwitch/index.js'
+import Slider from '@/Slider/index.js'
+import CalendarView from '@/CalendarView/index.js'
 
 
 let components = [
@@ -22,10 +25,8 @@ let components = [
   ProgressBar,
   FlipView,
   ToggleSwitch,
-  Slider
-];
+  Slider,
   CalendarView,
-
 ]
 
 const install = function(Vue){
