@@ -1,0 +1,5 @@
+@import '../common-theme/CalendarView.scss';
+.fv-dark-CalendarView{
+  @include fv-CalendarView();
+}
+    

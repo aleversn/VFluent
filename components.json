@@ -62,5 +62,13 @@
       "Dark": "@/dark-theme/ToggleSwitch.scss",
       "Custom": "@/custom-theme/ToggleSwitch.scss"
     }
+  },
+  "CalendarView": {
+    "entry": "@/CalendarView/index.js",
+    "theme": {
+      "Light": "@/light-theme/CalendarView.scss",
+      "Dark": "@/dark-theme/CalendarView.scss",
+      "Custom": "@/custom-theme/CalendarView.scss"
+    }
   }
 }
