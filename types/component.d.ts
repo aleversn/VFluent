@@ -1,4 +1,4 @@
-  import Vue from 'vue'
+import Vue from 'vue'
 
 /** declare FluentVue Component */
 export declare class FluentVueComponent extends Vue {

@@ -6,6 +6,7 @@
  */
 module.exports=`// Script Gen, Wanring: Edit template instead of it
 import global from './global.js'
+import {SDate} from './usual.js'
 import '../examples/style/global-transition.css'
 {{imports}}
 

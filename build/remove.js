@@ -87,6 +87,12 @@ try{
     console.log(e)
 }
 
+try{
+    rm(path.join(__dirname,`../types/`),`${componentName.toLowerCase()}.d.ts`)
+}catch(e){
+    console.log(e)
+}
+
 delete components[componentName]
 
 filesave(path.join(__dirname,'../components.json')).write(JSON.stringify(components,null,'  '),'utf8').end('\n')
