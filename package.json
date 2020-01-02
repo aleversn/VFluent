@@ -28,10 +28,12 @@
     "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev examples/docs",
+    "docs:build":"vuepress build examples/docs",
     "bin:new": "node build/new.js",
     "bin:rm": "node build/remove.js",
     "bin:entry": "node build/entry.js",
-    "pub": "yarn lib && yarn publish"
+    "pub": "yarn lib && yarn publish",
+    "pub:pages":"build/page.sh"
   },
   "dependencies": {
     "core-js": "^3.4.3",

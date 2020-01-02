@@ -28,42 +28,62 @@ export default {
 }
 </script>
 
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select an option"></fv-DropDown>
+</ClientOnly>
 
 ### DropDown-Disabled
 ---
 1. Set Disabled
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select an option" disabled></fv-DropDown>
+</ClientOnly>
 
 2. DropDown without options
+<ClientOnly>
 <fv-DropDown placeholder="Select an option"></fv-DropDown>
+</ClientOnly>
 
 ### DropDown-Multiple Select
 ---
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select options" :multiple="true"></fv-DropDown>
+</ClientOnly>
 
 ### DropDown-Customize
 ---
 1. Custom List Item
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select an option"><template v-slot:options="item"><p>{{item.index}}</p></template></fv-DropDown>
+</ClientOnly>
 
 2. Custom Style
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select options" :multiple="true" borderWidth="1" borderRadius="5" inputBackground="rgba(0,204,153,0.9)" inputForeground="whitesmoke" dropDownIcon="AddTo" dropDownIconForeground="whitesmoke" dropDownListForeground="rgba(0,204,153,1)" dropDownListBackground="rgba(239,239,239,0.6)"></fv-DropDown>
+</ClientOnly>
 
 3. Custom Drop Down Input
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select options" :multiple="true"><template v-slot:input="x"><i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i><input :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px;"/><i class="ms-Icon ms-Icon--DelveAnalyticsLogo right-icon"></i></template></fv-DropDown>
+</ClientOnly>
 
 ### DropDown-Show Error
 ---
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select an option" :showError="true"></fv-DropDown>
+</ClientOnly>
 
 ### DropDown-Dark Theme
 ---
 1. Single Selection
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select an option" theme="dark"></fv-DropDown>
+</ClientOnly>
 
 2. Multiple Selections
+<ClientOnly>
 <fv-DropDown :options="options" placeholder="Select an option" theme="dark" :multiple="true"></fv-DropDown>
+</ClientOnly>
 
 ### Propoties
 ---

@@ -17,6 +17,7 @@ let components = [
 const install = function(Vue){
   if (install.installed) return
   Vue.prototype.\${{prefix}}Global=global
+  Vue.prototype.$SDate=SDate
   components.map(component => Vue.use(component))
 }
 
