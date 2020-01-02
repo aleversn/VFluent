@@ -1,6 +1,7 @@
 import './light-theme/index.scss'
 import './dark-theme/index.scss'
 import './custom-theme/index.scss'
+import '../examples/style/global-transition.css'
 // Auto generate by New.js
 import global from './global.js'
 import {SDate} from './usual.js'
