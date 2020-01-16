@@ -1,5 +1,78 @@
-@import '../common-theme/CalendarView.scss';
-.fv-dark-CalendarView{
-  @include fv-CalendarView();
-}
+@import "../common-theme/CalendarView.scss";
+.fv-dark-CalendarView {
+    @include fv-CalendarView();
     
+    background: rgba(0, 0, 0, 1);
+    border: rgba(255, 255, 255, 0.1) solid 2px;
+    color: rgba(245, 245, 245, 0.9);
+
+    .control-block
+    {
+        .switcher
+        {
+            color: rgba(245, 245, 245, 0.9);
+
+            &:hover
+            {
+                color: whitesmoke;
+                opacity: 1;
+            }
+        }
+    }
+
+    .container-block
+    {
+        .day-block
+        {
+            .weekdays-block
+            {
+                .weekday
+                {
+                    color: rgba(245, 245, 245, 0.9);
+                }
+            }
+        }
+
+        .picker-container
+        {
+            background: rgba(36, 36, 36, 1);
+            
+            button.btn
+            {
+                background: rgba(60, 60, 60, 1);
+                color: whitesmoke;
+                
+                &:hover
+                {
+                    border: rgba(255, 255, 255, 0.6) solid 2px;
+                }
+                
+                &.range
+                {
+                    background: rgba(36, 36, 36, 1);
+                }
+                
+                &.current
+                {
+                    background: rgba(0, 120, 215, 0.8);
+                    color: whitesmoke;
+                    
+                    &:hover
+                    {
+                        border: rgba(0, 0, 0, 0.35) solid 2px;
+                    }
+
+                    &.choose
+                    {
+                        border: rgba(255, 255, 255, 0.6) solid 2px;
+                    }
+                }
+
+                &.choose
+                {
+                    border: rgba(0, 120, 215, 1) solid 2px;
+                }
+            }
+        }
+    }
+}

@@ -114,6 +114,7 @@
             width: 100%;
             height: 100%;
             flex: 1;
+            background: rgba(230, 230, 230, 1);
             display: flex;
             flex-wrap: wrap;
             overflow: auto;
@@ -150,7 +151,7 @@
                     background: rgba(230, 230, 230, 1);
                 }
                 
-                &.choose
+                &.current
                 {
                     background: rgba(0, 120, 215, 0.8);
                     color: whitesmoke;
@@ -159,6 +160,16 @@
                     {
                         border: rgba(0, 0, 0, 0.35) solid 2px;
                     }
+
+                    &.choose
+                    {
+                        border: rgba(255, 255, 255, 0.6) solid 2px;
+                    }
+                }
+
+                &.choose
+                {
+                    border: rgba(0, 120, 215, 1) solid 2px;
                 }
                 
                 &.day

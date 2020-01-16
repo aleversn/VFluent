@@ -9,9 +9,9 @@
     </div>
     <div class="container-block">
         <transition-group :name="transitionName">
-            <year-box v-if="status == 'year'" v-model="thisValue" ref="year" key="1" @range-change="yearRange = $event" @choose="chooseYear"></year-box>
-            <month-box v-if="status == 'month'" v-model="thisValue" ref="month" key="2" @range-change="monthRange = $event" @choose="chooseMonth"></month-box>
-            <date-box v-if="status == 'date'" v-model="thisValue" ref="day" key="3" @range-change="dayRange = $event" @choose="chooseDate"></date-box>
+            <year-box v-if="status == 'year'" v-model="thisValue" :theme="$theme" :lan="lan" ref="year" key="1" @range-change="yearRange = $event" @choose="chooseYear"></year-box>
+            <month-box v-if="status == 'month'" v-model="thisValue" :theme="$theme" :lan="lan" ref="month" key="2" @range-change="monthRange = $event" @choose="chooseMonth"></month-box>
+            <date-box v-if="status == 'date'" v-model="thisValue" :theme="$theme" :lan="lan" :multiple="multiple" ref="day" key="3" @range-change="dayRange = $event" @choosen-dates="$emit('choosen-dates', $event)" @choose="chooseDate"></date-box>
         </transition-group>
     </div>
 </div>
@@ -38,6 +38,9 @@ export default {
         },
         end: {
             default: 3000
+        },
+        multiple: {
+            default: 'single'
         },
         lan: {
             default: 'en'
@@ -79,10 +82,13 @@ export default {
                 if(this.lan == 'en')
                     return `${this.monthList['en'][this.dayRange.month]} ${this.dayRange.year}`;
                 else
-                    return `${this.dayRange.year}年${this.dayRange.month + 1}`;
+                    return `${this.dayRange.year}年${this.dayRange.month + 1}日`;
             }
             else if(this.status == 'month')
-                return `${this.monthRange.year}`;
+                if(this.lan == 'en')
+                    return `${this.monthRange.year}`;
+                else
+                    return `${this.monthRange.year}年`;
             return `${this.yearRange} - ${this.yearRange + 9}`;
         }
     },
@@ -126,6 +132,7 @@ export default {
             this.transitionName = 'scale-up-to-up';
             this.thisValue.setFullYear(item);
             this.status = 'month';
+            this.$emit('choose-year', item);
         },
         chooseMonth (item) {
             this.transitionName = 'scale-up-to-up';
@@ -133,11 +140,13 @@ export default {
             this.thisValue.setMonth(item.no);
             this.thisValue.setFullYear(item.year);
             this.status = 'date';
+            this.$emit('choose-month', this.thisValue);
         },
         chooseDate (item) {
             this.thisValue.setDate(item.no);
             this.thisValue.setMonth(item.month);
             this.thisValue.setFullYear(item.year);
+            this.$emit('choose', this.thisValue);
         }
     }
 };

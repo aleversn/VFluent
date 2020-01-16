@@ -4,7 +4,7 @@
         <button v-for="(weekday, index) in weekdays[lan]" class="weekday" :key="`weekday: ${index}`">{{weekday}}</button>
     </div>
     <div class="picker-container" ref="main">
-        <button v-for="(item, index) in days" :key="`day: ${index}`" class="btn day" :class="{range: item.year == currentRange.year && item.month == currentRange.month, choose: item.year == nowYear && item.month == nowMonth && item.no == nowDate}" :title="`${item.year}/${item.month + 1}/${item.no}`" @click="choose(item)">{{item.no}}</button>
+        <button v-for="(item, index) in days" :key="`day: ${index}`" class="btn day" :class="{range: item.year == currentRange.year && item.month == currentRange.month, current: item.year == nowYear && item.month == nowMonth && item.no == nowDate, choose: isChoose(item)}" :title="`${item.year}/${item.month + 1}/${item.no}`" @click="choose(item)">{{item.no}}</button>
     </div>
 </div>
 </template>
@@ -22,6 +22,9 @@ export default {
         },
         end: {
             default: 3000
+        },
+        multiple: {
+            default: 'single'
         },
         size: {
             default: 41
@@ -42,6 +45,7 @@ export default {
             dayList: { leap: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
                         default: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]},
             currentRange: 0,
+            currentChoose: [],
             timer: {
                 updateRange: {},
                 scroller: {}
@@ -54,6 +58,10 @@ export default {
     watch: {
         currentRange (val) {
             this.$emit('range-change', val);
+        },
+        multiple (val) {
+            if(val == 'single')
+                this.currentChoose = [this.currentChoose[0]];
         }
     },
     computed: {
@@ -281,6 +289,24 @@ export default {
                 return 'default';
         },
         choose (item) {
+            if(this.multiple == 'single')
+                this.currentChoose = [item];
+            else if(this.multiple == 'multiple')
+                this.currentChoose.push(item);
+            else if(this.multiple == 'range') {
+                let item_index = this.days.indexOf(item);
+                let last_index = this.days.indexOf(this.currentChoose[this.currentChoose.length - 1]);
+                if(this.currentChoose.length == 0)
+                    this.currentChoose = [item];
+                else if(item_index >= last_index) {
+                    for(let i = last_index + 1; i <= item_index; i++) {
+                        this.currentChoose.push(this.days[i]);
+                    }
+                }
+                else
+                    this.currentChoose = [item];
+            }
+            this.$emit('choosen-dates', this.currentChoose);
             this.$emit('choose', item);
         },
         async delay (millionseconds) {
@@ -289,6 +315,9 @@ export default {
                     resolve(millionseconds);
                 }, millionseconds);
             });
+        },
+        isChoose (item) {
+            return this.currentChoose.indexOf(item) > -1;
         }
     },
     beforeDestroy () {
