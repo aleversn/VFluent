@@ -1,11 +1,11 @@
-import {FluentVueComponent,FluentVueTheme} from './components'
+import {FluentVueComponent,FluentVueTheme} from './component'
 
 /**
- * Fluent Vue Button Component
+ * FvButton Component
  */
 export declare class FvButton extends FluentVueComponent{
   icon : string
-
+  
   foreground:string
 
   background:string

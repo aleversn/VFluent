@@ -101,6 +101,13 @@ for (let index in theme){
   })
 }
 
+files.push({
+  file:path.join(__dirname,`../types/${componentname.toLowerCase()}.d.ts`),
+  content:render(template['component.d.js'],{
+    ComponentName:config.name.short+ComponentName,
+    ProjectName:config.name.full
+  })
+})
 
 // region: file save
 

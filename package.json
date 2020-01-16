@@ -1,16 +1,26 @@
 {
   "name": "vfluentdesign",
-  "version": "0.0.2",
-  "author": {
-    "name": "creatersn"
-  },
+  "version": "0.0.3",
+  "author": "creatersn",
   "bugs": {
     "url": "https://github.com/aleversn/VFluent/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aleversn/VFluent"
-  },
+  "description": "Vue Components , Fluent Vue Design inspired by Microsoft Fluent Design",
+  "main": "lib/index.umd.min.js",
+  "private": false,
+  "files": [
+    "lib",
+    "packages",
+    "types"
+  ],
+  "keywords": [
+    "fluent",
+    "vue",
+    "component",
+    "ui"
+  ],
+  "repository": "https://github.com/aleversn/VFluent",
+  "typings": "types/index.d.ts",
   "homepage": "https://aleversn.github.io",
   "license": "MIT",
   "scripts": {
@@ -18,10 +28,12 @@
     "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev examples/docs",
+    "docs:build":"vuepress build examples/docs",
     "bin:new": "node build/new.js",
     "bin:rm": "node build/remove.js",
     "bin:entry": "node build/entry.js",
-    "pub": "yarn lib && yarn publish"
+    "pub": "yarn lib && yarn publish",
+    "pub:pages":"build/page.sh"
   },
   "dependencies": {
     "core-js": "^3.4.3",
