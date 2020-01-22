@@ -10,6 +10,7 @@ import { FvFlipView } from './flipview'
 import { FvToggleSwitch } from './toggleswitch'
 import { FvSlider } from './slider'
 import { FvCalendarView } from './calendarview'
+import { FvTextBox } from './textbox'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -37,4 +38,6 @@ export type Theme = FluentVueTheme
   export class Slider extends FvSlider {}
 /** CalendarView component */
   export class CalendarView extends FvCalendarView {}
+/** TextBox component */
+  export class TextBox extends FvTextBox {}
 

@@ -15,6 +15,7 @@ import FlipView from '@/FlipView/index.js'
 import ToggleSwitch from '@/ToggleSwitch/index.js'
 import Slider from '@/Slider/index.js'
 import CalendarView from '@/CalendarView/index.js'
+import TextBox from '@/TextBox/index.js'
 
 
 let components = [
@@ -28,6 +29,7 @@ let components = [
   ToggleSwitch,
   Slider,
   CalendarView,
+  TextBox,
 
 ]
 
@@ -54,6 +56,7 @@ export default {
   ToggleSwitch,
   Slider,
   CalendarView,
+  TextBox,
 
 }
 

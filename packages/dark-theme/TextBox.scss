@@ -1,0 +1,5 @@
+@import '../common-theme/TextBox.scss';
+.fv-dark-TextBox{
+  @include fv-TextBox();
+}
+    

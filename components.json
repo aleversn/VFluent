@@ -78,5 +78,13 @@
       "Dark": "@/dark-theme/CalendarView.scss",
       "Custom": "@/custom-theme/CalendarView.scss"
     }
+  },
+  "TextBox": {
+    "entry": "@/TextBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/TextBox.scss",
+      "Dark": "@/dark-theme/TextBox.scss",
+      "Custom": "@/custom-theme/TextBox.scss"
+    }
   }
 }

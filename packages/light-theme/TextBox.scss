@@ -1,0 +1,5 @@
+@import '../common-theme/TextBox.scss';
+.fv-light-TextBox{
+  @include fv-TextBox();
+}
+    
