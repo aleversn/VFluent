@@ -1,0 +1,6 @@
+@import '../common-theme/ColorPicker.scss';
+.fv-dark-colorPicker{
+  @include fv-colorPicker();
+
+}
+    

@@ -1,0 +1,134 @@
+@mixin fv-colorPicker {
+  margin:10px;
+  display: flex;
+  flex-direction: column;
+  .color-picker__choose_box {
+    position: relative;
+    min-height: 300px;
+    .color_light {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, white 0%, transparent 100%);
+    }
+    .color_dark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent 0px, rgb(0, 0, 0) 100%);
+    }
+    .choose_button {
+      cursor: pointer;
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: white;
+      border-image: initial;
+      box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px,
+        rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+      &::before {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        box-sizing: border-box;
+        content: "";
+        border: 2px solid white;
+        border-image: initial;
+        border-radius: 50%;
+      }
+    }
+  }
+  .color-picker__slider_box {
+    height: 60px;
+    display: flex;
+    .slider {
+      height: 100%;
+      width: 100%;
+      .hue_box {
+        border: 1px solid #eee;
+        position: relative;
+        height: 20px;
+        width: 100%;
+        margin: 5px 0;
+        background: linear-gradient(
+          to left,
+          red 0px,
+          rgb(255, 0, 153) 10%,
+          rgb(205, 0, 255) 20%,
+          rgb(50, 0, 255) 30%,
+          rgb(0, 102, 255) 40%,
+          rgb(0, 255, 253) 50%,
+          rgb(0, 255, 102) 60%,
+          rgb(53, 255, 0) 70%,
+          rgb(205, 255, 0) 80%,
+          rgb(255, 153, 0) 90%,
+          red 100%
+        );
+        .button {  
+          transform: translate(-50%, -5%);
+          position: absolute;
+          cursor: pointer;
+          height: 110%;
+          width: 10px;
+          background: white;
+          box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px,
+            rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+        }
+      }
+      .alpha_box {
+        position: relative;
+        height: 20px;
+        width: 100%;
+        margin: 5px 0;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==);
+        border: 1px solid #eee;
+        .bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+        }
+        .button {
+          transform: translate(-50%, -5%);
+          position: absolute;
+          top:0;
+          left:0;
+          cursor: pointer;
+          height: 110%;
+          width: 10px;
+          background: white;
+          box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px,
+            rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+        }
+      }
+    }
+    .preview {
+      height: 100%;
+      width: 70px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==);
+
+      .box {
+        height: 49px;
+        width: 49px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==);
+        border: 1px solid #eeeeee;
+        .color{
+          height:100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
