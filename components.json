@@ -86,5 +86,13 @@
       "Dark": "@/dark-theme/ColorPicker.scss",
       "Custom": "@/custom-theme/ColorPicker.scss"
     }
+  },
+  "TextBox": {
+    "entry": "@/TextBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/TextBox.scss",
+      "Dark": "@/dark-theme/TextBox.scss",
+      "Custom": "@/custom-theme/TextBox.scss"
+    }
   }
 }

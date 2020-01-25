@@ -1,0 +1,5 @@
+@import '../common-theme/TextBox.scss';
+.fv-custom-TextBox{
+  @include fv-TextBox();
+}
+    

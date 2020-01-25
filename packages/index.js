@@ -16,6 +16,7 @@ import ToggleSwitch from '@/ToggleSwitch/index.js'
 import Slider from '@/Slider/index.js'
 import CalendarView from '@/CalendarView/index.js'
 import ColorPicker from '@/ColorPicker/index.js'
+import TextBox from '@/TextBox/index.js'
 
 
 let components = [
@@ -30,6 +31,7 @@ let components = [
   Slider,
   CalendarView,
   ColorPicker,
+  TextBox,
 
 ]
 
@@ -57,6 +59,7 @@ export default {
   Slider,
   CalendarView,
   ColorPicker,
+  TextBox,
 
 }
 
