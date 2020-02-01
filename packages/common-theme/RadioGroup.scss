@@ -1,2 +1,13 @@
 @mixin fv-radioGroup {
+  display: block;
+  padding: 5px;
+  label{
+    display: block;
+    height: 20px;
+    margin-bottom: 5px;
+    line-height: 20px;
+    &.inline{
+      display: inline-block;
+    }
+  }
 }
