@@ -1,0 +1,5 @@
+@import '../common-theme/Radio.scss';
+.fv-custom-radio{
+  @include fv-radio();
+}
+    

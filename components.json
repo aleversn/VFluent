@@ -94,5 +94,21 @@
       "Dark": "@/dark-theme/TextBox.scss",
       "Custom": "@/custom-theme/TextBox.scss"
     }
+  },
+  "RadioGroup": {
+    "entry": "@/RadioGroup/index.js",
+    "theme": {
+      "Light": "@/light-theme/RadioGroup.scss",
+      "Dark": "@/dark-theme/RadioGroup.scss",
+      "Custom": "@/custom-theme/RadioGroup.scss"
+    }
+  },
+  "Radio": {
+    "entry": "@/Radio/index.js",
+    "theme": {
+      "Light": "@/light-theme/Radio.scss",
+      "Dark": "@/dark-theme/Radio.scss",
+      "Custom": "@/custom-theme/Radio.scss"
+    }
   }
 }

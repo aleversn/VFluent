@@ -17,6 +17,8 @@ import Slider from '@/Slider/index.js'
 import CalendarView from '@/CalendarView/index.js'
 import ColorPicker from '@/ColorPicker/index.js'
 import TextBox from '@/TextBox/index.js'
+import RadioGroup from '@/RadioGroup/index.js'
+import Radio from '@/Radio/index.js'
 
 
 let components = [
@@ -32,6 +34,8 @@ let components = [
   CalendarView,
   ColorPicker,
   TextBox,
+  RadioGroup,
+  Radio,
 
 ]
 
@@ -60,6 +64,8 @@ export default {
   CalendarView,
   ColorPicker,
   TextBox,
+  RadioGroup,
+  Radio,
 
 }
 

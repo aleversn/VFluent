@@ -1,0 +1,39 @@
+@import '../common-theme/Radio.scss';
+.fv-dark-radio{
+  @include fv-radio();
+  color:#faf9f8;
+  .button{
+    border-color:#6f6f6f;
+    &::before{
+      display: none;
+    }
+    &:hover{
+      border-color: #aaaaaa;
+    }
+    &.actived{
+      &::before{
+        display: block;
+      }
+    }
+  }
+  &.icon{
+    background-color: #252423;
+    &:hover{
+      border:1px solid #f3f2f1;
+      .button{
+        border:1px solid #f3f2f1;
+      }
+    }
+    &.actived{
+      border:1px solid #0078d4;
+      .button{
+        border: none;
+      }
+    }
+  }
+
+  &.disabled{
+    color:#636160;
+  }
+}
+    
