@@ -118,5 +118,13 @@
       "Dark": "@/dark-theme/ImgBox.scss",
       "Custom": "@/custom-theme/ImgBox.scss"
     }
+  },
+  "ScrollStory": {
+    "entry": "@/ScrollStory/index.js",
+    "theme": {
+      "Light": "@/light-theme/ScrollStory.scss",
+      "Dark": "@/dark-theme/ScrollStory.scss",
+      "Custom": "@/custom-theme/ScrollStory.scss"
+    }
   }
 }

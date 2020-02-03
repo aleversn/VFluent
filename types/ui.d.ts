@@ -15,6 +15,7 @@ import { FvTextBox } from './textbox'
 import { FvRadioGroup } from './radiogroup'
 import { FvRadio } from './radio'
 import { FvImgBox } from './imgbox'
+import { FvScrollStory } from './scrollstory'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -52,4 +53,6 @@ export type Theme = FluentVueTheme
   export class Radio extends FvRadio {}
 /** ImgBox component */
   export class ImgBox extends FvImgBox {}
+/** ScrollStory component */
+  export class ScrollStory extends FvScrollStory {}
 

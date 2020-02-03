@@ -20,6 +20,7 @@ import TextBox from '@/TextBox/index.js'
 import RadioGroup from '@/RadioGroup/index.js'
 import Radio from '@/Radio/index.js'
 import ImgBox from '@/ImgBox/index.js'
+import ScrollStory from '@/ScrollStory/index.js'
 
 
 let components = [
@@ -38,6 +39,7 @@ let components = [
   RadioGroup,
   Radio,
   ImgBox,
+  ScrollStory,
 
 ]
 
@@ -69,6 +71,7 @@ export default {
   RadioGroup,
   Radio,
   ImgBox,
+  ScrollStory,
 
 }
 
