@@ -19,6 +19,7 @@ import ColorPicker from '@/ColorPicker/index.js'
 import TextBox from '@/TextBox/index.js'
 import RadioGroup from '@/RadioGroup/index.js'
 import Radio from '@/Radio/index.js'
+import ImgBox from '@/ImgBox/index.js'
 
 
 let components = [
@@ -36,6 +37,7 @@ let components = [
   TextBox,
   RadioGroup,
   Radio,
+  ImgBox,
 
 ]
 
@@ -66,6 +68,7 @@ export default {
   TextBox,
   RadioGroup,
   Radio,
+  ImgBox,
 
 }
 

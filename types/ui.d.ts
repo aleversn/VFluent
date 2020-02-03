@@ -14,6 +14,7 @@ import { FvColorPicker } from './colorpicker'
 import { FvTextBox } from './textbox'
 import { FvRadioGroup } from './radiogroup'
 import { FvRadio } from './radio'
+import { FvImgBox } from './imgbox'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -49,4 +50,6 @@ export type Theme = FluentVueTheme
   export class RadioGroup extends FvRadioGroup {}
 /** Radio component */
   export class Radio extends FvRadio {}
+/** ImgBox component */
+  export class ImgBox extends FvImgBox {}
 

@@ -110,5 +110,13 @@
       "Dark": "@/dark-theme/Radio.scss",
       "Custom": "@/custom-theme/Radio.scss"
     }
+  },
+  "ImgBox": {
+    "entry": "@/ImgBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/ImgBox.scss",
+      "Dark": "@/dark-theme/ImgBox.scss",
+      "Custom": "@/custom-theme/ImgBox.scss"
+    }
   }
 }

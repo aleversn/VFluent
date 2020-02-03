@@ -1,0 +1,5 @@
+@import '../common-theme/ImgBox.scss';
+.fv-dark-ImgBox{
+  @include fv-ImgBox();
+}
+    
