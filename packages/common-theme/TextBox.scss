@@ -1,2 +1,139 @@
 @mixin fv-TextBox {
+
+    position: relative;
+    width: 300px;
+    height: 32px;
+    background: white;
+    border: rgba(36,36,36,1) solid thin;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-appearance: none;
+    overflow: hidden;
+
+    &.warn
+    {
+        border: rgba(173, 38, 45, 1) solid thin;
+    }
+
+    &.correct
+    {
+        border: rgba(0, 204, 153, 1) solid thin;
+    }
+
+    &.focus
+    {
+        border: rgba(0, 120, 212, 1) solid 2px;
+
+        div.container
+        {
+            margin: 0px;
+        }
+
+        div.fix-block
+        {
+            margin: 0px;
+        }
+    }
+
+    &.underline
+    {
+        border-left-color: transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+
+        div.fix-block
+        {
+            background: transparent;
+
+            p
+            {
+                font-weight: 600;
+                color: rgba(50, 49, 48, 1);
+                cursor: default;
+            }
+        }
+    }
+
+    &.disabled
+    {
+        background: rgba(243, 242, 241, 1);
+        border-color: transparent;
+
+        div.container
+        {
+            .input
+            {
+                opacity: 0.5;
+            }
+        }
+
+        div.fix-block
+        {
+            p
+            {
+                opacity: 0.5;
+            }
+        }
+
+        .icon-block
+        {
+            opacity: 0.5;
+        }
+    }
+
+    div.fix-block
+    {
+        position: relative;
+        height: 100%;
+        margin: 1px;
+        padding: 0px 10px;
+        background: rgba(243, 242, 241, 1);
+        font-size: 13.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p
+        {
+            color: rgba(96, 94, 92, 1);
+        }
+    }
+
+    .icon-block
+    {
+        position: relative;
+        padding: 0px 10px;
+        cursor: text;
+    }
+    
+    div.container
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 1px;
+        padding: 0px 8px;
+        flex: 1;
+        box-sizing: border-box;
+        display: flex;
+
+        &.internal
+        {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .input
+        {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+    }
 }
