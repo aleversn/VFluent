@@ -1,0 +1,5 @@
+@import '../common-theme/ScrollStory.scss';
+.fv-light-ScrollStory{
+  @include fv-ScrollStory();
+}
+    

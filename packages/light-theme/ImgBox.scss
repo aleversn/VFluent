@@ -1,0 +1,5 @@
+@import '../common-theme/ImgBox.scss';
+.fv-light-ImgBox{
+  @include fv-ImgBox();
+}
+    

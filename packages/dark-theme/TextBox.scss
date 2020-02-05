@@ -1,5 +1,72 @@
-@import '../common-theme/TextBox.scss';
-.fv-dark-TextBox{
-  @include fv-TextBox();
-}
+@import "../common-theme/TextBox.scss";
+.fv-dark-TextBox {
+    @include fv-TextBox();
+
+    background: transparent;
+    border: rgba(161, 159, 157, 1) solid thin;
+
+    &:hover
+    {
+        border: rgba(243,242,241,1) solid thin;
+    }
+
+    &.focus
+    {
+        border: rgba(0, 120, 212, 1) solid 2px;
+    }
+
+    &.underline
+    {
+        border-left-color: transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+
+        div.fix-block
+        {
+            background: transparent;
+
+            p
+            {
+                color: rgba(243, 242, 241, 1);
+            }
+        }
+    }
+
+    &.disabled
+    {
+        background: rgb(48, 47, 46);
+
+        &:hover
+        {
+            border-color: transparent;
+        }
+    }
+
+    div.fix-block
+    {
+        background: transparent;
+
+        p
+        {
+            color: rgba(243, 242, 241, 1);
+        }
+    }
+
+    .icon-block
+    {
+        color: rgba(243, 242, 241, 1);
+    }
     
+    div.container
+    {   
+        .input
+        {
+            color: rgba(243, 242, 241, 1);
+        }
+
+        .input::placeholder
+        {
+            color: rgba(121, 119, 117, 1);
+        }
+    }
+}

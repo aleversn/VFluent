@@ -1,0 +1,42 @@
+@mixin fv-ImgBox {
+    position: relative;
+    width: 300px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    
+    .content
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+    img
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .fade-in-enter,.fade-in-leave-to
+    {
+        opacity: 0;
+        filter: blur(8px);
+        transition: all 0.8s;
+    }
+    .fade-in-enter-to,.fade-in-leave
+    {
+        opacity: 1;
+        filter: blur(0px);
+        transition: all 0.8s;
+    }
+}

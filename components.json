@@ -118,5 +118,21 @@
       "Dark": "@/dark-theme/Callout.scss",
       "Custom": "@/custom-theme/Callout.scss"
     }
+  },
+  "ImgBox": {
+    "entry": "@/ImgBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/ImgBox.scss",
+      "Dark": "@/dark-theme/ImgBox.scss",
+      "Custom": "@/custom-theme/ImgBox.scss"
+    }
+  },
+  "ScrollStory": {
+    "entry": "@/ScrollStory/index.js",
+    "theme": {
+      "Light": "@/light-theme/ScrollStory.scss",
+      "Dark": "@/dark-theme/ScrollStory.scss",
+      "Custom": "@/custom-theme/ScrollStory.scss"
+    }
   }
 }
