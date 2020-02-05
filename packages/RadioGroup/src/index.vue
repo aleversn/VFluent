@@ -8,9 +8,6 @@
 <script>
 export default {
   name:'FvRadioGroup',
-  data(){
-    return {}
-  },
   props:{
     theme:{
       type:String,
@@ -31,6 +28,9 @@ export default {
       type:Boolean,
       default:false
     }
+  },
+  data(){
+    return {}
   },
   computed:{
     $theme() {

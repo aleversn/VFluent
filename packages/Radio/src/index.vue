@@ -14,16 +14,6 @@
 <script>
 export default {
   name:'FvRadio',
-  data(){
-    return {
-      style:{
-        radio:{
-        },
-        button:{
-        }
-      }
-    }
-  },
   props:{
     theme:{
       type:String,
@@ -50,6 +40,17 @@ export default {
       type:Boolean,
       default:false
     },
+  },
+  
+  data(){
+    return {
+      style:{
+        radio:{
+        },
+        button:{
+        }
+      }
+    }
   },
   computed:{
     $theme() {
