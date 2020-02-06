@@ -19,6 +19,7 @@ import ColorPicker from '@/ColorPicker/index.js'
 import TextBox from '@/TextBox/index.js'
 import RadioGroup from '@/RadioGroup/index.js'
 import Radio from '@/Radio/index.js'
+import Callout from '@/Callout/index.js'
 import ImgBox from '@/ImgBox/index.js'
 import ScrollStory from '@/ScrollStory/index.js'
 import DetailsList from '@/DetailsList/index.js'
@@ -39,6 +40,7 @@ let components = [
   TextBox,
   RadioGroup,
   Radio,
+  Callout,
   ImgBox,
   ScrollStory,
   DetailsList,
@@ -72,6 +74,7 @@ export default {
   TextBox,
   RadioGroup,
   Radio,
+  Callout,
   ImgBox,
   ScrollStory,
   DetailsList,

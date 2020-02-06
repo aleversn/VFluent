@@ -14,6 +14,7 @@ import { FvColorPicker } from './colorpicker'
 import { FvTextBox } from './textbox'
 import { FvRadioGroup } from './radiogroup'
 import { FvRadio } from './radio'
+import { FvCallout } from './callout'
 import { FvImgBox } from './imgbox'
 import { FvScrollStory } from './scrollstory'
 import { FvDetailsList } from './detailslist'
@@ -52,6 +53,8 @@ export type Theme = FluentVueTheme
   export class RadioGroup extends FvRadioGroup {}
 /** Radio component */
   export class Radio extends FvRadio {}
+/** Callout component */
+  export class Callout extends FvCallout {}
 /** ImgBox component */
   export class ImgBox extends FvImgBox {}
 /** ScrollStory component */

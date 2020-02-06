@@ -111,6 +111,14 @@
       "Custom": "@/custom-theme/Radio.scss"
     }
   },
+  "Callout": {
+    "entry": "@/Callout/index.js",
+    "theme": {
+      "Light": "@/light-theme/Callout.scss",
+      "Dark": "@/dark-theme/Callout.scss",
+      "Custom": "@/custom-theme/Callout.scss"
+    }
+  },
   "ImgBox": {
     "entry": "@/ImgBox/index.js",
     "theme": {

@@ -1,0 +1,5 @@
+@import '../common-theme/Callout.scss';
+.fv-custom-callout{
+  @include fv-callout();
+}
+    

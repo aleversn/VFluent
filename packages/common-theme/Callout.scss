@@ -1,0 +1,50 @@
+@mixin fv-callout {
+  position: absolute;
+  box-sizing: border-box;
+  z-index:3000;
+  background-color: white;
+  padding: 0;
+  margin:0 ;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
+  .bg{
+    z-index: -1;
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background:inherit;
+  }
+  .beak{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: -2;
+    left:50%;
+    background:inherit;
+    box-shadow: inherit;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+  .header{
+    position: relative;
+    padding: 18px 24px 12px;
+    font-size:1.2em;
+  }
+  .main{
+    position: relative;
+    padding: 0 24px 20px;
+  }
+  .footer{
+    position: relative;
+    padding: 0 24px 24px;
+  }
+}
+
+.fv-callout-fade-enter-active, .fv-callout-fade-leave-active{
+  transition: opacity .1s;
+}
+
+.fv-callout-fade-enter, .fv-callout-fade-leave-to{
+  opacity: 0;
+}
