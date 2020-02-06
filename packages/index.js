@@ -21,6 +21,7 @@ import RadioGroup from '@/RadioGroup/index.js'
 import Radio from '@/Radio/index.js'
 import ImgBox from '@/ImgBox/index.js'
 import ScrollStory from '@/ScrollStory/index.js'
+import DetailsList from '@/DetailsList/index.js'
 
 
 let components = [
@@ -40,6 +41,7 @@ let components = [
   Radio,
   ImgBox,
   ScrollStory,
+  DetailsList,
 
 ]
 
@@ -72,6 +74,7 @@ export default {
   Radio,
   ImgBox,
   ScrollStory,
+  DetailsList,
 
 }
 

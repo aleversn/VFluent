@@ -126,5 +126,13 @@
       "Dark": "@/dark-theme/ScrollStory.scss",
       "Custom": "@/custom-theme/ScrollStory.scss"
     }
+  },
+  "DetailsList": {
+    "entry": "@/DetailsList/index.js",
+    "theme": {
+      "Light": "@/light-theme/DetailsList.scss",
+      "Dark": "@/dark-theme/DetailsList.scss",
+      "Custom": "@/custom-theme/DetailsList.scss"
+    }
   }
 }

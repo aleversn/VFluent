@@ -1,0 +1,5 @@
+@import '../common-theme/DetailsList.scss';
+.fv-light-DetailsList{
+  @include fv-DetailsList();
+}
+    

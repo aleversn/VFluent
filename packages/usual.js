@@ -3,7 +3,16 @@ export class SDate {
         this.date = new Date();
     }
     static Parse(DateString) {
-        return this.StringToDateTime(DateString)
+        let reg = /\d+/g;
+        let timeArray = [];
+        let x;
+        while((x = reg.exec(DateString))!= null)
+        {
+            timeArray.push(x[0]);
+        }
+        if(timeArray.length <= 3)
+            return this.StringToDate(DateString);
+        return this.StringToDateTime(DateString);
     }
     static get Now() {
         return new Date();
@@ -13,35 +22,35 @@ export class SDate {
     }
     static StringToDate(DateStr) {
         let reg = /\d+/g;
-            let timeArray = [];
-            let d = new Date(); //先设置日期再设置月份, 否则当天超过要设定月份天数时设定的月份会顺延//
-            let x;
-            try
+        let timeArray = [];
+        let d = new Date(); //先设置日期再设置月份, 否则当天超过要设定月份天数时设定的月份会顺延//
+        let x;
+        try
+        {
+            while((x = reg.exec(DateStr))!= null)
             {
-                while((x = reg.exec(DateStr))!= null)
-                {
-                    timeArray.push(x[0]);
-                }
-                if(timeArray.length<=0)
-                    return new Date();
-                if(timeArray[0].length == 4)
-                {
-                    d.setDate(timeArray[2]);
-                    d.setMonth(timeArray[1] - 1);
-                    d.setFullYear(timeArray[0]);
-                }
-                else
-                {
-                    d.setDate(timeArray[1]);
-                    d.setMonth(timeArray[0] - 1);
-                    d.setFullYear(timeArray[2]);
-                }
-                return d;
+                timeArray.push(x[0]);
             }
-            catch (e)
+            if(timeArray.length<=0)
+                return new Date();
+            if(timeArray[0].length == 4)
             {
-                return d;
+                d.setDate(timeArray[2]);
+                d.setMonth(timeArray[1] - 1);
+                d.setFullYear(timeArray[0]);
             }
+            else
+            {
+                d.setDate(timeArray[1]);
+                d.setMonth(timeArray[0] - 1);
+                d.setFullYear(timeArray[2]);
+            }
+            return d;
+        }
+        catch (e)
+        {
+            return d;
+        }
     }
     static StringToDateTime (DateStr) {
         let reg = /\d+/g;

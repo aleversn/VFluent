@@ -1,0 +1,373 @@
+@mixin fv-DetailsList {
+
+    position: relative;
+    width: 600px;
+    height: 600px;
+
+    .spliter
+    {
+        position: relative;
+        width: 6px;
+        height: 42px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        transition: all 0.3s;
+        cursor: ew-resize;
+
+        &:hover
+        {
+            i
+            {
+                background: rgba(200, 198, 196, 1);
+            }
+        }
+
+        &:active
+        {
+            i
+            {
+                background: rgba(200, 198, 196, 1);
+                box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        i
+        {
+            position: relative;
+            width: 1px;
+            height: 100%;
+            transition: all 0.3s;
+        }
+    }
+
+    .list-head
+    {
+        position: relative;
+        width: 100%;
+        height: 60px;
+        padding: 16px 0px 1px 0px;
+        border-bottom: 1px solid rgba(237, 235, 233, 1);
+        box-sizing: border-box;
+        display: inline-block;
+        overflow: hidden;
+
+        .icon-block
+        {
+            position: relative;
+            width: 48px;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            float: left;
+            
+            .icon
+            {
+                @include multi-selection;
+            }
+        }
+
+        &:hover
+        {
+            .icon-block .ll:nth-child(2)
+            {
+                opacity: 1;
+            }
+        }
+
+        .col
+        {
+            position: relative;
+            width: 60px;
+            height: 100%;
+            padding-right: 3px;
+            text-align: left;
+            vertical-align: baseline;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            float: left;
+
+            .col-content
+            {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                padding: 0px 8px 0px 12px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                &:hover
+                {
+                    background: rgba(243, 242, 241, 1);
+                }
+
+                &:active
+                {
+                    background: rgba(237, 235, 233, 1);
+                }
+
+                p.default-title
+                {
+                    @include nowrap;
+                    
+                    font-size: 13.8px;
+                    font-weight: 600;
+                }
+
+                i.sort
+                {
+                    padding: 0px 0px 0px 5px;
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: rgba(96, 94, 92, 1);
+                }
+            }
+        }
+    }
+
+    .list-content
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        box-sizing: border-box;
+        overflow: auto;
+        overflow-x: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+
+        .content-row
+        {
+            position: relative;
+            width: calc(100% + 30px);
+            height: 43px;
+            border-bottom: 1px solid rgba(237, 235, 233, 1);
+            box-sizing: border-box;
+            overflow: hidden;
+
+            .icon-block
+            {
+                position: relative;
+                width: 48px;
+                height: 100%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                float: left;
+                
+                .icon
+                {
+                    @include multi-selection;
+                }
+            }
+
+            &:hover
+            {
+                background: rgba(243, 242, 241, 1);
+                border-bottom: 1px solid rgba(237, 235, 233, 0);
+
+                .icon-block .ll:nth-child(2)
+                {
+                    opacity: 1;
+                }
+            }
+
+            &.choose
+            {
+                background: rgba(243, 242, 241, 1);
+                border-bottom: 1px solid white;
+            }
+
+            .col
+            {
+                position: relative;
+                width: 60px;
+                height: 100%;
+                padding: 0px 32px 0px 12px;
+                text-align: left;
+                vertical-align: baseline;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                user-select: none;
+                float: left;
+
+                *{
+                    @include nowrap;
+                    
+                    font-size: 13.8px;
+                    user-select: text;
+                }
+            }
+        }
+    }
+
+    .rightMenu
+    {
+        position: fixed;
+        top: 100%;
+        width: 200px;
+        height: auto;
+        padding: 8px 0px;
+        background: white;
+        border-radius: 3px;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 0px rgba(0,0,0,0.1), 0px 6px 10px rgba(0,0,0,0.3);
+
+        div
+        {
+            span
+            {
+                width: 100%;
+                padding: 8px 15px;
+                font-size: 13px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                user-select: none;
+
+                &:hover
+                {
+                    background: rgba(0,0,0,0.05);
+                    cursor: pointer;
+                }
+
+                p
+                {
+                    width: 100%;
+                    padding: 0px 15px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                }
+            }
+
+            hr
+            {
+                margin: 8px 15px;
+                border: thin;
+                border-bottom: rgba(0, 0, 0, 0.1) solid thin;
+            }
+        }
+    }
+
+    .zoom-in-top-enter-active,.zoom-in-top-leave-active {
+        opacity: 1;
+        transform: scaleY(1);
+        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        transform-origin: center top;
+    }
+    .zoom-in-top-enter,.zoom-in-top-leave-active {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    .m-list-move
+    {
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+    }
+
+    .detail-list-enter-active
+    {
+        opacity: 0;
+        transition: all 0.2s;
+        transition-delay: 0.1s;
+    }
+    .detail-list-enter-to
+    {
+        opacity: 1;
+        transition: all 0.2s;
+        transition-delay: 0.1s;
+    }
+    .detail-list-leave-active
+    {
+        opacity: 1;
+        transform: translateX(0px);
+        transition: all 0.2s;
+    }
+    .detail-list-leave-to
+    {
+        opacity: 0;
+        transform: translateX(-75px);
+        transition: all 0.2s;
+    }
+}
+
+@mixin multi-selection {
+
+    justify-content: center;
+
+    &:hover
+    {
+        .ll:nth-child(2)
+        {
+            display: none;
+        }
+
+        .ll:nth-child(3)
+        {
+            display: flex;
+        }
+    }
+
+    &.choose
+    {
+        .ll:nth-child(1)
+        {
+            display: flex;
+        }
+
+        .ll:nth-child(2)
+        {
+            display: none;
+        }
+
+        .ll:nth-child(3)
+        {
+            color: whitesmoke;
+            display: flex;
+        }
+    }
+    
+    .ll
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-font-smoothing: subpixel-antialiased;
+
+        &:nth-child(1)
+        {
+            color: rgba(0, 120, 212, 1);
+            display: none;
+        }
+
+        &:nth-child(2)
+        {
+            opacity: 0;
+        }
+
+        &:nth-child(3)
+        {
+            display: none;
+        }
+    }
+}
