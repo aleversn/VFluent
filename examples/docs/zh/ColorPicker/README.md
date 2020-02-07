@@ -1,5 +1,5 @@
 ---
-  title: 颜色选择器 ColorPicker
+  title: ColorPicker ColorPicker
   sidebarDepth: 2
 ---
 

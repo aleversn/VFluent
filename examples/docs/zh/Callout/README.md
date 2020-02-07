@@ -35,14 +35,14 @@
 
 ### Callout Light
 
-{{color}}
-
+<ClientOnly>
 <fv-callout effect="hover" position="rightBottom" >
-  <fv-button :background="color" icon="MSNLogo">callout</fv-button>
+  <fv-button :background="color" icon="MSNLogo" >callout</fv-button>
   <main>
     <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
   </main>
 </fv-callout>
+</ClientOnly>
 
 ``` vue
 <fv-callout effect="hover" position="rightBottom" >
@@ -55,14 +55,14 @@
 
 ### Callout Dark
 
-{{color}}
-
+<ClientOnly>
 <fv-callout effect="hover" position="rightCenter" theme="dark" >
   <fv-button :background="color" icon="MSNLogo">callout</fv-button>
   <main>
     <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
   </main>
 </fv-callout>
+</ClientOnly>
 
 ``` vue
 <fv-callout effect="hover" position="rightCenter" theme="dark" >
@@ -92,12 +92,15 @@ space:
 </fv-slider>
 
 position: 
+<ClientOnly>
 <fv-drop-down v-model="position" :options="options">
 </fv-drop-down>
+</ClientOnly>
 
 {{position[0].key}}
 
-<fv-callout :lockScroll="true" :position="position[0].key" :beak="beak" :space="space" >
+<ClientOnly>
+<fv-callout :lockScroll="true" :position="position[0].key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
   <fv-button :background="color" icon="MSNLogo">callout</fv-button>
   <header>
     Fluent UI
@@ -109,9 +112,10 @@ position:
     @coryright CreatorSn
   </footer>
 </fv-callout>
+</ClientOnly>
 
 ``` vue
-<fv-callout :lockScroll="true"  :position="position[0].key" :beak="beak" :space="space" >
+<fv-callout :lockScroll="true" :position="position[0].key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
   <fv-button :background="color" icon="MSNLogo">callout</fv-button>
   <header>
     Fluent UI
@@ -141,6 +145,8 @@ position:
 | focusTrap | [boolean] | No | false | 是否聚焦 |
 | delayClose | [number] | No | 0 | 显示时是否延时关闭(ms) |
 | effect | [’click','hover','always'] | No | 'click' | 显示触发方式 |
+| popperStyle | [object] | No | {} | 悬浮窗的样式 |
+| popperClass | [array] | No | [] | 悬浮窗的css |
 
 
 
