@@ -45,8 +45,8 @@
     {
         position: relative;
         width: 100%;
-        height: 60px;
-        padding: 16px 0px 1px 0px;
+        height: 45px;
+        padding: 1px 0px 1px 0px;
         border-bottom: 1px solid rgba(237, 235, 233, 1);
         box-sizing: border-box;
         display: inline-block;
@@ -57,6 +57,7 @@
             position: relative;
             width: 48px;
             height: 100%;
+            background: rgba(255, 255, 255, 0.6);
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -83,6 +84,7 @@
             width: 60px;
             height: 100%;
             padding-right: 3px;
+            background: rgba(255, 255, 255, 0.6);
             text-align: left;
             vertical-align: baseline;
             box-sizing: border-box;
@@ -127,6 +129,44 @@
                     font-size: 12px;
                     font-weight: 400;
                     color: rgba(96, 94, 92, 1);
+                }
+            }
+
+            .expand
+            {
+                position: relative;
+                width: 36px;
+                height: 100%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+                transition: all 0.3s;
+                float: left;
+
+                &:hover
+                {
+                    background: rgba(243, 242, 241, 1);
+                }
+
+                &:active
+                {
+                    background: rgba(237, 235, 233, 1);
+                }
+
+                &.choose
+                {
+                    i
+                    {
+                        transform: rotate(90deg);
+                        transition: all 0.3s;
+                    }
+                }
+
+                i
+                {
+                    transition: all 0.3s;
                 }
             }
         }
@@ -174,6 +214,19 @@
                 background: rgba(243, 242, 241, 1);
                 border-bottom: 1px solid rgba(237, 235, 233, 0);
 
+                .col
+                {
+                    *{
+                        font-weight: 600;
+                        
+                        &.sec
+                        {
+                            font-weight: 400;
+                            opacity: 1;
+                        }
+                    }
+                }
+
                 .icon-block .ll:nth-child(2)
                 {
                     opacity: 1;
@@ -184,6 +237,19 @@
             {
                 background: rgba(243, 242, 241, 1);
                 border-bottom: 1px solid white;
+
+                .col
+                {
+                    *{
+                        font-weight: 600;
+                        
+                        &.sec
+                        {
+                            font-weight: 400;
+                            opacity: 1;
+                        }
+                    }
+                }
             }
 
             .col
@@ -205,7 +271,84 @@
                     @include nowrap;
                     
                     font-size: 13.8px;
+                    font-weight: 400;
                     user-select: text;
+
+                    &.sec
+                    {
+                        font-size: 12px;
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            .expand
+            {
+                position: relative;
+                width: 36px;
+                height: 100%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+                transition: all 0.3s;
+                float: left;
+
+                &:hover
+                {
+                    background: rgba(238, 237, 236, 1);
+                }
+
+                &:active
+                {
+                    background: rgba(237, 235, 233, 1);
+                }
+
+                &.choose
+                {
+                    i
+                    {
+                        transform: rotate(90deg);
+                        transition: all 0.3s;
+                    }
+                }
+
+                i
+                {
+                    transition: all 0.3s;
+                }
+            }
+        }
+
+        &.compact
+        {
+            .content-row
+            {
+                height: 32px;
+                border-bottom: transparent solid 1px;
+            }
+        }
+
+        &.auto-height
+        {
+            .content-row
+            {
+                min-height: 43px;
+                height: auto;
+
+                .col
+                {
+                    *{
+                        text-overflow: inherit;
+                        white-space: pre-wrap;
+                        overflow: visible;
+                    }
+                }
+
+                .icon-block
+                {
+                    height: 32px;
                 }
             }
         }
@@ -218,17 +361,21 @@
         width: 200px;
         height: auto;
         padding: 8px 0px;
-        background: white;
+        background: rgba(239, 239, 239, 1);
         border-radius: 3px;
         box-sizing: border-box;
         box-shadow: 0px 0px 0px rgba(0,0,0,0.1), 0px 6px 10px rgba(0,0,0,0.3);
 
         div
         {
+            padding: 1px 0px;
+
             span
             {
                 width: 100%;
+                margin: thin 0px;
                 padding: 8px 15px;
+                background: rgba(239, 239, 239, 1);
                 font-size: 13px;
                 box-sizing: border-box;
                 display: flex;
@@ -244,11 +391,13 @@
 
                 p
                 {
+                    @include nowrap;
+
                     width: 100%;
+                    margin: 0px;
                     padding: 0px 15px;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    box-sizing: border-box;
+                    font-size: 13.8px;
+                    font-weight: 400;
                     overflow: hidden;
                 }
             }
@@ -279,25 +428,25 @@
         -webkit-transition: all 0.2s;
     }
 
-    .detail-list-enter-active
+    .details-list-enter-active
     {
         opacity: 0;
         transition: all 0.2s;
         transition-delay: 0.1s;
     }
-    .detail-list-enter-to
+    .details-list-enter-to
     {
         opacity: 1;
         transition: all 0.2s;
         transition-delay: 0.1s;
     }
-    .detail-list-leave-active
+    .details-list-leave-active
     {
         opacity: 1;
         transform: translateX(0px);
         transition: all 0.2s;
     }
-    .detail-list-leave-to
+    .details-list-leave-to
     {
         opacity: 0;
         transform: translateX(-75px);
