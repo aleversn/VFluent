@@ -1,5 +1,5 @@
 ---
-  title: Slider 滑杆
+  title: Slider Slider
   sidebarDepth: 2
 ---
   

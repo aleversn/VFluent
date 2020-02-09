@@ -1,7 +1,7 @@
 <template>
   <div :class="'fv-'+$theme+'-colorPicker'">
     <div ref="chooseBox" class="color-picker__choose_box" 
-        @click="onclick($event,clickBox)" :style="chooseStyle">
+        @mousedown="onclick($event,clickBox) && moveable($event,'chooseBox',syncBoxButton)" :style="chooseStyle">
       <!-- Light Mask -->
       <div class="color_light"></div>
       <!-- Dark Mask -->
@@ -9,18 +9,19 @@
       <!-- Circle Button -->
       <div
         class="choose_button"
+        ref="button"
         :style="chooseButtonStyle"
         @mousedown="moveable($event,'chooseBox',syncBoxButton)"
       ></div>
     </div>
     <div class="color-picker__slider_box">
       <div class="slider">
-        <div ref="hueBox" @click="onclick($event,clickHue)" class="hue_box">
-          <div class="button" :style="hueButtonStyle" @mousedown="moveable($event,'hueBox',syncHueButton)"></div>
+        <div ref="hueBox" @mousedown="onclick($event,clickHue) && moveable($event,'hueBox',syncHueButton)" class="hue_box">
+          <div class="button" ref="hutButton" :style="hueButtonStyle" @mousedown="moveable($event,'hueBox',syncHueButton)"></div>
         </div>
-        <div ref="alphaBox" @click="onclick($event,clickAlpha)" class="alpha_box" v-if="!hideAlpha">
+        <div ref="alphaBox" @mousedown="onclick($event,clickAlpha) && moveable($event,'alphaBox',syncAlphaButton)" class="alpha_box" v-if="!hideAlpha">
           <div class="bar" :style="alphaBarStyle"></div>
-          <div class="button" :style="alphaButtonStyle" @mousedown="moveable($event,'alphaBox',syncAlphaButton)"></div>
+          <div class="button" ref="alphaButton" :style="alphaButtonStyle" @mousedown="moveable($event,'alphaBox',syncAlphaButton)"></div>
         </div>
       </div>
       <div class="preview" v-if="!hidePreview">
@@ -209,7 +210,9 @@ export default {
     onclick(evt,callback){
       if (!this.clickLock){
         callback(evt.offsetX/evt.target.clientWidth,evt.offsetY/evt.target.clientHeight)
+        return true;
       }
+      return false;
     },
     clickBox(x,y){
       this.color= this.color.saturation(x).value(1-y)

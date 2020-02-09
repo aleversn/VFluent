@@ -41,6 +41,16 @@ export default {
     effect: {
       type: String,
       default: "click"
+    },
+    popperStyle:{
+      default:()=>{
+        return {}
+      }
+    },
+    popperClass:{
+      default:()=>{
+        return []
+      }
     }
   },
   data() {
@@ -73,6 +83,12 @@ export default {
           },this.delayClose)
         }
       }
+    },
+    popperStyle(val){
+      this._popper.callout.style=val
+    },
+    popperClass(val){
+      this._popper.callout.class=val;
     },
     disabled(val){
       if (val) this.init()
@@ -128,6 +144,8 @@ export default {
       this._popper.$nextTick(() => {
         this.adjustPopperPosition(this.position);
       });
+      this._popper.callout.style=this.popperStyle
+      this._popper.callout.class=this.popperClass
     },
     adjustPopperPosition(position) {
       if (this.disabled || this.$el.clientHeight==0 || this.$el.clientWidth==0) {    
@@ -399,7 +417,8 @@ export default {
     let target = this.getFirstDefaultSlotElement();
     return target || <div></div>;
   },
-  beforeMount() {},
+  beforeMount() {
+  },
   beforeCreate() {
     this._popper = new Vue({
       data: {
@@ -409,22 +428,27 @@ export default {
           footer: []
         },
         style: {
-          callout: {},
+          callout: {
+          },
           beak: {}
+        },
+        callout:{
+          style:{},
+          class:[]
         },
         theme: "light",
         show: true,
         open: true,
         width: 0,
         height: 0,
-        position: ""
+        position: "",
       },
       render() {
         return (
           <transition name="fv-callout-fade">
             <div
-              style={this.style.callout}
-              class={"fv-" + this.theme + "-callout"}
+              style={[this.style.callout,this.callout.style]}
+              class={["fv-" + this.theme + "-callout",this.callout.class]}
               v-show={this.show}
             >
               <div class="bg"></div>
