@@ -1,7 +1,6 @@
 @import "../common-theme/Slider.scss";
 .fv-dark-slider {
   @include fv-slider();
-  background-color: #605e5c;
 
   color: white;
   //region:color begin

@@ -1,10 +1,11 @@
 @mixin fv-slider {
   position: relative;
+  display: inline-flex;
   height: 50px;
-  display: flex;
-  justify-content: center;
+  width: 300px;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  // align-content: space-between;
   .fv-slider__bar {
     &.disabled {
       cursor: not-allowed;
@@ -30,7 +31,6 @@
     min-height: 100px;
     width: 50px;
     flex-direction: column;
-    padding: 10px 5px;
   }
   .fv-slider__scale-up,
   .fv-slider__scale-down {
@@ -39,14 +39,14 @@
   .fv-slider__bar {
     position: relative;
     height: 4px;
-    width: 80%;
-    border-radius: 20px;
-    margin: 5px;
+    width: 100%;
+    border-radius:20px;
+    cursor: pointer;
     .fv-slider__bar-bg {
       position: absolute;
       height: 100%;
       width: 100%;
-      border-radius: 20px;
+      border-radius: inherit;
     }
     .fv-slider__button {
       position: absolute;
@@ -84,11 +84,8 @@
   }
 
   .fv-slider__label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
     height: 25px;
     width: 25px;
+    padding: 0 5px;
   }
 }

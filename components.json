@@ -142,5 +142,13 @@
       "Dark": "@/dark-theme/DetailsList.scss",
       "Custom": "@/custom-theme/DetailsList.scss"
     }
+  },
+  "MenuFlyout": {
+    "entry": "@/MenuFlyout/index.js",
+    "theme": {
+      "Light": "@/light-theme/MenuFlyout.scss",
+      "Dark": "@/dark-theme/MenuFlyout.scss",
+      "Custom": "@/custom-theme/MenuFlyout.scss"
+    }
   }
 }

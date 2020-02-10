@@ -23,6 +23,7 @@ import Callout from '@/Callout/index.js'
 import ImgBox from '@/ImgBox/index.js'
 import ScrollStory from '@/ScrollStory/index.js'
 import DetailsList from '@/DetailsList/index.js'
+import MenuFlyout from '@/MenuFlyout/index.js'
 
 
 let components = [
@@ -44,6 +45,7 @@ let components = [
   ImgBox,
   ScrollStory,
   DetailsList,
+  MenuFlyout,
 
 ]
 
@@ -78,6 +80,7 @@ export default {
   ImgBox,
   ScrollStory,
   DetailsList,
+  MenuFlyout,
 
 }
 

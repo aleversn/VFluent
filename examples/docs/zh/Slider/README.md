@@ -27,7 +27,10 @@
 
 ### Slider-Light
    
-<fv-slider theme="light">
+<fv-slider :mininum="9" :maxinum="30" :showLabel="true">
+<template slot-scope="prop" >
+  <span>{{prop.value}}</span>
+</template>
 </fv-slider>
 
 ### Slider-Dark

@@ -1,0 +1,5 @@
+@import '../common-theme/MenuFlyout.scss';
+.fv-custom-menuFlyout{
+  @include fv-menuFlyout();
+}
+    

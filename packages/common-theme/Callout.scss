@@ -3,7 +3,7 @@
   box-sizing: border-box;
   z-index:3000;
   background-color: white;
-  padding: 0;
+  padding: 24px;
   margin:0 ;
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
@@ -28,23 +28,26 @@
   }
   .header{
     position: relative;
-    padding: 18px 24px 12px;
+    padding: 0;
     font-size:1.2em;
   }
   .main{
     position: relative;
-    padding: 0 24px 20px;
+    padding: 0;
   }
   .footer{
     position: relative;
-    padding: 0 24px 24px;
+    padding: 0;
   }
 }
 
 .fv-callout-fade-enter-active, .fv-callout-fade-leave-active{
-  transition: opacity .1s;
+  transition: opacity .3s;
 }
 
 .fv-callout-fade-enter, .fv-callout-fade-leave-to{
   opacity: 0;
 }
+
+
+

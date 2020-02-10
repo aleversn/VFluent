@@ -1,0 +1,53 @@
+@import "../common-theme/MenuFlyout.scss";
+.fv-dark-menuFlyout {
+  @include fv-menuFlyout();
+  color:#f0efee;
+  background-color: #000;
+  border-radius: 4px;
+  .button{
+    border: 1px solid #979693;
+  }
+  &:hover {
+    background-color: #252423;
+  }
+  &.actived {
+    background-color: #252423;
+  }
+}
+
+.fv-dark-menuFlyoutPopper {
+  @include fv-menuFlyoutPopper();
+  hr{
+    border-color: #292827;
+  }
+}
+
+.fv-dark-menuSubFlyout {
+  @include fv-menuSubFlyout();
+  color: #f0efee;
+  font-size: 14px;
+  &:hover {
+    .bg {
+      background-color: #323130;
+    }
+    .label + .button-box:hover {
+      background-color: #323130;
+    }
+  }
+  .button-box:hover + .bg {
+    background-color: inherit;
+  }
+  &.actived {
+    .button-box {
+      background-color: #323130;
+    }
+  }
+}
+
+.fv-dark-menuItemFlyout {
+  @include fv-menuItemFlyout;
+  &:hover {
+    background-color: #323130;
+  }
+  color: #f0efee;
+}
