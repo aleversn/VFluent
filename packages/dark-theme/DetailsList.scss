@@ -1,5 +1,177 @@
-@import '../common-theme/DetailsList.scss';
-.fv-dark-DetailsList{
-  @include fv-DetailsList();
+@import "../common-theme/DetailsList.scss";
+.fv-dark-DetailsList {
+	@include fv-DetailsList();
+
+	.spliter
+	{
+		&:hover
+		{
+			i
+			{
+				background: rgba(72, 70, 68, 1);
+			}
+		}
+
+		&:active
+		{
+			i
+			{
+				background: rgba(200, 198, 196, 1);
+				box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.3);
+			}
+		}
+	}
+
+	.list-head
+	{
+		border-bottom: 1px solid rgba(41, 40, 39, 1);
+
+		.icon-block
+		{
+			background: rgba(0, 0, 0, 0.6);
+
+			.icon
+			{
+				.ll
+				{
+					color: rgba(161, 159, 157, 1);
+				}
+			}
+		}
+
+		.col
+		{
+
+			background: rgba(0, 0, 0, 0.6);
+
+			.col-content
+			{
+				&:hover
+				{
+					background: rgba(37, 36, 35, 1);
+				}
+
+				&:active
+				{
+					background: rgba(41, 40, 39, 1);
+				}
+
+				p.default-title
+				{
+					color: rgba(243, 242, 241, 1);
+				}
+
+				i.sort
+				{
+					color: rgba(235, 235, 235, 1);
+				}
+			}
+
+			.expand
+			{
+				color: rgba(243, 242, 241, 1);
+				
+				&:hover
+				{
+					background: rgba(37, 36, 35, 1);
+				}
+
+				&:active
+				{
+					background: rgba(41, 40, 39, 1);
+				}
+			}
+		}
+	}
+
+	.list-content
+	{
+		.content-row
+		{
+			border-bottom: 1px solid rgba(50, 49, 48, 1);
+
+			.icon-block
+			{
+				.icon
+				{
+					.ll
+					{
+						color: rgba(161, 159, 157, 1);
+					}
+				}
+			}
+
+			&:hover
+			{
+				background: rgba(37, 36, 35, 1);
+				border-bottom: 1px solid rgba(50, 49, 48, 1);
+			}
+
+			&.choose
+			{
+				background: rgba(37, 36, 35, 1);
+				border-bottom: 1px solid rgba(50, 49, 48, 1);
+			}
+
+			.col
+			{
+				*{
+					color: rgba(243, 242, 241, 1);
+				}
+			}
+
+			.expand
+			{
+				color: rgba(243, 242, 241, 1);
+				
+				&:hover
+				{
+					background: rgba(37, 36, 35, 1);
+				}
+
+				&:active
+				{
+					background: rgba(41, 40, 39, 1);
+				}
+			}
+		}
+
+		&.compact
+		{
+			.content-row
+			{
+				border-bottom: transparent solid 1px;
+			}
+		}
+	}
+
+	.rightMenu
+    {
+		background: rgba(36, 36, 36, 1);
+		box-shadow: 0px 0px 0px rgba(173, 173, 173, 0.1), 0px 6px 10px rgba(163, 163, 163, 0.3);
+
+        div
+        {
+			
+            span
+            {
+                background: rgba(36, 36, 36, 1);
+
+                &:hover
+                {
+                    background: rgba(49, 49, 49, 0.05);
+                }
+
+                p
+                {
+                    color: whitesmoke;
+                }
+            }
+
+            hr
+            {
+                border-bottom: rgba(50, 49, 48, 1) solid thin;
+            }
+        }
+    }
 }
-    

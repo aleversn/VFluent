@@ -4,6 +4,7 @@ import './custom-theme/index.scss'
 // Script Gen, Wanring: Edit template instead of it
 import global from './global.js'
 import {SDate} from './usual.js'
+import {SUtility} from './usual.js'
 import '../examples/style/global-transition.css'
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
@@ -53,6 +54,7 @@ const install = function(Vue){
   if (install.installed) return
   Vue.prototype.$fvGlobal=global
   Vue.prototype.$SDate=SDate
+  Vue.prototype.$SUtility=SUtility
   components.map(component => Vue.use(component))
 }
 
