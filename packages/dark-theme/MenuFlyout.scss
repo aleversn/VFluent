@@ -2,9 +2,8 @@
 .fv-dark-menuFlyout {
   @include fv-menuFlyout();
   color:#f0efee;
-  background-color: #000;
-  border-radius: 4px;
-  .button{
+  background-color: #252423;
+  .fv-menuFlyout__button{
     border: 1px solid #979693;
   }
   &:hover {
@@ -13,6 +12,10 @@
   &.actived {
     background-color: #252423;
   }
+  &.disabled{
+    background-color: #252423;
+    color:#797775;
+  }
 }
 
 .fv-dark-menuFlyoutPopper {
@@ -20,34 +23,60 @@
   hr{
     border-color: #292827;
   }
+  background-color: #252423;
+  color: #f0efee;
 }
 
 .fv-dark-menuSubFlyout {
   @include fv-menuSubFlyout();
-  color: #f0efee;
+  color: inherit;
+  background-color: inherit;
   font-size: 14px;
   &:hover {
-    .bg {
+    .fv-menuSubFlyout__bg {
       background-color: #323130;
     }
-    .label + .button-box:hover {
+    .fv-menuSubFlyout__label + .fv-menuSubFlyout__button-box:hover {
       background-color: #323130;
     }
   }
-  .button-box:hover + .bg {
+  .fv-menuSubFlyout__button-box:hover + .fv-menuSubFlyout__bg {
     background-color: inherit;
   }
   &.actived {
-    .button-box {
+    .fv-menuSubFlyout__button-box {
       background-color: #323130;
     }
+  }
+  &.disabled{
+    background-color: inherit;
+    color:#797775;
   }
 }
 
 .fv-dark-menuItemFlyout {
   @include fv-menuItemFlyout;
+  background-color: inherit;
   &:hover {
     background-color: #323130;
   }
   color: #f0efee;
+  .fv-menuItemFlyout__icon{
+    color: #0078d4;
+  }
+  &.disabled{
+    background-color: inherit;
+    color:#797775;
+  }
+}
+
+.fv-dark-menuBlockFlyout{
+  @include fv-menuBlockFlyout();
+  background-color: inherit;
+  color:inherit;
+  .fv-menuBlockFlyout__header{
+    height: 30px;
+    line-height: 30px;
+    color:inherit;
+  }
 }

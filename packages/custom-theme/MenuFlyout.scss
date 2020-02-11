@@ -1,5 +1,20 @@
-@import '../common-theme/MenuFlyout.scss';
-.fv-custom-menuFlyout{
+@import "../common-theme/MenuFlyout.scss";
+.fv-dark-menuFlyout {
   @include fv-menuFlyout();
 }
-    
+
+.fv-dark-menuFlyoutPopper {
+  @include fv-menuFlyoutPopper();
+}
+
+.fv-dark-menuSubFlyout {
+  @include fv-menuSubFlyout();
+}
+
+.fv-dark-menuItemFlyout {
+  @include fv-menuItemFlyout;
+}
+
+.fv-dark-menuBlockFlyout{
+  @include fv-menuBlockFlyout();
+}

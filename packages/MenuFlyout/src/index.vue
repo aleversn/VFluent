@@ -1,15 +1,16 @@
 <template>
-  <div :class="['fv-'+$theme+'-menuFlyout',{actived:callout.show}]">
+  <div :class="['fv-'+$theme+'-menuFlyout',{actived:callout.show},{disabled:disabled}]" :style="flyout">
     <fv-callout
       :visible.sync="callout.show"
       :beak="beak"
       :focusTrap="callout.focusTrap"
-      :popperStyle="{padding:0,minWidth:'160px'}"
+      :popperStyle="{padding:'0px',minWidth:'160px',backgroundColor:backgroundColor,color:color}"
       :position="position"
       :popperClass="'fv-'+$theme+'-menuFlyoutPopper'"
       :theme="$theme"
+      :disabled="disabled"
     >
-      <button class="button">
+      <button class="fv-menuFlyout__button" :style="{borderColor:borderColor}">
         <span>{{label?label:"Click the Menu"}}</span>
         <i class="ms-Icon ms-Icon--ChevronDown"></i>
       </button>
@@ -38,12 +39,18 @@ export default {
     },
     beak:{
       type:Number,
-      default:2
+      default:0
     },
     checkable:{
       default:false
     },
-    value:{}
+    disabled:{
+      type:Boolean,
+      default:false
+    },
+    backgroundColor:{},
+    color:{},
+    borderColor:{}
   },
   data() {
     return {
@@ -58,6 +65,12 @@ export default {
     $theme() {
       if (this.theme == "system") return this.$fvGlobal.state.theme;
       return this.theme;
+    },
+    flyout(){
+      return {
+        backgroundColor:this.backgroundColor,
+        color:this.color
+      }
     }
   },
   methods:{
