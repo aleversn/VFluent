@@ -1,0 +1,5 @@
+@import '../common-theme/ListView.scss';
+.fv-custom-ListView{
+  @include fv-ListView();
+}
+    

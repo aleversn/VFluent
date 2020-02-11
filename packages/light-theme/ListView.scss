@@ -1,0 +1,5 @@
+@import '../common-theme/ListView.scss';
+.fv-light-ListView{
+  @include fv-ListView();
+}
+    

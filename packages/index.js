@@ -26,6 +26,11 @@ import ScrollStory from '@/ScrollStory/index.js'
 import DetailsList from '@/DetailsList/index.js'
 import Pivot from '@/Pivot/index.js'
 import MenuFlyout from '@/MenuFlyout/index.js'
+import ListView from '@/ListView/index.js'
+import NavigationView from '@/NavigationView/index.js'
+import TreeView from '@/TreeView/index.js'
+import CommandBar from '@/CommandBar/index.js'
+import CommandBarFlyout from '@/CommandBarFlyout/index.js'
 
 
 let components = [
@@ -49,6 +54,12 @@ let components = [
   DetailsList,
   Pivot,
   MenuFlyout,
+  ListView,
+  NavigationView,
+  TreeView,
+  CommandBar,
+  CommandBarFlyout,
+
 ]
 
 const install = function(Vue){
@@ -85,5 +96,11 @@ export default {
   DetailsList,
   Pivot,
   MenuFlyout,
+  ListView,
+  NavigationView,
+  TreeView,
+  CommandBar,
+  CommandBarFlyout,
+
 }
 

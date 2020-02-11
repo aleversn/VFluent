@@ -20,6 +20,11 @@ import { FvScrollStory } from './scrollstory'
 import { FvDetailsList } from './detailslist'
 import { FvPivot } from './pivot'
 import { FvMenuFlyout } from './menuflyout'
+import { FvListView } from './listview'
+import { FvNavigationView } from './navigationview'
+import { FvTreeView } from './treeview'
+import { FvCommandBar } from './commandbar'
+import { FvCommandBarFlyout } from './commandbarflyout'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -67,4 +72,14 @@ export type Theme = FluentVueTheme
   export class Pivot extends FvPivot {}
 /** MenuFlyout component */
   export class MenuFlyout extends FvMenuFlyout {}
+/** ListView component */
+  export class ListView extends FvListView {}
+/** NavigationView component */
+  export class NavigationView extends FvNavigationView {}
+/** TreeView component */
+  export class TreeView extends FvTreeView {}
+/** CommandBar component */
+  export class CommandBar extends FvCommandBar {}
+/** CommandBarFlyout component */
+  export class CommandBarFlyout extends FvCommandBarFlyout {}
 

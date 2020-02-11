@@ -158,5 +158,45 @@
       "Dark": "@/dark-theme/MenuFlyout.scss",
       "Custom": "@/custom-theme/MenuFlyout.scss"
     }
+  },
+  "ListView": {
+    "entry": "@/ListView/index.js",
+    "theme": {
+      "Light": "@/light-theme/ListView.scss",
+      "Dark": "@/dark-theme/ListView.scss",
+      "Custom": "@/custom-theme/ListView.scss"
+    }
+  },
+  "NavigationView": {
+    "entry": "@/NavigationView/index.js",
+    "theme": {
+      "Light": "@/light-theme/NavigationView.scss",
+      "Dark": "@/dark-theme/NavigationView.scss",
+      "Custom": "@/custom-theme/NavigationView.scss"
+    }
+  },
+  "TreeView": {
+    "entry": "@/TreeView/index.js",
+    "theme": {
+      "Light": "@/light-theme/TreeView.scss",
+      "Dark": "@/dark-theme/TreeView.scss",
+      "Custom": "@/custom-theme/TreeView.scss"
+    }
+  },
+  "CommandBar": {
+    "entry": "@/CommandBar/index.js",
+    "theme": {
+      "Light": "@/light-theme/CommandBar.scss",
+      "Dark": "@/dark-theme/CommandBar.scss",
+      "Custom": "@/custom-theme/CommandBar.scss"
+    }
+  },
+  "CommandBarFlyout": {
+    "entry": "@/CommandBarFlyout/index.js",
+    "theme": {
+      "Light": "@/light-theme/CommandBarFlyout.scss",
+      "Dark": "@/dark-theme/CommandBarFlyout.scss",
+      "Custom": "@/custom-theme/CommandBarFlyout.scss"
+    }
   }
 }

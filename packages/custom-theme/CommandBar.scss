@@ -1,0 +1,5 @@
+@import '../common-theme/CommandBar.scss';
+.fv-custom-CommandBar{
+  @include fv-CommandBar();
+}
+    

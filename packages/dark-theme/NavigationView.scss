@@ -1,0 +1,5 @@
+@import '../common-theme/NavigationView.scss';
+.fv-dark-NavigationView{
+  @include fv-NavigationView();
+}
+    

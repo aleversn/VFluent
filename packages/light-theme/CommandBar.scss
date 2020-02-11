@@ -1,0 +1,5 @@
+@import '../common-theme/CommandBar.scss';
+.fv-light-CommandBar{
+  @include fv-CommandBar();
+}
+    
