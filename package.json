@@ -28,16 +28,17 @@
     "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev examples/docs",
-    "docs:build":"vuepress build examples/docs",
+    "docs:build": "vuepress build examples/docs",
     "bin:new": "node build/new.js",
     "bin:rm": "node build/remove.js",
     "bin:entry": "node build/entry.js",
     "pub": "yarn lib && yarn publish",
-    "pub:pages":"build/page.sh"
+    "pub:pages": "build/page.sh"
   },
   "dependencies": {
     "core-js": "^3.4.3",
     "fluent-reveal-effect": "^1.1.1",
+    "gsap": "^3.1.1",
     "office-ui-fabric-core": "^11.0.0",
     "onecolor": "^3.1.0",
     "vuex": "^3.1.2"

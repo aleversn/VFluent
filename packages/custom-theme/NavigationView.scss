@@ -1,0 +1,5 @@
+@import '../common-theme/NavigationView.scss';
+.fv-custom-NavigationView{
+  @include fv-NavigationView();
+}
+    

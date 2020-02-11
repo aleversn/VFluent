@@ -1,0 +1,41 @@
+@import '../common-theme/Pivot.scss';
+.fv-dark-Pivot {
+    
+    @include fv-Pivot();
+
+    .container
+    {
+        z-index: 1;
+        
+        .item
+        {
+            p
+            {
+                color: whitesmoke;
+            }
+        }
+    }
+
+    &.tab
+    {
+        .container
+        {
+            .item
+            {
+                &.choose
+                {
+                    p
+                    {
+                        color: black;
+                    }
+                }
+
+                p
+                {
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
+}
+    

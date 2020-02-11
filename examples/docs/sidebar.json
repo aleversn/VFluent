@@ -18,5 +18,11 @@
   "/zh/ImgBox/",
   "/zh/ScrollStory/",
   "/zh/DetailsList/",
-  "/zh/MenuFlyout/"
+  "/zh/Pivot/",
+  "/zh/MenuFlyout/",
+  "/zh/ListView/",
+  "/zh/NavigationView/",
+  "/zh/TreeView/",
+  "/zh/CommandBar/",
+  "/zh/CommandBarFlyout/"
 ]
