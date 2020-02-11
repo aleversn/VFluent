@@ -142,5 +142,13 @@
       "Dark": "@/dark-theme/DetailsList.scss",
       "Custom": "@/custom-theme/DetailsList.scss"
     }
+  },
+  "Pivot": {
+    "entry": "@/Pivot/index.js",
+    "theme": {
+      "Light": "@/light-theme/Pivot.scss",
+      "Dark": "@/dark-theme/Pivot.scss",
+      "Custom": "@/custom-theme/Pivot.scss"
+    }
   }
 }

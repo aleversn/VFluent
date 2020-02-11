@@ -233,14 +233,14 @@ export default {
         currentChoose () {
             let result = [];
             for (let i = 0; i < this.thisValue.length; i++) {
-                if(this.thisValue[i].choose)
+                if(this.thisValue[i].choose && this.thisValue[i].show)
                     result.push(this.thisValue[i]);
             }
             return result;
         },
         currentChooseAll () {
             for (let i = 0; i < this.thisValue.length; i++) {
-                if(this.thisValue[i].choose != true)
+                if(this.thisValue[i].choose != true && this.thisValue[i].show)
                     return false;
             }
             return true;
@@ -248,7 +248,7 @@ export default {
         currentChooseNum () {
             let count = 0;
             for (let i = 0; i < this.thisValue.length; i++) {
-                if(this.thisValue[i].choose)
+                if(this.thisValue[i].choose && this.thisValue[i].show)
                     count++;
             }
             return count;

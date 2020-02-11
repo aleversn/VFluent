@@ -24,6 +24,7 @@ import Callout from '@/Callout/index.js'
 import ImgBox from '@/ImgBox/index.js'
 import ScrollStory from '@/ScrollStory/index.js'
 import DetailsList from '@/DetailsList/index.js'
+import Pivot from '@/Pivot/index.js'
 
 
 let components = [
@@ -45,6 +46,7 @@ let components = [
   ImgBox,
   ScrollStory,
   DetailsList,
+  Pivot,
 
 ]
 
@@ -80,6 +82,7 @@ export default {
   ImgBox,
   ScrollStory,
   DetailsList,
+  Pivot,
 
 }
 

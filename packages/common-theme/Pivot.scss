@@ -1,0 +1,122 @@
+@mixin fv-Pivot {
+
+    position: relative;
+    width: auto;
+    height: 45px;
+    overflow: auto;
+    overflow-y: hidden;
+
+    &.tab
+    {
+        .container
+        {
+            z-index: 1;
+            
+            .item
+            {
+                &.choose
+                {
+                    p
+                    {
+                        color: whitesmoke;
+                    }
+                }
+            }
+        }
+
+        .slider
+        {
+            top: 0px;
+            bottom: none;
+            height: 100%;
+            z-index: 0;
+
+            .s
+            {
+                height: 100%;
+                padding: 0px;
+            }
+        }
+    }
+
+    .container
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        float: left;
+        z-index: 0;
+
+        .item
+        {
+            position: relative;
+            height: 100%;
+            padding: 0px 3px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            float: left;
+
+            p
+            {
+                @include nowrap;
+
+                font-size: 18px;
+                font-weight: 600;
+                color: rgba(50, 49, 48, 1);
+                opacity: 0.8;
+                user-select: none;
+                transition: all 0.1s;
+                cursor: default;
+            }
+
+            &:hover
+            {
+                p
+                {
+                    opacity: 1;
+                }
+            }
+
+            &.choose
+            {
+                p
+                {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .slider
+    {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        z-index: 1;
+
+        .s
+        {
+            position: relative;
+            width: 60px;
+            height: 2px;
+            margin: 0px;
+            padding: 0px 12px;
+            box-sizing: border-box;
+            float: left;
+
+            p
+            {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                background: rgba(0, 120, 212, 1);
+            }
+        }
+    }
+}
