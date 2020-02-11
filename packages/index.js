@@ -25,6 +25,7 @@ import ImgBox from '@/ImgBox/index.js'
 import ScrollStory from '@/ScrollStory/index.js'
 import DetailsList from '@/DetailsList/index.js'
 import Pivot from '@/Pivot/index.js'
+import MenuFlyout from '@/MenuFlyout/index.js'
 
 
 let components = [
@@ -47,7 +48,7 @@ let components = [
   ScrollStory,
   DetailsList,
   Pivot,
-
+  MenuFlyout,
 ]
 
 const install = function(Vue){
@@ -83,6 +84,6 @@ export default {
   ScrollStory,
   DetailsList,
   Pivot,
-
+  MenuFlyout,
 }
 

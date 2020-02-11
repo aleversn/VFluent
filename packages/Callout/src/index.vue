@@ -35,21 +35,21 @@ export default {
       default: false
     },
     delayClose: {
-      type:Number,
+      type: Number,
       default: 0
     },
     effect: {
       type: String,
       default: "click"
     },
-    popperStyle:{
-      default:()=>{
-        return {}
+    popperStyle: {
+      default: () => {
+        return {};
       }
     },
-    popperClass:{
-      default:()=>{
-        return []
+    popperClass: {
+      default: () => {
+        return [];
       }
     }
   },
@@ -60,8 +60,8 @@ export default {
       window: {},
       targetEvent: {},
       popperEvent: {},
-      timeout:{
-        close:null
+      timeout: {
+        close: null
       }
     };
   },
@@ -76,22 +76,22 @@ export default {
       this.$emit("update:visible", val);
       if (val) {
         this.adjustPopperPosition(this.position);
-        if (this.delayClose>0){
-          clearTimeout(this.timeout.close)
-          this.timeout.close=setTimeout(()=>{
-            this._popper.show=false;
-          },this.delayClose)
+        if (this.delayClose > 0) {
+          clearTimeout(this.timeout.close);
+          this.timeout.close = setTimeout(() => {
+            this._popper.show = false;
+          }, this.delayClose);
         }
       }
     },
-    popperStyle(val){
-      this._popper.callout.style=val
+    popperStyle(val) {
+      this._popper.callout.style = val;
     },
-    popperClass(val){
-      this._popper.callout.class=val;
+    popperClass(val) {
+      this._popper.callout.class = val;
     },
-    disabled(val){
-      if (val) this.init()
+    disabled(val) {
+      if (val) this.init();
     }
   },
   computed: {
@@ -137,19 +137,23 @@ export default {
       };
     },
     initPopper() {
-      if (this.effect!='always')
-        this._popper.show = this.visible;
+      if (this.effect != "always") this._popper.show = this.visible;
       this._popper.nodes = this.slot();
       this._popper.theme = this.$theme;
       this._popper.$nextTick(() => {
         this.adjustPopperPosition(this.position);
       });
-      this._popper.callout.style=this.popperStyle
-      this._popper.callout.class=this.popperClass
+      this._popper.callout.style = this.popperStyle;
+      this._popper.callout.class = this.popperClass;
+      this._popper.target = this;
     },
     adjustPopperPosition(position) {
-      if (this.disabled || this.$el.clientHeight==0 || this.$el.clientWidth==0) {    
-        this._popper.show=false;
+      if (
+        this.disabled ||
+        this.$el.clientHeight == 0 ||
+        this.$el.clientWidth == 0
+      ) {
+        this._popper.show = false;
         return;
       }
       this.setPopperPosition(position);
@@ -176,11 +180,11 @@ export default {
     setPopperPosition(position) {
       let callout = this._popper.style.callout;
       let beak = this._popper.style.beak;
-      let target = this.getOffsetBodyXY(this.$el)
+      let target = this.getOffsetBodyXY(this.$el);
       if (this.beak < 10 || this.cover) {
         this.$set(beak, "display", "none");
       } else {
-        this.$set(beak,"display","block")
+        this.$set(beak, "display", "block");
         this.$set(beak, "width", this.beak + "px");
         this.$set(beak, "height", this.beak + "px");
       }
@@ -190,11 +194,7 @@ export default {
             this.$set(
               callout,
               "top",
-                target.top +
-                this.$el.clientHeight +
-                this.space +
-                this.beak +
-                "px"
+              target.top + this.$el.clientHeight + this.space + this.beak + "px"
             );
             this.$set(beak, "top", "0");
           } else {
@@ -238,11 +238,7 @@ export default {
             this.$set(
               callout,
               "left",
-              target.left +
-                this.$el.clientWidth +
-                this.space +
-                this.beak +
-                "px"
+              target.left + this.$el.clientWidth + this.space + this.beak + "px"
             );
             this.$set(beak, "left", "0");
           }
@@ -310,11 +306,10 @@ export default {
           }
         }
       }
-      return this.isOutBody(this._popper.$el);
     },
     isOutBody(el) {
       let body = document.body;
-      let target = this.getOffsetBodyXY(el)
+      let target = this.getOffsetBodyXY(el);
       let maxHeight = Math.max(body.offsetHeight, window.innerHeight);
       let maxWidth = Math.max(body.offsetWidth, window.innerWidth);
       if (
@@ -355,31 +350,61 @@ export default {
         }
       };
     },
-    initTargetEvent(){
-      if (this.effect==="click"){
-        this.targetEvent.click=()=>{
-          this._popper.show^=true;
-        }
-      }else if (this.effect==="hover"){
-        this.targetEvent.mouseenter=()=>{
-          this._popper.show=true;
-        }
-        this.targetEvent.mouseleave=()=>{
-          this._popper.show=false;
-        },
-        this.popperEvent.mouseenter=()=>{
-          this._popper.show=true;
-        },
-        this.popperEvent.mouseleave=()=>{
-          this._popper.show=false;
-        }
-      }else if (this.effect==="always"){
-        this._popper.show=true;
+    initTargetEvent() {
+      if (this.effect === "click") {
+        this.targetEvent.click = () => {
+          this._popper.show ^= true;
+        };
+      } else if (this.effect === "hover") {
+        this.targetEvent.mouseenter = () => {
+          this._popper.show = true;
+        };
+        (this.targetEvent.mouseleave = () => {
+          this._popper.show = false;
+        }),
+          (this.popperEvent.mouseenter = () => {
+            let el = this.$parent;
+            while (el) {
+              if (el.$options.name === "FvOutsidePopper") {
+                if (!el.show) {
+                  el.show = true;
+                  el=el.target;
+                }else{
+                  break;
+                }
+              }
+              else {
+                el = el.$parent;
+              }
+            }
+            this._popper.show = true;
+          }),
+          (this.popperEvent.mouseleave = () => {
+            let el = this.$parent;
+            while (el) {
+              if (
+                el.$options.name === "FvOutsidePopper" &&
+                el.target.effect == "hover"
+              ) {
+                if (el.show) {
+                  el.show = false;
+                  el=el.target;
+                }else{
+                  break;
+                }
+              }else{
+                el = el.$parent;
+              }
+            }
+            this._popper.show = false;
+          });
+      } else if (this.effect === "always") {
+        this._popper.show = true;
       }
     },
-    init(){
-      if (this.disabled){
-        this._popper.show=false;
+    init() {
+      if (this.disabled) {
+        this._popper.show = false;
         return;
       }
       this.initWindowEvent();
@@ -394,61 +419,63 @@ export default {
         this._popper.$el.addEventListener(key, this.popperEvent[key]);
       }
       this.initPopper();
-      if (this.delayClose>0 && this._popper.show){
-        this.timeout.close=setTimeout(()=>{
-          this._popper.show=false;
-        },this.delayClose);
+      if (this.delayClose > 0 && this._popper.show) {
+        this.timeout.close = setTimeout(() => {
+          this._popper.show = false;
+        }, this.delayClose);
       }
     },
-    getOffsetBodyXY(el){
-      let xy = {top:0,left:0}
-      while (el && el.nodeName && el.nodeName.toLowerCase()!='body'){
-        xy.top+=el.offsetTop;
-        xy.left+=el.offsetLeft;
+    getOffsetBodyXY(el) {
+      let xy = { top: 0, left: 0 };
+      while (el && el.nodeName && el.nodeName.toLowerCase() != "body") {
+        xy.top += el.offsetTop;
+        xy.left += el.offsetLeft;
         el = el.offsetParent;
       }
       return xy;
     }
   },
   mounted() {
-    this.init()
+    this.init();
   },
   render() {
     let target = this.getFirstDefaultSlotElement();
     return target || <div></div>;
   },
-  beforeMount() {
-  },
+  beforeMount() {},
   beforeCreate() {
     this._popper = new Vue({
+      name: "FvOutsidePopper",
       data: {
+        target: null,
         nodes: {
           header: [],
           main: [],
           footer: []
         },
         style: {
-          callout: {
-          },
+          callout: {},
           beak: {}
         },
-        callout:{
-          style:{},
-          class:[]
+        callout: {
+          style: {},
+          class: []
         },
+        transition: "fv-callout-fade",
         theme: "light",
         show: true,
         open: true,
         width: 0,
         height: 0,
-        position: "",
+        position: ""
       },
       render() {
         return (
           <transition name="fv-callout-fade">
             <div
-              style={[this.style.callout,this.callout.style]}
-              class={["fv-" + this.theme + "-callout",this.callout.class]}
+              name="fv-callout"
+              style={[this.style.callout, this.callout.style]}
+              class={["fv-" + this.theme + "-callout", this.callout.class]}
               v-show={this.show}
             >
               <div class="bg"></div>
@@ -471,8 +498,8 @@ export default {
   },
   beforeDestroy() {
     this._popper.$destroy();
-    for (let key in this.timeout){
-      clearTimeout(this.timeout[key])
+    for (let key in this.timeout) {
+      clearTimeout(this.timeout[key]);
     }
     for (let key in this.window) {
       window.removeEventListener(key, this.window[key]);

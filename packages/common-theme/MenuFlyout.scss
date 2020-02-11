@@ -1,0 +1,121 @@
+@mixin fv-menuFlyout {
+  display: inline;
+  .button {
+    color:inherit;
+    border-radius: inherit;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 16px;
+    background: inherit;
+    height: 30px;
+    span {
+      margin: 0 4px;
+    }
+  }
+}
+
+@mixin fv-menuFlyoutPopper {
+  hr {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@mixin fv-menuSubFlyout {
+  cursor: pointer;
+  display: inline-flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+  position: relative;
+  .bg {
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  .label {
+    width: 100%;
+    margin-right: 30px;
+    i {
+      width: 20px;
+    }
+  }
+  .button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    color: inherit;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    min-width: 26px;
+    height: 30px;
+    background-color: inherit;
+    text-align: left;
+    span {
+      text-align: left;
+    }
+
+    .icon-right {
+      color: inherit;
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  span {
+    display: inline-block;
+    padding: 0 12px;
+  }
+  .button-box {
+    position: relative;
+    color: inherit;
+    // width: 100%;
+    &.full {
+      width: 100%;
+      .button {
+        width: 100%;
+      }
+    }
+    span {
+      &.divider {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+        display: inline-block;
+        height: 16px;
+        width: 1px;
+        padding: 0;
+        background-color: #c8c6c4;
+      }
+    }
+  }
+}
+
+@mixin fv-menuItemFlyout {
+  cursor: pointer;
+  .button {
+    color: inherit;
+    outline: none;
+    background-color: inherit;
+    border: none;
+    height: 30px;
+    padding: 0 12px;
+    text-align: left;
+  }
+  .button {
+    cursor: inherit;
+    i {
+      width: 20px;
+    }
+  }
+}

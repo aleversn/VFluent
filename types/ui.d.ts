@@ -19,6 +19,7 @@ import { FvImgBox } from './imgbox'
 import { FvScrollStory } from './scrollstory'
 import { FvDetailsList } from './detailslist'
 import { FvPivot } from './pivot'
+import { FvMenuFlyout } from './menuflyout'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -64,4 +65,6 @@ export type Theme = FluentVueTheme
   export class DetailsList extends FvDetailsList {}
 /** Pivot component */
   export class Pivot extends FvPivot {}
+/** MenuFlyout component */
+  export class MenuFlyout extends FvMenuFlyout {}
 

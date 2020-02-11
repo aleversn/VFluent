@@ -1,6 +1,6 @@
 <template>
   <div :class="['fv-'+$theme+'-slider',{active:isActive},{vertical:vertical}]" ref="slider">
-    <div class="fv-slider__bar" :class="[{vertical:vertical},{disabled:disabled}]" ref="bar">
+    <div class="fv-slider__bar" @mousedown="click($event) && moveable($event)" :class="[{vertical:vertical},{disabled:disabled}]" :style="style.bar" ref="bar">
       <template v-if="scale">
         <div
           class="fv-slider__scale-up"
@@ -42,16 +42,12 @@ export default {
   name: "FvSlider",
   data() {
     return {
-      progress: 0,
+      progress: 0, //percent
       isActive: false,
-      button: {
-        width: 0
-      },
-      bar: {
-        width: 0,
-        height: 0
-      },
-      rejust: false
+      rejust: false,
+      style:{
+        bar:{}
+      }
     };
   },
   props: {
@@ -105,26 +101,20 @@ export default {
       if (this.theme === "system") return this.$fvGlobal.state.theme;
       return this.theme;
     },
-    range() {
-      if (this.vertical) {
-        return this.bar.height;
-      } else {
-        return this.bar.width;
-      }
-    },
     buttonStyle() {
       let color=this.color
       if (this.vertical) {
         return {
-          top: this.progress + "px",
-          transform: "rotate(90deg)",
-          left: "-10px",
+          top: this.progress + "%",
+          transform: "translate(-50%,-50%) rotate(90deg)",
+          left: "2px",
           color
         };
       } else {
         return {
-          left: this.progress + "px",
-          top: "-10px",
+          left: this.progress + "%",
+          transform:"translate(-50%,-50%)",
+          top: "2px",
           color
         };
       }
@@ -133,19 +123,16 @@ export default {
       let color=this.color
       if (this.vertical) {
         return {
-          height: this.progress + this.button.width / 2 + "px",
+          height: this.progress  + "%",
           backgroundColor:color
         };
       } else {
         return {
-          width: this.progress + this.button.width / 2 + "px",
+          width: this.progress  + "%",
           backgroundColor:color
         };
       }
     },
-    unitToPx() {
-      return this.range / (this.maxinum - this.mininum);
-    }
   },
   watch: {
     value(val) {
@@ -163,49 +150,45 @@ export default {
   mounted() {
     // set client height/width
     this.resize();
-    let MutationObserver = window.MutationObserver ||
-                      window.WebKitMutationObserver || 
-                      window.MozMutationObserver
-    this.observer = new MutationObserver(this.resize)
-    this.observer.observe(this.$refs.slider,{
-      attributes: true, 
-      attributeFilter: ['style'], 
-      attributeOldValue: true
-    })
-    window.addEventListener("resize", this.resize);
   },
   methods: {
+    click(evt){
+      if (this.isActive || this.disabled) return false;
+      let box = this.$refs.bar.getBoundingClientRect();
+      let button = this.$refs.button.getBoundingClientRect()
+      let x = this.vertical ? evt.clientY-box.top : evt.clientX-box.left;
+      let origin = this.vertical ? button.top-box.top:button.left-box.left;
+      this.move(x,origin)     
+      return true;
+    },
     scaleUnit(){
       let unit = !this.scale || this.scale==true?this.unit:this.scale;
       return unit;
     },
     scaleStyle(index,up) {
-      let unit = this.scaleUnit();
+      let unit =  Math.round(this.scaleUnit()/(this.maxinum-this.mininum)*100);
       return this.vertical
         ? {
             left: up?"7px":"-7px",
-            top: index * unit * this.unitToPx + "px",
+            top:index*unit+'%',
             height: "1px",
             width: "5px"
           }
         : {
             top: up?"7px":"-7px",
-            left: index * unit * this.unitToPx + "px",
+            left:index*unit+'%',
             height: "5px",
             width: "1px"
           };
     },
     resize() {
-      this.button.width = this.$refs.button.clientWidth;
-      this.bar.width = this.$refs.bar.clientWidth;
-      this.bar.height = this.$refs.bar.clientHeight;
       this.setProgress(this.value, this.mininum, this.maxinum);
     },
     moveable(evt) {
-      evt.target.ondragenter = event.preventDefault();
-      evt.target.ondragover = event.preventDefault();
-      this.$emit('click')
+      this.$refs.button.ondragenter = event.preventDefault();
+      this.$refs.button.ondragover = event.preventDefault();
       if (this.isActive || this.disabled) return;
+      this.$emit('click')
       this.isActive = true;
       let origin = this.vertical ? evt.clientY : evt.clientX;
       let move = evt => {
@@ -225,21 +208,15 @@ export default {
       window.addEventListener("mouseup", removeMove);
     },
     setProgress(value, min, max) {
-      let width = this.range;
-      value = Math.max(min, value);
-      value = Math.min(max, value);
-      value -= min;
-      this.progress = (value * width) / (max - min) - this.button.width / 2;
+      this.progress = (value-min)/(max-min)*100;
+      this.progress = Math.max(0,this.progress)
+      this.progress = Math.min(100,this.progress)
     },
     setValue(value, min, max) {
-      let width = this.range;
-      let val = min + (value + this.button.width / 2) / (width / (max - min));
-      this.$emit("input", Math.round(val));
+      this.$emit("input", this.getValue(value,min,max));
     },
     getValue(value, min, max) {
-      let width = this.range;
-      let val = min + (value + this.button.width / 2) / (width / (max - min));
-      return Math.round(val);
+      return Math.round(value*(max-min)/100)+min;
     },
     rejustProgress() {
       if (this.rejust) return;
@@ -258,15 +235,12 @@ export default {
       }, 300);
     },
     move(x, origin) {
-      let val = this.progress + (x - origin);
-      val = Math.max(val, -this.button.width / 2);
-      val = Math.min(val, this.range - this.button.width / 2);
+      let length = this.vertical?this.$refs.bar.clientHeight:this.$refs.bar.clientWidth;
+      let val = this.progress + (x - origin)*100/length;
+      val = Math.max(val, 0);
+      val = Math.min(val, 100);
       this.progress = val;
     }
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.resize);
-    this.observer.disconnect();
   }
 };
 </script>
