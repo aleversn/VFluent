@@ -5,7 +5,37 @@
   
 [[toc]]
 
-### ListView-DEMO 
+### ListView-DEMO
+
+<script>
+export default {
+    data () {
+        return {
+            items: [
+                { key: "fruitsHeader", name: "Fruits", type: "header" },
+                { key: "apple", name: "Apple" },
+                { key: "banana", name: "Banana" },
+                { key: "orange", name: "Orange", disabled: true },
+                { key: "grape", name: "Grape" },
+                { key: "vegetablesHeader", name: "Vegetables", type: "header" },
+                { key: "broccoli", name: "Broccoli" },
+                { key: "carrot", name: "Carrot" },
+                { key: "lettuce", name: "Lettuce" }
+            ]
+        }
+    }
+}
+</script>
+
+<div style="width: 100%; height: 500px;">
+    <fv-ListView v-model="items">
+    </fv-ListView>
+</div>
+
+
+
+<fv-ListView>
+</fv-ListView>
 
 <fv-ListView>
 </fv-ListView>

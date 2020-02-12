@@ -1,2 +1,47 @@
 @mixin fv-ListView {
+
+    position: relative;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+
+        .item
+        {
+            position: relative;
+            width: 100%;
+            height: 45px;
+            padding: 0px 12px;
+            border: transparent solid thin;
+            border-left: none;
+            border-right: none;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            float: left;
+
+            *{
+                @include nowrap;
+
+                font-weight: 400;
+                color: rgba(50, 49, 48, 1);
+                user-select: none;
+            }
+
+            &:hover
+            {
+                background: rgba(243, 242, 241, 1);
+            }
+        }
+    }
 }
