@@ -2,7 +2,7 @@
 <div :class="'fv-'+$theme+'-DetailsList'">
     <div class="list-head" :class="{'fv-custom-head': true}">
         <span v-show="multiSelection" class="icon-block" :style="styles.listHead" @click="chooseAll">
-            <span class="icon" :class="{choose:currentChooseAll}">
+            <span class="icon" :class="{choose:currentChoosenAll}">
                 <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
                 <i class="ms-Icon ms-Icon--CircleRing ll"></i>
                 <i class="ms-Icon ms-Icon--Completed ll"></i>
@@ -25,9 +25,9 @@
     </div>
     <div v-if="!showGroup" class="list-content" ref="l1" :class="{compact: compact, 'auto-height': autoHeight}">
         <transition-group name="details-list" tag="div">
-        <div v-show="item.show" v-for="(item, index) in thisValue" class="content-row" :key="`row: ${index}`" :draggable="allowDrag" :class="{choose: item.choose, 'fv-custom-row': true}" @drag="drag($event, item)" @dragover="$event.preventDefault()" @drop="drop(item)" @contextmenu="rightClick($event, item)">
+        <div v-show="item.show" v-for="(item, index) in thisValue" class="content-row" :key="`row: ${index}`" :draggable="allowDrag" :class="{choose: item.choosen, 'fv-custom-row': true}" @drag="drag($event, item)" @dragover="$event.preventDefault()" @drop="drop(item)" @contextmenu="rightClick($event, item)">
             <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="itemChooseClick(item)">
-                <span class="icon" :class="{choose: item.choose}">
+                <span class="icon" :class="{choose: item.choosen}">
                     <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
                     <i class="ms-Icon ms-Icon--CircleRing ll"></i>
                     <i class="ms-Icon ms-Icon--Completed ll"></i>
@@ -62,9 +62,9 @@
             </div>
             <transition name="zoom-in-top">
             <div v-show="gi.expand">
-            <div v-show="item.show" v-for="(item, index) in gi.data" class="content-row" :key="`group: ${i} row: ${index}`" :class="{choose:item.choose, 'fv-custom-row': true}" @contextmenu="rightClick($event, item)">
+            <div v-show="item.show" v-for="(item, index) in gi.data" class="content-row" :key="`group: ${i} row: ${index}`" :class="{choose:item.choosen, 'fv-custom-row': true}" @contextmenu="rightClick($event, item)">
                 <span v-show="multiSelection" class="icon-block icon" key="multi-col">
-                    <span class="icon" :class="{choose:item.choose}" @click="itemChooseClick(item)">
+                    <span class="icon" :class="{choose:item.choosen}" @click="itemChooseClick(item)">
                         <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
                         <i class="ms-Icon ms-Icon--CircleRing ll"></i>
                         <i class="ms-Icon ms-Icon--Completed ll"></i>
@@ -86,7 +86,7 @@
             <slot name="menu">
                 <div>
                     <span>
-                        <p>{{currentChooseNum}} Selected</p>
+                        <p>{{currentChoosenNum}} Selected</p>
                     </span>
                 </div>
             </slot>
@@ -206,7 +206,7 @@ export default {
         multiSelection (val) {
             for (let i = 0; i < this.thisValue.length; i++) {
                 let t = this.thisValue[i];
-                t.choose = false;
+                t.choosen = false;
                 this.$set(this.thisValue, i, t);
             }
         },
@@ -230,25 +230,25 @@ export default {
             }
             return width;
         },
-        currentChoose () {
+        currentChoosen () {
             let result = [];
             for (let i = 0; i < this.thisValue.length; i++) {
-                if(this.thisValue[i].choose && this.thisValue[i].show)
+                if(this.thisValue[i].choosen && this.thisValue[i].show)
                     result.push(this.thisValue[i]);
             }
             return result;
         },
-        currentChooseAll () {
+        currentChoosenAll () {
             for (let i = 0; i < this.thisValue.length; i++) {
-                if(this.thisValue[i].choose != true && this.thisValue[i].show)
+                if(this.thisValue[i].choosen != true && this.thisValue[i].show)
                     return false;
             }
             return true;
         },
-        currentChooseNum () {
+        currentChoosenNum () {
             let count = 0;
             for (let i = 0; i < this.thisValue.length; i++) {
-                if(this.thisValue[i].choose && this.thisValue[i].show)
+                if(this.thisValue[i].choosen && this.thisValue[i].show)
                     count++;
             }
             return count;
@@ -334,7 +334,7 @@ export default {
         valueInit () {
             let val = JSON.parse(JSON.stringify(this.value));
             for (let i = 0; i < val.length; i++) {
-                val[i].choose = val[i].choose == undefined ? false : val[i].choose;
+                val[i].choosen = val[i].choosen == undefined ? false : val[i].choosen;
                 val[i].show = true;
             }
             this.thisValue = val;
@@ -487,36 +487,36 @@ export default {
         itemChooseClick (item) {
             let index = this.thisValue.indexOf(item);
             let t = item;
-            t.choose = !t.choose;
+            t.choosen = !t.choosen;
             this.$set(this.thisValue, index, t);
             this.$emit("change-value", this.thisValue);
-            this.$emit("choose-items", this.currentChoose);
+            this.$emit("choose-items", this.currentChoosen);
         },
         chooseCurrent (item) {
             for (let i = 0; i < this.thisValue.length; i++) {
                 let t = this.thisValue[i];
-                t.choose = false;
+                t.choosen = false;
                 this.$set(this.thisValue, i, t);
             }
-            item.choose = true;
+            item.choosen = true;
             this.$set(this.thisValue, this.thisValue.indexOf(item), item);
             this.$emit("change-value", this.thisValue);
-            this.$emit("choose-items", this.currentChoose);
+            this.$emit("choose-items", this.currentChoosen);
         },
         chooseAll () {
-            let status = !this.currentChooseAll;
+            let status = !this.currentChoosenAll;
             for (let i = 0; i < this.thisValue.length; i++) {
                 let t = this.thisValue[i];
-                t.choose = status;
+                t.choosen = status;
                 this.$set(this.thisValue, i, t);
             }
             this.$emit("change-value", this.thisValue);
-            this.$emit("choose-items", this.currentChoose);
+            this.$emit("choose-items", this.currentChoosen);
         },
         isGroupChooseAll (group) {
             for (let i = 0; i < group.data.length; i++) {
                 let t = group.data[i];
-                if(!t.choose)
+                if(!t.choosen)
                     return false;
             }
             return true;
@@ -525,11 +525,11 @@ export default {
             let status = !this.isGroupChooseAll(group);
             for (let i = 0; i < group.data.length; i++) {
                 let t = group.data[i];
-                t.choose = status;
+                t.choosen = status;
                 this.$set(this.thisValue, this.thisValue.indexOf(t), t);
             }
             this.$emit("change-value", this.thisValue);
-            this.$emit("choose-items", this.currentChoose);
+            this.$emit("choose-items", this.currentChoosen);
         },
         expandGroup (group) {
             let index = this.thisGroup.indexOf(group);
@@ -609,24 +609,24 @@ export default {
             );
         },
         drag (event, item) {
-            if(this.currentChooseNum == 0)
+            if(this.currentChoosenNum == 0)
                 this.dragTransfer = item;
-            else if(!item.choose)
+            else if(!item.choosen)
             {
                 this.chooseCurrent(item);
                 this.dragTransfer = item;
             }
             else
-                this.dragTransfer = this.currentChoose;
+                this.dragTransfer = this.currentChoosen;
         },
         drop (item) {
             let target = this.dragTransfer;
             let current = item;
             let c_index = this.thisValue.indexOf(current);
-            if(this.currentChooseNum > 0 && target[0].choose) {
+            if(this.currentChoosenNum > 0 && target[0].choosen) {
                 for(let i = target.length - 1; i >= 0; i--)
                     this.thisValue.splice(this.thisValue.indexOf(target[i]), 1);
-                if(current.choose)
+                if(current.choosen)
                     this.thisValue.splice(0, 0, ...target);
                 else
                 {

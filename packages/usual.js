@@ -227,6 +227,10 @@ export class RevealHelper
                 oriBorder: getComputedStyle(el)["border-image"],
                 wave: 0,
                 clickWave: {},
+                borderLightColor: "",
+                backgroundLightColor: "",
+                borderGradientSize: 80,
+                backgroundGradientSize: 150,
                 el: el
             });
         });
@@ -234,36 +238,6 @@ export class RevealHelper
         return res;
     }
     
-    static isIntersected(element, cursor_x, cursor_y, gradientSize) {
-        const cursor_area = {
-            left: cursor_x - gradientSize,
-            right: cursor_x + gradientSize,
-            top: cursor_y - gradientSize,
-            bottom: cursor_y + gradientSize
-        }
-    
-        const el_area = {
-            left: element.el.getBoundingClientRect().left,
-            right: element.el.getBoundingClientRect().right,
-            top: element.el.getBoundingClientRect().top,
-            bottom: element.el.getBoundingClientRect().bottom
-        }
-    
-        function intersectRect(r1, r2) {
-            return !(
-                r2.left > r1.right ||
-                r2.right < r1.left ||
-                r2.top > r1.bottom ||
-                r2.bottom < r1.top
-            )
-        }
-        
-    
-        const result = intersectRect(cursor_area, el_area)
-    
-        return result
-    }
-
     static isInsideElement(element, cursorX, cursorY) {
         const el_area = {
             left: element.el.getBoundingClientRect().left,
@@ -281,7 +255,7 @@ export class RevealEffects
     constructor (selector, options) {
         this.options = {
             selector: ".eff-reveal-border",
-            bgGradientSize: 150,
+            backgroundGradientSize: 150,
             borderGradientSize: 80,
             borderLightColor: "rgba(255,255,255,0.25)",
             backgroundLightColor: "rgba(255,255,255,0.25)"
@@ -299,17 +273,21 @@ export class RevealEffects
     }
 
     childrenRefresh (selector) {
-        if(this.children == undefined)
-            this.children = [];
+        if(window.FvRevealElements == undefined)
+            window.FvRevealElements = [];
         
         const els =  RevealHelper.preProcessElements(document.querySelectorAll(selector));
         for(let item of els) {
             let children = RevealHelper.preProcessElements(item.el.querySelectorAll(this.options.selector));
             for(let c of children) {
-                let finder = this.children.find(it => it.el === c.el);
+                let finder = window.FvRevealElements.find(it => it.el === c.el);
                 if(finder === undefined) {
+                    c.borderLightColor = this.options.borderLightColor;
+                    c.backgroundLightColor = this.options.backgroundLightColor;
+                    c.borderGradientSize = this.options.borderGradientSize;
+                    c.backgroundGradientSize = this.options.backgroundGradientSize;
                     this.applyClickEffects(c, item);
-                    this.children.push(c);
+                    window.FvRevealElements.push(c);
                 }
             }
         }
@@ -322,15 +300,15 @@ export class RevealEffects
         for(let item of els) {
             //element background effect --------------------
             let containerSelectorMove = e => {
-                for(let c of this.children) {
+                for(let c of window.FvRevealElements) {
                     let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
                     let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
                     
-                    RevealHelper.drawEffectBorder(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.borderGradientSize);
+                    RevealHelper.drawEffectBorder(c, x, y, c.backgroundLightColor, c.borderLightColor, c.borderGradientSize);
 
                     if(RevealHelper.isInsideElement(c, e.x, e.y)) {
                         if(c.wave == 0)
-                            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.bgGradientSize);
+                            RevealHelper.drawEffectBackground(c, x, y, c.backgroundLightColor, c.borderLightColor, c.backgroundGradientSize);
                     }
                     else
                         RevealEffects.clearBackground(c);
@@ -346,13 +324,13 @@ export class RevealEffects
         c.el.addEventListener("mousedown", e => {
             let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
             let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
-            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.bgGradientSize, true);
+            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize, true);
         });
 
         c.el.addEventListener("mouseup", e => {
             let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
             let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
-            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.bgGradientSize);
+            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize);
         });
         
         parent.el.addEventListener("mouseleave", (e) => {

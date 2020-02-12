@@ -7,7 +7,7 @@
         >
             <div
                 class="list-item"
-                :class="{hr:item.type == 'divider', normal:item.type == 'default' || item.type == undefined, disabled: item.disabled, choose: item.choosed}"
+                :class="{hr:item.type == 'divider', normal:item.type == 'default' || item.type == undefined, disabled: item.disabled, choose: item.choosen}"
             >
                 <p
                     v-show="item.type == 'header'"
@@ -20,7 +20,7 @@
                     :index="index"
                 >
                     <fv-check-box
-                        v-model="item.choosed"
+                        v-model="item.choosen"
                         v-show="item.type == 'default' || item.type == undefined && multiple"
                         :disabled="item.disabled"
                         :borderColor="dropDownListForeground"
@@ -145,23 +145,24 @@ export default {
         },
         onClick(cur) {
             if (cur.disabled) return 0;
+            if (cur.type === "header") return 0;
             if (this.multiple) {
                 let t = this.choosenValue.find(item => item.key === cur.key);
                 if (t != undefined) {
-                    cur.choosed = false;
+                    cur.choosen = false;
                     this.choosenValue.splice(this.choosenValue.indexOf(t), 1);
                     this.$set(this.options, this.options.indexOf(cur), cur);
                 } else {
-                    cur.choosed = true;
+                    cur.choosen = true;
                     this.choosenValue.push(cur);
                     this.$set(this.options, this.options.indexOf(cur), cur);
                 }
             } else {
                 for (let it of this.choosenValue) {
-                    it.choosed = false;
+                    it.choosen = false;
                     this.$set(this.options, this.options.indexOf(it), it);
                 }
-                cur.choosed = true;
+                cur.choosen = true;
                 this.choosenValue = [];
                 this.choosenValue.push(cur);
                 this.$set(this.options, this.options.indexOf(cur), cur);

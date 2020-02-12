@@ -1,7 +1,7 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
     <div class="container">
-        <span v-for="(item, index) in thisValue" class="item" :key="index">
+        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick(item)">
             <slot>
                 <p>{{item.name}}</p>
             </slot>
@@ -17,6 +17,15 @@ export default {
         value: {
             default: () => []
         },
+        multiple: {
+            default: false
+        },
+        rowHeight: {
+            default: ""
+        },
+        choosenBackground: {
+            default: ""
+        },
         theme: {
             type: String,
             default: "system"
@@ -24,12 +33,20 @@ export default {
     },
     data () {
         return {
-            thisValue: []
+            thisValue: [],
+            choosenStyles: {
+                item: {
+                    background: ""
+                }
+            }
         }
     },
     watch: {
         value (val) {
             this.valueInit();
+        },
+        choosenBackground (val) {
+            this.stylesInit();
         }
     },
     computed: {
@@ -51,6 +68,29 @@ export default {
             }
             return 'rgba(121, 119, 117, 0.3)';
         },
+        currentChoosen () {
+            let result = [];
+            for (let i = 0; i < this.thisValue.length; i++) {
+                if(this.thisValue[i].choosen && this.thisValue[i].show)
+                    result.push(this.thisValue[i]);
+            }
+            return result;
+        },
+        currentChoosenAll () {
+            for (let i = 0; i < this.thisValue.length; i++) {
+                if(this.thisValue[i].choosen != true && this.thisValue[i].show)
+                    return false;
+            }
+            return true;
+        },
+        currentChoosenNum () {
+            let count = 0;
+            for (let i = 0; i < this.thisValue.length; i++) {
+                if(this.thisValue[i].choosen && this.thisValue[i].show)
+                    count++;
+            }
+            return count;
+        },
         $theme () {
             if (this.theme=='system')
                 return this.$fvGlobal.state.theme;
@@ -60,6 +100,7 @@ export default {
     mounted () {
         this.FRInit();
         this.valueInit();
+        this.stylesInit();
     },
     methods: {
         FRInit () {
@@ -70,8 +111,51 @@ export default {
                 backgroundLightColor: this.backgroundLightColor
             });
         },
+        stylesInit () {
+            this.choosenStyles.item.background = this.choosenBackground;
+        },
         valueInit () {
-            this.thisValue = this.value;
+            let model = {
+                name: "",
+                show: true,
+                choosen: false,
+                disabled: false
+            };
+
+            let result = [];
+            
+            for(let item of this.value) {
+                let m = JSON.parse(JSON.stringify(model));
+                result.push(Object.assign(m, item));
+            }
+            this.thisValue = result;
+        },
+        onClick(cur) {
+            if (cur.disabled) return 0;
+            if (this.multiple) {
+                let t = this.currentChoosen.find(item => item.key === cur.key);
+                if (t != undefined) {
+                    cur.choosen = false;
+                    this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
+                } else {
+                    cur.choosen = true;
+                    this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
+                }
+            } else {
+                for (let it of this.currentChoosen) {
+                    it.choosen = false;
+                    this.$set(this.thisValue, this.thisValue.indexOf(it), it);
+                }
+                cur.choosen = true;
+                this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
+            }
+
+            this.$emit("chooseItem", {
+                item: cur,
+                index: this.thisValue.indexOf(cur)
+            });
+
+            this.$emit("choosen-items", this.currentChoosen);
         }
     }
 }

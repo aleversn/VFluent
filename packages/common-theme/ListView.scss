@@ -33,7 +33,8 @@
             *{
                 @include nowrap;
 
-                font-weight: 400;
+                font-size: 13.8px;
+                font-weight: normal;
                 color: rgba(50, 49, 48, 1);
                 user-select: none;
             }
@@ -41,6 +42,21 @@
             &:hover
             {
                 background: rgba(243, 242, 241, 1);
+            }
+
+            &.disabled
+            {
+                filter: grayscale(1);
+                opacity: 0.8;
+
+                *{
+                    color: rgba(150, 150, 150, 1);
+                }
+            }
+
+            &.choose
+            {
+                background: rgba(0, 120, 212, 0.3);
             }
         }
     }

@@ -1,3 +1,8 @@
+$row-light-hover: rgba(243, 242, 241, 1);
+$row-light-active: rgba(237, 235, 233, 1);
+$row-dark-hover: rgba(37, 36, 35, 1);
+$row-dark-active: rgba(41, 40, 39, 1);
+
 @mixin nowrap
 {
 	text-overflow: ellipsis;
