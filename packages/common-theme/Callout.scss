@@ -41,11 +41,11 @@
   }
 }
 
-.fv-callout-fade-enter-active, .fv-callout-fade-leave-active{
+.fv-callout-fade-enter-active{
   transition: opacity .3s;
 }
 
-.fv-callout-fade-enter, .fv-callout-fade-leave-to{
+.fv-callout-fade-enter{
   opacity: 0;
 }
 

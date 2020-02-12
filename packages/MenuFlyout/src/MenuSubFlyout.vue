@@ -1,25 +1,26 @@
 <template>
-  <div :class="['fv-'+$theme+'-menuSubFlyout',{actived:callout.show}]" @click="click">
-    <span v-if="spilt" class="label">
+  <div :class="['fv-'+$theme+'-menuSubFlyout',{actived:callout.show},{disabled:disabled}]">
+    <span v-if="spilt" class="fv-menuSubFlyout__label" @click="click">
       <i v-if="item.checkable" class="ms-Icon" :class="[{'ms-Icon--CheckMark':item.checked}]"></i>
       <i v-if="icon" class="ms-Icon" :class="['ms-Icon--'+icon]"></i>
       {{label?label:"SubMenu"}}
     </span>
-    <div class="button-box" :class="[{'full':!spilt}]">
-      <span v-if="spilt" class="divider"></span>
+    <div class="fv-menuSubFlyout__button-box" :class="[{'fv-menuSubFlyout__full':!spilt}]">
+      <span v-if="spilt" class="fv-menuSubFlyout__divider"></span>
       <fv-callout
         :visible.sync="callout.show"
         :position="position"
-        :beak="0"
+        :beak="-1"
         :focusTrap="callout.focusTrap"
         effect="hover"
-        :popperStyle="{padding:0,minWidth:'160px'}"
+        :popperStyle="{padding:0,minWidth:'160px',backgroundColor:$backgroundColor(),color:$color()}"
         :popperClass="['fv-'+$theme+'-menuFlyoutPopper']"
         :theme="$theme"
+        :disabled="disabled"
       >
-        <button class="button">
-          <i class="ms-Icon ms-Icon--ChevronRight icon-right"></i>
-          <span v-if="!spilt" class="label">
+        <button class="fv-menuSubFlyout__button">
+          <i class="ms-Icon ms-Icon--ChevronRight fv-menuSubFlyout__icon-right"></i>
+          <span v-if="!spilt" class="fv-menuSubFlyout__label" @click="click">
             <i v-if="item.checkable" class="ms-Icon" :class="[{'ms-Icon--CheckMark':item.checked}]"></i>
             <i v-if="icon" class="ms-Icon" :class="['ms-Icon--'+icon]"></i>
             {{label?label:"SubMenu"}}
@@ -30,22 +31,20 @@
         </main>
       </fv-callout>
     </div>
-    <div class="bg"></div>
+    <div class="fv-menuSuyFlyout__bg"></div>
   </div>
 </template>
 
 <script>
 import "office-ui-fabric-core/dist/css/fabric.min.css";
-import checkbox from './checkbox.js'
+import checkbox from './mixins/checkbox.js'
+import item from './mixins/item.js'
+
 
 export default {
   name: "FvMenuSubFlyout",
-  mixins:[checkbox],
+  mixins:[item,checkbox],
   props: {
-    theme: {
-      type: String,
-      default: "system"
-    },
     label: {
       type: String,
     },
@@ -54,10 +53,6 @@ export default {
       default: false
     },
     icon:{
-    },
-    disabled:{
-      type:Boolean,
-      default:false
     },
     position:{
       default:'rightTop',
@@ -72,16 +67,14 @@ export default {
       },
     };
   },
-  computed: {
-    $theme() {
-      if (this.theme == "system") {
-        if (this.parent) return this.parent.$theme;
-        return this.$fvGlobal.state.theme;
-      }
-      return this.theme;
-    }
-  },
   methods:{
+  },
+  watch:{
+    "window.show"(val){
+      if (!val){
+        this.callout.show=false;
+      }
+    }
   }
 };
 </script>

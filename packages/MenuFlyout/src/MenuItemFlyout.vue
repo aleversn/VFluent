@@ -1,8 +1,8 @@
 <template>
-  <div :class="['fv-'+$theme+'-menuItemFlyout']" @click="click">
-    <button class="button">
+  <div :class="['fv-'+$theme+'-menuItemFlyout',{disabled:disabled}]" @click="click">
+    <button class="fv-menuItemFlyout__button">
       <i v-if="item.checkable" class="ms-Icon" :class="[{'ms-Icon--CheckMark':item.checked}]"></i>
-      <i v-if="icon" class="ms-Icon" :class="['ms-Icon--'+icon]"></i>
+      <i v-if="icon" class="ms-Icon fv-menuItemFlyout__icon" :class="['ms-Icon--'+icon]"></i>
       {{label?label:"MenuItem"}}
     </button>
   </div>
@@ -10,32 +10,25 @@
 
 <script>
 import "office-ui-fabric-core/dist/css/fabric.min.css";
-import checkbox from './checkbox.js'
+import checkbox from './mixins/checkbox.js'
+import item from './mixins/item.js'
 
 export default {
   name:'FvMenuItemFlyout',
-  mixins:[checkbox],
+  mixins:[item,checkbox],
   props:{
-    theme:{
-      default:'system',
-      type:String
-    },
     label:{},
     icon:{}
   },
   data(){
-    return {}
+    return {
+    }
   },
   computed:{
-    $theme(){
-      if (this.theme=="system"){
-        if (this.parent) return this.parent.$theme;
-        return this.$fvGlobal.state.theme;
-      }
-      return this.theme
-    },
   },
   methods:{
+  },
+  mounted(){
   }
 }
 </script>
