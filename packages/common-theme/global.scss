@@ -5,6 +5,14 @@ $row-light-active: rgba(237, 235, 233, 1);
 $row-dark-hover: rgba(37, 36, 35, 1);
 $row-dark-active: rgba(41, 40, 39, 1);
 
+$border-std-color: $ms-color-sharedCyanBlue10;
+$border-correct-color: rgba(0, 204, 153, 1);
+$border-error-color: rgba(173, 38, 45, 1);
+
+$t-light-36: rgba(36, 36, 36, 1);
+$t-light-50: rgba(50, 49, 48, 1);
+$t-light-96: rgba(96, 94, 92, 1);
+
 @mixin nowrap
 {
 	text-overflow: ellipsis;

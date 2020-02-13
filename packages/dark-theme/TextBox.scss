@@ -7,7 +7,7 @@
 
     &:hover
     {
-        border: rgba(243,242,241,1) solid thin;
+        border: $row-light-hover solid thin;
     }
 
     &.focus

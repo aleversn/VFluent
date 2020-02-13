@@ -4,7 +4,7 @@
     width: 300px;
     height: 32px;
     background: white;
-    border: rgba(36,36,36,1) solid thin;
+    border: $t-light-36 solid thin;
     border-radius: 2px;
     box-sizing: border-box;
     display: flex;
@@ -15,17 +15,17 @@
 
     &.warn
     {
-        border: rgba(173, 38, 45, 1) solid thin;
+        border: $border-error-color solid thin;
     }
 
     &.correct
     {
-        border: rgba(0, 204, 153, 1) solid thin;
+        border: $border-correct-color solid thin;
     }
 
     &.focus
     {
-        border: rgba(0, 120, 212, 1) solid 2px;
+        border: $border-std-color solid 2px;
 
         div.container
         {
@@ -51,7 +51,7 @@
             p
             {
                 font-weight: 600;
-                color: rgba(50, 49, 48, 1);
+                color: $t-light-50;
                 cursor: default;
             }
         }
@@ -98,15 +98,32 @@
 
         p
         {
-            color: rgba(96, 94, 92, 1);
+            color: $t-light-96;
         }
     }
 
     .icon-block
     {
         position: relative;
+        width: 30px;
+        height: 100%;
         padding: 0px 10px;
-        cursor: text;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: default;
+
+        &:hover
+        {
+            color: $border-std-color;
+        }
+
+        &:active
+        {
+            background: $border-std-color;
+            color: whitesmoke;
+        }
     }
     
     div.container

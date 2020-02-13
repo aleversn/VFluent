@@ -124,6 +124,7 @@ Customize background
 |   borderWidth    |             [boolean]              |       No       |       N/A       |                                     |
 |   borderColor    |          [string(color)]           |       No       |       N/A       |                                     |
 | focusBorderColor |          [string(color)]           |       No       |       N/A       |                                     |
+|   revealBorder   |             [boolean]              |       No       |      false      |                                     |
 |      status      |              [string]              |       No       |       N/A       |                                     |
 |     disabled     |             [boolean]              |       No       |      false      |                                     |
 |      theme       | ['light','dark','custom','system'] |       No       |     system      |                                     |

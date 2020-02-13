@@ -59,6 +59,12 @@
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+
+                &.title
+                {
+                    font-size: 13.8px;
+                    font-weight: 600;
+                }
             }
 
             &:hover
@@ -77,6 +83,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            .nav-search
+            {
+                background: rgba(245, 245, 245, 0.3);
+                border-color: rgba(120, 120, 120, 0.3);
+            }
         }
 
         div.template

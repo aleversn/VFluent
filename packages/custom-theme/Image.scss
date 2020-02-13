@@ -1,0 +1,5 @@
+@import '../common-theme/Image.scss';
+.fv-custom-Image{
+  @include fv-Image();
+}
+    

@@ -6,7 +6,7 @@
     </div>
     <transition name="fade-in">
         <img v-if="imgUri.state=='done' && !onbackground" draggable="false" alt="" :src="imgUri.data"/>
-    </transition> 
+    </transition>
 </div>
 </template>
 
@@ -115,10 +115,14 @@ export default {
                     FR.readAsDataURL(blob);
                 }
                 else if (xhr.readyState == 4) {
-                    
+
                 }
             }
             xhr.send();
+            xhr.onerror = event => {
+                this.$emit("error", event);
+                console.warn("Fv-ImgBox doesn't support cross-domain url.");
+            }
             this.xhr = xhr;
         },
         UpdateStore (base64) {
@@ -142,6 +146,7 @@ export default {
     },
     beforeDestroy () {
         clearInterval(this.formatTimer);
+        clearInterval(this.lazyTimer);
     }
 }
 </script>

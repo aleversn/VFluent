@@ -1,11 +1,11 @@
 <template>
-<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="isFocus ? focusStyles.textBox : styles.textBox">
+<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="isFocus ? focusStyles.textBox : styles.textBox" @click="isFocus = true">
     <div v-show="prefix != ''" class="fix-block">
         <p>{{prefix}}</p>
     </div>
     <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
     <core v-model="thisValue" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
-    <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('left-icon-click', $event)"></i>
+    <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
     <div v-show="suffix != ''" class="fix-block">
         <p>{{suffix}}</p>
     </div>
@@ -78,6 +78,9 @@ export default {
         focusBorderColor: {
             default: ""
         },
+        revealBorder: {
+            default: false
+        },
         status: {
             default: ""
         },
@@ -129,6 +132,11 @@ export default {
         },
         focusBorderColor (val) {
             this.onFocusStylesInit();
+        },
+        revealBorder (val) {
+            if(val) {
+                this.FRInit();
+            }
         }
     },
     computed: {
@@ -149,13 +157,41 @@ export default {
                 this.disabled == "disabled" ||
                 this.disabled === ""
             );
+        },
+        borderLightColor () {
+            if(this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.6)';
+            }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.6)';
+            }
+            return 'rgba(121, 119, 117, 0.6)';
+        },
+        backgroundLightColor () {
+            if(this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.3)';
+            }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
         }
     },
     mounted () {
+        if(this.revealBorder)
+            this.FRInit();
         this.stylesInit();
         this.onFocusStylesInit();
     },
     methods: {
+        FRInit () {
+            let FR = new this.$RevealEffects("body", {
+                selector: `.fv-${this.$theme}-TextBox`,
+                borderGradientSize: 60,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor
+            });
+        },
         stylesInit () {
             this.styles.textBox.background = this.background;
             this.styles.textBox.borderWidth = `${this.borderWidth}px`;
