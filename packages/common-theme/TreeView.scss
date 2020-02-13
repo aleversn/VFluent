@@ -1,2 +1,69 @@
 @mixin fv-TreeView {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  .fv-TreeView__item {
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    color: inherit;
+    background-color: inherit;
+    .fv-TreeView__label-border {
+      padding: 1px;
+      height: 38px;
+      // overflow: hidden;
+      .fv-TreeView__label {
+        position: relative;
+        color: inherit;
+        padding: 0 20px;
+        box-sizing: border-box;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        // overflow: hidden;
+        i {
+          padding: 0;
+          height: 100%;
+          line-height: 38px;
+          margin:0 10px 0 0;
+          font-size: 12px;
+        }
+        .fv-TreeView__checkbox{
+          border-width: 1px;
+          border-style: solid;
+          border-radius: 2px;
+          width: 16px;
+          height: 16px;
+          margin: 0 10px 0 0;
+          display: inline-flex;
+          padding: 0;
+          i{
+            height: 100%; 
+            width: 100%;
+            font-size:16px;
+            padding: 0;
+            line-height: 16px;
+          }
+        }
+        .fv-TreeView__icon {
+          height: 38px;
+          font-size: 16px;
+          width: auto;
+          margin: 0 10px;
+        }
+        .fv-TreeView__text {
+          display: inline-block;
+          height: 100%;
+          line-height: 40px;
+        }
+      }
+    }
+    .fv-TreeView__tree {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
