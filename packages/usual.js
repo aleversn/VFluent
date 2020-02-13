@@ -296,8 +296,12 @@ export class RevealEffects
     applyCommonEffects (selector) {
 
         const els =  RevealHelper.preProcessElements(document.querySelectorAll(selector));
+        if(window.FvRevealCarriers == undefined)
+            window.FvRevealCarriers = [];
 
         for(let item of els) {
+            if(window.FvRevealCarriers.find(it => it.el === item.el) !== undefined)
+                continue;
             //element background effect --------------------
             let containerSelectorMove = e => {
                 for(let c of window.FvRevealElements) {
@@ -315,6 +319,7 @@ export class RevealEffects
                 }
             }
             item.el.addEventListener("mousemove", containerSelectorMove);
+            window.FvRevealCarriers.push(item);
         }
     }
 

@@ -1,16 +1,16 @@
 <template>
 <div :class="['fv-'+$theme+'-NavigationPanel', thisExpand ? '' : 'compact', expandMode == 'flyout' ? 'flyout' : '']" :style="{width: `${panelWidth}px`}">
     <div class="panel-container" :style="{width: `${navWidth}px`}">
-        <span class="default-item">
+        <span v-show="showBack" class="default-item">
             <i class="ms-Icon ms-Icon--Back icon"></i>
-            <p class="name"></p>
+            <p class="name title">{{title}}</p>
         </span>
         <span class="default-item" @click="thisExpand = !thisExpand">
             <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
-            <p class="name"></p>
+            <p v-show="!showBack" class="name title">{{title}}</p>
         </span>
         <span class="search">
-            <fv-text-box icon="Search" placeholder="Search" style="width: 100%;"></fv-text-box>
+            <fv-text-box icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-text-box>
         </span>
         <div class="template">
             
@@ -38,6 +38,18 @@ export default {
         },
         expandDisplay: {
             default: 350
+        },
+        showBack: {
+            default: true
+        },
+        showSearch: {
+            default: true
+        },
+        settingTitle: {
+            default: "Settings"
+        },
+        showSetting: {
+            default: true
         },
         theme: {
             type: String,

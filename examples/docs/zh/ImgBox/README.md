@@ -24,3 +24,9 @@
 |     url      |  [string]  |      Yes       |       N/A       | Image url, be careful don't use cross-domain url |
 |    onlazy    | [boolean]  |       No       |      false      |                 Lazy load image                  |
 | onbackground | [boolean]  |       No       |      false      |                Show as background                |
+
+### Events
+---
+| 事件名(Name) | 参数类型(args) |                           说明(statement)                           |
+|:------------:|:--------------:|:-------------------------------------------------------------------:|
+|    error     |     object     | Image load failed will call back error function with error message. |

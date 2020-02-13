@@ -33,6 +33,7 @@ import TreeView from '@/TreeView/index.js'
 import CommandBar from '@/CommandBar/index.js'
 import CommandBarFlyout from '@/CommandBarFlyout/index.js'
 import NavigationPanel from '@/NavigationPanel/index.js'
+import Image from '@/Image/index.js'
 
 
 let components = [
@@ -62,6 +63,7 @@ let components = [
   CommandBar,
   CommandBarFlyout,
   NavigationPanel,
+  Image,
 
 ]
 
@@ -106,6 +108,7 @@ export default {
   CommandBar,
   CommandBarFlyout,
   NavigationPanel,
+  Image,
 
 }
 

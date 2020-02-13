@@ -206,5 +206,13 @@
       "Dark": "@/dark-theme/NavigationPanel.scss",
       "Custom": "@/custom-theme/NavigationPanel.scss"
     }
+  },
+  "Image": {
+    "entry": "@/Image/index.js",
+    "theme": {
+      "Light": "@/light-theme/Image.scss",
+      "Dark": "@/dark-theme/Image.scss",
+      "Custom": "@/custom-theme/Image.scss"
+    }
   }
 }
