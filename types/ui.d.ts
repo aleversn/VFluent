@@ -25,6 +25,7 @@ import { FvNavigationView } from './navigationview'
 import { FvTreeView } from './treeview'
 import { FvCommandBar } from './commandbar'
 import { FvCommandBarFlyout } from './commandbarflyout'
+import { FvNavigationPanel } from './navigationpanel'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -82,4 +83,6 @@ export type Theme = FluentVueTheme
   export class CommandBar extends FvCommandBar {}
 /** CommandBarFlyout component */
   export class CommandBarFlyout extends FvCommandBarFlyout {}
+/** NavigationPanel component */
+  export class NavigationPanel extends FvNavigationPanel {}
 

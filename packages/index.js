@@ -5,6 +5,7 @@ import './custom-theme/index.scss'
 import global from './global.js'
 import {SDate} from './usual.js'
 import {SUtility} from './usual.js'
+import {RevealEffects} from './usual.js'
 import '../examples/style/global-transition.css'
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
@@ -31,6 +32,7 @@ import NavigationView from '@/NavigationView/index.js'
 import TreeView from '@/TreeView/index.js'
 import CommandBar from '@/CommandBar/index.js'
 import CommandBarFlyout from '@/CommandBarFlyout/index.js'
+import NavigationPanel from '@/NavigationPanel/index.js'
 
 
 let components = [
@@ -59,6 +61,7 @@ let components = [
   TreeView,
   CommandBar,
   CommandBarFlyout,
+  NavigationPanel,
 
 ]
 
@@ -67,6 +70,7 @@ const install = function(Vue){
   Vue.prototype.$fvGlobal=global
   Vue.prototype.$SDate=SDate
   Vue.prototype.$SUtility=SUtility
+  Vue.prototype.$RevealEffects=RevealEffects
   components.map(component => Vue.use(component))
 }
 
@@ -101,6 +105,7 @@ export default {
   TreeView,
   CommandBar,
   CommandBarFlyout,
+  NavigationPanel,
 
 }
 
