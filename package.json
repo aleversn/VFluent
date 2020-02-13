@@ -27,12 +27,12 @@
     "serve": "vue-cli-service serve",
     "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
     "lint": "vue-cli-service lint",
-    "docs:dev": "vuepress dev examples/docs",
-    "docs:build": "vuepress build examples/docs",
+    "docs:dev": "yarn && vuepress dev examples/docs",
+    "docs:build": "yarn && vuepress build examples/docs",
     "bin:new": "node build/new.js",
     "bin:rm": "node build/remove.js",
     "bin:entry": "node build/entry.js",
-    "pub": "yarn lib && yarn publish",
+    "pub": "yarn && yarn lib && yarn publish",
     "pub:pages": "build/page.sh"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "gsap": "^3.1.1",
     "office-ui-fabric-core": "^11.0.0",
     "onecolor": "^3.1.0",
+    "vuedraggable": "^2.23.2",
     "vuex": "^3.1.2"
   },
   "devDependencies": {

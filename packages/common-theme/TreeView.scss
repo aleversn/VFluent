@@ -60,10 +60,12 @@
         }
       }
     }
-    .fv-TreeView__tree {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+  }
+  .fv-TreeView__tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: inherit;
+    color:inherit;
   }
 }

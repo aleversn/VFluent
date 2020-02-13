@@ -1,10 +1,9 @@
 <template>
   <li class="fv-TreeView__item">
-    <div class="fv-TreeView__label-border" :class="[{revealEffect:revealEffect}]">
+    <div class="fv-TreeView__label-border" :class="revealEffectClass">
       <div
         ref="label"
         class="fv-TreeView__label"
-        :class="[{revealEffect:revealEffect}]"
         @click="!checkable && click($event)"
         @mousedown="clickItem(item)"
         :style="style.label"
@@ -16,7 +15,7 @@
         />
         <i
           ref="expanded"
-          v-if="item.children"
+          v-if="item.children && item.children.length"
           class="ms-Icon"
           :class="['ms-Icon--'+(item.expanded?'ChevronDown':'ChevronRight')+'Med']"
           @click="item.expanded^=true"
@@ -37,12 +36,13 @@
       ref="content"
       v-if="item.children"
       v-show="item.expanded"
-      :items="item.children"
+      :children="item.children"
       :deepth="deepth"
       :viewStyle="viewStyle"
       :checkable="checkable"
       :padding="padding"
       @click="clickItem"
+      :draggable="draggable"
     ></tree-content>
   </li>
 </template>
@@ -51,13 +51,17 @@
 import "office-ui-fabric-core/dist/css/fabric.min.css";
 import { FluentRevealEffect } from "fluent-reveal-effect";
 import one from "onecolor";
+import id from '../mixins/id.js'
+import TreeContent from './content.vue'
+import checkbox from './checkbox.vue'
 
 export default {
   name: "FvTreeViewItem",
   components: {
-    TreeContent: () => import("./content.vue"),
-    checkbox: () => import("./checkbox.vue")
+    TreeContent,
+    checkbox
   },
+  mixins:[id],
   props: {
     item: {
       default: () => {
@@ -83,7 +87,14 @@ export default {
     checkable: {
       type: Boolean,
       default: false
+    },
+    draggable:{
+      type:Boolean
     }
+  },
+  model:{
+    prop:'item',
+    event:'update:item'
   },
   data() {
     return {
@@ -123,10 +134,20 @@ export default {
       },
       style: {
         label: {
-          paddingLeft: this.deepth * this.padding + "px"
+          paddingLeft: 10+this.deepth * this.padding + "px"
         }
       }
     };
+  },
+  computed:{
+    data:{
+      set:function(val){
+        this.$emit('update:item',val)
+      },
+      get:function(){
+        return this.item
+      }
+    }
   },
   watch: {
     "item.selected"(val) {
@@ -139,11 +160,19 @@ export default {
         this.initFR()
       },
       deepth: true
+    },
+    padding(val){
+      this.$set(this.style.label,'paddingLeft',10+this.deepth*val+'px')
     }
   },
   beforeCreate() {
-    if (this.$parent.$options.name === "FvTreeViewContent") {
-      this.parent = this.$parent.$parent;
+    let parent = this.$parent;
+    while (parent){
+      if (parent.$options.name && parent.$options.name==="FvTreeViewItem"){
+        this.parent=parent;
+        return;
+      }
+      parent=parent.$parent
     }
   },
   mounted() {
@@ -162,8 +191,9 @@ export default {
   },
   methods: {
     initFR() {
+      let className = this.revealEffectClass.length?"."+this.revealEffectClass[0]:"";
       FluentRevealEffect.applyEffect(
-        ".fv-TreeView__label-border.revealEffect",
+        ".fv-TreeView__label-border"+className,
         {
           lightColor: this.hoverColor(
             this.viewStyle.backgroundColor || "#000",
@@ -213,7 +243,7 @@ export default {
     },
     getStatus() {
       let selectCount = 0;
-      if (!this.item.children) {
+      if (!this.item.children || !this.item.children.length) {
         if (this.item.selected) {
           return "checked";
         } else {
@@ -285,7 +315,17 @@ export default {
     },
     clickItem(item){
       this.$emit('click',item)
-    }
+    },
+    updateParent(){
+      let parent = this.$parent;
+      while (parent){
+        if (parent.$options.name && parent.$options.name==="FvTreeViewItem"){
+          this.parent=parent;
+          return;
+        }
+        parent=parent.$parent
+      }
+    },
   },
   beforeDestroy() {
     this.DestroyEvent();

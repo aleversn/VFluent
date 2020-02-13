@@ -1,33 +1,32 @@
 <template>
-  <ul :class="['fv-'+$theme+'-TreeView']" ref="view" :style="viewStyle">
-    <item
-      v-for="(item,index) in data.filter(item=>item.label)"
-      :key="index"
+  <div :class="['fv-'+$theme+'-TreeView']" ref="view">
+    <tree-content
+      :style="style"
+      :children="items"
+      :deepth="0"
       :viewStyle="style"
-      :item="item"
       :checkable="checkable"
       :padding="space"
-      :revealEffect="revealEffect"
+      :draggable="draggable"
       @click="click"
-    ></item>
-  </ul>
+    ></tree-content>
+  </div>
 </template>
 
 <script>
 import "office-ui-fabric-core/dist/css/fabric.min.css";
-import Item from "./components/tree.vue";
+import TreeContent from "./components/content";
 
 export default {
   name: "FvTreeView",
   components: {
-    item: Item
+    TreeContent
   },
   props: {
     theme: {
       type: String,
       default: "system"
     },
-    viewStyle: {},
     checkable: {
       type: Boolean,
       default: false
@@ -36,27 +35,45 @@ export default {
       default: function() {
         return [];
       },
+      required: true,
       type: Array
     },
     space: {
       default: 20,
       type: Number
     },
-    revealEffect:{
-      type:Boolean,
-      default:true
-    }
+    revealEffect: {
+      type: Boolean,
+      default: true
+    },
+    draggable: {
+      type: Boolean,
+      default: false
+    },
+    viewStyle: {}
   },
   data() {
     return {
-      style: this.viewStyle,
+      style: {},
       changeLock: false
     };
+  },
+  model: {
+    prop: "data",
+    event: "update:data"
   },
   computed: {
     $theme() {
       if (this.theme === "system") return this.$fvGlobal.state.theme;
       return this.theme;
+    },
+    items: {
+      get: function() {
+        return this.data;
+      },
+      set: function(val) {
+        this.$emit("update:data", val);
+      }
     }
   },
   watch: {
@@ -73,6 +90,12 @@ export default {
         setTimeout(() => {
           this.changeLock = false;
         }, 100);
+      },
+      deep: true
+    },
+    viewStyle: {
+      handler() {
+        this.initStyle();
       },
       deep: true
     }
@@ -92,8 +115,8 @@ export default {
             .color
         };
     },
-    click(item){
-      this.$emit('click',item)
+    click(item) {
+      this.$emit("click", item);
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
-  <ul class="fv-TreeView__tree">
+  <draggable v-bind="dragOptions" class="fv-TreeView__tree" tag="ul" :list="children" @change="change">
     <item
-      v-for="(item,index) in items.filter(item=>item.label)"
+      v-for="(item,index) in children"
       :checkable="checkable"
       :viewStyle="viewStyle"
       :key="index"
@@ -10,18 +10,21 @@
       :padding="padding"
       :revealEffect="revealEffect"
       @click="click"
+      :draggable="draggable"
     />
-  </ul>
+  </draggable>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 export default {
   name: "FvTreeViewContent",
   components: {
-    item: () => import("./tree.vue")
+    item: () => import("./tree.vue"),
+    draggable
   },
   props: {
-    items: {
+    children: {
       default: () => []
     },
     deepth: {
@@ -32,12 +35,34 @@ export default {
       type: Boolean,
       default: false
     },
-    padding:{},
-    revealEffect:{}
+    padding: {},
+    revealEffect: {},
+    draggable:{
+      type:Boolean,
+      default:false
+    }
   },
-  methods:{
-    click(item){
-      this.$emit('click',item)
+  computed: {
+    dragOptions() {
+      return {
+        animation: 100,
+        group: "description",
+        disabled: !this.draggable,
+        ghostClass: "ghost"
+      };
+    }
+  },
+  methods: {
+    click(item) {
+      this.$emit("click", item);
+    },
+    change(){
+      for (let index in this.$children[0].$children){
+        let item = this.$children[0].$children[index]
+        if (item.updateSelect){
+          item.updateSelect()
+        }
+      }
     }
   }
 };
