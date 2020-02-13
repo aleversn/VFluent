@@ -198,5 +198,13 @@
       "Dark": "@/dark-theme/CommandBarFlyout.scss",
       "Custom": "@/custom-theme/CommandBarFlyout.scss"
     }
+  },
+  "NavigationPanel": {
+    "entry": "@/NavigationPanel/index.js",
+    "theme": {
+      "Light": "@/light-theme/NavigationPanel.scss",
+      "Dark": "@/dark-theme/NavigationPanel.scss",
+      "Custom": "@/custom-theme/NavigationPanel.scss"
+    }
   }
 }

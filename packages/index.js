@@ -32,6 +32,7 @@ import NavigationView from '@/NavigationView/index.js'
 import TreeView from '@/TreeView/index.js'
 import CommandBar from '@/CommandBar/index.js'
 import CommandBarFlyout from '@/CommandBarFlyout/index.js'
+import NavigationPanel from '@/NavigationPanel/index.js'
 
 
 let components = [
@@ -60,6 +61,7 @@ let components = [
   TreeView,
   CommandBar,
   CommandBarFlyout,
+  NavigationPanel,
 
 ]
 
@@ -103,6 +105,7 @@ export default {
   TreeView,
   CommandBar,
   CommandBarFlyout,
+  NavigationPanel,
 
 }
 
