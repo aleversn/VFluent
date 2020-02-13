@@ -54,9 +54,29 @@
                 }
             }
 
+            &.header
+            {
+                &:hover
+                {
+                    background: transparent;
+                }
+
+                
+                *{
+                    color: rgba(0,120,212,1);
+                    font-weight: 600;
+                }
+            }
+
             &.choose
             {
                 background: rgba(0, 120, 212, 0.3);
+            }
+
+            &.hr
+            {
+                height: 1px;
+                border-bottom: rgba(36,36,36,0.1) solid thin;
             }
         }
     }

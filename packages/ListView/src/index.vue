@@ -1,8 +1,8 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
     <div class="container">
-        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick(item)">
-            <slot>
+        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick(item)">
+            <slot name="listItem" :item="item" :index="index">
                 <p>{{item.name}}</p>
             </slot>
         </span>
@@ -105,7 +105,7 @@ export default {
     methods: {
         FRInit () {
             let FR = new this.$RevealEffects("body", {
-                selector: `.fv-${this.$theme}-ListView .container .item`,
+                selector: `.fv-${this.$theme}-ListView .container .item.normal`,
                 borderGradientSize: 30,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor
@@ -132,6 +132,7 @@ export default {
         },
         onClick(cur) {
             if (cur.disabled) return 0;
+            if (cur.type === "header" || cur.type == "divider") return 0;
             if (this.multiple) {
                 let t = this.currentChoosen.find(item => item.key === cur.key);
                 if (t != undefined) {

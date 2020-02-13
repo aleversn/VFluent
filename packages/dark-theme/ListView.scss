@@ -16,9 +16,21 @@
                 background: $row-dark-hover;
             }
 
+            &.header
+            {
+                *{
+                    color: rgba(0, 153, 204, 1);
+                }
+            }
+
             &.choose
             {
                 background: rgba(0, 120, 212, 0.6);
+            }
+
+            &.hr
+            {
+                border-bottom: rgba(216, 216, 216, 0.3) solid thin;
             }
         }
     }

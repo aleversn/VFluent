@@ -145,7 +145,7 @@ export default {
         },
         onClick(cur) {
             if (cur.disabled) return 0;
-            if (cur.type === "header") return 0;
+            if (cur.type === "header" || cur.type == "divider") return 0;
             if (this.multiple) {
                 let t = this.choosenValue.find(item => item.key === cur.key);
                 if (t != undefined) {
