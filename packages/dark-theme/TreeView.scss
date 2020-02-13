@@ -1,5 +1,25 @@
 @import '../common-theme/TreeView.scss';
 .fv-dark-TreeView{
   @include fv-TreeView();
+  color: #fff;
+  background-color: #000;
+  .fv-TreeView__checkbox{
+    border-color:#666;
+    &:hover{
+      border-color:#d6d6d6;
+    }
+    &.checked{
+      background-color: #2f2f2f;
+      border-color:#2f2f2f;
+    }
+    &.Indeterminate{
+      background-color: #2f2f2f;
+      border-color:#2f2f2f;
+    }
+    i{
+      color:white;
+    }
+    
+  }
 }
     

@@ -210,7 +210,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 </ClientOnly>
 
 ``` vue
- <fv-menuFlyout :checkable="true" label="Files" theme="dark" backgroundColor="#00cc99" color="#fff" borderColor="#00cc99">
+ <fv-menuFlyout :checkable="true" label="Files" theme="dark" :beak="15" backgroundColor="#00cc99" color="#fff" borderColor="#00cc99">
   <fv-menu-sub-flyout label="Show">
     <fv-menu-item-flyout label="Name" /> 
     <fv-menu-item-flyout label="Time" />
