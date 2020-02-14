@@ -1,0 +1,276 @@
+<template>
+<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="isFocus ? focusStyles.textBox : styles.textBox" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
+    <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
+    <transition name="move-left-to-right">
+        <div v-show="resultPlaceholder.length > 0" class="search-box-placeholder">
+            <slot name="resultPlaceholder"></slot>
+        </div>
+    </transition>
+    <div class="search-box-container">
+        <input v-model="thisValue" :type="type" :placeholder="placeholder" class="input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="isFocus = true" @blur="isFocus = false"/>
+    </div>
+    <i v-show="thisValue.length > 0 || resultPlaceholder.length > 0" class="ms-Icon ms-Icon--Cancel icon-block" @click="clearValue"></i>
+    <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
+    <transition name="zoom-in-top">
+        <div v-show="show.searchResult" class="search-result-container" ref="filterResult">
+            <slot name="searchResult" :data="filterOptions">
+                <fv-list-view v-model="filterOptions" :theme="theme" style="width: 100%; height: auto;" @chooseItem="chooseResult"></fv-list-view>
+            </slot>
+        </div>
+    </transition>
+</div>
+</template>
+
+<script>
+export default {
+    name: 'FvSearchBox',
+    props: {
+        value: {
+            default: ""
+        },
+        options: {
+            default: () => []
+        },
+        placeholder: {
+            default: ""
+        },
+        type: {
+            default: "text"
+        },
+        readonly: {
+            default: false
+        },
+        maxlength: {
+            default: ''
+        },
+        customFilter: {
+            default: false
+        },
+        resultPlaceholder: {
+            default: false
+        },
+        focusShow: {
+            default: false
+        },
+        leftIcon: {
+            default: ""
+        },
+        icon: {
+            default: ""
+        },
+        underline: {
+            default: false
+        },
+        background: {
+            default: ""
+        },
+        borderWidth: {
+            default: ""
+        },
+        borderColor: {
+            default: ""
+        },
+        focusBorderColor: {
+            default: ""
+        },
+        revealBorder: {
+            default: false
+        },
+        status: {
+            default: ""
+        },
+        disabled: {
+            default: false
+        },
+        theme: {
+            type: String,
+            default: "system"
+        }
+    },
+    data () {
+        return {
+            thisValue: this.value,
+            isFocus: false,
+            filterOptions: this.options,
+            show: {
+                searchResult: false
+            },
+            styles: {
+                textBox: {
+                    background: this.background,
+                    borderWidth: `${this.borderWidth}px`,
+                    borderColor: `${this.borderColor}`
+                }
+            },
+            focusStyles: {
+                textBox: {
+                    background: this.background,
+                    borderWidth: `${this.borderWidth}px`,
+                    borderColor: `${this.focusBorderColor}`
+                }
+            }
+        }
+    },
+    watch: {
+        value (val) {
+            this.thisValue = val;
+        },
+        thisValue (val) {
+            this.$emit("input", val);
+            this.refreshFilter();
+        },
+        background (val) {
+            this.stylesInit();
+            this.onFocusStylesInit();
+        },
+        borderWidth (val) {
+            this.stylesInit();
+            this.onFocusStylesInit();
+        },
+        borderColor (val) {
+            this.stylesInit();
+        },
+        focusBorderColor (val) {
+            this.onFocusStylesInit();
+        },
+        isFocus (val) {
+            if(val && this.focusShow)
+                this.show.searchResult = true;
+        },
+        revealBorder (val) {
+            if(val) {
+                this.FRInit();
+            }
+        }
+    },
+    computed: {
+        isUnderline () {
+            return (
+                this.underline.toString() == "true" ||
+                this.underline == "underline" ||
+                this.underline === ""
+            );
+        },
+        isDisabled () {
+            return (
+                this.disabled.toString() == "true" ||
+                this.disabled == "disabled" ||
+                this.disabled === ""
+            );
+        },
+        borderLightColor () {
+            if(this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.6)';
+            }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.6)';
+            }
+            return 'rgba(121, 119, 117, 0.6)';
+        },
+        backgroundLightColor () {
+            if(this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.3)';
+            }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
+        },
+        isReadOnly () {
+            return (
+                this.readonly.toString() == "true" ||
+                this.readonly == "readonly" ||
+                this.readonly === ""
+            );
+        },
+        isDisabled () {
+            return (
+                this.disabled.toString() == "true" ||
+                this.disabled == "disabled" ||
+                this.disabled === ""
+            );
+        },
+        $theme () {
+            if (this.theme == 'system')
+                return this.$fvGlobal.state.theme;
+            return this.theme;
+        }
+    },
+    mounted () {
+        if(this.revealBorder)
+            this.FRInit();
+        this.stylesInit();
+        this.lazyLoadInit();
+        this.onFocusStylesInit();
+        this.outSideClickInit();
+    },
+    methods: {
+        FRInit () {
+            let FR = new this.$RevealEffects("body", {
+                selector: `.fv-${this.$theme}-SearchBox`,
+                borderGradientSize: 60,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor
+            });
+        },
+        stylesInit () {
+            this.styles.textBox.background = this.background;
+            this.styles.textBox.borderWidth = `${this.borderWidth}px`;
+            this.styles.textBox.borderColor = this.borderColor;
+        },
+        lazyLoadInit () {
+            this.$SUtility.ScrollToLoadInit(this.$refs.filterResult, () => {
+                this.$emit('lazyload', this.filterOptions);
+            });
+        },
+        onFocusStylesInit () {
+            this.focusStyles.textBox.background = this.background;
+            this.focusStyles.textBox.borderWidth = `${this.borderWidth}px`;
+            this.focusStyles.textBox.borderColor = this.focusBorderColor;
+        },
+        outSideClickInit() {
+            window.addEventListener("click", event => {
+                let x = event.target;
+                let _self = false;
+                while (x.tagName.toLowerCase() != "body") {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) this.show.searchResult = false;
+            });
+        },
+        refreshFilter () {
+            let result = [];
+            if(this.customFilter !== false)
+                result = this.customFilter(this.options);
+            else
+            {
+                for(let item of this.options) {
+                    if(item.name.toString().toLowerCase().indexOf(this.thisValue.toLowerCase()) > -1)
+                        result.push(item);
+                }
+            }
+            this.filterOptions = result;
+        },
+        chooseResult (item) {
+            this.thisValue = item.item.name;
+            this.show.searchResult = false;
+        },
+        onBackspace () {
+            if(this.thisValue === "" && this.resultPlaceholder.length > 0) {
+                let result = this.resultPlaceholder;
+                result.splice(result.length - 1, 1);
+                this.$emit("update:resultPlaceholder", result);
+            }
+        },
+        clearValue () {
+            this.thisValue = "";
+            this.$emit("update:resultPlaceholder", []);
+            this.$emit("clear-click");
+        }
+    }
+}
+</script>

@@ -121,6 +121,7 @@ export default {
             xhr.send();
             xhr.onerror = event => {
                 this.$emit("error", event);
+                this.$fvGlobal.commit('clearImgUri', this.url);
                 console.warn("Fv-ImgBox doesn't support cross-domain url.");
             }
             this.xhr = xhr;

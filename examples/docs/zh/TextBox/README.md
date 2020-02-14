@@ -108,24 +108,24 @@ Customize background
 |:----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------:|
 |      value       |              [string]              |       No       |                 |  Using v-model binding input value  |
 |       mode       |         ['default','mask']         |       No       |     default     |         Choose TextBox mode         |
-|   placeholder    |              [string]              |       No       |       N/A       |                                     |
-|       type       |              [string]              |       No       |      text       |                                     |
+|   placeholder    |              [string]              |       No       |       N/A       |           等同HTML[input]           |
+|       type       |              [string]              |       No       |      text       |           等同HTML[input]           |
 |       mask       |              [string]              |       No       |    mask:___     |    The mask mode input template     |
 |       flag       |              [string]              |       No       |        _        |      The mask mode input flag       |
 |     pattern      |              [string]              |       No       |     [\S\s]*     | The pattern for limiting input char |
-|     readonly     |             [boolean]              |       No       |      false      |                                     |
-|    maxlength     |              [number]              |       No       |       N/A       |                                     |
-|      prefix      |              [string]              |       No       |       N/A       |                                     |
-|      suffix      |              [string]              |       No       |       N/A       |                                     |
-|     leftIcon     |              [string]              |       No       |       N/A       |                                     |
-|       icon       |              [string]              |       No       |       N/A       |                                     |
-|    underline     |             [boolean]              |       No       |      false      |                                     |
+|     readonly     |             [boolean]              |       No       |      false      |           等同HTML[input]           |
+|    maxlength     |              [number]              |       No       |       N/A       |           等同HTML[input]           |
+|      prefix      |              [string]              |       No       |       N/A       |                前缀                 |
+|      suffix      |              [string]              |       No       |       N/A       |                后缀                 |
+|     leftIcon     |              [string]              |       No       |       N/A       |               左图标                |
+|       icon       |              [string]              |       No       |       N/A       |               右图标                |
+|    underline     |             [boolean]              |       No       |      false      |   是否开启Underline风格的TextBox    |
 |    background    |          [string(color)]           |       No       |       N/A       |                                     |
 |   borderWidth    |             [boolean]              |       No       |       N/A       |                                     |
 |   borderColor    |          [string(color)]           |       No       |       N/A       |                                     |
 | focusBorderColor |          [string(color)]           |       No       |       N/A       |                                     |
 |   revealBorder   |             [boolean]              |       No       |      false      |                                     |
-|      status      |              [string]              |       No       |       N/A       |                                     |
+|      status      |         ['warn','correct']         |       No       |       N/A       | 状态边框预设, 默认有警告和正确两种  |
 |     disabled     |             [boolean]              |       No       |      false      |                                     |
 |      theme       | ['light','dark','custom','system'] |       No       |     system      |                                     |
 

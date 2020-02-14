@@ -29,7 +29,7 @@ export default new vuex.Store({
                 vue.set(state.imgUriList,state.imgUriList.indexOf(item),{data:imgUri.data,key:imgUri.key,state:imgUri.state});
         },
         clearImgUri (state, key) {
-            let item = state.imgUriList.find(item => item.key === imgUri.key);
+            let item = state.imgUriList.find(item => key === item.key);
             if(item == undefined)
                 return 0;
             else

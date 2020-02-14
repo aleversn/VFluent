@@ -1,5 +1,5 @@
 <template>
-<div class="container internal">
+<div class="text-box-container internal">
     <input :type="type" class="input" :readonly="isReadOnly" :disabled="isDisabled" ref="input" @input="input" @keydown="keyDown" @keyup="$emit('keyup', $event)" @focus="$emit('focus', true)" @blur="$emit('blur', false)"/>
 </div>
 </template>

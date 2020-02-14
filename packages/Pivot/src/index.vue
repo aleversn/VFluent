@@ -1,6 +1,6 @@
 <template>
 <div :class="['fv-'+$theme+'-Pivot', tab ? 'tab' : '']">
-    <div class="container">
+    <div class="pivot-container">
         <span class="item" v-for="(item, index) in thisItems" :key="index" :class="{choose: currentItem == item}" :style="{width: `${item.width}px`}" @click="currentItem = item">
             <slot name="container" :item="item" :index="index">
                 <p :style="{color: styles.container.color}">{{item.name}}</p>

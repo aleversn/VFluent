@@ -34,6 +34,8 @@ import CommandBar from '@/CommandBar/index.js'
 import CommandBarFlyout from '@/CommandBarFlyout/index.js'
 import NavigationPanel from '@/NavigationPanel/index.js'
 import Image from '@/Image/index.js'
+import Img from '@/Img/index.js'
+import SearchBox from '@/SearchBox/index.js'
 
 
 let components = [
@@ -64,6 +66,8 @@ let components = [
   CommandBarFlyout,
   NavigationPanel,
   Image,
+  Img,
+  SearchBox,
 
 ]
 
@@ -109,6 +113,8 @@ export default {
   CommandBarFlyout,
   NavigationPanel,
   Image,
+  Img,
+  SearchBox,
 
 }
 

@@ -8,7 +8,7 @@
 
     &.tab
     {
-        .container
+        .pivot-container
         {
             z-index: 1;
             
@@ -39,7 +39,7 @@
         }
     }
 
-    .container
+    .pivot-container
     {
         position: relative;
         width: 100%;

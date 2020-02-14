@@ -1,0 +1,5 @@
+@import '../common-theme/SearchBox.scss';
+.fv-light-SearchBox{
+  @include fv-SearchBox();
+}
+    

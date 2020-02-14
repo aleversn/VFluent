@@ -481,11 +481,12 @@ export default {
 ---
 1. Head
 
-```vue
-默认情况下用户可直接在head中定义content来应用默认样式, 不需要修改此模板, 可缺省
+默认情况下用户可直接在`head`中定义`content`来应用默认样式, 不需要修改此模板, 可缺省
 用户自定义样式时, 包含以下可选属性
-item: 当前项
-index: 当前项索引
+- item: 当前项
+- index: 当前项索引
+
+```vue
 <template v-slot:head="x">
     <p class="default-title">{{x.content}}</p>
 </template>
@@ -493,13 +494,14 @@ index: 当前项索引
 
 2. Column
 
-```vue
-用户根据head中的数量通过column_[数字]的方式来定义每一列的模板
-默认情况下利用<p>标签来表示正文, 通过class="sec"来表示附属文本
+用户根据`head`中的数量通过`column_[数字]`的方式来定义每一列的模板
+默认情况下利用`<p>`标签来表示正文, 通过`class="sec"`来表示附属文本
 用户自定义样式时, 包含以下可选属性
-item: 当前项
-row_index: 当前项行号
-col_index: 当前项列号
+- item: 当前项
+- row_index: 当前项行号
+- col_index: 当前项列号
+
+```vue
 <template v-slot:column_0="x">
     <p>{{x.item.name}}</p>
 </template>
@@ -518,8 +520,9 @@ col_index: 当前项列号
 
 3. Group
 
+源代码, 默认不需要修改, 用户只需要定义`gi`数组中每一项的`name`来应用默认样式, 不需要定义此模板, 可缺省
+
 ```vue
-源代码, 默认不需要修改, 用户只需要定义gi数组中每一项的name来应用默认样式, 不需要定义此模板, 可缺省
 <slot name="group" :item="gi" :index="i">
     <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="chooseGroup(gi)">
         <span class="icon" :class="{choose: isGroupChooseAll(gi)}">
@@ -535,12 +538,15 @@ col_index: 当前项列号
         <p>{{gi.name}}</p>
     </span>
 </slot>
+```
 
 用户自定义样式时, 包含以下可选属性
-item: 当前组数据
-index: 当前组索引
-isMulti: 当前是否开启多选
-isChoose: 当前组是否全选
+- item: 当前组数据
+- index: 当前组索引
+- isMulti: 当前是否开启多选
+- isChoose: 当前组是否全选
+
+```vue
 <template v-slot:group="x">
     <p>{{x.name}}</p>
 </template>
@@ -548,8 +554,9 @@ isChoose: 当前组是否全选
 
 4. Context Menu
 
-```vue
 默认显示列表选中数量
+
+```vue
 <template v-slot:menu>
     <div>
         <span>

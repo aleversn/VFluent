@@ -3,7 +3,7 @@
     
     @include fv-Pivot();
 
-    .container
+    .pivot-container
     {
         z-index: 1;
         
@@ -18,7 +18,7 @@
 
     &.tab
     {
-        .container
+        .pivot-container
         {
             .item
             {

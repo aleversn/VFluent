@@ -1,0 +1,5 @@
+@import '../common-theme/SearchBox.scss';
+.fv-custom-SearchBox{
+  @include fv-SearchBox();
+}
+    

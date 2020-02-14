@@ -214,5 +214,21 @@
       "Dark": "@/dark-theme/Image.scss",
       "Custom": "@/custom-theme/Image.scss"
     }
+  },
+  "Img": {
+    "entry": "@/Img/index.js",
+    "theme": {
+      "Light": "@/light-theme/Img.scss",
+      "Dark": "@/dark-theme/Img.scss",
+      "Custom": "@/custom-theme/Img.scss"
+    }
+  },
+  "SearchBox": {
+    "entry": "@/SearchBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/SearchBox.scss",
+      "Dark": "@/dark-theme/SearchBox.scss",
+      "Custom": "@/custom-theme/SearchBox.scss"
+    }
   }
 }

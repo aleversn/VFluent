@@ -1,6 +1,7 @@
-@import "../common-theme/TextBox.scss";
-.fv-dark-TextBox {
-    @include fv-TextBox();
+@import '../common-theme/SearchBox.scss';
+.fv-dark-SearchBox{
+    
+    @include fv-SearchBox();
 
     background: transparent;
     border: rgba(161, 159, 157, 1) solid thin;
@@ -57,8 +58,8 @@
         color: rgba(243, 242, 241, 1);
     }
     
-    div.text-box-container
-    {
+    div.search-box-container
+    {   
         .input
         {
             color: rgba(243, 242, 241, 1);
@@ -69,4 +70,20 @@
             color: rgba(121, 119, 117, 1);
         }
     }
+
+    .search-result-container
+    {
+        background: rgba(0, 0, 0, 0.8);
+
+        .list-item
+        {
+            color: whitesmoke;
+        }
+
+        .list-title
+        {
+            color: rgba(239, 239, 239, 0.8);
+        }
+    }
 }
+    

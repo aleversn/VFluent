@@ -19,3 +19,40 @@ $t-light-96: rgba(96, 94, 92, 1);
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+@mixin narrow-scroll-bar
+{
+	&::-webkit-scrollbar-track-piece{
+		background-color:transparent;/*滚动条的背景颜色*/
+		-webkit-border-radius:0;/*滚动条的圆角宽度*/
+	}
+	&::-webkit-scrollbar{
+		width:8px;/*滚动条的宽度*/
+		height:8px;/*滚动条的高度*/
+		transition: all 0.5s;
+		-webkit-transition: all 0.5s;
+	}
+	&::-webkit-scrollbar:hover{
+		width:15px;/*滚动条的宽度*/
+		height:8px;/*滚动条的高度*/
+	}
+	&::-webkit-scrollbar-thumb:vertical{/*垂直滚动条的样式*/
+		height:50px;
+		background-color:rgba(153, 153, 153, 0.6);
+		-webkit-border-radius:4px;
+		outline:2px solid transparent;
+		outline-offset:-2px;
+		border:2px solid transparent;
+	}
+	&::-webkit-scrollbar-thumb:hover{/*滚动条块块的hover样式*/
+		height:50px;
+		background-color:rgba(153, 153, 153, 0.8);
+		-webkit-border-radius:4px;
+	}
+	&::-webkit-scrollbar-thumb:horizontal{/*水平滚动条的样式*/
+		width:5px;
+		background-color:#CCCCCC;
+		-webkit-border-radius:6px;
+		border-radius: 50px;
+	}
+}

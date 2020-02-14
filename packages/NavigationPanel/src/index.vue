@@ -10,7 +10,7 @@
             <p v-show="!showBack" class="name title">{{title}}</p>
         </span>
         <span class="search">
-            <fv-text-box icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-text-box>
+            <fv-search-box icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-search-box>
         </span>
         <div class="template">
             

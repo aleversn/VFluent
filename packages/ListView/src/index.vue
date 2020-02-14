@@ -1,6 +1,6 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
-    <div class="container">
+    <div class="list-view-container">
         <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick(item)">
             <slot name="listItem" :item="item" :index="index">
                 <p>{{item.name}}</p>
@@ -105,7 +105,7 @@ export default {
     methods: {
         FRInit () {
             let FR = new this.$RevealEffects("body", {
-                selector: `.fv-${this.$theme}-ListView .container .item.normal`,
+                selector: `.fv-${this.$theme}-ListView .list-view-container .item.normal`,
                 borderGradientSize: 30,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor

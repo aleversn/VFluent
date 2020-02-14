@@ -15,7 +15,7 @@
     <fv-Image src="https://github.com/aleversn/VFluent/blob/master/examples/assert/sample/2.jpg?raw=true" style="width: 500px; height: 300px;"></fv-Image>
 </div>
 
-### ImgBox-Lazy Load
+### Image-Lazy Load
 ---
 <div style="width: 100%; height: 500px;">
     <fv-Image src="https://github.com/aleversn/VFluent/blob/master/examples/assert/sample/3.jpg?raw=true" :onlazy="true" style="width: 500px; height: 300px;"></fv-Image>

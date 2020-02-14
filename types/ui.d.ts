@@ -27,6 +27,8 @@ import { FvCommandBar } from './commandbar'
 import { FvCommandBarFlyout } from './commandbarflyout'
 import { FvNavigationPanel } from './navigationpanel'
 import { FvImage } from './image'
+import { FvImg } from './img'
+import { FvSearchBox } from './searchbox'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -88,4 +90,8 @@ export type Theme = FluentVueTheme
   export class NavigationPanel extends FvNavigationPanel {}
 /** Image component */
   export class Image extends FvImage {}
+/** Img component */
+  export class Img extends FvImg {}
+/** SearchBox component */
+  export class SearchBox extends FvSearchBox {}
 

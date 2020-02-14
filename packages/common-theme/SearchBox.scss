@@ -1,4 +1,4 @@
-@mixin fv-TextBox {
+@mixin fv-SearchBox {
 
     position: relative;
     width: 300px;
@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     -webkit-appearance: none;
-    overflow: hidden;
+    overflow: visible;
 
     &.warn
     {
@@ -27,7 +27,7 @@
     {
         border: $border-std-color solid 2px;
 
-        div.text-box-container
+        div.search-box-container
         {
             margin: 0px;
         }
@@ -61,8 +61,9 @@
     {
         background: rgba(243, 242, 241, 1);
         border-color: transparent;
+        filter: grayscale(1);
 
-        div.text-box-container
+        div.search-box-container
         {
             .input
             {
@@ -84,24 +85,6 @@
         }
     }
 
-    div.fix-block
-    {
-        position: relative;
-        height: 100%;
-        margin: 1px;
-        padding: 0px 10px;
-        background: rgba(243, 242, 241, 1);
-        font-size: 13.5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        p
-        {
-            color: $t-light-96;
-        }
-    }
-
     .icon-block
     {
         position: relative;
@@ -112,10 +95,35 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: text;
+        cursor: default;
+
+        &:hover
+        {
+            color: $border-std-color;
+        }
+
+        &:active
+        {
+            background: $border-std-color;
+            color: whitesmoke;
+        }
     }
-    
-    div.text-box-container
+
+    div.search-box-placeholder
+    {
+        position: relative;
+        width: auto;
+        max-width: 50%;
+        height: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    div.search-box-container
     {
         position: relative;
         width: 100%;
@@ -141,5 +149,66 @@
             border: none;
             outline: none;
         }
+    }
+
+    .search-result-container
+    {
+        @include narrow-scroll-bar;
+        
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        width: 100%;
+        height: auto;
+        max-height: 350px;
+        padding: 3px 0px;
+        background: rgba(239, 239, 239, 0.8);
+        border: rgba(0, 0, 0, 0.1) solid thin;
+        border-radius: 0px 0px 5px 5px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        box-shadow: $ms-depth-shadow-16;
+        overflow-x: hidden;
+        overflow-y: auto;
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        transition: all 0.3s;
+        z-index: 2;
+
+        .list-item
+        {
+            position: relative;
+            width: 100%;
+            height: 45px;
+            padding: 0px 12px;
+            color: black;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .list-title
+        {
+            @include nowrap;
+
+            font-size: 13.8px;
+            font-weight: 600;
+            color: rgba(50, 49, 48, 0.8);
+            user-select: none;
+        }
+    }
+
+    .zoom-in-top-enter-active,.zoom-in-top-leave-active {
+        opacity: 1;
+        transform: scaleY(1);
+        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        transform-origin: center top;
+    }
+    .zoom-in-top-enter,.zoom-in-top-leave-active {
+        opacity: 0;
+        transform: scaleY(0);
     }
 }
