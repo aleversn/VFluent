@@ -4,6 +4,7 @@
       <div
         ref="label"
         class="fv-TreeView__label"
+        :class="revealEffectClass"
         @click="!checkable && click($event)"
         @mousedown="clickItem(item)"
         :style="style.label"
@@ -51,9 +52,9 @@
 import "office-ui-fabric-core/dist/css/fabric.min.css";
 import { FluentRevealEffect } from "fluent-reveal-effect";
 import one from "onecolor";
-import id from '../mixins/id.js'
-import TreeContent from './content.vue'
-import checkbox from './checkbox.vue'
+import id from "../mixins/id.js";
+import TreeContent from "./content.vue";
+import checkbox from "./checkbox.vue";
 
 export default {
   name: "FvTreeViewItem",
@@ -61,7 +62,7 @@ export default {
     TreeContent,
     checkbox
   },
-  mixins:[id],
+  mixins: [id],
   props: {
     item: {
       default: () => {
@@ -88,13 +89,13 @@ export default {
       type: Boolean,
       default: false
     },
-    draggable:{
-      type:Boolean
+    draggable: {
+      type: Boolean
     }
   },
-  model:{
-    prop:'item',
-    event:'update:item'
+  model: {
+    prop: "item",
+    event: "update:item"
   },
   data() {
     return {
@@ -134,45 +135,45 @@ export default {
       },
       style: {
         label: {
-          paddingLeft: 10+this.deepth * this.padding + "px"
+          paddingLeft: 10 + this.deepth * this.padding + "px"
         }
       }
     };
   },
-  computed:{
-    data:{
-      set:function(val){
-        this.$emit('update:item',val)
+  computed: {
+    data: {
+      set: function(val) {
+        this.$emit("update:item", val);
       },
-      get:function(){
-        return this.item
+      get: function() {
+        return this.item;
       }
     }
   },
   watch: {
     "item.selected"(val) {
       this.item.checkboxStatus = this.getStatus();
-      this.setLabelBackgroundColor(val)
+      this.setLabelBackgroundColor(val);
     },
     viewStyle: {
       handler: function() {
-        this.setLabelBackgroundColor(this.item.selected)
-        this.initFR()
+        this.setLabelBackgroundColor(this.item.selected);
+        this.initFR();
       },
       deepth: true
     },
-    padding(val){
-      this.$set(this.style.label,'paddingLeft',10+this.deepth*val+'px')
+    padding(val) {
+      this.$set(this.style.label, "paddingLeft", 10 + this.deepth * val + "px");
     }
   },
   beforeCreate() {
     let parent = this.$parent;
-    while (parent){
-      if (parent.$options.name && parent.$options.name==="FvTreeViewItem"){
-        this.parent=parent;
+    while (parent) {
+      if (parent.$options.name && parent.$options.name === "FvTreeViewItem") {
+        this.parent = parent;
         return;
       }
-      parent=parent.$parent
+      parent = parent.$parent;
     }
   },
   mounted() {
@@ -191,7 +192,9 @@ export default {
   },
   methods: {
     initFR() {
-      let className = this.revealEffectClass.length?"."+this.revealEffectClass[0]:"";
+      let className = this.revealEffectClass.length
+        ? "." + this.revealEffectClass[0]
+        : "";
       FluentRevealEffect.applyEffect(
         ".fv-TreeView__label-border"+className,
         {
@@ -202,9 +205,30 @@ export default {
           )
             .alpha(0.6)
             .cssa(),
-          gradientSize: 120
+          gradientSize: 120,
         }
       );
+      // FluentRevealEffect.applyEffect("body", {
+      //   lightColor: this.hoverColor(
+      //     this.viewStyle.backgroundColor || "#000",
+      //     0.3,
+      //     1
+      //   )
+      //     .alpha(0.6)
+      //     .cssa(),
+      //   gradientSize: 120,
+      //   isContainer: true,
+      //   children: {
+      //     borderSelector: ".fv-TreeView__label-border" + className,
+      //     elementSelector: ".fv-TreeView__label" + className,
+      //     lightColor: this.hoverColor(
+      //       this.viewStyle.backgroundColor || "#000",
+      //       0.3,
+      //       1
+      //     ),
+      //     gradientSize: 150
+      //   }
+      // });
     },
     initStyle() {
       this.$set(
@@ -313,19 +337,19 @@ export default {
         );
       }
     },
-    clickItem(item){
-      this.$emit('click',item)
+    clickItem(item) {
+      this.$emit("click", item);
     },
-    updateParent(){
+    updateParent() {
       let parent = this.$parent;
-      while (parent){
-        if (parent.$options.name && parent.$options.name==="FvTreeViewItem"){
-          this.parent=parent;
+      while (parent) {
+        if (parent.$options.name && parent.$options.name === "FvTreeViewItem") {
+          this.parent = parent;
           return;
         }
-        parent=parent.$parent
+        parent = parent.$parent;
       }
-    },
+    }
   },
   beforeDestroy() {
     this.DestroyEvent();
