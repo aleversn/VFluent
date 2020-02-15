@@ -1,7 +1,7 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
-    <div class="list-view-container">
-        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick(item)">
+    <div class="list-view-container" ref="container">
+        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick($event, item)">
             <slot name="listItem" :item="item" :index="index">
                 <p>{{item.name}}</p>
             </slot>
@@ -130,7 +130,7 @@ export default {
             }
             this.thisValue = result;
         },
-        onClick(cur) {
+        onClick($event, cur) {
             if (cur.disabled) return 0;
             if (cur.type === "header" || cur.type == "divider") return 0;
             if (this.multiple) {
@@ -151,12 +151,27 @@ export default {
                 this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
             }
 
+            this.scrollFormat($event);
+
             this.$emit("chooseItem", {
                 item: cur,
-                index: this.thisValue.indexOf(cur)
+                index: this.thisValue.indexOf(cur),
+                event: $event
             });
 
             this.$emit("choosen-items", this.currentChoosen);
+        },
+        scrollFormat (event) {
+            let targetPos = event.target.getBoundingClientRect();
+            let elPos = this.$refs.container.getBoundingClientRect();
+            if(targetPos.top < elPos.top) {
+                let dis = elPos.top - targetPos.top;
+                this.$refs.container.scrollTop -= dis;
+            }
+            if(targetPos.bottom > elPos.bottom) {
+                let dis = elPos.bottom - targetPos.bottom;
+                this.$refs.container.scrollTop -= dis;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@
     justify-content: space-between;
     align-items: center;
     -webkit-appearance: none;
+    transition: all 0.3s;
     overflow: visible;
 
     &.warn
@@ -132,6 +133,7 @@
         padding: 0px 8px;
         flex: 1;
         box-sizing: border-box;
+        transition: all 0.3s;
         display: flex;
 
         &.internal

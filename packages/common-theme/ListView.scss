@@ -35,9 +35,16 @@
             *{
                 @include nowrap;
 
+                position: relative;
+                height: 100%;
+                margin: 0px;
                 font-size: 13.8px;
                 font-weight: normal;
                 color: rgba(50, 49, 48, 1);
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
                 user-select: none;
             }
 

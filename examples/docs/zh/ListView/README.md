@@ -75,8 +75,11 @@ export default {
 ---
 1. ListItem
 
+默认以value中每一项的属性name作为默认显示, 包含以下可选属性
+- item: 当前项
+- index: 当前项索引
+
 ```vue
-默认以value中每一项的属性name作为默认显示
 <template v-slot:listItem="x">
     <p></p>
 </template>

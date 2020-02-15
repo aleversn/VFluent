@@ -1,21 +1,34 @@
 <template>
-<div :class="['fv-'+$theme+'-NavigationPanel', thisExpand ? '' : 'compact', expandMode == 'flyout' ? 'flyout' : '']" :style="{width: `${panelWidth}px`}">
-    <div class="panel-container" :style="{width: `${navWidth}px`}">
+<div :class="['fv-'+$theme+'-NavigationPanel', {compact: !thisExpand}, {flyout: isFlyout}, {mobile: isMobile}]" :style="{width: `${panelWidth}px`}">
+    <div class="panel-container mobile">
         <span v-show="showBack" class="default-item">
+            <i class="ms-Icon ms-Icon--Back icon"></i>
+        </span>
+        <span class="default-item" @click="expandClick">
+            <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
+        </span>
+    </div>
+    <div class="panel-container" :style="{width: navWidth}">
+        <span v-show="showBack" class="default-item control">
             <i class="ms-Icon ms-Icon--Back icon"></i>
             <p class="name title">{{title}}</p>
         </span>
-        <span class="default-item" @click="thisExpand = !thisExpand">
+        <span class="default-item control" @click="expandClick">
             <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
             <p v-show="!showBack" class="name title">{{title}}</p>
         </span>
-        <span class="search">
-            <fv-search-box icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-search-box>
+        <span v-show="showSearch && !thisExpand" class="default-item" @click="expandClick">
+            <i class="ms-Icon ms-Icon--Search icon"></i>
+        </span>
+        <span v-show="showSearch && thisExpand" class="search">
+            <slot name="searchBlock">
+                <fv-search-box icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-search-box>
+            </slot>
         </span>
         <div class="template">
-            
+            <slot name="panel"></slot>
         </div>
-        <span class="default-item">
+        <span class="default-item" @click="$emit('setting-click', { event: $event })">
             <i class="ms-Icon ms-Icon--Settings icon"></i>
             <p class="name">Settings</p>
         </span>
@@ -31,13 +44,25 @@ export default {
             default: "NavigationPanel"
         },
         expand: {
-            default: false
+            default: true
         },
         expandMode: {
             default: "relative"
         },
-        expandDisplay: {
+        expandWidth: {
             default: 350
+        },
+        expandDisplay: {
+            default: 1024
+        },
+        flyoutDisplay: {
+            default: 0
+        },
+        fullSizeDisplay: {
+            default: 800
+        },
+        mobileDisplay: {
+            default: 0
         },
         showBack: {
             default: true
@@ -58,7 +83,12 @@ export default {
     },
     data () {
         return {
-            thisExpand: this.expand
+            thisExpand: this.expand,
+            thisExpandBackup: this.expand,
+            screenWidth: window.innerWidth,
+            timer: {
+                widthTimer: {}
+            }
         }
     },
     watch: {
@@ -67,17 +97,38 @@ export default {
         },
         thisExpand (val) {
             this.$emit("update:expand", val);
+            this.$emit("expand-change", val);
+        },
+        screenWidth (val) {
+            if(this.expandDisplay < this.screenWidth) {
+                if(!this.isFlyout)
+                    this.thisExpand = this.thisExpandBackup;
+                else
+                    this.thisExpand = false;
+            }
+            else
+                this.thisExpand = false;
         }
     },
     computed: {
         panelWidth () {
             if(this.expandMode == "flyout") return 40;
-            if(this.thisExpand) return this.expandDisplay;
+            if(this.thisExpand) return this.expandWidth;
             return 40;
         },
         navWidth () {
-            if(this.thisExpand) return this.expandDisplay;
-            return 40;
+            let size = this.screenWidth <= this.fullSizeDisplay ? "100%" : `${this.expandWidth}px`;
+            if(this.thisExpand) return size;
+            return `${40}px`;
+        },
+        isFlyout () {
+            if(this.expandMode == "flyout") return true;
+            if(this.flyoutDisplay > this.screenWidth)   return true;
+            return false;
+        },
+        isMobile () {
+            if(this.mobileDisplay > this.screenWidth)   return true;
+            return false;
         },
         borderLightColor () {
             if(this.$theme == 'light') {
@@ -105,6 +156,8 @@ export default {
     },
     mounted () {
         this.FRInit();
+        this.screenWidthInit();
+        this.outSideClickInit();
     },
     methods: {
         FRInit () {
@@ -114,7 +167,36 @@ export default {
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor
             });
+        },
+        screenWidthInit () {
+            this.timer.widthTimer = setInterval(() => {
+                this.screenWidth = window.innerWidth;
+            }, 30);
+        },
+        outSideClickInit() {
+            window.addEventListener("click", event => {
+                let x = event.target;
+                let _self = false;
+                while (x.tagName.toLowerCase() != "body") {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) {
+                    if(this.isFlyout || this.isMobile)
+                        this.thisExpand = false;
+                }
+            });
+        },
+        expandClick () {
+            this.thisExpandBackup = !this.thisExpand;
+            this.thisExpand = !this.thisExpand;
         }
+    },
+    beforeDestroy () {
+        clearInterval(this.timer.widthTimer);
     }
 }
 </script>

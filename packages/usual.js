@@ -265,6 +265,7 @@ export class RevealEffects
         this.options = Object.assign(this.options, options);
 
         this.childrenRefresh(selector, this.options);
+        RevealEffects.clearUselessElements();
         this.applyCommonEffects(selector, options);
 
         this.timer = setInterval(() => {
@@ -341,6 +342,13 @@ export class RevealEffects
         parent.el.addEventListener("mouseleave", (e) => {
             RevealEffects.clearBorder(c);
         });
+    }
+
+    static clearUselessElements() {
+        for(let i = window.FvRevealElements.length - 1; i >= 0; i--) {
+            if(!document.body.contains(window.FvRevealElements[i].el))
+                window.FvRevealElements.splice(i, 1);
+        }
     }
 
     static clearBackground(element) {
