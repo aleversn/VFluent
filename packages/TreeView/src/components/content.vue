@@ -46,7 +46,7 @@ export default {
     dragOptions() {
       return {
         animation: 100,
-        group: "description",
+        group: "TreeView",
         disabled: !this.draggable,
         ghostClass: "ghost"
       };

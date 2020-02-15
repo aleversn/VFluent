@@ -115,9 +115,21 @@ export default {
             .color
         };
     },
+    mutexSelected(item,items){
+      for (let index in items){
+        let el = items[index];
+        if (el!=item && el.selected==true){
+          el.selected=false;
+        }
+        if (el.children){
+          this.mutexSelected(item,el.children)
+        }
+      }
+    },
     click(item) {
+      if (!this.checkable) this.mutexSelected(item,this.items);
       this.$emit("click", item);
-    }
+    },
   }
 };
 </script>
