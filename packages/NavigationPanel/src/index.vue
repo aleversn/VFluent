@@ -1,14 +1,14 @@
 <template>
 <div :class="['fv-'+$theme+'-NavigationPanel', {compact: !thisExpand}, {flyout: isFlyout}, {mobile: isMobile}]" :style="{width: `${panelWidth}px`}">
     <div class="panel-container mobile">
-        <span v-show="showBack" class="default-item">
+        <span v-show="showBack" class="default-item" @click="$emit('back', $event)">
             <i class="ms-Icon ms-Icon--Back icon"></i>
         </span>
         <span class="default-item" @click="expandClick">
             <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
         </span>
     </div>
-    <div class="panel-container" :style="{width: navWidth}">
+    <div class="panel-container" :style="{width: navWidth, background: background}">
         <span v-show="showBack" class="default-item control">
             <i class="ms-Icon ms-Icon--Back icon"></i>
             <p class="name title">{{title}}</p>
@@ -22,13 +22,13 @@
         </span>
         <span v-show="showSearch && thisExpand" class="search">
             <slot name="searchBlock">
-                <fv-search-box icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-search-box>
+                <fv-search-box icon="Search" placeholder="Search" class="nav-search" :theme="theme" style="width: 100%;"></fv-search-box>
             </slot>
         </span>
         <div class="template">
             <slot name="panel"></slot>
         </div>
-        <span class="default-item" @click="$emit('setting-click', { event: $event })">
+        <span v-show="showSetting" class="default-item" @click="$emit('setting-click', { event: $event })">
             <i class="ms-Icon ms-Icon--Settings icon"></i>
             <p class="name">Settings</p>
         </span>
@@ -75,6 +75,9 @@ export default {
         },
         showSetting: {
             default: true
+        },
+        background: {
+            default: ""
         },
         theme: {
             type: String,

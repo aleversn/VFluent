@@ -172,6 +172,15 @@ export default {
                 let dis = elPos.bottom - targetPos.bottom;
                 this.$refs.container.scrollTop -= dis;
             }
+        },
+        inspectItemAPI (cur) {
+            let c = this.thisValue.find(it => {
+                return it.name === cur.name && it.type === cur.type && it.key === cur.key;
+            });
+            let index = this.thisValue.indexOf(c);
+            if(index < 0)   return 0;
+            let items = this.$refs.container.querySelectorAll(".item");
+            this.onClick({ target: items[index] }, cur);
         }
     }
 }

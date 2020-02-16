@@ -1,11 +1,11 @@
 <template>
 <div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
-    <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullsizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :theme="theme" @expand-change="thisExpand = $event" @setting-click="settingClick">
+    <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullsizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
         <template v-slot:searchBlock>
-            <fv-search-box :options="options" icon="Search" placeholder="Search" class="nav-search" style="width: 100%;"></fv-search-box>
+            <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" style="width: 100%;" @choose-result="onChooseSearch"></fv-search-box>
         </template>
         <template v-slot:panel>
-            <fv-list-view v-model="options" class="navigation-list" @chooseItem="currentItem = $event">
+            <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" choosenBackground="transparent" @chooseItem="itemClick">
                 <template v-slot:listItem="x">
                     <i v-show="x.item.icon !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.item.icon}`]"></i>
                     <p class="name">{{x.item.name}}</p>
@@ -26,11 +26,16 @@ export default {
         verticalSlider
     },
     props: {
+        value: {
+            default: () => {
+                return {}
+            }
+        },
         options: {
             default: () => []
         },
         title: {
-            default: "NavigationPanel"
+            default: "NavigationView"
         },
         expand: {
             default: true
@@ -65,6 +70,9 @@ export default {
         showSetting: {
             default: true
         },
+        background: {
+            default: ""
+        },
         theme: {
             type: String,
             default: "system"
@@ -72,6 +80,7 @@ export default {
     },
     data () {
         return {
+            thisValue: {},
             currentItem: {},
             currentTop: 0,
             currentHeight: 0,
@@ -82,7 +91,17 @@ export default {
         }
     },
     watch: {
-        
+        value (val, from) {
+            this.valueInit();
+        },
+        thisValue (val, from) {
+            if(!(val.name === from.name && val.type === from.type && val.key === from.key)) {
+                this.$nextTick(() => {
+                    this.onChooseSearch(val);
+                });
+                this.$emit("input", val);
+            }
+        }
     },
     computed: {
         $theme () {
@@ -92,9 +111,16 @@ export default {
         }
     },
     mounted () {
+        this.valueInit();
         this.sliderRefreshInit();
     },
     methods: {
+        valueInit () {
+            if(this.options.find(item => item.name === this.value.name && item.type === this.value.type && item.key === this.value.key) === undefined)
+                this.thisValue = this.options.find(item => item.type !== "header" && item.type !== "divider");
+            else
+                this.thisValue = this.value;
+        },
         sliderRefreshInit () {
             this.timer.slider = setInterval(() => {
                 if(this.currentItem.event !== undefined) {
@@ -113,9 +139,21 @@ export default {
                     this.currentHeight = 0;
             }, 30);
         },
+        itemClick (event) {
+            this.currentItem = event;
+            this.thisValue = event.item;
+        },
         settingClick (item) {
             this.currentItem = item;
             this.$emit("setting-click", item);
+        },
+        expandChange (status) {
+            this.thisExpand = status;
+            this.$emit("update:expand", status);
+            this.$emit("expand-change", status);
+        },
+        onChooseSearch (item) {
+            this.$refs.listView.inspectItemAPI(item);
         }
     },
     beforeDestroy () {

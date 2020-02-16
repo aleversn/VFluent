@@ -1,5 +1,26 @@
 @import '../common-theme/NavigationPanel.scss';
-.fv-dark-NavigationPanel{
-  @include fv-NavigationPanel();
+.fv-dark-NavigationPanel {
+
+    @include fv-NavigationPanel();
+
+    .panel-container
+    {
+        background: rgba(0, 0, 0, 0.8);
+
+        span.default-item
+        {
+            i.icon {
+                color: whitesmoke;
+            }
+
+            p.name {
+                color: whitesmoke;
+            }
+
+            &:hover
+            {
+                background: $row-dark-hover-glass;
+            }
+        }
+    }
 }
-    

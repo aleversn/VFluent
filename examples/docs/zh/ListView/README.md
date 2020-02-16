@@ -89,6 +89,8 @@ export default {
 ---
 1. items
 
+其中`key`字段建议开发者在有重复名称和类型字段时声明用来区别项目
+
 ```javascript
 items = [{key: '', name: '', type: '', disabled: ''}]
 

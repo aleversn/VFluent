@@ -1,5 +1,25 @@
 @import '../common-theme/NavigationView.scss';
 .fv-dark-NavigationView{
-  @include fv-NavigationView();
+
+    @include fv-NavigationView();
+
+    .navigation-list
+    {
+        .item
+        {
+            &:hover
+            {
+                background: $row-dark-hover-glass;
+            }
+        }
+
+        i.icon {
+            color: whitesmoke;
+        }
+
+        p.name {
+            color: whitesmoke;
+        }
+    }
 }
     

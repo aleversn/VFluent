@@ -274,6 +274,7 @@ Customize background
 |         lazyload         |     array      |                      搜索结果框滚动加载事件, 滑动到最底部时触发, 返回当前搜索筛选数据                      |
 | update:resultPlaceholder |     array      | 更新搜索占位数组, 在清除搜索框时触发清除搜索占位数组, 再按下退格键时若文本为空, 清除最后一个搜索占位数据项 |
 |       clear-click        |     array      |                                            清除搜索框文本时触发                                            |
+|      choose-result       |     object     |                                       搜索结果框选中项目后返回当前项                                       |
 
 ### Slot
 ---
@@ -298,4 +299,29 @@ Customize background
     <div></div>
 </template>
 ```
-  
+
+### Data
+---
+
+1. options
+
+数据格式参考`ListView`中`items`的形式, 其中`key`字段建议开发者在有重复名称和类型字段时声明用来区别项目
+
+```javascript
+options = [{key: '', name: '', type: '', disabled: ''}]
+
+//e.g.//
+
+options: [
+    { key: "fruitsHeader", name: "Fruits", type: "header" },
+    { key: "apple", name: "Apple" },
+    { key: "banana", name: "Banana" },
+    { key: "orange", name: "Orange", disabled: true },
+    { key: "grape", name: "Grape" },
+    { key: "divider_1", name: "", type: "divider" },
+    { key: "vegetablesHeader", name: "Vegetables", type: "header" },
+    { key: "broccoli", name: "Broccoli" },
+    { key: "carrot", name: "Carrot" },
+    { key: "lettuce", name: "Lettuce" }
+]
+```

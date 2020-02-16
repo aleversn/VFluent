@@ -255,8 +255,9 @@ export default {
             }
             this.filterOptions = result;
         },
-        chooseResult (item) {
-            this.thisValue = item.item.name;
+        chooseResult (event) {
+            this.thisValue = event.item.name;
+            this.$emit("choose-result", event.item);
             this.show.searchResult = false;
         },
         onBackspace () {

@@ -12,12 +12,24 @@
     <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
+```vue
+<div style="position: relative; width: 100%; height: 800px; display: flex;">
+    <fv-NavigationPanel></fv-NavigationPanel>
+</div>
+```
+
 ### NavigationPanel-Flyout
 ---
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationPanel expandMode="flyout"></fv-NavigationPanel>
     <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
+
+```vue
+<div style="position: relative; width: 100%; height: 800px; display: flex;">
+    <fv-NavigationPanel expandMode="flyout"></fv-NavigationPanel>
+</div>
+```
 
 ### NavigationPanel-Mobile Display
 ---
@@ -26,13 +38,78 @@
     <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
+```vue
+<div style="position: relative; width: 100%; height: 800px; display: flex;">
+    <fv-NavigationPanel mobileDisplay="100000000"></fv-NavigationPanel>
+</div>
+```
+
+### NavigationPanel-Dark Theme
+---
+
+1. Standard
+
+<div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
+    <fv-NavigationPanel theme="dark"></fv-NavigationPanel>
+    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+</div>
+
+2. Flyout
+
+<div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
+    <fv-NavigationPanel expandMode="flyout" theme="dark"></fv-NavigationPanel>
+    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+</div>
+
+3. Mobile
+
+<div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
+    <fv-NavigationPanel mobileDisplay="100000000" theme="dark"></fv-NavigationPanel>
+    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+</div>
+
 ### Propoties
 ---
-| 属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |     说明(statement)     |
-|:-----------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
+|   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
+|:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
+|      title      |              [string]              |       No       | NavigationPanel |                              NavigationPanel标题                               |
+|     expand      |             [boolean]              |       No       |      true       |                     初始是否展开, 可通过sync方法来同步状态                     |
+|   expandMode    |       ['relative','flyout']        |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
+|   expandWidth   |              [number]              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
+|  expandDisplay  |              [number]              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
+|  flyoutDisplay  |              [number]              |       No       |        0        | 浏览器宽度小于多少时开启浮动模式, 若`expandMode`设为`flyout`, 则始终为浮动模式 |
+| fullsizeDisplay |              [number]              |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
+|  mobileDisplay  |              [number]              |       No       |        0        |                       浏览器宽度小于多少时开启移动端模式                       |
+|    showBack     |             [boolean]              |       No       |      true       |                                是否显示后退按钮                                |
+|   showSearch    |             [boolean]              |       No       |      true       |                                 是否显示搜索框                                 |
+|  settingTitle   |              [string]              |       No       |    Settings     |                                 设置选项的标题                                 |
+|   showSetting   |             [boolean]              |       No       |      true       |                                是否显示设置选项                                |
+|   background    |          [string(color)]           |       No       |       N/A       |                             NavigationPanel背景色                              |
+|      theme      | ['light','dark','custom','system'] |       No       |     system      |                                                                                |
 
 ### Events
 ---
-| 事件名(Name) | 参数类型(args) | 说明(statement) |
-|:------------:|:--------------:|:---------------:|
-  
+| 事件名(Name)  | 参数类型(args) |           说明(statement)            |
+|:-------------:|:--------------:|:------------------------------------:|
+| setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
+| update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
+| expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
+|     back      |   MouseEvent   |       返回选项被点击后触发事件       |
+
+### Slot
+---
+1. SearchBlock
+
+自定义搜索框区域内容, 默认的搜索框无实际作用
+
+```javascript
+<template v-slot:searchBlock></template>
+```
+
+2. Panel
+
+自定义`NavigationPanel`中的内容
+
+```javascript
+<template v-slot:panel></template>
+```

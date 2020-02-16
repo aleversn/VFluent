@@ -309,7 +309,10 @@ export class RevealEffects
                     let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
                     let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
                     
-                    RevealHelper.drawEffectBorder(c, x, y, c.backgroundLightColor, c.borderLightColor, c.borderGradientSize);
+                    //set the thresold to improve performance -------------------------
+                    if(Math.abs(x) > 600 || Math.abs(y) > 1000) {}
+                    else
+                        RevealHelper.drawEffectBorder(c, x, y, c.backgroundLightColor, c.borderLightColor, c.borderGradientSize);
 
                     if(RevealHelper.isInsideElement(c, e.x, e.y)) {
                         if(c.wave == 0)
