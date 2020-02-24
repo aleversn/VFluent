@@ -36,6 +36,9 @@ export default {
             default: '',
             type: String
         },
+        borderRadius: {
+            default: ''
+        },
         fontWeight: {
             default: 'normal',
             type: String
@@ -53,10 +56,12 @@ export default {
         return {
             styles: {
                 revealBorder: {
-                    padding: '2px'
+                    padding: '2px',
+                    borderRadius: ''
                 },
                 buttonContainer: {
-                    background: ''
+                    background: '',
+                    borderRadius: ''
                 },
                 contentBlock: {
                     color: '',
@@ -76,6 +81,9 @@ export default {
             this.stylesInit();
         },
         background (val) {
+            this.stylesInit();
+        },
+        borderRadius (val) {
             this.stylesInit();
         },
         fontWeight (val) {
@@ -129,8 +137,10 @@ export default {
         },
         stylesInit () {
             this.styles.revealBorder.padding = `${this.borderWidth}px`;
+            this.styles.revealBorder.borderRadius = `${this.borderRadius}px`;
             this.styles.contentBlock.color = this.foreground;
             this.styles.buttonContainer.background = this.background;
+            this.styles.buttonContainer.borderRadius = `${this.borderRadius}px`;
             this.styles.contentBlock.fontWeight = this.fontWeight;
         },
         onClick (event) {

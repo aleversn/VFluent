@@ -19,15 +19,16 @@
 
 ### Propoties
 ---
-| 属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |     说明(statement)     |
-|:-----------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
-|    icon     |              [string]              |       No       |       N/A       |  Icon with Fabric-Icon  |
-| foreground  |              [string]              |       No       |       N/A       |    Button foreground    |
-| background  |              [string]              |       No       |       N/A       |    Button background    |
-| fontWeight  |              [string]              |       No       |     normal      | Button text font weight |
-|  disabled   |             [boolean]              |       No       |      false      |     Disabled button     |
-| borderWidth |              [number]              |       No       |        2        |   Button border width   |
-|    theme    | ['light','dark','custom','system'] |       No       |     system      |      Custom theme       |
+|  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |     说明(statement)     |
+|:------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
+|     icon     |              [string]              |       No       |       N/A       |  Icon with Fabric-Icon  |
+|  foreground  |              [string]              |       No       |       N/A       |    Button foreground    |
+|  background  |              [string]              |       No       |       N/A       |    Button background    |
+| borderRadius |              [number]              |       No       |       N/A       |   Button borderRadius   |
+|  fontWeight  |              [string]              |       No       |     normal      | Button text font weight |
+|   disabled   |             [boolean]              |       No       |      false      |     Disabled button     |
+| borderWidth  |              [number]              |       No       |        2        |   Button border width   |
+|    theme     | ['light','dark','custom','system'] |       No       |     system      |      Custom theme       |
 
 ### Events
 ---
