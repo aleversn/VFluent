@@ -24,7 +24,6 @@ import { FvListView } from './listview'
 import { FvNavigationView } from './navigationview'
 import { FvTreeView } from './treeview'
 import { FvCommandBar } from './commandbar'
-import { FvCommandBarFlyout } from './commandbarflyout'
 import { FvNavigationPanel } from './navigationpanel'
 import { FvImage } from './image'
 import { FvImg } from './img'
@@ -84,8 +83,6 @@ export type Theme = FluentVueTheme
   export class TreeView extends FvTreeView {}
 /** CommandBar component */
   export class CommandBar extends FvCommandBar {}
-/** CommandBarFlyout component */
-  export class CommandBarFlyout extends FvCommandBarFlyout {}
 /** NavigationPanel component */
   export class NavigationPanel extends FvNavigationPanel {}
 /** Image component */

@@ -191,14 +191,6 @@
       "Custom": "@/custom-theme/CommandBar.scss"
     }
   },
-  "CommandBarFlyout": {
-    "entry": "@/CommandBarFlyout/index.js",
-    "theme": {
-      "Light": "@/light-theme/CommandBarFlyout.scss",
-      "Dark": "@/dark-theme/CommandBarFlyout.scss",
-      "Custom": "@/custom-theme/CommandBarFlyout.scss"
-    }
-  },
   "NavigationPanel": {
     "entry": "@/NavigationPanel/index.js",
     "theme": {

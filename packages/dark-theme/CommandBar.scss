@@ -1,5 +1,47 @@
 @import '../common-theme/CommandBar.scss';
-.fv-dark-CommandBar{
-  @include fv-CommandBar();
+.fv-dark-CommandBar {
+
+    @include fv-CommandBar();
+
+    background: rgba(0, 0, 0, 0.6);
+
+    .left-command-bar-container
+    {
+        .command-bar-item
+        {
+
+            i.icon {
+                color: whitesmoke;
+            }
+
+            p.name {
+                color: whitesmoke;
+            }
+
+            &:hover
+            {
+                background: $row-dark-hover-glass;
+            }
+
+            &.hr
+            {
+                border-right: rgba(200, 200, 200, 0.3) solid thin;
+            }
+        }
+    }
+
+    .command-bar-list-view-container
+    {
+        background: rgba(0, 0, 0, 0.8);
+        border: rgba(120, 120, 120, 0.1) solid thin;
+
+        i.icon {
+            color: whitesmoke;
+        }
+
+        p.name {
+            color: whitesmoke;
+        }
+    }
 }
     
