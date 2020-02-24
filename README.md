@@ -1,6 +1,12 @@
-<div style="width: 100%; text-align: center;">
-    <img src="https://raw.githubusercontent.com/aleversn/VFluent/master/examples/assert/logo/VFluent.png" style="width: 120px; height: auto;"/>
+<p align="center">
+    <img src="./examples/assert/logo/VFluent.png"/>
 </div>
+
+<p align="center">
+    <a href="LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+    </a>
+</p>
 
 ## 基于Vue Cli 的Fluent UI DESIGN
 
