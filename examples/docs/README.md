@@ -1,7 +1,7 @@
 ---
 title: UI
 home: true
-heroImage: /logo/VFluent.svg
+heroImage: https://raw.githubusercontent.com/aleversn/VFluent/master/examples/assert/logo/VFluent.png
 actionText: 快速上手
 actionLink: /zh/
 features:
