@@ -1,18 +1,18 @@
 <template>
-  <fv-NavigationView
-    class="sidebar"
-    v-model="value"
-    :title="''"
-    :options="currentData"
-    :expand.sync="expand"
-    expandWidth="319"
-    fullSizeDisplay="500"
-    :showSetting="false"
-    :showBack="false"
-    :showExpand="false"
-  >
-  </fv-NavigationView>
-  
+  <ClientOnly>
+    <fv-NavigationView
+      class="sidebar"
+      v-model="value"
+      :title="''"
+      :options="currentData"
+      :expand.sync="expand"
+      expandWidth="319"
+      fullSizeDisplay="500"
+      :showSetting="false"
+      :showBack="false"
+      :showExpand="false"
+    ></fv-NavigationView>
+  </ClientOnly>
 </template>
 
 <script>
@@ -29,8 +29,8 @@ export default {
     };
   },
   watch: {
-    value (val, from) {
-      if(val !== from) {
+    value(val, from) {
+      if (val !== from) {
         this.go(val.path);
       }
     }
@@ -44,7 +44,7 @@ export default {
           return 1;
         }
       });
-      for(let i = 0; i < data.length; i++) {
+      for (let i = 0; i < data.length; i++) {
         data[i].name = data[i].title;
         data[i].icon = "WebComponents";
       }
