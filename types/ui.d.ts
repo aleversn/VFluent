@@ -28,6 +28,7 @@ import { FvNavigationPanel } from './navigationpanel'
 import { FvImage } from './image'
 import { FvImg } from './img'
 import { FvSearchBox } from './searchbox'
+import { FvCalendarDatePicker } from './calendardatepicker'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -91,4 +92,6 @@ export type Theme = FluentVueTheme
   export class Img extends FvImg {}
 /** SearchBox component */
   export class SearchBox extends FvSearchBox {}
+/** CalendarDatePicker component */
+  export class CalendarDatePicker extends FvCalendarDatePicker {}
 

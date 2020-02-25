@@ -1,0 +1,5 @@
+@import '../common-theme/CalendarDatePicker.scss';
+.fv-dark-CalendarDatePicker{
+  @include fv-CalendarDatePicker();
+}
+    

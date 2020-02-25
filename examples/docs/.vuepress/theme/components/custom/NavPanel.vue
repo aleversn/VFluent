@@ -1,36 +1,20 @@
 <template>
-  <fv-NavigationPanel
+  <fv-NavigationView
     class="sidebar"
+    v-model="value"
     :title="''"
+    :options="currentData"
     :expand.sync="expand"
-    style="position:fixed;"
+    expandWidth="319"
+    fullSizeDisplay="500"
+    style="position: fixed;"
     @back="go('/')"
     :showSetting="false"
     :showBack="false"
     :showExpand="false"
   >
-    <template v-slot:searchBlock>
-      <fv-search-box
-        icon="Search"
-        v-model="search"
-        placeholder="Search Component"
-        class="nav-search"
-        style="width: 100%;"
-      ></fv-search-box>
-    </template>
-    <template v-slot:panel>
-      <span
-        v-for="item in data"
-        :key="item.title"
-        class="default-item control"
-        @click="go(item.path)"
-        style="cursor:pointer;"
-      >
-        <i class="ms-Icon ms-Icon--WebComponents icon" />
-        <span v-show="expand" class="router-link">{{item.title.split(' ')[0]}}</span>
-      </span>
-    </template>
-  </fv-NavigationPanel>
+  </fv-NavigationView>
+  
 </template>
 
 <script>
@@ -43,11 +27,18 @@ export default {
   data() {
     return {
       expand: true,
-      search: ""
+      value: {}
     };
   },
+  watch: {
+    value (val, from) {
+      if(val !== from) {
+        this.go(val.path);
+      }
+    }
+  },
   computed: {
-    data() {
+    currentData() {
       let data = this.items.sort((a, b) => {
         if (a.title < b.title) {
           return -1;
@@ -55,6 +46,10 @@ export default {
           return 1;
         }
       });
+      for(let i = 0; i < data.length; i++) {
+        data[i].name = data[i].title;
+        data[i].icon = "WebComponents";
+      }
       return !this.search || this.search == ""
         ? data
         : data.filter(

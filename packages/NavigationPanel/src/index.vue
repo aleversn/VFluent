@@ -1,7 +1,7 @@
 <template>
   <div
     :class="['fv-'+$theme+'-NavigationPanel', {compact: !thisExpand}, {flyout: isFlyout}, {mobile: isMobile}]"
-    :style="{width: `${panelWidth}px`}"
+    :style="{width: panelWidth}"
   >
     <div class="panel-container mobile">
       <span v-show="showBack" class="default-item" @click="$emit('back',$event)">
@@ -124,9 +124,11 @@ export default {
   },
   computed: {
     panelWidth() {
-      if (this.expandMode == "flyout") return 40;
-      if (this.thisExpand) return this.expandWidth;
-      return 40;
+      if (this.expandMode == "flyout") return `${40}px`;
+      if (this.thisExpand) return this.screenWidth <= this.fullSizeDisplay
+          ? "100%"
+          : `${this.expandWidth}px`;
+      return `${40}px`;
     },
     navWidth() {
       let size =
