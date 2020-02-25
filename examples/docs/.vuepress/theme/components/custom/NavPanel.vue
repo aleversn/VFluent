@@ -3,14 +3,14 @@
     <fv-NavigationView
       class="sidebar"
       v-model="value"
-      :title="''"
+      :title="'Fluent Vue Design'"
       :options="currentData"
       :expand.sync="expand"
       expandWidth="319"
       fullSizeDisplay="500"
       :showSetting="false"
-      :showBack="false"
       :showExpand="false"
+      @back="go('/')"
     ></fv-NavigationView>
   </ClientOnly>
 </template>
@@ -63,7 +63,9 @@ export default {
       if (this.$route.path != url) this.$router.push(url);
     }
   },
-  mounted() {}
+  mounted() {
+    this.value = this.currentData.find(item => item.key === this.$route.name);
+  }
 };
 </script>
 

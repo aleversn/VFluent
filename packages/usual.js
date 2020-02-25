@@ -371,6 +371,7 @@ export class RevealEffects
         });
         
         parent.el.addEventListener("mouseleave", (e) => {
+            RevealEffects.clearBackground(c);
             RevealEffects.clearBorder(c);
         });
     }
