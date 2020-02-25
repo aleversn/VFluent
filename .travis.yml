@@ -14,3 +14,12 @@ deploy:
   target-branch: gh-pages
   on:
     branch: master
+jobs:
+  include:
+    - stage: npm release
+      node_js: "7"
+      script: echo "npm package publish..."
+      deploy:
+        provider: npm
+        api_key: $NPM_API_KEY
+        on: deploy-npm-release

@@ -6,6 +6,9 @@
     <a href="LICENSE">
       <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
     </a>
+    <a href="BUILD">
+      <img src="https://travis-ci.com/aleversn/VFluent.svg?branch=master">
+    </a>
 </p>
 
 ## 基于 Vue Cli 的 Fluent UI DESIGN
@@ -45,7 +48,7 @@ npm run bin:entry # 定制入口
 
 ### Fluent Design UI (Vue 2.0+)
 
-#### DOCS 
+#### DOCS
 
 [中文文档](https://aleversn.github.io/VFluent)
 
@@ -53,28 +56,29 @@ npm run bin:entry # 定制入口
 
 1. install via npm
 
-``` bash
+```bash
   yarn add vfluentdesign # recommend
 ```
-``` bash
-  npm i vfluentdesign 
+
+```bash
+  npm i vfluentdesign
 ```
 
 2. import (vue entry main.js)
-``` js
-  import Vue from 'vue'
-  import VueFluent from 'vfluentdesign'
-  import 'vfluentdesign/lib/index.css'
 
-  Vue.use(VueFluent)
+```js
+import Vue from "vue";
+import VueFluent from "vfluentdesign";
+import "vfluentdesign/lib/index.css";
+
+Vue.use(VueFluent);
 ```
 
 3. sample example
 
-``` html
-  <fv-button>Hello Vue Fluent!</fv-button>
+```html
+<fv-button>Hello Vue Fluent!</fv-button>
 ```
-
 
 ### License
 
