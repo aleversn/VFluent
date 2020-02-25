@@ -1,15 +1,17 @@
 ---
-  title: NavigationPanel NavigationPanel
-  sidebarDepth: 2
+title: NavigationPanel NavigationPanel
+sidebarDepth: 2
 ---
-  
+
 [[toc]]
 
 ### NavigationPanel-DEMO
 
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
-    <fv-NavigationPanel></fv-NavigationPanel>
-    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<ClientOnly> 
+<fv-NavigationPanel></fv-NavigationPanel>
+</ClientOnly> 
+<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
 ```vue
@@ -19,10 +21,14 @@
 ```
 
 ### NavigationPanel-Flyout
+
 ---
+
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
-    <fv-NavigationPanel expandMode="flyout"></fv-NavigationPanel>
-    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<ClientOnly>
+<fv-NavigationPanel expandMode="flyout"></fv-NavigationPanel>
+</ClientOnly>
+<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
 ```vue
@@ -32,10 +38,14 @@
 ```
 
 ### NavigationPanel-Mobile Display
+
 ---
+
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
-    <fv-NavigationPanel mobileDisplay="100000000"></fv-NavigationPanel>
-    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<ClientOnly>
+<fv-NavigationPanel mobileDisplay="100000000"></fv-NavigationPanel>
+</ClientOnly>
+<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
 ```vue
@@ -45,35 +55,44 @@
 ```
 
 ### NavigationPanel-Dark Theme
+
 ---
 
 1. Standard
 
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
-    <fv-NavigationPanel theme="dark"></fv-NavigationPanel>
-    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<ClientOnly>
+<fv-NavigationPanel theme="dark"></fv-NavigationPanel>
+</ClientOnly>
+<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
 2. Flyout
 
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
-    <fv-NavigationPanel expandMode="flyout" theme="dark"></fv-NavigationPanel>
-    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<ClientOnly>
+<fv-NavigationPanel expandMode="flyout" theme="dark"></fv-NavigationPanel>
+</ClientOnly>
+<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
 3. Mobile
 
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
-    <fv-NavigationPanel mobileDisplay="100000000" theme="dark"></fv-NavigationPanel>
-    <fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<ClientOnly>
+<fv-NavigationPanel mobileDisplay="100000000" theme="dark"></fv-NavigationPanel>
+</ClientOnly>
+<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
 </div>
 
 ### Propoties
+
 ---
+
 |   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
-|:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
-|      title      |              [string]              |       No       | NavigationPanel |                              NavigationPanel标题                               |
-|     expand      |             [boolean]              |       No       |      true       |                     初始是否展开, 可通过sync方法来同步状态                     |
+| :-------------: | :--------------------------------: | :------------: | :-------------: | :----------------------------------------------------------------------------: |
+|      title      |              [string]              |       No       | NavigationPanel |                              NavigationPanel 标题                              |
+|     expand      |             [boolean]              |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
 |   expandMode    |       ['relative','flyout']        |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
 |   expandWidth   |              [number]              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
 |  expandDisplay  |              [number]              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
@@ -84,20 +103,24 @@
 |   showSearch    |             [boolean]              |       No       |      true       |                                 是否显示搜索框                                 |
 |  settingTitle   |              [string]              |       No       |    Settings     |                                 设置选项的标题                                 |
 |   showSetting   |             [boolean]              |       No       |      true       |                                是否显示设置选项                                |
-|   background    |          [string(color)]           |       No       |       N/A       |                             NavigationPanel背景色                              |
+|   background    |          [string(color)]           |       No       |       N/A       |                             NavigationPanel 背景色                             |
 |      theme      | ['light','dark','custom','system'] |       No       |     system      |                                                                                |
 
 ### Events
+
 ---
+
 | 事件名(Name)  | 参数类型(args) |           说明(statement)            |
-|:-------------:|:--------------:|:------------------------------------:|
+| :-----------: | :------------: | :----------------------------------: |
 | setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
 | update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
 | expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
 |     back      |   MouseEvent   |       返回选项被点击后触发事件       |
 
 ### Slot
+
 ---
+
 1. SearchBlock
 
 自定义搜索框区域内容, 默认的搜索框无实际作用

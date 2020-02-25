@@ -1,8 +1,8 @@
 ---
-  title: DetailsList DetailsList
-  sidebarDepth: 2
+title: DetailsList DetailsList
+sidebarDepth: 2
 ---
-  
+
 [[toc]]
 
 ### DetailsList-DEMO
@@ -299,6 +299,7 @@ export default {
 }
 </script>
 
+<ClientOnly>
 <div>
     <fv-text-box v-model="filter.value" placeholder="Filter by name"></fv-text-box>
     <fv-toggle-switch v-model="multiSelection" on="Multi-Selection" off="Single-Selection"></fv-toggle-switch>
@@ -343,7 +344,9 @@ export default {
 ```
 
 ### DetailsList-Allow Drag
+
 ---
+
 <div>
     <fv-DetailsList v-model="value" :head="head" :multiSelection="true" :compact="compact" :allowDrag="true">
         <template v-slot:column_0="x">
@@ -366,7 +369,13 @@ export default {
 <div style="width: 100%; height: 100px;"></div>
 
 ```vue
-<fv-DetailsList v-model="value" :head="head" :multiSelection="true" :compact="compact" :allowDrag="true">
+<fv-DetailsList
+  v-model="value"
+  :head="head"
+  :multiSelection="true"
+  :compact="compact"
+  :allowDrag="true"
+>
       <template v-slot:column_0="x">
           <p>{{x.item.name}}</p>
       </template>
@@ -385,13 +394,22 @@ export default {
 ```
 
 ### DetailsList-Grouped
+
 ---
+
 <fv-DetailsList v-model="value" :head="head" :multiSelection="multiSelection" :compact="compact" :group="group" :showGroup="true" :allowDrag="true"><template v-slot:column_0="x"><p>{{x.item.name}}</p></template><template v-slot:column_1="x"><p class="sec">{{x.item.publisher}}</p></template><template v-slot:column_2="x"><p class="sec">{{x.item.publish_time}}</p></template><template v-slot:column_3="x"><p class="sec">{{x.item.prop}}</p></template><template v-slot:column_4="x"><p class="sec">{{x.item.userInfo.name}}</p></template></fv-DetailsList>
 
 <div style="width: 100%; height: 100px;"></div>
 
 ```vue
-<fv-DetailsList v-model="value" :head="head" :multiSelection="multiSelection" :compact="compact" :group="group" :showGroup="true">
+<fv-DetailsList
+  v-model="value"
+  :head="head"
+  :multiSelection="multiSelection"
+  :compact="compact"
+  :group="group"
+  :showGroup="true"
+>
     <template v-slot:column_0="x">
         <p>{{x.item.name}}</p>
     </template>
@@ -410,7 +428,9 @@ export default {
 ```
 
 ### DetailsList-Dark Theme
+
 ---
+
 <div style="position: relative; width: 100%; height: 700px; background: black;">
     <fv-DetailsList v-model="value" :head="head" :multiSelection="multiSelection" :compact="compact" :group="group" :showGroup="true" theme="dark">
         <template v-slot:column_0="x">
@@ -433,7 +453,12 @@ export default {
 <div style="width: 100%; height: 100px;"></div>
 
 ```vue
-<fv-DetailsList v-model="value" :head="head" :multiSelection="multiSelection" :compact="compact">
+<fv-DetailsList
+  v-model="value"
+  :head="head"
+  :multiSelection="multiSelection"
+  :compact="compact"
+>
     <template v-slot:column_0="x">
         <p>{{x.item.name}}</p>
     </template>
@@ -451,44 +476,53 @@ export default {
   </fv-DetailsList>
 ```
 
+</ClientOnly>
+
 ### Propoties
+
 ---
-|   属性(attr)   |             类型(type)             | 必填(required) | 默认值(default) |                                      说明(statement)                                      |
-|:--------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------------------------------------------------------:|
-|     value      |              [Array]               |      Yes       |       N/A       |                             列表数据, 数据格式详见数据格式表                              |
-|      head      |              [Array]               |      Yes       |       N/A       |                             表头数据, 数据格式详见数据格式表                              |
-|     group      |              [Array]               |       No       |       N/A       |                             分组数据, 数据格式详见数据格式表                              |
-|     filter     |              [string]              |       No       |       N/A       |                 搜索筛选, 数据格式详见数据格式表, 控制表显示哪些搜索字段                  |
-|   showGroup    |             [boolean]              |       No       |      false      | 是否开启按组分割显示, 开启后排序功能将失效, 默认不开启, 若group为空, 则开启后表格内容为空 |
-|   autoHeight   |             [boolean]              |       No       |      false      |                                     是否开启自动高度                                      |
-| headBackground |          [string(color)]           |       No       |       N/A       |         表头背景, 不会修改点燃颜色, 若要修改点燃颜色请自定义fv-custom-head类样式          |
-|    compact     |             [boolean]              |       No       |      false      |                                     是否开启收缩模式                                      |
-| multiSelection |             [boolean]              |       No       |      false      |                                     是否开启多选模式                                      |
-|   allowDrag    |             [boolean]              |       No       |      false      |                                     是否开启拖动排序                                      |
-| rightMenuWidth |              [number]              |       No       |       200       |                                     右键菜单宽度设置                                      |
-|     theme      | ['light','dark','custom','system'] |       No       |     system      |                                  主题样式, 默认跟随系统                                   |
+
+|   属性(attr)   |             类型(type)             | 必填(required) | 默认值(default) |                                       说明(statement)                                       |
+| :------------: | :--------------------------------: | :------------: | :-------------: | :-----------------------------------------------------------------------------------------: |
+|     value      |              [Array]               |      Yes       |       N/A       |                              列表数据, 数据格式详见数据格式表                               |
+|      head      |              [Array]               |      Yes       |       N/A       |                              表头数据, 数据格式详见数据格式表                               |
+|     group      |              [Array]               |       No       |       N/A       |                              分组数据, 数据格式详见数据格式表                               |
+|     filter     |              [string]              |       No       |       N/A       |                  搜索筛选, 数据格式详见数据格式表, 控制表显示哪些搜索字段                   |
+|   showGroup    |             [boolean]              |       No       |      false      | 是否开启按组分割显示, 开启后排序功能将失效, 默认不开启, 若 group 为空, 则开启后表格内容为空 |
+|   autoHeight   |             [boolean]              |       No       |      false      |                                      是否开启自动高度                                       |
+| headBackground |          [string(color)]           |       No       |       N/A       |         表头背景, 不会修改点燃颜色, 若要修改点燃颜色请自定义 fv-custom-head 类样式          |
+|    compact     |             [boolean]              |       No       |      false      |                                      是否开启收缩模式                                       |
+| multiSelection |             [boolean]              |       No       |      false      |                                      是否开启多选模式                                       |
+|   allowDrag    |             [boolean]              |       No       |      false      |                                      是否开启拖动排序                                       |
+| rightMenuWidth |              [number]              |       No       |       200       |                                      右键菜单宽度设置                                       |
+|     theme      | ['light','dark','custom','system'] |       No       |     system      |                                   主题样式, 默认跟随系统                                    |
 
 ### Events
+
 ---
-| 事件名(Name) |   参数类型(args)   |                     说明(statement)                      |
-|:------------:|:------------------:|:--------------------------------------------------------:|
-| change-value |   修改后的value    | 在列表内部的value发生改变后会触发事件并返回修改后的value |
-| choose-item  |   currentChoose    |             在选择某行数据后返回被选中的数据             |
-|   lazyload   |   修改后的value    |         滚动到底部加载数据, 返回列表内部的value          |
-|  rightclick  | 当前选中的row-item |                右键菜单返回当前选择的项目                |
+
+| 事件名(Name) |   参数类型(args)    |                       说明(statement)                       |
+| :----------: | :-----------------: | :---------------------------------------------------------: |
+| change-value |   修改后的 value    | 在列表内部的 value 发生改变后会触发事件并返回修改后的 value |
+| choose-item  |    currentChoose    |              在选择某行数据后返回被选中的数据               |
+|   lazyload   |   修改后的 value    |          滚动到底部加载数据, 返回列表内部的 value           |
+|  rightclick  | 当前选中的 row-item |                 右键菜单返回当前选择的项目                  |
 
 ### Slot
+
 ---
+
 1. Head
 
 默认情况下用户可直接在`head`中定义`content`来应用默认样式, 不需要修改此模板, 可缺省
 用户自定义样式时, 包含以下可选属性
+
 - item: 当前项
 - index: 当前项索引
 
 ```vue
 <template v-slot:head="x">
-    <p class="default-title">{{x.content}}</p>
+  <p class="default-title">{{ x.content }}</p>
 </template>
 ```
 
@@ -497,24 +531,25 @@ export default {
 用户根据`head`中的数量通过`column_[数字]`的方式来定义每一列的模板
 默认情况下利用`<p>`标签来表示正文, 通过`class="sec"`来表示附属文本
 用户自定义样式时, 包含以下可选属性
+
 - item: 当前项
 - row_index: 当前项行号
 - col_index: 当前项列号
 
 ```vue
 <template v-slot:column_0="x">
-    <p>{{x.item.name}}</p>
+  <p>{{ x.item.name }}</p>
 </template>
 <template v-slot:column_1="x">
-    <p class="sec">{{x.item.publisher}}</p>
+  <p class="sec">{{ x.item.publisher }}</p>
 </template>
 <template v-slot:column_2="x">
-    <p class="sec">{{x.item.publish_time}}</p>
-</template><template v-slot:column_3="x">
-    <p class="sec">{{x.item.prop}}</p>
+  <p class="sec">{{ x.item.publish_time }}</p> </template
+><template v-slot:column_3="x">
+  <p class="sec">{{ x.item.prop }}</p>
 </template>
 <template v-slot:column_4="x">
-    <p class="sec">{{x.item.userInfo.name}}</p>
+  <p class="sec">{{ x.item.userInfo.name }}</p>
 </template>
 ```
 
@@ -541,6 +576,7 @@ export default {
 ```
 
 用户自定义样式时, 包含以下可选属性
+
 - item: 当前组数据
 - index: 当前组索引
 - isMulti: 当前是否开启多选
@@ -548,7 +584,7 @@ export default {
 
 ```vue
 <template v-slot:group="x">
-    <p>{{x.name}}</p>
+  <p>{{ x.name }}</p>
 </template>
 ```
 
@@ -558,23 +594,25 @@ export default {
 
 ```vue
 <template v-slot:menu>
-    <div>
-        <span>
-            <i>[图标]</i>
-            <p>[内容]</p>
-        </span>
-        ...
-        <hr/>
-        <span>
-            <i>[图标]</i>
-            <p>[内容]</p>
-        </span>
-    </div>
+  <div>
+    <span>
+      <i>[图标]</i>
+      <p>[内容]</p>
+    </span>
+    ...
+    <hr />
+    <span>
+      <i>[图标]</i>
+      <p>[内容]</p>
+    </span>
+  </div>
 </template>
 ```
 
 ### Data
+
 ---
+
 1. value
 
 ```javascript
@@ -588,125 +626,136 @@ value: [{id: "", name: "", publisher: "", userInfo: {}, publish_time: "", update
 2. head
 
 ```javascript
-head = [{
-    content: '',  //默认表头的列名
-    minWidth: '', //最小的列宽, 默认为60
-    width: '',  //初始的列宽, 默认为80
-    sortName: '', //按字段名来排序, 名字为value中的属性, DetailsList将根据当前的属性类型智能排序
-    customSort: {}  //自定义排序方法, 在此定义函数满足预设两个参数(itemA, itemB)分别代表value中的两项并根据用户需要自定义函数方法, 此字段定义后, sortName仍需填写, 但值可任意
-}]
+head = [
+  {
+    content: "", //默认表头的列名
+    minWidth: "", //最小的列宽, 默认为60
+    width: "", //初始的列宽, 默认为80
+    sortName: "", //按字段名来排序, 名字为value中的属性, DetailsList将根据当前的属性类型智能排序
+    customSort: {} //自定义排序方法, 在此定义函数满足预设两个参数(itemA, itemB)分别代表value中的两项并根据用户需要自定义函数方法, 此字段定义后, sortName仍需填写, 但值可任意
+  }
+];
 
 //e.g.//
 
 head: [
-{
+  {
     content: "Name",
     minWidth: 60,
     width: 80,
     sortName: "name"
-}, {
+  },
+  {
     content: "Publisher",
     minWidth: 60,
     width: 80,
     sortName: "publisher"
-}, {
+  },
+  {
     content: "Publish Time",
     minWidth: 60,
     width: 190,
     sortName: "publish_time"
-}, {
+  },
+  {
     content: "Prop",
     minWidth: 60,
     width: 92,
     sortName: "prop"
-}, {
+  },
+  {
     content: "User Name",
     minWidth: 60,
     width: 80
-}]
+  }
+];
 ```
 
 3. group
 
 ```javascript
-group = [{
-    key: '',  //分组的键值, 键来自value的属性
-    value: '',  //分组的键值对应的具体值, DetailsList会根据当前的key匹配value来进行分组
-    name: ''  //分组的其他数据, 默认模板将以name属性来渲染名称
-}]
+group = [
+  {
+    key: "", //分组的键值, 键来自value的属性
+    value: "", //分组的键值对应的具体值, DetailsList会根据当前的key匹配value来进行分组
+    name: "" //分组的其他数据, 默认模板将以name属性来渲染名称
+  }
+];
 
 //e.g.//
 
 group: [
-{
+  {
     key: "prop",
     value: "Windows",
     name: "A"
-},
-{
+  },
+  {
     key: "prop",
     value: "Edge",
     name: "B"
-},
-{
+  },
+  {
     key: "prop",
     value: "Office",
     name: "C"
-},
-{
+  },
+  {
     key: "prop",
     value: "Visual Studio",
     name: "D"
-}
-]
+  }
+];
 ```
 
 ### Custom Class
+
 ---
+
 |     类名(Name)      |                                           说明(statement)                                           |
-|:-------------------:|:---------------------------------------------------------------------------------------------------:|
+| :-----------------: | :-------------------------------------------------------------------------------------------------: |
 |   fv-custom-head    | 客制化表头, 主要递推关系: fv-custom-head -> icon-block, col -> col-content, expand -> default-title |
 |    fv-custom-row    |                      客制化行, 主要递推关系: fv-custom-row -> icon-block, col                       |
 | fv-custom-group-row |               客制化组, 主要递推关系: fv-custom-group-row -> icon-blocks, expand, col               |
 
 ```scss
-.fv-custom-head
-{
-    .icon-block {
-        .icon {}
+.fv-custom-head {
+  .icon-block {
+    .icon {
     }
-    .col {
-        .col-content {
-            .default-title {}
-        }
-
-        .expand {}
-    }
-}
-
-.fv-custom-row
-{
-    .icon-block {
-        .icon {}
-    }
-    .col {
-
-    }
-}
-
-.fv-custom-group-row
-{
-    &.choose {}
-    
-    .icon-block {
-        .icon {}
-    }
-    .col {
-        
+  }
+  .col {
+    .col-content {
+      .default-title {
+      }
     }
 
     .expand {
-
     }
+  }
+}
+
+.fv-custom-row {
+  .icon-block {
+    .icon {
+    }
+  }
+  .col {
+  }
+}
+
+.fv-custom-group-row {
+  &.choose {
+  }
+
+  .icon-block {
+    .icon {
+    }
+  }
+  .col {
+  }
+
+  .expand {
+  }
 }
 ```

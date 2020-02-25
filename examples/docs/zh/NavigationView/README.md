@@ -1,8 +1,8 @@
 ---
-  title: NavigationView NavigationView
-  sidebarDepth: 2
+title: NavigationView NavigationView
+sidebarDepth: 2
 ---
-  
+
 [[toc]]
 
 ### NavigationView-DEMO
@@ -29,57 +29,76 @@ export default {
 }
 </script>
 
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options"></fv-NavigationView>
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
+</ClientOnly>
 
 ### NavigationView-Flyout
+
 ---
+
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options" expandMode="flyout"></fv-NavigationView>
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
+</ClientOnly>
 
 ### NavigationView-Mobile Display
+
 ---
+
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options" mobileDisplay="100000000"></fv-NavigationView>
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
+</ClientOnly>
 
 ### NavigationView-Flyout
+
 ---
 
 1. Standard
 
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" theme="dark"></fv-NavigationView>
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
+</ClientOnly>
 
 2. Flyout
 
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" expandMode="flyout" theme="dark"></fv-NavigationView>
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
+</ClientOnly>
 
 3. Mobile
 
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" mobileDisplay="100000000" theme="dark"></fv-NavigationView>
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
+</ClientOnly>
 
 ### Propoties
+
 ---
+
 |   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
-|:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
+| :-------------: | :--------------------------------: | :------------: | :-------------: | :----------------------------------------------------------------------------: |
 |      value      |              [array]               |       No       |       N/A       |                          当前选中项, 用`v-model`绑定                           |
 |     options     |              [array]               |      Yes       |       N/A       |                  选项数据, 参照`ListView`中的`items`数据格式                   |
-|      title      |              [string]              |       No       | NavigationView  |                               NavigationView标题                               |
-|     expand      |             [boolean]              |       No       |      true       |                     初始是否展开, 可通过sync方法来同步状态                     |
+|      title      |              [string]              |       No       | NavigationView  |                              NavigationView 标题                               |
+|     expand      |             [boolean]              |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
 |   expandMode    |       ['relative','flyout']        |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
 |   expandWidth   |              [number]              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
 |  expandDisplay  |              [number]              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
@@ -90,19 +109,22 @@ export default {
 |   showSearch    |             [boolean]              |       No       |      true       |                                 是否显示搜索框                                 |
 |  settingTitle   |              [string]              |       No       |    Settings     |                                 设置选项的标题                                 |
 |   showSetting   |             [boolean]              |       No       |      true       |                                是否显示设置选项                                |
-|   background    |          [string(color)]           |       No       |       N/A       |                              NavigationView背景色                              |
+|   background    |          [string(color)]           |       No       |       N/A       |                             NavigationView 背景色                              |
 |      theme      | ['light','dark','custom','system'] |       No       |     system      |                                                                                |
 
 ### Events
+
 ---
+
 | 事件名(Name)  | 参数类型(args) |           说明(statement)            |
-|:-------------:|:--------------:|:------------------------------------:|
+| :-----------: | :------------: | :----------------------------------: |
 | setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
 | update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
 | expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
 |     back      |   MouseEvent   |       返回选项被点击后触发事件       |
 
 ### Data
+
 ---
 
 1. options
@@ -111,20 +133,20 @@ export default {
 - 开发者可利用`icon`字段来应用`Fabric Icon`
 
 ```javascript
-options = [{key: '', name: '', type: '', icon: '', disabled: ''}]
+options = [{ key: "", name: "", type: "", icon: "", disabled: "" }];
 
 //e.g.//
 
 options: [
-    { name: "Fruits", type: "header"},
-    { name: "Apple", icon: "WindowsLogo"},
-    { name: "Banana", icon: "DelveAnalyticsLogo"},
-    { name: "Orange", icon: "Guitar"},
-    { name: "Grape", icon: "HailDay"},
-    { name: "", type: "divider" },
-    { name: "Vegetables", type: "header"},
-    { name: "Broccoli", icon: "QuadColumn"},
-    { name: "Carrot", icon: "Quantity"},
-    { name: "Lettuce", icon: "TestBeaker"}
-]
+  { name: "Fruits", type: "header" },
+  { name: "Apple", icon: "WindowsLogo" },
+  { name: "Banana", icon: "DelveAnalyticsLogo" },
+  { name: "Orange", icon: "Guitar" },
+  { name: "Grape", icon: "HailDay" },
+  { name: "", type: "divider" },
+  { name: "Vegetables", type: "header" },
+  { name: "Broccoli", icon: "QuadColumn" },
+  { name: "Carrot", icon: "Quantity" },
+  { name: "Lettuce", icon: "TestBeaker" }
+];
 ```

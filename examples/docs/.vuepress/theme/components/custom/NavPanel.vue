@@ -3,7 +3,7 @@
     class="sidebar"
     :title="''"
     :expand.sync="expand"
-    style="position:fixed;"
+    style="height:calc(100% - 60px)"
     @back="go('/')"
     :showSetting="false"
     :showBack="false"
@@ -20,7 +20,7 @@
     </template>
     <template v-slot:panel>
       <span
-        v-for="item in data"
+        v-for="item in currentData"
         :key="item.title"
         class="default-item control"
         @click="go(item.path)"
@@ -47,7 +47,7 @@ export default {
     };
   },
   computed: {
-    data() {
+    currentData() {
       let data = this.items.sort((a, b) => {
         if (a.title < b.title) {
           return -1;
@@ -73,4 +73,7 @@ export default {
 </script>
 
 <style lang="scss">
+.sidebar {
+  overflow-x: hidden;
+}
 </style>
