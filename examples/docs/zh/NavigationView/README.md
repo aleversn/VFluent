@@ -103,7 +103,7 @@ export default {
 |   expandWidth   |              [number]              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
 |  expandDisplay  |              [number]              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
 |  flyoutDisplay  |              [number]              |       No       |        0        | 浏览器宽度小于多少时开启浮动模式, 若`expandMode`设为`flyout`, 则始终为浮动模式 |
-| fullsizeDisplay |              [number]              |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
+| fullSizeDisplay |              [number]              |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
 |  mobileDisplay  |              [number]              |       No       |        0        |                       浏览器宽度小于多少时开启移动端模式                       |
 |    showBack     |             [boolean]              |       No       |      true       |                                是否显示后退按钮                                |
 |   showSearch    |             [boolean]              |       No       |      true       |                                 是否显示搜索框                                 |

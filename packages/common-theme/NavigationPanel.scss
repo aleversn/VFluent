@@ -33,6 +33,11 @@
             justify-content: flex-start;
             align-items: center;
 
+            &.control
+            {
+                z-index: 2;
+            }
+
             i.icon {
                 position: relative;
                 width: 40px;
@@ -83,6 +88,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 2;
 
             .nav-search
             {

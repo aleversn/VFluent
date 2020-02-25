@@ -35,6 +35,7 @@ import NavigationPanel from '@/NavigationPanel/index.js'
 import Image from '@/Image/index.js'
 import Img from '@/Img/index.js'
 import SearchBox from '@/SearchBox/index.js'
+import CalendarDatePicker from '@/CalendarDatePicker/index.js'
 
 
 let components = [
@@ -66,6 +67,7 @@ let components = [
   Image,
   Img,
   SearchBox,
+  CalendarDatePicker,
 
 ]
 
@@ -112,6 +114,7 @@ export default {
   Image,
   Img,
   SearchBox,
+  CalendarDatePicker,
 
 }
 

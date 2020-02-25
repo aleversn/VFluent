@@ -222,5 +222,13 @@
       "Dark": "@/dark-theme/SearchBox.scss",
       "Custom": "@/custom-theme/SearchBox.scss"
     }
+  },
+  "CalendarDatePicker": {
+    "entry": "@/CalendarDatePicker/index.js",
+    "theme": {
+      "Light": "@/light-theme/CalendarDatePicker.scss",
+      "Dark": "@/dark-theme/CalendarDatePicker.scss",
+      "Custom": "@/custom-theme/CalendarDatePicker.scss"
+    }
   }
 }
