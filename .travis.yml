@@ -17,7 +17,11 @@ deploy:
 jobs:
   include:
     - stage: npm release
-      node_js: "7"
+      node_js:
+        - lts/*
+      install:
+        - yarn install
+        - yarn lib
       script: echo "npm package publish..."
       deploy:
         provider: npm
