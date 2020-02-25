@@ -10,8 +10,11 @@ jobs:
         - yarn lib
       deploy:
         provider: npm
+        email: $NPM_EMAIL
         api_key: $NPM_API_KEY
-        on: master
+        skip_cleanup: true
+        on:
+          branch: master
     - stage: "deploy pages"
       script:
         - yarn docs:build # npm run docs:build
