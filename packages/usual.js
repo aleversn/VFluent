@@ -129,6 +129,20 @@ export class SUtility
         }
         catch (e) { }
     }
+    static Guid()
+    {
+        function S4() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+         }
+        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    }    
+    static GuidWithoutDash()
+    {
+        function S4() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+         }
+        return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
+    }
 }
 
 export class RevealHelper
@@ -222,6 +236,8 @@ export class RevealHelper
         const res = [];
     
         elements.forEach(el => {
+            if(el.hashCode == undefined)
+                el.hashCode = this.GuidWithoutDash();
             res.push({
                 oriBg: getComputedStyle(el)["background-image"],
                 oriBorder: getComputedStyle(el)["border-image"],
@@ -247,6 +263,14 @@ export class RevealHelper
         }
 
         return (cursorX >= el_area.left && cursorX <= el_area.right && cursorY >= el_area.top && cursorY <= el_area.bottom);
+    }
+
+    static GuidWithoutDash()
+    {
+        function S4() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+         }
+        return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
     }
 }
 
@@ -275,20 +299,22 @@ export class RevealEffects
 
     childrenRefresh (selector) {
         if(window.FvRevealElements == undefined)
-            window.FvRevealElements = [];
+            window.FvRevealElements = {};
         
-        const els =  RevealHelper.preProcessElements(document.querySelectorAll(selector));
+        const els =  typeof(selector) == "string" ? RevealHelper.preProcessElements(document.querySelectorAll(selector)) : RevealHelper.preProcessElements([selector]);
         for(let item of els) {
             let children = RevealHelper.preProcessElements(item.el.querySelectorAll(this.options.selector));
+            if(window.FvRevealElements[item.el.hashCode] == undefined)
+                window.FvRevealElements[item.el.hashCode] = [];
             for(let c of children) {
-                let finder = window.FvRevealElements.find(it => it.el === c.el);
+                let finder = window.FvRevealElements[item.el.hashCode].find(it => it.el === c.el);
                 if(finder === undefined) {
                     c.borderLightColor = this.options.borderLightColor;
                     c.backgroundLightColor = this.options.backgroundLightColor;
                     c.borderGradientSize = this.options.borderGradientSize;
                     c.backgroundGradientSize = this.options.backgroundGradientSize;
                     this.applyClickEffects(c, item);
-                    window.FvRevealElements.push(c);
+                    window.FvRevealElements[item.el.hashCode].push(c);
                 }
             }
         }
@@ -296,7 +322,7 @@ export class RevealEffects
 
     applyCommonEffects (selector) {
 
-        const els =  RevealHelper.preProcessElements(document.querySelectorAll(selector));
+        const els =  typeof(selector) == "string" ? RevealHelper.preProcessElements(document.querySelectorAll(selector)) : RevealHelper.preProcessElements([selector]);
         if(window.FvRevealCarriers == undefined)
             window.FvRevealCarriers = [];
 
@@ -305,7 +331,9 @@ export class RevealEffects
                 continue;
             //element background effect --------------------
             let containerSelectorMove = e => {
-                for(let c of window.FvRevealElements) {
+                for(let c of window.FvRevealElements[item.el.hashCode]) {
+                    if(!item.el.contains(c.el))
+                        continue;
                     let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
                     let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
                     
@@ -348,9 +376,11 @@ export class RevealEffects
     }
 
     static clearUselessElements() {
-        for(let i = window.FvRevealElements.length - 1; i >= 0; i--) {
-            if(!document.body.contains(window.FvRevealElements[i].el))
-                window.FvRevealElements.splice(i, 1);
+        for(let key in window.FvRevealElements) {
+            for(let i = window.FvRevealElements[key].length - 1; i >= 0; i--) {
+                if(!document.body.contains(window.FvRevealElements[key][i].el))
+                    window.FvRevealElements[key].splice(i, 1);
+            }
         }
     }
 

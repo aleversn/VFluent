@@ -47,6 +47,8 @@ export default {
       for (let i = 0; i < data.length; i++) {
         data[i].name = data[i].title;
         data[i].icon = "WebComponents";
+        data[i]._type = data[i].type;
+        data[i].type = "default";
       }
       return !this.search || this.search == ""
         ? data

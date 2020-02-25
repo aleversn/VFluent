@@ -104,7 +104,7 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffects("body", {
+            let FR = new this.$RevealEffects(this.$el, {
                 selector: `.fv-${this.$theme}-ListView .list-view-container .item.normal`,
                 borderGradientSize: 30,
                 borderLightColor: this.borderLightColor,
