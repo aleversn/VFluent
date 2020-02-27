@@ -38,7 +38,7 @@ export default {
     },
     data () {
         return {
-            thisValue: this.value,
+            thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             days: [],
             weekdays: { en: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                         zh: ['日', '一', '二', '三', '四', '五', '六']},

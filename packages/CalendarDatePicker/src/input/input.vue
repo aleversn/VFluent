@@ -1,9 +1,9 @@
 <template>
-<div class="drop-down-box" :style="styles.dropDownBox">
-    <div class="drop-down-container">
+<div class="calendar-picker-drop-down" :style="styles.dropDownBox" :title="inputValue">
+    <div class="calendar-picker-drop-down-container">
         <slot name="input" :placeholder="placeholder" :value="inputValue">
             <input :placeholder="placeholder" readonly :value="inputValue" :style="styles.input"/>
-            <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="styles.icon"></i>
+            <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" aria-hidden="true" :style="styles.icon"></i>
         </slot>
     </div>
 </div>
@@ -21,7 +21,7 @@ export default {
             default: 2
         },
         placeholder: {
-            default: 'Dropdown'
+            default: 'Pick a day'
         },
         borderRadius: {
             default: '3'
@@ -33,7 +33,7 @@ export default {
             default: ''
         },
         dropDownIcon: {
-            default: 'ChevronDown'
+            default: 'CalendarDay'
         },
         dropDownIconForeground: {
             default: ''
@@ -93,12 +93,11 @@ export default {
             return this.theme;
         },
         inputValue () {
-            let result = '';
-            for(let item of this.choosenValue) {
-                if(result == '')
-                    result += item.text;
-                else
-                    result += `,${item.text}`;
+            let result = "";
+            for(let i = 0; i < this.choosenValue.length; i++) {
+                if(i > 0)
+                    result += `,`;
+                result += `${this.choosenValue[i].year}-${this.choosenValue[i].month + 1}-${this.choosenValue[i].no}`;
             }
             return result;
         },
@@ -133,8 +132,8 @@ export default {
                 gradientSize: 80,
                 isContainer: true,
                 children: {
-                    borderSelector: `.fv-${this.$theme}-DropDown .drop-down-box`,
-                    elementSelector: `.fv-${this.$theme}-DropDown .drop-down-container input`,
+                    borderSelector: `.fv-${this.$theme}-CalendarDatePicker .calendar-picker-drop-down`,
+                    elementSelector: `.fv-${this.$theme}-CalendarDatePicker .calendar-picker-drop-down-container input`,
                     lightColor: this.backgroundLightColor,
                     gradientSize: 120
                 }

@@ -204,11 +204,11 @@ export default {
         }
     },
     mounted() {
-        this.outSideClick();
+        this.outSideClickInit();
         this.heightSenseInit();
     },
     methods: {
-        outSideClick() {
+        outSideClickInit() {
             window.addEventListener("click", event => {
                 let x = event.target;
                 let _self = false;

@@ -1,2 +1,148 @@
 @mixin fv-CalendarDatePicker {
+
+    position: relative;
+    width: 294px;
+    z-index: 1;
+    
+    .calendar-picker-drop-down
+    {
+        position: relative;
+        width: 100%;
+        height: 36px;
+        padding: 2px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        transition: all 0.8s;
+        overflow: hidden;
+
+        &.error
+        {
+            background: rgba(164,38,44,1);
+        }
+
+        .calendar-picker-drop-down-container
+        {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+
+            input
+            {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                padding: 0px 36px 0px 8px;
+                border: none;
+                outline: none;
+                font-size: 13.5px;
+                font-weight: 400;
+                color: rgba(32,31,30,1);
+                box-sizing: border-box;
+                user-select: none;
+                cursor: default;
+            }
+
+            i.left-icon
+            {
+                position: absolute;
+                width: 36px;
+                height: 100%;
+                left: 0px;
+                font-size: 13px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+            }
+
+            i.right-icon
+            {
+                position: absolute;
+                width: 36px;
+                height: 100%;
+                right: 0px;
+                font-size: 13px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .calendar-container
+    {
+        position: absolute;
+        left: 0px;
+        border-radius: 8px;
+        box-shadow: $ms-depth-shadow-16;
+        overflow: hidden;
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+    }
+
+    &.disabled
+    {
+        &:hover
+        {
+            .calendar-picker-drop-down
+            {
+                background: transparent;
+            }
+        }
+
+        .calendar-picker-drop-down
+        {
+            .calendar-picker-drop-down-container
+            {
+                background: rgba(243,242,241,1);
+                box-shadow: none;
+
+                input
+                {
+                    background: rgba(243,242,241,1);
+                    color: rgba(161,159,157,0.6);
+                    cursor: no-drop;
+                }
+
+                i
+                {
+                    color: rgba(50,49,48,0.6);
+                }
+            }
+        }
+    }
+
+    .fv-calendar-container-enter
+    {
+        margin-top: -3px;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .fv-calendar-container-enter-to
+    {
+        margin-top: 0px;
+        opacity: 1;
+        transition: all 0.3s;
+    }
+
+    .fv-calendar-container-leave
+    {
+        opacity: 1;
+        transition: all 0.1s;
+    }
+
+    .fv-calendar-container-leave-to
+    {
+        opacity: 0;
+        transition: all 0.1s;
+    }
 }

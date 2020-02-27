@@ -27,7 +27,7 @@ export default {
     },
     data () {
         return {
-            thisValue: this.value,
+            thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             years: [],
             currentRange: 0,
             timer: {

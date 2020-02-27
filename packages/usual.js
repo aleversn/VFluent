@@ -88,7 +88,11 @@ export class SDate
     }
     static DisDay(startDate, endDate)
     {
-        return Math.floor(SDate.DisTime(startDate, endDate) / (24 * 3600 * 1000));
+        let dis = SDate.DisHour(startDate, endDate);
+        if(dis > 24)
+            return Math.floor(dis / 24);
+        else
+            return startDate.getDate() == endDate.getDate() ? 0 : 1;
     }
     static DisHour(startDate, endDate)
     {
@@ -111,6 +115,12 @@ export class SDate
         else if (current.getTime() == compare.getTime())
             return 0;
         return -1;
+    }
+    static IsSameDate(current, compare)
+    {
+        if(current.getFullYear() !== compare.getFullYear() || current.getMonth() !== compare.getMonth() || current.getDate() !== compare.getDate())
+            return false;
+        return true;
     }
 }
 

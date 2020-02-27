@@ -52,7 +52,7 @@ export default {
     data () {
         return {
             status: 'date',
-            thisValue: this.value,
+            thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             yearRange: 0,
             monthRange: {year: 0, no: 0},
             dayRange: {year: 0, month: 0, no: 1},
@@ -64,11 +64,9 @@ export default {
         };
     },
     watch: {
-        value (val) {
-            this.thisValue = val;
-        },
-        thisValue (val) {
-            this.$emit('input', val);
+        value (val, from) {
+            if(!this.$SDate.IsSameDate(val, from))
+                this.thisValue = this.$SDate.Parse(this.$SDate.DateToString(val));
         }
     },
     computed: {
@@ -146,7 +144,8 @@ export default {
             this.thisValue.setDate(item.no);
             this.thisValue.setMonth(item.month);
             this.thisValue.setFullYear(item.year);
-            this.$emit('choose', this.thisValue);
+            this.$emit('choose-date', this.thisValue);
+            this.$emit('input', this.$SDate.Parse(this.$SDate.DateToString(this.thisValue)));
         }
     }
 };

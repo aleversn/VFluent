@@ -1,5 +1,38 @@
-@import '../common-theme/CalendarDatePicker.scss';
-.fv-dark-CalendarDatePicker{
-  @include fv-CalendarDatePicker();
-}
+@import "../common-theme/CalendarDatePicker.scss";
+.fv-dark-CalendarDatePicker {
     
+    @include fv-CalendarDatePicker();
+    
+    &:hover
+    {
+        .calendar-picker-drop-down
+        {
+            background: rgba(226, 226, 226, 0.2);
+        }
+    }
+
+    .calendar-picker-drop-down
+    {
+        .calendar-picker-drop-down-container
+        {
+            box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
+
+            input
+            {
+                background: rgba(36,35,34,0.9);
+                color: whitesmoke;
+                user-select: none;
+
+                &::placeholder
+                {
+                    color: rgba(179, 179, 179, 1);
+                }
+            }
+
+            i
+            {
+                color: whitesmoke;
+            }
+        }
+    }
+}

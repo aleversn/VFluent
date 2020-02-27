@@ -30,7 +30,7 @@ export default {
     },
     data () {
         return {
-            thisValue: this.value,
+            thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             months: [],
             monthList: [
                 { en: 'Jan', zh: '一月'},

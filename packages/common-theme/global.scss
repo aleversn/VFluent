@@ -1,5 +1,9 @@
 @import 'office-ui-fabric-core/src/sass/_References.scss';
 
+* {
+    -webkit-appearance: none;
+}
+
 $row-light-hover: rgba(243, 242, 241, 1);
 $row-light-active: rgba(237, 235, 233, 1);
 $row-dark-hover: rgba(37, 36, 35, 1);

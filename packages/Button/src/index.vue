@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import 'office-ui-fabric-core/dist/css/fabric.min.css';
 import { FluentRevealEffect } from "fluent-reveal-effect";
 
 export default {
