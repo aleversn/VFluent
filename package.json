@@ -25,7 +25,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
+    "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js && npm version patch",
     "lint": "vue-cli-service lint",
     "docs:dev": "yarn && vuepress dev examples/docs",
     "docs:build": "yarn && vuepress build examples/docs",
