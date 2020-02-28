@@ -37,6 +37,7 @@ import Image from '@/Image/index.js'
 import Img from '@/Img/index.js'
 import SearchBox from '@/SearchBox/index.js'
 import CalendarDatePicker from '@/CalendarDatePicker/index.js'
+import WebWindow from '@/WebWindow/index.js'
 
 
 let components = [
@@ -69,6 +70,7 @@ let components = [
   Img,
   SearchBox,
   CalendarDatePicker,
+  WebWindow,
 
 ]
 
@@ -116,6 +118,7 @@ export default {
   Img,
   SearchBox,
   CalendarDatePicker,
+  WebWindow,
 
 }
 

@@ -1,144 +1,180 @@
 @mixin fv-menuFlyout {
-  display: inline-block;
-  cursor: pointer;
-  box-sizing: border-box;
-  .fv-menuFlyout__button {
-    cursor: inherit;
-    color:inherit;
-    border-radius: inherit;
-    outline: none;
+    position: relative;
+    width: 300px;
+    height: 36px;
+    padding: 2px;
+    border-radius: 3px;
+	display: inline-block;
+	cursor: pointer;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0 16px;
-    background: inherit;
-    height: 30px;
-    span {
-      margin: 0 4px;
+    box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+    
+	.fv-menuFlyout__button {
+        width: 100%;
+		cursor: inherit;
+		color: inherit;
+		border-radius: inherit;
+		outline: none;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0 3px;
+		background: inherit;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+
+		span {
+            height: 100%;
+            margin: 0 4px;
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .right-icon
+        {
+            width: 20px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+	}
+	&.disabled {
+		cursor: not-allowed;
     }
-  }
-  &.disabled{
-    cursor: not-allowed;
-  }
+    
+    .main-block
+    {
+        position: relative;
+        padding: 0px;
+    }
 }
 
 @mixin fv-menuFlyoutPopper {
-  hr {
-    padding: 0;
-    margin: 0;
-  }
+	hr {
+		padding: 0;
+		margin: 0;
+	}
 }
 
 @mixin fv-menuSubFlyout {
-  cursor: pointer;
-  display: inline-flex;
-  width: 100%;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
-  align-content: space-between;
-  position: relative;
-  &.disabled{
-    cursor: not-allowed;
-  }
-  .fv-menuSuyFlyout__bg {
-    z-index: -1;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-  .fv-menuSubFlyout__label {
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    box-sizing: border-box;
-    // margin-right: 30px;
-    i {
-      width: 20px;
-    }
-  }
-  .fv-menuSubFlyout__button {
-    display: inline-block;
-    position: relative;
-    cursor: inherit;
-    color: inherit;
-    outline: none;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    border: none;
-    min-width: 26px;
-    height: 30px;
-    background-color: inherit;
-    text-align: left;
-    .fv-menuSubFlyout__label{
-      margin-right: 30px;
-    }
-    span {
-      text-align: left;
-    }
+	cursor: pointer;
+	display: inline-flex;
+	width: 100%;
+	box-sizing: border-box;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-between;
+	position: relative;
+	&.disabled {
+		cursor: not-allowed;
+	}
+	.fv-menuSuyFlyout__bg {
+		z-index: -1;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+	.fv-menuSubFlyout__label {
+		width: 100%;
+		height: 40px;
+		line-height: 30px;
+		box-sizing: border-box;
+        // margin-right: 30px;
+        display: flex;
+        align-items: center;
+		i {
+			width: 20px;
+		}
+	}
+	.fv-menuSubFlyout__button {
+		display: inline-block;
+		position: relative;
+		cursor: inherit;
+		color: inherit;
+		outline: none;
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		border: none;
+		min-width: 26px;
+		height: 40px;
+		background-color: inherit;
+		text-align: left;
+		.fv-menuSubFlyout__label {
+			margin-right: 30px;
+		}
+		span {
+			text-align: left;
+		}
 
-    .fv-menuSubFlyout__icon-right {
-      color: inherit;
-      position: absolute;
-      right: 0px;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  span {
-    display: inline-block;
-    padding: 0 12px;
-  }
-  .fv-menuSubFlyout__button-box {
-    position: relative;
-    color: inherit;
-    cursor: inherit;
-    &.fv-menuSubFlyout__full {
-      width: 100%;
-      .fv-menuSubFlyout__button {
-        width: 100%;
-      }
-    }
-    span {
-      &.fv-menuSubFlyout__divider {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate(-50%, -50%);
-        display: inline-block;
-        height: 16px;
-        width: 1px;
-        padding: 0;
-        background-color: #c8c6c4;
-      }
-    }
-  }
+		.fv-menuSubFlyout__icon-right {
+			color: inherit;
+			position: absolute;
+			right: 0px;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	span {
+		display: inline-block;
+		padding: 0 12px;
+	}
+	.fv-menuSubFlyout__button-box {
+		position: relative;
+		color: inherit;
+		cursor: inherit;
+		&.fv-menuSubFlyout__full {
+			width: 100%;
+			.fv-menuSubFlyout__button {
+				width: 100%;
+			}
+		}
+		span {
+			&.fv-menuSubFlyout__divider {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translate(-50%, -50%);
+				display: inline-block;
+				height: 16px;
+				width: 1px;
+				padding: 0;
+				background-color: #c8c6c4;
+			}
+		}
+	}
 }
 
 @mixin fv-menuItemFlyout {
-  cursor: pointer;
-  .fv-menuItemFlyout__button {
-    color: inherit;
-    outline: none;
-    background-color: inherit;
-    border: none;
-    height: 30px;
-    width: 100%;
-    padding: 0 12px;
-    text-align: left;
-    cursor: inherit;
-    i {
-      width: 20px;
-    }
-  }
-  &.disabled{
-    cursor: not-allowed;
-  }
+	cursor: pointer;
+	.fv-menuItemFlyout__button {
+		color: inherit;
+		outline: none;
+		background-color: inherit;
+		border: none;
+		height: 40px;
+		width: 100%;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+		text-align: left;
+		cursor: inherit;
+		i {
+			width: 20px;
+		}
+	}
+	&.disabled {
+		cursor: not-allowed;
+	}
 }
 
 @mixin fv-menuBlockFlyout {
-  .fv-menuBlockFlyout__header{
-    padding: 0 12px;
-    font-size: 12px;
-  }
+	.fv-menuBlockFlyout__header {
+		padding: 0 12px;
+        font-size: 13.8px;
+        font-weight: 600;
+	}
 }

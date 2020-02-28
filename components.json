@@ -230,5 +230,13 @@
       "Dark": "@/dark-theme/CalendarDatePicker.scss",
       "Custom": "@/custom-theme/CalendarDatePicker.scss"
     }
+  },
+  "WebWindow": {
+    "entry": "@/WebWindow/index.js",
+    "theme": {
+      "Light": "@/light-theme/WebWindow.scss",
+      "Dark": "@/dark-theme/WebWindow.scss",
+      "Custom": "@/custom-theme/WebWindow.scss"
+    }
   }
 }

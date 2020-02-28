@@ -3,7 +3,7 @@
   @include fv-menuFlyout();
   background-color: #fff;
   .fv-menuFlyout__button{
-    border: 1px solid #8a8886;
+    border: none;
   }
   &:hover {
     background-color: #f3f2f1;
@@ -25,7 +25,7 @@
 
 .fv-light-menuSubFlyout {
   @include fv-menuSubFlyout();
-  font-size: 14px;
+  font-size: 15px;
   &:hover {
     .fv-menuSuyFlyout__bg {
       background-color: #f3f2f1;
@@ -56,7 +56,7 @@
   }
   color: inherit;
   .fv-menuItemFlyout__icon{
-    color: #0078d4;
+    color: rgba(0, 120, 212, 1);
   }
   &.disabled{
     background-color: inherit;
@@ -69,6 +69,6 @@
   .fv-menuBlockFlyout__header{
     height: 30px;
     line-height: 30px;
-    color:#0078d4;
+    color:rgba(0, 120, 212, 1);
   }
 }

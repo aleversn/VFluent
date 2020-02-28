@@ -1,0 +1,5 @@
+@import '../common-theme/WebWindow.scss';
+.fv-custom-WebWindow{
+  @include fv-WebWindow();
+}
+    

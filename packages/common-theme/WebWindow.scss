@@ -1,0 +1,83 @@
+@mixin fv-WebWindow {
+
+    position: fixed;    /*new*/
+	width: 560px;
+    min-height: 200px;
+	height: auto;
+    max-height: 100%;
+	left: calc(50% - 280px);
+	background: white;
+	color: rgba(95,95,95,1);
+    border: rgba(0,0,0,0.1) solid thin;
+    border-radius: 5px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+    justify-content: flex-start;
+	align-items: center;
+	box-shadow: $ms-depth-shadow-16;
+	transition: height 0.3s;
+    overflow: auto;
+    z-index: 30;    /*new*/
+
+    &.static-transition
+    {
+        transition: all 0.3s;
+    }
+
+    .title-bar
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        min-height: 30px;
+        height: 30px;
+        font-size: 13px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: move;
+        z-index: 2;
+
+        .control-btn
+        {
+            position: relative;
+            width: 46px;
+            height: 100%;
+            border: thin;
+            background: transparent;
+            font-size: 12px;
+            color: rgba(56,56,56,1);
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.shut-down
+            {
+                &:hover
+                {
+                    background: rgba(214, 33, 33, 0.973);
+                    color: whitesmoke;
+                }
+
+                &:active
+                {
+                    background: rgba(247, 88, 88, 0.979);
+                }
+            }
+
+            &:hover
+            {
+                background: rgba(0,0,0,0.1);
+            }
+
+            &:active
+            {
+                background: rgba(0,0,0,0.2);
+            }
+        }
+    }
+}

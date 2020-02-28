@@ -1,0 +1,33 @@
+@import "../common-theme/WebWindow.scss";
+.fv-dark-WebWindow {
+    @include fv-WebWindow();
+    
+    background: rgba(56,56,56,1);
+    color: whitesmoke;
+
+    .title-bar
+    {
+        .control-btn
+        {
+            color: whitesmoke;
+
+            &.shut-down
+            {
+                &:hover
+                {
+                    color: whitesmoke;
+                }
+            }
+
+            &:hover
+            {
+                background: rgba(255,255,255,0.1);
+            }
+
+            &:active
+            {
+                background: rgba(255,255,255,0.2);
+            }
+        }
+    }
+}

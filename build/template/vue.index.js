@@ -5,7 +5,7 @@
  * @param ComponentName
  */
 module.exports = `<template>
-    <div :class="'{{prefix}}-'+$theme+'-{{componentname}}'">
+    <div :class="['{{prefix}}-'+$theme+'-{{componentname}}']">
         {{ComponentName}} TEMPLATE 
     </div>
 </template>

@@ -3,8 +3,9 @@
   @include fv-menuFlyout();
   color:#f0efee;
   background-color: #252423;
+  box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
   .fv-menuFlyout__button{
-    border: 1px solid #979693;
+    border: none;
   }
   &:hover {
     background-color: #252423;
@@ -31,7 +32,7 @@
   @include fv-menuSubFlyout();
   color: inherit;
   background-color: inherit;
-  font-size: 14px;
+  font-size: 15px;
   &:hover {
     .fv-menuSubFlyout__bg {
       background-color: #323130;
