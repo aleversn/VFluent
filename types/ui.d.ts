@@ -3,7 +3,6 @@ import {FluentVueComponent,FluentVueComponentSize,FluentVueHorizontalAlignment,F
 import { FvButton } from './button'
 import { FvProgressRing } from './progressring'
 import { FvCheckBox } from './checkbox'
-import { FvCombobox } from './combobox'
 import { FvDropDown } from './dropdown'
 import { FvProgressBar } from './progressbar'
 import { FvFlipView } from './flipview'
@@ -30,6 +29,7 @@ import { FvImg } from './img'
 import { FvSearchBox } from './searchbox'
 import { FvCalendarDatePicker } from './calendardatepicker'
 import { FvWebWindow } from './webwindow'
+import { FvPersona } from './persona'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -43,8 +43,6 @@ export type Theme = FluentVueTheme
   export class ProgressRing extends FvProgressRing {}
 /** CheckBox component */
   export class CheckBox extends FvCheckBox {}
-/** Combobox component */
-  export class Combobox extends FvCombobox {}
 /** DropDown component */
   export class DropDown extends FvDropDown {}
 /** ProgressBar component */
@@ -97,4 +95,6 @@ export type Theme = FluentVueTheme
   export class CalendarDatePicker extends FvCalendarDatePicker {}
 /** WebWindow component */
   export class WebWindow extends FvWebWindow {}
+/** Persona component */
+  export class Persona extends FvPersona {}
 

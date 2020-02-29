@@ -242,10 +242,10 @@ export default {
         onChange(event) {
             this.show.listContainer = this.multiple;
             this.$emit("change", event);
-        },
-        beforeDestroy() {
-            clearInterval(this.timer);
         }
+    },
+    beforeDestroy() {
+        clearInterval(this.timer);
     }
 };
 </script>

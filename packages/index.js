@@ -11,7 +11,6 @@ import 'office-ui-fabric-core/dist/css/fabric.min.css'
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
 import CheckBox from '@/CheckBox/index.js'
-import Combobox from '@/Combobox/index.js'
 import DropDown from '@/DropDown/index.js'
 import ProgressBar from '@/ProgressBar/index.js'
 import FlipView from '@/FlipView/index.js'
@@ -38,13 +37,13 @@ import Img from '@/Img/index.js'
 import SearchBox from '@/SearchBox/index.js'
 import CalendarDatePicker from '@/CalendarDatePicker/index.js'
 import WebWindow from '@/WebWindow/index.js'
+import Persona from '@/Persona/index.js'
 
 
 let components = [
   Button,
   ProgressRing,
   CheckBox,
-  Combobox,
   DropDown,
   ProgressBar,
   FlipView,
@@ -71,6 +70,7 @@ let components = [
   SearchBox,
   CalendarDatePicker,
   WebWindow,
+  Persona,
 
 ]
 
@@ -92,7 +92,6 @@ export default {
     Button,
   ProgressRing,
   CheckBox,
-  Combobox,
   DropDown,
   ProgressBar,
   FlipView,
@@ -119,6 +118,7 @@ export default {
   SearchBox,
   CalendarDatePicker,
   WebWindow,
+  Persona,
 
 }
 

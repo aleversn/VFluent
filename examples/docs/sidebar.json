@@ -3,7 +3,6 @@
   "/zh/Button/",
   "/zh/ProgressRing/",
   "/zh/CheckBox/",
-  "/zh/Combobox/",
   "/zh/DropDown/",
   "/zh/ProgressBar/",
   "/zh/FlipView/",
@@ -29,5 +28,6 @@
   "/zh/Img/",
   "/zh/SearchBox/",
   "/zh/CalendarDatePicker/",
-  "/zh/WebWindow/"
+  "/zh/WebWindow/",
+  "/zh/Persona/"
 ]

@@ -23,14 +23,6 @@
       "Custom": "@/custom-theme/CheckBox.scss"
     }
   },
-  "Combobox": {
-    "entry": "@/Combobox/index.js",
-    "theme": {
-      "Light": "@/light-theme/Combobox.scss",
-      "Dark": "@/dark-theme/Combobox.scss",
-      "Custom": "@/custom-theme/Combobox.scss"
-    }
-  },
   "DropDown": {
     "entry": "@/DropDown/index.js",
     "theme": {
@@ -237,6 +229,14 @@
       "Light": "@/light-theme/WebWindow.scss",
       "Dark": "@/dark-theme/WebWindow.scss",
       "Custom": "@/custom-theme/WebWindow.scss"
+    }
+  },
+  "Persona": {
+    "entry": "@/Persona/index.js",
+    "theme": {
+      "Light": "@/light-theme/Persona.scss",
+      "Dark": "@/dark-theme/Persona.scss",
+      "Custom": "@/custom-theme/Persona.scss"
     }
   }
 }
