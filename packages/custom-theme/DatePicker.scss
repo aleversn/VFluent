@@ -1,0 +1,5 @@
+@import '../common-theme/DatePicker.scss';
+.fv-custom-DatePicker{
+  @include fv-DatePicker();
+}
+    

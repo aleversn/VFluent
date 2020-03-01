@@ -1,9 +1,9 @@
 import {FluentVueComponent,FluentVueTheme} from './component'
 
 /**
- * FvCalendarDatePicker Component
+ * FvDatePicker Component
  */
-export declare class FvCalendarDatePicker extends FluentVueComponent{
+export declare class FvDatePicker extends FluentVueComponent{
   theme:FluentVueTheme
   disabled:boolean
 }

@@ -231,6 +231,14 @@
       "Custom": "@/custom-theme/WebWindow.scss"
     }
   },
+  "DatePicker": {
+    "entry": "@/DatePicker/index.js",
+    "theme": {
+      "Light": "@/light-theme/DatePicker.scss",
+      "Dark": "@/dark-theme/DatePicker.scss",
+      "Custom": "@/custom-theme/DatePicker.scss"
+    }
+  },
   "Persona": {
     "entry": "@/Persona/index.js",
     "theme": {

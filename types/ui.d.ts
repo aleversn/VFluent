@@ -29,6 +29,7 @@ import { FvImg } from './img'
 import { FvSearchBox } from './searchbox'
 import { FvCalendarDatePicker } from './calendardatepicker'
 import { FvWebWindow } from './webwindow'
+import { FvDatePicker } from './datepicker'
 import { FvPersona } from './persona'
 import { FvCombobox } from './combobox'
 
@@ -96,6 +97,8 @@ export type Theme = FluentVueTheme
   export class CalendarDatePicker extends FvCalendarDatePicker {}
 /** WebWindow component */
   export class WebWindow extends FvWebWindow {}
+/** DatePicker component */
+  export class DatePicker extends FvDatePicker {}
 /** Persona component */
   export class Persona extends FvPersona {}
 /** Combobox component */
