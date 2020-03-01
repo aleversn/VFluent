@@ -14,7 +14,7 @@
                     v-for="(item, index) in options"
                     class="combobox-item"
                     :class="{hr:item.type == 'divider', normal: (item.type == 'default' || item.type == undefined) && !item.disabled, disabled: item.disabled, choose: item === thisValue, title: item.type == 'header'}"
-                    :style="{background: item === thisValue ? choosenBackground : '', color: item.type === 'header' ? titileForeground : ''}"
+                    :style="{background: item === thisValue ? choosenBackground : '', color: item.type === 'header' ? titleForeground : ''}"
                     @click="Choose($event, item)"
                     :key="index"
                     :title="item.text"
