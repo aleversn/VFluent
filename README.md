@@ -80,6 +80,18 @@ Vue.use(VueFluent);
 <fv-button>Hello Vue Fluent!</fv-button>
 ```
 
+4. about Fabric UI
+
+Our project have many using cases contains Microsoft's Fabric UI, such as icons and shadows, for more details you can click <a href="https://developer.microsoft.com/en-us/fabric#/styles">here</a> to get more information.
+
+Here is the icon using sample.
+
+```vue
+<i class="ms-Icon ms-Icon--AADLogo"></i>
+```
+
+In particular, if you're using a component of Fluent Vue Design and it contains a prop that support icon, you only need to type the icon's name in prop.
+
 ### License
 
 MIT License

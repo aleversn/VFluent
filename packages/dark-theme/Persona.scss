@@ -1,0 +1,13 @@
+@import "../common-theme/Persona.scss";
+.fv-dark-Persona {
+
+    @include fv-Persona();
+    
+    div.persona-avatar
+    {
+        .status-icon
+        {
+            background: black;
+        }
+    }
+}

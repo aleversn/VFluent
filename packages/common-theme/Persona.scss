@@ -1,0 +1,79 @@
+@mixin fv-Persona {
+
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    div.persona-avatar
+    {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        user-select: none;
+
+        .persona-bg
+        {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            color: whitesmoke;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .status-icon
+        {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            width: 33.3%;
+            height: 33.3%;
+            background: white;
+            border-radius: 50%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .persona-content-block
+    {
+        position: relative;
+        padding: 0px 12px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        .persona-title
+        {
+            font-weight: 400;
+            color: rgba(50, 49, 48, 1);
+
+            p
+            {
+                margin: 0px;
+                padding: 0px;
+            }
+        }
+
+        .persona-secondary
+        {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(96, 94, 92, 1);
+
+            p
+            {
+                margin: 0px;
+                padding: 0px;
+            }
+        }
+    }
+}

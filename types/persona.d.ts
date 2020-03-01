@@ -1,9 +1,10 @@
 import {FluentVueComponent,FluentVueTheme} from './component'
 
 /**
- * FvCombobox Component
+ * FvPersona Component
  */
-export declare class FvCombobox extends FluentVueComponent{
+export declare class FvPersona extends FluentVueComponent{
   theme:FluentVueTheme
   disabled:boolean
 }
+
