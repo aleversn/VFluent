@@ -30,6 +30,7 @@ import { FvImg } from './img'
 import { FvSearchBox } from './searchbox'
 import { FvCalendarDatePicker } from './calendardatepicker'
 import { FvWebWindow } from './webwindow'
+import { FvDatePicker } from './datepicker'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -97,4 +98,6 @@ export type Theme = FluentVueTheme
   export class CalendarDatePicker extends FvCalendarDatePicker {}
 /** WebWindow component */
   export class WebWindow extends FvWebWindow {}
+/** DatePicker component */
+  export class DatePicker extends FvDatePicker {}
 
