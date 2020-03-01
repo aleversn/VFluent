@@ -238,5 +238,13 @@
       "Dark": "@/dark-theme/Persona.scss",
       "Custom": "@/custom-theme/Persona.scss"
     }
+  },
+  "Combobox": {
+    "entry": "@/Combobox/index.js",
+    "theme": {
+      "Light": "@/light-theme/Combobox.scss",
+      "Dark": "@/dark-theme/Combobox.scss",
+      "Custom": "@/custom-theme/Combobox.scss"
+    }
   }
 }

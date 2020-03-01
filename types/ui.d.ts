@@ -30,6 +30,7 @@ import { FvSearchBox } from './searchbox'
 import { FvCalendarDatePicker } from './calendardatepicker'
 import { FvWebWindow } from './webwindow'
 import { FvPersona } from './persona'
+import { FvCombobox } from './combobox'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -97,4 +98,6 @@ export type Theme = FluentVueTheme
   export class WebWindow extends FvWebWindow {}
 /** Persona component */
   export class Persona extends FvPersona {}
+/** Combobox component */
+  export class Combobox extends FvCombobox {}
 

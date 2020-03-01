@@ -11,6 +11,7 @@
 export default {
     data () {
         return {
+            value: [],
             options: [
                 { key: "fruitsHeader", text: "Fruits", type: "header" },
                 { key: "apple", text: "Apple" },
@@ -29,14 +30,14 @@ export default {
 </script>
 
 <ClientOnly>
-<fv-DropDown :options="options" placeholder="Select an option"></fv-DropDown>
+<fv-DropDown v-model="value" :options="options" placeholder="Select an option"></fv-DropDown>
 </ClientOnly>
 
 ### DropDown-Disabled
 ---
 1. Set Disabled
 <ClientOnly>
-<fv-DropDown :options="options" placeholder="Select an option" disabled></fv-DropDown>
+<fv-DropDown v-model="value" :options="options" placeholder="Select an option" disabled></fv-DropDown>
 </ClientOnly>
 
 2. DropDown without options
