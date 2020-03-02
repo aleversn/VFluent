@@ -2,15 +2,15 @@
   <div name="fv-DatePicker" :class="['fv-'+$theme+'-DatePicker']">
     <div class="fv-DatePicker__input" @click="focus()">
       <button v-if="!hideMonth" class="fv-DatePicker__input-month">{{months[value.getMonth()]}}</button>
-      <button v-if="!hideDay" class="fv-DatePicker__input-day">
+      <button v-if="!hideDay" class="fv-DatePicker__input-day" :style={borderColor:innerBorderColor} >
         {{value.getDate()}}
         <span v-if="showWeek">({{weeks[value.getDay()]}})</span>
       </button>
-      <button v-if="!hideYear" class="fv-DatePicker__input-year">{{value.getFullYear()}}</button>
+      <button v-if="!hideYear" :style={borderColor:innerBorderColor}  class="fv-DatePicker__input-year">{{value.getFullYear()}}</button>
     </div>
-    <div v-show="popper.show" class="fv-DatePicker__input-options">
+    <div v-show="popper.show" class="fv-DatePicker__input-options" :style="optionsStyle">
       <div class="fv-DatePicker__input-body">
-        <div class="fv-DatePicker__input-center-mask" />
+        <div class="fv-DatePicker__input-center-mask" :style="selectStyle" />
         <div v-if="!hideMonth" class="fv-DatePicker__input-options-col" key="col1">
           <div
             class="fv-DatePicker__input-options-col-up"
@@ -21,6 +21,7 @@
           <div ref="month" :style="style.monthCol" class="fv-DatePicker__input-options-col-items">
             <div
               class="fv-DatePicker__input-options-col-item"
+              :class="[selectItemClass]"
               v-for="(item,index) in options.month"
               :key="`month${item}${index}`"
               @click="clickItem('month',index)"
@@ -43,6 +44,7 @@
           <div ref="day" :style="style.dayCol" class="fv-DatePicker__input-options-col-items">
             <div
               class="fv-DatePicker__input-options-col-item"
+              :class="[selectItemClass]"
               v-for="(item,index) in options.day"
               :key="`day${item}${index}`"
               @click="clickItem('day',index)"
@@ -68,6 +70,7 @@
           <div ref="year" class="fv-DatePicker__input-options-col-items">
             <div
               class="fv-DatePicker__input-options-col-item"
+              :class="[selectItemClass]"
               v-for="(item,index) in options.year"
               :key="`year${item}${index}`"
               @click="clickItem('year',index)"
@@ -145,6 +148,15 @@ export default {
     weeks: {
       type: Array,
       default: () => ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    },
+    optionsStyle:{},
+    selectStyle:{},
+    innerBorderColor:{
+      type:String,
+      default:"#cccccc"
+    },
+    selectItemClass:{
+
     }
   },
   data() {
@@ -439,146 +451,6 @@ export default {
       date.setDate(0);
       return date.getDate();
     },
-    // async slideDown(boxName, styleName, pushItem, callback = () => {}) {
-    //   this.options[boxName].push(pushItem);
-    //   this.options[boxName].shift();
-    //   this.$nextTick(() => {
-    //     this.$refs[boxName].scrollTop -= 40;
-    //     let origin = this.$refs[boxName].scrollTop;
-    //     let timeout = setInterval(() => {
-    //       this.$refs[boxName].scrollTop += 10;
-    //       if (this.$refs[boxName].scrollTop - 40 >= origin) {
-    //         this.$refs[boxName].scrollTop = origin + 40;
-    //         clearInterval(timeout);
-    //         this.optionsConfig[boxName].slideLock = false;
-    //         callback();
-    //         return;
-    //       }
-    //     }, 20);
-    //   });
-    // },
-    // async slideUp(boxName, styleName, pushItem, callback = () => {}) {
-    //   this.options[boxName].unshift(pushItem);
-    //   this.options[boxName].pop();
-    //   this.$nextTick(() => {
-    //     let origin = this.$refs[boxName].scrollTop;
-    //     this.$refs[boxName].scrollTop += 40;
-    //     let timeout = setInterval(() => {
-    //       this.$refs[boxName].scrollTop -= 10;
-    //       if (this.$refs[boxName].scrollTop <= origin) {
-    //         this.$refs[boxName].scrollTop = origin;
-    //         clearInterval(timeout);
-    //         this.optionsConfig[boxName].slideLock = false;
-    //         callback();
-    //         return;
-    //       }
-    //     }, 20);
-    //   });
-    // },
-    // async dayColUp() {
-    //   if (this.optionsConfig.day.slideLock) return;
-    //   this.optionsConfig.day.slideLock = true;
-    //   let day = this.selected.date.getDate();
-    //   let dayRange = this.dayRange(this.selected.date);
-    //   this.selected.date.setDate(this.nNext(day, dayRange, 1));
-    //   await this.slideDown(
-    //     "day",
-    //     "dayCol",
-    //     this.nNext(day, dayRange, this.config.buffer + 1)
-    //   );
-    // },
-    // async dayColDown() {
-    //   if (this.optionsConfig.day.slideLock) return;
-    //   this.optionsConfig.day.slideLock = true;
-    //   let day = this.selected.date.getDate();
-    //   let dayRange = this.dayRange(this.selected.date);
-    //   this.selected.date.setDate(this.nPrev(day, dayRange, 1));
-    //   await this.slideUp(
-    //     "day",
-    //     "dayCol",
-    //     this.nPrev(day, dayRange, this.config.buffer + 1)
-    //   );
-    // },
-    // async monthColUp() {
-    //   if (this.optionsConfig.month.slideLock) return;
-    //   this.optionsConfig.month.slideLock = true;
-    //   let month = this.selected.date.getMonth();
-    //   this.adjustDay(
-    //     this.selected.date,
-    //     new Date(this.selected.date.getFullYear(), this.nNext(month, 12, 1, 0))
-    //   );
-    //   this.selected.date.setMonth(this.nNext(month, 12, 1, 0));
-    //   await this.slideDown(
-    //     "month",
-    //     "monthCol",
-    //     this.nNext(month, 12, this.config.buffer + 1, 0),
-    //     () => {
-    //       this.setDayOptions();
-    //     }
-    //   );
-    // },
-    // async monthColDown() {
-    //   if (this.optionsConfig.month.slideLock) return;
-    //   this.optionsConfig.month.slideLock = true;
-    //   let month = this.selected.date.getMonth();
-    //   this.adjustDay(
-    //     this.selected.date,
-    //     new Date(this.selected.date.getFullYear(), this.nPrev(month, 12, 1, 0))
-    //   );
-    //   this.selected.date.setMonth(this.nPrev(month, 12, 1, 0));
-    //   await this.slideUp(
-    //     "month",
-    //     "monthCol",
-    //     this.nPrev(month, 12, this.config.buffer + 1, 0),
-    //     () => {
-    //       this.setDayOptions();
-    //     }
-    //   );
-    // },
-    // async yearColDown() {
-    //   if (this.optionsConfig.year.slideLock) return;
-    //   this.optionsConfig.year.slideLock = true;
-    //   let year = this.selected.date.getFullYear();
-    //   if (this.adjustYear(year - 1) < 0) {
-    //     this.optionsConfig.year.slideLock = false;
-    //     return;
-    //   }
-    //   this.adjustDay(
-    //     this.selected.date,
-    //     new Date(year - 1, this.selected.date.getMonth())
-    //   );
-    //   this.selected.date.setYear(year - 1);
-    //   await this.slideUp(
-    //     "year",
-    //     "yearCol",
-    //     this.adjustYear(year - this.config.buffer - 1),
-    //     () => {
-    //       this.setDayOptions();
-    //     }
-    //   );
-    // },
-    // async yearColUp() {
-    //   if (this.optionsConfig.year.slideLock) return;
-    //   this.optionsConfig.year.slideLock = true;
-    //   let year = this.selected.date.getFullYear();
-    //   if (this.adjustYear(year + 1) < 0) {
-    //     this.optionsConfig.year.slideLock = false;
-    //     return;
-    //   }
-    //   this.adjustDay(
-    //     this.selected.date,
-    //     new Date(year + 1, this.selected.date.getMonth())
-    //   );
-    //   this.selected.date.setYear(year + 1);
-    //   await this.slideDown(
-    //     "year",
-    //     "yearCol",
-    //     this.adjustYear(year + this.config.buffer + 1),
-    //     () => {
-    //       this.setDayOptions();
-    //     }
-    //   );
-    // },
     slideCol(origin, refName, nxtCallback, preCallback) {
       if (Math.abs(this.$refs[refName].scrollTop - origin) >= 20) {
         if (this.$refs[refName].scrollTop > origin) {
