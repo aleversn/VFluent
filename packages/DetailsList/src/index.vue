@@ -13,7 +13,7 @@
                 <i class="ms-Icon ms-Icon--ChevronRight"></i>
             </span>
         </span>
-        <span v-show="item.show" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{width: colWidth[index], background: styles.listHead.background}">
+        <span v-show="item.show" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{'min-width': colWidth[index], width: colWidth[index], background: styles.listHead.background}">
             <span class="col-content" @click="sortClick(item)">
                 <slot name="head" :item="item" :index="index">
                     <p class="default-title">{{item.content}}</p>
@@ -375,7 +375,7 @@ export default {
             this.timer.width = setInterval(() => {
                 let w = this.$el.clientWidth;
                 if(this.multiSelection)
-                    w-=48;
+                    w-=50;
                 if(this.showGroup)
                     w-=36;
                 this.listWidth = w;
