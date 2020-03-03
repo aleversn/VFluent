@@ -11,7 +11,7 @@ module.exports = {
   css: {
     // Separate StyleSheet
     extract: true,
-    requireModuleExtension:false,
+    requireModuleExtension:true,
     sourceMap: false
   },
   productionSourceMap:false,
