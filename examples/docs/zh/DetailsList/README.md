@@ -504,7 +504,7 @@ export default {
 | 事件名(Name) |   参数类型(args)    |                       说明(statement)                       |
 | :----------: | :-----------------: | :---------------------------------------------------------: |
 | change-value |   修改后的 value    | 在列表内部的 value 发生改变后会触发事件并返回修改后的 value |
-| choose-item  |    currentChoose    |              在选择某行数据后返回被选中的数据               |
+| choose-items  |    currentChoose    |              在选择某行数据后返回被选中的数据               |
 |   lazyload   |   修改后的 value    |          滚动到底部加载数据, 返回列表内部的 value           |
 |  rightclick  | 当前选中的 row-item |                 右键菜单返回当前选择的项目                  |
 
