@@ -32,6 +32,7 @@ import { FvWebWindow } from './webwindow'
 import { FvDatePicker } from './datepicker'
 import { FvPersona } from './persona'
 import { FvCombobox } from './combobox'
+import { FvTimePicker } from './timepicker'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -103,4 +104,6 @@ export type Theme = FluentVueTheme
   export class Persona extends FvPersona {}
 /** Combobox component */
   export class Combobox extends FvCombobox {}
+/** TimePicker component */
+  export class TimePicker extends FvTimePicker {}
 

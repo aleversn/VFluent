@@ -29,7 +29,8 @@
   "/zh/SearchBox/",
   "/zh/CalendarDatePicker/",
   "/zh/WebWindow/",
-  "/zh/Persona/",
   "/zh/DatePicker/",
-  "/zh/Combobox/"
+  "/zh/Persona/",
+  "/zh/Combobox/",
+  "/zh/TimePicker/"
 ]

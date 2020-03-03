@@ -1,0 +1,5 @@
+@import '../common-theme/TimePicker.scss';
+.fv-dark-timePicker{
+  @include fv-timePicker();
+}
+    

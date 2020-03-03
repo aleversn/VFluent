@@ -200,10 +200,9 @@ export default {
           if (!this.popper.show || this.config.clickLock) return;
           let dom = evt.target;
           let inside = false;
-          while (dom.nodeName && dom.nodeName.toLowerCase() != "body") {
+          while (dom) {
             if (
-              dom.getAttribute("name") &&
-              dom.getAttribute("name") == "fv-DatePicker"
+              dom==this.$el
             ) {
               inside = true;
               break;

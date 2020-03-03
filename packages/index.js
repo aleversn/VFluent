@@ -40,6 +40,7 @@ import WebWindow from '@/WebWindow/index.js'
 import DatePicker from '@/DatePicker/index.js'
 import Persona from '@/Persona/index.js'
 import Combobox from '@/Combobox/index.js'
+import TimePicker from '@/TimePicker/index.js'
 
 
 let components = [
@@ -75,6 +76,7 @@ let components = [
   DatePicker,
   Persona,
   Combobox,
+  TimePicker,
 
 ]
 
@@ -125,6 +127,7 @@ export default {
   DatePicker,
   Persona,
   Combobox,
+  TimePicker,
 
 }
 
