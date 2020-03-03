@@ -1,7 +1,7 @@
 <template>
 <div :class="'fv-'+$theme+'-CommandBar'">
     <div class="left-command-bar-container" :style="{background: background}">
-        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[item.type == 'divider' ? 'hr' : 'normal']" :key="index" @click="itemClick($event, item)">
+        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[item.type == 'divider' ? 'hr' : 'normal', {not_disabled: !item.disabled}, {disabled: item.disabled}]" :key="index" @click="itemClick($event, item)">
             <span v-show="item.type !== 'more'" class="s1-container">
                 <i class="ms-Icon icon" :class="[`ms-Icon--${item.icon}`]" :style="{color: item.iconColor}"></i>
                 <p class="name">
@@ -113,7 +113,7 @@ export default {
     methods: {
         FRInit () {
             let FR = new this.$RevealEffects("body", {
-                selector: `.fv-${this.$theme}-CommandBar .left-command-bar-container .command-bar-item.normal`,
+                selector: `.fv-${this.$theme}-CommandBar .left-command-bar-container .command-bar-item.normal.not_disabled`,
                 borderGradientSize: 80,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor
@@ -157,6 +157,8 @@ export default {
             }
         },
         itemClick (event, item) {
+            if(item.disabled)
+                return 0;
             let status = !item.choosen;
             this.collapseAll();
             item.choosen = status;

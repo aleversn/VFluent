@@ -14,11 +14,11 @@ export default {
             value: {},
             options: [
                 { name: "Add", icon: "Add", iconColor: "rgba(0, 120, 212, 1)", func: this.customFunc, secondary: [
-                    { name: "Email Message", func: this.customFunc, icon: "Mail", iconColor: "rgba(0, 153, 204, 1)" },
+                    { name: "Email Message", func: this.customFunc, icon: "Mail", iconColor: "rgba(0, 153, 204, 1)", disabled: true },
                     { type: "divider" },
                     { name: "Calendar event", func: this.customFunc, icon: "WebAppBuilderModule" }
                 ]},
-                { name: "Edit", func: this.customFunc, icon: "SingleColumnEdit" },
+                { name: "Edit", func: this.customFunc, icon: "SingleColumnEdit", disabled: true },
                 { type: "divider" },
                 { name: "Share", func: this.customFunc, icon: "Share" },
                 { type: "more", secondary: [
@@ -167,7 +167,7 @@ export default {
 
 ```javascript
 options = [
-  { name: "", icon: "", iconColor: "", type: "", func: {}, secondary: [] }
+  { name: "", icon: "", iconColor: "", type: "", func: {}, secondary: [], disabled: false }
 ];
 
 //e.g.//
@@ -183,7 +183,8 @@ options: [
         name: "Email Message",
         func: this.customFunc,
         icon: "Mail",
-        iconColor: "rgba(0, 153, 204, 1)"
+        iconColor: "rgba(0, 153, 204, 1)",
+        disabled: true
       },
       { type: "divider" },
       {
@@ -193,7 +194,7 @@ options: [
       }
     ]
   },
-  { name: "Edit", func: this.customFunc, icon: "SingleColumnEdit" },
+  { name: "Edit", func: this.customFunc, icon: "SingleColumnEdit", disabled: true },
   { type: "divider" },
   { name: "Share", func: this.customFunc, icon: "Share" },
   {

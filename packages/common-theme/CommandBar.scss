@@ -68,6 +68,26 @@
                 align-items: center;
             }
 
+            &.disabled
+            {
+                filter: grayscale(1);
+
+                i.icon
+                {
+                    opacity: 0.6;
+                }
+
+                p.name
+                {
+                    opacity: 0.6;
+                }
+
+                &:hover
+                {
+                    background: transparent;
+                }
+            }
+
             &:hover
             {
                 background: rgba(158, 158, 158, 0.3);
