@@ -11,20 +11,12 @@ module.exports = {
   css: {
     // Separate StyleSheet
     extract: true,
-    modules: false,
+    requireModuleExtension:false,
     sourceMap: false
   },
+  productionSourceMap:false,
   chainWebpack: config => {
     config.resolve.alias.set("@", resolve("packages/"));
-    // config.module
-    //   .rule("js")
-    //   .include.add("/packages")
-    //   .end()
-    //   .use("babel-loader")
-    //   .loader("babel-loader")
-    //   .tap(options => {
-    //     return options;
-    //   });
   },
   lintOnSave: false
 };

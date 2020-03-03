@@ -19,13 +19,16 @@
   .fv-DatePicker__input-options {
     background-color: #1e1e1e;
     color: #fff;
-
+    border-color: #444;
     .fv-DatePicker__input-body {
       background-color: inherit;
       .fv-DatePicker__input-center-mask {
         background-color: #393837;
       }
       .fv-DatePicker__input-options-col {
+        .fv-DatePicker__input-options-col-items{
+          border-color: inherit;
+        }
         .fv-DatePicker__input-options-col-up {
           background-color: #1f1f1f;
         }
@@ -54,19 +57,25 @@
       }
       .fv-DatePicker__input-options-col:nth-child(n+3){
         .fv-DatePicker__input-options-col-item {
-          border-left: 1px solid #444;
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-color: inherit;
         }
         .fv-DatePicker__input-options-col-up {
-          border-left: 1px solid #444;
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-color: inherit;
         }
         .fv-DatePicker__input-options-col-down {
-          border-left: 1px solid #444;
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-color: inherit;
         }
       }
     }
     .fv-DatePicker__input-options-bottom-bar {
       background-color: inherit;
-      border-top: 1px solid #444;
+      border-top: 1px solid inherit;
       button:hover {
         background-color: #343434;
       }

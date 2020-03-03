@@ -65,11 +65,13 @@
     box-shadow: 0 0 5px #aaa;
     display: flex;
     flex-direction: column;
+    border-color:inherit;
     .fv-DatePicker__input-body {
       position: relative;
       height: calc(100% - 40px);
       width: inherit;
       display: inline-flex;
+      border-left-color: inherit;
       .fv-DatePicker__input-center-mask{
         position: absolute;
         height: 40px;
@@ -85,16 +87,26 @@
       .fv-DatePicker__input-options-col:nth-child(n + 3) {
         flex: 2;
         text-align: center;
+        border-left-color:inherit;
+        .fv-DatePicker__input-options-col-items{
+          border-color:inherit;
+        }
         .fv-DatePicker__input-options-col-item {
-          border-left: 1px solid #b2b2b2;
-        white-space: nowrap;
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-color:inherit;
+          white-space: nowrap;
         }
         .fv-DatePicker__input-options-col-up {
-          border-left: 1px solid #b2b2b2;
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-color:inherit;
           cursor: pointer;
         }
         .fv-DatePicker__input-options-col-down {
-          border-left: 1px solid #b2b2b2;
+          border-left-style: solid;
+          border-left-width: 1px;
+          border-color:inherit;
           cursor: pointer;
         }
       }
@@ -150,7 +162,9 @@
       height: 40px;
       width: inherit;
       display: inline-flex;
-      border-top: 1px solid #b2b2b2;
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-color:inherit;
       z-index: 1;
       button {
         flex: 1;

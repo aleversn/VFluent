@@ -1,6 +1,7 @@
 @import "../common-theme/DatePicker.scss";
 .fv-light-DatePicker {
   @include fv-DatePicker();
+  background-color: #fff;
   border-color: #666666;
   &:hover{
     border-color: #333333;
@@ -8,6 +9,7 @@
   .fv-DatePicker__input-options {
     background-color: #d9dada;
     color: #000;
+    border-color:rgb(174, 174, 174);
     .fv-DatePicker__input-body {
       background-color: inherit;
       .fv-DatePicker__input-center-mask{
