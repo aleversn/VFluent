@@ -4,6 +4,6 @@ import {FluentVueComponent,FluentVueTheme,FluentVueComponentSize} from './compon
  * FvProgressRing Component
  */
 export declare class FvProgressRing extends FluentVueComponent{
-  size:FluentVueComponentSize,
+  size:FluentVueComponentSize
   color:string
 }

@@ -13,7 +13,7 @@ jobs:
         provider: npm
         email: $NPM_EMAIL
         api_token: $NPM_API_KEY
-        skip_cleanup: false
+        skip_cleanup: true
         on:
           branch: master
     - stage: "deploy pages"

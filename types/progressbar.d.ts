@@ -5,7 +5,7 @@ import {FluentVueComponent,FluentVueTheme} from './component'
  */
 export declare class FvProgressBar extends FluentVueComponent{
   disabled:boolean
-  value:number,
+  value:number
   loading:boolean
   foreground:string
   background:string

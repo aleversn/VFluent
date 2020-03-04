@@ -1,17 +1,16 @@
 <template>
-  <div :class="['fv-'+$theme+'-timePicker']">
+  <div :class="['fv-'+$theme+'-timePicker',{disabled:disabled}]">
     <div class="fv-TimePicker__input" @click="focus()">
-      <button
-        class="fv-TimePicker__input-item"
-      >{{timeType==12?(value.getHours()-1)%12+1:value.getHours()}}</button>
+      <button class="fv-TimePicker__input-item">{{showTime(0,value.getHours())}}</button>
       <button
         class="fv-TimePicker__input-item"
         :style="{borderColor:innerBorderColor}"
-      >{{value.getMinutes()}}</button>
+      >{{showTime(1,value.getMinutes())}}</button>
       <button
         :style="{borderColor:innerBorderColor}"
         class="fv-TimePicker__input-item"
-      >{{value.getHours() >=12 ? period[1]:period[0]}}</button>
+        v-if="timeType==12"
+      >{{showTime(2,Math.floor(value.getHours()/11.9))}}</button>
     </div>
     <div v-show="show" class="fv-TimePicker__options">
       <div class="fv-TimePicker__options-body">
@@ -21,23 +20,28 @@
           :key="`options-col${index1}`"
           class="fv-TimePicker__options-body-col"
         >
-          <div class="fv-TimePicker__options-body-col-up"></div>
+          <div class="fv-TimePicker__options-body-col-up" @click="clickItem(`col${index1}`,4)">
+            <i class="ms-Icon ms-Icon--ChevronUp"></i>
+          </div>
           <div class="fv-TimePicker__options-body-items" :ref="`col${index1}`">
             <div
-              class="fv-TimePicer__options-body-item"
+              class="fv-TimePicker__options-body-item"
               v-for="(item,index) in col"
-              :key="`options-col-item${index1}${item}${index}`"
-            >{{item>=0?item:''}}</div>
+              :key="`options-col-item${index1}-${item}-${index}`"
+              @click="clickItem(`col${index1}`,index)"
+            >{{showTime(index1,item)}}</div>
           </div>
-          <div class="fv-TimePicker__options-body-col-down"></div>
+          <div class="fv-TimePicker__options-body-col-down" @click="clickItem(`col${index1}`,6)">
+            <i class="ms-Icon ms-Icon--ChevronDown"></i>
+          </div>
         </div>
       </div>
       <div class="fv-TimePicker__options-bar">
-        <button class="fv-TimePicker__options-bar-accept">
-          <i class="ms-Icon ms-Icon--accept"></i>
+        <button class="fv-TimePicker__options-bar-accept" @click="accept">
+          <i class="ms-Icon ms-Icon--Accept"></i>
         </button>
-        <button class="fv-TimePicker__options-bar-canner">
-          <i class="ms-Icon ms-Icon--cancer"></i>
+        <button class="fv-TimePicker__options-bar-cancel" @click="cancel">
+          <i class="ms-Icon ms-Icon--Cancel"></i>
         </button>
       </div>
     </div>
@@ -58,7 +62,7 @@ export default {
     },
     value: {
       type: Date,
-      default: ()=>new Date()
+      default: () => new Date()
     },
     period: {
       type: Array,
@@ -103,9 +107,10 @@ export default {
         optionCount: 9,
         buffer: 1
       },
-      selected:{
-        date:this.value
-      }
+      selected: {
+        date: this.value
+      },
+      options: {}
     };
   },
   computed: {
@@ -117,13 +122,13 @@ export default {
   watch: {
     show(val) {
       if (val) {
-        this.selected.date=this.value
+        this.selected.date = this.value;
         this.init();
       }
     }
   },
   mounted() {
-    this.init()
+    this.init();
     this.loadEvent();
   },
   beforeDestroy() {
@@ -131,28 +136,36 @@ export default {
   },
   methods: {
     focus() {
+      if (this.disabled) return;
       this.show = true;
+    },
+    accept() {
+      this.$emit("input", this.selected.date);
+      this.show = false;
+    },
+    cancel() {
+      this.show = false;
     },
     init() {
       this.data = [[], []];
       if (this.timeType == "12") {
         this.data.push([]);
       }
-      this.size=[this.timeType==12?12:24,60,2]
-      for (let i=0;i<this.data.length;++i){
-          let col = this.data[i]
-          this.setOptions(col,this.size[i],i)
+      this.size = [this.timeType == 12 ? 12 : 24, 60, 2];
+      for (let i = 0; i < this.data.length; ++i) {
+        let col = this.data[i];
+        this.setOptions(col, this.size[i], i);
       }
     },
     nPrev(num, size, next = 1, offset = 1) {
-      num = Math.round(num)
+      num = Math.round(num);
       let offsetSize = next * size;
-      return ((num + offsetSize - offset - next) % size) + offset
+      return ((num + offsetSize - offset - next) % size) + offset;
     },
     nNext(num, size, next = 1, offset = 1) {
-      num = Math.round(num)
+      num = Math.round(num);
       let offsetSize = offset * size;
-      return ((num + offsetSize + next - offset) % size) + offset
+      return ((num + offsetSize + next - offset) % size) + offset;
     },
     loadEvent() {
       for (let key in this.window.event) {
@@ -160,119 +173,179 @@ export default {
         window.addEventListener(key, event);
       }
     },
-    setOptions(data,size,index){
-        let count=this.config.optionCount+this.config.buffer*2;
-        let num;
-        let date = this.selected.date;
-        switch (index){
-            case 0:
-                num = this.nPrev(date.getHours(),size,Math.floor(count/2))
-                break;
-            case 1:
-                num = this.nPrev(date.getMinutes(),size,Math.floor(count/2))
-                break;
-            case 2:
-                num = this.nPrev(date.getHours()/12,size,Math.floor(count/2),0)
-                break;
+    setOptions(data, size, index) {
+      let count = this.config.optionCount + this.config.buffer * 2;
+      let num;
+      let date = this.selected.date;
+      switch (index) {
+        case 0:
+          num = this.nPrev(date.getHours(), size, Math.floor(count / 2), 0);
+          break;
+        case 1:
+          num = this.nPrev(
+            date.getMinutes(),
+            size,
+            Math.floor(count / 2),
+            0,
+            0
+          );
+          break;
+        case 2:
+          num = this.nPrev(
+            Math.floor(date.getHours() / 11.9),
+            size,
+            Math.floor(count / 2),
+            0
+          );
+          break;
+      }
+      for (let i = 0; i < count; ++i) {
+        if (index == 2) {
+          if (i != 5 && i - num != 5 && i - num != 4) {
+            data.push(num - 3);
+          } else {
+            data.push(num);
+          }
+        } else {
+          data.push(num);
         }
-        for (let i=0;i<count;++i){
-            if (index==2){
-                if (i!=5 && i-num!=4 && i-num!=5){
-                    data.push(-num)
-                }else{
-                    data.push(num)
-                }
-            }else{
-                data.push(num)
-            }
-            num=this.nNext(num,size,1,index==2?0:1)
-        }
+        num = this.nNext(num, size, 1, index == 0 ? 1 : 0);
+      }
+      this.$nextTick(() => {
+        this.loadSlide(size, index);
+      });
     },
-    loadSlide(col,size,index){
-      let refName=`col${index}`
-      let origin = (this.$refs[refName].scrollTop=40*this.config.buffer)
-      if (this.options[refName].scroll){
-        this.$refs[refName].removeEventListener('scroll',this.options[refName].scroll)
+    loadSlide(size, index) {
+      let refName = `col${index}`;
+      let origin = (this.$refs[refName][0].scrollTop = 40 * this.config.buffer);
+      this.options[refName] = {};
+      if (this.options[refName].scroll) {
+        this.$refs[refName][0].removeEventListener(
+          "scroll",
+          this.options[refName].scroll
+        );
       }
-      this.options[refName].scroll=()=>{
-        if (this.options[refName].slideLock) return
-        if (index==2){
-          if (this.$refs[refName].scrollTop-origin>0){
-            if (this.selected.date.getHours()<12){
-              this.$refs[refName].scrollTop=origin
-              return
+      this.options[refName].scroll = () => {
+        if (this.options[refName].slideLock) return;
+        if (index == 2) {
+          if (this.$refs[refName][0].scrollTop > origin) {
+            if (this.selected.date.getHours() > 11) {
+              this.$refs[refName][0].scrollTop = origin;
+              return;
             }
-          }else{
-            if (this.selected.date.getHours()>=12){
-              this.$refs[refName].scrollTop=origin
-              return
+          } else {
+            if (this.selected.date.getHours() <= 11) {
+              this.$refs[refName][0].scrollTop = origin;
+              return;
             }
           }
         }
-        this.slideCol(origin,refName,()=>{
-          this.data[index].unshift()
-          let num;
-          switch (index){
-            case 0:
-              num = this.nNext(this.selected.date.getHours(),size,0)
-              this.selected.date.setHours(this.nNext(num,size,1))
-              break;
-            case 1:
-              num = this.nNext(this.selected.date.getMinutes(),size,0)
-              this.selected.date.setMinutes(this.nNext(num,size,1))
-              break;
-            case 2:
-              num = this.selected.date.getHours()/12;
-              if (num==0)
-                this.selected.date.setHours(this.selected.date.getHours()+12)
-              break;
+        this.slideCol(
+          origin,
+          refName,
+          () => {
+            this.data[index].shift();
+            let num;
+            let temp;
+            switch (index) {
+              case 0:
+                temp =
+                  this.timeType == 12
+                    ? this.selected.date.getHours() >= 12
+                      ? 12
+                      : 0
+                    : 1;
+                num = this.nNext(this.selected.date.getHours(), size, 0);
+                this.selected.date.setHours(this.nNext(num, size, 1, temp));
+                break;
+              case 1:
+                num = this.nNext(this.selected.date.getMinutes(), size, 0, 0);
+                this.selected.date.setMinutes(this.nNext(num, size, 1, 0));
+                break;
+              case 2:
+                num = Math.floor(this.selected.date.getHours() / 11.9);
+                if (num == 0)
+                  this.selected.date.setHours(
+                    this.selected.date.getHours() + 12
+                  );
+                break;
+            }
+            let next = this.nNext(
+              num,
+              size,
+              (this.config.optionCount - 1) / 2 + this.config.buffer + 1,
+              0
+            );
+            if (index == 2) {
+              next = -1;
+            }
+            this.data[index].push(next);
+          },
+          () => {
+            this.data[index].pop();
+            let num, temp;
+            switch (index) {
+              case 0:
+                temp =
+                  this.timeType == 12
+                    ? this.selected.date.getHours() >= 12
+                      ? 12
+                      : 0
+                    : 1;
+                num = this.nNext(this.selected.date.getHours(), size, 0);
+                this.selected.date.setHours(this.nPrev(num, size, 1, temp));
+                break;
+              case 1:
+                num = this.nNext(this.selected.date.getMinutes(), size, 0, 0);
+                this.selected.date.setMinutes(this.nPrev(num, size, 1, 0));
+                break;
+              case 2:
+                num = Math.floor(this.selected.date.getHours() / 12);
+                if (num == 1)
+                  this.selected.date.setHours(
+                    this.selected.date.getHours() - 12
+                  );
+                break;
+            }
+            let next = this.nPrev(
+              num,
+              size,
+              (this.config.optionCount - 1) / 2 + this.config.buffer + 1,
+              0
+            );
+            if (index == 2) {
+              next = -1;
+            }
+            this.data[index].unshift(next);
           }
-          let next = this.nNext(num,size,(this.config.optionCount-1)/2+this.config.buffer+1)
-          if (index==2){
-            next=-1;
-          }
-          this.data[index].push(next)
-        },()=>{
-          this.data[index].pop()
-          let num;
-          switch (index){
-            case 0:
-              num = this.nNext(this.selected.date.getHours(),size,0)
-              this.selected.date.setHours(this.nPrev(num,size,1))
-              break;
-            case 1:
-              num = this.nNext(this.selected.date.getMinutes(),size,0)
-              this.selected.date.setMinutes(this.nPrev(num,size,1))
-              break;
-            case 2:
-              num = this.selected.date.getHours()/12;
-              if (num==1)
-                this.selected.date.setHours(this.selected.date.getHours()-12)
-              break;
-          }
-          let next = this.nPrev(num,size,(this.config.optionCount-1)/2+this.config.buffer+1)
-          if (index==2){
-            next=-1;
-          }
-          this.data[index].unshift(next)
-        })
-      }
+        );
+      };
+      this.$refs[refName][0].addEventListener(
+        "scroll",
+        this.options[refName].scroll
+      );
     },
     removeEvent() {
       for (let key in this.window.event) {
         let event = this.window.event[key];
         window.removeEventListener(key, event);
       }
+      for (let key in this.options) {
+        this.$refs[key][0].removeEventListener(
+          "scroll",
+          this.options[key].scroll
+        );
+      }
     },
     slideCol(origin, refName, nxtCallback, preCallback) {
-      if (Math.abs(this.$refs[refName].scrollTop - origin) >= 20) {
-        if (this.$refs[refName].scrollTop > origin) {
+      if (Math.abs(this.$refs[refName][0].scrollTop - origin) >= 20) {
+        if (this.$refs[refName][0].scrollTop > origin) {
           nxtCallback();
         } else {
           preCallback();
         }
         this.$nextTick(() => {
-          this.$refs[refName].scrollTop = origin;
+          this.$refs[refName][0].scrollTop = origin;
         });
       }
     },
@@ -280,12 +353,12 @@ export default {
       if (this.config.clickLock) return;
       this.config.clickLock = true;
       // imitation scroll
-      this.$refs[colName].scrollTop = this.config.buffer * 40;
-      let origin = this.$refs[colName].scrollTop;
-      this.$refs[colName].scrollTop += index - 5; // init important
+      this.$refs[colName][0].scrollTop = this.config.buffer * 40;
+      let origin = this.$refs[colName][0].scrollTop;
+      this.$refs[colName][0].scrollTop += index - 5; // init important
       let count = Math.abs(index - 5);
       let timeout = setInterval(() => {
-        if (this.$refs[colName].scrollTop == origin) {
+        if (this.$refs[colName][0].scrollTop == origin) {
           --count;
           if (!count) {
             clearInterval(timeout);
@@ -294,9 +367,30 @@ export default {
           }
         }
         this.config.scrollLock = true;
-        this.$refs[colName].scrollTop += (index - 5) * 3;
+        this.$refs[colName][0].scrollTop += (index - 5) * 3;
       }, 20);
     },
+    numberFixTwo(num) {
+      if (num < 10) {
+        return "0" + num;
+      } else {
+        return num;
+      }
+    },
+    showTime(col, item) {
+      if (col == 0) {
+        return this.nNext(
+          item,
+          this.timeType == 12 ? 12 : 24,
+          0,
+          this.timeType == 12 ? 1 : 0
+        );
+      } else if (col == 1) {
+        return this.numberFixTwo(this.nNext(item, 60, 0, 0));
+      } else {
+        return item >= 0 ? this.period[item] : "";
+      }
+    }
   }
 };
 </script>
