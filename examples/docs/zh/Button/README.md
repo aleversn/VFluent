@@ -25,6 +25,7 @@
 |  foreground  |              [string]              |       No       |       N/A       |    Button foreground    |
 |  background  |              [string]              |       No       |       N/A       |    Button background    |
 | borderRadius |              [number]              |       No       |       N/A       |   Button borderRadius   |
+|   fontSize   |              [number]              |       No       |       N/A       |     Button fontSize     |
 |  fontWeight  |              [string]              |       No       |     normal      | Button text font weight |
 |   disabled   |             [boolean]              |       No       |      false      |     Disabled button     |
 | borderWidth  |              [number]              |       No       |        2        |   Button border width   |
