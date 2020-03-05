@@ -9,7 +9,7 @@ export declare class FvToggleSwitch extends FluentVueComponent{
   value:number
   on:string
   off:string
-  onForeground	:string
+  onForeground:string
   offForeground:string
   borderColor:string
   ringBackground:string

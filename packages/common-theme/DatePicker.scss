@@ -95,7 +95,6 @@
           border-left-style: solid;
           border-left-width: 1px;
           border-color:inherit;
-          white-space: nowrap;
         }
         .fv-DatePicker__input-options-col-up {
           border-left-style: solid;
@@ -148,6 +147,7 @@
             box-sizing: border-box;
             padding: 10px 20px;
             line-height: 100%;
+            white-space: nowrap;
             -moz-user-select: -moz-none;
             -o-user-select:none;
             -khtml-user-select:none;

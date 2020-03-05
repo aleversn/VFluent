@@ -1,0 +1,52 @@
+@import '../common-theme/TimePicker.scss';
+.fv-dark-timePicker{
+  @include fv-timePicker();
+  background-color: #000;
+  color:#fff;
+  border-color: #999999;
+  &:hover{
+    border-color: #cccccc;
+  }
+  .fv-TimePicker__options{
+    background-color: #1e1e1e;
+    border-color: #333;
+    .fv-TimePicker__options-body{
+      background-color: inherit;
+      .fv-TimePicker__options-body-mask{
+        background-color: #393837;
+
+      }
+      .fv-TimePicker__options-body-col{
+        &:hover{
+          .fv-TimePicker__options-body-col-up,.fv-TimePicker__options-body-col-down{
+            display: block;
+            background-color: #1f1f1f;
+
+            &:hover{
+              background-color: #353535;
+
+            }
+          }
+          .fv-TimePicker__options-body-item{
+            &:hover {
+              background-color: #343434;
+            }
+          }
+        }
+      }
+    }
+    .fv-TimePicker__options-bar-accept,.fv-TimePicker__options-bar-cancel{
+      &:hover{
+        background-color: #343434;
+      }
+    }
+  }
+  &.disabled{
+    background-color: rgb(243, 242, 241);
+    cursor: not-allowed;
+    color:#999;
+  }
+}
+    
+
+    

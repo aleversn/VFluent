@@ -254,5 +254,13 @@
       "Dark": "@/dark-theme/Combobox.scss",
       "Custom": "@/custom-theme/Combobox.scss"
     }
+  },
+  "TimePicker": {
+    "entry": "@/TimePicker/index.js",
+    "theme": {
+      "Light": "@/light-theme/TimePicker.scss",
+      "Dark": "@/dark-theme/TimePicker.scss",
+      "Custom": "@/custom-theme/TimePicker.scss"
+    }
   }
 }
