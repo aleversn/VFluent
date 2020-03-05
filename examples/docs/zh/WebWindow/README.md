@@ -11,14 +11,16 @@
 export default {
     data () {
         return {
-            theme: false
+            theme: false,
+            show: true
         }
     }
 }
 </script>
 
 <ClientOnly>
-<fv-WebWindow :theme="theme ? 'dark' : 'light'">
+<fv-toggle-switch v-model="show" on="Show" off="Hide"></fv-toggle-switch>
+<fv-WebWindow v-model="show" :theme="theme ? 'dark' : 'light'">
 <div style="width: 100%; height: auto; padding: 25px; box-sizing: border-box;">
     <fv-toggle-switch v-model="theme" on="Dark" off="Light"></fv-toggle-switch>
 </div>
