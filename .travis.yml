@@ -13,7 +13,7 @@ jobs:
         provider: npm
         email: $NPM_EMAIL
         api_token: $NPM_API_KEY
-        skip_cleanup: true
+        cleanup: false
         on:
           branch: master
     - stage: "deploy pages"
@@ -21,9 +21,9 @@ jobs:
         - yarn docs:build # npm run docs:build
       deploy:
         provider: pages
-        skip_cleanup: true
+        cleanup: false
         local_dir: examples/docs/.vuepress/dist
-        github_token: $GITHUB_TOKEN 
+        token: $GITHUB_TOKEN 
         keep_history: true
         target_branch: gh-pages
         on:

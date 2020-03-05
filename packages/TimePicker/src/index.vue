@@ -12,9 +12,9 @@
         v-if="timeType==12"
       >{{showTime(2,Math.floor(value.getHours()/11.9))}}</button>
     </div>
-    <div v-show="show" class="fv-TimePicker__options">
+    <div v-show="show" class="fv-TimePicker__options" :style="optionsStyle">
       <div class="fv-TimePicker__options-body">
-        <div class="fv-TimePicker__options-body-mask"></div>
+        <div class="fv-TimePicker__options-body-mask" :style="selectStyle"></div>
         <div
           v-for="(col,index1) in data"
           :key="`options-col${index1}`"
@@ -67,6 +67,12 @@ export default {
     period: {
       type: Array,
       default: () => ["A.M.", "P.M."]
+    },
+    optionsStyle:{
+
+    },
+    selectStyle:{
+
     },
     innerBorderColor: {
       type: String,
@@ -124,6 +130,8 @@ export default {
       if (val) {
         this.selected.date = this.value;
         this.init();
+      }else{
+        this.config.clickLock=false;
       }
     }
   },
@@ -140,7 +148,7 @@ export default {
       this.show = true;
     },
     accept() {
-      this.$emit("input", this.selected.date);
+      this.$emit("input", new Date(this.selected.date));
       this.show = false;
     },
     cancel() {
@@ -226,7 +234,6 @@ export default {
         );
       }
       this.options[refName].scroll = () => {
-        if (this.options[refName].slideLock) return;
         if (index == 2) {
           if (this.$refs[refName][0].scrollTop > origin) {
             if (this.selected.date.getHours() > 11) {
