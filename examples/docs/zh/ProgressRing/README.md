@@ -10,6 +10,11 @@
 <fv-progressRing>
 </fv-progressRing>
 
+```vue
+<fv-progressRing>
+</fv-progressRing>
+```
+
 ### Different Size
 ---
 <fv-progressRing size="xs">
@@ -24,10 +29,29 @@
 <fv-progressRing size="l">
 </fv-progressRing>
 
+```vue
+<fv-progressRing size="xs">
+</fv-progressRing>
+
+<fv-progressRing size="s">
+</fv-progressRing>
+
+<fv-progressRing size="m">
+</fv-progressRing>
+
+<fv-progressRing size="l">
+</fv-progressRing>
+```
+
 ### Custom Color
 ---
 <fv-progressRing color="rgba(0,204,153,1)" size="l">
 </fv-progressRing>
+
+```vue
+<fv-progressRing color="rgba(0,204,153,1)" size="l">
+</fv-progressRing>
+```
 
 ### Propoties
 ---

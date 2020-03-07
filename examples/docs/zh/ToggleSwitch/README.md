@@ -10,25 +10,50 @@
 <fv-ToggleSwitch>
 </fv-ToggleSwitch>
 
+```vue
+<fv-ToggleSwitch>
+</fv-ToggleSwitch>
+```
+
 ### ToggleSwitch Disabled
 ---
 <fv-ToggleSwitch disabled>
 </fv-ToggleSwitch>
+
+```vue
+<fv-ToggleSwitch disabled>
+</fv-ToggleSwitch>
+```
 
 ### ToggleSwitch Dark Theme
 ---
 <fv-ToggleSwitch theme="dark">
 </fv-ToggleSwitch>
 
+```vue
+<fv-ToggleSwitch theme="dark">
+</fv-ToggleSwitch>
+```
+
 ### ToggleSwitch Custom Content
 ---
 <fv-ToggleSwitch on="开" off="关">
 </fv-ToggleSwitch>
 
+```vue
+<fv-ToggleSwitch on="开" off="关">
+</fv-ToggleSwitch>
+```
+
 ### ToggleSwitch Custom Style
 ---
 <fv-ToggleSwitch borderColor="rgba(0,204,153,1)" ringBackground="rgba(0,204,153,1)" onForeground="rgba(0,204,153,1)" offForeground="rgba(0,204,153,1)" switchOnBackground="rgba(0,204,153,1)">
 </fv-ToggleSwitch>
+
+```vue
+<fv-ToggleSwitch borderColor="rgba(0,204,153,1)" ringBackground="rgba(0,204,153,1)" onForeground="rgba(0,204,153,1)" offForeground="rgba(0,204,153,1)" switchOnBackground="rgba(0,204,153,1)">
+</fv-ToggleSwitch>
+```
 
 ### Propoties
 ---

@@ -9,14 +9,32 @@
 <div style="height: 500px;"></div>
 <fv-ScrollStory name="scale-up-to-up"><fv-colorPicker></fv-colorPicker></fv-ScrollStory>
 
+```vue
+<fv-ScrollStory name="scale-up-to-up">
+    <fv-colorPicker></fv-colorPicker>
+</fv-ScrollStory>
+```
+
 ### ScrollStory-Infinite Show
 ---
 <fv-ScrollStory name="scale-down-to-down" :infinite="true"><fv-colorPicker></fv-colorPicker></fv-ScrollStory>
+
+```vue
+<fv-ScrollStory name="scale-down-to-down" :infinite="true">
+    <fv-colorPicker></fv-colorPicker>
+</fv-ScrollStory>
+```
 
 ### ScrollStory-Over Collapse
 ---
 <fv-ScrollStory name="scale-down-to-down" :overCollapse="true"><fv-colorPicker></fv-colorPicker></fv-ScrollStory>
 <div style="height: 500px;"></div>
+
+```vue
+<fv-ScrollStory name="scale-down-to-down" :overCollapse="true">
+    <fv-colorPicker></fv-colorPicker>
+</fv-ScrollStory>
+```
 
 ### Propoties
 ---

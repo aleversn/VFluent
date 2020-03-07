@@ -9,20 +9,40 @@
 
 <fv-checkBox>Indeterminate checkbox</fv-checkBox>
 
+```vue
+<fv-checkBox>Indeterminate checkbox</fv-checkBox>
+```
+
 ### CheckBox-Disabled
 ---
 <fv-checkBox disabled>Disabled checkbox</fv-checkBox>
+
+```vue
+<fv-checkBox disabled>Disabled checkbox</fv-checkBox>
+```
 
 ### CheckBox-Disabled
 ---
 <fv-checkBox boxSide="end">Checkbox rendered with boxSide "end"</fv-checkBox>
 
+```vue
+<fv-checkBox boxSide="end">Checkbox rendered with boxSide "end"</fv-checkBox>
+```
+
 ### CheckBox-Custom
 ---
 1. Set border width.
 <fv-checkBox borderWidth="1">Checkbox rendered with borderWidth "1"</fv-checkBox>
+
+```vue
+<fv-checkBox borderWidth="1">Checkbox rendered with borderWidth "1"</fv-checkBox>
+```
 2. Set background and border color.
 <fv-checkBox borderColor="rgba(0,204,153,1)" foreground="rgba(0,204,153,1)" background="rgba(0,204,153,1)">Checkbox</fv-checkBox>
+
+```vue
+<fv-checkBox borderColor="rgba(0,204,153,1)" foreground="rgba(0,204,153,1)" background="rgba(0,204,153,1)">Checkbox</fv-checkBox>
+```
 
 ### Propoties
 ---

@@ -34,12 +34,33 @@ disabled
 </fv-radio>
 </div>
 
+```vue
+<div>
+<fv-radio v-model="value" label="option">
+option
+</fv-radio> 
+<fv-radio v-model="value" label="option2">
+option2
+</fv-radio>
+<fv-radio label="option3" disabled>
+disabled
+</fv-radio>
+</div>
+```
+
 ### Radio-Dark
 
 <div style="background:#000;height:30px;padding:20px;">
 <fv-radio v-model="value" label="option" theme="dark">option</fv-radio>
 <fv-radio v-model="value" label="option3" theme="dark" disabled>disabled </fv-radio>
 </div>
+
+```vue
+<div style="background:#000;height:30px;padding:20px;">
+<fv-radio v-model="value" label="option" theme="dark">option</fv-radio>
+<fv-radio v-model="value" label="option3" theme="dark" disabled>disabled </fv-radio>
+</div>
+```
 
 ### Radio With Icon
 
@@ -50,11 +71,26 @@ disabled
 
 </div>
 
+```vue
+<div >
+<fv-radio v-model="value" label="sort" icon="GroupedList">sort</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="MSNLogo" >MSN</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="MSNLogo" disabled >disabled</fv-radio>
+
+</div>
+```
+
 ### Radio With Image
 
 <div>
 <fv-radio image="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png" activeImage="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png" v-model="value" label="chart" >Chart</fv-radio>
 </div>
+
+```vue
+<div>
+<fv-radio image="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png" activeImage="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png" v-model="value" label="chart" >Chart</fv-radio>
+</div>
+```
 
 ### Radio-Dark With Icon
 
@@ -64,9 +100,22 @@ disabled
 <fv-radio v-model="value" label="MSN" icon="MSNLogo" theme="dark">MSN</fv-radio>
 </div>
 
+```vue
+<div style="background:#000;padding:20px;">
+<fv-radio v-model="value" label="sort" icon="GroupedList" theme="dark">sort</fv-radio>
+<fv-radio v-model="value" label="sort" icon="GroupedList" theme="dark" disabled>disabled</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="MSNLogo" theme="dark">MSN</fv-radio>
+</div>
+```
+
 ### Radio Custom Color
 <fv-radio  icon="GroupedList" v-model="value" label="sort" style="background:#00cc99;" theme="dark" >sort</fv-radio>
 <fv-radio icon="GroupedList" v-model="value" label="sort" style="background:#00cc99;" theme="dark" disabled>disabled</fv-radio>
+
+```vue
+<fv-radio  icon="GroupedList" v-model="value" label="sort" style="background:#00cc99;" theme="dark" >sort</fv-radio>
+<fv-radio icon="GroupedList" v-model="value" label="sort" style="background:#00cc99;" theme="dark" disabled>disabled</fv-radio>
+```
 
 
 ### Propoties

@@ -80,6 +80,7 @@ export default {
 | 事件名(Name) | 参数类型(args) |        说明(statement)        |
 |:------------:|:--------------:|:-----------------------------:|
 |    input     |     value      | 当选中项发生改变时, 返回value |
+|    change    |     object     | 当选中项发生改变时, 返回value |
 
 ### Slot
 ---

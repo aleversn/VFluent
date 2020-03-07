@@ -33,15 +33,33 @@
 </template>
 </fv-slider>
 
+```vue
+<fv-slider :mininum="9" :maxinum="30" :showLabel="true">
+<template slot-scope="prop" >
+  <span>{{prop.value}}</span>
+</template>
+</fv-slider>
+```
+
 ### Slider-Dark
 
 <fv-slider theme="dark">
 </fv-slider>
 
+```vue
+<fv-slider theme="dark">
+</fv-slider>
+```
+
 ### Slider-With-Tick-Mark
 
 <fv-slider :scale="20" :unit="2">
 </fv-slider>
+
+```vue
+<fv-slider :scale="20" :unit="2">
+</fv-slider>
+```
 
 ### Slider-With-Label
 
@@ -51,23 +69,49 @@
 </template>
 </fv-slider>
 
+```vue
+<fv-slider :scale="20" :showLabel="true" :unit="20">
+<template slot-scope="prop" >
+  <span>{{prop.value}}</span>
+</template>
+</fv-slider>
+```
+
 ### Slider-With-Vertical
 
 <fv-slider v-model="value" :unit="20" :vertical="true" @change="change" @click="click">
 </fv-slider>
+
+```vue
+<fv-slider v-model="value" :unit="20" :vertical="true" @change="change" @click="click">
+</fv-slider>
+```
 Slider: {{value}}%  Change: {{changeTime}} Click: {{clickTime}}
 
 
 ### Silder-Disabled
 <fv-slider disabled>
-</fv-slider>   
+</fv-slider> 
+
+```vue
+<fv-slider disabled>
+</fv-slider> 
+```
 
 ### Silder-Custom-Style
 <fv-slider v-model="value" style="width:150px;" showLabel color="#2ed573">
 <template slot-scope="prop">
 {{prop.value}}
 </template>
-</fv-slider>   
+</fv-slider>  
+
+```vue
+<fv-slider v-model="value" style="width:150px;" showLabel color="#2ed573">
+<template slot-scope="prop">
+{{prop.value}}
+</template>
+</fv-slider>  
+```
 
 ### Propoties
 ---

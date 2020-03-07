@@ -19,77 +19,176 @@ export default {
 </script>
 
 Standard
+
 <fv-TextBox></fv-TextBox>
 
+```vue
+<fv-TextBox></fv-TextBox>
+```
+
 Read-only
+
 <fv-TextBox v-model="readOnlyText" readonly></fv-TextBox>
 
+```vue
+<fv-TextBox v-model="readOnlyText" readonly></fv-TextBox>
+```
+
 With placeholder
+
 <fv-TextBox placeholder="Please enter the text here."></fv-TextBox>
 
+```vue
+<fv-TextBox placeholder="Please enter the text here."></fv-TextBox>
+```
+
 With an icon
+
 <fv-TextBox icon="Search"></fv-TextBox>
+
+```vue
+<fv-TextBox icon="Search"></fv-TextBox>
+```
 
 ### TextBox-With Input Mask
 ---
 Standard
+
 <fv-TextBox mode="mask"></fv-TextBox>
 
+```vue
+<fv-TextBox mode="mask"></fv-TextBox>
+```
+
 Customize
+
 <fv-TextBox v-model="maskValue" mode="mask" mask="Tel: +__ ___ - ____ - ____" flag="_"></fv-TextBox>
 <p>{{maskValue}}</p>
 
+```vue
+<fv-TextBox v-model="maskValue" mode="mask" mask="Tel: +__ ___ - ____ - ____" flag="_"></fv-TextBox>
+<p>{{maskValue}}</p>
+```
+
 Customize Flag
+
 <fv-TextBox v-model="maskValue" mode="mask" mask="mask: xx-xxx-xxxx-xxxx" flag="x"></fv-TextBox>
+
+```vue
+<fv-TextBox v-model="maskValue" mode="mask" mask="mask: xx-xxx-xxxx-xxxx" flag="x"></fv-TextBox>
+```
 
 ### TextBox-Disabled
 ---
 1. Standard
+
 <fv-TextBox disabled></fv-TextBox>
 
+```vue
+<fv-TextBox disabled></fv-TextBox>
+```
+
 2. With Input Mask
+
 <fv-TextBox mode="mask" disabled></fv-TextBox>
 
+```vue
+<fv-TextBox mode="mask" disabled></fv-TextBox>
+```
+
 3. With placeholder
+
 <fv-TextBox placeholder="Please enter the text here." disabled></fv-TextBox>
 
+```vue
+<fv-TextBox placeholder="Please enter the text here." disabled></fv-TextBox>
+```
+
 4. With underline
+
 <fv-TextBox underline disabled prefix="Disabled:"></fv-TextBox>
+
+```vue
+<fv-TextBox underline disabled prefix="Disabled:"></fv-TextBox>
+```
 
 ### TextBox-With Limit
 ---
 <fv-TextBox maxlength="5" style="width: 120px;"></fv-TextBox>
 
+```vue
+<fv-TextBox maxlength="5" style="width: 120px;"></fv-TextBox>
+```
+
 ### TextBox-With Underline And Borderless
 ---
 <fv-TextBox underline prefix="Standard:"></fv-TextBox>
 
+```vue
+<fv-TextBox underline prefix="Standard:"></fv-TextBox>
+```
+
 ### TextBox-With Prefix/Suffix
 ---
 Prefix
+
 <fv-TextBox prefix="https://"></fv-TextBox>
 
+```vue
+<fv-TextBox prefix="https://"></fv-TextBox>
+```
+
 Suffix
+
 <fv-TextBox suffix=".com"></fv-TextBox>
 
+```vue
+<fv-TextBox suffix=".com"></fv-TextBox>
+```
+
 Prefix and Suffix
+
 <fv-TextBox prefix="https://" suffix=".com"></fv-TextBox>
+
+```vue
+<fv-TextBox prefix="https://" suffix=".com"></fv-TextBox>
+```
 
 ### TextBox-With Status
 ---
 Warn
+
 <fv-TextBox placeholder="Warn text." status="warn"></fv-TextBox>
 
+```vue
+<fv-TextBox placeholder="Warn text." status="warn"></fv-TextBox>
+```
+
 Correct
+
 <fv-TextBox placeholder="Correct text." status="correct"></fv-TextBox>
+
+```vue
+<fv-TextBox placeholder="Correct text." status="correct"></fv-TextBox>
+```
 
 ### TextBox-Customize
 ---
 Customize border color
+
 <fv-TextBox placeholder="Please enter the text here." borderColor="rgba(0,153,204,1)" focusBorderColor="rgba(0,204,153,1)"></fv-TextBox>
 
+```vue
+<fv-TextBox placeholder="Please enter the text here." borderColor="rgba(0,153,204,1)" focusBorderColor="rgba(0,204,153,1)"></fv-TextBox>
+```
+
 Customize background
+
 <fv-TextBox placeholder="Please enter the text here." background="rgba(0,153,204,1)" borderColor="rgba(0,153,204,1)"></fv-TextBox>
+
+```vue
+<fv-TextBox placeholder="Please enter the text here." background="rgba(0,153,204,1)" borderColor="rgba(0,153,204,1)"></fv-TextBox>
+```
 
 ### TextBox-Dark Theme
 ---
@@ -101,6 +200,17 @@ Customize background
     <fv-TextBox underline prefix="Standard:" theme="dark"></fv-TextBox>
     <fv-TextBox underline prefix="Standard:" disabled theme="dark"></fv-TextBox>
 </div>
+
+```vue
+<div style="padding: 15px; background: black;">
+    <fv-TextBox placeholder="Please enter the text here." theme="dark"></fv-TextBox>
+    <fv-TextBox placeholder="Please enter the text here." disabled theme="dark" value="123"></fv-TextBox>
+    <fv-TextBox placeholder="Please enter the text here." prefix="https://" suffix=".com" theme="dark"></fv-TextBox>
+    <fv-TextBox placeholder="Please enter the text here." prefix="https://" suffix=".com" disabled theme="dark"></fv-TextBox>
+    <fv-TextBox underline prefix="Standard:" theme="dark"></fv-TextBox>
+    <fv-TextBox underline prefix="Standard:" disabled theme="dark"></fv-TextBox>
+</div>
+```
 
 ### Propoties
 ---

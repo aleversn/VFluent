@@ -7,29 +7,42 @@
 
 ### Button-DEMO
 
-<fv-button></fv-button>
+<fv-button borderRadius="3"></fv-button>
+
+```vue
+<fv-button borderRadius="3"></fv-button>
+```
+
 
 ### Button With Icon
 ---
 <fv-button icon="CalculatorAddition" theme="dark">Add</fv-button>
 
+```vue
+<fv-button icon="CalculatorAddition" theme="dark">Add</fv-button>
+```
+
 ### Button Disabled
 ---
 <fv-button disabled icon="CalculatorAddition">Add</fv-button>
 
+```vue
+<fv-button disabled icon="CalculatorAddition">Add</fv-button>
+```
+
 ### Propoties
 ---
-|  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |     说明(statement)     |
-|:------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
-|     icon     |              [string]              |       No       |       N/A       |  Icon with Fabric-Icon  |
-|  foreground  |              [string]              |       No       |       N/A       |    Button foreground    |
-|  background  |              [string]              |       No       |       N/A       |    Button background    |
-| borderRadius |              [number]              |       No       |       N/A       |   Button borderRadius   |
-|   fontSize   |              [number]              |       No       |       N/A       |     Button fontSize     |
-|  fontWeight  |              [string]              |       No       |     normal      | Button text font weight |
-|   disabled   |             [boolean]              |       No       |      false      |     Disabled button     |
-| borderWidth  |              [number]              |       No       |        2        |   Button border width   |
-|    theme     | ['light','dark','custom','system'] |       No       |     system      |      Custom theme       |
+|  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)    |
+|:------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
+|     icon     |              [string]              |       No       |       N/A       | Icon with Fabric-Icon |
+|  foreground  |              [string]              |       No       |       N/A       |     Button 前景色     |
+|  background  |              [string]              |       No       |       N/A       |     Button 背景色     |
+| borderRadius |              [number]              |       No       |       N/A       |    Button 圆角大小    |
+|   fontSize   |              [number]              |       No       |       N/A       |    Button 字体大小    |
+|  fontWeight  |              [string]              |       No       |     normal      |   Button 字体粗细度   |
+|   disabled   |             [boolean]              |       No       |      false      |    Disabled button    |
+| borderWidth  |              [number]              |       No       |        2        |    Button 边框大小    |
+|    theme     | ['light','dark','custom','system'] |       No       |     system      |     Custom theme      |
 
 ### Events
 ---
