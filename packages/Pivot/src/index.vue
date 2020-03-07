@@ -1,7 +1,7 @@
 <template>
 <div :class="['fv-'+$theme+'-Pivot', tab ? 'tab' : '']">
     <div class="pivot-container">
-        <span class="item" v-for="(item, index) in thisItems" :key="index" :class="{choose: currentItem == item}" :style="{width: `${item.width}px`}" @click="currentItem = item">
+        <span v-show="item.show" class="pivot-item" v-for="(item, index) in thisItems" :key="index" :class="{choose: currentItem == item, disabled: item.disabled}" :style="{width: `${item.width}px`}" @click="itemClick(item)">
             <slot name="container" :item="item" :index="index">
                 <p :style="{color: styles.container.color}">{{item.name}}</p>
             </slot>
@@ -79,8 +79,10 @@ export default {
             if(index < 0)
                 return 0;
             let count = 0;
-            for(let i = 0; i < index; i++)
-                count += this.thisItems[i].width;
+            for(let i = 0; i < index; i++) {
+                if(this.thisItems[i].show)
+                    count += this.thisItems[i].width;
+            }
             return count;
         },
         currentWidth () {
@@ -98,7 +100,7 @@ export default {
     },
     methods: {
         itemsInit () {
-            let model = { name: "Pivot", width: 60};
+            let model = { name: "Pivot", width: 60, show: true, disabled: false };
             let items = [];
             for(let item of this.items) {
                 let m = JSON.parse(JSON.stringify(model));
@@ -114,6 +116,12 @@ export default {
         stylesInit () {
             this.styles.slider.background = this.sliderBackground;
             this.styles.container.color = this.foreground;
+        },
+        itemClick (item) {
+            if(item.disabled)
+                return 0;
+            this.currentItem = item;
+            this.$emit('change', item);
         }
     }
 }

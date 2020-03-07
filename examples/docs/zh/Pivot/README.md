@@ -14,7 +14,7 @@ export default {
             items: [
                 { name: "All"},
                 { name: "Unread", width: 80},
-                { name: "Flagged", width: 80},
+                { name: "Flagged", width: 80, disabled: true },
                 { name: "Urgent", width: 80}
             ]
         }
@@ -24,9 +24,17 @@ export default {
 
 <fv-Pivot :items="items"></fv-Pivot>
 
+```vue
+<fv-Pivot :items="items"></fv-Pivot>
+```
+
 ### Pivot-Tab Style
 ---
 <fv-Pivot :items="items" :tab="true"></fv-Pivot>
+
+```vue
+<fv-Pivot :items="items" :tab="true"></fv-Pivot>
+```
 
 ### Pivot-Dark Theme
 ---
@@ -35,12 +43,26 @@ export default {
     <fv-Pivot :items="items" :tab="true" theme="dark"></fv-Pivot>
 </div>
 
+```vue
+<div style="width: 100%; background: black;">
+    <fv-Pivot :items="items" theme="dark"></fv-Pivot>
+    <fv-Pivot :items="items" :tab="true" theme="dark"></fv-Pivot>
+</div>
+```
+
 ### Pivot-Custom Style
 ---
 <div style="width: 100%; background: black;">
     <fv-Pivot :items="items" theme="dark" foreground="rgba(0, 204, 153, 1)" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
     <fv-Pivot :items="items" :tab="true" theme="dark" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
 </div>
+
+```vue
+<div style="width: 100%; background: black;">
+    <fv-Pivot :items="items" theme="dark" foreground="rgba(0, 204, 153, 1)" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
+    <fv-Pivot :items="items" :tab="true" theme="dark" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
+</div>
+```
 
 ### Propoties
 ---
@@ -59,12 +81,25 @@ export default {
 |:------------:|:--------------:|:-----------------------------:|
 |    input     |     value      | 当选中项发生改变时, 返回value |
 
+### Slot
+---
+1. Container
+
+自定义项目内的内容, 包含以下属性:
+- item: 当前项目数据
+- index: 当前项目索引
+
+```javascript
+<template v-slot:container="x">
+</template>
+```
+
 ### Data
 ---
 1. items
 
 ```javascript
-items = [{ name: "Pivot", width: 80 }]
+items = [{ name: "Pivot", width: 80, show: true, disabled: false }]
 
 //e.g.//
 
