@@ -23,7 +23,7 @@ jobs:
         provider: pages
         skip_cleanup: true
         local_dir: examples/docs/.vuepress/dist
-        github_token: $GITHUB_TOKEN 
+        token: $GITHUB_TOKEN 
         keep_history: true
         target_branch: gh-pages
         on:
