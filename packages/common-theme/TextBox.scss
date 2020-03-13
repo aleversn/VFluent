@@ -40,9 +40,9 @@
 
     &.underline
     {
-        border-left-color: transparent;
-        border-top-color: transparent;
-        border-right-color: transparent;
+        border-left: none;
+        border-top: none;
+        border-right: none;
 
         div.fix-block
         {
