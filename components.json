@@ -270,5 +270,13 @@
       "Dark": "@/dark-theme/Shimmer.scss",
       "Custom": "@/custom-theme/Shimmer.scss"
     }
+  },
+  "MessageBar": {
+    "entry": "@/MessageBar/index.js",
+    "theme": {
+      "Light": "@/light-theme/MessageBar.scss",
+      "Dark": "@/dark-theme/MessageBar.scss",
+      "Custom": "@/custom-theme/MessageBar.scss"
+    }
   }
 }

@@ -1,0 +1,119 @@
+@mixin fv-MessageBar {
+
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+    height: auto;
+    padding: 3px 12px;
+	background: rgba(243, 242, 241, 0.8);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 900;
+
+    &.relative
+    {
+        position: relative;
+        z-index: 0;
+    }
+
+    &.normal
+    {
+        background: rgba(243, 242, 241, 0.8);
+    }
+
+    &.warning
+    {
+        background: rgba(255, 200, 10, 0.5);
+    }
+
+    &.correct
+    {
+        background: rgba(95, 210, 85, 0.5);
+    }
+
+    &.error
+    {
+        background: rgba(250, 65, 0, 0.5);
+    }
+    
+    .msg-bar-block
+    {
+        position: relative;
+        height: auto;
+        padding: 6px 0px;
+        font-size: 12px;
+		color: rgba(50, 49, 48, 1);
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+        z-index: 999;
+        
+        .icon-block
+        {
+            margin-top: 2px;
+            
+            &.normal
+            {
+                color: rgba(50, 49, 48, 1);
+            }
+
+            &.warning
+            {
+                color: rgba(173, 38, 45, 1);
+            }
+
+            &.correct
+            {
+                color: rgba(0, 204, 153, 1);
+            }
+
+            &.error
+            {
+                color: rgba(164, 38, 45, 1);
+            }
+        }
+
+        .msg-content-block
+        {
+            flex: 1;
+            margin-left: 5px;
+            color: rgba(50, 49, 48, 1);
+            text-align: justify;
+
+            .header
+            {
+                font-weight: 600;
+            }
+
+            a
+            {
+                color: rgba(0, 120, 212, 1);
+                text-decoration: none;
+                cursor: pointer;
+
+                &:hover
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .close-block
+        {
+            margin-left: 3px;
+            font-size: 16px;
+        }
+    }
+
+    .control-block
+    {
+        padding: 6px 0px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

@@ -1,0 +1,5 @@
+@import '../common-theme/MessageBar.scss';
+.fv-dark-MessageBar{
+  @include fv-MessageBar();
+}
+    

@@ -42,6 +42,7 @@ import Persona from '@/Persona/index.js'
 import Combobox from '@/Combobox/index.js'
 import TimePicker from '@/TimePicker/index.js'
 import Shimmer from '@/Shimmer/index.js'
+import MessageBar from '@/MessageBar/index.js'
 
 
 let components = [
@@ -79,6 +80,7 @@ let components = [
   Combobox,
   TimePicker,
   Shimmer,
+  MessageBar,
 
 ]
 
@@ -131,6 +133,7 @@ export default {
   Combobox,
   TimePicker,
   Shimmer,
+  MessageBar,
 
 }
 

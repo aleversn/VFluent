@@ -1,0 +1,5 @@
+@import '../common-theme/MessageBar.scss';
+.fv-light-MessageBar{
+  @include fv-MessageBar();
+}
+    
