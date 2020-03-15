@@ -262,5 +262,13 @@
       "Dark": "@/dark-theme/TimePicker.scss",
       "Custom": "@/custom-theme/TimePicker.scss"
     }
+  },
+  "Shimmer": {
+    "entry": "@/Shimmer/index.js",
+    "theme": {
+      "Light": "@/light-theme/Shimmer.scss",
+      "Dark": "@/dark-theme/Shimmer.scss",
+      "Custom": "@/custom-theme/Shimmer.scss"
+    }
   }
 }

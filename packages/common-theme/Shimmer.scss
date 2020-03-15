@@ -1,0 +1,28 @@
+@mixin fv-Shimmer {
+
+    position: relative;
+    width: auto;
+    height: auto;
+
+    div.shimmer-container
+    {
+        position: relative;
+        visibility: hidden;
+        overflow: visible;
+
+        *
+        {
+            visibility: hidden;
+        }
+
+        div.sample
+        {
+            position: relative;
+            width: 300px;
+            height: 25px;
+            background: whitesmoke;
+            border-radius: 5px;
+            visibility: visible;
+        }
+    }
+}
