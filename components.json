@@ -278,5 +278,13 @@
       "Dark": "@/dark-theme/MessageBar.scss",
       "Custom": "@/custom-theme/MessageBar.scss"
     }
+  },
+  "InfoBox": {
+    "entry": "@/InfoBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/InfoBox.scss",
+      "Dark": "@/dark-theme/InfoBox.scss",
+      "Custom": "@/custom-theme/InfoBox.scss"
+    }
   }
 }

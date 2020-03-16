@@ -1,0 +1,13 @@
+@import "../common-theme/InfoBox.scss";
+.fv-dark-InfoBox {
+    
+    @include fv-InfoBox();
+    
+    background: rgba(0, 0, 0, 0.6);
+    color: whitesmoke;
+
+    .sinfo-box-block {
+        background: rgba(0, 0, 0, 0.9);
+        border: rgba(0, 0, 0, 0.5) solid 1px;
+    }
+}

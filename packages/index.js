@@ -43,6 +43,7 @@ import Combobox from '@/Combobox/index.js'
 import TimePicker from '@/TimePicker/index.js'
 import Shimmer from '@/Shimmer/index.js'
 import MessageBar from '@/MessageBar/index.js'
+import InfoBox from '@/InfoBox/index.js'
 
 
 let components = [
@@ -81,6 +82,7 @@ let components = [
   TimePicker,
   Shimmer,
   MessageBar,
+  InfoBox,
 
 ]
 
@@ -134,6 +136,7 @@ export default {
   TimePicker,
   Shimmer,
   MessageBar,
+  InfoBox,
 
 }
 

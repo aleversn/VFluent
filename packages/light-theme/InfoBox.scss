@@ -1,0 +1,5 @@
+@import '../common-theme/InfoBox.scss';
+.fv-light-InfoBox{
+  @include fv-InfoBox();
+}
+    
