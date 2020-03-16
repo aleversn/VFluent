@@ -139,6 +139,43 @@ export class SUtility
         }
         catch (e) { }
     }
+    static xhr(params = {}) //{ url: '', data: [{ name: '', value: '' }], success: function (responseText) {}, error: function (responseText) {}, progress: function (loaded, currentLoaded) {} } //
+    {
+        if(params.url == undefined)
+        {
+            this.barWarning(0,'expected url');
+            return 0;
+        }
+        if(params.data == undefined)
+        {
+            this.barWarning(0,'expected data');
+            return 0;
+        }
+        let xhr = new XMLHttpRequest();
+        let formData = new FormData();
+        for (let i = 0; i < params.data.length; i++) {
+            formData.append(params.data[i].name == undefined ? `obj: ${i}` : params.data[i].name, params.data[i].value);
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                if(params.success != null)
+                    params.success(xhr.responseText);
+            }
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 200) {
+                if(params.error != null)
+                    params.error(xhr.responseText);
+            }
+        }
+
+        let loaded = 0;
+        xhr.upload.addEventListener("progress", function (e) {
+            loaded += e.loaded;
+            if(params.progress != null)
+                params.progress(loaded, e.loaded);
+        });
+        xhr.open("post", params.url);
+        xhr.send(formData);
+    }
     static Guid()
     {
         function S4() {

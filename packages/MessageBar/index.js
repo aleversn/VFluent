@@ -49,6 +49,30 @@ MessageBar.install = function (Vue)
         });
         return m;
     };
+
+    Vue.prototype.$swiftWarning = (element, options) => {
+        if(element.fvSwiftWarning) return 0;
+        let thisOptions = {
+            color: 'rgba(200, 50, 59, 1)',
+            replaceTitle: 'SwiftWarning'
+        };
+        thisOptions = Object.assign(thisOptions, options);
+        thisOptions.oriContent = element.innerHTML;
+        thisOptions.oriClass = element.getAttribute("class");
+        thisOptions.oriStyle = element.getAttribute("style");
+        if(thisOptions.oriClass == undefined) thisOptions.oriClass = '';
+        if(thisOptions.oriStyle == undefined) thisOptions.oriStyle = '';
+        element.fvSwiftWarning = true;
+        element.innerHTML = thisOptions.replaceTitle;
+        element.setAttribute("class", thisOptions.oriClass + ` fv-swift-warning`);
+        element.setAttribute("style", thisOptions.oriStyle + ` color: ${thisOptions.color};`);
+        setTimeout(function(){
+            element.innerHTML = thisOptions.oriContent;
+            element.setAttribute("class", thisOptions.oriClass);
+            element.setAttribute("style", thisOptions.oriStyle);
+            element.fvSwiftWarning = false;
+        },3000);
+    }
 }
 
 export default MessageBar;

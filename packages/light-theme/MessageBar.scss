@@ -1,5 +1,22 @@
-@import '../common-theme/MessageBar.scss';
-.fv-light-MessageBar{
-  @include fv-MessageBar();
+@import "../common-theme/MessageBar.scss";
+.fv-light-MessageBar {
+	@include fv-MessageBar();
 }
-    
+
+.fv-swift-warning {
+
+    animation: fv______warning 0.5s both;
+    -webkit-animation: fv______warning 0.5s both;
+
+
+    @keyframes fv______warning
+    {
+        0%{margin-left: -50px;}
+        17%{margin-left: 40px;}
+        34%{margin-left: -25px;}
+        51%{margin-left: 15px;}
+        68%{margin-left: -5px;}
+        85%{margin-left: 2px;}
+        100%{margin-left: 0;}
+    }
+}
