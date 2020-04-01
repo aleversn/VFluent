@@ -236,4 +236,11 @@ this.$barWarning(msg, options = {
     autoClose: 3000
 });
 ```
+
+```javascript
+this.$swiftWarning(element, options = {
+    color: "rgba(173, 38, 45, 1)",
+    replaceTitle: "Swift Warning"
+});
+```
   
