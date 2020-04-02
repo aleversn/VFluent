@@ -8,7 +8,7 @@
             <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick">
                 <template v-slot:listItem="x">
                     <i v-show="x.item.icon !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.item.icon}`]"></i>
-                    <p class="name">{{x.item.name}}</p>
+                    <p class="name" :style="{ color: x.item.type == 'header' ? foreground : ''}">{{x.item.name}}</p>
                 </template>
             </fv-list-view>
         </template>
