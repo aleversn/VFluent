@@ -350,7 +350,7 @@ export class RevealEffects
         
         const els =  typeof(selector) == "string" ? RevealHelper.preProcessElements(document.querySelectorAll(selector)) : RevealHelper.preProcessElements([selector]);
         for(let item of els) {
-            let children = RevealHelper.preProcessElements(item.el.querySelectorAll(this.options.selector));
+            let children = typeof(this.options.selector) == "string" ? RevealHelper.preProcessElements(item.el.querySelectorAll(this.options.selector)) : RevealHelper.preProcessElements([this.options.selector]);
             if(window.FvRevealElements[item.el.hashCode] == undefined)
                 window.FvRevealElements[item.el.hashCode] = [];
             for(let c of children) {

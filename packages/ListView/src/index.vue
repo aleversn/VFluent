@@ -1,9 +1,9 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
     <div class="list-view-container" ref="container">
-        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="item.choosen ?choosenStyles.item : ''" @click="onClick($event, item)">
+        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="{ background: item.choosen ? choosenBackground : '' }" @click="onClick($event, item)">
             <slot name="listItem" :item="item" :index="index">
-                <p>{{item.name}}</p>
+                <p :style="{ color: item.type == 'header' ? headerForeground : '' }">{{item.name}}</p>
             </slot>
         </span>
     </div>
@@ -23,6 +23,9 @@ export default {
         rowHeight: {
             default: ""
         },
+        headerForeground: {
+            default: ""
+        },
         choosenBackground: {
             default: ""
         },
@@ -33,20 +36,12 @@ export default {
     },
     data () {
         return {
-            thisValue: [],
-            choosenStyles: {
-                item: {
-                    background: ""
-                }
-            }
+            thisValue: []
         }
     },
     watch: {
         value (val) {
             this.valueInit();
-        },
-        choosenBackground (val) {
-            this.stylesInit();
         }
     },
     computed: {
@@ -100,7 +95,6 @@ export default {
     mounted () {
         this.FRInit();
         this.valueInit();
-        this.stylesInit();
     },
     methods: {
         FRInit () {
@@ -110,9 +104,6 @@ export default {
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor
             });
-        },
-        stylesInit () {
-            this.choosenStyles.item.background = this.choosenBackground;
         },
         valueInit () {
             let model = {

@@ -214,30 +214,31 @@ Customize background
 
 ### Propoties
 ---
-|    属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |           说明(statement)           |
-|:----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------:|
-|      value       |              [string]              |       No       |                 |  Using v-model binding input value  |
-|       mode       |         ['default','mask']         |       No       |     default     |         Choose TextBox mode         |
-|   placeholder    |              [string]              |       No       |       N/A       |           等同HTML[input]           |
-|       type       |              [string]              |       No       |      text       |           等同HTML[input]           |
-|       mask       |              [string]              |       No       |    mask:___     |    The mask mode input template     |
-|       flag       |              [string]              |       No       |        _        |      The mask mode input flag       |
-|     pattern      |              [string]              |       No       |     [\S\s]*     | The pattern for limiting input char |
-|     readonly     |             [boolean]              |       No       |      false      |           等同HTML[input]           |
-|    maxlength     |              [number]              |       No       |       N/A       |           等同HTML[input]           |
-|      prefix      |              [string]              |       No       |       N/A       |                前缀                 |
-|      suffix      |              [string]              |       No       |       N/A       |                后缀                 |
-|     leftIcon     |              [string]              |       No       |       N/A       |               左图标                |
-|       icon       |              [string]              |       No       |       N/A       |               右图标                |
-|    underline     |             [boolean]              |       No       |      false      |   是否开启Underline风格的TextBox    |
-|    background    |          [string(color)]           |       No       |       N/A       |                                     |
-|   borderWidth    |             [boolean]              |       No       |       N/A       |                                     |
-|   borderColor    |          [string(color)]           |       No       |       N/A       |                                     |
-| focusBorderColor |          [string(color)]           |       No       |       N/A       |                                     |
-|   revealBorder   |             [boolean]              |       No       |      false      |                                     |
-|      status      |         ['warn','correct']         |       No       |       N/A       | 状态边框预设, 默认有警告和正确两种  |
-|     disabled     |             [boolean]              |       No       |      false      |                                     |
-|      theme       | ['light','dark','custom','system'] |       No       |     system      |                                     |
+|    属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |              说明(statement)              |
+|:----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------:|
+|      value       |              [string]              |       No       |                 |     Using v-model binding input value     |
+|       mode       |         ['default','mask']         |       No       |     default     |            Choose TextBox mode            |
+|   placeholder    |              [string]              |       No       |       N/A       |              等同HTML[input]              |
+|       type       |              [string]              |       No       |      text       |              等同HTML[input]              |
+|       mask       |              [string]              |       No       |    mask:___     |       The mask mode input template        |
+|       flag       |              [string]              |       No       |        _        |         The mask mode input flag          |
+|     pattern      |              [string]              |       No       |     [\S\s]*     |    The pattern for limiting input char    |
+|     readonly     |             [boolean]              |       No       |      false      |              等同HTML[input]              |
+|    maxlength     |              [number]              |       No       |       N/A       |              等同HTML[input]              |
+|      prefix      |              [string]              |       No       |       N/A       |                   前缀                    |
+|      suffix      |              [string]              |       No       |       N/A       |                   后缀                    |
+|     leftIcon     |              [string]              |       No       |       N/A       |                  左图标                   |
+|       icon       |              [string]              |       No       |       N/A       |                  右图标                   |
+|    underline     |             [boolean]              |       No       |      false      |      是否开启Underline风格的TextBox       |
+|    background    |          [string(color)]           |       No       |       N/A       |                                           |
+|   borderWidth    |             [boolean]              |       No       |       N/A       |                                           |
+|   borderColor    |          [string(color)]           |       No       |       N/A       |                                           |
+| focusBorderColor |          [string(color)]           |       No       |       N/A       |                                           |
+|   borderRadius   |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
+|   revealBorder   |             [boolean]              |       No       |      false      |                                           |
+|      status      |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
+|     disabled     |             [boolean]              |       No       |      false      |                                           |
+|      theme       | ['light','dark','custom','system'] |       No       |     system      |                                           |
 
 ### Events
 ---

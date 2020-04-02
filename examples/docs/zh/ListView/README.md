@@ -89,6 +89,7 @@ export default {
 |       value       |              [array]               |      Yes       |       N/A       | ListView数据绑定 |
 |     multiple      |             [boolean]              |       No       |      false      |   是否开启多选   |
 |     rowHeight     |              [number]              |       No       |       N/A       |    每一项高度    |
+| headerForeground  |          [string(color)]           |       No       |       N/A       |    标题前景色    |
 | choosenBackground |          [string(color)]           |       No       |       N/A       |   选中项背景色   |
 |       theme       | ['light','dark','custom','system'] |       No       |     system      |                  |
 

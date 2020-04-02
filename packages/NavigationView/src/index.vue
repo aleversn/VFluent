@@ -5,7 +5,7 @@
             <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" style="width: 100%;" @choose-result="onChooseSearch"></fv-search-box>
         </template>
         <template v-slot:panel>
-            <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" choosenBackground="transparent" @chooseItem="itemClick">
+            <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick">
                 <template v-slot:listItem="x">
                     <i v-show="x.item.icon !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.item.icon}`]"></i>
                     <p class="name">{{x.item.name}}</p>
@@ -13,7 +13,7 @@
             </fv-list-view>
         </template>
     </fv-NavigationPanel>
-    <vertical-slider :top="currentTop" :height="currentHeight"></vertical-slider>
+    <vertical-slider :top="currentTop" :height="currentHeight" :background="foreground"></vertical-slider>
 </div>
 </template>
 
@@ -69,6 +69,9 @@ export default {
         },
         showSetting: {
             default: true
+        },
+        foreground: {
+            default: ""
         },
         background: {
             default: ""

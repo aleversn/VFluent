@@ -1,5 +1,5 @@
 <template>
-<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="isFocus ? focusStyles.textBox : styles.textBox" @click="isFocus = true">
+<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="[isFocus ? focusStyles.textBox : styles.textBox, { borderRadius: `${borderRadius}px` }]" @click="isFocus = true">
     <div v-show="prefix != ''" class="fix-block">
         <p>{{prefix}}</p>
     </div>
@@ -77,6 +77,9 @@ export default {
         },
         focusBorderColor: {
             default: ""
+        },
+        borderRadius: {
+            default: 0
         },
         revealBorder: {
             default: false
@@ -186,7 +189,7 @@ export default {
     methods: {
         FRInit () {
             let FR = new this.$RevealEffects("body", {
-                selector: `.fv-${this.$theme}-TextBox`,
+                selector: this.$el,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor

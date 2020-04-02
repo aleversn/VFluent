@@ -94,7 +94,7 @@ export default {
 ---
 
 |   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
-| :-------------: | :--------------------------------: | :------------: | :-------------: | :----------------------------------------------------------------------------: |
+|:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
 |      value      |              [array]               |       No       |       N/A       |                          当前选中项, 用`v-model`绑定                           |
 |     options     |              [array]               |      Yes       |       N/A       |                  选项数据, 参照`ListView`中的`items`数据格式                   |
 |      title      |              [string]              |       No       | NavigationView  |                              NavigationView 标题                               |
@@ -109,6 +109,7 @@ export default {
 |   showSearch    |             [boolean]              |       No       |      true       |                                 是否显示搜索框                                 |
 |  settingTitle   |              [string]              |       No       |    Settings     |                                 设置选项的标题                                 |
 |   showSetting   |             [boolean]              |       No       |      true       |                                是否显示设置选项                                |
+|   foreground    |          [string(color)]           |       No       |       N/A       |                             NavigationView 前景色                              |
 |   background    |          [string(color)]           |       No       |       N/A       |                             NavigationView 背景色                              |
 |      theme      | ['light','dark','custom','system'] |       No       |     system      |                                                                                |
 
@@ -117,7 +118,7 @@ export default {
 ---
 
 | 事件名(Name)  | 参数类型(args) |           说明(statement)            |
-| :-----------: | :------------: | :----------------------------------: |
+|:-------------:|:--------------:|:------------------------------------:|
 | setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
 | update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
 | expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
