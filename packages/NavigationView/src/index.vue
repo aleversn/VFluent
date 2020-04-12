@@ -9,6 +9,7 @@
                 <template v-slot:listItem="x">
                     <i v-show="x.item.icon !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.item.icon}`]"></i>
                     <p class="name" :style="{ color: x.item.type == 'header' ? foreground : ''}">{{x.item.name}}</p>
+                   
                 </template>
             </fv-list-view>
         </template>
@@ -94,7 +95,7 @@ export default {
         }
     },
     watch: {
-        value (val, from) {
+        value () {
             this.valueInit();
         },
         thisValue (val, from) {
@@ -145,6 +146,7 @@ export default {
         itemClick (event) {
             this.currentItem = event;
             this.thisValue = event.item;
+            this.$emit("item-click",event.item)
         },
         settingClick (item) {
             this.currentItem = item;

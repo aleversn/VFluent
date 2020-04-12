@@ -37,13 +37,13 @@ export default {
         }
     },
     watch: {
-        top (val) {
+        top () {
             this.moveInit();
         },
-        height (val) {
+        height () {
             this.moveInit();
         },
-        background (val) {
+        background () {
             this.stylesInit();
         }
     },

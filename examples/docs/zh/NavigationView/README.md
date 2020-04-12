@@ -119,6 +119,7 @@ export default {
 
 | 事件名(Name)  | 参数类型(args) |           说明(statement)            |
 |:-------------:|:--------------:|:------------------------------------:|
+| itme-click | object | 选项点击后触发 |
 | setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
 | update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
 | expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
