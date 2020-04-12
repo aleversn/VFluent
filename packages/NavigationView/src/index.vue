@@ -144,9 +144,9 @@ export default {
             }, 30);
         },
         itemClick (event) {
-            this.currentItem = event;
-            this.thisValue = event.item;
             this.$emit("item-click",event.item)
+            this.currentItem = event;
+            this.thisValue = event.item;        
         },
         settingClick (item) {
             this.currentItem = item;
