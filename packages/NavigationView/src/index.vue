@@ -103,6 +103,7 @@ export default {
                 this.$nextTick(() => {
                     this.onChooseSearch(val);
                 });
+                this.$emit("change",val);
                 this.$emit("input", val);
             }
         }
