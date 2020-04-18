@@ -108,6 +108,7 @@ export default {
     color: {
       handler: function(val) {
         this.colorLock=true;
+        this.$emit("change",val);
         this.$emit("input", val.hex());
         this.$emit("update:alpha",val.alpha())
         setTimeout(() => {
