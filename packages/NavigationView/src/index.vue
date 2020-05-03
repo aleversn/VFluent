@@ -5,11 +5,10 @@
             <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" style="width: 100%;" @choose-result="onChooseSearch"></fv-search-box>
         </template>
         <template v-slot:panel>
-            <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick">
+            <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick" @click.native="$emit('item-click', thisValue)">
                 <template v-slot:listItem="x">
                     <i v-show="x.item.icon !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.item.icon}`]"></i>
                     <p class="name" :style="{ color: x.item.type == 'header' ? foreground : ''}">{{x.item.name}}</p>
-                   
                 </template>
             </fv-list-view>
         </template>
@@ -95,7 +94,7 @@ export default {
         }
     },
     watch: {
-        value () {
+        value (val, from) {
             this.valueInit();
         },
         thisValue (val, from) {
@@ -103,7 +102,6 @@ export default {
                 this.$nextTick(() => {
                     this.onChooseSearch(val);
                 });
-                this.$emit("change",val,from);
                 this.$emit("input", val);
             }
         }
@@ -145,9 +143,8 @@ export default {
             }, 30);
         },
         itemClick (event) {
-            this.$emit("item-click",event.item)
             this.currentItem = event;
-            this.thisValue = event.item;        
+            this.thisValue = event.item;
         },
         settingClick (item) {
             this.currentItem = item;
