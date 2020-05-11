@@ -1,5 +1,5 @@
 @mixin fv-callout {
-  position: absolute;
+  position: fixed;
   box-sizing: border-box;
   z-index:3000;
   background-color: white;
