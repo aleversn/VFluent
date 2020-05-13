@@ -52,13 +52,13 @@ disabled
 
 <div style="background:#000;height:30px;padding:20px;">
 <fv-radio v-model="value" label="option" theme="dark">option</fv-radio>
-<fv-radio v-model="value" label="option3" theme="dark" disabled>disabled </fv-radio>
+<fv-radio v-model="value" label="option2" theme="dark" disabled>disabled </fv-radio>
 </div>
 
 ```vue
 <div style="background:#000;height:30px;padding:20px;">
 <fv-radio v-model="value" label="option" theme="dark">option</fv-radio>
-<fv-radio v-model="value" label="option3" theme="dark" disabled>disabled </fv-radio>
+<fv-radio v-model="value" label="option2" theme="dark" disabled>disabled </fv-radio>
 </div>
 ```
 
