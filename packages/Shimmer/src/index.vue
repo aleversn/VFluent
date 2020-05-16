@@ -67,9 +67,8 @@ export default {
             {
                 let children = this.$refs.shimmer.querySelectorAll("*");
                 children.forEach(item => {
-                    // if(item.getAttribute("style").indexOf("background-image") < 0)
-                    //     item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
-                    item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
+                    if(item.getAttribute("style").indexOf("background-image") < 0)
+                        item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
                 });
             }
             catch (e) {}
