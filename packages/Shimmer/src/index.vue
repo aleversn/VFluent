@@ -45,9 +45,7 @@ export default {
     },
     mounted () {
         this.moveInit();
-        this.timer = setInterval(() => {
-            this.childrenInit();
-        }, 300);
+        this.taskInit();
     },
     methods: {
         moveInit () {
@@ -65,15 +63,23 @@ export default {
         childrenInit () {
             try
             {
-                this.$nextTick(() => {
-                    let children = this.$refs.shimmer.querySelectorAll("*");
-                    children.forEach(item => {
-                        if(item.getAttribute("style").indexOf("background-image") < 0)
-                            item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
-                    });
+                let children = this.$refs.shimmer.querySelectorAll("*");
+                children.forEach(item => {
+                    if(item.getAttribute("style").indexOf("background-image") < 0)
+                        item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
                 });
             }
             catch (e) {}
+        },
+        async taskInit () {
+            await new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(0);
+                }, 300);
+            });
+            this.timer = setInterval(() => {
+                this.childrenInit();
+            }, 300);
         }
     },
     beforeDestroy () {
