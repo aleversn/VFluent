@@ -34,6 +34,9 @@
     &.actived{
       background-color: #0078d4;
       border: none;
+      &.disabled{
+        background-color: #afafaf;
+      }
       &::before{  
         background-color: white;
       }

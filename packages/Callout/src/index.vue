@@ -426,13 +426,14 @@ export default {
       }
     },
     getOffsetBodyXY(el) {
-      let xy = { top: 0, left: 0 };
-      while (el && el.nodeName && el.nodeName.toLowerCase() != "body") {
-        xy.top += el.offsetTop;
-        xy.left += el.offsetLeft;
-        el = el.offsetParent;
-      }
-      return xy;
+      return el.getBoundingClientRect();
+      // let xy = { top: 0, left: 0 };
+      // while (el && el.nodeName && el.nodeName.toLowerCase() != "body") {
+      //   xy.top += el.offsetTop;
+      //   xy.left += el.offsetLeft;
+      //   el = el.offsetParent;
+      // }
+      // return xy;
     }
   },
   mounted() {

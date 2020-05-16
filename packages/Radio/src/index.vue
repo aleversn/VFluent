@@ -1,6 +1,6 @@
 <template>
   <div :class="['fv-'+$theme+'-radio',{icon:this.icon || this.image},{actived:isActived},{disabled:isDisabled}]" @click="click" :style="style.radio">
-      <span ref="button" class="button" :style="style.button" :class="{actived:isActived}" />
+      <input type="radio" ref="button" class="button" :style="style.button" :class="[{actived:isActived},{disabled:isDisabled}]" />
       <span class="label">
         <template v-if="image">
           <img :src="isActived?activeImage?activeImage:image:image" />
@@ -62,7 +62,9 @@ export default {
       return this.theme;
     },
     isActived(){
-      return !this.isDisabled && this.model==this.label;
+      // return !this.isDisabled && this.model==this.label;
+      // [2020-5-13][fix] fix value display issue
+      return this.model==this.label;
     },
     isGroup(){
       let parent = this.$parent;
