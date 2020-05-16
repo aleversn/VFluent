@@ -47,7 +47,7 @@ export default {
         this.moveInit();
         this.timer = setInterval(() => {
             this.childrenInit();
-        }, 30);
+        }, 300);
     },
     methods: {
         moveInit () {
@@ -65,10 +65,12 @@ export default {
         childrenInit () {
             try
             {
-                let children = this.$refs.shimmer.querySelectorAll("*");
-                children.forEach(item => {
-                    if(item.getAttribute("style").indexOf("background-image") < 0)
-                        item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
+                this.$nextTick(() => {
+                    let children = this.$refs.shimmer.querySelectorAll("*");
+                    children.forEach(item => {
+                        if(item.getAttribute("style").indexOf("background-image") < 0)
+                            item.setAttribute("style", `${item.getAttribute("style")} background-image: inherit;`);
+                    });
                 });
             }
             catch (e) {}
