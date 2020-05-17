@@ -1,0 +1,7 @@
+@import '../common-theme/Drawer.scss';
+.fv-light-drawer{
+  @include fv-drawer();
+  background-color: rgba(226, 226, 226,0.99);
+
+}
+    

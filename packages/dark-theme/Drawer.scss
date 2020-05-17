@@ -1,0 +1,6 @@
+@import '../common-theme/Drawer.scss';
+.fv-dark-drawer{
+  @include fv-drawer();
+  background-color:rgba(50, 50, 50,0.99);
+}
+    

@@ -1,13 +1,13 @@
 <template>
   <div :class="['fv-'+$theme+'-radio',{icon:this.icon || this.image},{actived:isActived},{disabled:isDisabled}]" @click="click" :style="style.radio">
       <input type="radio" ref="button" class="button" :style="style.button" :class="[{actived:isActived},{disabled:isDisabled}]" />
-      <span class="label">
+      <label class="label">
         <template v-if="image">
           <img :src="isActived?activeImage?activeImage:image:image" />
         </template>
         <i v-else-if="icon" class="icon ms-Icon" :class="'ms-Icon--'+this.icon"></i>
         <slot></slot>
-      </span>
+      </label>
   </div>
 </template>
 
