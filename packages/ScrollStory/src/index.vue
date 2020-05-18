@@ -23,6 +23,9 @@ export default {
         infinite: {
             default: false
         },
+        target: {
+            default: false
+        },
         theme: {
 			type: String,
 			default: "system"
@@ -45,6 +48,10 @@ export default {
         setTimeout(() => {
             this.refreshBounding();
         }, 300);
+        if(this.target !== false)
+            this.target.addEventListener('scroll', event => {
+                this.refreshBounding();
+            });
         window.addEventListener('scroll', event => {
             this.refreshBounding();
         });

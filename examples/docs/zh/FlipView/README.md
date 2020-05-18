@@ -121,7 +121,7 @@ export default {
 ---
 
 |    属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                 说明(statement)                 |
-| :--------------: | :--------------------------------: | :------------: | :-------------: | :---------------------------------------------: |
+|:----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------------:|
 |      value       |              [array]               |      Yes       |       []        |             Flipview template data              |
 |    direction     |     ['horizontal','vertical']      |       No       |   horizontal    |                                                 |
 |    animation     |              [string]              |       No       |      move       | move, moveFade, moveDifferent, glue, push, fold |
@@ -131,6 +131,12 @@ export default {
 | showControlPanel |       ['','hidden','hover']        |       No       |       N/A       |                                                 |
 |       mask       |          [string(color)]           |       No       |       N/A       |         The mask color of control panel         |
 |      theme       | ['light','dark','custom','system'] |       No       |     system      |                                                 |
+
+### Events
+---
+| 事件名(Name) | 参数类型(args) |                     说明(statement)                     |
+|:------------:|:--------------:|:-------------------------------------------------------:|
+|    change    |     object     | 当切换页面时返回当前索引`index`和当前轮播周期`duration` |
 
 ### Slot
 
