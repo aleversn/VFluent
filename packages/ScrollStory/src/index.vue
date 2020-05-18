@@ -48,6 +48,7 @@ export default {
         setTimeout(() => {
             this.refreshBounding();
         }, 300);
+        console.log(this.target);
         if(this.target !== false)
             this.target.addEventListener('scroll', event => {
                 this.refreshBounding();
