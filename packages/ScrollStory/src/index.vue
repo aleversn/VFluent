@@ -34,7 +34,23 @@ export default {
     data () {
         return {
             show: false,
-            bounding: Infinity
+            bounding: Infinity,
+            elList: []
+        }
+    },
+    watch: {
+        target (val) {
+            try
+            {
+                if(val !== false)
+                    val.addEventListener('scroll', event => {
+                        this.refreshBounding();
+                    });
+            }
+            catch (e)
+            {
+
+            }
         }
     },
     computed:{
@@ -48,7 +64,6 @@ export default {
         setTimeout(() => {
             this.refreshBounding();
         }, 300);
-        console.log(this.target);
         if(this.target !== false)
             this.target.addEventListener('scroll', event => {
                 this.refreshBounding();
