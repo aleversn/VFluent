@@ -1,0 +1,5 @@
+@import '../common-theme/Drawer.scss';
+.fv-custom-drawer{
+  @include fv-drawer();
+}
+    

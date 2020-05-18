@@ -286,5 +286,13 @@
       "Dark": "@/dark-theme/InfoBox.scss",
       "Custom": "@/custom-theme/InfoBox.scss"
     }
+  },
+  "Drawer": {
+    "entry": "@/Drawer/index.js",
+    "theme": {
+      "Light": "@/light-theme/Drawer.scss",
+      "Dark": "@/dark-theme/Drawer.scss",
+      "Custom": "@/custom-theme/Drawer.scss"
+    }
   }
 }

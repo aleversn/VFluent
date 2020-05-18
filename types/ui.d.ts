@@ -36,6 +36,7 @@ import { FvTimePicker } from './timepicker'
 import { FvShimmer } from './shimmer'
 import { FvMessageBar } from './messagebar'
 import { FvInfoBox } from './infobox'
+import { FvDrawer } from './drawer'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -115,4 +116,6 @@ export type Theme = FluentVueTheme
   export class MessageBar extends FvMessageBar {}
 /** InfoBox component */
   export class InfoBox extends FvInfoBox {}
+/** Drawer component */
+  export class Drawer extends FvDrawer {}
 
