@@ -23,6 +23,9 @@ export default {
         infinite: {
             default: false
         },
+        target: {
+            default: false
+        },
         theme: {
 			type: String,
 			default: "system"
@@ -32,6 +35,21 @@ export default {
         return {
             show: false,
             bounding: Infinity
+        }
+    },
+    watch: {
+        target (val) {
+            try
+            {
+                if(val !== false)
+                    val.addEventListener('scroll', event => {
+                        this.refreshBounding();
+                    });
+            }
+            catch (e)
+            {
+
+            }
         }
     },
     computed:{
@@ -45,6 +63,12 @@ export default {
         setTimeout(() => {
             this.refreshBounding();
         }, 300);
+        try {
+			if (val !== false)
+				val.addEventListener("scroll", event => {
+					this.refreshBounding();
+				});
+		} catch (e) {}
         window.addEventListener('scroll', event => {
             this.refreshBounding();
         });

@@ -38,14 +38,15 @@
 
 ### Propoties
 ---
-|  属性(attr)  | 类型(type) | 必填(required) | 默认值(default) |     说明(statement)     |
-|:------------:|:----------:|:--------------:|:---------------:|:-----------------------:|
-|     name     | [boolean]  |       No       |       N/A       | Vue transition css name |
-|   infinite   | [boolean]  |       No       |      false      |      Infinite show      |
-| overCollapse | [boolean]  |       No       |      false      |  Scroll over collapse   |
+|  属性(attr)  | 类型(type) | 必填(required) | 默认值(default) |               说明(statement)                |
+|:------------:|:----------:|:--------------:|:---------------:|:--------------------------------------------:|
+|     name     | [boolean]  |       No       |       N/A       |           Vue transition css name            |
+|   infinite   | [boolean]  |       No       |      false      |                Infinite show                 |
+|    target    |  [object]  |       No       |      false      | 可选, 是否绑定滚动对象, 不绑定时只监听window |
+| overCollapse | [boolean]  |       No       |      false      |             Scroll over collapse             |
 
 ### Events
 ---
 | 事件名(Name) | 参数类型(args) | 说明(statement) |
 |:------------:|:--------------:|:---------------:|
-|    scroll    |     show      |                 |
+|    scroll    |      show      |                 |

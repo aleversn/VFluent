@@ -109,6 +109,12 @@ export default {
         },
         mask () {
             this.stylesInit();
+        },
+        currentIndex (val) {
+            this.$emit('change', {
+                index: val,
+                duration: this.autoPlayDuration
+            });
         }
     },
     computed: {
