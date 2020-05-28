@@ -13,7 +13,14 @@
         :beak="-1"
         :focusTrap="callout.focusTrap"
         effect="hover"
-        :popperStyle="{padding:0,minWidth:'200px',backgroundColor:$backgroundColor(),color:$color()}"
+        :popperStyle="{
+          padding:0,
+          minWidth:'200px',
+          backgroundColor:$backgroundColor(),
+          color:$color(),
+          borderRadius:$borderRadius(),
+          overflow:$overflow()
+        }"
         :popperClass="['fv-'+$theme+'-menuFlyoutPopper']"
         :theme="$theme"
         :disabled="disabled"
