@@ -51,7 +51,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 <ClientOnly>
 <div :style="divStyle">
-<fv-menuFlyout :theme="$theme">
+<fv-menuFlyout :theme="$theme" borderRadius="2px">
 <fv-menu-sub-flyout label="Actions"> 
 <fv-menu-item-flyout  label="New">
 </fv-menu-item-flyout>
@@ -70,7 +70,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 </ClientOnly>
 
 ```vue
-<fv-menuFlyout :theme="$theme">
+<fv-menuFlyout :theme="$theme" borderRadius="2px">
   <fv-menu-sub-flyout label="Actions">
     <fv-menu-item-flyout label="New"> </fv-menu-item-flyout>
     <fv-menu-sub-flyout label="Remove">
@@ -243,6 +243,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 | beak | [number] | No | 0 | 角标大小，大于等于10时显示 |
 | backgroundColor | [string] | No | undefined | 背景色 |
 | borderColor | [string] | No | undefined | 按钮边框颜色 |
+| borderRaidus | [string] | No | undefined | 弹窗圆角 |
 | color | [string] | No | undefined | 颜色 |
 
 #### SubMenu 

@@ -25,6 +25,7 @@ export default {
     },
     backgroundColor:{},
     color:{},
+    borderRadius:{}
   },
   data() {
     return {
@@ -88,6 +89,12 @@ export default {
     },
     $color(){
       return styleEmbedding(this,'color')
+    },
+    $borderRadius(){
+      return styleEmbedding(this,'borderRadius')
+    },
+    $overflow(){
+      return styleEmbedding(this,'overflow')
     },
     show() {
       this.window.show = true;
