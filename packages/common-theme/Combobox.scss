@@ -93,15 +93,18 @@
         @include narrow-scroll-bar;
         
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 0px;
+        top: 0px;
         width: 100%;
+        min-height: 100%;
         height: auto;
         max-height: 300px;
         padding: 8px 0px;
         background: rgba(239,239,239,0.95);
         border-radius: 5px;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
         box-shadow: $ms-depth-shadow-16;
         overflow: auto;
         overflow-x: hidden;
@@ -114,6 +117,7 @@
         {
             position: relative;
             width: 100%;
+            min-height: 40px;
             height: 40px;
             padding: 0px 8px;
             font-size: 15px;
@@ -179,6 +183,7 @@
 
             &.hr
             {
+                min-height: 1px;
                 height: 1px;
                 border-bottom: rgba(36,36,36,0.1) solid thin;
             }
