@@ -43,7 +43,7 @@
         @click="$emit('setting-click', { event: $event })"
       >
         <i class="ms-Icon ms-Icon--Settings icon"></i>
-        <p class="name">Settings</p>
+        <p class="name">{{settingTitle}}</p>
       </span>
     </div>
   </div>

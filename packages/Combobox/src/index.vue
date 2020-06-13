@@ -75,7 +75,7 @@ export default {
 	},
 	data() {
 		return {
-			thisValue: {},
+			thisValue: this.value,
 			status: false
 		};
 	},
