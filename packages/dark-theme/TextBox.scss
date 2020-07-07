@@ -15,6 +15,11 @@
         border: rgba(0, 120, 212, 1) solid 2px;
     }
 
+    &.shadow
+    {
+        box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
+    }
+
     &.underline
     {
         border-left: none;
@@ -34,12 +39,22 @@
 
     &.disabled
     {
-        background: rgb(48, 47, 46);
+        border-color: transparent;
+        
+        .text-box-reveal-container
+        {
+            background: rgb(48, 47, 46);
+        }
 
         &:hover
         {
             border-color: transparent;
         }
+    }
+
+    .text-box-reveal-container
+    {
+        background: transparent;
     }
 
     div.fix-block

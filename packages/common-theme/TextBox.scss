@@ -3,7 +3,6 @@
     position: relative;
     width: 300px;
     height: 32px;
-    background: white;
     border: $t-light-36 solid thin;
     border-radius: 2px;
     box-sizing: border-box;
@@ -21,6 +20,11 @@
     &.correct
     {
         border: $border-correct-color solid thin;
+    }
+
+    &.shadow
+    {
+        box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
     }
 
     &.focus
@@ -59,8 +63,12 @@
 
     &.disabled
     {
-        background: rgba(243, 242, 241, 1);
         border-color: transparent;
+
+        .text-box-reveal-container
+        {
+            background: rgba(243, 242, 241, 1);
+        }
 
         div.text-box-container
         {
@@ -82,6 +90,20 @@
         {
             opacity: 0.5;
         }
+    }
+
+    .text-box-reveal-container
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: white;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-appearance: none;
+        overflow: hidden;
     }
 
     div.fix-block

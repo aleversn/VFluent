@@ -1,19 +1,22 @@
 <template>
-<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="[isFocus ? focusStyles.textBox : styles.textBox, { borderRadius: `${borderRadius}px` }]" @click="isFocus = true">
-    <div v-show="prefix != ''" class="fix-block">
-        <p>{{prefix}}</p>
-    </div>
-    <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
-    <core v-model="thisValue" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
-    <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
-    <div v-show="suffix != ''" class="fix-block">
-        <p>{{suffix}}</p>
+<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @click="isFocus = true">
+    <div class="text-box-reveal-container" :style="{ background: background }">
+        <div v-show="prefix != ''" class="fix-block">
+            <p>{{prefix}}</p>
+        </div>
+        <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
+        <core v-model="thisValue" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
+        <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
+        <div v-show="suffix != ''" class="fix-block">
+            <p>{{suffix}}</p>
+        </div>
     </div>
 </div>
 </template>
 
 <script>
 import core from './sub/core.vue';
+import { FluentRevealEffect } from "fluent-reveal-effect";
 
 export default {
     name: "FvTextBox",
@@ -70,7 +73,7 @@ export default {
             default: ""
         },
         borderWidth: {
-            default: ""
+            default: 1
         },
         borderColor: {
             default: ""
@@ -81,8 +84,14 @@ export default {
         borderRadius: {
             default: 0
         },
+        isBoxShadow: {
+            default: false
+        },
         revealBorder: {
             default: false
+        },
+        disabledBorderWhenReveal: {
+            default: true
         },
         status: {
             default: ""
@@ -101,14 +110,12 @@ export default {
             isFocus: false,
             styles: {
                 textBox: {
-                    background: this.background,
                     borderWidth: `${this.borderWidth}px`,
                     borderColor: `${this.borderColor}`
                 }
             },
             focusStyles: {
                 textBox: {
-                    background: this.background,
                     borderWidth: `${this.borderWidth}px`,
                     borderColor: `${this.focusBorderColor}`
                 }
@@ -188,11 +195,12 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffects("body", {
+            let FR = new this.$RevealEffectsMasked("body", {
                 selector: this.$el,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
+                backgroundLightColor: this.backgroundLightColor,
+                childrenSelector: this.$el.querySelectorAll('.text-box-reveal-container')[0]
             });
         },
         stylesInit () {
