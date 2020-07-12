@@ -3,6 +3,8 @@
     position: relative;
     width: 80px;
     height: 30px;
+    box-sizing: border-box;
+    display: flex;
 
     div.reveal-border
     {
@@ -10,6 +12,7 @@
         width: 100%;
         height: 100%;
         padding: 2px;
+        box-sizing: border-box;
         display: flex;
 
         &:hover
@@ -38,6 +41,7 @@
             span.content-block
             {
                 width: 100%;
+                height: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;

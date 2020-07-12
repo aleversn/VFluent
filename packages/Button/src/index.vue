@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import { FluentRevealEffect } from "fluent-reveal-effect";
-
 export default {
 	name: "FvButton",
 	props: {
@@ -139,18 +137,13 @@ export default {
 	},
 	methods: {
 		FRInit() {
-			FluentRevealEffect.applyEffect("body", {
-				clickEffect: true,
-				lightColor: this.borderLightColor,
-				gradientSize: 80,
-				isContainer: true,
-				children: {
-					borderSelector: `.fv-${this.$theme}-button .reveal-border`,
-					elementSelector: `.fv-${this.$theme}-button .button-container`,
-					lightColor: this.backgroundLightColor,
-					gradientSize: 120
-				}
-			});
+            let FR = new this.$RevealEffectsMasked("body", {
+                selector: this.$el.querySelectorAll('.reveal-border')[0],
+                borderGradientSize: 80,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor,
+                childrenSelector: this.$el.querySelectorAll('.button-container')[0]
+            });
 		},
 		stylesInit() {
 			this.styles.revealBorder.padding = `${this.borderWidth}px`;

@@ -49,3 +49,13 @@
 | 事件名(Name) | 参数类型(args) | 说明(statement) |
 |:------------:|:--------------:|:---------------:|
 |    click     |     event      | Button onclick  |
+
+### Slot
+---
+1. Default
+
+```javascript
+<fv-button>
+    <div></div>
+</fv-button>
+```

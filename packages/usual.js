@@ -1,5 +1,5 @@
-import { RevealEffects } from './js/revealDirect';
-import { RevealEffectsMasked } from './js/revealMasked';
+import { RevealEffects } from './Js/revealDirect';
+import { RevealEffectsMasked } from './Js/revealMasked';
 
 export class SDate
 {
