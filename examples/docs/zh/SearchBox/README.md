@@ -53,7 +53,7 @@ export default {
 </script>
 
 Standard
-<fv-SearchBox icon="Search" placeholder="Search" :options="items"></fv-SearchBox>
+<fv-SearchBox icon="Search" placeholder="Search" :options="items" :revealBorder="true"></fv-SearchBox>
 
 Disabled
 <fv-SearchBox icon="Search" placeholder="Search" :options="items" disabled></fv-SearchBox>
@@ -255,7 +255,7 @@ Customize background
 |           icon           |              [string]              |       No       |       N/A       |                  右图标                   |
 |        underline         |             [boolean]              |       No       |      false      |     是否开启Underline风格的SearchBox      |
 |        background        |          [string(color)]           |       No       |       N/A       |                  背景色                   |
-|       borderWidth        |             [boolean]              |       No       |       N/A       |                                           |
+|       borderWidth        |             [boolean]              |       No       |        1        |                                           |
 |       borderColor        |          [string(color)]           |       No       |       N/A       |                                           |
 |     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                           |
 |       borderRadius       |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |

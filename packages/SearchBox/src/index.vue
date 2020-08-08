@@ -67,7 +67,7 @@ export default {
             default: ""
         },
         borderWidth: {
-            default: ""
+            default: 1
         },
         borderColor: {
             default: ""

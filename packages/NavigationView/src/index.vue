@@ -2,7 +2,7 @@
 <div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
     <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
         <template v-slot:searchBlock>
-            <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" style="width: 100%;" @choose-result="onChooseSearch"></fv-search-box>
+            <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderWidth="2" borderRadius="3" style="width: 100%; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);" @choose-result="onChooseSearch"></fv-search-box>
         </template>
         <template v-slot:panel>
             <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick" @click.native="$emit('item-click', thisValue)">

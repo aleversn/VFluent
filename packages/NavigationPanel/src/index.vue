@@ -30,7 +30,10 @@
             placeholder="Search"
             class="nav-search"
             :theme="theme"
-            style="width: 100%;"
+            :revealBorder="true"
+            borderWidth="2"
+            borderRadius="3"
+            style="width: 100%; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);"
           ></fv-search-box>
         </slot>
       </span>
