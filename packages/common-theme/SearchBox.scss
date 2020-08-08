@@ -4,36 +4,37 @@
     width: 300px;
     height: 32px;
     background: white;
-    border: $t-light-36 solid thin;
     border-radius: 2px;
+    outline: $t-light-36 solid thin;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     -webkit-appearance: none;
     transition: all 0.3s;
     overflow: visible;
 
     &.warn
     {
-        border: $border-error-color solid thin;
+        outline: $border-error-color solid thin;
     }
 
     &.correct
     {
-        border: $border-correct-color solid thin;
+        outline: $border-correct-color solid thin;
     }
 
     &.focus
     {
-        border: $border-std-color solid 2px;
+        outline: $border-std-color solid 2px;
 
-        div.search-box-container
+        &.underline
         {
-            margin: 0px;
+            border: $border-std-color solid 2px;
+            border-left-color: transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
         }
 
-        div.fix-block
+        div.search-box-container
         {
             margin: 0px;
         }
@@ -41,40 +42,28 @@
 
     &.underline
     {
+        border: $t-light-36 solid thin;
         border-left-color: transparent;
         border-top-color: transparent;
         border-right-color: transparent;
-
-        div.fix-block
-        {
-            background: transparent;
-
-            p
-            {
-                font-weight: 600;
-                color: $t-light-50;
-                cursor: default;
-            }
-        }
+        outline: none;
     }
 
     &.disabled
     {
         background: rgba(243, 242, 241, 1);
         border-color: transparent;
+        outline: none;
         filter: grayscale(1);
+
+        .search-box-reveal-container
+        {
+            background: transparent;
+        }
 
         div.search-box-container
         {
             .input
-            {
-                opacity: 0.5;
-            }
-        }
-
-        div.fix-block
-        {
-            p
             {
                 opacity: 0.5;
             }
@@ -86,70 +75,86 @@
         }
     }
 
-    .icon-block
+    .search-box-reveal-container
     {
-        position: relative;
-        width: 30px;
-        height: 100%;
-        padding: 0px 10px;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: default;
-
-        &:hover
-        {
-            color: $border-std-color;
-        }
-
-        &:active
-        {
-            background: $border-std-color;
-            color: whitesmoke;
-        }
-    }
-
-    div.search-box-placeholder
-    {
-        position: relative;
-        width: auto;
-        max-width: 50%;
-        height: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    div.search-box-container
-    {
-        position: relative;
+        position: absolute;
+        left: 0px;
+        top: 0px;
         width: 100%;
         height: 100%;
-        margin: 1px;
-        padding: 0px 8px;
-        flex: 1;
+        background: white;
         box-sizing: border-box;
-        transition: all 0.3s;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-appearance: none;
+        transition: all 0.3s;
+        overflow: visible;
 
-        &.internal
+        .icon-block
         {
-            margin: 0px;
-            padding: 0px;
+            position: relative;
+            width: 30px;
+            height: 100%;
+            padding: 0px 3px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+
+            &:hover
+            {
+                color: $border-std-color;
+            }
+
+            &:active
+            {
+                background: $border-std-color;
+                color: whitesmoke;
+            }
         }
-        
-        .input
+
+        div.search-box-placeholder
+        {
+            position: relative;
+            width: auto;
+            max-width: 50%;
+            height: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        div.search-box-container
         {
             position: relative;
             width: 100%;
             height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
+            padding: 0px 8px;
+            flex: 1;
+            box-sizing: border-box;
+            transition: all 0.3s;
+            display: flex;
+
+            &.internal
+            {
+                margin: 0px;
+                padding: 0px;
+            }
+            
+            .input
+            {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
         }
     }
 

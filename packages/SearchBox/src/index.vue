@@ -1,16 +1,18 @@
 <template>
-<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="isFocus ? focusStyles.textBox : styles.textBox" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
-    <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
-    <transition name="move-left-to-right">
-        <div v-show="resultPlaceholder.length > 0" class="search-box-placeholder">
-            <slot name="resultPlaceholder"></slot>
+<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'outline': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
+    <div class="search-box-reveal-container" :style="{ background: background }">
+        <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
+        <transition name="move-left-to-right">
+            <div v-show="resultPlaceholder.length > 0" class="search-box-placeholder">
+                <slot name="resultPlaceholder"></slot>
+            </div>
+        </transition>
+        <div class="search-box-container">
+            <input v-model="thisValue" :type="type" :placeholder="placeholder" class="input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="isFocus = true" @blur="isFocus = false"/>
         </div>
-    </transition>
-    <div class="search-box-container">
-        <input v-model="thisValue" :type="type" :placeholder="placeholder" class="input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="isFocus = true" @blur="isFocus = false"/>
+        <i v-show="thisValue.length > 0 || resultPlaceholder.length > 0" class="ms-Icon ms-Icon--Cancel icon-block" @click="clearValue"></i>
+        <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
     </div>
-    <i v-show="thisValue.length > 0 || resultPlaceholder.length > 0" class="ms-Icon ms-Icon--Cancel icon-block" @click="clearValue"></i>
-    <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
     <transition name="zoom-in-top">
         <div v-show="show.searchResult" class="search-result-container" ref="filterResult">
             <slot name="searchResult" :data="filterOptions">
@@ -73,8 +75,14 @@ export default {
         focusBorderColor: {
             default: ""
         },
+        borderRadius: {
+            default: 0
+        },
         revealBorder: {
             default: false
+        },
+        disabledBorderWhenReveal: {
+            default: true
         },
         status: {
             default: ""
@@ -97,14 +105,12 @@ export default {
             },
             styles: {
                 textBox: {
-                    background: this.background,
                     borderWidth: `${this.borderWidth}px`,
                     borderColor: `${this.borderColor}`
                 }
             },
             focusStyles: {
                 textBox: {
-                    background: this.background,
                     borderWidth: `${this.borderWidth}px`,
                     borderColor: `${this.focusBorderColor}`
                 }
@@ -206,11 +212,12 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffects("body", {
-                selector: `.fv-${this.$theme}-SearchBox`,
+            let FR = new this.$RevealEffectsMasked("body", {
+                selector: this.$el,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
+                backgroundLightColor: this.backgroundLightColor,
+                childrenSelector: this.$el.querySelectorAll('.search-box-reveal-container')[0]
             });
         },
         stylesInit () {

@@ -4,38 +4,31 @@
     @include fv-SearchBox();
 
     background: transparent;
-    border: rgba(161, 159, 157, 1) solid thin;
+    outline: rgba(161, 159, 157, 1) solid thin;
 
     &:hover
     {
-        border: $row-light-hover solid thin;
+        outline: $row-light-hover solid thin;
     }
 
     &.focus
     {
-        border: rgba(0, 120, 212, 1) solid 2px;
+        outline: rgba(0, 120, 212, 1) solid 2px;
     }
 
     &.underline
     {
+        border: $row-light-hover solid thin;
         border-left-color: transparent;
         border-top-color: transparent;
         border-right-color: transparent;
-
-        div.fix-block
-        {
-            background: transparent;
-
-            p
-            {
-                color: rgba(243, 242, 241, 1);
-            }
-        }
+        outline: none;
     }
 
     &.disabled
     {
         background: rgb(48, 47, 46);
+        outline: none;
 
         &:hover
         {
@@ -43,14 +36,9 @@
         }
     }
 
-    div.fix-block
+    .search-box-reveal-container
     {
         background: transparent;
-
-        p
-        {
-            color: rgba(243, 242, 241, 1);
-        }
     }
 
     .icon-block
