@@ -71,9 +71,6 @@ export default {
         },
         thisValue (val) {
             this.$emit('input', val);
-        },
-        screenWidth (val) {
-            console.log(val)
         }
     },
     computed: {
