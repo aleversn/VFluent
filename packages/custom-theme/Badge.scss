@@ -1,0 +1,5 @@
+@import '../common-theme/Badge.scss';
+.fv-custom-Badge{
+  @include fv-Badge();
+}
+    

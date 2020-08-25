@@ -294,5 +294,13 @@
       "Dark": "@/dark-theme/Drawer.scss",
       "Custom": "@/custom-theme/Drawer.scss"
     }
+  },
+  "Badge": {
+    "entry": "@/Badge/index.js",
+    "theme": {
+      "Light": "@/light-theme/Badge.scss",
+      "Dark": "@/dark-theme/Badge.scss",
+      "Custom": "@/custom-theme/Badge.scss"
+    }
   }
 }

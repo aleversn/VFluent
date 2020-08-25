@@ -1,0 +1,51 @@
+@mixin fv-Badge {
+    
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    display: inline-block;
+
+    .fv-badge-container
+    {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        padding: 0.1px 6px;
+        background: #f56c6c;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-out;
+
+        p.badge-content
+        {
+            height: 20px;
+            margin: 0px;
+            padding: 0px;
+            font-size: 13.8px;
+            color: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+
+        &.dot
+        {
+            width: 10px;
+            height: 10px;
+            margin: 0px;
+            padding: 0px;
+            border-radius: 50%;
+
+            p.badge-content
+            {
+                display: none;
+            }
+        }
+    }
+}

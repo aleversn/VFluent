@@ -45,6 +45,7 @@ import Shimmer from '@/Shimmer/index.js'
 import MessageBar from '@/MessageBar/index.js'
 import InfoBox from '@/InfoBox/index.js'
 import Drawer from '@/Drawer/index.js'
+import Badge from '@/Badge/index.js'
 
 
 let components = [
@@ -85,6 +86,7 @@ let components = [
   MessageBar,
   InfoBox,
   Drawer,
+  Badge,
 
 ]
 
@@ -141,6 +143,7 @@ export default {
   MessageBar,
   InfoBox,
   Drawer,
+  Badge,
 
 }
 

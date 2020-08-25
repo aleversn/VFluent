@@ -1,0 +1,5 @@
+@import '../common-theme/Badge.scss';
+.fv-dark-Badge{
+  @include fv-Badge();
+}
+    
