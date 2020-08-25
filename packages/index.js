@@ -46,6 +46,7 @@ import MessageBar from '@/MessageBar/index.js'
 import InfoBox from '@/InfoBox/index.js'
 import Drawer from '@/Drawer/index.js'
 import Badge from '@/Badge/index.js'
+import Panel from '@/Panel/index.js'
 
 
 let components = [
@@ -87,6 +88,7 @@ let components = [
   InfoBox,
   Drawer,
   Badge,
+  Panel,
 
 ]
 
@@ -144,6 +146,7 @@ export default {
   InfoBox,
   Drawer,
   Badge,
+  Panel,
 
 }
 

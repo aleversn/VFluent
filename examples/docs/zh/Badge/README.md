@@ -5,7 +5,7 @@
   
 [[toc]]
 
-### Badge-DEMO 
+### Badge-DEMO
 
 <fv-Badge :value="3">
 <fv-button>Badge</fv-button>

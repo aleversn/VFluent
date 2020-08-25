@@ -302,5 +302,13 @@
       "Dark": "@/dark-theme/Badge.scss",
       "Custom": "@/custom-theme/Badge.scss"
     }
+  },
+  "Panel": {
+    "entry": "@/Panel/index.js",
+    "theme": {
+      "Light": "@/light-theme/Panel.scss",
+      "Dark": "@/dark-theme/Panel.scss",
+      "Custom": "@/custom-theme/Panel.scss"
+    }
   }
 }

@@ -38,6 +38,7 @@ import { FvMessageBar } from './messagebar'
 import { FvInfoBox } from './infobox'
 import { FvDrawer } from './drawer'
 import { FvBadge } from './badge'
+import { FvPanel } from './panel'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -121,4 +122,6 @@ export type Theme = FluentVueTheme
   export class Drawer extends FvDrawer {}
 /** Badge component */
   export class Badge extends FvBadge {}
+/** Panel component */
+  export class Panel extends FvPanel {}
 

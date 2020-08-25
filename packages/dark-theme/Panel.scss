@@ -1,0 +1,43 @@
+@import "../common-theme/Panel.scss";
+.fv-dark-Panel {
+    @include fv-Panel();
+
+    .fv-panel-back-board
+    {
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .fv-panel-container
+    {
+        background: rgba(0, 0, 0, 1);
+
+        * {
+            color: whitesmoke;
+        }
+
+        &.acrylic-style
+        {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+        }
+
+        .fv-panel-control-block
+        {
+            .panel-title
+            {
+                color: rgba(243, 242, 241, 1);
+            }
+
+            i
+            {
+                color: rgba(167, 167, 167, 1);
+
+                &:hover
+                {
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
+}

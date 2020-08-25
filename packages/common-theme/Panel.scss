@@ -1,0 +1,100 @@
+@mixin fv-Panel {
+
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+
+    .fv-panel-back-board
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.45);
+    }
+
+    .fv-panel-container
+    {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 340px;
+        height: 100%;
+        background: rgba(255, 255, 255, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: $ms-depth-shadow-64;
+
+        &.near-side
+        {
+            left: 0px;
+            right: none;
+        }
+
+        &.acrylic-style
+        {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+        }
+
+        .fv-panel-control-block
+        {
+            position: relative;
+            width: 100%;
+            margin-top: 15px;
+            padding: 0px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .panel-title
+            {
+                font-size: 20px;
+                font-weight: 600;
+                color: rgba(50, 49, 48, 1);
+            }
+
+            i
+            {
+                position: relative;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover
+                {
+                    background: rgba(0, 0, 0, 0.05);
+                }
+            }
+        }
+
+        .fv-panel-main-container
+        {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            box-sizing: border-box;
+        }
+
+        .fv-panel-footer
+        {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 15px;
+            padding: 0px 20px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+    }
+}

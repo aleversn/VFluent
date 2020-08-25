@@ -1,14 +1,14 @@
 <template>
-    <div :class="['fv-'+$theme+'-Badge']">
-        <slot>
-            <p>Badge</p>
-        </slot>
-        <sup v-show="!hidden" class="fv-badge-container" :class="{dot: isDot}" :style="{background: finalColor}">
-            <p class="badge-content">
-                {{finalValue}}
-            </p>
-        </sup>
-    </div>
+<div :class="['fv-'+$theme+'-Badge']">
+    <slot>
+        <p>Badge</p>
+    </slot>
+    <sup v-show="!hidden" class="fv-badge-container" :class="{dot: isDot}" :style="{background: finalColor}">
+        <p class="badge-content">
+            {{finalValue}}
+        </p>
+    </sup>
+</div>
 </template>
 
 <script>
