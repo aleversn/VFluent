@@ -1,0 +1,5 @@
+@import '../common-theme/Pagination.scss';
+.fv-dark-Pagination{
+  @include fv-Pagination();
+}
+    

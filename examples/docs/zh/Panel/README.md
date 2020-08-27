@@ -33,6 +33,7 @@ export default {
 ```
 
 ### Panel Near Side
+---
 
 <fv-button style="width: 200px;" @click="nearSide = true">Open Panel</fv-button>
 <fv-Panel v-model="nearSide" :isNearSide="true">
@@ -44,6 +45,7 @@ export default {
 ```
 
 ### Panel Light Dismiss
+---
 
 <fv-button style="width: 200px;" @click="lightDismiss = true">Open Panel</fv-button>
 <fv-Panel v-model="lightDismiss" :isLightDismiss="true">
@@ -55,6 +57,7 @@ export default {
 ```
 
 ### Panel Acrylic
+---
 
 <fv-button style="width: 200px;" @click="acrylic = true">Open Panel</fv-button>
 <fv-Panel v-model="acrylic" :isLightDismiss="true" :isAcrylic="true">
@@ -66,6 +69,7 @@ export default {
 ```
 
 ### Panel Footer
+---
 
 <fv-button style="width: 200px;" @click="footer = true">Open Panel</fv-button>
 <fv-Panel v-model="footer" :isFooter="true" :isAcrylic="true">
@@ -85,6 +89,7 @@ export default {
 ```
 
 ### Panel Dark Theme
+---
 
 Standard
 

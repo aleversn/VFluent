@@ -1,0 +1,33 @@
+@mixin fv-Pagination {
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .fv-pagination-container
+    {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .page-btn
+        {
+            width: 35px;
+            height: 35px;
+            margin: 0px 1.5px;
+
+            &.small
+            {
+                width: 30px;
+                height: 30px;
+            }
+
+            &.shadow
+            {
+                box-shadow: $ms-depth-shadow-8;
+            }
+        }
+    }
+}

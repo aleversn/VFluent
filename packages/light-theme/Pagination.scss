@@ -1,0 +1,5 @@
+@import '../common-theme/Pagination.scss';
+.fv-light-Pagination{
+  @include fv-Pagination();
+}
+    

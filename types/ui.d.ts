@@ -39,6 +39,7 @@ import { FvInfoBox } from './infobox'
 import { FvDrawer } from './drawer'
 import { FvBadge } from './badge'
 import { FvPanel } from './panel'
+import { FvPagination } from './pagination'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -124,4 +125,6 @@ export type Theme = FluentVueTheme
   export class Badge extends FvBadge {}
 /** Panel component */
   export class Panel extends FvPanel {}
+/** Pagination component */
+  export class Pagination extends FvPagination {}
 

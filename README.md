@@ -96,7 +96,7 @@ In particular, if you're using a component of Fluent Vue Design and it contains 
 
 MIT License
 
-Copyright (c) 2020 Creator SN™
+Copyright (c) 2020 Creator SN®
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

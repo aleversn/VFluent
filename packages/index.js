@@ -47,6 +47,7 @@ import InfoBox from '@/InfoBox/index.js'
 import Drawer from '@/Drawer/index.js'
 import Badge from '@/Badge/index.js'
 import Panel from '@/Panel/index.js'
+import Pagination from '@/Pagination/index.js'
 
 
 let components = [
@@ -89,6 +90,7 @@ let components = [
   Drawer,
   Badge,
   Panel,
+  Pagination,
 
 ]
 
@@ -147,6 +149,7 @@ export default {
   Drawer,
   Badge,
   Panel,
+  Pagination,
 
 }
 

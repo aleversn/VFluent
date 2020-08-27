@@ -310,5 +310,13 @@
       "Dark": "@/dark-theme/Panel.scss",
       "Custom": "@/custom-theme/Panel.scss"
     }
+  },
+  "Pagination": {
+    "entry": "@/Pagination/index.js",
+    "theme": {
+      "Light": "@/light-theme/Pagination.scss",
+      "Dark": "@/dark-theme/Pagination.scss",
+      "Custom": "@/custom-theme/Pagination.scss"
+    }
   }
 }
