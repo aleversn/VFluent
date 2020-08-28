@@ -56,7 +56,7 @@
                     <span class="expand" :class="{choose: gi.expand}" @click="expandGroup(gi)">
                         <i class="ms-Icon ms-Icon--ChevronRight"></i>
                     </span>
-                    <span class="col">
+                    <span class="col" style="min-width: 150px;">
                         <p>{{gi.name}}</p>
                     </span>
                 </slot>
