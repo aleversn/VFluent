@@ -53,7 +53,7 @@ export default {
 </script>
 
 Standard
-<fv-SearchBox icon="Search" placeholder="Search" :options="items" :revealBorder="true"></fv-SearchBox>
+<fv-SearchBox icon="Search" placeholder="Search" :options="items"></fv-SearchBox>
 
 Disabled
 <fv-SearchBox icon="Search" placeholder="Search" :options="items" disabled></fv-SearchBox>

@@ -553,7 +553,20 @@ export default {
 </template>
 ```
 
-3. Group
+3. Row Expand
+
+用户可以根据需要在每一行添加额外的内容, 如下拉菜单, 注意自定义的内容定位需要设置为'absolute'.
+
+- item: 当前项
+- row_index: 当前项行号
+
+```vue
+<template v-slot:row_expand="x">
+    <div style="position: absolute;"></div>
+</template>
+```
+
+4. Group
 
 源代码, 默认不需要修改, 用户只需要定义`gi`数组中每一项的`name`来应用默认样式, 不需要定义此模板, 可缺省
 
@@ -588,7 +601,7 @@ export default {
 </template>
 ```
 
-4. Context Menu
+5. Context Menu
 
 默认显示列表选中数量
 
