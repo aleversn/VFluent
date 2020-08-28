@@ -23,9 +23,11 @@ export default {
 }
 </script>
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="basic = true">Open Panel</fv-button>
 <fv-Panel v-model="basic">
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="basic">
@@ -35,9 +37,11 @@ export default {
 ### Panel Near Side
 ---
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="nearSide = true">Open Panel</fv-button>
 <fv-Panel v-model="nearSide" :isNearSide="true">
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="nearSide" :isNearSide="true">
@@ -47,9 +51,11 @@ export default {
 ### Panel Light Dismiss
 ---
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="lightDismiss = true">Open Panel</fv-button>
 <fv-Panel v-model="lightDismiss" :isLightDismiss="true">
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="lightDismiss" :isLightDismiss="true">
@@ -59,9 +65,11 @@ export default {
 ### Panel Acrylic
 ---
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="acrylic = true">Open Panel</fv-button>
 <fv-Panel v-model="acrylic" :isLightDismiss="true" :isAcrylic="true">
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="acrylic" :isLightDismiss="true" :isAcrylic="true">
@@ -71,6 +79,7 @@ export default {
 ### Panel Footer
 ---
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="footer = true">Open Panel</fv-button>
 <fv-Panel v-model="footer" :isFooter="true" :isAcrylic="true">
 <template v-slot:footer>
@@ -78,6 +87,7 @@ export default {
     <fv-button @click="footer = false">Cancel</fv-button>
 </template>
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="footer" :isFooter="true" :isAcrylic="true">
@@ -93,9 +103,11 @@ export default {
 
 Standard
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="dark = true">Open Panel</fv-button>
 <fv-Panel v-model="dark" :isLightDismiss="true" theme="dark">
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="dark" :isLightDismiss="true" theme="dark">
@@ -104,9 +116,11 @@ Standard
 
 Acrylic
 
+<ClientOnly>
 <fv-button style="width: 200px;" @click="acrylicDark = true">Open Panel</fv-button>
 <fv-Panel v-model="acrylicDark" :isLightDismiss="true" :isAcrylic="true" theme="dark">
 </fv-Panel>
+</ClientOnly>
 
 ```vue
 <fv-Panel v-model="acrylicDark" :isLightDismiss="true" :isAcrylic="true" theme="dark">
