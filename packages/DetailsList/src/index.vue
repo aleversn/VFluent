@@ -186,6 +186,7 @@ export default {
                 if(col != undefined)
                     this.sortClick(col);
             }
+            this.groupInit();
         },
         head (val) {
             this.headInit();
