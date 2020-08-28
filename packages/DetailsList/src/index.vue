@@ -37,8 +37,8 @@
                 <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
                     <p>{{`row: ${index} col: ${idx}`}}</p>
                 </slot>
-                <slot name="row_expand" :item="item" :row_index="index"></slot>
             </span>
+            <slot name="row_expand" :item="item" :row_index="index"></slot>
         </div>
         </transition-group>
     </div>
@@ -76,8 +76,8 @@
                     <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
                         <p>{{`row: ${index} col: ${idx}`}}</p>
                     </slot>
-                    <slot name="row_expand" :item="item" :row_index="index"></slot>
                 </span>
+                <slot name="row_expand" :item="item" :row_index="index"></slot>
             </div>
             </div>
             </transition>
