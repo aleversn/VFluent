@@ -182,9 +182,9 @@ export default {
             this.valueInit();
             if(this.sort.name != "")
             {
-                let col = this.head.find(item => item.sortName === this.sort.name);
+                let col = this.thisHead.find(item => item.sortName === this.sort.name);
                 if(col != undefined)
-                    this.sortClick(col);
+                    this.sortClick(col, false);
             }
             this.groupInit();
         },
@@ -568,14 +568,15 @@ export default {
 
             this.$emit('rightclick', item);
         },
-        sortClick (item) {
+        sortClick (item, reverse=true) {
+            /* 当要取消升降切换时将reverse设为false */
             let desc = this.sort.desc;
             if(item.sortName == false)
                 return 0;
             if(this.sort.name != item.sortName)
                 desc = false;
             else
-                desc = !this.sort.desc;
+                desc = reverse ? !this.sort.desc : this.sort.desc;
             this.sort.name = item.sortName;
             this.sort.desc = desc;
             desc = desc ? -1 : 1;
