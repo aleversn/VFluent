@@ -2,7 +2,7 @@
 <div :class="'fv-'+$theme+'-CommandBar'">
     <div class="left-command-bar-container" :style="{background: background}">
         <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" @click="itemClick($event, item)">
-            <span v-show="item.type !== 'more'" class="s1-container">
+            <span v-show="valueTrigger(item.type) !== 'more'" class="s1-container">
                 <i class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(item.icon)}`]" :style="{color: valueTrigger(item.iconColor)}"></i>
                 <p class="name">
                     {{valueTrigger(item.name)}}
@@ -161,7 +161,7 @@ export default {
             }
         },
         itemClick (event, item) {
-            if(item.disabled)
+            if(this.valueTrigger(item.disabled))
                 return 0;
             let status = !item.choosen;
             this.collapseAll();
