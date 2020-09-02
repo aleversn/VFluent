@@ -1,15 +1,15 @@
 <template>
 <div :class="'fv-'+$theme+'-CommandBar'">
     <div class="left-command-bar-container" :style="{background: background}">
-        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[item.type == 'divider' ? 'hr' : 'normal', {not_disabled: !item.disabled}, {disabled: item.disabled}]" :key="index" @click="itemClick($event, item)">
+        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" @click="itemClick($event, item)">
             <span v-show="item.type !== 'more'" class="s1-container">
-                <i class="ms-Icon icon" :class="[`ms-Icon--${item.icon}`]" :style="{color: item.iconColor}"></i>
+                <i class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(item.icon)}`]" :style="{color: valueTrigger(item.iconColor)}"></i>
                 <p class="name">
-                    {{item.name}}
+                    {{valueTrigger(item.name)}}
                 </p>
                 <i v-show="item.secondary.length > 0" class="ms-Icon ms-Icon--ChevronDown icon"></i>
             </span>
-            <span v-show="item.type === 'more'" class="s1-container">
+            <span v-show="valueTrigger(item.type) === 'more'" class="s1-container">
                 <i class="ms-Icon ms-Icon--More icon"></i>
             </span>
         </span>
@@ -21,8 +21,8 @@
         <div v-show="showDropDown" class="command-bar-list-view-container" :class="{'toward-up': toward == 'up'}" :style="{left: `${currentLeft}px`, background: background}">
             <fv-list-view v-model="thisValue.secondary" style="height: auto;" @chooseItem="chooseItem">
                 <template v-slot:listItem="x">
-                    <i v-show="x.item.icon !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.item.icon}`]" :style="{color: x.item.iconColor}"></i>
-                    <p class="name">{{x.item.name}}</p>
+                    <i v-show="valueTrigger(x.item.icon) !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(x.item.icon)}`]" :style="{color: valueTrigger(x.item.iconColor)}"></i>
+                    <p class="name">{{valueTrigger(x.item.name)}}</p>
                 </template>
             </fv-list-view>
         </div>
@@ -134,6 +134,10 @@ export default {
                 result.push(m);
             }
             this.thisOptions = result;
+        },
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
         },
         outSideClickInit() {
             window.addEventListener("click", event => {

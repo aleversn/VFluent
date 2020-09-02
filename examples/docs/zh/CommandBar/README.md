@@ -207,3 +207,5 @@ options: [
   }
 ];
 ```
+
+**特别地** 0.0.60版本后支持采用函数式字段, 其中支持的字段包括`name`, `disabled`, `icon`, `iconColor`, `type`
