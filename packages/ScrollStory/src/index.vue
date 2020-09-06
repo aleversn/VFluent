@@ -64,8 +64,8 @@ export default {
             this.refreshBounding();
         }, 300);
         try {
-			if (val !== false)
-				val.addEventListener("scroll", event => {
+			if (this.target !== false)
+				this.target.addEventListener("scroll", event => {
 					this.refreshBounding();
 				});
 		} catch (e) {}
