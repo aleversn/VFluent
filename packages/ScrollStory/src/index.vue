@@ -49,7 +49,7 @@ export default {
             }
             catch (e)
             {
-
+                console.log('VFluent ScrollStory', e);
             }
         }
     },
@@ -66,7 +66,9 @@ export default {
             try {
                 this.target.removeEventListener('scroll', this.event);
                 this.target.addEventListener('scroll', this.event);
-            } catch (e) {}
+            } catch (e) {
+                console.log('VFluent ScrollStory', e);
+            }
         }, 300);
         window.addEventListener('scroll', event => {
             this.refreshBounding();
