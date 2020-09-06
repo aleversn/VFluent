@@ -63,11 +63,11 @@ export default {
     mounted () {
         setTimeout(() => {
             this.refreshBounding();
+            try {
+                this.target.removeEventListener('scroll', this.event);
+                this.target.addEventListener('scroll', this.event);
+            } catch (e) {}
         }, 300);
-        try {
-			this.target.removeEventListener('scroll', this.event);
-            this.target.addEventListener('scroll', this.event);
-		} catch (e) {}
         window.addEventListener('scroll', event => {
             this.refreshBounding();
         });
