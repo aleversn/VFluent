@@ -34,17 +34,18 @@ export default {
     data () {
         return {
             show: false,
-            bounding: Infinity
+            bounding: Infinity,
+            event: () => {
+                this.refreshBounding();
+            }
         }
     },
     watch: {
         target (val) {
             try
             {
-                if(val !== false)
-                    val.addEventListener('scroll', event => {
-                        this.refreshBounding();
-                    });
+                val.removeEventListener('scroll', this.event);
+                val.addEventListener('scroll', this.event);
             }
             catch (e)
             {
@@ -64,10 +65,8 @@ export default {
             this.refreshBounding();
         }, 300);
         try {
-			if (this.target !== false)
-				this.target.addEventListener("scroll", event => {
-					this.refreshBounding();
-				});
+			this.target.removeEventListener('scroll', this.event);
+            this.target.addEventListener('scroll', this.event);
 		} catch (e) {}
         window.addEventListener('scroll', event => {
             this.refreshBounding();
