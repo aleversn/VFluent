@@ -23,9 +23,6 @@ export default {
         infinite: {
             default: false
         },
-        target: {
-            default: false
-        },
         theme: {
 			type: String,
 			default: "system"
@@ -37,20 +34,13 @@ export default {
             bounding: Infinity,
             event: () => {
                 this.refreshBounding();
-            }
+            },
+            timer: {}
         }
     },
     watch: {
-        target (val) {
-            try
-            {
-                val.removeEventListener('scroll', this.event);
-                val.addEventListener('scroll', this.event);
-            }
-            catch (e)
-            {
-                console.log('VFluent ScrollStory', e);
-            }
+        show (val) {
+            this.$emit("show-changed", val);
         }
     },
     computed:{
@@ -61,20 +51,15 @@ export default {
         }
     },
     mounted () {
-        setTimeout(() => {
-            this.refreshBounding();
-            try {
-                this.target.removeEventListener('scroll', this.event);
-                this.target.addEventListener('scroll', this.event);
-            } catch (e) {
-                console.log('VFluent ScrollStory', e);
-            }
-        }, 300);
-        window.addEventListener('scroll', event => {
-            this.refreshBounding();
-        });
+        this.timerInit();
     },
     methods: {
+        timerInit () {
+            clearInterval(this.timer);
+            this.timer = setInterval(() => {
+                this.refreshBounding();
+            }, 30);
+        },
         refreshBounding () {
             this.bounding = this.$el.getBoundingClientRect();
             if(this.bounding.top < window.innerHeight)
@@ -83,8 +68,10 @@ export default {
                 this.show = false;
             if(this.bounding.bottom < 100 && this.overCollapse)
                 this.show = false;
-            this.$emit("scroll", this.show);
         }
+    },
+    beforeDestroy () {
+        clearInterval(this.timer);
     }
 }
 </script>
