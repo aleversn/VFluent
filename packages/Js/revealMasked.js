@@ -135,10 +135,10 @@ export class RevealEffectsMasked
         if (window.FvRevealElements2 == undefined)
             window.FvRevealElements2 = {};
 
-        const els = typeof (selector) == "string" ? RevealHelper.preProcessElements(document.querySelectorAll(selector)) : RevealHelper.preProcessElements([selector]);
+        const els = this.getSelector(selector);
         for (let item of els)
         {
-            let children = typeof (this.options.selector) == "string" ? RevealHelper.preProcessElements(item.el.querySelectorAll(this.options.selector)) : RevealHelper.preProcessElements([this.options.selector]);
+            let children = this.getSelector(this.options.selector, item);
             if (window.FvRevealElements2[item.el.hashCode] == undefined)
                 window.FvRevealElements2[item.el.hashCode] = [];
             for (let c of children)
@@ -160,7 +160,7 @@ export class RevealEffectsMasked
     applyCommonEffects(selector)
     {
 
-        const els = typeof (selector) == "string" ? RevealHelper.preProcessElements(document.querySelectorAll(selector)) : RevealHelper.preProcessElements([selector]);
+        const els = this.getSelector(selector);
         if (window.FvRevealCarriers2 == undefined)
             window.FvRevealCarriers2 = [];
 
@@ -183,7 +183,7 @@ export class RevealEffectsMasked
                         child = c.child;
                     else
                     {
-                        child = typeof (this.options) == "string" ? RevealHelper.preProcessElements(c.el.querySelectorAll(this.options.childrenSelector)) : RevealHelper.preProcessElements([this.options.childrenSelector]);
+                        child = this.getSelector(this.options.childrenSelector, c);
                         child = child[0];
                         c.child = child;
                     }
@@ -207,6 +207,16 @@ export class RevealEffectsMasked
         }
     }
 
+    getSelector (selector, parent=null) {
+        if(parent == null)
+            parent = document;
+        else
+            parent = parent.el;
+        if(typeof(selector) === "string")   return RevealHelper.preProcessElements(parent.querySelectorAll(selector));
+        else if(selector.length > 0) return RevealHelper.preProcessElements(selector);
+        return RevealHelper.preProcessElements([selector]);
+    }
+
     applyClickEffects(element, parent)
     {
         let c = element;
@@ -216,7 +226,7 @@ export class RevealEffectsMasked
             child = c.child;
         else
         {
-            child = typeof (this.options) == "string" ? RevealHelper.preProcessElements(c.el.querySelectorAll(this.options.childrenSelector)) : RevealHelper.preProcessElements([this.options.childrenSelector]);
+            child = this.getSelector(this.options.childrenSelector, c);
             child = child[0];
             c.child = child;
         }
@@ -256,6 +266,8 @@ export class RevealEffectsMasked
 
     static clearBackground(element)
     {
+        if(!element)
+            return 0;
         clearInterval(element.clickWave);
         element.wave = 0;
         element.el.style.backgroundImage = element.oriBg;

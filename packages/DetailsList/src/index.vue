@@ -295,17 +295,19 @@ export default {
     },
     methods: {
         FRInit () {
-            FluentRevealEffect.applyEffect('body', {
-                clickEffect: true,
-                lightColor: this.borderLightColor,
-                gradientSize: 80,
-                isContainer: true,
-                children: {
-                    borderSelector: `.fv-${this.$theme}-DetailsList .list-head, .fv-${this.$theme}-DetailsList .rightMenu div`,
-                    elementSelector: `.fv-${this.$theme}-DetaislList .list-head .col, .fv-${this.$theme}-DetailsList .rightMenu div span`,
-                    lightColor: this.backgroundLightColor,
-                    gradientSize: 120
-                }
+            let FR_Table_Head = new this.$RevealEffectsMasked('body', {
+                selector: this.$el.querySelectorAll('.list-head')[0],
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor,
+                childrenSelector: this.$el.querySelectorAll('.list-head .col')
+            });
+            let FR_Right_Menu = new this.$RevealEffectsMasked('body', {
+                selector: this.$el.querySelectorAll('.fv-rightMenu div')[0],
+                backgroundGradientSize: 80,
+                borderGradientSize: 60,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor,
+                childrenSelector: this.$el.querySelectorAll('.fv-rightMenu div span')
             });
         },
         stylesInit () {
