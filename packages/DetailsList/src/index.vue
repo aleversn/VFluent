@@ -84,7 +84,7 @@
         </div>
     </div>
     <transition name="zoom-in-top">
-        <div v-show="show.rightMenu" class="rightMenu" ref="rightMenu" :style="{left: posX + 'px', top: posY + 'px', width: rightMenuWidth + 'px'}">
+        <div v-show="show.rightMenu" class="fv-rightMenu" ref="rightMenu" :style="{left: posX + 'px', top: posY + 'px', width: rightMenuWidth + 'px'}">
             <slot name="menu">
                 <div>
                     <span>

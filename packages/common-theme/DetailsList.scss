@@ -356,7 +356,7 @@
         }
     }
 
-    .rightMenu
+    .fv-rightMenu
     {
         position: fixed;
         top: 100%;
@@ -387,7 +387,7 @@
 
                 &:hover
                 {
-                    background: rgba(0,0,0,0.05);
+                    background:  rgba(245, 245, 245, 1);
                     cursor: pointer;
                 }
 
@@ -398,7 +398,7 @@
                     width: 100%;
                     margin: 0px;
                     padding: 0px 15px;
-                    font-size: 13px;
+                    font-size: 12px;
                     font-weight: 400;
                     overflow: hidden;
                 }
