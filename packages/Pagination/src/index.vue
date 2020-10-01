@@ -62,9 +62,10 @@ export default {
             this.pageItem();
         },
         total (val) {
-            if(this.thisValue > val)
-                this.thisValue = 1;
-            this.pageItem();
+            if(val <= 0)
+                this.itemList = [];
+            else
+                this.pageItem();
         }
     },
     computed: {
