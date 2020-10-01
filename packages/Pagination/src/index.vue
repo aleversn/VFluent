@@ -83,7 +83,10 @@ export default {
         }
     },
     mounted () {
-        this.pageItem();
+        if(this.total <= 0)
+            this.itemList = [];
+        else
+            this.pageItem();
     },
     methods: {
         pageItem () {
