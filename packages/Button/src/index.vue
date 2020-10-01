@@ -1,6 +1,6 @@
 <template>
 	<div :class="'fv-'+$theme+'-button'">
-		<div class="reveal-border" :class="{disabled: isDisabled}" :style="styles.revealBorder">
+		<div class="reveal-border" :class="[{disabled: isDisabled}, { shadow: isBoxShadow }]" :style="styles.revealBorder">
 			<button
 				:disabled="disabled"
 				class="button-container"
@@ -50,7 +50,10 @@ export default {
 		fontWeight: {
 			default: "normal",
 			type: String
-		},
+        },
+        isBoxShadow: {
+            default: false
+        },
 		disabled: {
 			default: false,
 			type: Boolean

@@ -40,6 +40,7 @@
 | borderRadius |              [number]              |       No       |       N/A       |    Button 圆角大小    |
 |   fontSize   |              [number]              |       No       |       N/A       |    Button 字体大小    |
 |  fontWeight  |              [string]              |       No       |     normal      |   Button 字体粗细度   |
+| isBoxShadow  |             [boolean]              |       No       |      false      |   开启`Button`阴影    |
 |   disabled   |             [boolean]              |       No       |      false      |    Disabled button    |
 | borderWidth  |              [number]              |       No       |        2        |    Button 边框大小    |
 |    theme     | ['light','dark','custom','system'] |       No       |     system      |     Custom theme      |
