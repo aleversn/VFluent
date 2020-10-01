@@ -62,7 +62,7 @@ export default {
             this.pageItem();
         },
         total (val) {
-            if(this.thisValue < val)
+            if(this.thisValue > val)
                 this.thisValue = 1;
             this.pageItem();
         }
