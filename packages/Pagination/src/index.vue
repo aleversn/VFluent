@@ -61,7 +61,9 @@ export default {
             this.$emit('input', val);
             this.pageItem();
         },
-        total () {
+        total (val) {
+            if(this.thisValue < val)
+                this.thisValue = 1;
             this.pageItem();
         }
     },
