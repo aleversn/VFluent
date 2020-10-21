@@ -103,16 +103,21 @@ export default {
             }
             let xhr = new XMLHttpRequest();
             xhr.open("get",url,true);
+            // define the response type what you want to translate in the xhr.response //
             xhr.responseType = "blob";
             xhr.onreadystatechange = event => {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     let blob = xhr.response;
+                    let data_type = blob.type.split('/')[0]; // text/plain or image/[any] //
                     let FR = new FileReader();
                     FR.onload = (event) => {
                         let base64 = event.target.result;
                         this.UpdateStore(base64);
                     }
-                    FR.readAsDataURL(blob);
+                    if(data_type === 'image')
+                        FR.readAsDataURL(blob);
+                    else
+                        FR.readAsText(blob);
                 }
                 else if (xhr.readyState == 4) {
 
