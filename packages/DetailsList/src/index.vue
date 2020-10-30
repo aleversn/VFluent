@@ -1,6 +1,6 @@
 <template>
 <div :class="'fv-'+$theme+'-DetailsList'">
-    <div class="list-head" :class="{'fv-custom-head': true}">
+    <div class="list-head" :class="{'fv-custom-head': true}" ref="list_head">
         <span v-show="multiSelection" class="icon-block" :style="styles.listHead" @click="chooseAll">
             <span class="icon" :class="{choose:currentChoosenAll}">
                 <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
@@ -99,7 +99,6 @@
 
 <script>
 import spliter from './sub/spliter.vue';
-import { FluentRevealEffect } from "fluent-reveal-effect";
 
 export default {
     name: "FvDetailsList",
@@ -296,7 +295,8 @@ export default {
     methods: {
         FRInit () {
             let FR_Table_Head = new this.$RevealEffectsMasked('body', {
-                selector: this.$el.querySelectorAll('.list-head')[0],
+                selector: this.$refs.list_head,
+                borderGradientSize: 80,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,
                 childrenSelector: this.$el.querySelectorAll('.list-head .col')
