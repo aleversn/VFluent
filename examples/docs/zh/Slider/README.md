@@ -123,7 +123,7 @@ Slider: {{value}}%  Change: {{changeTime}} Click: {{clickTime}}
 |      unit       |       Number   |      No       |       1        |   一格的间隔  |
 |      mininum       |       Number   |      No       |       0        |   最小值  |
 |      maxinum    |   Number | No | 100 | 最大值 |
-| icon | String | No | SliderThumb | MS-icon |
+| icon | String | No | LocationFill | MS-icon |
 | vertical | Boolean | No | false | 是否垂直 |
 | showLabel | Boolean | No | false | 是否显示标签 | 
 | scale | Boolean \| Number | No | false | 是否显示刻度，刻度长度，如果为真则跟随unit大小 |
