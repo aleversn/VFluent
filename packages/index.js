@@ -48,6 +48,7 @@ import Drawer from '@/Drawer/index.js'
 import Badge from '@/Badge/index.js'
 import Panel from '@/Panel/index.js'
 import Pagination from '@/Pagination/index.js'
+import Breadcrumb from '@/Breadcrumb/index.js'
 
 
 let components = [
@@ -91,6 +92,7 @@ let components = [
   Badge,
   Panel,
   Pagination,
+  Breadcrumb,
 
 ]
 
@@ -150,6 +152,7 @@ export default {
   Badge,
   Panel,
   Pagination,
+  Breadcrumb,
 
 }
 

@@ -40,6 +40,7 @@ import { FvDrawer } from './drawer'
 import { FvBadge } from './badge'
 import { FvPanel } from './panel'
 import { FvPagination } from './pagination'
+import { FvBreadcrumb } from './breadcrumb'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -127,4 +128,6 @@ export type Theme = FluentVueTheme
   export class Panel extends FvPanel {}
 /** Pagination component */
   export class Pagination extends FvPagination {}
+/** Breadcrumb component */
+  export class Breadcrumb extends FvBreadcrumb {}
 

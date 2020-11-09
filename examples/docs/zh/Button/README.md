@@ -35,8 +35,8 @@
 |  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)    |
 |:------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
 |     icon     |              [string]              |       No       |       N/A       | Icon with Fabric-Icon |
-|  foreground  |              [string]              |       No       |       N/A       |     Button 前景色     |
-|  background  |              [string]              |       No       |       N/A       |     Button 背景色     |
+|  foreground  |          [string(color)]           |       No       |       N/A       |     Button 前景色     |
+|  background  |          [string(color)]           |       No       |       N/A       |     Button 背景色     |
 | borderRadius |              [number]              |       No       |       N/A       |    Button 圆角大小    |
 |   fontSize   |              [number]              |       No       |       N/A       |    Button 字体大小    |
 |  fontWeight  |              [string]              |       No       |     normal      |   Button 字体粗细度   |

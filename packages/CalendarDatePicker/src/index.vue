@@ -116,7 +116,7 @@ export default {
             window.addEventListener("click", event => {
                 let x = event.target;
                 let _self = false;
-                while (x.tagName && x.tagName.toLowerCase() != "body") {
+                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
                     if (x == this.$el) {
                         _self = true;
                         break;

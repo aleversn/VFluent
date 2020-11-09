@@ -318,5 +318,13 @@
       "Dark": "@/dark-theme/Pagination.scss",
       "Custom": "@/custom-theme/Pagination.scss"
     }
+  },
+  "Breadcrumb": {
+    "entry": "@/Breadcrumb/index.js",
+    "theme": {
+      "Light": "@/light-theme/Breadcrumb.scss",
+      "Dark": "@/dark-theme/Breadcrumb.scss",
+      "Custom": "@/custom-theme/Breadcrumb.scss"
+    }
   }
 }

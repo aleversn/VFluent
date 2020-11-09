@@ -1,0 +1,43 @@
+@import "../common-theme/Breadcrumb.scss";
+.fv-dark-Breadcrumb {
+    @include fv-Breadcrumb();
+
+    &:hover
+    {
+        border: rgba(54, 53, 52, 1) solid thin;
+    }
+
+    .fv-bc-route-list
+    {
+
+        .fv-bc-route-item
+        {
+
+            .fv-bc-separator-content
+            {
+                color: rgba(211, 211, 211, 1);
+                
+                &:hover
+                {
+                    background: rgba(54, 53, 52, 1);
+                }
+
+                &:active
+                {
+                    background: rgba(50, 49, 48, 1);
+                }
+            }
+
+            .fv-bc-separator-icon
+            {
+                color: rgba(211, 211, 211, 1);
+            }
+
+        }
+
+        .fv-bc-route-text-box
+        {
+            color: whitesmoke;
+        }
+    }
+}

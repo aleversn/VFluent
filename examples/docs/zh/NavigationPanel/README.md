@@ -9,9 +9,9 @@ sidebarDepth: 2
 
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
 <ClientOnly> 
-<fv-NavigationPanel></fv-NavigationPanel>
+<fv-NavigationPanel flyoutDisplay="2000"></fv-NavigationPanel>
 </ClientOnly> 
-<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<fv-img src="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 
 ```vue
@@ -28,7 +28,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-NavigationPanel expandMode="flyout"></fv-NavigationPanel>
 </ClientOnly>
-<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<fv-img src="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 
 ```vue
@@ -45,7 +45,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-NavigationPanel mobileDisplay="100000000"></fv-NavigationPanel>
 </ClientOnly>
-<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<fv-img src="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 
 ```vue
@@ -64,7 +64,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-NavigationPanel theme="dark"></fv-NavigationPanel>
 </ClientOnly>
-<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<fv-img src="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 
 2. Flyout
@@ -73,7 +73,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-NavigationPanel expandMode="flyout" theme="dark"></fv-NavigationPanel>
 </ClientOnly>
-<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<fv-img src="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 
 3. Mobile
@@ -82,7 +82,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-NavigationPanel mobileDisplay="100000000" theme="dark"></fv-NavigationPanel>
 </ClientOnly>
-<fv-img-box url="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img-box>
+<fv-img src="https://rescreator.blob.core.windows.net/slider/01277a52-2379-475e-b5f6-7c8788dac898.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 
 ### Propoties
