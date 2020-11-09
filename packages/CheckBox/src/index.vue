@@ -33,7 +33,7 @@ export default {
         },
         background: {
             type: String,
-            default: 'rgba(0,120,215,0.9)'
+            default: 'rgba(0, 120, 215, 1)'
         },
         theme: {
             type: String,
@@ -55,10 +55,10 @@ export default {
                     borderWidth: '2px'
                 },
                 checkBoxContent: {
-                    background: 'rgba(0,120,215,0.9)'
+                    background: 'rgba(0, 120, 215, 1)'
                 },
                 Indeterminate: {
-                    color: 'rgba(0,120,215,0.9)'
+                    color: 'rgba(0, 120, 215, 1)'
                 },
                 textContentBlock: {
                     color: ''
