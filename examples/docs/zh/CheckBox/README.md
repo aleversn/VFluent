@@ -32,10 +32,10 @@
 ### CheckBox-Custom
 ---
 1. Set border width.
-<fv-checkBox borderWidth="1">Checkbox rendered with borderWidth "1"</fv-checkBox>
+<fv-checkBox borderWidth="2">Checkbox rendered with borderWidth "2"</fv-checkBox>
 
 ```vue
-<fv-checkBox borderWidth="1">Checkbox rendered with borderWidth "1"</fv-checkBox>
+<fv-checkBox borderWidth="2">Checkbox rendered with borderWidth "2"</fv-checkBox>
 ```
 2. Set background and border color.
 <fv-checkBox borderColor="rgba(0,204,153,1)" foreground="rgba(0,204,153,1)" background="rgba(0,204,153,1)">Checkbox</fv-checkBox>
@@ -54,7 +54,7 @@
 | background  |              [string]              |       No       |       N/A       |    Button background    |
 |   boxSide   |          ['start','end']           |       No       |      start      | Button text font weight |
 |  disabled   |             [boolean]              |       No       |      false      |     Disabled button     |
-| borderWidth |              [number]              |       No       |        2        |   Button border width   |
+| borderWidth |              [number]              |       No       |        1        |   Button border width   |
 |    theme    | ['light','dark','custom','system'] |       No       |     system      |      Custom theme       |
 
 ### Events
