@@ -6,6 +6,7 @@
         <div
             class="fv-slider__bar"
             @mousedown="click($event) && moveable($event)"
+            @touchstart="click($event.targetTouches[0]) && moveable($event.targetTouches[0])"
             :class="[{vertical:vertical},{disabled:disabled}]"
             :style="style.bar"
             ref="bar"
@@ -216,6 +217,10 @@ export default {
             this.isActive = true;
             let origin = this.vertical ? evt.clientY : evt.clientX;
             let move = (evt) => {
+                if(evt.type === 'touchmove') {
+                    evt.preventDefault();
+                    evt = evt.targetTouches[0];
+                }
                 let x = this.vertical ? evt.clientY : evt.clientX;
                 this.move(x, origin);
                 origin = x;
@@ -226,10 +231,14 @@ export default {
                 window.removeEventListener("mousemove", move);
                 window.removeEventListener("mouseup", removeMove);
                 window.removeEventListener("mouseleave", removeMove);
+                window.removeEventListener("touchmove", move);
+                window.removeEventListener("touchend", removeMove);
             };
             window.addEventListener("mousemove", move);
             window.addEventListener("mouseleave", removeMove);
             window.addEventListener("mouseup", removeMove);
+            window.addEventListener("touchmove", move);
+            window.addEventListener("touchend", removeMove);
         },
         setProgress(value, min, max) {
             this.progress = ((value - min) / (max - min)) * 100;

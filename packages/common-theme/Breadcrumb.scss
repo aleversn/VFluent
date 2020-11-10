@@ -63,6 +63,8 @@
         height: 27px;
         display: flex;
         align-items: center;
+        overflow-x: auto;
+        overflow-y: hidden;
 
         .fv-bc-route-item
         {

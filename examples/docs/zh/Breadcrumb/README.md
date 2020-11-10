@@ -12,11 +12,21 @@ Basic
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb">
 </fv-Breadcrumb>
 
+```vue
+<fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb">
+</fv-Breadcrumb>
+```
+
 ### Breadcrumb-Editable
 ---
 
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false">
 </fv-Breadcrumb>
+
+```vue
+<fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false">
+</fv-Breadcrumb>
+```
 
 ### Breadcrumb-Custom Icon
 ---
@@ -26,16 +36,31 @@ Basic
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" separator=">">
 </fv-Breadcrumb>
 
+```vue
+<fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" separator=">">
+</fv-Breadcrumb>
+```
+
 2. Icon
 
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" separator="ChevronRightMed">
 </fv-Breadcrumb>
+
+```vue
+<fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" separator="ChevronRightMed">
+</fv-Breadcrumb>
+```
 
 ### Breadcrumb-Hide Root
 ---
 
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" :showRoot="false">
 </fv-Breadcrumb>
+
+```vue
+<fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" :showRoot="false">
+</fv-Breadcrumb>
+```
 
 ### Breadcrumb-Dark Theme
 ---
@@ -45,6 +70,13 @@ Basic
 </fv-Breadcrumb>
 </div>
 
+```vue
+<div style="padding: 8px; background: black;">
+    <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" theme="dark" :readOnly="false">
+    </fv-Breadcrumb>
+</div>
+```
+
 ### Breadcrumb-Dark Disabled
 ---
 1. Light
@@ -52,12 +84,24 @@ Basic
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" disabled>
 </fv-Breadcrumb>
 
+```vue
+<fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" :readOnly="false" disabled>
+</fv-Breadcrumb>
+```
+
 2. Dark
 
 <div style="padding: 8px; background: black;">
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" theme="dark" :readOnly="false" disabled>
 </fv-Breadcrumb>
 </div>
+
+```vue
+<div style="padding: 8px; background: black;">
+    <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb" theme="dark" :readOnly="false" disabled>
+    </fv-Breadcrumb>
+</div>
+```
 
 ### Propoties
 ---
@@ -79,6 +123,6 @@ Basic
 ---
 | 事件名(Name) | 参数类型(args) | 说明(statement) |
 |:------------:|:--------------:|:---------------:|
-|  root-click  |    [object]    | 单击根图标触发  |
-|  item-click  |    [object]    | 单击路由项触发  |
+|  root-click  |     object     | 单击根图标触发  |
+|  item-click  |     object     | 单击路由项触发  |
   

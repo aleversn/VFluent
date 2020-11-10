@@ -1,5 +1,5 @@
 <template>
-<div class="spliter" @mousedown="forward" @mouseup="stop">
+<div class="spliter" @mousedown="forward" @mouseup="stop" @touchstart="forward" @touchend="stop">
     <i></i>
 </div>
 </template>
@@ -38,14 +38,30 @@ export default {
                     this.stop();
                 }
             }));
+            window.addEventListener("touchmove", (event => {
+                if (this.moveable) {
+                    this.$emit("touchmove", event);
+                }
+            }));
+            window.addEventListener("touchend", (event => {
+                if (this.moveable) {
+                    this.stop();
+                }
+            }));
         },
         forward(event) {
             this.moveable = true;
-            this.$emit("mousedown", event);
+            if(event.type === 'mousedown')
+                this.$emit("mousedown", event);
+            else
+                this.$emit("touchstart", event);
         },
         stop (event) {
             this.moveable = false;
-            this.$emit("mouseup", event);
+            if(event.type === 'mouseup')
+                this.$emit("mouseup", event);
+            else
+                this.$emit("touchend", event);
         }
     }
 };

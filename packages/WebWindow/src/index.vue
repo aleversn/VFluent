@@ -1,6 +1,6 @@
 <template>
 	<div v-show="thisValue" :class="['fv-'+$theme+'-WebWindow', {'static-transition' : !moveable,dark : theme == 'dark'}]" :style="{left: currentLeft, top: currentTop}" ref="block">
-		<div class="title-bar" @mousedown="forward" @mouseup="stop">
+		<div class="title-bar" @mousedown="forward" @mouseup="stop" @touchstart="forward($event.targetTouches[0])" @touchend="stop">
 			<p style="margin-left: 10px; user-select: none;">{{title}}</p>
 			<button class="control-btn shut-down" @mousedown="stopPropagation" @click="close">
 				<i class="ms-Icon ms-Icon--Cancel"></i>
@@ -63,7 +63,19 @@ export default {
                     this.currentTop = `${event.clientY - this.disY}px`;
                 }
             }));
+            window.addEventListener ("touchmove", (event => {
+                event = event.targetTouches[0];
+                if (this.moveable) {
+                    this.currentLeft = `${event.clientX - this.disX}px`;
+                    this.currentTop = `${event.clientY - this.disY}px`;
+                }
+            }));
             window.addEventListener ("mouseup", (event => {
+                if (this.moveable) {
+                    this.stop();
+                }
+            }));
+            window.addEventListener ("touchup", (event => {
                 if (this.moveable) {
                     this.stop();
                 }

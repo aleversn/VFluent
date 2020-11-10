@@ -20,7 +20,7 @@
                 </slot>
                 <i v-show="item.sortName === sort.name" class="ms-Icon sort" :class="[`ms-Icon--${sort.desc ? 'Down' : 'Up'}`]"></i>
             </span>
-            <spliter style="height: 100%;" @mousedown="resizeDown($event, index)" @mousemove="resizeMove($event, index)"></spliter>
+            <spliter style="height: 100%;" @mousedown="resizeDown($event, index)" @mousemove="resizeMove($event, index)" @touchdown="resizeDown($event.targetTouches[0], index)" @touchmove="resizeMove($event.targetTouches[0], index)"></spliter>
         </span>
     </div>
     <div v-if="!showGroup" class="list-content" ref="l1" :class="{compact: compact, 'auto-height': autoHeight}">

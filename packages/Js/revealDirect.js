@@ -194,6 +194,8 @@ export class RevealEffects
                 continue;
             //element background effect --------------------
             let containerSelectorMove = e => {
+                if(e.type.indexOf("mouse") < 0)
+                    e = e.targetTouches[0];
                 for(let c of window.FvRevealElements[item.el.hashCode]) {
                     if(!item.el.contains(c.el))
                         continue;
@@ -205,7 +207,7 @@ export class RevealEffects
                     else
                         RevealHelper.drawEffectBorder(c, x, y, c.backgroundLightColor, c.borderLightColor, c.borderGradientSize);
 
-                    if(RevealHelper.isInsideElement(c, e.x, e.y)) {
+                    if(RevealHelper.isInsideElement(c, e.clientX, e.clientY)) {
                         if(c.wave == 0)
                             RevealHelper.drawEffectBackground(c, x, y, c.backgroundLightColor, c.borderLightColor, c.backgroundGradientSize);
                     }
@@ -214,6 +216,7 @@ export class RevealEffects
                 }
             }
             item.el.addEventListener("mousemove", containerSelectorMove);
+            item.el.addEventListener("touchmove", containerSelectorMove);
             window.FvRevealCarriers.push(item);
         }
     }
@@ -221,22 +224,32 @@ export class RevealEffects
     applyClickEffects (element, parent) {
         let c = element;
 
-        c.el.addEventListener("mousedown", e => {
+        let downEvent = e => {
+            if(e.type.indexOf("mouse") < 0)
+                e = e.targetTouches[0];
             let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
             let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
             RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize, true);
-        });
+        };
 
-        c.el.addEventListener("mouseup", e => {
+        let upEvent = e => {
             let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
             let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
             RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize);
-        });
-        
-        parent.el.addEventListener("mouseleave", (e) => {
+        };
+
+        let leaveEvent = e => {
+            if(e.type.indexOf("mouse") < 0)
+                e = e.targetTouches[0];
             RevealEffects.clearBackground(c);
             RevealEffects.clearBorder(c);
-        });
+        };
+
+        c.el.addEventListener("mousedown", downEvent);
+        c.el.addEventListener("touchstart", downEvent);
+        c.el.addEventListener("mouseup", upEvent);
+        parent.el.addEventListener("mouseleave", leaveEvent);
+        parent.el.addEventListener("touchend", leaveEvent);
     }
 
     static clearUselessElements() {
