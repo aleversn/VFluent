@@ -129,7 +129,7 @@ export class RevealHelper
 
 export class RevealEffects
 {
-    constructor (selector, options) {
+    constructor (carrier_selector, options) {
         this.options = {
             selector: ".eff-reveal-border",
             backgroundGradientSize: 150,
@@ -141,20 +141,20 @@ export class RevealEffects
         // update options
         this.options = Object.assign(this.options, options);
 
-        this.childrenRefresh(selector, this.options);
+        this.childrenRefresh(carrier_selector);
         RevealEffects.clearUselessElements();
-        this.applyCommonEffects(selector, options);
+        this.applyCommonEffects(carrier_selector);
 
         this.timer = setInterval(() => {
-            this.childrenRefresh(selector);
+            this.childrenRefresh(carrier_selector);
         }, 300);
     }
 
-    childrenRefresh (selector) {
+    childrenRefresh (carrier_selector) {
         if(window.FvRevealElements == undefined)
             window.FvRevealElements = {};
         
-        const els = this.getSelector(selector);
+        const els = this.getSelector(carrier_selector);
         for(let item of els) {
             let children = this.getSelector(this.options.selector, item);
             if(window.FvRevealElements[item.el.hashCode] == undefined)
@@ -183,9 +183,9 @@ export class RevealEffects
         return RevealHelper.preProcessElements([selector]);
     }
 
-    applyCommonEffects (selector) {
+    applyCommonEffects (carrier_selector) {
 
-        const els =  this.getSelector(selector);
+        const els =  this.getSelector(carrier_selector);
         if(window.FvRevealCarriers == undefined)
             window.FvRevealCarriers = [];
 
