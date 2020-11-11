@@ -1,128 +1,148 @@
 <template>
-<div :class="['fv-'+$theme+'-Pivot', tab ? 'tab' : '']">
-    <div class="pivot-container">
-        <span v-show="item.show" class="pivot-item" v-for="(item, index) in thisItems" :key="index" :class="{choose: currentItem == item, disabled: item.disabled}" :style="{width: `${item.width}px`}" @click="itemClick(item)">
-            <slot name="container" :item="item" :index="index">
-                <p :style="{color: styles.container.color}">{{item.name}}</p>
-            </slot>
-        </span>
+    <div :class="['fv-' + $theme + '-Pivot', tab ? 'tab' : '']">
+        <div class="pivot-container">
+            <span
+                v-show="item.show"
+                class="pivot-item"
+                v-for="(item, index) in thisItems"
+                :key="index"
+                :class="{
+                    choose: currentItem == item,
+                    disabled: item.disabled,
+                }"
+                :style="{ width: `${item.width}px` }"
+                @click="itemClick(item)"
+            >
+                <slot name="container" :item="item" :index="index">
+                    <p :style="{ color: styles.container.color }">
+                        {{ item.name }}
+                    </p>
+                </slot>
+            </span>
+        </div>
+        <slider
+            :left="currentLeft"
+            :width="currentWidth"
+            :background="styles.slider.background"
+        ></slider>
     </div>
-    <slider :left="currentLeft" :width="currentWidth" :background="styles.slider.background"></slider>
-</div>
 </template>
 
 <script>
-import slider from './sub/slider.vue';
+import slider from "./sub/slider.vue";
 
 export default {
-    name:'FvPivot',
+    name: "FvPivot",
     components: {
-        slider
+        slider,
     },
     props: {
         value: {
             default: () => {
-                return {}
-            }
+                return {};
+            },
         },
         items: {
-            default: () => [{ name: "Pivot", width: 80 }]
+            default: () => [{ name: "Pivot", width: 80 }],
         },
         tab: {
-            default: false
+            default: false,
         },
         foreground: {
-            default: ""
+            default: "",
         },
         sliderBackground: {
-            default: ""
+            default: "",
         },
         theme: {
             type: String,
-            default: "system"
-        }
+            default: "system",
+        },
     },
-    data () {
+    data() {
         return {
             thisItems: [],
             currentItem: {},
             styles: {
                 slider: {
-                    background: ""
+                    background: "",
                 },
                 container: {
-                    color: ""
-                }
-            }
-        }
+                    color: "",
+                },
+            },
+        };
     },
     watch: {
-        value (val) {
+        value(val) {
             this.currentItem = val;
         },
-        items (val) {
+        items(val) {
             this.itemsInit();
         },
-        currentItem (val) {
+        currentItem(val) {
             this.$emit("input", val);
+            this.$emit("change", val);
         },
-        foreground (val) {
+        foreground(val) {
             this.stylesInit();
         },
-        sliderBackground (val) {
+        sliderBackground(val) {
             this.stylesInit();
-        }
+        },
     },
     computed: {
-        currentLeft () {
+        currentLeft() {
             let index = this.thisItems.indexOf(this.currentItem);
-            if(index < 0)
-                return 0;
+            if (index < 0) return 0;
             let count = 0;
-            for(let i = 0; i < index; i++) {
-                if(this.thisItems[i].show)
-                    count += this.thisItems[i].width;
+            for (let i = 0; i < index; i++) {
+                if (this.thisItems[i].show) count += this.thisItems[i].width;
             }
             return count;
         },
-        currentWidth () {
-            return this.currentItem.width == undefined ? 0 : this.currentItem.width;
+        currentWidth() {
+            return this.currentItem.width == undefined
+                ? 0
+                : this.currentItem.width;
         },
-        $theme () {
-          if (this.theme=='system')
-              return this.$fvGlobal.state.theme;
-          return this.theme;
-        }
+        $theme() {
+            if (this.theme == "system") return this.$fvGlobal.state.theme;
+            return this.theme;
+        },
     },
-    mounted () {
+    mounted() {
         this.itemsInit();
         this.stylesInit();
     },
     methods: {
-        itemsInit () {
-            let model = { name: "Pivot", width: 60, show: true, disabled: false };
+        itemsInit() {
+            let model = {
+                name: "Pivot",
+                width: 60,
+                show: true,
+                disabled: false,
+            };
             let items = [];
-            for(let item of this.items) {
+            for (let item of this.items) {
                 let m = JSON.parse(JSON.stringify(model));
-                for(let it in item) {
+                for (let it in item) {
                     m[it] = item[it];
                 }
                 items.push(m);
             }
             this.thisItems = items;
-            if(this.value.width == undefined)
+            if (this.value.width == undefined)
                 this.currentItem = this.thisItems[0];
         },
-        stylesInit () {
+        stylesInit() {
             this.styles.slider.background = this.sliderBackground;
             this.styles.container.color = this.foreground;
         },
-        itemClick (item) {
-            if(item.disabled)
-                return 0;
+        itemClick(item) {
+            if (item.disabled) return 0;
             this.currentItem = item;
-            this.$emit('change', item);
-        }
-    }
-}
+        },
+    },
+};
 </script>

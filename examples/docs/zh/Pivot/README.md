@@ -11,6 +11,7 @@
 export default {
     data () {
         return {
+            value:null,
             items: [
                 { name: "All"},
                 { name: "Unread", width: 80},
@@ -18,7 +19,7 @@ export default {
                 { name: "Urgent", width: 80}
             ]
         }
-    }
+    },
 }
 </script>
 
