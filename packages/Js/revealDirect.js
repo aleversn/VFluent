@@ -9,8 +9,7 @@ export class RevealHelper
     
     static drawEffectBasic(
         element,
-        x,
-        y,
+        pos,
         backgroundLightColor,
         borderLightColor,
         gradientSize,
@@ -20,11 +19,11 @@ export class RevealHelper
         let borderLight;
         let backgroundLight;
 
-        borderLight = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${borderLightColor}, rgba(255,255,255,0)) 25% 25% 25% 25%`; //切成九块, 去掉中间块剩余8块, 为了使得显示均匀, 我们要保证相邻两块比例要一样, 因为每一块最终会被应用于border的每一块上拉伸, 比例相同能保证拉伸时相邻块能够衔接, 因此比率尽可能大(从而保证切边交点在圆内)又要满足8块比例一致则 100% / 4 = 25%. 
+        borderLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${borderLightColor}, rgba(255,255,255,0)) 25% 25% 25% 25%`; //切成九块, 去掉中间块剩余8块, 为了使得显示均匀, 我们要保证相邻两块比例要一样, 因为每一块最终会被应用于border的每一块上拉伸, 比例相同能保证拉伸时相邻块能够衔接, 因此比率尽可能大(从而保证切边交点在圆内)又要满足8块比例一致则 100% / 4 = 25%. 
         if (clickEffect === false) {
-            backgroundLight = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${backgroundLightColor}, rgba(255,255,255,0))`;
+            backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0))`;
         } else {
-            backgroundLight = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${backgroundLightColor}, rgba(255,255,255,0)), radial-gradient(circle ${element.wave}px at ${x}px ${y}px, rgba(255,255,255,0), ${backgroundLightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
+            backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0)), radial-gradient(circle ${element.wave}px at ${pos.x}px ${pos.y}px, rgba(255,255,255,0), ${backgroundLightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
         }
 
         if(mode == 'background') {
@@ -34,14 +33,14 @@ export class RevealHelper
                     try
                     {
                         let cur = element.wave;
-                        let step = cur / 200 + 1;
+                        let step = cur / 60 + 1;
                         cur += step;
                         if(cur >= 1000)
                             clearInterval(element.clickWave);
                         else
                         {
                             element.wave = cur;
-                            backgroundLight = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${backgroundLightColor}, rgba(255,255,255,0)), radial-gradient(circle ${element.wave}px at ${x}px ${y}px, rgba(255,255,255,0), ${backgroundLightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
+                            backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0)), radial-gradient(circle ${element.wave}px at ${pos.x}px ${pos.y}px, rgba(255,255,255,0), ${backgroundLightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
                             element.el.style.backgroundImage = backgroundLight;
                         }
                     }
@@ -52,7 +51,7 @@ export class RevealHelper
             {
                 clearInterval(element.clickWave);
                 element.wave = 0;
-                backgroundLight = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${backgroundLightColor}, rgba(255,255,255,0))`;
+                backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0))`;
                 element.el.style.backgroundImage = backgroundLight;
             }
         }
@@ -63,26 +62,24 @@ export class RevealHelper
 
     static drawEffectBorder(
         element,
-        x,
-        y,
+        pos,
         backgroundLightColor,
         borderLightColor,
         gradientSize,
         clickEffect = false
     ) {
-        this.drawEffectBasic(element, x, y, backgroundLightColor, borderLightColor, gradientSize, clickEffect, "border");
+        this.drawEffectBasic(element, pos, backgroundLightColor, borderLightColor, gradientSize, clickEffect, "border");
     }
 
     static drawEffectBackground(
         element,
-        x,
-        y,
+        pos,
         backgroundLightColor,
         borderLightColor,
         gradientSize,
         clickEffect = false
     ) {
-        this.drawEffectBasic(element, x, y, backgroundLightColor, borderLightColor, gradientSize, clickEffect, "background");
+        this.drawEffectBasic(element, pos, backgroundLightColor, borderLightColor, gradientSize, clickEffect, "background");
     }
     
     static preProcessElements(elements) {
@@ -96,6 +93,10 @@ export class RevealHelper
                 oriBorder: getComputedStyle(el)["border-image"],
                 wave: 0,
                 clickWave: {},
+                revealPosition: {
+                    x: 0,
+                    y: 0
+                },
                 borderLightColor: "",
                 backgroundLightColor: "",
                 borderGradientSize: 80,
@@ -201,15 +202,17 @@ export class RevealEffects
                         continue;
                     let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
                     let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
+                    c.revealPosition.x = x;
+                    c.revealPosition.y = y;
                     
                     //set the thresold to improve performance -------------------------
                     if(Math.abs(x) > 600 || Math.abs(y) > 1000) {}
                     else
-                        RevealHelper.drawEffectBorder(c, x, y, c.backgroundLightColor, c.borderLightColor, c.borderGradientSize);
+                        RevealHelper.drawEffectBorder(c, {x, y}, c.backgroundLightColor, c.borderLightColor, c.borderGradientSize);
 
                     if(RevealHelper.isInsideElement(c, e.clientX, e.clientY)) {
                         if(c.wave == 0)
-                            RevealHelper.drawEffectBackground(c, x, y, c.backgroundLightColor, c.borderLightColor, c.backgroundGradientSize);
+                            RevealHelper.drawEffectBackground(c, {x, y}, c.backgroundLightColor, c.borderLightColor, c.backgroundGradientSize);
                     }
                     else
                         RevealEffects.clearBackground(c);
@@ -229,13 +232,15 @@ export class RevealEffects
                 e = e.targetTouches[0];
             let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
             let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
-            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize, true);
+            c.revealPosition.x = x;
+            c.revealPosition.y = y;
+            RevealHelper.drawEffectBackground(c, c.revealPosition, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize, true);
         };
 
         let upEvent = e => {
             let x = e.pageX - RevealHelper.getOffset(c).left - window.scrollX;
             let y = e.pageY - RevealHelper.getOffset(c).top - window.scrollY;
-            RevealHelper.drawEffectBackground(c, x, y, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize);
+            RevealHelper.drawEffectBackground(c, {x, y}, this.options.backgroundLightColor, this.options.borderLightColor, this.options.backgroundGradientSize);
         };
 
         let leaveEvent = e => {
