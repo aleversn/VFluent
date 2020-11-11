@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { FluentRevealEffect } from "fluent-reveal-effect";
-
 export default {
     props: {
         value: {
@@ -113,17 +111,13 @@ export default {
     },
     methods: {
         FRInit () {
-            FluentRevealEffect.applyEffect('body', {
-                clickEffect: true,
-                lightColor: this.borderLightColor,
-                gradientSize: 90,
-                isContainer: true,
-                children: {
-                    borderSelector: `.fv-${this.$theme}-CalendarView .container-block .picker-container`,
-                    elementSelector: `.fv-${this.$theme}-CalendarView .container-block .picker-container .btn`,
-                    lightColor: this.backgroundLightColor,
-                    gradientSize: 120
-                }
+            let FR = new this.$RevealEffectsMasked("body", {
+                selector: this.$refs.main,
+                childrenSelector: [],
+                borderGradientSize: 90,
+                backgroundGradientSize: 120,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor
             });
         },
         monthsInit () {

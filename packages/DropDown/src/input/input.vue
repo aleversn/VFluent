@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import { FluentRevealEffect } from "fluent-reveal-effect";
-
 export default {
     props: {
         value: {
@@ -127,17 +125,13 @@ export default {
     },
     methods: {
         FRInit () {
-            FluentRevealEffect.applyEffect('body', {
-                clickEffect: true,
-                lightColor: this.borderLightColor,
-                gradientSize: 80,
-                isContainer: true,
-                children: {
-                    borderSelector: `.fv-${this.$theme}-DropDown .drop-down-box`,
-                    elementSelector: `.fv-${this.$theme}-DropDown .drop-down-container input`,
-                    lightColor: this.backgroundLightColor,
-                    gradientSize: 120
-                }
+            let FR = new this.$RevealEffectsMasked("body", {
+                selector: this.$el,
+                childrenSelector: this.$el.querySelectorAll('input'),
+                borderGradientSize: 80,
+                backgroundGradientSize: 120,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor
             });
         },
         stylesInit () {

@@ -22,6 +22,14 @@
 <fv-button icon="CalculatorAddition" theme="dark">Add</fv-button>
 ```
 
+### Button Customize
+---
+<fv-button icon="CalculatorAddition" theme="dark" background="linear-gradient(to right, #000046, #1cb5e0)" borderRadius="3">Add</fv-button>
+
+```vue
+<fv-button icon="CalculatorAddition" theme="dark" background="linear-gradient(to right, #000046, #1cb5e0)" borderRadius="3">Add</fv-button>
+```
+
 ### Button Disabled
 ---
 <fv-button disabled icon="CalculatorAddition">Add</fv-button>

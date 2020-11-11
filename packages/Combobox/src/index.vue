@@ -25,8 +25,6 @@
 </template>
 
 <script>
-import { FluentRevealEffect } from "fluent-reveal-effect";
-
 export default {
 	name: "FvCombobox",
 	props: {
@@ -125,20 +123,16 @@ export default {
 	},
 	methods: {
         FRInit () {
-            FluentRevealEffect.applyEffect('body', {
-                clickEffect: true,
-                lightColor: this.borderLightColor,
-                gradientSize: 80,
-                isContainer: true,
-                children: {
-                    borderSelector: `.fv-${this.$theme}-Combobox`,
-                    elementSelector: `.fv-${this.$theme}-Combobox .combobox-container`,
-                    lightColor: this.backgroundLightColor,
-                    gradientSize: 120
-                }
+            let FR = new this.$RevealEffectsMasked("body", {
+                selector: this.$el,
+                childrenSelector: this.$el.querySelectorAll('.combobox-container'),
+                borderGradientSize: 80,
+                backgroundGradientSize: 120,
+                borderLightColor: this.borderLightColor,
+                backgroundLightColor: this.backgroundLightColor
             });
 
-            let FR = new this.$RevealEffects(this.$el, {
+            let FR_list = new this.$RevealEffects(this.$el, {
                 selector: `.fv-${this.$theme}-Combobox .combobox-item-container option.normal`,
                 borderGradientSize: 30,
                 borderLightColor: this.borderLightColor,

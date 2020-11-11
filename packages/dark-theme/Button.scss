@@ -2,7 +2,7 @@
 .fv-dark-button{
     @include fv-button();
 
-    div.reveal-border
+    div.fv-button-reveal-border
     {
         &:hover
         {

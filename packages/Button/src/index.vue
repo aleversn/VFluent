@@ -1,6 +1,7 @@
 <template>
 	<div :class="'fv-'+$theme+'-button'">
-		<div class="reveal-border" :class="[{disabled: isDisabled}, { shadow: isBoxShadow }]" :style="styles.revealBorder">
+		<div class="fv-button-reveal-border" :class="[{disabled: isDisabled}, { shadow: isBoxShadow }]" :style="styles.revealBorder">
+            <div class="fv-button-reveal-container"></div>
 			<button
 				:disabled="disabled"
 				class="button-container"
@@ -141,11 +142,11 @@ export default {
 	methods: {
 		FRInit() {
             let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el.querySelectorAll('.reveal-border')[0],
+                selector: this.$el.querySelectorAll('.fv-button-reveal-border')[0],
                 borderGradientSize: 80,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,
-                childrenSelector: this.$el.querySelectorAll('.button-container')[0]
+                childrenSelector: this.$el.querySelectorAll('.fv-button-reveal-container')[0]
             });
 		},
 		stylesInit() {

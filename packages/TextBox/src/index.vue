@@ -16,7 +16,6 @@
 
 <script>
 import core from './sub/core.vue';
-import { FluentRevealEffect } from "fluent-reveal-effect";
 
 export default {
     name: "FvTextBox",

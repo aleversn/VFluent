@@ -5,8 +5,10 @@
     height: 30px;
     box-sizing: border-box;
     display: flex;
+    user-select: none;
+    overflow: hidden;
 
-    div.reveal-border
+    div.fv-button-reveal-border
     {
         position: relative;
         width: 100%;
@@ -31,6 +33,15 @@
             background: transparent;
             filter: grayscale(1);
             opacity: 0.6;
+        }
+
+        .fv-button-reveal-container
+        {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
         }
 
         button.button-container
