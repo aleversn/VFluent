@@ -2,7 +2,6 @@
 title: UI
 home: true
 heroImage: https://raw.githubusercontent.com/aleversn/VFluent/master/examples/assert/logo/VFluent.png
-actionText: 快速上手
 actionLink: /zh/
 features:
 - title: 基于Fluent Design理念设计
@@ -13,3 +12,22 @@ features:
   details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
 footer: MIT Licensed | Copyright © 2020 Creator SN
 ---
+
+<script>
+export default {
+    data () {
+        return {
+            
+        }
+    },
+    methods: {
+        redirect () {
+            this.$router.push('zh/Button/');
+        }
+    }
+}
+</script>
+
+<div style="width: 100%; height: 80px; display: flex; justify-content: center; align-items: center;">
+<fv-button theme="dark" fontSize="16" background="linear-gradient(to right, #11998e, #38ef7d)" borderRadius="3" :isBoxShadow="true" style="width: 128px; height: 58.9px;" @click.native="redirect">快速上手</fv-button>
+</div>

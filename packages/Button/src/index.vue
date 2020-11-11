@@ -1,12 +1,11 @@
 <template>
-	<div :class="'fv-'+$theme+'-button'">
+	<div :class="'fv-'+$theme+'-button'" @click="onClick">
 		<div class="fv-button-reveal-border" :class="[{disabled: isDisabled}, { shadow: isBoxShadow }]" :style="styles.revealBorder">
             <div class="fv-button-reveal-container"></div>
 			<button
 				:disabled="disabled"
 				class="button-container"
 				:style="styles.buttonContainer"
-				@click="onClick"
 			>
 				<span class="content-block" :style="styles.contentBlock">
 					<i
