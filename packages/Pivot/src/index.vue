@@ -7,7 +7,7 @@
                 v-for="(item, index) in thisItems"
                 :key="index"
                 :class="{
-                    choose: currentItem == item,
+                    choose: thisValue == item,
                     disabled: item.disabled,
                 }"
                 :style="{ width: `${item.width}px` }"
@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             thisItems: [],
-            currentItem: {},
+            thisValue: {},
             styles: {
                 slider: {
                     background: "",
@@ -75,12 +75,12 @@ export default {
     },
     watch: {
         value(val) {
-            this.currentItem = val;
+            this.thisValue = val;
         },
         items(val) {
             this.itemsInit();
         },
-        currentItem(val) {
+        thisValue(val) {
             this.$emit("input", val);
             this.$emit("change", val);
         },
@@ -93,7 +93,7 @@ export default {
     },
     computed: {
         currentLeft() {
-            let index = this.thisItems.indexOf(this.currentItem);
+            let index = this.thisItems.indexOf(this.thisValue);
             if (index < 0) return 0;
             let count = 0;
             for (let i = 0; i < index; i++) {
@@ -102,9 +102,9 @@ export default {
             return count;
         },
         currentWidth() {
-            return this.currentItem.width == undefined
+            return this.thisValue.width == undefined
                 ? 0
-                : this.currentItem.width;
+                : this.thisValue.width;
         },
         $theme() {
             if (this.theme == "system") return this.$fvGlobal.state.theme;
@@ -132,8 +132,8 @@ export default {
                 items.push(m);
             }
             this.thisItems = items;
-            if (this.value.width == undefined)
-                this.currentItem = this.thisItems[0];
+            if (!this.thisValue || !this.value)
+                this.thisValue = this.thisItems[0];
         },
         stylesInit() {
             this.styles.slider.background = this.sliderBackground;
@@ -141,7 +141,7 @@ export default {
         },
         itemClick(item) {
             if (item.disabled) return 0;
-            this.currentItem = item;
+            this.thisValue = item;
         },
     },
 };
