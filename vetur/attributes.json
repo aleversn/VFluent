@@ -1,0 +1,2364 @@
+{
+  "fv-button/icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon"
+  },
+  "fv-button/:icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon"
+  },
+  "fv-button/foreground": {
+    "type": "string",
+    "description": "Button 前景色"
+  },
+  "fv-button/:foreground": {
+    "type": "string",
+    "description": "Button 前景色"
+  },
+  "fv-button/background": {
+    "type": "string",
+    "description": "Button 背景色"
+  },
+  "fv-button/:background": {
+    "type": "string",
+    "description": "Button 背景色"
+  },
+  "fv-button/border-radius": {
+    "type": "number",
+    "description": "Button 圆角大小"
+  },
+  "fv-button/:border-radius": {
+    "type": "number",
+    "description": "Button 圆角大小"
+  },
+  "fv-button/font-size": {
+    "type": "number",
+    "description": "Button 字体大小"
+  },
+  "fv-button/:font-size": {
+    "type": "number",
+    "description": "Button 字体大小"
+  },
+  "fv-button/font-weight": {
+    "type": "string",
+    "description": "Button 字体粗细度,default=normal"
+  },
+  "fv-button/:font-weight": {
+    "type": "string",
+    "description": "Button 字体粗细度,default=normal"
+  },
+  "fv-button/is-box-shadow": {
+    "type": "boolean",
+    "description": "开启`Button`阴影,default=false"
+  },
+  "fv-button/:is-box-shadow": {
+    "type": "boolean",
+    "description": "开启`Button`阴影,default=false"
+  },
+  "fv-button/disabled": {
+    "type": "boolean",
+    "description": "Disabled button,default=false"
+  },
+  "fv-button/:disabled": {
+    "type": "boolean",
+    "description": "Disabled button,default=false"
+  },
+  "fv-button/border-width": {
+    "type": "number",
+    "description": "Button 边框大小,default=2"
+  },
+  "fv-button/:border-width": {
+    "type": "number",
+    "description": "Button 边框大小,default=2"
+  },
+  "fv-button/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-button/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-button/click": {
+    "type": "method",
+    "description": "Button onclick"
+  },
+  "fv-button/@click": {
+    "type": "method",
+    "description": "Button onclick"
+  },
+  "fv-check-box/value": {
+    "type": "boolean",
+    "description": "Checkbox value,default=[empty]"
+  },
+  "fv-check-box/:value": {
+    "type": "boolean",
+    "description": "Checkbox value,default=[empty]"
+  },
+  "fv-check-box/foreground": {
+    "type": "string",
+    "description": "Checkbox foreground"
+  },
+  "fv-check-box/:foreground": {
+    "type": "string",
+    "description": "Checkbox foreground"
+  },
+  "fv-check-box/border-color": {
+    "type": "string",
+    "description": "Checkbox borderColor"
+  },
+  "fv-check-box/:border-color": {
+    "type": "string",
+    "description": "Checkbox borderColor"
+  },
+  "fv-check-box/background": {
+    "type": "string",
+    "description": "Button background"
+  },
+  "fv-check-box/:background": {
+    "type": "string",
+    "description": "Button background"
+  },
+  "fv-check-box/box-side": {
+    "options": [
+      "start",
+      "end"
+    ],
+    "description": "Button text font weight,default=start"
+  },
+  "fv-check-box/:box-side": {
+    "options": [
+      "start",
+      "end"
+    ],
+    "description": "Button text font weight,default=start"
+  },
+  "fv-check-box/disabled": {
+    "type": "boolean",
+    "description": "Disabled button,default=false"
+  },
+  "fv-check-box/:disabled": {
+    "type": "boolean",
+    "description": "Disabled button,default=false"
+  },
+  "fv-check-box/border-width": {
+    "type": "number",
+    "description": "Button border width,default=1"
+  },
+  "fv-check-box/:border-width": {
+    "type": "number",
+    "description": "Button border width,default=1"
+  },
+  "fv-check-box/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-check-box/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-drop-down/value": {
+    "type": "array",
+    "description": "Choosed Value"
+  },
+  "fv-drop-down/:value": {
+    "type": "array",
+    "description": "Choosed Value"
+  },
+  "fv-drop-down/options": {
+    "type": "array",
+    "description": "Dropdown options array"
+  },
+  "fv-drop-down/:options": {
+    "type": "array",
+    "description": "Dropdown options array"
+  },
+  "fv-drop-down/multiple": {
+    "type": "boolean",
+    "description": "Is enable multiple select"
+  },
+  "fv-drop-down/:multiple": {
+    "type": "boolean",
+    "description": "Is enable multiple select"
+  },
+  "fv-drop-down/border-width": {
+    "type": "number",
+    "description": "Dropdown border width,default=2"
+  },
+  "fv-drop-down/:border-width": {
+    "type": "number",
+    "description": "Dropdown border width,default=2"
+  },
+  "fv-drop-down/border-radius": {
+    "type": "number",
+    "description": "Dropdown border radius,default=3"
+  },
+  "fv-drop-down/:border-radius": {
+    "type": "number",
+    "description": "Dropdown border radius,default=3"
+  },
+  "fv-drop-down/placeholder": {
+    "type": "string",
+    "description": "Dropdown placeholder,default=Dropdown"
+  },
+  "fv-drop-down/:placeholder": {
+    "type": "string",
+    "description": "Dropdown placeholder,default=Dropdown"
+  },
+  "fv-drop-down/max-height": {
+    "type": "number",
+    "description": "Dropdown list max height"
+  },
+  "fv-drop-down/:max-height": {
+    "type": "number",
+    "description": "Dropdown list max height"
+  },
+  "fv-drop-down/input-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/:input-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/drop-down-list-foreground": {
+    "type": "string",
+    "description": ",default=rgba(0,120,215,0.9)"
+  },
+  "fv-drop-down/:drop-down-list-foreground": {
+    "type": "string",
+    "description": ",default=rgba(0,120,215,0.9)"
+  },
+  "fv-drop-down/input-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/:input-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/drop-down-list-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/:drop-down-list-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/drop-down-icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon,default=ChevronDown"
+  },
+  "fv-drop-down/:drop-down-icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon,default=ChevronDown"
+  },
+  "fv-drop-down/drop-down-icon-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/:drop-down-icon-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-drop-down/show-error": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-drop-down/:show-error": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-drop-down/error-message": {
+    "type": "string",
+    "description": ",default=This dropdown has an error"
+  },
+  "fv-drop-down/:error-message": {
+    "type": "string",
+    "description": ",default=This dropdown has an error"
+  },
+  "fv-drop-down/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-drop-down/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-drop-down/set-focus": {
+    "type": "boolean",
+    "description": "Whether Dropdown list show,default=false"
+  },
+  "fv-drop-down/:set-focus": {
+    "type": "boolean",
+    "description": "Whether Dropdown list show,default=false"
+  },
+  "fv-drop-down/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Dropdown theme,default=system"
+  },
+  "fv-drop-down/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Dropdown theme,default=system"
+  },
+  "fv-drop-down/change": {
+    "type": "method",
+    "description": "Dropdown choose item"
+  },
+  "fv-drop-down/@change": {
+    "type": "method",
+    "description": "Dropdown choose item"
+  },
+  "fv-drop-down/visible-change": {
+    "type": "method",
+    "description": "Dropdown list show or hidden"
+  },
+  "fv-drop-down/@visible-change": {
+    "type": "method",
+    "description": "Dropdown list show or hidden"
+  },
+  "fv-progress-bar/value": {
+    "type": "number",
+    "description": "Progressbar value,default=0"
+  },
+  "fv-progress-bar/:value": {
+    "type": "number",
+    "description": "Progressbar value,default=0"
+  },
+  "fv-progress-bar/loading": {
+    "type": "boolean",
+    "description": "Is progressbar indeterminate,default=false"
+  },
+  "fv-progress-bar/:loading": {
+    "type": "boolean",
+    "description": "Is progressbar indeterminate,default=false"
+  },
+  "fv-progress-bar/foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-progress-bar/:foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-progress-bar/background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-progress-bar/:background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-progress-bar/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-progress-bar/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-flip-view/change": {
+    "type": "method",
+    "description": "当切换页面时返回当前索引`index`和当前轮播周期`duration`"
+  },
+  "fv-flip-view/@change": {
+    "type": "method",
+    "description": "当切换页面时返回当前索引`index`和当前轮播周期`duration`"
+  },
+  "fv-toggle-switch/value": {
+    "type": "number",
+    "description": "Toggleswitch value,default=false"
+  },
+  "fv-toggle-switch/:value": {
+    "type": "number",
+    "description": "Toggleswitch value,default=false"
+  },
+  "fv-toggle-switch/on": {
+    "type": "string",
+    "description": "Toggleswitch content when value is true,default=On"
+  },
+  "fv-toggle-switch/:on": {
+    "type": "string",
+    "description": "Toggleswitch content when value is true,default=On"
+  },
+  "fv-toggle-switch/off": {
+    "type": "string",
+    "description": "Toggleswitch content when value is false,default=Off"
+  },
+  "fv-toggle-switch/:off": {
+    "type": "string",
+    "description": "Toggleswitch content when value is false,default=Off"
+  },
+  "fv-toggle-switch/on-foreground": {
+    "type": "string",
+    "description": "Toggleswitch content foreground when value is true"
+  },
+  "fv-toggle-switch/:on-foreground": {
+    "type": "string",
+    "description": "Toggleswitch content foreground when value is true"
+  },
+  "fv-toggle-switch/off-foreground": {
+    "type": "string",
+    "description": "Toggleswitch content foreground when value is false"
+  },
+  "fv-toggle-switch/:off-foreground": {
+    "type": "string",
+    "description": "Toggleswitch content foreground when value is false"
+  },
+  "fv-toggle-switch/border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-toggle-switch/:border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-toggle-switch/ring-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-toggle-switch/:ring-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-toggle-switch/switch-on-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-toggle-switch/:switch-on-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-toggle-switch/disabled": {
+    "type": "boolean",
+    "description": ""
+  },
+  "fv-toggle-switch/:disabled": {
+    "type": "boolean",
+    "description": ""
+  },
+  "fv-toggle-switch/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-toggle-switch/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-slider/v-model/value": {
+    "description": "绑定的值,default=0"
+  },
+  "fv-slider/:v-model/value": {
+    "description": "绑定的值,default=0"
+  },
+  "fv-slider/theme": {
+    "type": "String(dark \\",
+    "description": "No,default=custom)"
+  },
+  "fv-slider/:theme": {
+    "type": "String(dark \\",
+    "description": "No,default=custom)"
+  },
+  "fv-slider/disabled": {
+    "description": "是否禁用,default=false"
+  },
+  "fv-slider/:disabled": {
+    "description": "是否禁用,default=false"
+  },
+  "fv-slider/unit": {
+    "description": "一格的间隔,default=1"
+  },
+  "fv-slider/:unit": {
+    "description": "一格的间隔,default=1"
+  },
+  "fv-slider/mininum": {
+    "description": "最小值,default=0"
+  },
+  "fv-slider/:mininum": {
+    "description": "最小值,default=0"
+  },
+  "fv-slider/maxinum": {
+    "description": "最大值,default=100"
+  },
+  "fv-slider/:maxinum": {
+    "description": "最大值,default=100"
+  },
+  "fv-slider/icon": {
+    "description": "MS-icon,default=LocationFill"
+  },
+  "fv-slider/:icon": {
+    "description": "MS-icon,default=LocationFill"
+  },
+  "fv-slider/vertical": {
+    "description": "是否垂直,default=false"
+  },
+  "fv-slider/:vertical": {
+    "description": "是否垂直,default=false"
+  },
+  "fv-slider/show-label": {
+    "description": "是否显示标签,default=false"
+  },
+  "fv-slider/:show-label": {
+    "description": "是否显示标签,default=false"
+  },
+  "fv-slider/scale": {
+    "type": "Boolean \\",
+    "description": "false,default=No"
+  },
+  "fv-slider/:scale": {
+    "type": "Boolean \\",
+    "description": "false,default=No"
+  },
+  "fv-slider/color": {
+    "description": "按钮的颜色,default=undefined"
+  },
+  "fv-slider/:color": {
+    "description": "按钮的颜色,default=undefined"
+  },
+  "fv-slider/click": {
+    "type": "method",
+    "description": "按动按钮触发函数"
+  },
+  "fv-slider/@click": {
+    "type": "method",
+    "description": "按动按钮触发函数"
+  },
+  "fv-slider/change": {
+    "type": "method",
+    "description": "当value值改变时触发函数，默认第一个参数为value"
+  },
+  "fv-slider/@change": {
+    "type": "method",
+    "description": "当value值改变时触发函数，默认第一个参数为value"
+  },
+  "fv-color-picker/v-model/value": {
+    "type": "string",
+    "description": "颜色HEX,default=#fff"
+  },
+  "fv-color-picker/:v-model/value": {
+    "type": "string",
+    "description": "颜色HEX,default=#fff"
+  },
+  "fv-color-picker/alpha": {
+    "type": "number",
+    "description": "透明度,default=1"
+  },
+  "fv-color-picker/:alpha": {
+    "type": "number",
+    "description": "透明度,default=1"
+  },
+  "fv-color-picker/hide-alpha": {
+    "type": "boolean",
+    "description": "是否隐藏透明度调节,default=false"
+  },
+  "fv-color-picker/:hide-alpha": {
+    "type": "boolean",
+    "description": "是否隐藏透明度调节,default=false"
+  },
+  "fv-color-picker/hide-preview": {
+    "type": "boolean",
+    "description": "是否隐藏预览框,default=false"
+  },
+  "fv-color-picker/:hide-preview": {
+    "type": "boolean",
+    "description": "是否隐藏预览框,default=false"
+  },
+  "fv-text-box/value": {
+    "type": "string",
+    "description": "Using v-model binding input value,default="
+  },
+  "fv-text-box/:value": {
+    "type": "string",
+    "description": "Using v-model binding input value,default="
+  },
+  "fv-text-box/mode": {
+    "options": [
+      "default",
+      "mask"
+    ],
+    "description": "Choose TextBox mode,default=default"
+  },
+  "fv-text-box/:mode": {
+    "options": [
+      "default",
+      "mask"
+    ],
+    "description": "Choose TextBox mode,default=default"
+  },
+  "fv-text-box/placeholder": {
+    "type": "string",
+    "description": "等同HTML[input]"
+  },
+  "fv-text-box/:placeholder": {
+    "type": "string",
+    "description": "等同HTML[input]"
+  },
+  "fv-text-box/type": {
+    "type": "string",
+    "description": "等同HTML[input],default=text"
+  },
+  "fv-text-box/:type": {
+    "type": "string",
+    "description": "等同HTML[input],default=text"
+  },
+  "fv-text-box/mask": {
+    "type": "string",
+    "description": "The mask mode input template,default=mask:___"
+  },
+  "fv-text-box/:mask": {
+    "type": "string",
+    "description": "The mask mode input template,default=mask:___"
+  },
+  "fv-text-box/flag": {
+    "type": "string",
+    "description": "The mask mode input flag,default=_"
+  },
+  "fv-text-box/:flag": {
+    "type": "string",
+    "description": "The mask mode input flag,default=_"
+  },
+  "fv-text-box/pattern": {
+    "type": "string",
+    "description": "The pattern for limiting input char,default=[\\S\\s]*"
+  },
+  "fv-text-box/:pattern": {
+    "type": "string",
+    "description": "The pattern for limiting input char,default=[\\S\\s]*"
+  },
+  "fv-text-box/readonly": {
+    "type": "boolean",
+    "description": "等同HTML[input],default=false"
+  },
+  "fv-text-box/:readonly": {
+    "type": "boolean",
+    "description": "等同HTML[input],default=false"
+  },
+  "fv-text-box/maxlength": {
+    "type": "number",
+    "description": "等同HTML[input]"
+  },
+  "fv-text-box/:maxlength": {
+    "type": "number",
+    "description": "等同HTML[input]"
+  },
+  "fv-text-box/prefix": {
+    "type": "string",
+    "description": "前缀"
+  },
+  "fv-text-box/:prefix": {
+    "type": "string",
+    "description": "前缀"
+  },
+  "fv-text-box/suffix": {
+    "type": "string",
+    "description": "后缀"
+  },
+  "fv-text-box/:suffix": {
+    "type": "string",
+    "description": "后缀"
+  },
+  "fv-text-box/left-icon": {
+    "type": "string",
+    "description": "左图标"
+  },
+  "fv-text-box/:left-icon": {
+    "type": "string",
+    "description": "左图标"
+  },
+  "fv-text-box/icon": {
+    "type": "string",
+    "description": "右图标"
+  },
+  "fv-text-box/:icon": {
+    "type": "string",
+    "description": "右图标"
+  },
+  "fv-text-box/underline": {
+    "type": "boolean",
+    "description": "是否开启Underline风格的TextBox,default=false"
+  },
+  "fv-text-box/:underline": {
+    "type": "boolean",
+    "description": "是否开启Underline风格的TextBox,default=false"
+  },
+  "fv-text-box/background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-text-box/:background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-text-box/border-width": {
+    "type": "boolean",
+    "description": ""
+  },
+  "fv-text-box/:border-width": {
+    "type": "boolean",
+    "description": ""
+  },
+  "fv-text-box/border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-text-box/:border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-text-box/focus-border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-text-box/:focus-border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-text-box/border-radius": {
+    "type": "number",
+    "description": "Textbox圆角大小, 启用revealBorder时将失效"
+  },
+  "fv-text-box/:border-radius": {
+    "type": "number",
+    "description": "Textbox圆角大小, 启用revealBorder时将失效"
+  },
+  "fv-text-box/is-box-shadow": {
+    "type": "boolean",
+    "description": "开启`TextBox`阴影,default=false"
+  },
+  "fv-text-box/:is-box-shadow": {
+    "type": "boolean",
+    "description": "开启`TextBox`阴影,default=false"
+  },
+  "fv-text-box/reveal-border": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-text-box/:reveal-border": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-text-box/disabled-border-when-reveal": {
+    "type": "boolean",
+    "description": "使用`Reveal`边框是禁用默认边框,default=true"
+  },
+  "fv-text-box/:disabled-border-when-reveal": {
+    "type": "boolean",
+    "description": "使用`Reveal`边框是禁用默认边框,default=true"
+  },
+  "fv-text-box/status": {
+    "options": [
+      "warn",
+      "correct"
+    ],
+    "description": "状态边框预设, 默认有警告和正确两种"
+  },
+  "fv-text-box/:status": {
+    "options": [
+      "warn",
+      "correct"
+    ],
+    "description": "状态边框预设, 默认有警告和正确两种"
+  },
+  "fv-text-box/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-text-box/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-text-box/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-text-box/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-radio-group/v-model": {
+    "type": "object",
+    "description": "选中值,default=undefined"
+  },
+  "fv-radio-group/:v-model": {
+    "type": "object",
+    "description": "选中值,default=undefined"
+  },
+  "fv-radio-group/theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-radio-group/:theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-radio-group/label": {
+    "type": "string",
+    "description": "标签,default=undefined"
+  },
+  "fv-radio-group/:label": {
+    "type": "string",
+    "description": "标签,default=undefined"
+  },
+  "fv-radio-group/disabled": {
+    "type": "boolean",
+    "description": "是否禁用,default=false"
+  },
+  "fv-radio-group/:disabled": {
+    "type": "boolean",
+    "description": "是否禁用,default=false"
+  },
+  "fv-radio-group/inline": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-radio-group/:inline": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-radio-group/change": {
+    "type": "method",
+    "description": "选项值改变时触发"
+  },
+  "fv-radio-group/@change": {
+    "type": "method",
+    "description": "选项值改变时触发"
+  },
+  "fv-radio/v-model/value": {
+    "type": "object",
+    "description": "选项值,default=undefined"
+  },
+  "fv-radio/:v-model/value": {
+    "type": "object",
+    "description": "选项值,default=undefined"
+  },
+  "fv-radio/label": {
+    "type": "object",
+    "description": "选项值,default=undefined"
+  },
+  "fv-radio/:label": {
+    "type": "object",
+    "description": "选项值,default=undefined"
+  },
+  "fv-radio/theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-radio/:theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-radio/icon": {
+    "type": "string",
+    "description": "MS-ICON,default=null"
+  },
+  "fv-radio/:icon": {
+    "type": "string",
+    "description": "MS-ICON,default=null"
+  },
+  "fv-radio/image": {
+    "type": "string",
+    "description": "32*32 图像链接,default=null"
+  },
+  "fv-radio/:image": {
+    "type": "string",
+    "description": "32*32 图像链接,default=null"
+  },
+  "fv-radio/active-image": {
+    "type": "string",
+    "description": "32*32 选中时的图像链接,default=null"
+  },
+  "fv-radio/:active-image": {
+    "type": "string",
+    "description": "32*32 选中时的图像链接,default=null"
+  },
+  "fv-radio/disabled": {
+    "type": "boolean",
+    "description": "是否禁用,default=false"
+  },
+  "fv-radio/:disabled": {
+    "type": "boolean",
+    "description": "是否禁用,default=false"
+  },
+  "fv-radio/click": {
+    "type": "method",
+    "description": "点击"
+  },
+  "fv-radio/@click": {
+    "type": "method",
+    "description": "点击"
+  },
+  "fv-radio/actived": {
+    "type": "method",
+    "description": "选中时触发"
+  },
+  "fv-radio/@actived": {
+    "type": "method",
+    "description": "选中时触发"
+  },
+  "fv-img-box/url": {
+    "type": "string",
+    "description": "Image url, be careful don't use cross-domain url"
+  },
+  "fv-img-box/:url": {
+    "type": "string",
+    "description": "Image url, be careful don't use cross-domain url"
+  },
+  "fv-img-box/onlazy": {
+    "type": "boolean",
+    "description": "Lazy load image,default=false"
+  },
+  "fv-img-box/:onlazy": {
+    "type": "boolean",
+    "description": "Lazy load image,default=false"
+  },
+  "fv-img-box/onbackground": {
+    "type": "boolean",
+    "description": "Show as background,default=false"
+  },
+  "fv-img-box/:onbackground": {
+    "type": "boolean",
+    "description": "Show as background,default=false"
+  },
+  "fv-scroll-story/name": {
+    "type": "boolean",
+    "description": "Vue transition css name"
+  },
+  "fv-scroll-story/:name": {
+    "type": "boolean",
+    "description": "Vue transition css name"
+  },
+  "fv-scroll-story/infinite": {
+    "type": "boolean",
+    "description": "Infinite show,default=false"
+  },
+  "fv-scroll-story/:infinite": {
+    "type": "boolean",
+    "description": "Infinite show,default=false"
+  },
+  "fv-scroll-story/over-collapse": {
+    "type": "boolean",
+    "description": "Scroll over collapse,default=false"
+  },
+  "fv-scroll-story/:over-collapse": {
+    "type": "boolean",
+    "description": "Scroll over collapse,default=false"
+  },
+  "fv-pivot/value": {
+    "type": "object",
+    "description": "当前选中项值"
+  },
+  "fv-pivot/:value": {
+    "type": "object",
+    "description": "当前选中项值"
+  },
+  "fv-pivot/items": {
+    "type": "array",
+    "description": "选项卡数据,default=[{ name: \"Pivot\", width: 80 }]"
+  },
+  "fv-pivot/:items": {
+    "type": "array",
+    "description": "选项卡数据,default=[{ name: \"Pivot\", width: 80 }]"
+  },
+  "fv-pivot/tab": {
+    "type": "boolean",
+    "description": "是否开启tab样式,default=false"
+  },
+  "fv-pivot/:tab": {
+    "type": "boolean",
+    "description": "是否开启tab样式,default=false"
+  },
+  "fv-pivot/foreground": {
+    "type": "string",
+    "description": "前景色"
+  },
+  "fv-pivot/:foreground": {
+    "type": "string",
+    "description": "前景色"
+  },
+  "fv-pivot/slider-background": {
+    "type": "string",
+    "description": "滑块背景色"
+  },
+  "fv-pivot/:slider-background": {
+    "type": "string",
+    "description": "滑块背景色"
+  },
+  "fv-pivot/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "主题,default=system"
+  },
+  "fv-pivot/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "主题,default=system"
+  },
+  "fv-pivot/input": {
+    "type": "method",
+    "description": "当选中项发生改变时, 返回value"
+  },
+  "fv-pivot/@input": {
+    "type": "method",
+    "description": "当选中项发生改变时, 返回value"
+  },
+  "fv-pivot/change": {
+    "type": "method",
+    "description": "当选中项发生改变时, 返回value"
+  },
+  "fv-pivot/@change": {
+    "type": "method",
+    "description": "当选中项发生改变时, 返回value"
+  },
+  "fv-list-view/value": {
+    "type": "array",
+    "description": "ListView数据绑定"
+  },
+  "fv-list-view/:value": {
+    "type": "array",
+    "description": "ListView数据绑定"
+  },
+  "fv-list-view/multiple": {
+    "type": "boolean",
+    "description": "是否开启多选,default=false"
+  },
+  "fv-list-view/:multiple": {
+    "type": "boolean",
+    "description": "是否开启多选,default=false"
+  },
+  "fv-list-view/row-height": {
+    "type": "number",
+    "description": "每一项高度"
+  },
+  "fv-list-view/:row-height": {
+    "type": "number",
+    "description": "每一项高度"
+  },
+  "fv-list-view/header-foreground": {
+    "type": "string",
+    "description": "标题前景色"
+  },
+  "fv-list-view/:header-foreground": {
+    "type": "string",
+    "description": "标题前景色"
+  },
+  "fv-list-view/choosen-background": {
+    "type": "string",
+    "description": "选中项背景色"
+  },
+  "fv-list-view/:choosen-background": {
+    "type": "string",
+    "description": "选中项背景色"
+  },
+  "fv-list-view/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-list-view/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-list-view/choose-item": {
+    "type": "method",
+    "description": "选中项点击后返回选项"
+  },
+  "fv-list-view/@choose-item": {
+    "type": "method",
+    "description": "选中项点击后返回选项"
+  },
+  "fv-list-view/choosen-items": {
+    "type": "method",
+    "description": "选中项点击后返回所有被选中项"
+  },
+  "fv-list-view/@choosen-items": {
+    "type": "method",
+    "description": "选中项点击后返回所有被选中项"
+  },
+  "fv-search-box/value": {
+    "type": "string",
+    "description": "Using v-model binding input value,default="
+  },
+  "fv-search-box/:value": {
+    "type": "string",
+    "description": "Using v-model binding input value,default="
+  },
+  "fv-search-box/options": {
+    "type": "array or object",
+    "description": "SearchBox搜索候选数据"
+  },
+  "fv-search-box/:options": {
+    "type": "array or object",
+    "description": "SearchBox搜索候选数据"
+  },
+  "fv-search-box/placeholder": {
+    "type": "string",
+    "description": "等同HTML[input]"
+  },
+  "fv-search-box/:placeholder": {
+    "type": "string",
+    "description": "等同HTML[input]"
+  },
+  "fv-search-box/type": {
+    "type": "string",
+    "description": "等同HTML[input],default=text"
+  },
+  "fv-search-box/:type": {
+    "type": "string",
+    "description": "等同HTML[input],default=text"
+  },
+  "fv-search-box/readonly": {
+    "type": "boolean",
+    "description": "等同HTML[input],default=false"
+  },
+  "fv-search-box/:readonly": {
+    "type": "boolean",
+    "description": "等同HTML[input],default=false"
+  },
+  "fv-search-box/maxlength": {
+    "type": "number",
+    "description": "等同HTML[input]"
+  },
+  "fv-search-box/:maxlength": {
+    "type": "number",
+    "description": "等同HTML[input]"
+  },
+  "fv-search-box/custom-filter": {
+    "type": "object",
+    "description": "客制化搜索筛选函数"
+  },
+  "fv-search-box/:custom-filter": {
+    "type": "object",
+    "description": "客制化搜索筛选函数"
+  },
+  "fv-search-box/result-placeholder": {
+    "type": "array",
+    "description": "结果占位数据, 显示在SearchBox左端"
+  },
+  "fv-search-box/:result-placeholder": {
+    "type": "array",
+    "description": "结果占位数据, 显示在SearchBox左端"
+  },
+  "fv-search-box/focus-show": {
+    "type": "boolean",
+    "description": "是否开启获取焦点时显示结果框,default=false"
+  },
+  "fv-search-box/:focus-show": {
+    "type": "boolean",
+    "description": "是否开启获取焦点时显示结果框,default=false"
+  },
+  "fv-search-box/left-icon": {
+    "type": "string",
+    "description": "左图标"
+  },
+  "fv-search-box/:left-icon": {
+    "type": "string",
+    "description": "左图标"
+  },
+  "fv-search-box/icon": {
+    "type": "string",
+    "description": "右图标"
+  },
+  "fv-search-box/:icon": {
+    "type": "string",
+    "description": "右图标"
+  },
+  "fv-search-box/underline": {
+    "type": "boolean",
+    "description": "是否开启Underline风格的SearchBox,default=false"
+  },
+  "fv-search-box/:underline": {
+    "type": "boolean",
+    "description": "是否开启Underline风格的SearchBox,default=false"
+  },
+  "fv-search-box/background": {
+    "type": "string",
+    "description": "背景色"
+  },
+  "fv-search-box/:background": {
+    "type": "string",
+    "description": "背景色"
+  },
+  "fv-search-box/border-width": {
+    "type": "boolean",
+    "description": ",default=1"
+  },
+  "fv-search-box/:border-width": {
+    "type": "boolean",
+    "description": ",default=1"
+  },
+  "fv-search-box/border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-search-box/:border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-search-box/focus-border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-search-box/:focus-border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-search-box/border-radius": {
+    "type": "number",
+    "description": "Textbox圆角大小, 启用revealBorder时将失效"
+  },
+  "fv-search-box/:border-radius": {
+    "type": "number",
+    "description": "Textbox圆角大小, 启用revealBorder时将失效"
+  },
+  "fv-search-box/reveal-border": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-search-box/:reveal-border": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-search-box/disabled-border-when-reveal": {
+    "type": "boolean",
+    "description": "使用`Reveal`边框是禁用默认边框,default=true"
+  },
+  "fv-search-box/:disabled-border-when-reveal": {
+    "type": "boolean",
+    "description": "使用`Reveal`边框是禁用默认边框,default=true"
+  },
+  "fv-search-box/status": {
+    "options": [
+      "warn",
+      "correct"
+    ],
+    "description": "状态边框预设, 默认有警告和正确两种"
+  },
+  "fv-search-box/:status": {
+    "options": [
+      "warn",
+      "correct"
+    ],
+    "description": "状态边框预设, 默认有警告和正确两种"
+  },
+  "fv-search-box/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-search-box/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-search-box/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-search-box/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-search-box/keydown": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/@keydown": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/keyup": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/@keyup": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/left-icon-click": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/@left-icon-click": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/icon-click": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/@icon-click": {
+    "type": "method",
+    "description": ""
+  },
+  "fv-search-box/lazyload": {
+    "type": "method",
+    "description": "搜索结果框滚动加载事件, 滑动到最底部时触发, 返回当前搜索筛选数据"
+  },
+  "fv-search-box/@lazyload": {
+    "type": "method",
+    "description": "搜索结果框滚动加载事件, 滑动到最底部时触发, 返回当前搜索筛选数据"
+  },
+  "fv-search-box/update:result-placeholder": {
+    "type": "method",
+    "description": "更新搜索占位数组, 在清除搜索框时触发清除搜索占位数组, 再按下退格键时若文本为空, 清除最后一个搜索占位数据项"
+  },
+  "fv-search-box/@update:result-placeholder": {
+    "type": "method",
+    "description": "更新搜索占位数组, 在清除搜索框时触发清除搜索占位数组, 再按下退格键时若文本为空, 清除最后一个搜索占位数据项"
+  },
+  "fv-search-box/clear-click": {
+    "type": "method",
+    "description": "清除搜索框文本时触发"
+  },
+  "fv-search-box/@clear-click": {
+    "type": "method",
+    "description": "清除搜索框文本时触发"
+  },
+  "fv-search-box/choose-result": {
+    "type": "method",
+    "description": "搜索结果框选中项目后返回当前项"
+  },
+  "fv-search-box/@choose-result": {
+    "type": "method",
+    "description": "搜索结果框选中项目后返回当前项"
+  },
+  "fv-calendar-date-picker/value/v-model": {
+    "type": "date",
+    "description": ",default=CurrentDate"
+  },
+  "fv-calendar-date-picker/:value/v-model": {
+    "type": "date",
+    "description": ",default=CurrentDate"
+  },
+  "fv-calendar-date-picker/start": {
+    "type": "number",
+    "description": "最小年份, 尽量不要设置过小防止性能消耗,default=1900"
+  },
+  "fv-calendar-date-picker/:start": {
+    "type": "number",
+    "description": "最小年份, 尽量不要设置过小防止性能消耗,default=1900"
+  },
+  "fv-calendar-date-picker/end": {
+    "type": "number",
+    "description": "最大年份, 尽量不要设置过大防止性能消耗,default=3000"
+  },
+  "fv-calendar-date-picker/:end": {
+    "type": "number",
+    "description": "最大年份, 尽量不要设置过大防止性能消耗,default=3000"
+  },
+  "fv-calendar-date-picker/border-width": {
+    "type": "number",
+    "description": "CalendarDatePicker border width,default=2"
+  },
+  "fv-calendar-date-picker/:border-width": {
+    "type": "number",
+    "description": "CalendarDatePicker border width,default=2"
+  },
+  "fv-calendar-date-picker/border-radius": {
+    "type": "number",
+    "description": "CalendarDatePicker border radius,default=3"
+  },
+  "fv-calendar-date-picker/:border-radius": {
+    "type": "number",
+    "description": "CalendarDatePicker border radius,default=3"
+  },
+  "fv-calendar-date-picker/placeholder": {
+    "type": "string",
+    "description": "CalendarDatePicker placeholder,default=Pick a day"
+  },
+  "fv-calendar-date-picker/:placeholder": {
+    "type": "string",
+    "description": "CalendarDatePicker placeholder,default=Pick a day"
+  },
+  "fv-calendar-date-picker/input-foreground": {
+    "type": "string",
+    "description": "输入框文字前景色"
+  },
+  "fv-calendar-date-picker/:input-foreground": {
+    "type": "string",
+    "description": "输入框文字前景色"
+  },
+  "fv-calendar-date-picker/input-background": {
+    "type": "string",
+    "description": "输入框背景色"
+  },
+  "fv-calendar-date-picker/:input-background": {
+    "type": "string",
+    "description": "输入框背景色"
+  },
+  "fv-calendar-date-picker/drop-down-icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon,default=CalendarDay"
+  },
+  "fv-calendar-date-picker/:drop-down-icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon,default=CalendarDay"
+  },
+  "fv-calendar-date-picker/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-calendar-date-picker/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-calendar-date-picker/multiple": {
+    "options": [
+      "single",
+      "multiple",
+      "range"
+    ],
+    "description": "多选模式, 有单选、多选和范围日期选择,default=single"
+  },
+  "fv-calendar-date-picker/:multiple": {
+    "options": [
+      "single",
+      "multiple",
+      "range"
+    ],
+    "description": "多选模式, 有单选、多选和范围日期选择,default=single"
+  },
+  "fv-calendar-date-picker/lan": {
+    "options": [
+      "en",
+      "zh"
+    ],
+    "description": "CalendarDatePicker language.,default=en"
+  },
+  "fv-calendar-date-picker/:lan": {
+    "options": [
+      "en",
+      "zh"
+    ],
+    "description": "CalendarDatePicker language.,default=en"
+  },
+  "fv-calendar-date-picker/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-calendar-date-picker/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-web-window/value/v-model": {
+    "type": "boolean",
+    "description": "开启或关闭WebWindow,default=true"
+  },
+  "fv-web-window/:value/v-model": {
+    "type": "boolean",
+    "description": "开启或关闭WebWindow,default=true"
+  },
+  "fv-web-window/title": {
+    "type": "string",
+    "description": "WebWindow标题"
+  },
+  "fv-web-window/:title": {
+    "type": "string",
+    "description": "WebWindow标题"
+  },
+  "fv-web-window/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-web-window/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-web-window/close": {
+    "type": "method",
+    "description": "WebWindow关闭时触发事件"
+  },
+  "fv-web-window/@close": {
+    "type": "method",
+    "description": "WebWindow关闭时触发事件"
+  },
+  "fv-date-picker/v-model": {
+    "type": "string",
+    "description": "绑定的时间,default=Date(1970,0,1)"
+  },
+  "fv-date-picker/:v-model": {
+    "type": "string",
+    "description": "绑定的时间,default=Date(1970,0,1)"
+  },
+  "fv-date-picker/theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-date-picker/:theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-date-picker/months": {
+    "type": "object",
+    "description": "月份显示数组,default=[\"January\",\"February\",...]"
+  },
+  "fv-date-picker/:months": {
+    "type": "object",
+    "description": "月份显示数组,default=[\"January\",\"February\",...]"
+  },
+  "fv-date-picker/weeks": {
+    "type": "object",
+    "description": "星期显示输出,default=[\"Sun.\",\"Mon.\"...]"
+  },
+  "fv-date-picker/:weeks": {
+    "type": "object",
+    "description": "星期显示输出,default=[\"Sun.\",\"Mon.\"...]"
+  },
+  "fv-date-picker/hide-year": {
+    "type": "boolean",
+    "description": "是否隐藏年份,default=false"
+  },
+  "fv-date-picker/:hide-year": {
+    "type": "boolean",
+    "description": "是否隐藏年份,default=false"
+  },
+  "fv-date-picker/hide-month": {
+    "type": "boolean",
+    "description": "是否隐藏月份,default=false"
+  },
+  "fv-date-picker/:hide-month": {
+    "type": "boolean",
+    "description": "是否隐藏月份,default=false"
+  },
+  "fv-date-picker/hide-day": {
+    "type": "boolean",
+    "description": "是否隐藏天数,default=false"
+  },
+  "fv-date-picker/:hide-day": {
+    "type": "boolean",
+    "description": "是否隐藏天数,default=false"
+  },
+  "fv-date-picker/show-week": {
+    "type": "boolean",
+    "description": "是否显示星期,default=false"
+  },
+  "fv-date-picker/:show-week": {
+    "type": "boolean",
+    "description": "是否显示星期,default=false"
+  },
+  "fv-date-picker/options-style": {
+    "type": "object",
+    "description": "选项菜单样式,default={}"
+  },
+  "fv-date-picker/:options-style": {
+    "type": "object",
+    "description": "选项菜单样式,default={}"
+  },
+  "fv-date-picker/select-style": {
+    "type": "object",
+    "description": "选项菜单中间选项蒙版样式,default={}"
+  },
+  "fv-date-picker/:select-style": {
+    "type": "object",
+    "description": "选项菜单中间选项蒙版样式,default={}"
+  },
+  "fv-date-picker/disabled": {
+    "type": "boolean",
+    "description": "是否禁用选项框,default=false"
+  },
+  "fv-date-picker/:disabled": {
+    "type": "boolean",
+    "description": "是否禁用选项框,default=false"
+  },
+  "fv-persona/src": {
+    "type": "string",
+    "description": "Persona图像资源链接"
+  },
+  "fv-persona/:src": {
+    "type": "string",
+    "description": "Persona图像资源链接"
+  },
+  "fv-persona/name": {
+    "type": "string",
+    "description": "名称"
+  },
+  "fv-persona/:name": {
+    "type": "string",
+    "description": "名称"
+  },
+  "fv-persona/size": {
+    "type": "number",
+    "description": "Persona头像大小,default=40"
+  },
+  "fv-persona/:size": {
+    "type": "number",
+    "description": "Persona头像大小,default=40"
+  },
+  "fv-persona/status": {
+    "type": "online,offline,away,busy,dnd,blocked",
+    "description": "Persona状态"
+  },
+  "fv-persona/:status": {
+    "type": "online,offline,away,busy,dnd,blocked",
+    "description": "Persona状态"
+  },
+  "fv-persona/icon": {
+    "type": "string",
+    "description": "自定义状态图标"
+  },
+  "fv-persona/:icon": {
+    "type": "string",
+    "description": "自定义状态图标"
+  },
+  "fv-persona/icon-color": {
+    "type": "string",
+    "description": "自定义状态图标前景色"
+  },
+  "fv-persona/:icon-color": {
+    "type": "string",
+    "description": "自定义状态图标前景色"
+  },
+  "fv-persona/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Persona theme,default=system"
+  },
+  "fv-persona/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Persona theme,default=system"
+  },
+  "fv-combobox/value/v-model": {
+    "type": "object",
+    "description": "Combobox当前项绑定"
+  },
+  "fv-combobox/:value/v-model": {
+    "type": "object",
+    "description": "Combobox当前项绑定"
+  },
+  "fv-combobox/options": {
+    "type": "array",
+    "description": "Combobox数据"
+  },
+  "fv-combobox/:options": {
+    "type": "array",
+    "description": "Combobox数据"
+  },
+  "fv-combobox/border-width": {
+    "type": "number",
+    "description": ",default=2"
+  },
+  "fv-combobox/:border-width": {
+    "type": "number",
+    "description": ",default=2"
+  },
+  "fv-combobox/placeholder": {
+    "type": "string",
+    "description": ",default=Combobox"
+  },
+  "fv-combobox/:placeholder": {
+    "type": "string",
+    "description": ",default=Combobox"
+  },
+  "fv-combobox/border-radius": {
+    "type": "number",
+    "description": ",default=3"
+  },
+  "fv-combobox/:border-radius": {
+    "type": "number",
+    "description": ",default=3"
+  },
+  "fv-combobox/background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/:background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/choosen-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/:choosen-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/input-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/:input-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/title-foreground": {
+    "type": "string",
+    "description": ",default=ChevronDown"
+  },
+  "fv-combobox/:title-foreground": {
+    "type": "string",
+    "description": ",default=ChevronDown"
+  },
+  "fv-combobox/drop-down-icon": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/:drop-down-icon": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/drop-down-icon-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/:drop-down-icon-foreground": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/disabled": {
+    "type": "boolean",
+    "description": ""
+  },
+  "fv-combobox/:disabled": {
+    "type": "boolean",
+    "description": ""
+  },
+  "fv-combobox/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Dropdown theme,default=system"
+  },
+  "fv-combobox/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Dropdown theme,default=system"
+  },
+  "fv-combobox/choose-item": {
+    "type": "method",
+    "description": "Combobox choose item"
+  },
+  "fv-combobox/@choose-item": {
+    "type": "method",
+    "description": "Combobox choose item"
+  },
+  "fv-shimmer/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Dropdown theme,default=system"
+  },
+  "fv-shimmer/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Dropdown theme,default=system"
+  },
+  "fv-message-bar/status": {
+    "options": [
+      "default",
+      "warning",
+      "correct",
+      "blocked",
+      "error"
+    ],
+    "description": "显示状态, 一共有5种,default=default"
+  },
+  "fv-message-bar/:status": {
+    "options": [
+      "default",
+      "warning",
+      "correct",
+      "blocked",
+      "error"
+    ],
+    "description": "显示状态, 一共有5种,default=default"
+  },
+  "fv-message-bar/show-control": {
+    "type": "boolean",
+    "description": "是否显示控制按钮,default=false"
+  },
+  "fv-message-bar/:show-control": {
+    "type": "boolean",
+    "description": "是否显示控制按钮,default=false"
+  },
+  "fv-message-bar/show-close": {
+    "type": "boolean",
+    "description": "是否显示关闭按钮,default=true"
+  },
+  "fv-message-bar/:show-close": {
+    "type": "boolean",
+    "description": "是否显示关闭按钮,default=true"
+  },
+  "fv-message-bar/mode": {
+    "options": [
+      "relative",
+      "fixed"
+    ],
+    "description": "显示模式`relative`下位相对定位, `fixed`下为悬浮固定定位,default=relative"
+  },
+  "fv-message-bar/:mode": {
+    "options": [
+      "relative",
+      "fixed"
+    ],
+    "description": "显示模式`relative`下位相对定位, `fixed`下为悬浮固定定位,default=relative"
+  },
+  "fv-message-bar/auto-close": {
+    "type": "number",
+    "description": "MessageBar自动关闭时间, 单位为`ms`, 设为`-1`时永远不自动消失,default=3000"
+  },
+  "fv-message-bar/:auto-close": {
+    "type": "number",
+    "description": "MessageBar自动关闭时间, 单位为`ms`, 设为`-1`时永远不自动消失,default=3000"
+  },
+  "fv-message-bar/close": {
+    "type": "method",
+    "description": "关闭`MessageBar`时触发事件"
+  },
+  "fv-message-bar/@close": {
+    "type": "method",
+    "description": "关闭`MessageBar`时触发事件"
+  },
+  "fv-info-box/title": {
+    "type": "string",
+    "description": "`InfoBox`窗口标题,default=Tip"
+  },
+  "fv-info-box/:title": {
+    "type": "string",
+    "description": "`InfoBox`窗口标题,default=Tip"
+  },
+  "fv-info-box/status": {
+    "options": [
+      "default",
+      "warning",
+      "correct",
+      "blocked",
+      "error"
+    ],
+    "description": "显示状态, 一共有5种,default=default"
+  },
+  "fv-info-box/:status": {
+    "options": [
+      "default",
+      "warning",
+      "correct",
+      "blocked",
+      "error"
+    ],
+    "description": "显示状态, 一共有5种,default=default"
+  },
+  "fv-info-box/mode": {
+    "options": [
+      "relative",
+      "absolute",
+      "fixed"
+    ],
+    "description": "显示定位模式,default=relative"
+  },
+  "fv-info-box/:mode": {
+    "options": [
+      "relative",
+      "absolute",
+      "fixed"
+    ],
+    "description": "显示定位模式,default=relative"
+  },
+  "fv-info-box/toast": {
+    "type": "boolean",
+    "description": "点击按钮后是否采用`toast`模式,default=false"
+  },
+  "fv-info-box/:toast": {
+    "type": "boolean",
+    "description": "点击按钮后是否采用`toast`模式,default=false"
+  },
+  "fv-info-box/confirm-title": {
+    "type": "string",
+    "description": "确定按钮标题,default=确定"
+  },
+  "fv-info-box/:confirm-title": {
+    "type": "string",
+    "description": "确定按钮标题,default=确定"
+  },
+  "fv-info-box/cancel-title": {
+    "type": "string",
+    "description": "取消按钮标题,default=取消"
+  },
+  "fv-info-box/:cancel-title": {
+    "type": "string",
+    "description": "取消按钮标题,default=取消"
+  },
+  "fv-info-box/acrylic": {
+    "type": "boolean",
+    "description": "是否开启背景毛玻璃,default=false"
+  },
+  "fv-info-box/:acrylic": {
+    "type": "boolean",
+    "description": "是否开启背景毛玻璃,default=false"
+  },
+  "fv-info-box/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-info-box/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-info-box/confirm": {
+    "type": "method",
+    "description": "确认`InfoBox`时触发事件"
+  },
+  "fv-info-box/@confirm": {
+    "type": "method",
+    "description": "确认`InfoBox`时触发事件"
+  },
+  "fv-info-box/close": {
+    "type": "method",
+    "description": "取消`InfoBox`时触发事件"
+  },
+  "fv-info-box/@close": {
+    "type": "method",
+    "description": "取消`InfoBox`时触发事件"
+  },
+  "fv-badge/value": {
+    "type": "string,number",
+    "description": ""
+  },
+  "fv-badge/:value": {
+    "type": "string,number",
+    "description": ""
+  },
+  "fv-badge/max": {
+    "type": "number",
+    "description": ",default=Infinity"
+  },
+  "fv-badge/:max": {
+    "type": "number",
+    "description": ",default=Infinity"
+  },
+  "fv-badge/is-dot": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-badge/:is-dot": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-badge/hidden": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-badge/:hidden": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-badge/type": {
+    "type": "'primary','success','warning','danger','info',string",
+    "description": "`Badge`类型, 可以输入颜色字符串,default=default"
+  },
+  "fv-badge/:type": {
+    "type": "'primary','success','warning','danger','info',string",
+    "description": "`Badge`类型, 可以输入颜色字符串,default=default"
+  },
+  "fv-panel/value": {
+    "type": "boolean",
+    "description": "显示/隐藏`Panel`,default=false"
+  },
+  "fv-panel/:value": {
+    "type": "boolean",
+    "description": "显示/隐藏`Panel`,default=false"
+  },
+  "fv-panel/title": {
+    "type": "string",
+    "description": "标题,default=Sample Panel"
+  },
+  "fv-panel/:title": {
+    "type": "string",
+    "description": "标题,default=Sample Panel"
+  },
+  "fv-panel/width": {
+    "type": "number",
+    "description": "宽度,default=340"
+  },
+  "fv-panel/:width": {
+    "type": "number",
+    "description": "宽度,default=340"
+  },
+  "fv-panel/background": {
+    "type": "string",
+    "description": "`Panel`背景色"
+  },
+  "fv-panel/:background": {
+    "type": "string",
+    "description": "`Panel`背景色"
+  },
+  "fv-panel/is-near-side": {
+    "type": "boolean",
+    "description": "是否从左侧显示,default=false"
+  },
+  "fv-panel/:is-near-side": {
+    "type": "boolean",
+    "description": "是否从左侧显示,default=false"
+  },
+  "fv-panel/is-light-dismiss": {
+    "type": "boolean",
+    "description": "是否单击空白处关闭,default=false"
+  },
+  "fv-panel/:is-light-dismiss": {
+    "type": "boolean",
+    "description": "是否单击空白处关闭,default=false"
+  },
+  "fv-panel/is-footer": {
+    "type": "boolean",
+    "description": "是否显示底部控制,default=false"
+  },
+  "fv-panel/:is-footer": {
+    "type": "boolean",
+    "description": "是否显示底部控制,default=false"
+  },
+  "fv-panel/is-acrylic": {
+    "type": "boolean",
+    "description": "是否开启`Acrylic`效果,default=false"
+  },
+  "fv-panel/:is-acrylic": {
+    "type": "boolean",
+    "description": "是否开启`Acrylic`效果,default=false"
+  },
+  "fv-panel/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "主题,default=system"
+  },
+  "fv-panel/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "主题,default=system"
+  },
+  "fv-pagination/value": {
+    "type": "number",
+    "description": "当前页码数,default=1"
+  },
+  "fv-pagination/:value": {
+    "type": "number",
+    "description": "当前页码数,default=1"
+  },
+  "fv-pagination/foreground": {
+    "type": "string",
+    "description": ",default=rgba(0, 120, 212, 1)"
+  },
+  "fv-pagination/:foreground": {
+    "type": "string",
+    "description": ",default=rgba(0, 120, 212, 1)"
+  },
+  "fv-pagination/background": {
+    "type": "string",
+    "description": ",default=transparent"
+  },
+  "fv-pagination/:background": {
+    "type": "string",
+    "description": ",default=transparent"
+  },
+  "fv-pagination/total": {
+    "type": "number",
+    "description": "总页码数,default=10"
+  },
+  "fv-pagination/:total": {
+    "type": "number",
+    "description": "总页码数,default=10"
+  },
+  "fv-pagination/max-visual": {
+    "type": "number",
+    "description": "最大可视按钮,default=7"
+  },
+  "fv-pagination/:max-visual": {
+    "type": "number",
+    "description": "最大可视按钮,default=7"
+  },
+  "fv-pagination/small": {
+    "type": "boolean",
+    "description": "小型分页按钮,default=false"
+  },
+  "fv-pagination/:small": {
+    "type": "boolean",
+    "description": "小型分页按钮,default=false"
+  },
+  "fv-pagination/shadow": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-pagination/:shadow": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-pagination/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-pagination/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-pagination/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-pagination/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-breadcrumb/value": {
+    "type": "string",
+    "description": "字符串路径"
+  },
+  "fv-breadcrumb/:value": {
+    "type": "string",
+    "description": "字符串路径"
+  },
+  "fv-breadcrumb/separator": {
+    "type": "string",
+    "description": "分隔符显示, 可以是字符或图标,default=/"
+  },
+  "fv-breadcrumb/:separator": {
+    "type": "string",
+    "description": "分隔符显示, 可以是字符或图标,default=/"
+  },
+  "fv-breadcrumb/separator-char": {
+    "type": "string",
+    "description": "以什么字符分割路径,default=/"
+  },
+  "fv-breadcrumb/:separator-char": {
+    "type": "string",
+    "description": "以什么字符分割路径,default=/"
+  },
+  "fv-breadcrumb/show-root": {
+    "type": "boolean",
+    "description": "显示根图标,default=true"
+  },
+  "fv-breadcrumb/:show-root": {
+    "type": "boolean",
+    "description": "显示根图标,default=true"
+  },
+  "fv-breadcrumb/root-icon": {
+    "type": "string",
+    "description": "根图标,default=FolderHorizontal"
+  },
+  "fv-breadcrumb/:root-icon": {
+    "type": "string",
+    "description": "根图标,default=FolderHorizontal"
+  },
+  "fv-breadcrumb/read-only": {
+    "type": "boolean",
+    "description": "是否只读,default=true"
+  },
+  "fv-breadcrumb/:read-only": {
+    "type": "boolean",
+    "description": "是否只读,default=true"
+  },
+  "fv-breadcrumb/border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-breadcrumb/:border-color": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-breadcrumb/disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-breadcrumb/:disabled": {
+    "type": "boolean",
+    "description": ",default=false"
+  },
+  "fv-breadcrumb/border-radius": {
+    "type": "number",
+    "description": ",default=2"
+  },
+  "fv-breadcrumb/:border-radius": {
+    "type": "number",
+    "description": ",default=2"
+  },
+  "fv-breadcrumb/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  },
+  "fv-breadcrumb/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": ",default=system"
+  }
+}
