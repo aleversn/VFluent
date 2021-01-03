@@ -1,5 +1,5 @@
 {
-  "fv-Button": {
+  "fv-button": {
     "attributes": [
       "icon",
       ":icon",
@@ -24,7 +24,7 @@
       "@click"
     ]
   },
-  "fv-ProgressRing": {
+  "fv-progress-ring": {
     "attributes": [
       "size",
       ":size",
@@ -32,7 +32,7 @@
       ":color"
     ]
   },
-  "fv-CheckBox": {
+  "fv-check-box": {
     "attributes": [
       "value",
       ":value",
@@ -54,7 +54,7 @@
       "@click"
     ]
   },
-  "fv-DropDown": {
+  "fv-drop-down": {
     "attributes": [
       "value",
       ":value",
@@ -97,7 +97,7 @@
       "@change"
     ]
   },
-  "fv-ProgressBar": {
+  "fv-progress-bar": {
     "attributes": [
       "value",
       ":value",
@@ -114,7 +114,7 @@
       "@progress-finished"
     ]
   },
-  "fv-FlipView": {
+  "fv-flip-view": {
     "attributes": [
       "value",
       ":value",
@@ -137,7 +137,7 @@
       "@input"
     ]
   },
-  "fv-ToggleSwitch": {
+  "fv-toggle-switch": {
     "attributes": [
       "value",
       ":value",
@@ -163,7 +163,7 @@
       "@toggle"
     ]
   },
-  "fv-Slider": {
+  "fv-slider": {
     "attributes": [
       "theme",
       ":theme",
@@ -190,7 +190,7 @@
       "@input"
     ]
   },
-  "fv-CalendarView": {
+  "fv-calendar-view": {
     "attributes": [
       "value",
       ":value",
@@ -211,7 +211,7 @@
       "@input"
     ]
   },
-  "fv-ColorPicker": {
+  "fv-color-picker": {
     "attributes": [
       "theme",
       ":theme",
@@ -230,7 +230,7 @@
       "@update:alpha"
     ]
   },
-  "fv-TextBox": {
+  "fv-text-box": {
     "attributes": [
       "value",
       ":value",
@@ -288,7 +288,7 @@
       "@input"
     ]
   },
-  "fv-RadioGroup": {
+  "fv-radio-group": {
     "attributes": [
       "theme",
       ":theme",
@@ -303,7 +303,7 @@
       "@change"
     ]
   },
-  "fv-Radio": {
+  "fv-radio": {
     "attributes": [
       "theme",
       ":theme",
@@ -325,7 +325,7 @@
       "@input"
     ]
   },
-  "fv-Callout": {
+  "fv-callout": {
     "attributes": [
       "visible",
       ":visible",
@@ -356,7 +356,7 @@
       "@update:visible"
     ]
   },
-  "fv-ImgBox": {
+  "fv-img-box": {
     "attributes": [
       "url",
       ":url",
@@ -369,7 +369,7 @@
       "@error"
     ]
   },
-  "fv-ScrollStory": {
+  "fv-scroll-story": {
     "attributes": [
       "name",
       ":name",
@@ -382,7 +382,7 @@
       "@show-changed"
     ]
   },
-  "fv-DetailsList": {
+  "fv-details-list": {
     "attributes": [
       "value",
       ":value",
@@ -422,7 +422,7 @@
       "@rightclick"
     ]
   },
-  "fv-Pivot": {
+  "fv-pivot": {
     "attributes": [
       "value",
       ":value",
@@ -440,7 +440,7 @@
       "@change"
     ]
   },
-  "fv-MenuFlyout": {
+  "fv-menu-flyout": {
     "attributes": [
       "theme",
       ":theme",
@@ -464,7 +464,7 @@
       ":border-radius"
     ]
   },
-  "fv-ListView": {
+  "fv-list-view": {
     "attributes": [
       "value",
       ":value",
@@ -481,7 +481,7 @@
       "@choosen-items"
     ]
   },
-  "fv-NavigationView": {
+  "fv-navigation-view": {
     "attributes": [
       "value",
       ":value",
@@ -525,7 +525,7 @@
       "@expand-change"
     ]
   },
-  "fv-TreeView": {
+  "fv-tree-view": {
     "attributes": [
       "theme",
       ":theme",
@@ -546,7 +546,7 @@
       "@click"
     ]
   },
-  "fv-CommandBar": {
+  "fv-command-bar": {
     "attributes": [
       "value",
       ":value",
@@ -563,7 +563,7 @@
       "@item-click"
     ]
   },
-  "fv-NavigationPanel": {
+  "fv-navigation-panel": {
     "attributes": [
       "title",
       ":title",
@@ -600,7 +600,7 @@
       "@expand-change"
     ]
   },
-  "fv-Image": {
+  "fv-image": {
     "attributes": [
       "src",
       ":src",
@@ -610,7 +610,7 @@
       ":theme"
     ]
   },
-  "fv-Img": {
+  "fv-img": {
     "attributes": [
       "src",
       ":src",
@@ -622,7 +622,7 @@
       ":theme"
     ]
   },
-  "fv-SearchBox": {
+  "fv-search-box": {
     "attributes": [
       "value",
       ":value",
@@ -678,7 +678,7 @@
       "@update:result-placeholder"
     ]
   },
-  "fv-CalendarDatePicker": {
+  "fv-calendar-date-picker": {
     "attributes": [
       "value",
       ":value",
@@ -712,7 +712,7 @@
       "@choosen-dates"
     ]
   },
-  "fv-WebWindow": {
+  "fv-web-window": {
     "attributes": [
       "value",
       ":value",
@@ -723,7 +723,7 @@
       "@input"
     ]
   },
-  "fv-DatePicker": {
+  "fv-date-picker": {
     "attributes": [
       "theme",
       ":theme",
@@ -754,7 +754,7 @@
       "@input"
     ]
   },
-  "fv-Persona": {
+  "fv-persona": {
     "attributes": [
       "src",
       ":src",
@@ -774,7 +774,7 @@
       ":theme"
     ]
   },
-  "fv-Combobox": {
+  "fv-combobox": {
     "attributes": [
       "value",
       ":value",
@@ -806,7 +806,7 @@
       "@choose-item"
     ]
   },
-  "fv-TimePicker": {
+  "fv-time-picker": {
     "attributes": [
       "theme",
       ":theme",
@@ -827,13 +827,13 @@
       "@input"
     ]
   },
-  "fv-Shimmer": {
+  "fv-shimmer": {
     "attributes": [
       "theme",
       ":theme"
     ]
   },
-  "fv-MessageBar": {
+  "fv-message-bar": {
     "attributes": [
       "status",
       ":status",
@@ -849,7 +849,7 @@
       ":theme"
     ]
   },
-  "fv-InfoBox": {
+  "fv-info-box": {
     "attributes": [
       "title",
       ":title",
@@ -869,7 +869,7 @@
       ":theme"
     ]
   },
-  "fv-Drawer": {
+  "fv-drawer": {
     "attributes": [
       "theme",
       ":theme",
@@ -886,7 +886,7 @@
       "@update:visible"
     ]
   },
-  "fv-Badge": {
+  "fv-badge": {
     "attributes": [
       "value",
       ":value",
@@ -903,7 +903,7 @@
       "@input"
     ]
   },
-  "fv-Panel": {
+  "fv-panel": {
     "attributes": [
       "value",
       ":value",
@@ -926,7 +926,7 @@
       "@input"
     ]
   },
-  "fv-Pagination": {
+  "fv-pagination": {
     "attributes": [
       "value",
       ":value",
@@ -952,7 +952,7 @@
       "@page-click"
     ]
   },
-  "fv-Breadcrumb": {
+  "fv-breadcrumb": {
     "attributes": [
       "value",
       ":value",

@@ -108,7 +108,7 @@ const getCompoentAttributeDetails = (compoentName) => {
 let tags = {}
 let attributes = {}
 for (let compoentName in components) {
-    tags[`fv-${compoentName}`] = {
+    tags[midline(`fv-${compoentName}`)] = {
         attributes: getCompoentAttributes(compoentName)
     }
     attributes = Object.assign(attributes, getCompoentAttributeDetails(compoentName))
