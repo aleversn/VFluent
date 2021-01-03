@@ -8,38 +8,38 @@ sidebarDepth: 2
     data(){
       return {
         theme:0,
-        backgroundColor:'#00cc99',
+        backgroundColor:'#87d8ed',
+        foregroundColor:'#fff',
           files:[
           {
           label:"Folder",
-          icon: "ms-Icon--Folder",
+          icon: "https://img.icons8.com/bubbles/2x/folder-invoices.png",
           children:[
             {
               label:"Folder",
-              icon: "ms-Icon--Folder",
+              icon: "Folder",
               children:[
                 {
                   label:"File",
-                  icon: "ms-Icon--FileCode"
+                  icon: "FileCode"
 
                 },
                 
             {
               label:"File",
-                  icon: "ms-Icon--FileCode"
-
+                  icon: "FileCode"
             }
               ]
             },
             {
               label:"File",
-                  icon: "ms-Icon--FileCode"
+                  icon: "FileCode"
             },
           ]
         },
         {
           label:"File",
-                  icon: "ms-Icon--FileCode"
+                  icon: "FileCode"
 
         }]
       }
@@ -97,7 +97,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 <ClientOnly>
 <div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files">
+<fv-TreeView :theme="$theme" v-model="files" style="width:200px">
 </fv-TreeView>
 </div>
 </ClientOnly>
@@ -138,6 +138,13 @@ backgroundColor:
   <fv-colorPicker v-model="backgroundColor" style="width:500px"/>
 </main>
 </fv-callout>
+foregroundColor:
+<fv-callout>
+<div :style="{width:'20px',height:'20px',backgroundColor:foregroundColor}" style="border:1px solid #000" />
+<main>
+  <fv-colorPicker v-model="foregroundColor" style="width:500px"/>
+</main>
+</fv-callout>
 
 <div :style="divStyle">
 <fv-TreeView 
@@ -146,6 +153,7 @@ backgroundColor:
   :checkable="true" 
   @click="click" 
   :viewStyle=" {backgroundColor:backgroundColor,color:'#000'}" 
+  :foreground="foregroundColor"
   :draggable="true" 
   :space="10">
 </fv-TreeView>
@@ -154,11 +162,12 @@ backgroundColor:
 
 ``` vue 
 <fv-TreeView 
-  :theme="$theme" 
+   :theme="$theme" 
   v-model="files" 
   :checkable="true" 
   @click="click" 
   :viewStyle=" {backgroundColor:backgroundColor,color:'#000'}" 
+  :foreground="foregroundColor"
   :draggable="true" 
   :space="10">
 </fv-TreeView>
@@ -176,13 +185,15 @@ backgroundColor:
 | 属性(attr) | 类型(type) | 必填(required) | 默认值(default) | 说明(statement) |
 | :--------: | :--------: | :------------: | :-------------: | :-------------: |
 | theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| data/v-model| [array] | Yes | undefined | 数据，详见data |
+| data/v-model| [array] | Yes | N/A | 数据，详见data |
 | dragable | [boolean] | No | false | 是否可拖动 |
-| viewStyle | [object] | No | undefined | 视图样式，同:style，但该样式为响应式 |
+| viewStyle | [object] | No | N/A | 视图样式，同:style，但该样式为响应式 |
 | revealEffect | [boolean] | No | true | fluentRevealEffect是否开启(仅为初始状态) |
 | checkable | [boolean] | No | false | 是否可选 |
 | space | [number] | No | 20 | 树形父与子间的间距(px) |
-
+| foreground | [string] | No | N/A | 前景色 |
+| expandedIcon | [string] | No | N/A | 扩展后的箭头 |
+| unexpandedIcon | [string] | No | N/A | 未扩展的箭头 |
 ### Events
 
 ---
@@ -198,34 +209,34 @@ backgroundColor:
 [
   {
     "label": "Folder",
-    "icon": "ms-Icon--Folder",
+    "icon": "https://img.icons8.com/bubbles/2x/folder-invoices.png",
     "expanded": true,
     "selected": false,
     "checkboxStatus": null,
     "children": [
       {
         "label": "Folder",
-        "icon": "ms-Icon--Folder",
+        "icon": "Folder",
         "children": [
           {
             "label": "File",
-            "icon": "ms-Icon--FileCode"
+            "icon": "FileCode"
           },
           {
             "label": "File",
-            "icon": "ms-Icon--FileCode"
+            "icon": "FileCode"
           }
         ]
       },
       {
         "label": "File",
-        "icon": "ms-Icon--FileCode"
+        "icon": "FileCode"
       }
     ]
   },
   {
     "label": "File",
-    "icon": "ms-Icon--FileCode"
+    "icon": "FileCode"
   }
 ]
 

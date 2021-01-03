@@ -1,28 +1,35 @@
 <template>
     <div
-        :class="['fv-'+$theme+'-slider',{active:isActive},{vertical:vertical}]"
+        :class="[
+            'fv-' + $theme + '-slider',
+            { active: isActive },
+            { vertical: vertical },
+        ]"
         ref="slider"
     >
         <div
             class="fv-slider__bar"
             @mousedown="click($event) && moveable($event)"
-            @touchstart="click($event.targetTouches[0]) && moveable($event.targetTouches[0])"
-            :class="[{vertical:vertical},{disabled:disabled}]"
+            @touchstart="
+                click($event.targetTouches[0]) &&
+                    moveable($event.targetTouches[0])
+            "
+            :class="[{ vertical: vertical }, { disabled: disabled }]"
             :style="style.bar"
             ref="bar"
         >
             <template v-if="scale">
                 <div
                     class="fv-slider__scale-up"
-                    v-for="index in (maxinum-mininum)/scaleUnit()-1"
-                    :key="'scale:'+index"
-                    :style="scaleStyle(index,true)"
+                    v-for="index in (maxinum - mininum) / scaleUnit() - 1"
+                    :key="'scale:' + index"
+                    :style="scaleStyle(index, true)"
                 ></div>
                 <div
                     class="fv-slider__scale-down"
-                    v-for="index in (maxinum-mininum)/scaleUnit()-1"
-                    :key="'scale-d:'+index"
-                    :style="scaleStyle(index,false)"
+                    v-for="index in (maxinum - mininum) / scaleUnit() - 1"
+                    :key="'scale-d:' + index"
+                    :style="scaleStyle(index, false)"
                 ></div>
             </template>
             <div class="fv-slider__bar-bg"></div>
@@ -30,11 +37,15 @@
                 class="fv-slider__progress"
                 ref="progress"
                 :style="progressStyle"
-                :class="[{anime:rejust}]"
+                :class="[{ anime: rejust }]"
             ></div>
             <div
                 class="fv-slider__button ms-Icon"
-                :class="[`ms-Icon--${icon}`,{disabled:disabled},{anime:rejust}]"
+                :class="[
+                    `ms-Icon--${icon}`,
+                    { disabled: disabled },
+                    { anime: rejust },
+                ]"
                 :style="buttonStyle"
                 ref="button"
                 @mousedown="moveable"
@@ -42,10 +53,10 @@
         </div>
         <div
             class="fv-slider__label"
-            :class="{vertical:vertical}"
+            :class="{ vertical: vertical }"
             v-if="showLabel"
         >
-            <slot :value="getValue(progress,mininum,maxinum)"></slot>
+            <slot :value="getValue(progress, mininum, maxinum)"></slot>
         </div>
     </div>
 </template>
@@ -210,15 +221,17 @@ export default {
             this.setProgress(this.value, this.mininum, this.maxinum);
         },
         moveable(evt) {
-            this.$refs.button.ondragenter = event.preventDefault();
-            this.$refs.button.ondragover = event.preventDefault();
+            if (event.preventDefault) {
+                this.$refs.button.ondragenter = event.preventDefault();
+                this.$refs.button.ondragover = event.preventDefault();
+            }
+
             if (this.isActive || this.disabled) return;
             this.$emit("click");
             this.isActive = true;
             let origin = this.vertical ? evt.clientY : evt.clientX;
             let move = (evt) => {
-                if(evt.type === 'touchmove') {
-                    evt.preventDefault();
+                if (evt.type === "touchmove") {
                     evt = evt.targetTouches[0];
                 }
                 let x = this.vertical ? evt.clientY : evt.clientX;
