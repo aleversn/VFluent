@@ -156,7 +156,8 @@ export default {
             this.$emit("expand-change", status);
         },
         onChooseSearch (item) {
-            this.$refs.listView.inspectItemAPI(item);
+            if (this.$refs.listView && this.$refs.listView.inspectItemAPI)
+                this.$refs.listView.inspectItemAPI(item);
         }
     },
     beforeDestroy () {
