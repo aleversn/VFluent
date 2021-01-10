@@ -10,7 +10,7 @@
                     choose: thisValue == item,
                     disabled: item.disabled,
                 }"
-                :style="{ width: `${item.width}px` }"
+                :style="{ width: `${itemWidth(item)}px` }"
                 @click="itemClick(item)"
             >
                 <slot name="container" :item="item" :index="index">
@@ -39,7 +39,7 @@ export default {
     props: {
         value: {
             default: () => {
-                return {};
+                return null;
             },
         },
         items: {
@@ -61,8 +61,8 @@ export default {
     },
     data() {
         return {
-            thisItems: [],
-            thisValue: {},
+            thisItems: this.items,
+            thisValue: this.value,
             styles: {
                 slider: {
                     background: "",
@@ -75,6 +75,19 @@ export default {
     },
     watch: {
         value(val) {
+            for(let item of this.thisItems) {
+                let match = true;
+                for(let key in item) {
+                    if(item[key] !== val[key]) {
+                        match = false;
+                        break;
+                    }
+                }
+                if(match) {
+                    this.thisValue = item;
+                    return 0;
+                }
+            }
             this.thisValue = val;
         },
         items(val) {
@@ -102,7 +115,7 @@ export default {
             return count;
         },
         currentWidth() {
-            return this.thisValue.width == undefined
+            return !this.thisValue || !this.thisValue.width
                 ? 0
                 : this.thisValue.width;
         },
@@ -112,8 +125,8 @@ export default {
         },
     },
     mounted() {
-        this.itemsInit();
         this.stylesInit();
+        this.itemsInit();
     },
     methods: {
         itemsInit() {
@@ -126,14 +139,13 @@ export default {
             let items = [];
             for (let item of this.items) {
                 let m = JSON.parse(JSON.stringify(model));
-                for (let it in item) {
-                    m[it] = item[it];
-                }
+                Object.assign(m, item);
                 items.push(m);
             }
             this.thisItems = items;
-            if (!this.thisValue || !this.value)
+            if (!this.thisValue || !this.value) {
                 this.thisValue = this.thisItems[0];
+            }
         },
         stylesInit() {
             this.styles.slider.background = this.sliderBackground;
@@ -143,6 +155,11 @@ export default {
             if (item.disabled) return 0;
             this.thisValue = item;
         },
+        itemWidth (item) {
+            if(!item.width)
+                return 0;
+            return item.width;
+        }
     },
 };
 </script>
