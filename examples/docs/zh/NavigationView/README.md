@@ -36,6 +36,13 @@ export default {
 </div>
 </ClientOnly>
 
+```vue
+<div style="position: relative; width: 100%; height: 800px; display: flex;">
+    <fv-NavigationView :options="options"></fv-NavigationView>
+    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</div>
+```
+
 ### NavigationView-Flyout
 
 ---
@@ -47,6 +54,13 @@ export default {
 </div>
 </ClientOnly>
 
+```vue
+<div style="position: relative; width: 100%; height: 800px; display: flex;">
+    <fv-NavigationView :options="options" expandMode="flyout"></fv-NavigationView>
+    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</div>
+```
+
 ### NavigationView-Mobile Display
 
 ---
@@ -57,6 +71,13 @@ export default {
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
+
+```vue
+<div style="position: relative; width: 100%; height: 800px; display: flex;">
+    <fv-NavigationView :options="options" mobileDisplay="100000000"></fv-NavigationView>
+    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</div>
+```
 
 ### NavigationView-Flyout
 
@@ -71,6 +92,13 @@ export default {
 </div>
 </ClientOnly>
 
+```vue
+<div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
+    <fv-NavigationView :options="options" theme="dark"></fv-NavigationView>
+    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</div>
+```
+
 2. Flyout
 
 <ClientOnly>
@@ -80,6 +108,13 @@ export default {
 </div>
 </ClientOnly>
 
+```vue
+<div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
+    <fv-NavigationView :options="options" expandMode="flyout" theme="dark"></fv-NavigationView>
+    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</div>
+```
+
 3. Mobile
 
 <ClientOnly>
@@ -88,6 +123,13 @@ export default {
     <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
+
+```vue
+<div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
+    <fv-NavigationView :options="options" mobileDisplay="100000000" theme="dark"></fv-NavigationView>
+    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</div>
+```
 
 ### Propoties
 
