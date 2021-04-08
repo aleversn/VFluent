@@ -158,6 +158,8 @@ export default {
 			this.styles.contentBlock.fontWeight = this.fontWeight;
 		},
 		onClick(event) {
+            if(this.isDisabled)
+                return 0;
 			this.$emit("click", event);
 		}
 	}
