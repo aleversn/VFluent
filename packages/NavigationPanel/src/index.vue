@@ -70,6 +70,7 @@
             <span
                 v-show="showSetting"
                 class="default-item"
+                ref="setting"
                 @click="$emit('setting-click', { event: $event })"
             >
                 <i class="ms-Icon ms-Icon--Settings icon"></i>

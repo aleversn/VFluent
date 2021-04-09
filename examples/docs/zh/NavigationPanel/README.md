@@ -136,3 +136,14 @@ sidebarDepth: 2
 ```javascript
 <template v-slot:panel></template>
 ```
+
+### Appendix
+
+---
+
+1. 获取`NavigationPanel`中`setting`的`dom`方法:
+
+```vue
+<fv-NavigationPanel v-model="items" ref="nav"></fv-NavigationPanel>
+let setting = this.$refs.nav.setting;
+```

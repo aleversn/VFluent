@@ -1,6 +1,6 @@
 <template>
 <div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
-    <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
+    <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" ref="panel" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
         <template v-slot:searchBlock>
             <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderWidth="2" borderRadius="3" style="width: 100%; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);" @choose-result="onChooseSearch"></fv-search-box>
         </template>
@@ -84,7 +84,7 @@ export default {
     data () {
         return {
             thisValue: {},
-            currentItem: {},
+            currentTarget: {},
             currentTop: 0,
             currentHeight: 0,
             thisExpand: this.expand,
@@ -126,16 +126,16 @@ export default {
         },
         sliderRefreshInit () {
             this.timer.slider = setInterval(() => {
-                if(this.currentItem.event !== undefined) {
-                    let target = this.currentItem.event.target;
+                if(this.currentTarget !== undefined) {
+                    let target = this.currentTarget;
                     let elTop = this.$el.getBoundingClientRect().top;
                     let targetTop = target.getBoundingClientRect().top;
                     this.currentTop = targetTop - elTop;
                 }
                 else
                     this.currentTop = 0;
-                if(this.currentItem.event !== undefined) {
-                    let target = this.currentItem.event.target;
+                if(this.currentTarget !== undefined) {
+                    let target = this.currentTarget;
                     this.currentHeight = target.clientHeight;
                 }
                 else
@@ -143,11 +143,12 @@ export default {
             }, 30);
         },
         itemClick (event) {
-            this.currentItem = event;
+            let index = event.index;
+            this.currentTarget = (this.$refs.listView.$refs[`list_item_${index}`])[0];
             this.thisValue = event.item;
         },
         settingClick (item) {
-            this.currentItem = item;
+            this.currentTarget = this.$refs.panel.$refs.setting;
             this.$emit("setting-click", item);
         },
         expandChange (status) {
@@ -156,8 +157,13 @@ export default {
             this.$emit("expand-change", status);
         },
         onChooseSearch (item) {
-            if (this.$refs.listView && this.$refs.listView.inspectItemAPI)
-                this.$refs.listView.inspectItemAPI(item);
+            let c = this.options.find(it => {
+                return it.name === item.name && it.type === item.type && it.key === item.key;
+            });
+            let index = this.options.indexOf(c);
+            if(index < 0)
+                return 0;
+            this.currentTarget = (this.$refs.listView.$refs[`list_item_${index}`])[0];
         }
     },
     beforeDestroy () {

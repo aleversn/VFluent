@@ -138,3 +138,14 @@ items: [
     { key: "lettuce", name: "Lettuce" }
 ]
 ```
+
+### Appendix
+
+---
+
+1. 获取`ListView`中第`index`项`item`的`dom`方法(其中`<index>`代表`items`索引):
+
+```vue
+<fv-ListView v-model="items" ref="list"></fv-ListView>
+let item = this.$refs.list.$refs['list_item_<index>]'];
+```
