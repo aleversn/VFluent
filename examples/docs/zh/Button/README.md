@@ -13,7 +13,6 @@
 <fv-button borderRadius="3"></fv-button>
 ```
 
-
 ### Button With Icon
 ---
 <fv-button icon="CalculatorAddition" theme="dark">Add</fv-button>

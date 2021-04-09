@@ -90,7 +90,7 @@ sidebarDepth: 2
 ---
 
 |   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
-| :-------------: | :--------------------------------: | :------------: | :-------------: | :----------------------------------------------------------------------------: |
+|:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
 |      title      |              [string]              |       No       | NavigationPanel |                              NavigationPanel 标题                              |
 |     expand      |             [boolean]              |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
 |   expandMode    |       ['relative','flyout']        |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
@@ -110,12 +110,12 @@ sidebarDepth: 2
 
 ---
 
-| 事件名(Name)  | 参数类型(args) |           说明(statement)            |
-| :-----------: | :------------: | :----------------------------------: |
-| setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
-| update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
-| expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
-|     back      |   MouseEvent   |       返回选项被点击后触发事件       |
+| 事件名(Name)  | 参数类型(args) |                    说明(statement)                    |
+|:-------------:|:--------------:|:-----------------------------------------------------:|
+| setting-click |     Object     | 设置选项被点击后触发事件, 返回`{ event: MouseEvent }` |
+| update:expand |    boolean     |         当折叠或展开时同步外界传入的`expand`          |
+| expand-change |    boolean     |         当折叠或展开时触发事件并提供当前状态          |
+|     back      |   MouseEvent   |               返回选项被点击后触发事件                |
 
 ### Slot
 

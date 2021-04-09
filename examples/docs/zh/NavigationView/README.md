@@ -159,13 +159,13 @@ export default {
 
 ---
 
-| 事件名(Name)  | 参数类型(args) |           说明(statement)            |
-|:-------------:|:--------------:|:------------------------------------:|
-|  item-click   |     object     |            选项点击后触发            |
-| setting-click |   MouseEvent   |       设置选项被点击后触发事件       |
-| update:expand |    boolean     | 当折叠或展开时同步外界传入的`expand` |
-| expand-change |    boolean     | 当折叠或展开时触发事件并提供当前状态 |
-|     back      |   MouseEvent   |       返回选项被点击后触发事件       |
+| 事件名(Name)  | 参数类型(args) |                    说明(statement)                    |
+|:-------------:|:--------------:|:-----------------------------------------------------:|
+|  item-click   |     object     |                    选项点击后触发                     |
+| setting-click |     Object     | 设置选项被点击后触发事件, 返回`{ event: MouseEvent }` |
+| update:expand |    boolean     |         当折叠或展开时同步外界传入的`expand`          |
+| expand-change |    boolean     |         当折叠或展开时触发事件并提供当前状态          |
+|     back      |   MouseEvent   |               返回选项被点击后触发事件                |
 
 ### Data
 
@@ -194,3 +194,9 @@ options: [
   { name: "Lettuce", icon: "TestBeaker" }
 ];
 ```
+
+### Appendix
+
+---
+
+`NavigationView`中的`setting`项由于不包含在`options`中, 故无法在`options`中找到`setting`项. `setting`项可以通过点击`setting`按钮触发得到.

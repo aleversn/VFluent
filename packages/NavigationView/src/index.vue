@@ -98,6 +98,10 @@ export default {
             this.valueInit();
         },
         thisValue (val, from) {
+            if(val.type === 'settings') {
+                this.currentItem = val.event;
+                return 0;
+            }
             if(!(val.name === from.name && val.type === from.type && val.key === from.key)) {
                 this.$nextTick(() => {
                     this.onChooseSearch(val);
@@ -148,6 +152,11 @@ export default {
         },
         settingClick (item) {
             this.currentItem = item;
+            this.thisValue = {
+                name: ">settings",
+                type: "settings",
+                event: item
+            };
             this.$emit("setting-click", item);
         },
         expandChange (status) {
