@@ -119,6 +119,10 @@ export default {
     },
     methods: {
         valueInit () {
+            if(this.value.type === 'setting') {
+                this.thisValue = this.value;
+                return 0;
+            }
             if(this.options.find(item => item.name === this.value.name && item.type === this.value.type && item.key === this.value.key) === undefined)
                 this.thisValue = this.options.find(item => item.type !== "header" && item.type !== "divider");
             else
@@ -149,6 +153,10 @@ export default {
         },
         settingClick (item) {
             this.currentTarget = this.$refs.panel.$refs.setting;
+            this.thisValue = {
+                name: ">setting",
+                type: "setting"
+            };
             this.$emit("setting-click", item);
         },
         expandChange (status) {
@@ -157,6 +165,10 @@ export default {
             this.$emit("expand-change", status);
         },
         onChooseSearch (item) {
+            if(item.type === "setting") {
+                this.currentTarget = this.$refs.panel.$refs.setting;
+                return 0;
+            }
             let c = this.options.find(it => {
                 return it.name === item.name && it.type === item.type && it.key === item.key;
             });

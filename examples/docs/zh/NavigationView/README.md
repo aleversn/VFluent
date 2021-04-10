@@ -199,10 +199,4 @@ options: [
 
 ---
 
-`NavigationView`中的`setting`项由于不包含在`options`中, 故无法在`options`中找到`setting`项.
-要使`slider`移动到`setting`, 请尝试触发`settingClick`事件, example:
-
-```vue
-<fv-NavigationView :options="options" ref="nav"></fv-NavigationView>
-this.$refs.nav.settingClick();
-```
+1. `NavigationView`中的`setting`项由于不包含在`options`中, 故无法在`options`中找到`setting`项. 但是当选中`setting`项时, `value`值会改变为`{ name: ">setting", type: "setting" }`, 你也可以通过在外部赋值的方式将当前选项更改为`setting`项.
