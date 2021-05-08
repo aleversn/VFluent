@@ -1027,3 +1027,20 @@
     transform: translateX(200%) scale(0.4) rotateY(65deg);
   }
 }
+
+/*FVPanel*/
+.fv-panel-show-enter, .fv-panel-show-leave-to
+{
+    opacity: 0;
+}
+
+.fv-panel-show-enter-to
+{
+    opacity: 1;
+}
+
+.fv-panel-show-enter-active, .fv-panel-show-leave-active
+{
+    transition: all 0.1s;
+    transition-delay: 0.3s;
+}

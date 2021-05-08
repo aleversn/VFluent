@@ -1,26 +1,28 @@
 <template>
-<div v-show="thisValue" :class="['fv-'+$theme+'-Panel']">
-    <div class="fv-panel-back-board" @click="isLightDismiss ? thisValue = false : 0"></div>
-    <transition :name="transitionInName">
-        <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, background: background}">
-            <div class="fv-panel-control-block">
-                <p class="panel-title">{{title}}</p>
-                <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+<transition name="fv-panel-show">
+    <div v-show="thisValue" :class="['fv-'+$theme+'-Panel']">
+        <div class="fv-panel-back-board" @click="isLightDismiss ? thisValue = false : 0"></div>
+        <transition :name="transitionInName">
+            <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, background: background}">
+                <div class="fv-panel-control-block">
+                    <p class="panel-title">{{title}}</p>
+                    <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+                </div>
+                <div class="fv-panel-main-container">
+                    <slot name="container">
+                        Content Here
+                    </slot>
+                </div>
+                <div v-show="isFooter" class="fv-panel-footer">
+                    <slot name="footer">
+                        <fv-button theme="dark" background="rgba(0, 120, 212, 1)">OK</fv-button>
+                        <fv-button>Cancel</fv-button>
+                    </slot>
+                </div>
             </div>
-            <div class="fv-panel-main-container">
-                <slot name="container">
-                    Content Here
-                </slot>
-            </div>
-            <div v-show="isFooter" class="fv-panel-footer">
-                <slot name="footer">
-                    <fv-button theme="dark" background="rgba(0, 120, 212, 1)">OK</fv-button>
-                    <fv-button>Cancel</fv-button>
-                </slot>
-            </div>
-        </div>
-    </transition>
-</div>
+        </transition>
+    </div>
+</transition>
 </template>
 
 <script>
@@ -81,8 +83,13 @@ export default {
         },
         transitionInName () {
             if(this.isNearSide)
-                return 'move-left-to-right';
-            return 'move-right-to-left';
+                if(this.thisValue)
+                    return 'move-left-to-right';
+                else
+                    return 'move-right-to-left';
+            if(this.thisValue)
+                return 'move-right-to-left';
+            return 'move-left-to-right';
         },
         $theme () {
             if (this.theme=='system')
