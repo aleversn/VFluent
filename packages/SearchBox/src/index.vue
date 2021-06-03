@@ -1,5 +1,5 @@
 <template>
-<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '']" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'outline': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
+<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'outline': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
     <div class="search-box-reveal-container" :style="{ background: background }">
         <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
         <transition name="move-left-to-right">
@@ -77,6 +77,9 @@ export default {
         },
         borderRadius: {
             default: 0
+        },
+        isBoxShadow: {
+            default: false
         },
         revealBorder: {
             default: false

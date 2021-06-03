@@ -56,9 +56,11 @@
                     <span class="expand" :class="{choose: gi.expand}" @click="expandGroup(gi)">
                         <i class="ms-Icon ms-Icon--ChevronRight"></i>
                     </span>
-                    <span class="col" style="min-width: 150px;">
-                        <p>{{gi.name}}</p>
-                    </span>
+                    <slot name="group_content">
+                        <span class="col" style="min-width: 150px;">
+                            <p>{{gi.name}}</p>
+                        </span>
+                    </slot>
                 </slot>
             </div>
             <transition name="zoom-in-top">

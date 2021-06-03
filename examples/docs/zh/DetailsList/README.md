@@ -571,7 +571,7 @@ export default {
 源代码, 默认不需要修改, 用户只需要定义`gi`数组中每一项的`name`来应用默认样式, 不需要定义此模板, 可缺省
 
 ```vue
-<slot name="group" :item="gi" :index="i">
+<slot name="group" :item="gi" :index="i" :isMulti="multiSelection" :isChoose="isGroupChooseAll(gi)">
     <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="chooseGroup(gi)">
         <span class="icon" :class="{choose: isGroupChooseAll(gi)}">
             <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
@@ -597,11 +597,36 @@ export default {
 
 ```vue
 <template v-slot:group="x">
-  <p>{{ x.name }}</p>
+  <p>{{ x.item.name }}</p>
 </template>
 ```
 
-5. Context Menu
+5. Goup Content
+
+若用户想保留默认`Group`下拉样式并且只修改内容部分, 可使用`group_content`来重定义样式, 默认值为:
+
+```vue
+<slot name="group_content" :item="gi" :index="i">
+    <span class="col">
+        <p>{{gi.name}}</p>
+    </span>
+</slot>
+```
+
+用户自定义样式时, 包含以下可选属性
+
+- item: 当前组数据
+- index: 当前组索引
+- isMulti: 当前是否开启多选
+- isChoose: 当前组是否全选
+
+```vue
+<template v-slot:group_content="x">
+  <p>{{ x.item.name }}</p>
+</template>
+```
+
+6. Context Menu
 
 默认显示列表选中数量
 
