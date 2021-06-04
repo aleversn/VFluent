@@ -666,6 +666,8 @@
       ":focus-border-color",
       "border-radius",
       ":border-radius",
+      "is-box-shadow",
+      ":is-box-shadow",
       "reveal-border",
       ":reveal-border",
       "disabled-border-when-reveal",
