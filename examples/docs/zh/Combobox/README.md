@@ -74,6 +74,7 @@ export default {
 |       background       |          [string(color)]           |       No       |       N/A       |                    |
 |   choosenBackground    |          [string(color)]           |       No       |       N/A       |                    |
 |    inputForeground     |          [string(color)]           |       No       |       N/A       |                    |
+|    inputBackground     |          [string(color)]           |       No       |       N/A       |                    |
 |    titleForeground     |          [string(color)]           |       No       |   ChevronDown   |                    |
 |      dropDownIcon      |              [string]              |       No       |       N/A       |                    |
 | dropDownIconForeground |          [string(color)]           |       No       |       N/A       |                    |

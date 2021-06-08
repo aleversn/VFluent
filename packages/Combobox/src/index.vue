@@ -4,7 +4,7 @@
 		ref="co_head"
 		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : ''}"
 	>
-        <div class="combobox-container" @click="status = !isDisabled ? !status : false">
+        <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground}">
             <input :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
 		    <i class="ms-Icon right-icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </div>
@@ -53,6 +53,9 @@ export default {
         },
 		inputForeground: {
 			default: ""
+        },
+        inputBackground: {
+            default: ""
         },
         titleForeground: {
             default: ""
