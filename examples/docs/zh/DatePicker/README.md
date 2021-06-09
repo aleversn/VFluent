@@ -56,7 +56,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 <div :style="divStyle">
 <ClientOnly>
-<fv-DatePicker v-model="date" :theme="$theme">
+<fv-DatePicker style="width:150px" v-model="date" :theme="$theme">
 </fv-DatePicker>
 </ClientOnly>
 </div>
