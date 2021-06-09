@@ -13,6 +13,13 @@ export default {
         return {
             percent: [10,20,30,35]
         }
+    },
+    mounted () {
+        setInterval(() => {
+            for(let item of this.percent) {
+                this.$set(this.percent, this.percent.indexOf(item), Math.ceil(Math.random() * 100));
+            }
+        }, 3000);
     }
 }
 </script>

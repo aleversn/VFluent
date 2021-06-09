@@ -2,7 +2,7 @@
 <div :class="['fv-'+$theme+'-progressRing']" :style="{width: `${r * 2}px`, height: `${r * 2}px`}">
     <svg v-show="!legacy" :width="`${r * 2}px`" :height="`${r * 2}px`" class="svg">
         <circle :r="r - borderWidth" :cy="r" :cx="r" :stroke-width="borderWidth" :stroke="background" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
-        <circle class="progress-rotate" :r="r - borderWidth" :cy="r" :cx="r" :stroke-width="borderWidth" :stroke="color" stroke-linejoin="round" stroke-linecap="round" fill="none" :stroke-dashoffset="`${loading ? l - Loading.ratio / 100 * l : l - value / 100 * l}px`"  :stroke-dasharray="`${l}px`" :style="{transform: `rotate(${loading ? Loading.rotate : -90}deg)`}"/>
+        <circle class="progress-rotate" :r="r - borderWidth" :cy="r" :cx="r" :stroke-width="borderWidth" :stroke="color" stroke-linejoin="round" stroke-linecap="round" fill="none" :stroke-dashoffset="`${loading ? l - Loading.ratio / 100 * l : l - valueCache / 100 * l}px`"  :stroke-dasharray="`${l}px`" :style="{transform: `rotate(${loading ? Loading.rotate : -90}deg)`}"/>
     </svg>
     <legacy v-show="legacy" :size="size" :color="color"></legacy>
 </div>
@@ -46,6 +46,7 @@ export default {
     data () {
         return {
             thisValue: this.value,
+            valueCache: this.value,
             Loading: {
                 ratio: 5,
                 rotate: -90
@@ -56,8 +57,9 @@ export default {
         value (val) {
             this.thisValue = val;
         },
-        thisValue (val) {
+        async thisValue (val) {
             this.$emit("input", val);
+            await this.syncValue();
         }
     },
     computed: {
@@ -86,6 +88,18 @@ export default {
                 duration: 0.8,
                 repeat: -1,
                 ease: 'linear'
+            });
+        },
+        async syncValue () {
+            await new Promise(resolve => {
+                gsap.to(this.$data, {
+                    valueCache: this.thisValue,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    onComplete: () => {
+                        resolve(0);
+                    }
+                });
             });
         }
     }
