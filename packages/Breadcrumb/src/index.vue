@@ -64,6 +64,9 @@ export default {
         }
     },
     watch: {
+        value (val) {
+            this.thisValue = val;
+        },
         mode (val) {
             if(val == 'editor') {
                 let route = this.thisValue;
@@ -81,6 +84,9 @@ export default {
                 else
                     this.thisValue = route;
             }
+        },
+        thisValue (val) {
+            this.$emit("input", val);
         }
     },
     computed: {

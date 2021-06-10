@@ -7,7 +7,7 @@
                 v-for="(item, index) in thisItems"
                 :key="index"
                 :class="{
-                    choose: thisValue == item,
+                    choose: eqal(item),
                     disabled: item.disabled,
                 }"
                 :style="{ width: `${itemWidth(item)}px` }"
@@ -159,6 +159,13 @@ export default {
             if(!item.width)
                 return 0;
             return item.width;
+        },
+        eqal (item) {
+            for(let key in this.thisValue) {
+                if(this.thisValue[key] !== item[key])
+                    return false;
+            }
+            return true;
         }
     },
 };
