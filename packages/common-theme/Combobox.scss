@@ -14,7 +14,7 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.3s;
-    overflow: visible;
+    overflow-y: visible;
     user-select: none;
     -webkit-user-select: none;
 
@@ -109,6 +109,7 @@
         box-shadow: $ms-depth-shadow-16;
         overflow: auto;
         overflow-x: hidden;
+        overflow-y: auto;
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
         -ms-overflow-style: -ms-autohiding-scrollbar;
