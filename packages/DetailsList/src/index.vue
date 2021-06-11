@@ -1,6 +1,6 @@
 <template>
 <div :class="'fv-'+$theme+'-DetailsList'">
-    <div class="list-head" :class="{'fv-custom-head': true}" ref="list_head">
+    <div class="fv-details-list-head" :class="{'fv-custom-head': true}" ref="list_head">
         <span v-show="multiSelection" class="icon-block" :style="styles.listHead" @click="chooseAll">
             <span class="icon" :class="{choose:currentChoosenAll}">
                 <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
@@ -23,7 +23,7 @@
             <spliter style="height: 100%;" @mousedown="resizeDown($event, index)" @mousemove="resizeMove($event, index)" @touchdown="resizeDown($event.targetTouches[0], index)" @touchmove="resizeMove($event.targetTouches[0], index)"></spliter>
         </span>
     </div>
-    <div v-if="!showGroup" class="list-content" ref="l1" :class="{compact: compact, 'auto-height': autoHeight}">
+    <div v-if="!showGroup" class="fv-details-list-content" ref="l1" :class="{compact: compact, 'auto-height': autoHeight}">
         <transition-group name="details-list" tag="div">
         <div v-show="item.show" v-for="(item, index) in thisValue" class="content-row" :key="`row: ${index}`" :draggable="allowDrag" :class="{choose: item.choosen, 'fv-custom-row': true}" @drag="drag($event, item)" @dragover="$event.preventDefault()" @drop="drop(item)" @contextmenu="rightClick($event, item)">
             <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="itemChooseClick(item)">
@@ -42,7 +42,7 @@
         </div>
         </transition-group>
     </div>
-    <div v-if="showGroup" class="list-content" ref="l2" :class="{compact: compact, 'auto-height': autoHeight}">
+    <div v-if="showGroup" class="fv-details-list-content" ref="l2" :class="{compact: compact, 'auto-height': autoHeight}">
         <div v-for="(gi, i) in thisGroup" :key="`group: ${i}`">
             <div class="content-row" :class="{choose: isGroupChooseAll(gi), 'fv-custom-group-row': true}">
                 <slot name="group" :item="gi" :index="i" :isMulti="multiSelection" :isChoose="isGroupChooseAll(gi)">
