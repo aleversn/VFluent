@@ -2,14 +2,14 @@
 	<div
 		:class="['fv-'+$theme+'-Combobox', {disabled: isDisabled}]"
 		ref="co_head"
-		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : ''}"
+		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
 	>
         <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground}">
             <input :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
 		    <i class="ms-Icon right-icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </div>
 		<transition name="fv-combobox">
-            <div v-show="status" class="combobox-item-container" :style="{background: background}" ref="co_items">
+            <div v-show="status" class="combobox-item-container" :style="{background: background, overflow: 'auto'}" ref="co_items">
                 <option
                     v-for="(item, index) in options"
                     class="combobox-item"

@@ -128,7 +128,8 @@ export default {
             timer: {},
             styles: {
                 dropDown: {
-                    zIndex: 0
+                    zIndex: 0,
+                    overflow: 'visible'
                 }
             },
             show: {
