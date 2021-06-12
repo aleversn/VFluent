@@ -112,13 +112,14 @@ export default {
 
 ### Propoties
 ---
-| 属性(attr)  |     类型(type)     | 必填(required) |    默认值(default)     |                     说明(statement)                      |
-|:-----------:|:------------------:|:--------------:|:----------------------:|:--------------------------------------------------------:|
-|    value    |      [number]      |       No       |           0            |                    progressRing value                     |
-|    size     | ['l','m','s','xs'] |       No       |           xs           | The size of progress ring, only works on legacy versions |
-|      r      |      [number]      |       No       |           40           |                Radius of the ProgressRing                |
-|   loading   |     [boolean]      |       No       |         false          |               Is progressRing indeterminate               |
-|    color    |  [string(color)]   |       No       |  rgba(0, 120, 215, 1)  |                The color of progress ring                |
-| background  |  [string(color)]   |       No       | rgba(204, 204, 204, 1) |                                                          |
-| borderWidth |      [number]      |       No       |           8            |                                                          |
-|   legacy    |     [boolean]      |       No       |         false          |          Use the legacy version of ProgressRing          |
+|  属性(attr)  |     类型(type)     | 必填(required) |    默认值(default)     |                     说明(statement)                      |
+|:------------:|:------------------:|:--------------:|:----------------------:|:--------------------------------------------------------:|
+|    value     |      [number]      |       No       |           0            |                    progressRing value                    |
+|     size     | ['l','m','s','xs'] |       No       |           xs           | The size of progress ring, only works on legacy versions |
+|      r       |      [number]      |       No       |           40           |                Radius of the ProgressRing                |
+|   loading    |     [boolean]      |       No       |         false          |              Is progressRing indeterminate               |
+|    color     |  [string(color)]   |       No       |  rgba(0, 120, 215, 1)  |                The color of progress ring                |
+| loadingColor |  [string(color)]   |       No       |  rgba(0, 120, 215, 1)  |                                                          |
+|  background  |  [string(color)]   |       No       | rgba(204, 204, 204, 1) |                                                          |
+| borderWidth  |      [number]      |       No       |           8            |                                                          |
+|    legacy    |     [boolean]      |       No       |         false          |          Use the legacy version of ProgressRing          |

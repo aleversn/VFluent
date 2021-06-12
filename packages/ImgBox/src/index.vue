@@ -1,8 +1,8 @@
 <template>
 <div :class="'fv-'+$theme+'-ImgBox'" :style="{background: onbackground ? 'url('+imgUri.data+') no-repeat' : ''}">
     <div v-show="imgUri.state!='done'" class="content">
-        <fv-progress-bar v-show="imgUri.state=='none'" :loading="true" style="width: 100%;"></fv-progress-bar>
-        <fv-progress-ring v-show="imgUri.state=='loading'"></fv-progress-ring>
+        <fv-progress-bar v-show="imgUri.state=='none'" :loading="true" :foreground="loadingColor" style="width: 100%;"></fv-progress-bar>
+        <fv-progress-ring v-show="imgUri.state=='loading'" :loading="true" :legacy="true" :color="loadingColor"></fv-progress-ring>
     </div>
     <transition name="fade-in">
         <img v-if="imgUri.state=='done' && !onbackground" draggable="false" alt="" :src="imgUri.data"/>
@@ -19,6 +19,9 @@ export default {
         },
         onlazy: {
             default: false
+        },
+        loadingColor: {
+            default: 'rgba(0, 120, 215, 1)'
         },
         onbackground: {
             default: false
