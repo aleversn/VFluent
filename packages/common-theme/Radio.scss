@@ -1,22 +1,30 @@
 @mixin fv-radio {
+    position: relative;
     display: inline-flex;
     min-width: 20px;
     min-height: 20px;
-    height: 20px;
+    height: auto;
     box-sizing: border-box;
     align-content: space-between;
+    align-items: center;
     cursor: pointer;
-    .button {
-        display: inline-block;
+    
+    .fv-radio-button {
         position: relative;
-        box-sizing: border-box;
-        cursor: pointer;
-        outline: none;
         height: 20px;
         width: 20px;
         border-radius: 50%;
         border: 1px solid #afafaf;
-        margin: 0 5px;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s;
+        
         &:hover {
             border: 1px solid #484848;
         }
@@ -49,9 +57,16 @@
             }
         }
     }
-    .label {
+    
+    .fv-radio-label {
         position: relative;
         height: 20px;
+        margin: 0px 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         span {
             display: inline-block;
             height: 100%;
@@ -59,66 +74,76 @@
             line-height: 20px;
         }
     }
-    &.icon {
+    
+    &.with-icon {
         position: relative;
         box-sizing: border-box;
-        padding-top: 20px;
-        width: 94px;
-        height: 94px;
+        padding: 20px;
+        width: 80px;
+        height: 80px;
         background: #f3f2f1;
-        // border: 1px solid #f3f2f1;
+        border: 1px solid transparent;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        .button {
+        transition: all 0.3s;
+
+        .fv-radio-button {
             position: absolute;
             display: none;
             margin: 0;
             top: 4px;
             right: 4px;
+            
             &.actived {
                 display: inline-block;
             }
         }
         &:hover {
-            border: 1px solid #323130;
-            .button {
+            border: 1px solid rgba(58, 57, 56, 0.165);
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+
+            .fv-radio-button {
                 display: inline-block;
-                border: 1px solid #3a3938;
+                border: 1px solid rgba(58, 57, 56, 0.165);
             }
+            
             &.disabled {
                 border: none;
                 filter: grayscale(1);
                 opacity: 0.6;
-                .button {
+                .fv-radio-button {
                     border: none;
                 }
             }
         }
         &.actived {
-            border: 1px solid #0078d4;
-            .button {
+            border: 1px solid rgba(0, 120, 212, 0.829);
+            .fv-radio-button {
                 border: none;
             }
         }
-        .label {
+        .fv-radio-label {
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 64px;
-            .icon {
+            .with-icon {
                 display: block;
-                font-size: 32px;
+                font-size: 20px;
             }
             span {
+                width: 100%;
+                height: auto;
+                margin-top: 8px;
+                font-size: 13.8px;
                 display: block;
-                height: 32px;
-                max-width: 64px;
                 overflow: hidden;
             }
+
             img {
-                height: 32px;
-                width: 32px;
+                height: 20px;
+                width: 20px;
             }
         }
     }
@@ -128,7 +153,7 @@
         filter: grayscale(1);
         opacity: 0.6;
         cursor: not-allowed;
-        .button {
+        .fv-radio-button {
             &:hover {
                 border-color: #afafaf;
             }

@@ -2,7 +2,7 @@
 .fv-dark-radio {
     @include fv-radio();
     color: #faf9f8;
-    .button {
+    .fv-radio-button {
         border-color: #6f6f6f;
         &::before {
             display: none;
@@ -21,17 +21,17 @@
             }
         }
     }
-    &.icon {
+    &.with-icon {
         background-color: #252423;
         &:hover {
             border: 1px solid #f3f2f1;
-            .button {
+            .fv-radio-button {
                 border: 1px solid #f3f2f1;
             }
         }
         &.actived {
             border: 1px solid #0078d4;
-            .button {
+            .fv-radio-button {
                 border: none;
             }
         }

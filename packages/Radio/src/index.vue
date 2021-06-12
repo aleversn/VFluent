@@ -1,26 +1,34 @@
 <template>
     <div
-        :class="['fv-'+$theme+'-radio',{icon:this.icon || this.image},{actived:isActived},{disabled:isDisabled}]"
+        :class="['fv-'+$theme+'-radio',{'with-icon':this.icon || this.image},{actived:isActived},{disabled:isDisabled}]"
         @click="click"
-        :style="style.radio"
+        :style="{
+            'border-color': isActived ? foreground : '',
+            'border-radius': `${iconBlockBorderRadius}px`,
+            'border-width': `${iconBlockBorderWidth}px`
+        }"
     >
         <input
             type="radio"
             ref="button"
-            class="button"
-            :style="style.button"
+            class="fv-radio-button"
+            :style="{
+                'background': isActived ? foreground : ''
+            }"
             :class="[{actived:isActived},{disabled:isDisabled}]"
         />
-        <label class="label">
+        <label class="fv-radio-label" :style="{color: color}">
             <template v-if="image">
                 <img :src="isActived?activeImage?activeImage:image:image" />
             </template>
             <i
                 v-else-if="icon"
-                class="icon ms-Icon"
+                class="with-icon ms-Icon"
                 :class="'ms-Icon--'+this.icon"
             ></i>
-            <slot></slot>
+            <span>
+                <slot></slot>
+            </span>
         </label>
     </div>
 </template>
@@ -37,9 +45,21 @@ export default {
         label: {
             required: true,
         },
+        color: {
+            default: ''
+        },
+        foreground: {
+            default: 'rgba(0, 120, 212, 0.829)'
+        },
         icon: {
             type: String,
             default: null,
+        },
+        iconBlockBorderRadius: {
+            default: 3
+        },
+        iconBlockBorderWidth: {
+            default: 2
         },
         image: {
             type: String,
@@ -57,10 +77,7 @@ export default {
 
     data() {
         return {
-            style: {
-                radio: {},
-                button: {},
-            },
+            
         };
     },
     computed: {
