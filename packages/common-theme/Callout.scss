@@ -1,54 +1,76 @@
 @mixin fv-callout {
-  position: fixed;
-  box-sizing: border-box;
-  z-index:3000;
-  background-color: white;
-  padding: 24px;
-  margin:0 ;
-  box-sizing: border-box;
-  box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
-  .bg{
-    z-index: -1;
-    position: absolute;
-    top:0;
-    left:0;
-    height: 100%;
-    width: 100%;
-    background:inherit;
-  }
-  .beak{
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    z-index: -2;
-    left:50%;
-    background:inherit;
-    box-shadow: inherit;
-    transform: translate(-50%,-50%) rotate(45deg);
-  }
-  .header{
-    position: relative;
-    padding: 0;
-    font-size:1.2em;
-  }
-  .main{
-    position: relative;
-    padding: 0;
-    border-radius: 3px;
-  }
-  .footer{
-    position: relative;
-    padding: 0;
-  }
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 3000;
+    background-color: rgba(242, 242, 242, 1);
+    color: rgba(50, 49, 48, 1);
+    padding: 12px;
+    margin: 0;
+    border-radius: 5px;
+    font-size: 13.8px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
+    .fv-callout-bg {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: inherit;
+        border-radius: 5px;
+    }
+    .beak {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        z-index: -2;
+        left: 50%;
+        background: inherit;
+        box-shadow: inherit;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .header {
+        position: relative;
+        padding: 0;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .main {
+        position: relative;
+        padding: 0;
+        border-radius: 3px;
+    }
+    .footer {
+        position: relative;
+        padding: 0;
+        font-size: 0.8em;
+    }
 }
 
-.fv-callout-fade-enter-active{
-  transition: opacity .3s;
+.fv-callout-fade-enter-active {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
-.fv-callout-fade-enter{
-  opacity: 0;
+.fv-callout-fade-enter {
+    transform: scale(0);
+    opacity: 0;
 }
 
+.fv-callout-fade-enter-to {
+    transform: scale(1);
+    opacity: 1;
+}
 
+.fv-callout-fade-leave-active {
+    transition: transform 0.3s ease-out;
+}
 
+.fv-callout-fade-leave {
+    transform: scale(1);
+}
+
+.fv-callout-fade-leave-to {
+    transform: scale(0);
+}
