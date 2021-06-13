@@ -95,12 +95,12 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 ### TreeView
 
-<ClientOnly>
+<!-- <ClientOnly> -->
 <div :style="divStyle">
 <fv-TreeView :theme="$theme" v-model="files" style="width:200px">
 </fv-TreeView>
 </div>
-</ClientOnly>
+<!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
@@ -111,12 +111,12 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 ### TreeView Chcekable
 
-<ClientOnly>
+<!-- <ClientOnly> -->
 <div :style="divStyle">
 <fv-TreeView :theme="$theme" v-model="files" :checkable="true" @click="click">
 </fv-TreeView>
 </div>
-</ClientOnly>
+<!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
@@ -129,7 +129,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 ### TreeView CustomStyle Draggable
 
-<ClientOnly>
+<!-- <ClientOnly> -->
 
 backgroundColor:
 <fv-callout>
@@ -158,7 +158,7 @@ foregroundColor:
   :space="10">
 </fv-TreeView>
 </div>
-</ClientOnly>
+<!-- </ClientOnly> -->
 
 ``` vue 
 <fv-TreeView 
