@@ -23,10 +23,11 @@
 
 <script>
 import draggable from "vuedraggable";
+import TreeItem from "./tree.vue";
 export default {
     name: "FvTreeViewContent",
     components: {
-        item: () => import("./tree.vue"),
+        item:TreeItem,
         draggable,
     },
     props: {

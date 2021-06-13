@@ -63,6 +63,7 @@
         "eslint-plugin-vue": "^5.0.0",
         "file-save": "^0.2.0",
         "node-sass": "^4.13.0",
+        "process": "^0.11.10",
         "sass-loader": "^8.0.0",
         "uppercamelcase": "^3.0.0",
         "vue": "^2.6.10",

@@ -87,16 +87,14 @@
 
 <script>
 import "office-ui-fabric-core/dist/css/fabric.min.css";
-import { FluentRevealEffect } from "fluent-reveal-effect";
 import one from "onecolor";
 import id from "../mixins/id.js";
-import TreeContent from "./content.vue";
 import checkbox from "./checkbox.vue";
 
 export default {
     name: "FvTreeViewItem",
     components: {
-        TreeContent,
+        TreeContent: () => import("./content.vue"),
         checkbox,
     },
     mixins: [id],
@@ -236,19 +234,30 @@ export default {
             let className = this.revealEffectClass.length
                 ? "." + this.revealEffectClass[0]
                 : "";
-            FluentRevealEffect.applyEffect(
-                ".fv-TreeView__label-border" + className,
-                {
-                    lightColor: this.hoverColor(
+            new this.$RevealEffects("body",{
+                selector:".fv-TreeView__label-border" + className,
+                lightColor: this.hoverColor(
                         this.viewStyle.backgroundColor || "#000",
                         0.3,
                         1
                     )
                         .alpha(0.6)
                         .cssa(),
-                    gradientSize: 120,
-                }
-            );
+                gradientSize: 120,
+            })
+            // FluentRevealEffect.applyEffect(
+            //     ".fv-TreeView__label-border" + className,
+            //     {
+            //         lightColor: this.hoverColor(
+            //             this.viewStyle.backgroundColor || "#000",
+            //             0.3,
+            //             1
+            //         )
+            //             .alpha(0.6)
+            //             .cssa(),
+            //         gradientSize: 120,
+            //     }
+            // );
         },
         initStyle() {
             this.$set(
