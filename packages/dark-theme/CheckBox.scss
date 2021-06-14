@@ -3,9 +3,9 @@
     @include fv-checkBox();
     .checkbox-rec
     {
-        .border
+        .checkbox-border
         {
-            border-color: white;
+            border-color: rgba(204, 204, 204, 1);
         }
     }
 

@@ -1,15 +1,15 @@
 <template>
 <div :class="['fv-'+$theme+'-checkBox', boxSide == 'end' ? 'box-side-end' : '']" @click="Checked">
-    <div class="checkbox-rec" :class="{disabled: isDisabled}">
-        <p class="border" :class="{check: isCheck}" :style="styles.border"></p>
+    <div class="checkbox-rec" :class="[{disabled: isDisabled}]">
+        <p class="checkbox-border" :class="{check: isCheck}" :style="{background: Indeterminate ? background : '', borderColor: Indeterminate ? 'transparent' : borderColor, borderWidth: `${borderWidth}px`}"></p>
         <transition name="font-scale-in">
-            <p v-show="isCheck" class="checkbox-content ms-Icon ms-Icon--CheckMark" :style="styles.checkBoxContent"></p>
+            <p v-show="isCheck" class="checkbox-content ms-Icon ms-Icon--CheckMark" :style="{background: background}"></p>
         </transition>
         <transition name="font-scale-in">
-            <p v-show="Indeterminate" class="checkbox-content ms-Icon ms-Icon--CheckboxIndeterminate" :style="styles.Indeterminate"></p>
+            <p v-show="Indeterminate" class="CheckboxIndeterminate"></p>
         </transition>
     </div>
-    <span class="text-content-block" :style="styles.textContentBlock"><slot></slot></span>
+    <span class="text-content-block" :style="{color: foreground}"><slot></slot></span>
 </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
             default: ''
         },
         borderWidth: {
-            default: 1
+            default: 1.5
         },
         borderColor: {
             type: String,
@@ -48,39 +48,12 @@ export default {
     },
     data () {
         return {
-            isCheck: this.value,
-            styles: {
-                border: {
-                    borderColor: '',
-                    borderWidth: '2px'
-                },
-                checkBoxContent: {
-                    background: 'rgba(0, 120, 215, 1)'
-                },
-                Indeterminate: {
-                    color: 'rgba(0, 120, 215, 1)'
-                },
-                textContentBlock: {
-                    color: ''
-                }
-            }
+            isCheck: this.value
         };
     },
     watch: {
         value (val) {
             this.isCheck = val;
-        },
-        borderWidth (val) {
-            this.stylesInit();
-        },
-        borderColor (val) {
-            this.stylesInit();
-        },
-        foreground (val) {
-            this.stylesInit();
-        },
-        background (val) {
-            this.stylesInit();
         },
         isCheck (val) {
             this.$emit('input', val);
@@ -100,17 +73,9 @@ export default {
         }
     },
     mounted () {
-        this.stylesInit();
         this.isCheck = this.value;
     },
     methods: {
-        stylesInit () {
-            this.styles.checkBoxContent.background = this.background;
-            this.styles.Indeterminate.color = this.background;
-            this.styles.border.borderWidth = `${this.borderWidth}px`;
-            this.styles.border.borderColor = this.borderColor;
-            this.styles.textContentBlock.color = this.foreground;
-        },
         Checked () {
             if(this.isDisabled)
                 return 0;
