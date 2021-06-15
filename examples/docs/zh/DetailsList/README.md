@@ -299,6 +299,21 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.fv-row-css
+{
+    &:nth-child(odd)
+    {
+        background: rgba(239, 239, 239, 1);
+    }
+
+    &:nth-child(even)
+    {
+        background: rgba(245, 245, 245, 1);
+    }
+}
+</style>
+
 <ClientOnly>
 <div>
     <fv-text-box v-model="filter.value" placeholder="Filter by name"></fv-text-box>
@@ -476,14 +491,71 @@ export default {
   </fv-DetailsList>
 ```
 
+### DetailsList Customize Row CSS
+
+---
+
+<div>
+    <fv-DetailsList v-model="value" :head="head" :filter="filter" :multiSelection="multiSelection" :compact="compact" rowCss="fv-row-css">
+        <template v-slot:column_0="x">
+            <p>{{x.item.name}}</p>
+        </template>
+        <template v-slot:column_1="x">
+            <p class="sec">{{x.item.publisher}}</p>
+        </template>
+        <template v-slot:column_2="x">
+            <p class="sec">{{x.item.publish_time}}</p>
+        </template><template v-slot:column_3="x">
+            <p class="sec">{{x.item.prop}}</p>
+        </template>
+        <template v-slot:column_4="x">
+            <p class="sec">{{x.item.userInfo.name}}</p>
+        </template>
+    </fv-DetailsList>
+</div>
+
 </ClientOnly>
+
+```vue
+<fv-DetailsList v-model="value" :head="head" :filter="filter" :multiSelection="multiSelection" :compact="compact" rowCss="fv-row-css">
+    <template v-slot:column_0="x">
+        <p>{{x.item.name}}</p>
+    </template>
+    <template v-slot:column_1="x">
+        <p class="sec">{{x.item.publisher}}</p>
+    </template>
+    <template v-slot:column_2="x">
+        <p class="sec">{{x.item.publish_time}}</p>
+    </template><template v-slot:column_3="x">
+        <p class="sec">{{x.item.prop}}</p>
+    </template>
+    <template v-slot:column_4="x">
+        <p class="sec">{{x.item.userInfo.name}}</p>
+    </template>
+</fv-DetailsList>
+```
+
+```scss
+.fv-row-css
+{
+    &:nth-child(odd)
+    {
+        background: rgba(239, 239, 239, 1);
+    }
+
+    &:nth-child(even)
+    {
+        background: rgba(245, 245, 245, 1);
+    }
+}
+```
 
 ### Propoties
 
 ---
 
 |   属性(attr)   |             类型(type)             | 必填(required) | 默认值(default) |                                       说明(statement)                                       |
-| :------------: | :--------------------------------: | :------------: | :-------------: | :-----------------------------------------------------------------------------------------: |
+|:--------------:|:----------------------------------:|:--------------:|:---------------:|:-------------------------------------------------------------------------------------------:|
 |     value      |              [Array]               |      Yes       |       N/A       |                              列表数据, 数据格式详见数据格式表                               |
 |      head      |              [Array]               |      Yes       |       N/A       |                              表头数据, 数据格式详见数据格式表                               |
 |     group      |              [Array]               |       No       |       N/A       |                              分组数据, 数据格式详见数据格式表                               |
@@ -494,6 +566,7 @@ export default {
 |    compact     |             [boolean]              |       No       |      false      |                                      是否开启收缩模式                                       |
 | multiSelection |             [boolean]              |       No       |      false      |                                      是否开启多选模式                                       |
 |   allowDrag    |             [boolean]              |       No       |      false      |                                      是否开启拖动排序                                       |
+|     rowCSS     |              [string]              |       No       |       N/A       |                                     客制化每一行的样式                                      |
 | rightMenuWidth |              [number]              |       No       |       200       |                                      右键菜单宽度设置                                       |
 |     theme      | ['light','dark','custom','system'] |       No       |     system      |                                   主题样式, 默认跟随系统                                    |
 
@@ -501,12 +574,13 @@ export default {
 
 ---
 
-| 事件名(Name) |   参数类型(args)    |                       说明(statement)                       |
-| :----------: | :-----------------: | :---------------------------------------------------------: |
-| change-value |   修改后的 value    | 在列表内部的 value 发生改变后会触发事件并返回修改后的 value |
-| choose-items  |    currentChoose    |              在选择某行数据后返回被选中的数据               |
-|   lazyload   |   修改后的 value    |          滚动到底部加载数据, 返回列表内部的 value           |
-|  rightclick  | 当前选中的 row-item |                 右键菜单返回当前选择的项目                  |
+| 事件名(Name) |         参数类型(args)          |                              说明(statement)                               |
+|:------------:|:-------------------------------:|:--------------------------------------------------------------------------:|
+| change-value |         修改后的 value          |        在列表内部的 value 发生改变后会触发事件并返回修改后的 value         |
+| choose-items |          currentChoose          |                      在选择某行数据后返回被选中的数据                      |
+|   lazyload   |         修改后的 value          |                  滚动到底部加载数据, 返回列表内部的 value                  |
+|  rightclick  |       当前选中的 row-item       |                         右键菜单返回当前选择的项目                         |
+|  drop-items  | 返回对象包含`transfer`和`value` | 项目拖拽释放后触发事件, `transfer`包含拖拽项目, `value`包含列表内部的value |
 
 ### Slot
 
@@ -751,7 +825,7 @@ group: [
 ---
 
 |     类名(Name)      |                                           说明(statement)                                           |
-| :-----------------: | :-------------------------------------------------------------------------------------------------: |
+|:-------------------:|:---------------------------------------------------------------------------------------------------:|
 |   fv-custom-head    | 客制化表头, 主要递推关系: fv-custom-head -> icon-block, col -> col-content, expand -> default-title |
 |    fv-custom-row    |                      客制化行, 主要递推关系: fv-custom-row -> icon-block, col                       |
 | fv-custom-group-row |               客制化组, 主要递推关系: fv-custom-group-row -> icon-blocks, expand, col               |

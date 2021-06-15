@@ -97,6 +97,24 @@ export class RevealHelper
         return (cursorX >= el_area.left && cursorX <= el_area.right && cursorY >= el_area.top && cursorY <= el_area.bottom);
     }
 
+    // distance with the boundary of element, when inside the el, all values should less than 0 //
+    static distanceOfElement(element, cursorX, cursorY)
+    {
+        const el_area = {
+            left: element.el.getBoundingClientRect().left,
+            right: element.el.getBoundingClientRect().right,
+            top: element.el.getBoundingClientRect().top,
+            bottom: element.el.getBoundingClientRect().bottom
+        }
+
+        return {
+            left: el_area.left - cursorX,
+            right: cursorX - el_area.right,
+            top: el_area.top - cursorY,
+            bottom: cursorY - el_area.bottom
+        }
+    }
+
     static GuidWithoutDash()
     {
         function S4()
@@ -196,7 +214,8 @@ export class RevealEffectsMasked
                     }
 
                     //set the thresold to improve performance -------------------------
-                    if (Math.abs(x) > 600 || Math.abs(y) > 1000) { }
+                    let distance = RevealHelper.distanceOfElement(c, e.clientX, e.clientY)
+                    if (distance.left > 300 || distance.top > 300 || distance.right > 300 || distance.bottom > 300) { }
                     else
                         RevealHelper.drawEffectBasic(c, {x, y}, c.borderLightColor, c.borderGradientSize);
 
