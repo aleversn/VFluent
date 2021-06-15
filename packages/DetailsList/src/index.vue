@@ -25,7 +25,7 @@
     </div>
     <div v-if="!showGroup" class="fv-details-list-content" ref="l1" :class="{compact: compact, 'auto-height': autoHeight}">
         <transition-group name="details-list" tag="div">
-        <div v-show="item.show" v-for="(item, index) in thisValue" class="content-row" :key="`row: ${index}`" :draggable="allowDrag" :class="{choose: item.choosen, 'fv-custom-row': true}" @drag="drag($event, item)" @dragover="$event.preventDefault()" @drop="drop(item)" @contextmenu="rightClick($event, item)">
+        <div v-show="item.show" v-for="(item, index) in thisValue" class="content-row" :key="`row: ${index}`" :draggable="allowDrag" :class="[{choose: item.choosen, 'fv-custom-row': true}, rowCss]" @drag="drag($event, item)" @dragover="$event.preventDefault()" @drop="drop(item)" @contextmenu="rightClick($event, item)">
             <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="itemChooseClick(item)">
                 <span class="icon" :class="{choose: item.choosen}">
                     <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
@@ -65,7 +65,7 @@
             </div>
             <transition name="zoom-in-top">
             <div v-show="gi.expand">
-            <div v-show="item.show" v-for="(item, index) in gi.data" class="content-row" :key="`group: ${i} row: ${index}`" :class="{choose:item.choosen, 'fv-custom-row': true}" @contextmenu="rightClick($event, item)">
+            <div v-show="item.show" v-for="(item, index) in gi.data" class="content-row" :key="`group: ${i} row: ${index}`" :class="[{choose: item.choosen, 'fv-custom-row': true}, rowCss]" @contextmenu="rightClick($event, item)">
                 <span v-show="multiSelection" class="icon-block icon" key="multi-col">
                     <span class="icon" :class="{choose:item.choosen}" @click="itemChooseClick(item)">
                         <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
@@ -142,6 +142,9 @@ export default {
         },
         allowDrag: {
             default: false
+        },
+        rowCss: {
+            default: ""
         },
         rightMenuWidth: {
             default: 200
@@ -648,6 +651,10 @@ export default {
                 this.thisValue.splice(t_index, 1);
                 this.thisValue.splice(c_index, 0, target);
             }
+            this.$emit('drop-items', {
+                transfer: target,
+                value: this.thisValue
+            });
         }
     },
     beforeDestroy () {

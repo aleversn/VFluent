@@ -13,7 +13,7 @@
         color:'rgba(36, 36, 36, 1)',
         beak:9,
         space:0,
-        position:[{key:'topLeft',text:'topLeft'}],
+        position:{key:'topLeft',text:'topLeft'},
         options:[
           {key:'topLeft',text:'topLeft'},
           {key:'topRight',text:'topRight'},
@@ -93,14 +93,14 @@ space:
 
 position: 
 <ClientOnly>
-<fv-drop-down v-model="position" :options="options">
-</fv-drop-down>
+<fv-combobox v-model="position" :options="options">
+</fv-combobox>
 </ClientOnly>
 
-{{position[0].key}}
+{{position.key}}
 
 <ClientOnly>
-<fv-callout :lockScroll="true" :position="position[0].key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
+<fv-callout :lockScroll="true" :position="position.key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
   <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
   <header>
     Fluent UI
@@ -115,7 +115,7 @@ position:
 </ClientOnly>
 
 ``` vue
-<fv-callout :lockScroll="true" :position="position[0].key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
+<fv-callout :lockScroll="true" :position="position.key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
   <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
   <header>
     Fluent UI
