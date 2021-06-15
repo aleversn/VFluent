@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack")
 function resolve(dir) {
     return path.join(__dirname, dir);
 }
@@ -16,7 +17,11 @@ module.exports = {
     },
     productionSourceMap: false,
     configureWebpack: {
-        
+        plugins: [
+            new webpack.ProvidePlugin({
+                process: 'process/browser',
+            }),
+        ]
     },
     chainWebpack: config => {
         config.resolve.alias.set("@", resolve("packages/"));
