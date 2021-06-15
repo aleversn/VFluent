@@ -15,13 +15,13 @@ module.exports = {
         sourceMap: false
     },
     productionSourceMap: false,
-    configureWebpack: {
-        plugins: [
-            new webpack.ProvidePlugin({
-                process: 'process/browser',
-            }),
-        ]
-    },
+    // configureWebpack: {
+    //     plugins: [
+    //         new webpack.ProvidePlugin({
+    //             process: 'process/browser',
+    //         }),
+    //     ]
+    // },
     chainWebpack: config => {
         config.resolve.alias.set("@", resolve("packages/"));
     },
