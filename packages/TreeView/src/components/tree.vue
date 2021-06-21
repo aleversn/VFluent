@@ -10,21 +10,25 @@
                 ref="label"
                 class="fv-TreeView__label"
                 :class="revealEffectClass"
-                @click="!checkable && click($event)"
+                @click="expandFolder($event) && !checkable && click($event)"
                 @mousedown="clickItem(item)"
                 :style="style.label"
             >
                 <checkbox
                     v-if="checkable"
+                    ref="checkbox"
                     :status="item.checkboxStatus"
                     v-bind="$attrs"
                     @click="checkable && click($event)"
                 />
+                <!-- expandFolder twice to ignore parent -->
                 <component
                     :is="isUrl($attrs.expandedIcon) ? 'img' : 'i'"
                     ref="expanded"
                     v-if="
-                        item.children && item.children.length && item.expanded
+                        $attrs.expandedIconPosition == 'left' &&
+                        isFolder &&
+                        item.expanded
                     "
                     :class="[
                         !isUrl($attrs.expandedIcon)
@@ -37,11 +41,13 @@
                             ? $attrs.expandedIcon
                             : undefined
                     "
-                    @click="item.expanded ^= true"
+                    draggable="false"
                 />
                 <component
                     v-else-if="
-                        item.children && item.children.length && !item.expanded
+                        $attrs.expandedIconPosition == 'left' &&
+                        isFolder &&
+                        !item.expanded
                     "
                     :is="isUrl($attrs.unexpandedIcon) ? 'img' : 'i'"
                     ref="expanded"
@@ -56,7 +62,7 @@
                             ? $attrs.unexpandedIcon
                             : undefined
                     "
-                    @click="item.expanded ^= true"
+                    draggable="false"
                 />
                 <i v-else style="width: 12px" />
                 <template v-if="item.icon">
@@ -65,23 +71,71 @@
                         class="ms-Icon fv-TreeView__icon"
                         :class="[`ms-Icon--${item.icon}`]"
                     />
-                    <img v-else :src="item.icon" class="fv-TreeView__icon" />
+                    <img
+                        v-else
+                        :src="item.icon"
+                        class="fv-TreeView__icon"
+                        draggable="false"
+                    />
                 </template>
                 <span class="fv-TreeView__text">{{ item.label }}</span>
+                <div
+                    class="fv-TreeView__right-box"
+                    v-if="$attrs.expandedIconPosition == 'right'"
+                >
+                    <component
+                        :is="isUrl($attrs.expandedIcon) ? 'img' : 'i'"
+                        ref="expanded"
+                        v-if="isFolder && item.expanded"
+                        :class="[
+                            !isUrl($attrs.expandedIcon)
+                                ? `ms-Icon--${$attrs.expandedIcon}`
+                                : undefined,
+                            !isUrl($attrs.expandedIcon) ? 'ms-Icon' : undefined,
+                        ]"
+                        :src="
+                            isUrl($attrs.expandedIcon)
+                                ? $attrs.expandedIcon
+                                : undefined
+                        "
+                        draggable="false"
+                    />
+                    <component
+                        v-else-if="isFolder && !item.expanded"
+                        :is="isUrl($attrs.unexpandedIcon) ? 'img' : 'i'"
+                        ref="expanded"
+                        :class="[
+                            !isUrl($attrs.unexpandedIcon)
+                                ? `ms-Icon--${$attrs.unexpandedIcon}`
+                                : undefined,
+                            !isUrl($attrs.unexpandedIcon)
+                                ? 'ms-Icon'
+                                : undefined,
+                        ]"
+                        :src="
+                            isUrl($attrs.unexpandedIcon)
+                                ? $attrs.unexpandedIcon
+                                : undefined
+                        "
+                        draggable="false"
+                    />
+                </div>
             </div>
         </div>
-        <tree-content
-            ref="content"
-            v-if="item.children"
-            v-show="item.expanded"
-            v-bind="$attrs"
-            :children="item.children"
-            :deepth="deepth"
-            :viewStyle="viewStyle"
-            :checkable="checkable"
-            :padding="padding"
-            @click="clickItem"
-        ></tree-content>
+        <transition name="fv-tree-item-show">
+            <tree-content
+                ref="content"
+                v-if="item.children"
+                v-show="item.expanded"
+                v-bind="$attrs"
+                :children="item.children"
+                :deepth="deepth"
+                :viewStyle="viewStyle"
+                :checkable="checkable"
+                :padding="padding"
+                @click="clickItem"
+            ></tree-content>
+        </transition>
     </li>
 </template>
 
@@ -180,6 +234,9 @@ export default {
             get: function () {
                 return this.item;
             },
+        },
+        isFolder() {
+            return this.item.children && this.item.children.length > 0;
         },
     },
     watch: {
@@ -298,8 +355,21 @@ export default {
             }
         },
         click(evt) {
-            if (evt.target === this.$refs.expanded) return;
             this.select(this.item.selected ^ true);
+            return false;
+        },
+        expandFolder(evt) {
+            // TODO: use v-on stop to instead of this
+            if (
+                this.$refs.checkbox &&
+                evt.target.parentNode?.parentNode?.parentNode ==
+                this.$refs.checkbox.$el
+            )
+                return;
+            if (this.isFolder) {
+                this.item.expanded ^= true;
+            }
+            return true;
         },
         getStatus() {
             let selectCount = 0;

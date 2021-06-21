@@ -1029,18 +1029,34 @@
 }
 
 /*FVPanel*/
-.fv-panel-show-enter, .fv-panel-show-leave-to
-{
-    opacity: 0;
+.fv-panel-show-enter,
+.fv-panel-show-leave-to {
+  opacity: 0;
 }
 
-.fv-panel-show-enter-to
-{
-    opacity: 1;
+.fv-panel-show-enter-to {
+  opacity: 1;
 }
 
-.fv-panel-show-enter-active, .fv-panel-show-leave-active
-{
-    transition: all 0.1s;
-    transition-delay: 0.3s;
+.fv-panel-show-enter-active,
+.fv-panel-show-leave-active {
+  transition: all 0.1s;
+  transition-delay: 0.3s;
+}
+
+/* FvTreeView */
+.fv-tree-item-show-enter,
+.fv-tree-item-show-leave-to {
+  opacity: 0;
+}
+
+.fv-tree-item-show-enter-active,
+.fv-tree-item-show-leave-active {
+  transition: opacity 0.2s ease-in-out;
+  transition-delay: 0.1s;
+}
+
+.fv-tree-item-show-enter-to,
+.fv-tree-item-show-leave {
+  opacity: 1;
 }

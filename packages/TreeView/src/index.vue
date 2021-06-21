@@ -11,6 +11,7 @@
             :foreground="foreground"
             :expandedIcon="expandedIcon"
             :unexpandedIcon="unexpandedIcon"
+            :expandedIconPosition="expandedIconPosition"
             :background="background"
             @click="click"
         ></tree-content>
@@ -61,13 +62,17 @@ export default {
         },
         unexpandedIcon: {
             type: String,
-            default: "ChevronRightMed",
+            default: "ChevronUpMed",
         },
         foreground: {
             type: String,
         },
-        background:{
-            type:String
+        background: {
+            type: String,
+        },
+        expandedIconPosition:{
+            type:String,
+            default:"right"
         }
     },
     data() {

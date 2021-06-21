@@ -1,5 +1,5 @@
 <template>
-    <div
+    <!-- <div
         @click="$emit('click', $event)"
         class="fv-TreeView__checkbox"
         :class="[status]"
@@ -16,6 +16,17 @@
             }"
             :class="icon()"
         />
+    </div> -->
+    <div>
+        <fv-check-box
+            role="checkbox"
+            class="fv-TreeView__checkbox"
+            @click="check"
+            :value="checkBoxValue"
+            :borderColor="$attrs.foreground"
+            :background="color"
+        >
+        </fv-check-box>
     </div>
 </template>
 
@@ -31,14 +42,22 @@ export default {
             default: "Indeterminate",
         },
     },
-    computed:{
-        color(){
+    computed: {
+        color() {
             let t = onecolor(this.$attrs.foreground);
-            if (t && t.lightness()>0.8){
-                return "#333"
+            if (t && t.lightness() > 0.6) {
+                return "#333";
             }
-            return undefined;
-        }
+            return this.$attrs.foreground;
+        },
+        checkBoxValue() {
+            if (this.status == "checked") {
+                return true;
+            } else if (this.status == "Indeterminate") {
+                return "";
+            }
+            return false;
+        },
     },
     methods: {
         icon() {
@@ -47,6 +66,9 @@ export default {
             } else if (this.status == "Indeterminate") {
                 return "ms-Icon--CheckboxIndeterminate";
             } else return null;
+        },
+        check(value) {
+            this.$emit("click", value);
         },
     },
 };

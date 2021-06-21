@@ -129,22 +129,26 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 ### TreeView CustomStyle Draggable
 
-<!-- <ClientOnly> -->
+
 
 backgroundColor:
+<ClientOnly>
 <fv-callout>
 <div :style="{width:'20px',height:'20px',backgroundColor:backgroundColor}" style="border:1px solid #000" />
 <main>
   <fv-colorPicker v-model="backgroundColor" style="width:500px"/>
 </main>
 </fv-callout>
+</ClientOnly>
 foregroundColor:
+<ClientOnly>
 <fv-callout>
 <div :style="{width:'20px',height:'20px',backgroundColor:foregroundColor}" style="border:1px solid #000" />
 <main>
   <fv-colorPicker v-model="foregroundColor" style="width:500px"/>
 </main>
 </fv-callout>
+</ClientOnly>
 
 <div :style="divStyle">
 <fv-TreeView 
@@ -158,7 +162,6 @@ foregroundColor:
   :space="10">
 </fv-TreeView>
 </div>
-<!-- </ClientOnly> -->
 
 ``` vue 
 <fv-TreeView 
@@ -193,6 +196,7 @@ foregroundColor:
 | space | [number] | No | 20 | 树形父与子间的间距(px) |
 | foreground | [string] | No | N/A | 前景色 |
 | expandedIcon | [string] | No | N/A | 扩展后的箭头 |
+| expandedIconPosition | ['right','left'] | No | 'right' | 箭头的位置 |
 | unexpandedIcon | [string] | No | N/A | 未扩展的箭头 |
 ### Events
 
