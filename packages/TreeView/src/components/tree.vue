@@ -5,7 +5,7 @@
             color: $attrs.foreground,
         }"
     >
-        <div class="fv-TreeView__label-border" :class="revealEffectClass">
+        <div class="fv-TreeView__label-border">
             <div
                 ref="label"
                 class="fv-TreeView__label"
@@ -234,17 +234,24 @@ export default {
             let className = this.revealEffectClass.length
                 ? "." + this.revealEffectClass[0]
                 : "";
-            new this.$RevealEffects("body",{
-                selector:".fv-TreeView__label-border" + className,
-                lightColor: this.hoverColor(
-                        this.viewStyle.backgroundColor || "#000",
-                        0.3,
-                        1
-                    )
-                        .alpha(0.6)
-                        .cssa(),
-                gradientSize: 120,
-            })
+            new this.$RevealEffects("body", {
+                selector: ".fv-TreeView__label" + className,
+                // borderLightColor: this.hoverColor(
+                //     this.viewStyle.backgroundColor || "#000",
+                //     0.3,
+                //     1
+                // )
+                //     .alpha(0.6)
+                //     .cssa(),
+                backgroundLightColor: this.hoverColor(
+                    this.viewStyle.backgroundColor || "#000",
+                    0.3,
+                    1
+                )
+                    .alpha(0.3)
+                    .cssa(),
+                backgroundGradientSize: 150,
+            });
             // FluentRevealEffect.applyEffect(
             //     ".fv-TreeView__label-border" + className,
             //     {
