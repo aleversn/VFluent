@@ -12,7 +12,9 @@
                 :class="revealEffectClass"
                 @click="expandFolder($event) && !checkable && click($event)"
                 @mousedown="clickItem(item)"
-                :style="style.label"
+                :style="[style.label, {
+                    'border-width': `${borderWidth}px`
+                }]"
             >
                 <checkbox
                     v-if="checkable"
@@ -169,6 +171,9 @@ export default {
         deepth: {
             default: 1,
         },
+        borderWidth: {
+            default: 2
+        },
         revealEffect: {
             type: Boolean,
             default: true,
@@ -293,13 +298,14 @@ export default {
                 : "";
             new this.$RevealEffects("body", {
                 selector: ".fv-TreeView__label" + className,
-                // borderLightColor: this.hoverColor(
-                //     this.viewStyle.backgroundColor || "#000",
-                //     0.3,
-                //     1
-                // )
-                //     .alpha(0.6)
-                //     .cssa(),
+                borderLightColor: this.hoverColor(
+                    this.viewStyle.backgroundColor || "#000",
+                    0.3,
+                    1
+                )
+                    .alpha(0.6)
+                    .cssa(),
+                borderGradientSize: 30,
                 backgroundLightColor: this.hoverColor(
                     this.viewStyle.backgroundColor || "#000",
                     0.3,

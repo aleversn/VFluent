@@ -5,20 +5,21 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  user-select: none;
   .fv-TreeView__item {
-    cursor: pointer;
+    cursor: default;
     width: 100%;
     margin: 0;
     color: inherit;
     background-color: inherit;
     .fv-TreeView__label-border {
-      padding: 1px;
+      padding: 0px;
       height: 38px;
       .fv-TreeView__label {
         position: relative;
         color: inherit;
         padding: 0 20px;
-        // border: transparent solid 2px;
+        border: transparent solid 2px;
         box-sizing: border-box;
         height: 38px;
         display: inline-flex;

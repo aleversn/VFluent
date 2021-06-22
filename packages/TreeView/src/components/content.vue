@@ -14,6 +14,7 @@
             :item="item"
             :deepth="deepth + 1"
             :padding="padding"
+            :borderWidth="borderWidth"
             :revealEffect="revealEffect"
             @click="click"
             v-bind="$attrs"
@@ -43,6 +44,9 @@ export default {
             default: false,
         },
         padding: {},
+        borderWidth: {
+            default: 2
+        },
         revealEffect: {},
     },
     computed: {

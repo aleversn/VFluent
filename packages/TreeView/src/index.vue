@@ -9,6 +9,8 @@
             :padding="space"
             :draggable="draggable"
             :foreground="foreground"
+            :borderWidth="borderWidth"
+            :revealEffect="revealEffect"
             :expandedIcon="expandedIcon"
             :unexpandedIcon="unexpandedIcon"
             :expandedIconPosition="expandedIconPosition"
@@ -47,6 +49,9 @@ export default {
             default: 20,
             type: Number,
         },
+        borderWidth: {
+            default: 2
+        },
         revealEffect: {
             type: Boolean,
             default: true,
@@ -72,7 +77,7 @@ export default {
         },
         expandedIconPosition:{
             type:String,
-            default:"right"
+            default:"left"
         }
     },
     data() {
