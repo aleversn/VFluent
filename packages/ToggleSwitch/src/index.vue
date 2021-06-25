@@ -1,9 +1,9 @@
 <template>
 <div :class="['fv-'+$theme+'-ToggleSwitch', isDisabled ? 'disabled' : '']" @click="toggle">
-    <div :class="{'toggle-on': thisValue}" :style="styles.toggleStyle()">
-        <p :style="styles.themeRingStyle()"></p>
+    <div class="fv-toggle-border" :class="{'toggle-on': thisValue}" :style="styles.toggleStyle()">
+        <p class="fv-toggle-ring" :style="styles.themeRingStyle()"></p>
     </div>
-    <p class="content" :style="styles.themeContentStyle()">{{thisValue ? on: off}}</p>
+    <p class="fv-toggle-content" :style="styles.themeContentStyle()">{{thisValue ? on: off}}</p>
 </div>
 </template>
 

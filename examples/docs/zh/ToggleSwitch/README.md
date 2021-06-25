@@ -27,8 +27,10 @@
 
 ### ToggleSwitch Dark Theme
 ---
+<div style="background: black;">
 <fv-ToggleSwitch theme="dark">
 </fv-ToggleSwitch>
+</div>
 
 ```vue
 <fv-ToggleSwitch theme="dark">

@@ -7,6 +7,8 @@
     height: auto;
     padding: 3px 12px;
 	background: rgba(243, 242, 241, 0.8);
+    border: rgba(229, 229, 229, 1) solid thin;
+    border-radius: 3px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -28,16 +30,19 @@
     &.warning
     {
         background: rgba(255, 200, 10, 0.5);
+        border-color: rgba(255, 200, 10, 0.6);
     }
 
     &.correct
     {
         background: rgba(95, 210, 85, 0.5);
+        border-color: rgba(95, 210, 85, 0.6);
     }
 
     &.error
     {
         background: rgba(250, 65, 0, 0.5);
+        border-color: rgba(250, 65, 0, 0.5);
     }
     
     .msg-bar-block
@@ -45,7 +50,7 @@
         position: relative;
         height: auto;
         padding: 6px 0px;
-        font-size: 12px;
+        font-size: 15px;
 		color: rgba(50, 49, 48, 1);
 		display: flex;
 		justify-content: flex-start;
@@ -104,8 +109,20 @@
 
         .close-block
         {
+            padding: 5px;
             margin-left: 3px;
-            font-size: 16px;
+            border-radius: 3px;
+            font-size: 13.8px;
+
+            &:hover
+            {
+                background: rgba(36, 36, 36, 0.1);
+            }
+
+            &:active
+            {
+                opacity: 0.8;
+            }
         }
     }
 

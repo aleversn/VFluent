@@ -11,10 +11,14 @@
     </div>
     <div class="control-panel" :class="[showControlPanel]" :style="styles.controlPanel">
         <transition name="fade-in">
-            <p class="slidebtn fst" :class="[`ms-Icon ms-Icon--${firstBtn}`, direction]" @click="slidePrev"></p>
+            <span class="slidebtn fst" :class="[direction]" @click="slidePrev">
+                <p class="icon" :class="[`ms-Icon ms-Icon--${firstBtn}`]"></p>
+            </span>
         </transition>
         <transition name="fade-in">
-            <p class="slidebtn sec" :class="[`ms-Icon ms-Icon--${secondBtn}`, direction]" @click="slideNext"></p>
+            <span class="slidebtn sec" :class="[direction]" @click="slideNext">
+                <p class="icon" :class="[`ms-Icon ms-Icon--${secondBtn}`]"></p>
+            </span>
         </transition>
         <transition name="fade-in">
         <span class="bottom-controller" :class="[direction]">
@@ -125,13 +129,13 @@ export default {
         },
         firstBtn () {
             if(this.direction == 'horizontal')
-                return 'ChevronLeft';
-            return 'ChevronUp';
+                return 'CaretLeftSolid8';
+            return 'CaretUpSolid8';
         },
         secondBtn () {
             if(this.direction == 'horizontal')
-                return 'ChevronRight';
-            return 'ChevronDown';
+                return 'CaretRightSolid8';
+            return 'CaretDownSolid8';
         },
         slideLeftAnimation () {
             return `${this.animationMap[this.animation]}-right-to-left`;

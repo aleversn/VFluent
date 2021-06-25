@@ -41,7 +41,7 @@ export default {
 			type: String
 		},
 		borderRadius: {
-			default: ""
+			default: 3
         },
         fontSize: {
 			default: "",

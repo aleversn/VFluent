@@ -9,73 +9,104 @@
     {
         opacity: 0.3;
         filter: grayscale(1);
+
+        .fv-toggle-border
+        {
+            &:hover
+            {
+                .fv-toggle-ring
+                {
+                    transform: scale(1);
+                }
+            }
+
+            &:active
+            {
+                .fv-toggle-ring
+                {
+                    width: 12px;
+                }
+            }
+        }
     }
 
-    div
+    .fv-toggle-border
     {
         position: relative;
-        width: 45px;
+        width: 40px;
         height: 20px;
         padding: 5px;
-        border: rgba(0,0,0,1) solid 2px;
+        border: rgba(87, 87, 87, 1) solid 1.5px;
         border-radius: 20px;
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        opacity: 0.8;
+        opacity: 0.9;
         transition: all 0.2s, background-color 0.5s;
         -webkit-transition: all 0.2s, background-color 0.5s;
         
         &:hover
         {
+            background: rgba(36, 36, 36, 0.05);
             opacity: 1;
+
+            .fv-toggle-ring
+            {
+                transform: scale(1.1);
+            }
         }
         
         &:active
         {
-            background: rgba(36,36,36,0.6);
-            border: rgba(0,0,0,0) solid 2px;
-            p
+            background: rgba(36, 36, 36, 0.1);
+            
+            .fv-toggle-ring
             {
-                background: rgba(255,255,255,1);
+                width: 15px;
             }
         }
         
-        p
+        .fv-toggle-ring
         {
-            width: 10px;
-            height: 10px;
-            background: rgba(0,0,0,1);
-            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            background: rgba(87, 87, 87, 1);
+            border-radius: 12px;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
             transition: all 0.2s;
         }
         
         &.toggle-on
         {
-            background: rgba(0,120,215,0.8);
-            border: rgba(0,0,0,0) solid 2px;
-            p
+            background: rgba(25, 106, 167, 0.8);
+            border-color: transparent;
+
+            .fv-toggle-ring
             {
-                margin-left: 20px;
+                margin-left: 13px;
                 background: rgba(255,255,255,1);
                 box-shadow: -3px 3px 10px rgba(0,0,0,0.2);
+            }
+
+            &:active
+            {   
+                .fv-toggle-ring
+                {
+                    width: 15px;
+                    margin-left: 10px;
+                }
             }
         }
     }
     
-    .content
+    .fv-toggle-content
     {
-        margin-left: 5px;
+        margin-left: 12px;
         font-family: '微软雅黑';
         font-size: 13px;
         cursor: default;
+        user-select: none;
         transition: all 0.2s;
         -webkit-transition: all 0.2s;
-    }
-
-    p
-    {
-        user-select: none;
     }
 }
