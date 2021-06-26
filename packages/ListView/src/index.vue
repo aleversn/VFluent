@@ -56,12 +56,12 @@ export default {
         },
         backgroundLightColor () {
             if(this.$theme == 'light') {
-                return 'rgba(121, 119, 117, 0.3)';
+                return 'rgba(160, 160, 160, 0.1)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.3)';
+                return 'rgba(255, 255, 255, 0.1)';
             }
-            return 'rgba(121, 119, 117, 0.3)';
+            return 'rgba(160, 160, 160, 0.1)';
         },
         currentChoosen () {
             let result = [];
@@ -100,8 +100,9 @@ export default {
         FRInit () {
             let FR = new this.$RevealEffects(this.$el, {
                 selector: `.fv-${this.$theme}-ListView .list-view-container .item.normal`,
-                borderGradientSize: 30,
+                borderGradientSize: 38,
                 borderLightColor: this.borderLightColor,
+                backgroundGradientSize: 120,
                 backgroundLightColor: this.backgroundLightColor
             });
         },

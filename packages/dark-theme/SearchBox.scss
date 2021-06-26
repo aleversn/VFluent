@@ -3,32 +3,38 @@
     
     @include fv-SearchBox();
 
-    background: transparent;
-    outline: rgba(161, 159, 157, 1) solid thin;
+    background: rgba(200, 200, 200, 0.1);
+    border: rgba(50, 50, 50, 0.1) solid thin;
 
     &:hover
     {
-        outline: $row-light-hover solid thin;
+        border: rgba(120, 120, 120, 0.1) solid thin;
     }
 
     &.focus
     {
-        outline: rgba(0, 120, 212, 1) solid 2px;
+        border: rgba(120, 120, 120, 0.1) solid thin;
     }
 
     &.underline
     {
-        border: $row-light-hover solid thin;
+        border: rgba(120, 120, 120, 0.1) solid thin;
         border-left-color: transparent;
         border-top-color: transparent;
         border-right-color: transparent;
-        outline: none;
+
+        &.focus
+        {
+            border-color: rgba(118, 185, 237, 1);
+            border-left-color: transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
     }
 
     &.disabled
     {
         background: rgb(48, 47, 46);
-        outline: none;
 
         &:hover
         {

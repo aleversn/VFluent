@@ -81,7 +81,7 @@ export default {
             default: ""
         },
         borderRadius: {
-            default: 0
+            default: 3
         },
         isBoxShadow: {
             default: false

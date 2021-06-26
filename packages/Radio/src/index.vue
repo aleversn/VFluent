@@ -49,7 +49,7 @@ export default {
             default: ''
         },
         foreground: {
-            default: 'rgba(0, 120, 212, 0.829)'
+            default: 'rgba(0, 90, 158, 0.8)'
         },
         icon: {
             type: String,

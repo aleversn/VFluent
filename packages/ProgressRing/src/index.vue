@@ -31,7 +31,7 @@ export default {
             default: false
         },
         color: {
-            default: 'rgba(0, 120, 215, 1)'
+            default: 'rgba(0, 90, 158, 1)'
         },
         background: {
             default: 'rgba(204, 204, 204, 1)'

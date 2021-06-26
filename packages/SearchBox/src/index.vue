@@ -1,5 +1,5 @@
 <template>
-<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'outline': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
+<div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[thisBorderColor, { background: background }, { 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderWidth: `${borderWidth}px` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
     <div class="search-box-reveal-container" :style="{ background: background }">
         <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
         <transition name="move-left-to-right">
@@ -76,7 +76,7 @@ export default {
             default: ""
         },
         borderRadius: {
-            default: 0
+            default: 3
         },
         isBoxShadow: {
             default: false
@@ -105,18 +105,6 @@ export default {
             filterOptions: this.options,
             show: {
                 searchResult: false
-            },
-            styles: {
-                textBox: {
-                    borderWidth: `${this.borderWidth}px`,
-                    borderColor: `${this.borderColor}`
-                }
-            },
-            focusStyles: {
-                textBox: {
-                    borderWidth: `${this.borderWidth}px`,
-                    borderColor: `${this.focusBorderColor}`
-                }
             }
         }
     },
@@ -127,20 +115,6 @@ export default {
         thisValue (val) {
             this.$emit("input", val);
             this.refreshFilter();
-        },
-        background (val) {
-            this.stylesInit();
-            this.onFocusStylesInit();
-        },
-        borderWidth (val) {
-            this.stylesInit();
-            this.onFocusStylesInit();
-        },
-        borderColor (val) {
-            this.stylesInit();
-        },
-        focusBorderColor (val) {
-            this.onFocusStylesInit();
         },
         isFocus (val) {
             if(val && this.focusShow)
@@ -153,6 +127,24 @@ export default {
         }
     },
     computed: {
+        thisBorderColor () {
+            if(this.isUnderline) {
+                if(this.isFocus)
+                    return {
+                        borderBottomColor: this.focusBorderColor
+                    }
+                return {
+                    borderBottomColor: this.borderColor
+                }
+            }
+            if(this.isFocus)
+                return {
+                    borderColor: this.focusBorderColor
+                }
+            return {
+                borderColor: this.borderColor
+            }
+        },
         isUnderline () {
             return (
                 this.underline.toString() == "true" ||
@@ -208,9 +200,7 @@ export default {
     mounted () {
         if(this.revealBorder)
             this.FRInit();
-        this.stylesInit();
         this.lazyLoadInit();
-        this.onFocusStylesInit();
         this.outSideClickInit();
     },
     methods: {
@@ -223,20 +213,10 @@ export default {
                 childrenSelector: this.$el.querySelectorAll('.search-box-reveal-container')[0]
             });
         },
-        stylesInit () {
-            this.styles.textBox.background = this.background;
-            this.styles.textBox.borderWidth = `${this.borderWidth}px`;
-            this.styles.textBox.borderColor = this.borderColor;
-        },
         lazyLoadInit () {
             this.$SUtility.ScrollToLoadInit(this.$refs.filterResult, () => {
                 this.$emit('lazyload', this.filterOptions);
             });
-        },
-        onFocusStylesInit () {
-            this.focusStyles.textBox.background = this.background;
-            this.focusStyles.textBox.borderWidth = `${this.borderWidth}px`;
-            this.focusStyles.textBox.borderColor = this.focusBorderColor;
         },
         outSideClickInit() {
             window.addEventListener("click", event => {

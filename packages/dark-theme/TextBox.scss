@@ -3,16 +3,16 @@
     @include fv-TextBox();
 
     background: transparent;
-    border: rgba(161, 159, 157, 1) solid thin;
+    border: rgba(36, 36, 36, 1) solid thin;
 
     &:hover
     {
-        border: $row-light-hover solid thin;
+        border: rgba(36, 36, 36, 1) solid thin;
     }
 
     &.focus
     {
-        border: rgba(0, 120, 212, 1) solid 2px;
+        border: rgba(36, 36, 36, 1) solid thin;
     }
 
     &.shadow
