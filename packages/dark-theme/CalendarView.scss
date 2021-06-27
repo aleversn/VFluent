@@ -2,20 +2,32 @@
 .fv-dark-CalendarView {
     @include fv-CalendarView();
     
-    background: rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, 0.9);
     border: rgba(255, 255, 255, 0.1) solid 2px;
     color: rgba(245, 245, 245, 0.9);
 
-    .control-block
+    .fv-calendar-control-block
     {
-        .switcher
+        .calendar-switcher
         {
             color: rgba(245, 245, 245, 0.9);
 
             &:hover
             {
+                border-color: rgba(120, 120, 120, 0.3);
                 color: whitesmoke;
                 opacity: 1;
+            }
+        }
+
+        .slider-bar
+        {   
+            .slider-btn
+            {
+                &:hover
+                {
+                    border-color: rgba(120, 120, 120, 0.3);
+                }
             }
         }
     }
@@ -37,7 +49,7 @@
         {
             background: rgba(36, 36, 36, 1);
             
-            button.btn
+            button.picker-btn
             {
                 background: rgba(60, 60, 60, 1);
                 color: whitesmoke;
@@ -54,7 +66,7 @@
                 
                 &.current
                 {
-                    background: rgba(0, 120, 215, 0.8);
+                    background: rgba(0, 120, 212, 0.8);
                     color: whitesmoke;
                     
                     &:hover
@@ -70,7 +82,7 @@
 
                 &.choose
                 {
-                    border: rgba(0, 120, 215, 1) solid 2px;
+                    border: rgba(118, 185, 237, 1) solid 2px;
                 }
             }
         }

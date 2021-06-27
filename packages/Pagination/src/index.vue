@@ -22,7 +22,7 @@ export default {
             default: 1
         },
         foreground: {
-            default: "rgba(0, 120, 212, 1)"
+            default: "rgba(0, 90, 158, 1)"
         },
         background: {
             default: "transparent"

@@ -7,6 +7,19 @@ sidebarDepth: 2
 
 ### CalendarView-DEMO
 
+<script>
+export default {
+    data () {
+        return {
+            value: new Date()
+        }
+    },
+    mounted () {
+        this.value.setFullYear(2019);
+    }
+}
+</script>
+
 ---
 
 <ClientOnly>
@@ -28,6 +41,18 @@ sidebarDepth: 2
 
 ```vue
 <fv-CalendarView multiple="multiple" lan="zh"></fv-CalendarView>
+```
+
+### CalendarView Init Day
+
+---
+
+<ClientOnly>
+<fv-CalendarView :value="value" multiple="multiple" lan="zh"></fv-CalendarView>
+</ClientOnly>
+
+```vue
+<fv-CalendarView :value="value" multiple="multiple" lan="zh"></fv-CalendarView>
 ```
 
 ### CalendarView Range Choose

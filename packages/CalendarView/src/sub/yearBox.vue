@@ -1,6 +1,6 @@
 <template>
 <div class="picker-container" ref="main">
-    <button v-for="(item, index) in years" :key="`year: ${index}`" class="btn" :class="{range: item >= currentRange && item - currentRange < 10, current: item == nowYear}" @click="choose(item)">{{item}}</button>
+    <button v-for="(item, index) in years" :key="`year: ${index}`" class="picker-btn" :class="{range: item >= currentRange && item - currentRange < 10, current: item == nowYear}" @click="choose(item)">{{item}}</button>
 </div>
 </template>
 

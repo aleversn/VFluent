@@ -14,7 +14,7 @@
             <button
                 v-for="(item, index) in days"
                 :key="`day: ${index}`"
-                class="btn day"
+                class="picker-btn day"
                 :class="{range: item.year == currentRange.year && item.month == currentRange.month, current: item.year == nowYear && item.month == nowMonth && item.no == nowDate, choose: isChoose(item)}"
                 :title="`${item.year}/${item.month + 1}/${item.no}`"
                 @click="choose(item)"
