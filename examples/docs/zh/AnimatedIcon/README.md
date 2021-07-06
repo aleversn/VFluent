@@ -38,6 +38,11 @@ export default {
 <fv-AnimatedIcon fontSize="36">
 </fv-AnimatedIcon>
 
+```vue
+<fv-AnimatedIcon fontSize="36">
+</fv-AnimatedIcon>
+```
+
 ### Present Animation
 ---
 
@@ -45,17 +50,37 @@ export default {
 <fv-AnimatedIcon fontSize="20">
 </fv-AnimatedIcon>
 
+```vue
+<fv-AnimatedIcon fontSize="20">
+</fv-AnimatedIcon>
+```
+
 2. Scale X Down
 <fv-AnimatedIcon value="scaleXDown" fontSize="20" icon="GlobalNavButton">
 </fv-AnimatedIcon>
+
+```vue
+<fv-AnimatedIcon value="scaleXDown" fontSize="20" icon="GlobalNavButton">
+</fv-AnimatedIcon>
+```
 
 3. Scale Y Down
 <fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause">
 </fv-AnimatedIcon>
 
+```vue
+<fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause">
+</fv-AnimatedIcon>
+```
+
 4. Bounce Rotate
 <fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
 </fv-AnimatedIcon>
+
+```vue
+<fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
+</fv-AnimatedIcon>
+```
 
 ### AnimatedIcon-Customize Animation
 ---
@@ -65,11 +90,21 @@ export default {
     </fv-AnimatedIcon>
 </div>
 
+```vue
+<fv-AnimatedIcon :customizeAnimation="animation" fontSize="20" icon="Settings">
+</fv-AnimatedIcon>
+```
+
 ### AnimatedIcon-Customize Background
 ---
 
 <fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause" background="whitesmoke">
 </fv-AnimatedIcon>
+
+```vue
+<fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause" background="whitesmoke">
+</fv-AnimatedIcon>
+```
 
 ### AnimatedIcon-Dark Theme
 ---
@@ -78,6 +113,11 @@ export default {
     <fv-AnimatedIcon theme="dark" fontSize="20">
     </fv-AnimatedIcon>
 </div>
+
+```vue
+<fv-AnimatedIcon theme="dark" fontSize="20">
+</fv-AnimatedIcon>
+```
 
 ### Propoties
 ---
