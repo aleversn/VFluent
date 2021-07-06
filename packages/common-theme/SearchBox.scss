@@ -158,6 +158,11 @@
                 border: none;
                 outline: none;
             }
+
+            .input::placeholder
+            {
+                user-select: none;
+            }
         }
     }
 

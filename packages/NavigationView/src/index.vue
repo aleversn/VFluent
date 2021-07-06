@@ -2,7 +2,7 @@
 <div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
     <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" ref="panel" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
         <template v-slot:searchBlock>
-            <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderWidth="2" borderRadius="3" style="width: 100%; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);" @choose-result="onChooseSearch"></fv-search-box>
+            <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderWidth="2" borderRadius="6" :isBoxShadow="true" style="width: 95%;" @choose-result="onChooseSearch"></fv-search-box>
         </template>
         <template v-slot:panel>
             <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick" @click.native="$emit('item-click', thisValue)">
@@ -152,7 +152,7 @@ export default {
             this.thisValue = event.item;
         },
         settingClick (item) {
-            this.currentTarget = this.$refs.panel.$refs.setting;
+            this.currentTarget = this.$refs.panel.$refs.setting.$el;
             this.thisValue = {
                 name: ">setting",
                 type: "setting"
@@ -166,7 +166,7 @@ export default {
         },
         onChooseSearch (item) {
             if(item.type === "setting") {
-                this.currentTarget = this.$refs.panel.$refs.setting;
+                this.currentTarget = this.$refs.panel.$refs.setting.$el;
                 return 0;
             }
             let c = this.options.find(it => {

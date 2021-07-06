@@ -3,7 +3,7 @@
     position: relative;
     width: 350px;
     height: 100%;
-    transition: all 0.3s;
+    transition: width 0.3s;
     z-index: 1;
 
     .panel-container
@@ -21,12 +21,14 @@
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
 
-        span.default-item
+        .fv-nav-default-item
         {
             position: relative;
-            width: 100%;
+            width: calc(100% - 10px);
             height: 40px;
+            margin-left: 5px;
             padding: 0px;
+            border-radius: 6px;
             border: transparent solid thin;
             box-sizing: border-box;
             display: flex;
@@ -42,6 +44,7 @@
                 position: relative;
                 width: 40px;
                 height: 100%;
+                font-size: 13.8px;
                 color: rgba(0, 0, 0, 1);
                 display: flex;
                 justify-content: center;
@@ -56,7 +59,7 @@
                 height: 100%;
                 flex: 1;
                 margin: 0px;
-                padding: 0px 12px;
+                padding-left: 12px;
                 font-weight: normal;
                 color: rgba(0, 0, 0, 1);
                 user-select: none;
@@ -74,7 +77,12 @@
 
             &:hover
             {
-                background: rgba(158, 158, 158, 0.3);
+                background: rgba(158, 158, 158, 0.2);
+            }
+
+            &:active
+            {
+                opacity: 0.8;
             }
         }
 
@@ -118,8 +126,13 @@
         
         .panel-container
         {
-            span.default-item
+            .fv-nav-default-item
             {
+                i.icon
+                {
+                    width: 30px;
+                }
+
                 p.name
                 {
                     display: none;
@@ -135,6 +148,7 @@
         &.mobile
         {
             width: 80px;
+            height: 40px;
             
             .panel-container.mobile
             {
@@ -166,8 +180,10 @@
         .panel-container
         {
             padding-top: 40px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
 
-            .default-item.control
+            .fv-nav-default-item.control
             {
                 display: none;
             }
@@ -186,9 +202,12 @@
             flex-direction: row;
             z-index: 2;
 
-            .default-item
+            .fv-nav-default-item
             {
                 width: 40px;
+                margin-left: 0px;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
@@ -203,7 +222,18 @@
             position: absolute;
             left: 0px;
             top: 0px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             box-shadow: $ms-depth-shadow-8;
+        }
+
+        &.compact
+        {
+            .panel-container
+            {
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
         }
     }
 

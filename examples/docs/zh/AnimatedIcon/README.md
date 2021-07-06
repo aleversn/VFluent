@@ -73,7 +73,16 @@ export default {
 </fv-AnimatedIcon>
 ```
 
-4. Bounce Rotate
+4. Scale Y Down
+<fv-AnimatedIcon value="backScale" fontSize="20" icon="Back">
+</fv-AnimatedIcon>
+
+```vue
+<fv-AnimatedIcon value="backScale" fontSize="20" icon="Back">
+</fv-AnimatedIcon>
+```
+
+5. Bounce Rotate
 <fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
 </fv-AnimatedIcon>
 
@@ -127,7 +136,8 @@ export default {
 |        icon        |              [string]              |       No       |       N/A       | Icon with Fabric-Icon |
 | customizeAnimation |              [object]              |       No       |       N/A       |      自定义动画       |
 |     background     |          [string(color)]           |       No       |       N/A       |        背景色         |
-|      fontSize      |              [number]              |       No       |       16        |    Button 字体大小    |
+|      fontSize      |              [number]              |       No       |       16        | AnimatedIcon 字体大小 |
+|    hideContent     |               [bool]               |       No       |      false      |     隐藏文本内容      |
 |       theme        | ['light','dark','custom','system'] |       No       |     system      |     Custom theme      |
 
 ### Events
@@ -143,5 +153,15 @@ export default {
 ```javascript
 <fv-animated-icon>
     <div></div>
+</fv-animated-icon>
+```
+
+2. Content
+
+```javascript
+<fv-animated-icon>
+    <template v-slot:content>
+        <div>Content</div>
+    </template>
 </fv-animated-icon>
 ```

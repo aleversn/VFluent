@@ -1,6 +1,6 @@
 <template>
 <div :class="['fv-'+$theme+'-SearchBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[thisBorderColor, { background: background }, { 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderWidth: `${borderWidth}px` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @keydown="show.searchResult = true" @keyup.delete="onBackspace" @click="isFocus = true">
-    <div class="search-box-reveal-container" :style="{ background: background }">
+    <div class="search-box-reveal-container" :style="[{ background: background, borderRadius: `${borderRadius}px` }]">
         <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
         <transition name="move-left-to-right">
             <div v-show="resultPlaceholder.length > 0" class="search-box-placeholder">

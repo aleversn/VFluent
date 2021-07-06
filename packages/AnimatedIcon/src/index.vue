@@ -5,6 +5,9 @@
             <i ref="a" class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
         </slot>
     </div>
+    <div v-show="!hideContent" class="fv-animated-content-block">
+        <slot name="content"></slot>
+    </div>
 </div>
 </template>
 
@@ -27,6 +30,9 @@ export default {
         },
         fontSize: {
             default: 16
+        },
+        hideContent: {
+            default: false
         },
         theme: {
             type: String,
@@ -81,6 +87,25 @@ export default {
                         },
                         {
                             transform: 'scaleY(1)',
+                            transition: `transform 0.05s ease-out`
+                        }
+                    ]
+                },
+                backScale: {
+                    down: {
+                        transform: 'scale(0.8)',
+                        'transform-origin': '100% 50%',
+                        transition: `transform 0.2s`
+                    },
+                    up: [
+                        {
+                            transform: 'scale(1.1)',
+                            'transform-origin': '100% 50%',
+                            transition: `transform 0.2s`
+                        },
+                        {
+                            transform: 'scale(1)',
+                            'transform-origin': '100% 50%',
                             transition: `transform 0.05s ease-out`
                         }
                     ]

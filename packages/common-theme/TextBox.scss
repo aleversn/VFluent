@@ -116,6 +116,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        user-select: none;
 
         p
         {
@@ -162,6 +163,11 @@
             background: transparent;
             border: none;
             outline: none;
+        }
+
+        .input::placeholder
+        {
+            user-select: none;
         }
     }
 }

@@ -4,49 +4,32 @@
         :style="{width: panelWidth}"
     >
         <div class="panel-container mobile">
-            <span
-                v-show="showBack"
-                class="default-item"
-                @click="$emit('back',$event)"
-            >
+            <fv-animated-icon v-show="showBack" value="backScale" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="$emit('back', $event)">
                 <i class="ms-Icon ms-Icon--Back icon"></i>
-            </span>
-            <span
-                class="default-item"
-                @click="expandClick"
-            >
+            </fv-animated-icon>
+            <fv-animated-icon value="scaleXDown" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="expandClick">
                 <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
-            </span>
+            </fv-animated-icon>
         </div>
         <div
             class="panel-container"
             :style="{width: navWidth, background: background}"
         >
-            <span
-                v-show="showBack"
-                class="default-item control"
-                @click="$emit('back',$event)"
-            >
+            <fv-animated-icon v-show="showBack" value="backScale" class="fv-nav-default-item control" style="width: calc(100% - 10px);" @click="$emit('back', $event)">
                 <i class="ms-Icon ms-Icon--Back icon"></i>
-                <p class="name title">{{title}}</p>
-            </span>
-            <span
-                class="default-item control"
-                @click="expandClick"
-            >
+                <template v-slot:content>
+                    <p class="name title">{{title}}</p>
+                </template>
+            </fv-animated-icon>
+            <fv-animated-icon value="scaleXDown" class="fv-nav-default-item control" style="width: calc(100% - 10px);" @click="expandClick">
                 <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
-                <p
-                    v-show="!showBack"
-                    class="name title"
-                >{{title}}</p>
-            </span>
-            <span
-                v-show="showSearch && !thisExpand"
-                class="default-item"
-                @click="expandClick"
-            >
-                <i class="ms-Icon ms-Icon--Search icon"></i>
-            </span>
+                <template v-slot:content>
+                    <p
+                        v-show="!showBack"
+                        class="name title"
+                    >{{title}}</p>
+                </template>
+            </fv-animated-icon>
             <span
                 v-show="showSearch && thisExpand"
                 class="search"
@@ -59,23 +42,21 @@
                         :theme="theme"
                         :revealBorder="true"
                         borderWidth="2"
-                        borderRadius="3"
-                        style="width: 100%; box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);"
+                        borderRadius="6"
+                        :isBoxShadow="true"
+                        style="width: 95%;"
                     ></fv-search-box>
                 </slot>
             </span>
             <div class="template">
                 <slot name="panel"></slot>
             </div>
-            <span
-                v-show="showSetting"
-                class="default-item"
-                ref="setting"
-                @click="$emit('setting-click', { event: $event })"
-            >
+            <fv-animated-icon v-show="showSetting" ref="setting" value="bounceRotate" class="fv-nav-default-item" style="width: calc(100% - 10px);" @click="$emit('setting-click', { event: $event })">
                 <i class="ms-Icon ms-Icon--Settings icon"></i>
-                <p class="name">{{settingTitle}}</p>
-            </span>
+                <template v-slot:content>
+                    <p class="name">{{settingTitle}}</p>
+                </template>
+            </fv-animated-icon>
         </div>
     </div>
 </template>
@@ -203,14 +184,13 @@ export default {
         },
     },
     mounted() {
-        this.FRInit();
         this.screenWidthInit();
         this.outSideClickInit();
     },
     methods: {
         FRInit() {
             let FR = new this.$RevealEffects("body", {
-                selector: `.fv-${this.$theme}-NavigationPanel .panel-container span.default-item`,
+                selector: `.fv-${this.$theme}-NavigationPanel .panel-container .fv-nav-default-item`,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,

@@ -1,6 +1,6 @@
 <template>
 <div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @click="isFocus = true">
-    <div class="text-box-reveal-container" :style="{ background: background }">
+    <div class="text-box-reveal-container" :style="{ background: background, borderRadius: `${borderRadius}px` }">
         <div v-show="prefix != ''" class="fix-block">
             <p>{{prefix}}</p>
         </div>
