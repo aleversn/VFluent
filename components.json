@@ -326,5 +326,13 @@
       "Dark": "@/dark-theme/Breadcrumb.scss",
       "Custom": "@/custom-theme/Breadcrumb.scss"
     }
+  },
+  "AnimatedIcon": {
+    "entry": "@/AnimatedIcon/index.js",
+    "theme": {
+      "Light": "@/light-theme/AnimatedIcon.scss",
+      "Dark": "@/dark-theme/AnimatedIcon.scss",
+      "Custom": "@/custom-theme/AnimatedIcon.scss"
+    }
   }
 }

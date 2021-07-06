@@ -1,0 +1,5 @@
+@import '../common-theme/AnimatedIcon.scss';
+.fv-custom-AnimatedIcon{
+  @include fv-AnimatedIcon();
+}
+    

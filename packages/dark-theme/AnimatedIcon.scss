@@ -1,0 +1,6 @@
+@import "../common-theme/AnimatedIcon.scss";
+.fv-dark-AnimatedIcon {
+    @include fv-AnimatedIcon();
+
+    color: whitesmoke;
+}
