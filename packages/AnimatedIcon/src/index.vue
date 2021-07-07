@@ -1,6 +1,6 @@
 <template>
 <div :class="['fv-'+$theme+'-AnimatedIcon']" :style="[{width: `${fontSize * 1 + 3}px`, background: background, fontSize: `${fontSize}px`}]" @mousedown="down" @mouseup="up" @touchstart="down" @touchend="up" @mouseenter="enter" @mousemove="move" @touchmove="move" @mouseleave="leave" @click="onClick">
-    <div class="fv-animated-icon-container" :style="[animatedStyle]">
+    <div draggable="false" class="fv-animated-icon-container" :style="[animatedStyle]">
         <slot>
             <i ref="a" class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
         </slot>
@@ -57,6 +57,12 @@ export default {
                             transform: 'scale(1)',
                             transition: `transform 0.05s ease-out`
                         }
+                    ],
+                    leave: [
+                        {
+                            transform: 'scale(1)',
+                            transition: `transform 0.05s ease-out`
+                        }
                     ]
                 },
                 scaleXDown: {
@@ -73,6 +79,12 @@ export default {
                             transform: 'scaleX(1)',
                             transition: `transform 0.05s ease-out`
                         }
+                    ],
+                    leave: [
+                        {
+                            transform: 'scaleX(1)',
+                            transition: `transform 0.05s ease-out`
+                        }
                     ]
                 },
                 scaleYDown: {
@@ -85,6 +97,12 @@ export default {
                             transform: 'scaleY(1.1)',
                             transition: `transform 0.2s`
                         },
+                        {
+                            transform: 'scaleY(1)',
+                            transition: `transform 0.05s ease-out`
+                        }
+                    ],
+                    leave: [
                         {
                             transform: 'scaleY(1)',
                             transition: `transform 0.05s ease-out`
@@ -108,6 +126,13 @@ export default {
                             'transform-origin': '100% 50%',
                             transition: `transform 0.05s ease-out`
                         }
+                    ],
+                    leave: [
+                        {
+                            transform: 'scale(1)',
+                            'transform-origin': '100% 50%',
+                            transition: `transform 0.05s ease-out`
+                        }
                     ]
                 },
                 bounceRotate: {
@@ -116,6 +141,15 @@ export default {
                         transition: `transform 0.1s`
                     },
                     up: [
+                        {
+                            transform: 'rotate(360deg)',
+                            transition: `transform 0.3s`
+                        },
+                        {
+                            transform: 'rotate(0deg)'
+                        }
+                    ],
+                    leave: [
                         {
                             transform: 'rotate(360deg)',
                             transition: `transform 0.3s`

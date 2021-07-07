@@ -1,9 +1,9 @@
 <template>
     <div
         :class="['fv-'+$theme+'-NavigationPanel', {compact: !thisExpand}, {flyout: isFlyout}, {mobile: isMobile}]"
-        :style="{width: panelWidth}"
+        :style="{position: (this.screenWidth <= this.fullSizeDisplay) && thisExpand ? 'static' : '', width: panelWidth}"
     >
-        <div class="panel-container mobile">
+        <div class="panel-container-mobile" :style="{background: !thisExpand ? background : ''}">
             <fv-animated-icon v-show="showBack" value="backScale" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="$emit('back', $event)">
                 <i class="ms-Icon ms-Icon--Back icon"></i>
             </fv-animated-icon>
@@ -136,7 +136,7 @@ export default {
     },
     computed: {
         panelWidth() {
-            if (this.expandMode == "flyout") return `${40}px`;
+            if (this.isFlyout) return `${40}px`;
             if (this.thisExpand)
                 return this.screenWidth <= this.fullSizeDisplay
                     ? "100%"
@@ -203,6 +203,20 @@ export default {
         },
         outSideClickInit() {
             window.addEventListener("click", (event) => {
+                let x = event.target;
+                let _self = false;
+                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) {
+                    if (this.isFlyout || this.isMobile) this.thisExpand = false;
+                }
+            });
+            window.addEventListener("touchend", (event) => {
                 let x = event.target;
                 let _self = false;
                 while (x && x.tagName && x.tagName.toLowerCase() != "body") {

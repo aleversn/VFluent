@@ -19,7 +19,39 @@
 
             &:hover
             {
-                background: $row-dark-hover-glass;
+                background: rgba(47, 47, 47, 0.8);
+            }
+        }
+    }
+
+    .panel-container-mobile
+    {
+        background: rgba(0, 0, 0, 0.8);
+
+        .fv-nav-default-item
+        {
+            i.icon {
+                color: whitesmoke;
+            }
+
+            p.name {
+                color: whitesmoke;
+            }
+
+            &:hover
+            {
+                background: rgba(47, 47, 47, 0.8);
+            }
+        }
+    }
+
+    &.mobile
+    {
+        &.compact
+        {
+            .panel-container-mobile
+            {
+                background: rgba(0, 0, 0, 0.6);
             }
         }
     }
