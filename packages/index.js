@@ -50,6 +50,7 @@ import Panel from '@/Panel/index.js'
 import Pagination from '@/Pagination/index.js'
 import Breadcrumb from '@/Breadcrumb/index.js'
 import AnimatedIcon from '@/AnimatedIcon/index.js'
+import Tag from '@/Tag/index.js'
 
 
 let components = [
@@ -95,6 +96,7 @@ let components = [
   Pagination,
   Breadcrumb,
   AnimatedIcon,
+  Tag,
 
 ]
 
@@ -156,6 +158,7 @@ export default {
   Pagination,
   Breadcrumb,
   AnimatedIcon,
+  Tag,
 
 }
 

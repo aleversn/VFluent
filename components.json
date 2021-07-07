@@ -334,5 +334,13 @@
       "Dark": "@/dark-theme/AnimatedIcon.scss",
       "Custom": "@/custom-theme/AnimatedIcon.scss"
     }
+  },
+  "Tag": {
+    "entry": "@/Tag/index.js",
+    "theme": {
+      "Light": "@/light-theme/Tag.scss",
+      "Dark": "@/dark-theme/Tag.scss",
+      "Custom": "@/custom-theme/Tag.scss"
+    }
   }
 }

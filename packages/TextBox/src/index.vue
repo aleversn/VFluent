@@ -5,7 +5,7 @@
             <p>{{prefix}}</p>
         </div>
         <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
-        <core v-model="thisValue" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
+        <core v-model="thisValue" ref="core" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
         <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
         <div v-show="suffix != ''" class="fix-block">
             <p>{{suffix}}</p>
@@ -211,6 +211,9 @@ export default {
             this.focusStyles.textBox.background = this.background;
             this.focusStyles.textBox.borderWidth = `${this.borderWidth}px`;
             this.focusStyles.textBox.borderColor = this.focusBorderColor;
+        },
+        focus () {
+            this.$refs.core.focusInspect();
         }
     }
 };

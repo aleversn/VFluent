@@ -42,6 +42,7 @@ import { FvPanel } from './panel'
 import { FvPagination } from './pagination'
 import { FvBreadcrumb } from './breadcrumb'
 import { FvAnimatedIcon } from './animatedicon'
+import { FvTag } from './tag'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -133,4 +134,6 @@ export type Theme = FluentVueTheme
   export class Breadcrumb extends FvBreadcrumb {}
 /** AnimatedIcon component */
   export class AnimatedIcon extends FvAnimatedIcon {}
+/** Tag component */
+  export class Tag extends FvTag {}
 
