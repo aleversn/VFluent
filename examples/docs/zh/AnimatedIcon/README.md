@@ -102,7 +102,37 @@ export default {
 ```vue
 <fv-AnimatedIcon :customizeAnimation="animation" fontSize="20" icon="Settings">
 </fv-AnimatedIcon>
+
+<script>
+data () {
+    return {
+        animation: {
+            enter: {
+                transform: 'rotate(-180deg)',
+                transition: `transform 0.1s`
+            },
+            leave: [
+                {
+                    transform: 'rotate(365deg)',
+                    transition: `transform 0.3s`
+                },
+                {
+                    transform: 'rotate(360deg)',
+                    transition: `transform 0.1s`
+                },
+                {
+                    transform: 'rotate(0deg)'
+                }
+            ]
+        }
+    }
+}
+</script>
 ```
+
+- Event types include `enter`, `move`, `down`, `up`, `leave` and corresponding to the `MouseEvent` and `TouchEvent` automatically.
+
+- Each event can be declared as an `object` contain styles or an `array` contain multiple styles object. The transitions of an `array` will execute in order.
 
 ### AnimatedIcon-Customize Background
 ---
