@@ -1,7 +1,11 @@
 <template>
     <div :class="['fv-'+$theme+'-Tag']">
         <div v-for="(item, index) in thisValue" :key="index" class="fv-tag-item" :class="[item.type ? item.type : '', size, {disabled: item.disabled}]" :style="{background: item.background ? getColor(item.background)['background'] : '', borderColor: item.background ? getColor(item.background)['borderColor'] : '', color: item.background ? getColor(item.background)['color'] : ''}">
-            <span class="fv-tag-content">{{item.text}}</span>
+            <span class="fv-tag-content">
+                <slot>
+                    {{item.text}}
+                </slot>
+            </span>
             <i v-show="isDel && !item.disabled" class="ms-Icon ms-Icon--Cancel fv-tag-icon" @click="delTag(item)"></i>
         </div>
         <div v-show="isNewTag" ref="add" class="fv-tag-item controller" :class="[size]" :style="{background: newTagBackground ? getColor(newTagBackground)['background'] : '', borderColor: newTagBackground ? getColor(newTagBackground)['borderColor'] : '', color: newTagBackground ? getColor(newTagBackground)['color'] : ''}" @click="editable">
