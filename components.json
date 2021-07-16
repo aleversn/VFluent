@@ -342,5 +342,13 @@
       "Dark": "@/dark-theme/Tag.scss",
       "Custom": "@/custom-theme/Tag.scss"
     }
+  },
+  "Collapse": {
+    "entry": "@/Collapse/index.js",
+    "theme": {
+      "Light": "@/light-theme/Collapse.scss",
+      "Dark": "@/dark-theme/Collapse.scss",
+      "Custom": "@/custom-theme/Collapse.scss"
+    }
   }
 }

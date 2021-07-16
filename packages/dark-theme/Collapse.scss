@@ -1,0 +1,31 @@
+@import "../common-theme/Collapse.scss";
+.fv-dark-Collapse {
+    @include fv-Collapse();
+
+    background: rgba(45, 45, 45, 1);
+    color: whitesmoke;
+
+    .collapse-description-container
+    {
+        .collapse-description-box
+        {
+
+            .collapse-description
+            {
+
+                .collapse-text
+                {
+                    .collapse-info
+                    {
+                        color: rgba(156, 156, 156, 1);
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover
+    {
+        background: rgba(50, 50, 50, 1);
+    }
+}
