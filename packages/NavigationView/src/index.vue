@@ -1,6 +1,6 @@
 <template>
-<div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
-    <fv-NavigationPanel :title="title" :expand="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" ref="panel" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
+<div :class="['fv-'+$theme+'-NavigationView', {compact: !expand}]">
+    <fv-NavigationPanel :title="title" :expand.sync="expand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" ref="panel" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
         <template v-slot:searchBlock>
             <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderWidth="2" borderRadius="6" :isBoxShadow="true" style="width: 95%;" @choose-result="onChooseSearch"></fv-search-box>
         </template>
@@ -87,7 +87,6 @@ export default {
             currentTarget: {},
             currentTop: 0,
             currentHeight: 0,
-            thisExpand: this.expand,
             timer: {
                 slider: {}
             }
@@ -104,13 +103,6 @@ export default {
                 });
                 this.$emit("input", val);
             }
-        },
-        expand(val) {
-            this.thisExpand = val;
-        },
-        thisExpand(val) {
-            this.$emit("update:expand", val);
-            this.$emit("expand-change", val);
         }
     },
     computed: {
@@ -167,7 +159,6 @@ export default {
             this.$emit("setting-click", item);
         },
         expandChange (status) {
-            this.thisExpand = status;
             this.$emit("update:expand", status);
             this.$emit("expand-change", status);
         },
