@@ -1,5 +1,5 @@
 <template>
-<div :class="['fv-'+$theme+'-NavigationView', {compact: !expand}]">
+<div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
     <fv-NavigationPanel :title="title" :expand.sync="thisExpand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" ref="panel" @back="$emit('back', $event)" @expand-change="expandChange" @setting-click="settingClick">
         <template v-slot:searchBlock>
             <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderWidth="2" borderRadius="6" :isBoxShadow="true" style="width: 95%;" @choose-result="onChooseSearch"></fv-search-box>
