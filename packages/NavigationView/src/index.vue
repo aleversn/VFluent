@@ -104,6 +104,13 @@ export default {
                 });
                 this.$emit("input", val);
             }
+        },
+        expand(val) {
+            this.thisExpand = val;
+        },
+        thisExpand(val) {
+            this.$emit("update:expand", val);
+            this.$emit("expand-change", val);
         }
     },
     computed: {
