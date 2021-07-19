@@ -62,11 +62,11 @@ export default {
             popperEvent: {},
             timeout: {
                 close: null,
-                hoverClose: null // 鼠标移开后延时关闭
+                hoverClose: null, // 鼠标移开后延时关闭
             },
             lock: {
-                popper: true
-            }
+                popper: true,
+            },
         };
     },
     watch: {
@@ -80,6 +80,7 @@ export default {
             this.$emit("update:visible", val);
             if (val) {
                 this.adjustPopperPosition(this.position);
+
                 if (this.delayClose > 0) {
                     clearTimeout(this.timeout.close);
                     this.timeout.close = setTimeout(() => {
@@ -164,18 +165,32 @@ export default {
                 return;
             }
             this.setPopperPosition(position);
-            this._popper.$nextTick(() => {
-                if (this.isOutBody(this._popper.$el)) {
-                    this.setPopperPosition(this.reversePosition(position));
-                    this._popper.$nextTick(() => {
-                        if (this.isOutBody(this._popper.$el)) {
-                            if (this.cover) this.setPopperPosition("topLeft");
-                            else this.setPopperPosition("bottomLeft");
-                        }
-                    });
+            let event = this._popper.$el.addEventListener(
+                "transitionend",
+                () => {
+                    if (this.isOutBody(this._popper.$el)) {
+                        this.setPopperPosition(this.reversePosition(position));
+                        this._popper.$nextTick(() => {
+                            if (this.isOutBody(this._popper.$el)) {
+                                if (this.cover)
+                                    this.setPopperPosition("topLeft");
+                                else this.setPopperPosition("bottomLeft");
+                            }
+                        });
+                    }
+                    this._popper.$el.removeEventListener(
+                        "transitionend",
+                        event
+                    );
                 }
-            });
+            );
+            // this._popper.$nextTick(() => {
+
+            // });
         },
+        /**
+         * @summary Reverse Position
+         */
         reversePosition(position) {
             if (/^left/.test(position))
                 return position.replace(/^left/, "right");
@@ -185,6 +200,10 @@ export default {
                 return position.replace(/^top/, "bottom");
             } else return position.replace(/^bottom/, "top");
         },
+        /**
+         * @summary Set Popper Position
+         * @param {string} position Popper Position
+         */
         setPopperPosition(position) {
             let callout = this._popper.style.callout;
             let beak = this._popper.style.beak;
@@ -358,10 +377,18 @@ export default {
             }
         },
         isOutBody(el) {
-            let body = document.body;
+            // let body = document.body;
             let target = this.getOffsetBodyXY(el);
-            let maxHeight = Math.max(body.offsetHeight, window.innerHeight);
-            let maxWidth = Math.max(body.offsetWidth, window.innerWidth);
+            // let maxHeight = Math.max(body.offsetHeight, window.innerHeight);
+            // let maxWidth = Math.max(body.offsetWidth, window.innerWidth);
+            let maxHeight =
+                window.innerHeight ||
+                document.documentElement.clientHeight ||
+                document.body.clientHeight;
+            let maxWidth =
+                window.innerWidth ||
+                document.documentElement.clientWidth ||
+                document.body.clientWidth;
             if (
                 target.top < 0 ||
                 target.left < 0 ||
@@ -415,8 +442,7 @@ export default {
                     this._popper.show = true;
                 };
                 (this.targetEvent.mouseleave = () => {
-                    if(!this.lock.popper)
-                        return;
+                    if (!this.lock.popper) return;
                     this.lock.popper = false;
                     this.timeout.hoverClose = setInterval(() => {
                         this._popper.show = false;
@@ -575,7 +601,7 @@ export default {
                 );
             },
             computed: {
-                transformOrigin () {
+                transformOrigin() {
                     if (this.position == "topLeft") return "0% 100%";
                     if (this.position == "topRight") return "100% 100%";
                     if (this.position == "topCenter") return "50% 100%";
@@ -589,8 +615,8 @@ export default {
                     if (this.position == "rightCenter") return "0% 50%";
                     if (this.position == "rightBottom") return "0% 100%";
                     return "50% 50%";
-                }
-            }
+                },
+            },
         }).$mount();
         document.body.append(this._popper.$el);
     },
