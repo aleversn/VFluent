@@ -168,25 +168,26 @@ export default {
             let event = this._popper.$el.addEventListener(
                 "transitionend",
                 () => {
-                    if (this.isOutBody(this._popper.$el)) {
-                        this.setPopperPosition(this.reversePosition(position));
-                        this._popper.$nextTick(() => {
-                            if (this.isOutBody(this._popper.$el)) {
-                                if (this.cover)
-                                    this.setPopperPosition("topLeft");
-                                else this.setPopperPosition("bottomLeft");
-                            }
-                        });
-                    }
-                    this._popper.$el.removeEventListener(
-                        "transitionend",
-                        event
-                    );
+                    this._popper.$nextTick(() => {
+                        if (this.isOutBody(this._popper.$el)) {
+                            this.setPopperPosition(
+                                this.reversePosition(position)
+                            );
+                            this._popper.$nextTick(() => {
+                                if (this.isOutBody(this._popper.$el)) {
+                                    if (this.cover)
+                                        this.setPopperPosition("topLeft");
+                                    else this.setPopperPosition("bottomLeft");
+                                }
+                            });
+                        }
+                        this._popper.$el.removeEventListener(
+                            "transitionend",
+                            event
+                        );
+                    });
                 }
             );
-            // this._popper.$nextTick(() => {
-
-            // });
         },
         /**
          * @summary Reverse Position
@@ -555,7 +556,7 @@ export default {
                 },
                 transition: "fv-callout-fade",
                 theme: "light",
-                show: true,
+                show: false,
                 open: true,
                 width: 0,
                 height: 0,
