@@ -1,9 +1,9 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
     <div class="list-view-container" ref="container">
-        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="{ background: item.choosen ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
+        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled)}" class="item" :key="index" :style="{ background: valueTrigger(item.choosen) ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
             <slot name="listItem" :item="item" :index="index">
-                <p :style="{ color: item.type == 'header' ? headerForeground : '' }">{{item.name}}</p>
+                <p :style="{ color: valueTrigger(item.type) == 'header' ? headerForeground : '' }">{{valueTrigger(item.name)}}</p>
             </slot>
         </span>
     </div>
@@ -121,6 +121,10 @@ export default {
                 result.push(Object.assign(m, item));
             }
             this.thisValue = result;
+        },
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
         },
         onClick($event, cur) {
             if (cur.disabled) return 0;

@@ -149,3 +149,5 @@ items: [
 <fv-ListView v-model="items" ref="list"></fv-ListView>
 let item = this.$refs.list.$refs['list_item_<index>]'];
 ```
+
+**特别地** 0.1.32版本后支持采用函数式字段, 其中支持的字段包括`name`, `disabled`, `choosen`, `type`

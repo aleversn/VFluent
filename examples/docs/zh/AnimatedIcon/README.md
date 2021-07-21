@@ -91,6 +91,25 @@ export default {
 </fv-AnimatedIcon>
 ```
 
+### AnimatedIcon-With Content
+---
+
+<div>
+    <fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
+        <template v-slot:content>
+            <div style="margin-left: 15px;">Settings</div>
+        </template>
+    </fv-AnimatedIcon>
+</div>
+
+```vue
+<fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
+    <template v-slot:content>
+        <div style="margin-left: 5px;">Settings</div>
+    </template>
+</fv-AnimatedIcon>
+```
+
 ### AnimatedIcon-Customize Animation
 ---
 
@@ -180,6 +199,8 @@ data () {
 ---
 1. Default
 
+默认模板是图标自定义模板
+
 ```javascript
 <fv-animated-icon>
     <div></div>
@@ -187,6 +208,8 @@ data () {
 ```
 
 2. Content
+
+客制化修改文字内容
 
 ```javascript
 <fv-animated-icon>
