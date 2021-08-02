@@ -77,7 +77,7 @@ export default {
         value(val) {
             for(let item of this.thisItems) {
                 let match = true;
-                for(let key in item) {
+                for(let key in val) {
                     if(item[key] !== val[key]) {
                         match = false;
                         break;
