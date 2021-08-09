@@ -11,7 +11,8 @@
     </a>
 </p>
 
-## Fluent UI Design based on Vue Cli
+## Fluent UI Components based on Vue Cli
+This repository provides a library of components based on [Microsoft's Fluent Design System](https://developer.microsoft.com/en-us/fluentui#/). We did our best to implement styling (such as the `Acrylic` and `Reveal` effects) of native system's (Windows 11/Windows 10) compoents on the Web.
 
 ### Project Structure
 
@@ -36,7 +37,7 @@ components.json # 组件目录(Component directory)
 vue.config.js # Vue cli 配置(Vue cli config)
 ```
 
-### 脚本命令(2019-12-16 更新)
+### NPM Script CMDs (updated on 2019-12-16) 脚本命令(2019-12-16 更新)
 
 ```bash
 npm run pub # 打包推送到npm(Pack and push to NPM)
@@ -50,7 +51,7 @@ npm run bin:entry # 定制入口(Custom entry)
 
 #### DOCS
 
-[中文文档 (Chinese Doc)](https://aleversn.github.io/VFluent)
+[Documention](https://aleversn.github.io/VFluent)
 
 #### How to use
 
@@ -91,6 +92,13 @@ Here is the icon using sample.
 ```
 
 In particular, if you're using a component of Fluent Vue Design and it contains a prop that support icon, you only need to type the icon's name in prop.
+
+### ✨ We Need You (Become a contributor) ✨
+VFluent still needs to improve. The documentation is not yet complete, there are still some details to work out.
+
+We want to hear from your issues and suggestions. It's welcome to have you become a contributor in this project. You could add some new components to VFluent, or update the existing components to better support the mobile end.
+
+If you have some other creative ideas, we're happy to hear them from you.
 
 ### License
 
