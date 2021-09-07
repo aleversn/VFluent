@@ -16,6 +16,8 @@ body
   -moz-osx-font-smoothing grayscale
   font-size 16px
   color $textColor
+  background whitesmoke
+  min-height 100vh
 
 .page
   padding-left $sidebarWidth
@@ -42,17 +44,18 @@ body
 
 .sidebar
   font-size 16px
-  background-color #fff
+  background-color whitesmoke
   width $sidebarWidth
   position fixed
   z-index 10
   margin 0
-  top $navbarHeight
+  top 0
   left 0
   bottom 0
   box-sizing border-box
-  border-right 1px solid $borderColor
   overflow-y auto
+  &.dark
+    background-color #000
 
 {$contentClass}:not(.custom)
   @extend $wrapper
@@ -169,8 +172,8 @@ table
 tr
   border-top 1px solid #dfe2e5
 
-  &:nth-child(2n)
-    background-color #f6f8fa
+  // &:nth-child(2n)
+  //   background-color #f6f8fa
 
 th, td
   border 1px solid #dfe2e5

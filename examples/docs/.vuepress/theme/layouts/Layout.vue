@@ -5,9 +5,9 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
+    <!-- <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" /> -->
 
-    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+    <!-- <div class="sidebar-mask" @click="toggleSidebar(false)" /> -->
 
     <!-- <Sidebar
       :items="sidebarItems"

@@ -5,7 +5,7 @@ const webpack = require("webpack")
 module.exports = {
     base: '/VFluent/',
     title: 'FluentVueDesign',
-    description: 'FluentVueDesign',
+    description: 'FluentVueDesign',   
     configureWebpack: {
         resolve: {
             alias: {
@@ -19,6 +19,7 @@ module.exports = {
         ]
     },
     themeConfig: {
-        sidebar: sidebar
+        sidebar: sidebar,
+        logo:"https://raw.githubusercontent.com/aleversn/VFluent/master/examples/assert/logo/VFluent.png",
     }
 }
