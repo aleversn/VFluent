@@ -70,7 +70,7 @@ export default {
     padding-bottom: 2rem;
     display: block;
     &.dark{
-      background:#000;
+      background:#0d1117;
       color:white;
     }
 }
