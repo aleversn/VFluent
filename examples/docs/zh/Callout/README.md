@@ -9,6 +9,7 @@
   export default {
     data(){
       return {
+        text:"1233",
         show:true,
         color:'rgba(36, 36, 36, 1)',
         beak:9,
@@ -29,11 +30,17 @@
           {key:'rightCenter',text:'rightCenter'}
         ]
       }
+    },
+    methods:{
+      changeText(text){
+        this.text = text;
+        console.log(this.text)
+      }
     }
   }
-</script>
 
-### Callout Light
+</script>
+ ### Callout Light
 
 <ClientOnly>
 <fv-callout effect="hover" position="bottomLeft">
@@ -127,7 +134,8 @@ position:
     @Copyright Creator SN
   </footer>
 </fv-callout>
-```
+``` 
+
 
 
 ### Propoties
@@ -137,7 +145,6 @@ position:
 | visible.sync |             [boolean]              |       No       |      false      |        是否显示        |
 |    theme     | ['system','light','dark','custom'] |       No       |    'system'     |         主题色         |
 |   disabled   |             [boolean]              |       No       |      false      |        是否禁用        |
-|    cover     |             [boolean]              |       No       |      false      |      是否覆盖目标      |
 |    space     |              [number]              |       No       |        0        |        间距(px)        |
 |     beak     |              [number]              |       No       |       10        |      角标大小(px)      |
 |   position   |    ['topLeft','topCenter',...]     |       No       | 'bottomCenter'  |          位置          |

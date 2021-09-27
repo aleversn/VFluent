@@ -1,5 +1,5 @@
 <script>
-import Vue from "vue";
+import Popper from "./popper.vue";
 export default {
     name: "FvCallout",
     props: {
@@ -11,9 +11,6 @@ export default {
             default: "system",
         },
         disabled: {
-            default: false,
-        },
-        cover: {
             default: false,
         },
         space: {
@@ -53,6 +50,9 @@ export default {
             },
         },
     },
+    components: {
+        Popper,
+    },
     data() {
         return {
             slotName: ["header", "main", "footer"],
@@ -67,27 +67,28 @@ export default {
             lock: {
                 popper: true,
             },
+            showFunc(val) {
+                this.$emit("update:visible", val);
+                if (val) {
+                    this.adjustPopperPosition(this.position);
+                    if (this.delayClose > 0) {
+                        clearTimeout(this.timeout.close);
+                        this.timeout.close = setTimeout(() => {
+                            this._popper.show = false;
+                        }, this.delayClose);
+                    }
+                }
+            },
         };
     },
     watch: {
         visible(val) {
-            if (this._popper.show != val) this._popper.show = val;
+            if (this._popper.show != val) {
+                this._popper.show = val;
+            }
         },
         $theme(val) {
             this._popper.theme = val;
-        },
-        "_popper.show"(val) {
-            this.$emit("update:visible", val);
-            if (val) {
-                this.adjustPopperPosition(this.position);
-
-                if (this.delayClose > 0) {
-                    clearTimeout(this.timeout.close);
-                    this.timeout.close = setTimeout(() => {
-                        this._popper.show = false;
-                    }, this.delayClose);
-                }
-            }
         },
         position(val) {
             this._popper.position = val;
@@ -106,6 +107,9 @@ export default {
         $theme() {
             if (this.theme == "system") return this.$fvGlobal.state.theme;
             return this.theme;
+        },
+        targetElement() {
+            return this.$el.firstChild;
         },
     },
     methods: {
@@ -131,11 +135,11 @@ export default {
             for (let index in vNode) {
                 let node = vNode[index];
                 if (node.tag == "header") {
-                    header.push(node.children);
+                    header.push(...node.children);
                 } else if (node.tag == "main") {
-                    main.push(node.children);
+                    main.push(...node.children);
                 } else if (node.tag == "footer") {
-                    footer.push(node.children);
+                    footer.push(...node.children);
                 }
             }
             return {
@@ -146,7 +150,6 @@ export default {
         },
         initPopper() {
             if (this.effect != "always") this._popper.show = this.visible;
-            this._popper.nodes = this.slot();
             this._popper.theme = this.$theme;
             this._popper.$nextTick(() => {
                 this.adjustPopperPosition(this.position);
@@ -155,46 +158,47 @@ export default {
             this._popper.callout.class = this.popperClass;
             this._popper.target = this;
         },
-        adjustPopperPosition(position) {
-            if (
-                this.disabled ||
-                this.$el.clientHeight == 0 ||
-                this.$el.clientWidth == 0
-            ) {
+        adjustPopperPosition(position, changeVisible = true) {
+            if (this.disabled || this.targetElement.clientHeight == 0 || this.targetElement.clientWidth == 0) {
                 this._popper.show = false;
                 return;
             }
-            this.setPopperPosition(position);
-            let event = this._popper.$el.addEventListener(
-                "transitionend",
-                () => {
-                    this._popper.$nextTick(() => {
-                        if (this.isOutBody(this._popper.$el)) {
-                            this.setPopperPosition(
-                                this.reversePosition(position)
-                            );
-                            this._popper.$nextTick(() => {
-                                if (this.isOutBody(this._popper.$el)) {
-                                    if (this.cover)
-                                        this.setPopperPosition("topLeft");
-                                    else this.setPopperPosition("bottomLeft");
-                                }
-                            });
+            let times = 0;
+            if (changeVisible && this._popper.show) {
+                let event = this._popper.$el.addEventListener("transitionend", () => {
+                    ++times;
+                    if (this.isOutBody(this._popper.$el)) {
+                        if (times == 1) {
+                            this.setPopperPosition(this.reversePosition(position));
+                            return;
+                        } else if (times == 2) {
+                            this.setPopperPosition("bottomLeft");
+                            return;
                         }
-                        this._popper.$el.removeEventListener(
-                            "transitionend",
-                            event
-                        );
-                    });
+                    }
+                    this._popper.$el.removeEventListener("transitionend", event);
+                });
+            }
+            this.setPopperPosition(position);
+            if (!changeVisible && this._popper.show) {
+                for (let times = 1; times < 2; ++times) {
+                    if (this.isOutBody(this._popper.$el)) {
+                        if (times == 1) {
+                            this.setPopperPosition(this.reversePosition(position));
+                            return;
+                        } else if (times == 2) {
+                            this.setPopperPosition("bottomLeft");
+                            return;
+                        }
+                    }
                 }
-            );
+            }
         },
         /**
          * @summary Reverse Position
          */
         reversePosition(position) {
-            if (/^left/.test(position))
-                return position.replace(/^left/, "right");
+            if (/^left/.test(position)) return position.replace(/^left/, "right");
             else if (/^right/.test(position)) {
                 return position.replace(/^right/, "left");
             } else if (/^top/.test(position)) {
@@ -206,9 +210,10 @@ export default {
          * @param {string} position Popper Position
          */
         setPopperPosition(position) {
+            this._popper.position = this.position;
             let callout = this._popper.style.callout;
             let beak = this._popper.style.beak;
-            let target = this.getOffsetBodyXY(this.$el);
+            let target = this.getOffsetBodyXY(this.targetElement);
             if (this.beak < 10 || this.cover) {
                 this.$set(beak, "display", "none");
             } else {
@@ -216,186 +221,72 @@ export default {
                 this.$set(beak, "width", this.beak + "px");
                 this.$set(beak, "height", this.beak + "px");
             }
-            if (!this.cover) {
-                if (/^(bottom|top)/.test(position)) {
-                    if (/^bottom/.test(position)) {
-                        this.$set(
-                            callout,
-                            "top",
-                            target.top +
-                                this.$el.clientHeight +
-                                this.space +
-                                this.beak +
-                                "px"
-                        );
-                        this.$set(beak, "top", "0");
-                    } else {
-                        this.$set(
-                            callout,
-                            "top",
-                            target.top -
-                                this._popper.$el.clientHeight -
-                                this.space -
-                                this.beak +
-                                "px"
-                        );
-                        this.$set(beak, "top", "100%");
-                    }
-                    let width = Math.round(
-                        (this._popper.$el.clientWidth - this.$el.clientWidth) /
-                            2
-                    );
-                    if (/Center$/.test(position)) {
-                        this.$set(callout, "left", target.left - width + "px");
-                        this.$set(beak, "left", "50%");
-                    } else if (/Left$/.test(position)) {
-                        this.$set(callout, "left", target.left + "px");
-                        this.$set(
-                            beak,
-                            "left",
-                            "calc( 0% + " + (this.beak + 10) + "px)"
-                        );
-                    } else {
-                        this.$set(
-                            callout,
-                            "left",
-                            target.left - width * 2 + "px"
-                        );
-                        this.$set(
-                            beak,
-                            "left",
-                            "calc( 100% - " + (this.beak + 10) + "px"
-                        );
-                    }
-                } else if (/^(left|right)/.test(position)) {
-                    if (/^left/.test(position)) {
-                        this.$set(
-                            callout,
-                            "left",
-                            target.left -
-                                this._popper.$el.clientWidth -
-                                this.beak -
-                                this.space +
-                                "px"
-                        );
-                        this.$set(beak, "left", "100%");
-                    } else if (/^right/.test(position)) {
-                        this.$set(
-                            callout,
-                            "left",
-                            target.left +
-                                this.$el.clientWidth +
-                                this.space +
-                                this.beak +
-                                "px"
-                        );
-                        this.$set(beak, "left", "0");
-                    }
-                    let height = Math.round(
-                        (this._popper.$el.clientHeight -
-                            this.$el.clientHeight) /
-                            2
-                    );
-                    if (/Center$/.test(position)) {
-                        this.$set(callout, "top", target.top - height + "px");
-                        this.$set(beak, "top", "50%");
-                    } else if (/Top$/.test(position)) {
-                        this.$set(callout, "top", target.top + "px");
-                        this.$set(beak, "top", this.beak + "px");
-                    } else {
-                        this.$set(
-                            callout,
-                            "top",
-                            target.top - height * 2 + "px"
-                        );
-                        this.$set(
-                            beak,
-                            "top",
-                            "calc(100% - " + this.beak + "px"
-                        );
-                    }
-                }
-            } else {
-                // cover
-                if (/^(bottom|top)/.test(position)) {
-                    if (/^bottom/.test(position)) {
-                        this.$set(
-                            callout,
-                            "top",
-                            target.top +
-                                this.$el.clientHeight -
-                                this._popper.$el.clientHeight +
-                                "px"
-                        );
-                    } else {
-                        this.$set(callout, "top", target.top + "px");
-                    }
-                    let width = Math.round(
-                        (this._popper.$el.clientWidth - this.$el.clientWidth) /
-                            2
-                    );
-                    if (/Center$/.test(position)) {
-                        this.$set(callout, "left", target.left - width + "px");
-                    } else if (/Left$/.test(position)) {
-                        this.$set(callout, "left", target.left + "px");
-                    } else {
-                        this.$set(
-                            callout,
-                            "left",
-                            target.left - width * 2 + "px"
-                        );
-                    }
-                } else if (/^(left|right)/.test(position)) {
-                    if (/^left/.test(position)) {
-                        this.$set(callout, "left", target.left + "px");
-                    } else if (/^right/.test(position)) {
-                        this.$set(
-                            callout,
-                            "left",
-                            target.left +
-                                this.$el.offsetWidth -
-                                this._popper.$el.clientWidth +
-                                "px"
-                        );
-                    }
-                    let height = Math.round(
-                        (this._popper.$el.clientHeight -
-                            this.$el.clientHeight) /
-                            2
-                    );
-                    if (/Center$/.test(position)) {
-                        this.$set(callout, "top", target.top - height + "px");
-                    } else if (/Top$/.test(position)) {
-                        this.$set(callout, "top", target.top + "px");
-                    } else {
-                        this.$set(
-                            callout,
-                            "top",
-                            target.top - height * 2 + "px"
-                        );
-                    }
-                }
+            let space = this.beak + this.space;
+            //clear
+            this.$delete(callout, "right");
+            this.$delete(callout, "left");
+            this.$delete(callout, "top");
+            this.$delete(callout, "bottom");
+
+            this.$set(this._popper.callout, "class", [position]);
+
+            switch (position) {
+                case "bottomLeft":
+                    this.$set(callout, "top", `${target.top + target.height + space}px`);
+                    this.$set(callout, "left", `${target.left}px`);
+                    break;
+                case "bottomRight":
+                    this.$set(callout, "top", `${target.top + target.height + space}px`);
+                    this.$set(callout, "right", `${target.right}px`);
+                    break;
+                case "bottomCenter":
+                    this.$set(callout, "top", `${target.top + target.height + space}px`);
+                    this.$set(callout, "left", `${target.left + target.width / 2}px`);
+                    break;
+                case "topLeft":
+                    this.$set(callout, "top", `${target.top - space}px`);
+                    this.$set(callout, "left", `${target.left}px`);
+                    break;
+                case "topRight":
+                    this.$set(callout, "top", `${target.top - space}px`);
+                    this.$set(callout, "left", `${target.right}px`);
+                    break;
+                case "topCenter":
+                    this.$set(callout, "top", `${target.top - space}px`);
+                    this.$set(callout, "left", `${target.left + target.width / 2}px`);
+                    break;
+                case "leftTop":
+                    this.$set(callout, "left", `${target.left - space}px`);
+                    this.$set(callout, "top", `${target.top}px`);
+                    break;
+                case "leftBottom":
+                    this.$set(callout, "left", `${target.left - space}px`);
+                    this.$set(callout, "top", `${target.bottom}px`);
+                    break;
+                case "leftCenter":
+                    this.$set(callout, "left", `${target.left - space}px`);
+                    this.$set(callout, "top", `${target.top + target.height / 2}px`);
+                    break;
+                case "rightTop":
+                    this.$set(callout, "left", `${target.right + space}px`);
+                    this.$set(callout, "top", `${target.top}px`);
+                    break;
+                case "rightBottom":
+                    this.$set(callout, "left", `${target.right + space}px`);
+                    this.$set(callout, "top", `${target.bottom}px`);
+                    break;
+                case "rightCenter":
+                    this.$set(callout, "left", `${target.right + space}px`);
+                    this.$set(callout, "top", `${target.top + target.height / 2}px`);
+                    break;
             }
         },
         isOutBody(el) {
-            // let body = document.body;
             let target = this.getOffsetBodyXY(el);
-            // let maxHeight = Math.max(body.offsetHeight, window.innerHeight);
-            // let maxWidth = Math.max(body.offsetWidth, window.innerWidth);
-            let maxHeight =
-                window.innerHeight ||
-                document.documentElement.clientHeight ||
-                document.body.clientHeight;
-            let maxWidth =
-                window.innerWidth ||
-                document.documentElement.clientWidth ||
-                document.body.clientWidth;
-            if (
-                target.top < 0 ||
-                target.left < 0 ||
-                target.top + el.clientHeight > maxHeight ||
-                target.left + el.clientWidth > maxWidth
-            ) {
+            console.log(target);
+            let maxHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            let maxWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (target.top < 0 || target.left < 0 || target.top + target.height > maxHeight || target.left + target.width > maxWidth) {
                 return true;
             }
             return false;
@@ -404,21 +295,18 @@ export default {
             if (this.disabled) return;
             this.window = {
                 resize: () => {
-                    this.adjustPopperPosition(this.position);
+                    this.adjustPopperPosition(this.position, false);
                 },
                 scroll: () => {
                     if (!this.lockScroll) {
                         this._popper.show = false;
-                    } else this.adjustPopperPosition(this.position);
+                    } else this.adjustPopperPosition(this.position, false);
                 },
                 click: (evt) => {
                     let isOutSide = (el) => {
                         let parent = el;
                         while (parent) {
-                            if (
-                                parent == this._popper.$el ||
-                                parent == this.$el
-                            ) {
+                            if (parent == this._popper.$el || parent == this.targetElement) {
                                 return false;
                             }
                             parent = parent.parentNode;
@@ -472,10 +360,7 @@ export default {
                     (this.popperEvent.mouseleave = () => {
                         let el = this.$parent;
                         while (el) {
-                            if (
-                                el.$options.name === "FvOutsidePopper" &&
-                                el.target.effect == "hover"
-                            ) {
+                            if (el.$options.name === "FvOutsidePopper" && el.target.effect == "hover") {
                                 if (el.show) {
                                     el.show = false;
                                     el = el.target;
@@ -503,7 +388,7 @@ export default {
                 window.addEventListener(key, this.window[key]);
             }
             for (let key in this.targetEvent) {
-                this.$el.addEventListener(key, this.targetEvent[key]);
+                this.targetElement.addEventListener(key, this.targetEvent[key]);
             }
             for (let key in this.popperEvent) {
                 this._popper.$el.addEventListener(key, this.popperEvent[key]);
@@ -517,109 +402,30 @@ export default {
         },
         getOffsetBodyXY(el) {
             return el.getBoundingClientRect();
-            // let xy = { top: 0, left: 0 };
-            // while (el && el.nodeName && el.nodeName.toLowerCase() != "body") {
-            //   xy.top += el.offsetTop;
-            //   xy.left += el.offsetLeft;
-            //   el = el.offsetParent;
-            // }
-            // return xy;
         },
     },
     mounted() {
+        this._popper = this.$refs.popper;
+        // 添加到body上
+        document.body.append(this._popper.$el);
         this.init();
         this._popper.theme = this.$theme;
-        this._popper.position = this.position;
     },
     render() {
         let target = this.getFirstDefaultSlotElement();
-        return target || <div></div>;
+        let slots = this.slot();
+        return (
+            <div>
+                {target}
+                <Popper ref="popper" nodes={slots}></Popper>
+            </div>
+        );
     },
-    beforeMount() {},
     beforeCreate() {
-        this._popper = new Vue({
-            name: "FvOutsidePopper",
-            data: {
-                target: null,
-                nodes: {
-                    header: [],
-                    main: [],
-                    footer: [],
-                },
-                style: {
-                    callout: {},
-                    beak: {},
-                },
-                callout: {
-                    style: {},
-                    class: [],
-                },
-                transition: "fv-callout-fade",
-                theme: "light",
-                show: false,
-                open: true,
-                width: 0,
-                height: 0,
-                position: "",
-            },
-            render() {
-                return (
-                    <transition name="fv-callout-fade">
-                        <div
-                            name="fv-callout"
-                            style={[
-                                this.style.callout,
-                                this.callout.style,
-                                {
-                                    "transform-origin": `${this.transformOrigin}`,
-                                },
-                            ]}
-                            class={[
-                                "fv-" + this.theme + "-callout",
-                                this.callout.class,
-                            ]}
-                            v-show={this.show}
-                        >
-                            <div class="fv-callout-bg"></div>
-                            <div class="beak" style={this.style.beak}></div>
-                            <div
-                                class="header"
-                                v-show={this.nodes.header.length}
-                            >
-                                {this.nodes.header}
-                            </div>
-                            <div class="main" v-show={this.nodes.main.length}>
-                                {this.nodes.main}
-                            </div>
-                            <div
-                                class="footer"
-                                v-show={this.nodes.footer.length}
-                            >
-                                {this.nodes.footer}
-                            </div>
-                        </div>
-                    </transition>
-                );
-            },
-            computed: {
-                transformOrigin() {
-                    if (this.position == "topLeft") return "0% 100%";
-                    if (this.position == "topRight") return "100% 100%";
-                    if (this.position == "topCenter") return "50% 100%";
-                    if (this.position == "bottomLeft") return "0% 0%";
-                    if (this.position == "bottomRight") return "100% 0%";
-                    if (this.position == "bottomCenter") return "50% 0%";
-                    if (this.position == "leftTop") return "100% 0%";
-                    if (this.position == "leftCenter") return "100% 50%";
-                    if (this.position == "leftBottom") return "100% 100%";
-                    if (this.position == "rightTop") return "0% 0%";
-                    if (this.position == "rightCenter") return "0% 50%";
-                    if (this.position == "rightBottom") return "0% 100%";
-                    return "50% 50%";
-                },
-            },
-        }).$mount();
-        document.body.append(this._popper.$el);
+        // const PopperClass = Vue.extend(Popper);
+        // this._popper = new PopperClass();
+        // this._popper.$mount();
+        // document.body.append(this._popper.$el);
     },
     beforeDestroy() {
         this._popper.$destroy();
@@ -630,13 +436,11 @@ export default {
             window.removeEventListener(key, this.window[key]);
         }
         for (let key in this.targetEvent) {
-            this.$el.removeEventListener(key, this.targetEvent[key]);
+            this.targetElement.removeEventListener(key, this.targetEvent[key]);
         }
         for (let key in this.popperEvent) {
             this._popper.$el.removeEventListener(key, this.popperEvent[key]);
         }
-        // warning: remove dom / memory lack [2020 2 2]
-        this._popper.$el.parentNode.removeChild(this._popper.$el);
     },
 };
 </script>
