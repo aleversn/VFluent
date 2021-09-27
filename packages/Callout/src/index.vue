@@ -92,6 +92,7 @@ export default {
         },
         position(val) {
             this._popper.position = val;
+            this.adjustPopperPosition(val);
         },
         popperStyle(val) {
             this._popper.callout.style = val;
@@ -212,9 +213,10 @@ export default {
         setPopperPosition(position) {
             this._popper.position = this.position;
             let callout = this._popper.style.callout;
+            this._popper.style.beak = {};
             let beak = this._popper.style.beak;
             let target = this.getOffsetBodyXY(this.targetElement);
-            if (this.beak < 10 || this.cover) {
+            if (this.beak < 10) {
                 this.$set(beak, "display", "none");
             } else {
                 this.$set(beak, "display", "block");
@@ -234,50 +236,84 @@ export default {
                 case "bottomLeft":
                     this.$set(callout, "top", `${target.top + target.height + space}px`);
                     this.$set(callout, "left", `${target.left}px`);
+                    this.$set(beak, "top", `0`);
+                    this.$set(beak, "left", `0`);
+                    this.$set(beak, "transform", `translate(50%, -50%) rotate(45deg)`);
                     break;
                 case "bottomRight":
                     this.$set(callout, "top", `${target.top + target.height + space}px`);
-                    this.$set(callout, "right", `${target.right}px`);
+                    this.$set(callout, "left", `${target.right}px`);
+                    this.$set(beak, "top", `0`);
+                    this.$set(beak, "left", `100%`);
+                    this.$set(beak, "transform", `translate(-140%, -50%) rotate(45deg)`);
                     break;
                 case "bottomCenter":
                     this.$set(callout, "top", `${target.top + target.height + space}px`);
                     this.$set(callout, "left", `${target.left + target.width / 2}px`);
+                    this.$set(beak, "top", `0px`);
+                    this.$set(beak, "transform", `translate(-50%, -50%) rotate(45deg)`);
                     break;
                 case "topLeft":
                     this.$set(callout, "top", `${target.top - space}px`);
                     this.$set(callout, "left", `${target.left}px`);
+                    this.$set(beak, "bottom", `0px`);
+                    this.$set(beak, "left", `0px`);
+                    this.$set(beak, "transform", `translate(50%, 50%) rotate(45deg)`);
                     break;
                 case "topRight":
                     this.$set(callout, "top", `${target.top - space}px`);
                     this.$set(callout, "left", `${target.right}px`);
+                    this.$set(beak, "bottom", `0px`);
+                    this.$set(beak, "left", `100%`);
+                    this.$set(beak, "transform", `translate(-140%, 50%) rotate(45deg)`);
                     break;
                 case "topCenter":
                     this.$set(callout, "top", `${target.top - space}px`);
                     this.$set(callout, "left", `${target.left + target.width / 2}px`);
+                    this.$set(beak, "bottom", `0px`);
+                    this.$set(beak, "transform", `translate(-50%, 50%) rotate(45deg)`);
                     break;
                 case "leftTop":
                     this.$set(callout, "left", `${target.left - space}px`);
                     this.$set(callout, "top", `${target.top}px`);
+                    this.$set(beak, "left", `100%`);
+                    this.$set(beak, "top", 0);
+                    this.$set(beak, "transform", `translate(-50%, 50%) rotate(45deg)`);
                     break;
                 case "leftBottom":
                     this.$set(callout, "left", `${target.left - space}px`);
                     this.$set(callout, "top", `${target.bottom}px`);
+                    this.$set(beak, "left", `100%`);
+                    this.$set(beak, "bottom", 0);
+                    this.$set(beak, "transform", `translate(-50%, -80%) rotate(45deg)`);
                     break;
                 case "leftCenter":
                     this.$set(callout, "left", `${target.left - space}px`);
                     this.$set(callout, "top", `${target.top + target.height / 2}px`);
+                    this.$set(beak, "left", `100%`);
+                    this.$set(beak, "top", "50%");
+                    this.$set(beak, "transform", `translate(-50%, -50%) rotate(45deg)`);
                     break;
                 case "rightTop":
                     this.$set(callout, "left", `${target.right + space}px`);
                     this.$set(callout, "top", `${target.top}px`);
+                    this.$set(beak, "left", 0);
+                    this.$set(beak, "top", 0);
+                    this.$set(beak, "transform", `translate(-50%, 50%) rotate(45deg)`);
                     break;
                 case "rightBottom":
                     this.$set(callout, "left", `${target.right + space}px`);
                     this.$set(callout, "top", `${target.bottom}px`);
+                    this.$set(beak, "left", 0);
+                    this.$set(beak, "bottom", 0);
+                    this.$set(beak, "transform", `translate(-50%, -80%) rotate(45deg)`);
                     break;
                 case "rightCenter":
                     this.$set(callout, "left", `${target.right + space}px`);
                     this.$set(callout, "top", `${target.top + target.height / 2}px`);
+                    this.$set(beak, "left", 0);
+                    this.$set(beak, "top", "50%");
+                    this.$set(beak, "transform", `translate(-50%, -50%) rotate(45deg)`);
                     break;
             }
         },

@@ -57,6 +57,7 @@
   }
   &.bottomRight {
     transform-origin: 100% 0%;
+    transform: translate(-100%, 0);
   }
   &.topLeft {
     transform: translate(0, -100%);
@@ -82,7 +83,7 @@
     transform: translate(-100%, -50%);
     transform-origin: 100% 50%;
   }
-  &.rightTop{
+  &.rightTop {
     transform-origin: 0% 0%;
   }
   &.rightBottom {
@@ -104,6 +105,9 @@
   opacity: 0;
   &.bottomCenter {
     transform: translate(-50%, 0) scale(0);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(0);
   }
   &.topLeft {
     transform: translate(0, -100%) scale(0);
@@ -136,6 +140,9 @@
   opacity: 1;
   &.bottomCenter {
     transform: translate(-50%, 0) scale(1);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(1);
   }
   &.topLeft {
     transform: translate(0, -100%) scale(1);
@@ -172,6 +179,9 @@
   &.bottomCenter {
     transform: translate(-50%, 0) scale(1);
   }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(1);
+  }
   &.topLeft {
     transform: translate(0, -100%) scale(1);
   }
@@ -202,6 +212,9 @@
   transform: scale(0);
   &.bottomCenter {
     transform: translate(-50%, 0) scale(0);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(0);
   }
   &.topLeft {
     transform: translate(0, -100%) scale(0);
