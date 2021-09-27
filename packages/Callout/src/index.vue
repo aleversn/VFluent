@@ -283,7 +283,6 @@ export default {
         },
         isOutBody(el) {
             let target = this.getOffsetBodyXY(el);
-            console.log(target);
             let maxHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
             let maxWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
             if (target.top < 0 || target.left < 0 || target.top + target.height > maxHeight || target.left + target.width > maxWidth) {
