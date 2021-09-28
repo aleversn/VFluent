@@ -5,7 +5,7 @@
 		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
 	>
         <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground}">
-            <input :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
+            <input class="input" :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
 		    <i class="ms-Icon right-icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </div>
 		<transition name="fv-combobox">
