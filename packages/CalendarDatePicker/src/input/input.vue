@@ -2,7 +2,7 @@
 <div class="calendar-picker-drop-down" :style="styles.dropDownBox" :title="inputValue">
     <div class="calendar-picker-drop-down-container">
         <slot name="input" :placeholder="placeholder" :value="inputValue">
-            <input :placeholder="placeholder" readonly :value="inputValue" :style="styles.input"/>
+            <input class="input" :placeholder="placeholder" readonly :value="inputValue" :style="styles.input"/>
             <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" aria-hidden="true" :style="styles.icon"></i>
         </slot>
     </div>

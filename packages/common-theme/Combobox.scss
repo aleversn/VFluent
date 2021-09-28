@@ -29,7 +29,7 @@
         align-items: center;
         box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
 
-        input
+        .input
         {
             position: relative;
             width: 100%;
@@ -208,7 +208,7 @@
             background: rgba(243,242,241,1);
             box-shadow: none;
 
-            input
+            .input
             {
                 background: rgba(243,242,241,1);
                 color: rgba(161,159,157,0.6);
