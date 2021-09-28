@@ -230,7 +230,7 @@ export default {
             this.$delete(callout, "top");
             this.$delete(callout, "bottom");
 
-            this.$set(this._popper.callout, "class", [position]);
+            this.$set(this._popper.class, "callout", [position]);
 
             switch (position) {
                 case "bottomLeft":

@@ -20,6 +20,9 @@ export default {
                 callout: {},
                 beak: {},
             },
+            class:{
+                callout:[]
+            },
             callout: {
                 style: {},
                 class: [],
@@ -51,7 +54,7 @@ export default {
                         this.style.callout,
                         this.callout.style,
                     ]}
-                    class={["fv-" + this.theme + "-callout", this.callout.class]}
+                    class={["fv-" + this.theme + "-callout", this.callout.class,this.class.callout]}
                     v-show={this.show}
                 >
                     <div class="fv-callout-bg"></div>
