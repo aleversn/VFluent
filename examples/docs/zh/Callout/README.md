@@ -12,7 +12,7 @@
         text:"1233",
         show:true,
         color:'rgba(36, 36, 36, 1)',
-        beak:9,
+        beak:10,
         space:0,
         position:{key:'topLeft',text:'topLeft'},
         options:[
