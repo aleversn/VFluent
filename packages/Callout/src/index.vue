@@ -57,7 +57,7 @@ export default {
     data() {
         return {
             slotNames: ['header', 'main', 'footer'],
-            positionName: ['topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight', 'leftTop', 'leftCenter', 'leftRight', 'rightTop', 'rightCenter', 'rightBottom'],
+            positionName: ['topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight', 'leftTop', 'leftCenter', 'leftBottom', 'rightTop', 'rightCenter', 'rightBottom'],
             window: {},
             targetEvent: {},
             popperEvent: {},
