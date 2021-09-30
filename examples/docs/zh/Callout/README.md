@@ -78,7 +78,7 @@
     <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
   </main>
 </fv-callout>
-```
+``` 
 
 ### Callout Custom 
 

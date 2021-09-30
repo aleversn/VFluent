@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: "FvOutsidePopper",
+    name: 'FvOutsidePopper',
     props: {
         nodes: {
             type: Object,
@@ -9,54 +9,56 @@ export default {
                     main: [],
                     header: [],
                     footer: [],
-                };
+                }
             },
+        },
+        popperStyle: {
+            type: Object,
+            default: () => {},
+        },
+        popperClass: {
+            type: Array,
+            default: () => [],
+        },
+        show: {
+            type: Boolean,
+            default: false,
+        },
+        theme: {
+            type: String,
+            default: 'light',
         },
     },
     data() {
         return {
-            target: null,
             style: {
                 callout: {},
                 beak: {},
             },
-            class:{
-                callout:[]
+            class: {
+                callout: [],
             },
-            callout: {
-                style: {},
-                class: [],
-            },
-            transition: "fv-callout-fade",
-            theme: "light",
-            show: false,
-            open: true,
-            width: 0,
-            height: 0,
-            position: "",
-            visibility: "visible",
-            transitionStyle: undefined,
-        };
+            transition: 'fv-callout-fade',
+            target:null,
+            targetElement:null
+        }
     },
-    watch: {
-        show(val,oldVal) {
-            if (this.target != null) {
-                this.target.showFunc(val);
+    computed: {
+        popperShow() {
+            if (!this.targetElement){
+                return false;
             }
+            const rect = this.targetElement.getBoundingClientRect()
+            if (this.target.disabled || rect.width == 0 || rect.height == 0) {
+                return false
+            }
+            return this.show
         },
     },
     render() {
         return (
             <transition name="fv-callout-fade">
-                <div
-                    name="fv-callout"
-                    style={[
-                        this.style.callout,
-                        this.callout.style,
-                    ]}
-                    class={["fv-" + this.theme + "-callout", this.callout.class,this.class.callout]}
-                    v-show={this.show}
-                >
+                <div name="fv-callout" style={[this.style.callout, this.popperStyle]} class={['fv-' + this.theme + '-callout', this.popperClass, this.class.callout]} v-show={this.popperShow}>
                     <div class="fv-callout-bg"></div>
                     <div class="beak" style={this.style.beak}></div>
                     <div class="header" v-show={this.nodes.header.length} key="header">
@@ -70,9 +72,9 @@ export default {
                     </div>
                 </div>
             </transition>
-        );
+        )
     },
-};
+}
 </script>
 
 <style>
