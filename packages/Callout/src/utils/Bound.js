@@ -33,3 +33,5 @@ function getBoundingRect(el) {
 
 
 export { getBoundingRect }
+
+export default getBoundingRect

@@ -1,6 +1,6 @@
 <script>
-import Popper from './popper.vue'
-import { getBoundingRect } from './utils/Bound.js'
+import Popper from './popper.vue';
+import {getBoundingRect} from './utils/Bound.js';
 export default {
     name: 'FvCallout',
     components: {
