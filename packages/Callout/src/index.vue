@@ -1,6 +1,6 @@
 <script>
 import Popper from './popper.vue';
-import {getBoundingRect} from './utils/Bound.js';
+import { getBoundingRect } from './utils/Bound.js';
 export default {
     name: 'FvCallout',
     components: {
@@ -45,12 +45,12 @@ export default {
         },
         popperStyle: {
             default: () => {
-                return {}
+                return {};
             },
         },
         popperClass: {
             default: () => {
-                return []
+                return [];
             },
         },
     },
@@ -71,88 +71,90 @@ export default {
             cached: {
                 visible: this.visible || false,
             },
-        }
+        };
     },
     watch: {
         position(val) {
-            this.adjustPopperPosition(val)
+            this.adjustPopperPosition(val);
         },
-        disabled(val) {
-            if (val) this.init()
+        disabled() {
+            this.init();
         },
     },
     computed: {
         _popper() {
-            return this.$refs.popper
+            return this.$refs.popper;
         },
         $theme() {
-            if (this.theme == 'system') return this.$fvGlobal.state.theme
-            return this.theme
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
+            return this.theme;
         },
         popperShow: {
             set(val) {
                 if (val) {
-                    this.adjustPopperPosition(this.position)
+                    this.adjustPopperPosition(this.position);
                 }
-                this.$emit('update:visible', val)
-                this.cached.visible = val
+                // 修复disabled后仍修改show值的设定
+                if (!this.disabled) this.$emit('update:visible', val);
+                this.cached.visible = val;
             },
             get() {
+                if (this.disabled) return false;
                 if (this.visible != undefined) {
-                    return this.visible
+                    return this.visible;
                 }
-                return this.cached.visible
+                return this.cached.visible;
             },
         },
     },
     render() {
-        let target = this.getFirstDefaultSlotElement()
-        let slots = this.slot()
+        let target = this.getFirstDefaultSlotElement();
+        let slots = this.slot();
         return (
             <div>
                 {target}
                 <Popper ref="popper" theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} nodes={slots} />
             </div>
-        )
+        );
     },
     methods: {
         /**
          * 获取第一个VNode
          */
         getFirstDefaultSlotElement() {
-            let vNode = this.$slots.default
-            if (!Array.isArray(vNode)) return null
+            let vNode = this.$slots.default;
+            if (!Array.isArray(vNode)) return null;
             for (let index in vNode) {
-                let node = vNode[index]
+                let node = vNode[index];
                 if (node.tag != undefined) {
                     if (this.slotNames.indexOf(node.tag) == -1) {
-                        return node
+                        return node;
                     }
                 }
             }
-            return null
+            return null;
         },
         /**
          * 获取slot
          */
         slot() {
-            let vNode = this.$slots.default
-            if (!Array.isArray(vNode)) return null
+            let vNode = this.$slots.default;
+            if (!Array.isArray(vNode)) return null;
             let slots = {
                 header: [],
                 main: [],
                 footer: [],
-            }
+            };
             for (let index in vNode) {
-                let node = vNode[index]
+                let node = vNode[index];
                 for (let slotName of this.slotNames) {
                     if (node.tag == slotName) {
-                        slots[slotName].push(...node.children)
-                        break
+                        slots[slotName].push(...node.children);
+                        break;
                     }
                 }
             }
-            return slots
+            return slots;
         },
         /**
          * 调整悬浮的位置
@@ -160,24 +162,24 @@ export default {
          */
         adjustPopperPosition(position) {
             // 检查是否有超出范围
-            const rect = getBoundingRect(this._popper.$el)
+            const rect = getBoundingRect(this._popper.$el);
             // 获取了元素显示的宽高
-            const { width, height } = rect
+            const { width, height } = rect;
             // 循环枚举方向
-            let startIndex = this.positionName.indexOf(position)
-            let showFlag = false
+            let startIndex = this.positionName.indexOf(position);
+            let showFlag = false;
             for (let index = 0; index < this.positionName.length; ++index) {
-                startIndex = (startIndex + index) % this.positionName.length
-                let position = this.positionName[startIndex]
-                let predictRect = this.locate(this._popper.targetElement, this.beak + this.space, position, height, width)
+                startIndex = (startIndex + index) % this.positionName.length;
+                let position = this.positionName[startIndex];
+                let predictRect = this.locate(this._popper.targetElement, this.beak + this.space, position, height, width);
                 if (!this.isOutBody(predictRect)) {
-                    this.setPopperPosition(position)
-                    showFlag = true
-                    break
+                    this.setPopperPosition(position);
+                    showFlag = true;
+                    break;
                 }
             }
             if (!showFlag) {
-                this.setPopperPosition(position)
+                this.setPopperPosition(position);
             }
         },
         /**
@@ -190,64 +192,64 @@ export default {
          * @returns {DOMRect} 位置
          */
         locate(targetElement, offset, position, height, width) {
-            let rect =  getBoundingRect(targetElement)
+            let rect = getBoundingRect(targetElement);
             let el = {
                 top: 0,
                 left: 0,
                 height,
                 width,
-            }
+            };
             switch (position) {
                 case 'bottomLeft':
-                    el.left = rect.left
-                    el.top = rect.bottom + offset
-                    break
+                    el.left = rect.left;
+                    el.top = rect.bottom + offset;
+                    break;
                 case 'bottomCenter':
-                    el.left = rect.left + (rect.width - el.width) / 2.0
-                    el.top = rect.bottom + offset
-                    break
+                    el.left = rect.left + (rect.width - el.width) / 2.0;
+                    el.top = rect.bottom + offset;
+                    break;
                 case 'bottomRight':
-                    el.left = rect.right - el.width
-                    el.top = rect.bottom + offset
-                    break
+                    el.left = rect.right - el.width;
+                    el.top = rect.bottom + offset;
+                    break;
                 case 'topLeft':
-                    el.left = rect.left
-                    el.top = rect.top - offset - el.height
-                    break
+                    el.left = rect.left;
+                    el.top = rect.top - offset - el.height;
+                    break;
                 case 'topCenter':
-                    el.left = rect.left + (rect.width - el.width) / 2.0
-                    el.top = rect.top - offset - el.height
-                    break
+                    el.left = rect.left + (rect.width - el.width) / 2.0;
+                    el.top = rect.top - offset - el.height;
+                    break;
                 case 'topRight':
-                    el.left = rect.right - el.width
-                    el.top = rect.top - offset - el.height
-                    break
+                    el.left = rect.right - el.width;
+                    el.top = rect.top - offset - el.height;
+                    break;
                 case 'leftTop':
-                    el.left = rect.left - offset - el.width
-                    el.top = rect.top
-                    break
+                    el.left = rect.left - offset - el.width;
+                    el.top = rect.top;
+                    break;
                 case 'leftCenter':
-                    el.left = rect.left - offset - el.width
-                    el.top = rect.top + (rect.height - el.height) / 2.0
-                    break
+                    el.left = rect.left - offset - el.width;
+                    el.top = rect.top + (rect.height - el.height) / 2.0;
+                    break;
                 case 'leftBottom':
-                    el.left = rect.left - offset - el.width
-                    el.top = rect.bottom - el.height
-                    break
+                    el.left = rect.left - offset - el.width;
+                    el.top = rect.bottom - el.height;
+                    break;
                 case 'rightTop':
-                    el.left = rect.right + offset
-                    el.top = rect.top
-                    break
+                    el.left = rect.right + offset;
+                    el.top = rect.top;
+                    break;
                 case 'rightCenter':
-                    el.left = rect.right + offset
-                    el.top = rect.top + (rect.height - el.height) / 2.0
-                    break
+                    el.left = rect.right + offset;
+                    el.top = rect.top + (rect.height - el.height) / 2.0;
+                    break;
                 case 'rightBottom':
-                    el.left = rect.right + offset
-                    el.top = rect.bottom - el.height
-                    break
+                    el.left = rect.right + offset;
+                    el.top = rect.bottom - el.height;
+                    break;
             }
-            return el
+            return el;
         },
         /**
          * @param rect {DOMRect} 边界
@@ -255,247 +257,261 @@ export default {
          */
         isOutBody(rect) {
             if (rect.left < 0 || rect.top < 0 || rect.height + rect.top > window.innerHeight || rect.width + rect.left > window.innerWidth) {
-                return true
+                return true;
             }
-            return false
+            return false;
         },
         /**
          * @summary 设置悬浮的位置
          * @param {string} position Popper Position
          */
         setPopperPosition(position) {
-            this._popper.position = this.position
-            let callout = this._popper.style.callout
-            this._popper.style.beak = {}
-            let beak = this._popper.style.beak
-            let target = getBoundingRect(this._popper.targetElement)
+            this._popper.position = this.position;
+            let callout = this._popper.style.callout;
+            this._popper.style.beak = {};
+            let beak = this._popper.style.beak;
+            let target = getBoundingRect(this._popper.targetElement);
             if (this.beak < 10) {
-                this.$set(beak, 'display', 'none')
+                this.$set(beak, 'display', 'none');
             } else {
-                this.$set(beak, 'display', 'block')
-                this.$set(beak, 'width', this.beak + 'px')
-                this.$set(beak, 'height', this.beak + 'px')
+                this.$set(beak, 'display', 'block');
+                this.$set(beak, 'width', this.beak + 'px');
+                this.$set(beak, 'height', this.beak + 'px');
             }
-            let space = this.beak + this.space
+            let space = this.beak + this.space;
             //clear
-            this.$delete(callout, 'right')
-            this.$delete(callout, 'left')
-            this.$delete(callout, 'top')
-            this.$delete(callout, 'bottom')
+            this.$delete(callout, 'right');
+            this.$delete(callout, 'left');
+            this.$delete(callout, 'top');
+            this.$delete(callout, 'bottom');
 
-            this.$set(this._popper.class, 'callout', [position])
+            this.$set(this._popper.class, 'callout', [position]);
 
             switch (position) {
                 case 'bottomLeft':
-                    this.$set(callout, 'top', `${target.top + target.height + space}px`)
-                    this.$set(callout, 'left', `${target.left}px`)
-                    this.$set(beak, 'top', `0`)
-                    this.$set(beak, 'left', `0`)
-                    this.$set(beak, 'transform', `translate(50%, -50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'top', `${target.top + target.height + space}px`);
+                    this.$set(callout, 'left', `${target.left}px`);
+                    this.$set(beak, 'top', `0`);
+                    this.$set(beak, 'left', `0`);
+                    this.$set(beak, 'transform', `translate(50%, -50%) rotate(45deg)`);
+                    break;
                 case 'bottomRight':
-                    this.$set(callout, 'top', `${target.top + target.height + space}px`)
-                    this.$set(callout, 'left', `${target.right}px`)
-                    this.$set(beak, 'top', `0`)
-                    this.$set(beak, 'left', `100%`)
-                    this.$set(beak, 'transform', `translate(-140%, -50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'top', `${target.top + target.height + space}px`);
+                    this.$set(callout, 'left', `${target.right}px`);
+                    this.$set(beak, 'top', `0`);
+                    this.$set(beak, 'left', `100%`);
+                    this.$set(beak, 'transform', `translate(-140%, -50%) rotate(45deg)`);
+                    break;
                 case 'bottomCenter':
-                    this.$set(callout, 'top', `${target.top + target.height + space}px`)
-                    this.$set(callout, 'left', `${target.left + target.width / 2}px`)
-                    this.$set(beak, 'top', `0px`)
-                    this.$set(beak, 'transform', `translate(-50%, -50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'top', `${target.top + target.height + space}px`);
+                    this.$set(callout, 'left', `${target.left + target.width / 2}px`);
+                    this.$set(beak, 'top', `0px`);
+                    this.$set(beak, 'transform', `translate(-50%, -50%) rotate(45deg)`);
+                    break;
                 case 'topLeft':
-                    this.$set(callout, 'top', `${target.top - space}px`)
-                    this.$set(callout, 'left', `${target.left}px`)
-                    this.$set(beak, 'bottom', `0px`)
-                    this.$set(beak, 'left', `0px`)
-                    this.$set(beak, 'transform', `translate(50%, 50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'top', `${target.top - space}px`);
+                    this.$set(callout, 'left', `${target.left}px`);
+                    this.$set(beak, 'bottom', `0px`);
+                    this.$set(beak, 'left', `0px`);
+                    this.$set(beak, 'transform', `translate(50%, 50%) rotate(45deg)`);
+                    break;
                 case 'topRight':
-                    this.$set(callout, 'top', `${target.top - space}px`)
-                    this.$set(callout, 'left', `${target.right}px`)
-                    this.$set(beak, 'bottom', `0px`)
-                    this.$set(beak, 'left', `100%`)
-                    this.$set(beak, 'transform', `translate(-140%, 50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'top', `${target.top - space}px`);
+                    this.$set(callout, 'left', `${target.right}px`);
+                    this.$set(beak, 'bottom', `0px`);
+                    this.$set(beak, 'left', `100%`);
+                    this.$set(beak, 'transform', `translate(-140%, 50%) rotate(45deg)`);
+                    break;
                 case 'topCenter':
-                    this.$set(callout, 'top', `${target.top - space}px`)
-                    this.$set(callout, 'left', `${target.left + target.width / 2}px`)
-                    this.$set(beak, 'bottom', `0px`)
-                    this.$set(beak, 'transform', `translate(-50%, 50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'top', `${target.top - space}px`);
+                    this.$set(callout, 'left', `${target.left + target.width / 2}px`);
+                    this.$set(beak, 'bottom', `0px`);
+                    this.$set(beak, 'transform', `translate(-50%, 50%) rotate(45deg)`);
+                    break;
                 case 'leftTop':
-                    this.$set(callout, 'left', `${target.left - space}px`)
-                    this.$set(callout, 'top', `${target.top}px`)
-                    this.$set(beak, 'left', `100%`)
-                    this.$set(beak, 'top', 0)
-                    this.$set(beak, 'transform', `translate(-50%, 50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'left', `${target.left - space}px`);
+                    this.$set(callout, 'top', `${target.top}px`);
+                    this.$set(beak, 'left', `100%`);
+                    this.$set(beak, 'top', 0);
+                    this.$set(beak, 'transform', `translate(-50%, 50%) rotate(45deg)`);
+                    break;
                 case 'leftBottom':
-                    this.$set(callout, 'left', `${target.left - space}px`)
-                    this.$set(callout, 'top', `${target.bottom}px`)
-                    this.$set(beak, 'left', `100%`)
-                    this.$set(beak, 'bottom', 0)
-                    this.$set(beak, 'transform', `translate(-50%, -80%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'left', `${target.left - space}px`);
+                    this.$set(callout, 'top', `${target.bottom}px`);
+                    this.$set(beak, 'left', `100%`);
+                    this.$set(beak, 'bottom', 0);
+                    this.$set(beak, 'transform', `translate(-50%, -80%) rotate(45deg)`);
+                    break;
                 case 'leftCenter':
-                    this.$set(callout, 'left', `${target.left - space}px`)
-                    this.$set(callout, 'top', `${target.top + target.height / 2}px`)
-                    this.$set(beak, 'left', `100%`)
-                    this.$set(beak, 'top', '50%')
-                    this.$set(beak, 'transform', `translate(-50%, -50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'left', `${target.left - space}px`);
+                    this.$set(callout, 'top', `${target.top + target.height / 2}px`);
+                    this.$set(beak, 'left', `100%`);
+                    this.$set(beak, 'top', '50%');
+                    this.$set(beak, 'transform', `translate(-50%, -50%) rotate(45deg)`);
+                    break;
                 case 'rightTop':
-                    this.$set(callout, 'left', `${target.right + space}px`)
-                    this.$set(callout, 'top', `${target.top}px`)
-                    this.$set(beak, 'left', 0)
-                    this.$set(beak, 'top', 0)
-                    this.$set(beak, 'transform', `translate(-50%, 50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'left', `${target.right + space}px`);
+                    this.$set(callout, 'top', `${target.top}px`);
+                    this.$set(beak, 'left', 0);
+                    this.$set(beak, 'top', 0);
+                    this.$set(beak, 'transform', `translate(-50%, 50%) rotate(45deg)`);
+                    break;
                 case 'rightBottom':
-                    this.$set(callout, 'left', `${target.right + space}px`)
-                    this.$set(callout, 'top', `${target.bottom}px`)
-                    this.$set(beak, 'left', 0)
-                    this.$set(beak, 'bottom', 0)
-                    this.$set(beak, 'transform', `translate(-50%, -80%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'left', `${target.right + space}px`);
+                    this.$set(callout, 'top', `${target.bottom}px`);
+                    this.$set(beak, 'left', 0);
+                    this.$set(beak, 'bottom', 0);
+                    this.$set(beak, 'transform', `translate(-50%, -80%) rotate(45deg)`);
+                    break;
                 case 'rightCenter':
-                    this.$set(callout, 'left', `${target.right + space}px`)
-                    this.$set(callout, 'top', `${target.top + target.height / 2}px`)
-                    this.$set(beak, 'left', 0)
-                    this.$set(beak, 'top', '50%')
-                    this.$set(beak, 'transform', `translate(-50%, -50%) rotate(45deg)`)
-                    break
+                    this.$set(callout, 'left', `${target.right + space}px`);
+                    this.$set(callout, 'top', `${target.top + target.height / 2}px`);
+                    this.$set(beak, 'left', 0);
+                    this.$set(beak, 'top', '50%');
+                    this.$set(beak, 'transform', `translate(-50%, -50%) rotate(45deg)`);
+                    break;
             }
         },
         initWindowEvent() {
-            if (this.disabled) return
+            if (this.disabled) return;
             this.window = {
                 resize: () => {
-                    this.adjustPopperPosition(this.position)
+                    this.adjustPopperPosition(this.position);
                 },
                 scroll: () => {
                     if (!this.lockScroll) {
-                        this.popperShow = false
-                    } else this.adjustPopperPosition(this.position)
+                        this.popperShow = false;
+                    } else this.adjustPopperPosition(this.position);
                 },
                 click: (evt) => {
+                    if (!this.popperShow) return;
                     let isOutSide = (el) => {
-                        let parent = el
+                        let parent = el;
                         while (parent) {
-                            if (parent == this._popper.$el || parent == this._popper.targetElement) {
-                                return false
+                            if (parent == this._popper.$el || parent == this.$el) {
+                                return false;
                             }
-                            parent = parent.parentNode
+                            parent = parent.parentNode;
                         }
-                        return true
-                    }
+                        return true;
+                    };
                     if (!this.focusTrap && isOutSide(evt.target)) {
-                        this.popperShow = false
+                        this.popperShow = false;
                     }
                 },
-            }
+            };
         },
         initTargetEvent() {
+            if (this.disabled) return;
             if (this.effect === 'click') {
                 this.targetEvent.click = () => {
-                    this.popperShow = !this.popperShow
-                }
+                    this.popperShow = !this.popperShow;
+                };
             } else if (this.effect === 'hover') {
                 // 目标鼠标移入
                 this.targetEvent.mouseenter = () => {
-                    this.lock.popper = true
-                    clearInterval(this.timeout.hoverClose)
-                    this.popperShow = true
-                }
+                    this.lock.popper = true;
+                    clearInterval(this.timeout.hoverClose);
+                    this.popperShow = true;
+                };
                 // 目标鼠标移出
                 this.targetEvent.mouseleave = () => {
-                    if (!this.lock.popper) return
-                    this.lock.popper = false
+                    if (!this.lock.popper) return;
+                    this.lock.popper = false;
                     this.timeout.hoverClose = setInterval(() => {
-                        this.popperShow = false
-                        this.lock.popper = true
-                        clearInterval(this.timeout.hoverClose)
-                    }, 300)
-                }
+                        this.popperShow = false;
+                        this.lock.popper = true;
+                        clearInterval(this.timeout.hoverClose);
+                    }, 300);
+                };
                 this.popperEvent.mouseenter = () => {
-                    let el = this.$parent
+                    let el = this.$parent;
                     while (el) {
                         if (el.$options.name === 'FvOutsidePopper') {
                             if (!el.show) {
-                                this.popperShow = true
-                                el = el.target
+                                this.popperShow = true;
+                                el = el.target;
                             } else {
-                                break
+                                break;
                             }
                         } else {
-                            el = el.$parent
+                            el = el.$parent;
                         }
                     }
-                    this.lock.popper = true
-                    this.popperShow = true
-                    clearInterval(this.timeout.hoverClose)
-                }
+                    this.lock.popper = true;
+                    this.popperShow = true;
+                    clearInterval(this.timeout.hoverClose);
+                };
                 this.popperEvent.mouseleave = () => {
-                    let el = this.$parent
+                    let el = this.$parent;
                     while (el) {
                         if (el.$options.name === 'FvOutsidePopper' && el.target.effect == 'hover') {
                             if (el.show) {
-                                this.popperShow = false
-                                el = el.target
+                                this.popperShow = false;
+                                el = el.target;
                             } else {
-                                break
+                                break;
                             }
                         } else {
-                            el = el.$parent
+                            el = el.$parent;
                         }
                     }
-                    this.popperShow = false
-                }
+                    this.popperShow = false;
+                };
             }
         },
         init() {
-            this._popper.target = this
-            this._popper.targetElement = this.$el.firstElementChild
-            this.initWindowEvent()
-            this.initTargetEvent()
+            this._popper.target = this;
+            this._popper.targetElement = this.$el.firstElementChild;
+            this.destoryEvent();
+            this.initWindowEvent();
+            this.initTargetEvent();
+            this.initEvent();
+        },
+        initEvent() {
+            if (this.disabled) return;
             for (let key in this.window) {
-                window.addEventListener(key, this.window[key])
+                window.addEventListener(key, this.window[key]);
             }
             for (let key in this.targetEvent) {
-                this._popper.targetElement.addEventListener(key, this.targetEvent[key])
+                this._popper.targetElement.addEventListener(key, this.targetEvent[key]);
             }
             for (let key in this.popperEvent) {
-                this._popper.$el.addEventListener(key, this.popperEvent[key])
+                this._popper.$el.addEventListener(key, this.popperEvent[key]);
             }
             if (this.delayClose > 0 && this.popperShow) {
                 this.timeout.close = setTimeout(() => {
-                    this.popperShow = false
-                }, this.delayClose)
+                    this.popperShow = false;
+                }, this.delayClose);
             }
+        },
+        destoryEvent() {
+            if (this.timeout)
+                for (let key in this.timeout) {
+                    clearTimeout(this.timeout[key]);
+                }
+            if (this.window)
+                for (let key in this.window) {
+                    window.removeEventListener(key, this.window[key]);
+                }
+            if (this.targetEvent)
+                for (let key in this.targetEvent) {
+                    this._popper.targetElement.removeEventListener(key, this.targetEvent[key]);
+                }
+            if (this.popperEvent)
+                for (let key in this.popperEvent) {
+                    this._popper.$el.removeEventListener(key, this.popperEvent[key]);
+                }
         },
     },
     mounted() {
-        document.body.append(this._popper.$el)
-        this.init()
+        document.body.append(this._popper.$el);
+        this.init();
     },
     beforeDestroy() {
-        for (let key in this.timeout) {
-            clearTimeout(this.timeout[key])
-        }
-        for (let key in this.window) {
-            window.removeEventListener(key, this.window[key])
-        }
-        for (let key in this.targetEvent) {
-            this._popper.targetElement.removeEventListener(key, this.targetEvent[key])
-        }
-        for (let key in this.popperEvent) {
-            this._popper.$el.removeEventListener(key, this.popperEvent[key])
-        }
-        this._popper.$el.remove()
-        this._popper.$destroy()
+        this.destoryEvent();
+        this._popper.$el.remove();
+        this._popper.$destroy();
     },
-}
+};
 </script>

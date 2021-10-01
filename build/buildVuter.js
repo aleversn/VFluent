@@ -22,7 +22,7 @@ const getCompoentAttributes = (compoentName) => {
         }
 
     js = js.replace(/<\/{0,1}script>/g, "").replace(/export default (\{[\s\S]*\});{0,1}/mg, "($1)").replace(/;\s*$/g, "").replace(/import (.*) from ["']{1}.*["']{1}/g, "const $1={};").replace(/import ".*css";/g, "");
-    
+
     js = babel.transform(js, {
         filename: "buildVuter.js",
         presets: ["@vue/babel-preset-app"],
@@ -68,15 +68,15 @@ const getCompoentAttributeDetails = (compoentName) => {
     let propsTable = vueSingleReadme.match(/### Propoties\r\n---\r\n\|[\s\S]*?\r\n\r\n/m)
     let componentDetails = {}
     if (propsTable && propsTable.length > 0) {
-        propsTable = decodeMarkdownTable(propsTable[0])    
+        propsTable = decodeMarkdownTable(propsTable[0])
         for (let index = 2; index < propsTable.length; ++index) {
             let items = propsTable[index]
             let obj = {}
             try {
                 let options = eval(`(${items[1]})`)
-                if (options.length>0 && typeof options[0]=="function"){
+                if (options.length > 0 && typeof options[0] == "function") {
                     obj.type = typeof options[0]()
-                }else
+                } else
                     obj.options = options
             } catch {
                 let type = items[1].replace(/[\[\]]/g, "").replace(/\(.*\)/g, "")
@@ -89,7 +89,7 @@ const getCompoentAttributeDetails = (compoentName) => {
     }
 
     let eventsTable = vueSingleReadme.match(/### Events\r\n---\r\n\|[\s\S]*?\r\n\r\n/m);
-    if ( eventsTable && eventsTable.length > 0) {
+    if (eventsTable && eventsTable.length > 0) {
         eventsTable = decodeMarkdownTable(eventsTable[0])
         for (let index = 2; index < eventsTable.length; ++index) {
             let items = eventsTable[index]
@@ -116,5 +116,5 @@ for (let compoentName in components) {
 }
 
 
-fileSave(path.join(__dirname,"../vetur/tags.json")).write(JSON.stringify(tags,null,2),'utf8').end('\n')
-fileSave(path.join(__dirname,"../vetur/attributes.json")).write(JSON.stringify(attributes,null,2),'utf8').end('\n')
+fileSave(path.join(__dirname, "../vetur/tags.json")).write(JSON.stringify(tags, null, 2), 'utf8').end('\n')
+fileSave(path.join(__dirname, "../vetur/attributes.json")).write(JSON.stringify(attributes, null, 2), 'utf8').end('\n')
