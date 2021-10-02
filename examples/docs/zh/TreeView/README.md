@@ -87,28 +87,15 @@ sidebarDepth: 2
 
 [[toc]]
 
-
-<div :style="divStyle">
-THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$theme"/>
-</div>
-
-<!-- <div :style="divStyle">
-<div v-html="json(files)">
-</div>
-</div> -->
-
 ### TreeView
 
 <!-- <ClientOnly> -->
-<div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files" style="width:200px">
+<fv-TreeView v-model="files" style="width:200px">
 </fv-TreeView>
-</div>
 <!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
-  :theme="$theme" 
   v-model="files">
 </fv-TreeView>
 ```
@@ -116,15 +103,12 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 ### TreeView Expand Position
 
 <!-- <ClientOnly> -->
-<div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files" expandedIconPosition="right" style="width:200px">
+<fv-TreeView  v-model="files" expandedIconPosition="right" style="width:200px">
 </fv-TreeView>
-</div>
 <!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
-  :theme="$theme" 
   v-model="files"
   expandedIconPosition="right">
 </fv-TreeView>
@@ -132,16 +116,12 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 
 ### TreeView Chcekable
 
-<!-- <ClientOnly> -->
-<div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
+<fv-TreeView v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
 </fv-TreeView>
-</div>
-<!-- </ClientOnly> -->
+
 
 ``` vue
 <fv-TreeView 
-  :theme="$theme" 
   v-model="files" 
   :checkable="true"
   expandedIconPosition="right"
@@ -172,7 +152,6 @@ foregroundColor:
 </fv-callout>
 </ClientOnly>
 
-<div :style="divStyle">
 <fv-TreeView 
   :theme="$theme" 
   v-model="files" 
@@ -183,7 +162,6 @@ foregroundColor:
   :draggable="true" 
   :space="10">
 </fv-TreeView>
-</div>
 
 ``` vue 
 <fv-TreeView 

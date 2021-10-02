@@ -21,7 +21,7 @@
         "ui"
     ],
     "repository": "https://github.com/aleversn/VFluent",
-    "typings": "types/index.d.ts",
+    "types": "types/index.d.ts",
     "vetur": {
         "tags": "vetur/tags.json",
         "attributes": "vetur/attributes.json"
