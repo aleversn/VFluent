@@ -88,11 +88,10 @@ sidebarDepth: 2
 [[toc]]
 
 ### TreeView
-
-<!-- <ClientOnly> -->
+   
 <fv-TreeView v-model="files" style="width:200px">
+
 </fv-TreeView>
-<!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
@@ -100,12 +99,26 @@ sidebarDepth: 2
 </fv-TreeView>
 ```
 
-### TreeView Expand Position
+### Slot
+    
+<fv-TreeView v-model="files" style="width:200px">
+  <template v-slot:default="prop">
+    {{prop.item.label}}
+  </template>
+</fv-TreeView>
 
-<!-- <ClientOnly> -->
+``` vue
+<fv-TreeView v-model="files" style="width:200px">
+  <template v-slot:default="prop">
+    {{prop.item.label}}
+  </template>
+</fv-TreeView>
+```
+
+### TreeView Expand Position
+  
 <fv-TreeView  v-model="files" expandedIconPosition="right" style="width:200px">
 </fv-TreeView>
-<!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
@@ -115,7 +128,7 @@ sidebarDepth: 2
 ```
 
 ### TreeView Chcekable
-
+  
 <fv-TreeView v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
 </fv-TreeView>
 
@@ -130,7 +143,6 @@ sidebarDepth: 2
 ```
 
 ### TreeView CustomStyle Draggable
-
 
 
 backgroundColor:
@@ -176,6 +188,7 @@ foregroundColor:
 </fv-TreeView>
 </div>
 ```
+
 
 <br/>
 <br/>
@@ -245,5 +258,14 @@ foregroundColor:
   }
 ]
 
+```
+
+
+#### Slots
+
+``` vue
+<template v-slot:default="prop">
+  {{prop.item.label}}
+</template>
 ```
 

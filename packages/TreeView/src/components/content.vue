@@ -18,7 +18,11 @@
             :revealEffect="revealEffect"
             @click="click"
             v-bind="$attrs"
-        />
+        >
+            <template v-slot:default="prop">
+                <slot :item="prop.item"></slot>
+            </template>
+        </item>
     </draggable>
 </template>
 
