@@ -1047,17 +1047,16 @@
 /* FvTreeView */
 .fv-tree-item-show-enter,
 .fv-tree-item-show-leave-to {
-    transform: scaleY(0);
+    transform: scaleY(0.8);
+    opacity: 0.2;
 }
 
 .fv-tree-item-show-enter-active,
 .fv-tree-item-show-leave-active {
     transform-origin: 0% 0%;
-    transition: transform 0.2s ease-in-out;
-    transition-delay: 0.1s;
+    transition: all  0.2s ease-in-out;
 }
 
 .fv-tree-item-show-enter-to,
 .fv-tree-item-show-leave {
-    transform: scaleY(1);
 }

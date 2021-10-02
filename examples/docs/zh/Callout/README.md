@@ -1,8 +1,8 @@
 ---
-  title: Callout Callout
-  sidebarDepth: 2
+title: Callout Callout
+sidebarDepth: 2
 ---
-  
+
 [[toc]]
 
 <script>
@@ -34,53 +34,33 @@
     methods:{
       changeText(text){
         this.text = text;
-        console.log(this.text)
       }
     }
   }
 
 </script>
- ### Callout Light
+
+### Callout 
 
 <ClientOnly>
-<fv-callout effect="hover" position="bottomLeft">
-  <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
+<fv-callout :visible.sync="show" effect="hover" position="bottomLeft">
+  <fv-button icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Color</fv-button>
   <main>
     <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
   </main>
 </fv-callout>
 </ClientOnly>
 
-``` vue
-<fv-callout effect="hover" position="bottomLeft" >
-  <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
+```vue
+<fv-callout :visible.sync="show" effect="hover" position="bottomLeft">
+  <fv-button icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
   <main>
     <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
   </main>
 </fv-callout>
 ```
 
-### Callout Dark
-
-<ClientOnly>
-<fv-callout effect="hover" position="rightCenter" theme="dark">
-  <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
-  <main>
-    <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
-  </main>
-</fv-callout>
-</ClientOnly>
-
-``` vue
-<fv-callout effect="hover" position="rightCenter" theme="dark" >
-  <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
-  <main>
-    <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>
-  </main>
-</fv-callout>
-```
-
-### Callout Custom 
+### Callout Custom
 
 beak:
 
@@ -90,7 +70,7 @@ beak:
 </template>
 </fv-slider>
 
-space: 
+space:
 
 <fv-slider v-model="space" :color="color" :scale="10" :maxinum="30" :showLabel="true">
 <template slot-scope="prop" >
@@ -98,7 +78,7 @@ space:
 </template>
 </fv-slider>
 
-position: 
+position:
 <ClientOnly>
 <fv-combobox v-model="position" :options="options">
 </fv-combobox>
@@ -121,8 +101,8 @@ position:
 </fv-callout>
 </ClientOnly>
 
-``` vue
-<fv-callout :lockScroll="true" :position="position.key" :beak="beak" :space="space" :popperStyle="{backgroundColor:color}" theme="dark" >
+```vue
+<fv-callout :lockScroll="true" :position="position.key" :beak="beak" :space="space" :popperStyle="{ backgroundColor: color }" theme="dark">
   <fv-button :background="color" theme="dark" icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Callout</fv-button>
   <header>
     Fluent UI
@@ -134,14 +114,14 @@ position:
     @Copyright Creator SN
   </footer>
 </fv-callout>
-``` 
-
-
+```
 
 ### Propoties
+
 ---
+
 |  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
-|:------------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
+| :----------: | :--------------------------------: | :------------: | :-------------: | :--------------------: |
 | visible.sync |             [boolean]              |       No       |      false      |        是否显示        |
 |    theme     | ['system','light','dark','custom'] |       No       |    'system'     |         主题色         |
 |   disabled   |             [boolean]              |       No       |      false      |        是否禁用        |
@@ -153,9 +133,10 @@ position:
 |  delayClose  |              [number]              |       No       |        0        | 显示时是否延时关闭(ms) |
 |    effect    |     [’click','hover','always']     |       No       |     'click'     |      显示触发方式      |
 | popperStyle  |              [object]              |       No       |       {}        |      悬浮窗的样式      |
-| popperClass  |              [array]               |       No       |       []        |      悬浮窗的css       |
+| popperClass  |              [array]               |       No       |       []        |      悬浮窗的 css      |
 
 ### Appendix
+
 ---
 
 1. position

@@ -87,61 +87,54 @@ sidebarDepth: 2
 
 [[toc]]
 
-
-<div :style="divStyle">
-THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$theme"/>
-</div>
-
-<!-- <div :style="divStyle">
-<div v-html="json(files)">
-</div>
-</div> -->
-
 ### TreeView
+   
+<fv-TreeView v-model="files" style="width:200px">
 
-<!-- <ClientOnly> -->
-<div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files" style="width:200px">
 </fv-TreeView>
-</div>
-<!-- </ClientOnly> -->
 
 ``` vue
 <fv-TreeView 
-  :theme="$theme" 
   v-model="files">
 </fv-TreeView>
 ```
 
-### TreeView Expand Position
-
-<!-- <ClientOnly> -->
-<div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files" expandedIconPosition="right" style="width:200px">
+### Slot
+    
+<fv-TreeView v-model="files" style="width:200px">
+  <template v-slot:default="prop">
+    {{prop.item.label}}
+  </template>
 </fv-TreeView>
-</div>
-<!-- </ClientOnly> -->
+
+``` vue
+<fv-TreeView v-model="files" style="width:200px">
+  <template v-slot:default="prop">
+    {{prop.item.label}}
+  </template>
+</fv-TreeView>
+```
+
+### TreeView Expand Position
+  
+<fv-TreeView  v-model="files" expandedIconPosition="right" style="width:200px">
+</fv-TreeView>
 
 ``` vue
 <fv-TreeView 
-  :theme="$theme" 
   v-model="files"
   expandedIconPosition="right">
 </fv-TreeView>
 ```
 
 ### TreeView Chcekable
-
-<!-- <ClientOnly> -->
-<div :style="divStyle">
-<fv-TreeView :theme="$theme" v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
+  
+<fv-TreeView v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
 </fv-TreeView>
-</div>
-<!-- </ClientOnly> -->
+
 
 ``` vue
 <fv-TreeView 
-  :theme="$theme" 
   v-model="files" 
   :checkable="true"
   expandedIconPosition="right"
@@ -150,7 +143,6 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 ```
 
 ### TreeView CustomStyle Draggable
-
 
 
 backgroundColor:
@@ -172,7 +164,6 @@ foregroundColor:
 </fv-callout>
 </ClientOnly>
 
-<div :style="divStyle">
 <fv-TreeView 
   :theme="$theme" 
   v-model="files" 
@@ -183,7 +174,6 @@ foregroundColor:
   :draggable="true" 
   :space="10">
 </fv-TreeView>
-</div>
 
 ``` vue 
 <fv-TreeView 
@@ -198,6 +188,7 @@ foregroundColor:
 </fv-TreeView>
 </div>
 ```
+
 
 <br/>
 <br/>
@@ -267,5 +258,14 @@ foregroundColor:
   }
 ]
 
+```
+
+
+#### Slots
+
+``` vue
+<template v-slot:default="prop">
+  {{prop.item.label}}
+</template>
 ```
 
