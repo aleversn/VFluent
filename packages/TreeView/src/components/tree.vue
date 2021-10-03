@@ -37,7 +37,7 @@
                     :src="isUrl($attrs.unexpandedIcon) ? $attrs.unexpandedIcon : undefined"
                     draggable="false"
                 />
-                <i v-else style="width: 12px" />
+                <i v-else-if="$attrs.expandedIconPosition == 'left'" style="width: 12px" />
                 <slot :item="item">
                     <template v-if="item.icon">
                         <i v-if="!isUrl(item.icon)" class="ms-Icon fv-TreeView__icon" :class="[`ms-Icon--${item.icon}`]" />
@@ -68,7 +68,7 @@
         <transition name="fv-tree-item-show">
             <tree-content
                 ref="content"
-                v-if="item.children"
+                v-if="isFolder"
                 v-show="item.expanded"
                 v-bind="$attrs"
                 :children="item.children"
@@ -166,7 +166,7 @@ export default {
             },
         },
         isFolder() {
-            return this.item.children && this.item.children.length > 0;
+            return this.item.children;
         },
     },
     watch: {
