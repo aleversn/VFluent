@@ -127,8 +127,8 @@ export default {
             return val;
         },
         onClick($event, cur) {
-            if (cur.disabled) return 0;
-            if (cur.type === "header" || cur.type == "divider") return 0;
+            if (this.valueTrigger(cur.disabled)) return 0;
+            if (this.valueTrigger(cur.type) === "header" || this.valueTrigger(cur.type) == "divider") return 0;
             if (this.multiple) {
                 let t = this.currentChoosen.find(item => item.key === cur.key);
                 if (t != undefined) {
@@ -171,7 +171,7 @@ export default {
         },
         inspectItemAPI (cur) {
             let c = this.thisValue.find(it => {
-                return it.name === cur.name && it.type === cur.type && it.key === cur.key;
+                return this.valueTrigger(it.name) === this.valueTrigger(cur.name) && this.valueTrigger(it.type) === this.valueTrigger(cur.type) && it.key === cur.key;
             });
             let index = this.thisValue.indexOf(c);
             if(index < 0)   return 0;
