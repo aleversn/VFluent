@@ -462,7 +462,7 @@ export default {
         },
         init() {
             this._popper.target = this;
-            this._popper.targetElement = this.$el.firstElementChild;
+            // this._popper.targetElement = this.$el.firstElementChild;
             this.destoryEvent();
             this.initWindowEvent();
             this.initTargetEvent();
@@ -507,6 +507,7 @@ export default {
     mounted() {
         document.body.append(this._popper.$el);
         this.init();
+
     },
     beforeDestroy() {
         this.destoryEvent();

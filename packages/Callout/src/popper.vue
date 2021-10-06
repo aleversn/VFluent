@@ -9,7 +9,7 @@ export default {
                     main: [],
                     header: [],
                     footer: [],
-                }
+                };
             },
         },
         popperStyle: {
@@ -39,20 +39,23 @@ export default {
                 callout: [],
             },
             transition: 'fv-callout-fade',
-            target:null,
-            targetElement:null
-        }
+            target: null,
+        };
     },
     computed: {
+        targetElement() {
+            if (this.target == undefined) return this.target;
+            return this.target.$el.firstElementChild || this.target.$el;
+        },
         popperShow() {
-            if (!this.targetElement){
+            if (!this.targetElement) {
                 return false;
             }
-            const rect = this.targetElement.getBoundingClientRect()
+            const rect = this.targetElement.getBoundingClientRect();
             if (this.target.disabled || rect.width == 0 || rect.height == 0) {
-                return false
+                return false;
             }
-            return this.show
+            return this.show;
         },
     },
     render() {
@@ -72,9 +75,9 @@ export default {
                     </div>
                 </div>
             </transition>
-        )
+        );
     },
-}
+};
 </script>
 
 <style>
