@@ -1,5 +1,5 @@
 <template>
-    <div :class="['fv-' + $theme + '-TreeView']" ref="view">
+    <div :class="['fv-' + $theme + '-TreeView']" :style="{ background }" ref="view">
         <tree-content
             :style="style"
             :children="items"
@@ -78,6 +78,7 @@ export default {
         },
         background: {
             type: String,
+            default: undefined,
         },
         expandedIconPosition: {
             type: String,

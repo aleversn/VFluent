@@ -168,6 +168,10 @@ export default {
         isFolder() {
             return this.item.children;
         },
+        $theme() {
+            if (this.theme === 'system') return this.$fvGlobal.state.theme;
+            return this.theme;
+        },
     },
     watch: {
         'item.selected'(val) {
@@ -257,6 +261,13 @@ export default {
             }
         },
         hoverColor(color, dark, light) {
+            if (color == 'transparent') {
+                if (this.$theme == 'dark') {
+                    color = '#000';
+                } else {
+                    color = '#ffffff';
+                }
+            }
             let onecolor = one(color);
             if (onecolor.isLight()) {
                 return onecolor.lightness(dark);

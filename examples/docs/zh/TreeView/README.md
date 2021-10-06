@@ -89,13 +89,13 @@ sidebarDepth: 2
 
 ### TreeView
    
-<fv-TreeView v-model="files" style="width:200px">
+<fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
 
 </fv-TreeView>
 
 ``` vue
-<fv-TreeView 
-  v-model="files">
+<fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
+
 </fv-TreeView>
 ```
 
