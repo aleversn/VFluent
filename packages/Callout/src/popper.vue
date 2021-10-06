@@ -51,8 +51,9 @@ export default {
             if (!this.targetElement) {
                 return false;
             }
-            const rect = this.targetElement.getBoundingClientRect();
-            if (this.target.disabled || rect.width == 0 || rect.height == 0) {
+            // const rect = this.targetElement.getBoundingClientRect();
+            if (this.target.disabled) {
+                //  || rect.width == 0 || rect.height == 0) {
                 return false;
             }
             return this.show;
