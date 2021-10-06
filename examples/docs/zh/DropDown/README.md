@@ -92,7 +92,7 @@ export default {
 <fv-DropDown :options="options" placeholder="Select options" :multiple="true">
     <template v-slot:input="x">
         <i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i>
-        <input :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px;"/>
+        <input class="input" :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px;"/>
         <i class="ms-Icon ms-Icon--DelveAnalyticsLogo right-icon"></i>
     </template>
 </fv-DropDown>
