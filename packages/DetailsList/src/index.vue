@@ -405,6 +405,7 @@ export default {
                 if(this.windowResize.trigger) {
                     if(this.windowResize.width == currentWidth) {
                         this.headInit();
+                        this.widthFormat(0);
                         this.windowResize.trigger = false;
                     }
                 }
