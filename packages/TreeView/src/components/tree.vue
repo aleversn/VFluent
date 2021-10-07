@@ -138,13 +138,13 @@ export default {
             event: {
                 label: {
                     mouseover: () => {
-                        this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.9, 0.3).cssa());
+                        this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.3).cssa());
                     },
                     mouseout: () => {
                         if (!this.item.selected) {
                             this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
                         } else {
-                            this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.8, 0.2).cssa());
+                            this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.2).cssa());
                         }
                     },
                 },
@@ -188,6 +188,10 @@ export default {
         padding(val) {
             this.$set(this.style.label, 'paddingLeft', 10 + this.deepth * val + 'px');
         },
+        $theme() {
+            this.initFR();
+            this.initStyle();
+        },
     },
     beforeCreate() {
         let parent = this.$parent;
@@ -219,27 +223,14 @@ export default {
             new this.$RevealEffects('body', {
                 selector: '.fv-TreeView__label' + className,
                 borderLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
-                    .alpha(0.6)
+                    .alpha(0.15)
                     .cssa(),
                 borderGradientSize: 30,
                 backgroundLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
-                    .alpha(0.3)
+                    .alpha(0.1)
                     .cssa(),
                 backgroundGradientSize: 150,
             });
-            // FluentRevealEffect.applyEffect(
-            //     ".fv-TreeView__label-border" + className,
-            //     {
-            //         lightColor: this.hoverColor(
-            //             this.viewStyle.backgroundColor || "#000",
-            //             0.3,
-            //             1
-            //         )
-            //             .alpha(0.6)
-            //             .cssa(),
-            //         gradientSize: 120,
-            //     }
-            // );
         },
         initStyle() {
             this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
@@ -342,7 +333,7 @@ export default {
         },
         setLabelBackgroundColor(val) {
             if (val) {
-                this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.8, 0.2).cssa());
+                this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.2).cssa());
             } else {
                 this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
             }
