@@ -10,11 +10,21 @@
 <fv-Tag :value="[{text: 'default', type: 'default' }]">
 </fv-Tag>
 
+```vue
+<fv-Tag :value="[{text: 'default', type: 'default' }]">
+</fv-Tag>
+```
+
 ### Tag Different Types
 ---
 
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" :isDel="true" :isNewTag="true">
 </fv-Tag>
+
+```vue
+<fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" :isDel="true" :isNewTag="true">
+</fv-Tag>
+```
 
 ### Tag Customize Color
 ---
@@ -22,16 +32,31 @@
 <fv-Tag :value="[{text: 'blue', type: 'default', background: 'rgba(0, 153, 204, 1)' }, {text: 'black', type: 'success', background: 'rgba(0, 0, 0, 1)' }, {text: 'pink', type: 'warning', background: 'pink' }]">
 </fv-Tag>
 
+```vue
+<fv-Tag :value="[{text: 'blue', type: 'default', background: 'rgba(0, 153, 204, 1)' }, {text: 'black', type: 'success', background: 'rgba(0, 0, 0, 1)' }, {text: 'pink', type: 'warning', background: 'pink' }]">
+</fv-Tag>
+```
+
 ### Tag-Disabled 
 
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'disabled', type: 'success',  disabled: true }, {text: 'warning', type: 'warning' }]" :isDel="true" :isNewTag="true">
 </fv-Tag>
+
+```vue
+<fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'disabled', type: 'success',  disabled: true }, {text: 'warning', type: 'warning' }]" :isDel="true" :isNewTag="true">
+</fv-Tag>
+```
 
 ### Tag Dark Theme
 ---
 
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" theme="dark">
 </fv-Tag>
+
+```vue
+<fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" theme="dark">
+</fv-Tag>
+```
 
 ### Propoties
 ---
