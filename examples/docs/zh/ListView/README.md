@@ -121,7 +121,7 @@ export default {
 其中`key`字段建议开发者在有重复名称和类型字段时声明用来区别项目
 
 ```javascript
-items = [{key: '', name: '', type: '', disabled: ''}]
+items = [{key: '', name: '', type: '', disabled: '', show: ''}]
 
 //e.g.//
 
@@ -151,3 +151,4 @@ let item = this.$refs.list.$refs['list_item_<index>]'];
 ```
 
 **特别地** 0.1.32版本后支持采用函数式字段, 其中支持的字段包括`name`, `disabled`, `choosen`, `type`
+0.1.54版本后支持`show`
