@@ -58,6 +58,7 @@ export default {
         },
         stop (event) {
             this.moveable = false;
+            if(!event) return;
             if(event.type === 'mouseup')
                 this.$emit("mouseup", event);
             else

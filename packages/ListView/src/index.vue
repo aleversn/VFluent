@@ -1,9 +1,9 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'">
     <div class="list-view-container" ref="container">
-        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: item.choosen, header: item.type == 'header', hr: item.type == 'divider', normal: item.type == 'default' || item.type == undefined, disabled: item.disabled}" class="item" :key="index" :style="{ background: item.choosen ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
+        <span v-show="item.show !== false" v-for="(item, index) in thisValue" :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled)}" class="item" :key="index" :style="{ background: valueTrigger(item.choosen) ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
             <slot name="listItem" :item="item" :index="index">
-                <p :style="{ color: item.type == 'header' ? headerForeground : '' }">{{item.name}}</p>
+                <p :style="{ color: valueTrigger(item.type) == 'header' ? headerForeground : '' }">{{valueTrigger(item.name)}}</p>
             </slot>
         </span>
     </div>
@@ -56,12 +56,12 @@ export default {
         },
         backgroundLightColor () {
             if(this.$theme == 'light') {
-                return 'rgba(121, 119, 117, 0.3)';
+                return 'rgba(160, 160, 160, 0.1)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.3)';
+                return 'rgba(255, 255, 255, 0.1)';
             }
-            return 'rgba(121, 119, 117, 0.3)';
+            return 'rgba(160, 160, 160, 0.1)';
         },
         currentChoosen () {
             let result = [];
@@ -100,8 +100,9 @@ export default {
         FRInit () {
             let FR = new this.$RevealEffects(this.$el, {
                 selector: `.fv-${this.$theme}-ListView .list-view-container .item.normal`,
-                borderGradientSize: 30,
+                borderGradientSize: 38,
                 borderLightColor: this.borderLightColor,
+                backgroundGradientSize: 120,
                 backgroundLightColor: this.backgroundLightColor
             });
         },
@@ -121,9 +122,13 @@ export default {
             }
             this.thisValue = result;
         },
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
+        },
         onClick($event, cur) {
-            if (cur.disabled) return 0;
-            if (cur.type === "header" || cur.type == "divider") return 0;
+            if (this.valueTrigger(cur.disabled)) return 0;
+            if (this.valueTrigger(cur.type) === "header" || this.valueTrigger(cur.type) == "divider") return 0;
             if (this.multiple) {
                 let t = this.currentChoosen.find(item => item.key === cur.key);
                 if (t != undefined) {
@@ -166,7 +171,7 @@ export default {
         },
         inspectItemAPI (cur) {
             let c = this.thisValue.find(it => {
-                return it.name === cur.name && it.type === cur.type && it.key === cur.key;
+                return this.valueTrigger(it.name) === this.valueTrigger(cur.name) && this.valueTrigger(it.type) === this.valueTrigger(cur.type) && it.key === cur.key;
             });
             let index = this.thisValue.indexOf(c);
             if(index < 0)   return 0;

@@ -13,7 +13,7 @@
         .s
         {
             position: relative;
-            width: 2px;
+            width: 3.8px;
             height: 40px;
             margin: 0px;
             padding: 12px 0px;
@@ -26,7 +26,8 @@
                 width: 100%;
                 height: 100%;
                 margin: 0px;
-                background: rgba(0, 120, 212, 1);
+                background: rgba(0, 90, 158, 1);
+                border-radius: 3px;
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div :class="['fv-' + $theme + '-TreeView']" ref="view">
+    <div :class="['fv-' + $theme + '-TreeView']" :style="{ background }" ref="view">
         <tree-content
             :style="style"
             :children="items"
@@ -16,23 +16,27 @@
             :expandedIconPosition="expandedIconPosition"
             :background="background"
             @click="click"
-        ></tree-content>
+        >
+            <template v-slot:default="prop">
+                <slot :item="prop.item"> </slot>
+            </template>
+        </tree-content>
     </div>
 </template>
 
 <script>
-import "office-ui-fabric-core/dist/css/fabric.min.css";
-import TreeContent from "./components/content";
+import 'office-ui-fabric-core/dist/css/fabric.min.css';
+import TreeContent from './components/content';
 
 export default {
-    name: "FvTreeView",
+    name: 'FvTreeView',
     components: {
         TreeContent,
     },
     props: {
         theme: {
             type: String,
-            default: "system",
+            default: 'system',
         },
         checkable: {
             type: Boolean,
@@ -50,7 +54,7 @@ export default {
             type: Number,
         },
         borderWidth: {
-            default: 2
+            default: 2,
         },
         revealEffect: {
             type: Boolean,
@@ -63,22 +67,23 @@ export default {
         viewStyle: {},
         expandedIcon: {
             type: String,
-            default: "ChevronDownMed",
+            default: 'ChevronDownMed',
         },
         unexpandedIcon: {
             type: String,
-            default: "ChevronUpMed",
+            default: 'ChevronUpMed',
         },
         foreground: {
             type: String,
         },
         background: {
             type: String,
+            default: undefined,
         },
-        expandedIconPosition:{
-            type:String,
-            default:"left"
-        }
+        expandedIconPosition: {
+            type: String,
+            default: 'left',
+        },
     },
     data() {
         return {
@@ -87,12 +92,12 @@ export default {
         };
     },
     model: {
-        prop: "data",
-        event: "update:data",
+        prop: 'data',
+        event: 'update:data',
     },
     computed: {
         $theme() {
-            if (this.theme === "system") return this.$fvGlobal.state.theme;
+            if (this.theme === 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
         items: {
@@ -100,7 +105,7 @@ export default {
                 return this.data;
             },
             set: function (val) {
-                this.$emit("update:data", val);
+                this.$emit('update:data', val);
             },
         },
     },
@@ -114,7 +119,7 @@ export default {
             handler() {
                 if (this.changeLock) return;
                 this.changeLock = true;
-                this.$emit("change", this.data);
+                this.$emit('change', this.data);
                 setTimeout(() => {
                     this.changeLock = false;
                 }, 100);
@@ -135,14 +140,8 @@ export default {
         initStyle() {
             if (document.defaultView) {
                 this.style = this.viewStyle || {
-                    backgroundColor: document.defaultView.getComputedStyle(
-                        this.$refs.view,
-                        null
-                    ).backgroundColor,
-                    color: document.defaultView.getComputedStyle(
-                        this.$refs.view,
-                        null
-                    ).color,
+                    backgroundColor: document.defaultView.getComputedStyle(this.$refs.view, null).backgroundColor,
+                    color: document.defaultView.getComputedStyle(this.$refs.view, null).color,
                 };
             }
         },
@@ -159,7 +158,7 @@ export default {
         },
         click(item) {
             if (!this.checkable) this.mutexSelected(item, this.items);
-            this.$emit("click", item);
+            this.$emit('click', item);
         },
     },
 };

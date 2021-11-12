@@ -122,10 +122,10 @@ Customize Flag
 
 ### TextBox-With Underline And Borderless
 ---
-<fv-TextBox underline prefix="Standard:"></fv-TextBox>
+<fv-TextBox underline prefix="Standard:" focusBorderColor="rgba(0, 90, 158, 1)"></fv-TextBox>
 
 ```vue
-<fv-TextBox underline prefix="Standard:"></fv-TextBox>
+<fv-TextBox underline prefix="Standard:" focusBorderColor="rgba(0, 90, 158, 1)"></fv-TextBox>
 ```
 
 ### TextBox-With Prefix/Suffix
@@ -205,7 +205,7 @@ Customize background
     <fv-TextBox placeholder="Please enter the text here." disabled theme="dark" value="123"></fv-TextBox>
     <fv-TextBox placeholder="Please enter the text here." prefix="https://" suffix=".com" theme="dark"></fv-TextBox>
     <fv-TextBox placeholder="Please enter the text here." prefix="https://" suffix=".com" disabled theme="dark"></fv-TextBox>
-    <fv-TextBox underline prefix="Standard:" theme="dark"></fv-TextBox>
+    <fv-TextBox underline prefix="Standard:" theme="dark" focusBorderColor="rgba(118, 185, 237, 1)"></fv-TextBox>
     <fv-TextBox underline prefix="Standard:" disabled theme="dark"></fv-TextBox>
 </div>
 
@@ -242,7 +242,7 @@ Customize background
 |       borderWidth        |             [boolean]              |       No       |       N/A       |                                           |
 |       borderColor        |          [string(color)]           |       No       |       N/A       |                                           |
 |     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                           |
-|       borderRadius       |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
+|       borderRadius       |              [number]              |       No       |        3        | Textbox圆角大小, 启用revealBorder时将失效 |
 |       isBoxShadow        |             [boolean]              |       No       |      false      |             开启`TextBox`阴影             |
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
 | disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |

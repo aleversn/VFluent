@@ -1,10 +1,14 @@
 <template>
 <div :class="'fv-'+$theme+'-CalendarView'">
-    <div class="control-block">
-        <p class="switcher" @click="switchView">{{statement}}</p>
-        <div class="slider-bar">
-            <p class="ms-Icon ms-Icon--ChevronUpMed" @click="slideUp"></p>
-            <p class="ms-Icon ms-Icon--ChevronDownMed" @click="slideDown"></p>
+    <div class="fv-calendar-control-block">
+        <p class="calendar-switcher" @click="switchView">{{statement}}</p>
+        <div class="slider-bar" @click="slideUp">
+            <span class="slider-btn">
+                <i class="ms-Icon ms-Icon--CaretSolidUp"></i>
+            </span>
+            <span class="slider-btn" @click="slideDown">
+                <i class="ms-Icon ms-Icon--CaretSolidDown"></i>
+            </span>
         </div>
     </div>
     <div class="container-block">
@@ -52,11 +56,11 @@ export default {
     data () {
         return {
             status: 'date',
-            thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
-            yearRange: 0,
-            monthRange: {year: 0, no: 0},
-            dayRange: {year: 0, month: 0, no: 1},
-            transitionName: 'scale-down-to-down',
+            thisValue: this.value,
+            yearRange: new Date().getFullYear(),
+            monthRange: {year: new Date().getFullYear(), no: new Date().getMonth()},
+            dayRange: {year: new Date().getFullYear(), month: new Date().getMonth(), no: 1},
+            transitionName: 'fv-calendar-scale-down',
             monthList: {
                 en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 zh: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
@@ -118,7 +122,7 @@ export default {
             this.$refs.day.slide({year: d.getFullYear(), month: d.getMonth(), no: d.getDate()});
         },
         switchView () {
-            this.transitionName = 'scale-down-to-down';
+            this.transitionName = 'fv-calendar-scale-down';
             if(this.status == 'date') {
                 this.status = 'month';
             }
@@ -127,13 +131,13 @@ export default {
             }
         },
         chooseYear (item) {
-            this.transitionName = 'scale-up-to-up';
+            this.transitionName = 'fv-calendar-scale-up';
             this.thisValue.setFullYear(item);
             this.status = 'month';
             this.$emit('choose-year', item);
         },
         chooseMonth (item) {
-            this.transitionName = 'scale-up-to-up';
+            this.transitionName = 'fv-calendar-scale-up';
             this.thisValue.setDate(1);
             this.thisValue.setMonth(item.no);
             this.thisValue.setFullYear(item.year);

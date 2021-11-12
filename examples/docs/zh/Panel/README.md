@@ -83,7 +83,7 @@ export default {
 <fv-button style="width: 200px;" @click="footer = true">Open Panel</fv-button>
 <fv-Panel v-model="footer" :isFooter="true" :isAcrylic="true">
 <template v-slot:footer>
-    <fv-button theme="dark" background="rgba(0, 120, 212, 1)">OK</fv-button>
+    <fv-button theme="dark" background="rgba(0, 90, 158, 1)">OK</fv-button>
     <fv-button @click="footer = false">Cancel</fv-button>
 </template>
 </fv-Panel>
@@ -92,7 +92,7 @@ export default {
 ```vue
 <fv-Panel v-model="footer" :isFooter="true" :isAcrylic="true">
     <template v-slot:footer>
-        <fv-button theme="dark" background="rgba(0, 120, 212, 1)">OK</fv-button>
+        <fv-button theme="dark" background="rgba(0, 90, 158, 1)">OK</fv-button>
         <fv-button>Cancel</fv-button>
     </template>
 </fv-Panel>

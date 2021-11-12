@@ -26,10 +26,23 @@
   },
   "fv-progress-ring": {
     "attributes": [
+      "value",
+      ":value",
       "size",
       ":size",
+      "r",
+      ":r",
+      "loading",
+      ":loading",
       "color",
-      ":color"
+      ":color",
+      "background",
+      ":background",
+      "border-width",
+      ":border-width",
+      "legacy",
+      ":legacy",
+      "@input"
     ]
   },
   "fv-check-box": {
@@ -311,8 +324,16 @@
       ":value",
       "label",
       ":label",
+      "color",
+      ":color",
+      "foreground",
+      ":foreground",
       "icon",
       ":icon",
+      "icon-block-border-radius",
+      ":icon-block-border-radius",
+      "icon-block-border-width",
+      ":icon-block-border-width",
       "image",
       ":image",
       "active-image",
@@ -333,8 +354,6 @@
       ":theme",
       "disabled",
       ":disabled",
-      "cover",
-      ":cover",
       "space",
       ":space",
       "beak",
@@ -362,6 +381,8 @@
       ":url",
       "onlazy",
       ":onlazy",
+      "loading-color",
+      ":loading-color",
       "onbackground",
       ":onbackground",
       "theme",
@@ -404,6 +425,8 @@
       ":multi-selection",
       "allow-drag",
       ":allow-drag",
+      "row-css",
+      ":row-css",
       "right-menu-width",
       ":right-menu-width",
       "theme",
@@ -520,8 +543,8 @@
       "@back",
       "@item-click",
       "@input",
-      "@setting-click",
       "@update:expand",
+      "@setting-click",
       "@expand-change"
     ]
   },
@@ -535,6 +558,8 @@
       ":data",
       "space",
       ":space",
+      "border-width",
+      ":border-width",
       "reveal-effect",
       ":reveal-effect",
       "draggable",
@@ -549,6 +574,8 @@
       ":foreground",
       "background",
       ":background",
+      "expanded-icon-position",
+      ":expanded-icon-position",
       "@update:data",
       "@change",
       "@click"
@@ -802,6 +829,8 @@
       ":choosen-background",
       "input-foreground",
       ":input-foreground",
+      "input-background",
+      ":input-background",
       "title-foreground",
       ":title-foreground",
       "drop-down-icon",
@@ -983,7 +1012,72 @@
       "border-radius",
       ":border-radius",
       "theme",
-      ":theme"
+      ":theme",
+      "@input"
+    ]
+  },
+  "fv-animated-icon": {
+    "attributes": [
+      "value",
+      ":value",
+      "icon",
+      ":icon",
+      "customize-animation",
+      ":customize-animation",
+      "background",
+      ":background",
+      "font-size",
+      ":font-size",
+      "hide-content",
+      ":hide-content",
+      "theme",
+      ":theme",
+      "@input",
+      "@click"
+    ]
+  },
+  "fv-tag": {
+    "attributes": [
+      "value",
+      ":value",
+      "new-tag-placeholder",
+      ":new-tag-placeholder",
+      "size",
+      ":size",
+      "new-tag-background",
+      ":new-tag-background",
+      "is-new-tag",
+      ":is-new-tag",
+      "is-del",
+      ":is-del",
+      "theme",
+      ":theme",
+      "@input",
+      "@del-item"
+    ]
+  },
+  "fv-collapse": {
+    "attributes": [
+      "value",
+      ":value",
+      "icon",
+      ":icon",
+      "title",
+      ":title",
+      "content",
+      ":content",
+      "background",
+      ":background",
+      "default-height",
+      ":default-height",
+      "max-height",
+      ":max-height",
+      "disabled-collapse",
+      ":disabled-collapse",
+      "theme",
+      ":theme",
+      "@input",
+      "@item-click"
     ]
   }
 }

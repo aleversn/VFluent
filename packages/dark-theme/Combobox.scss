@@ -6,9 +6,9 @@
     .combobox-container
     {
         color: whitesmoke;
-        background: rgba(226, 226, 226, 0.2);
+        background: rgba(36, 36, 36, 1);
 
-        input
+        .input
         {
             color: whitesmoke;
         }
@@ -24,7 +24,7 @@
     .combobox-item-container
     {
         background: rgba(36, 36, 36, 0.9);
-        option
+        .fv-combobox-item
         {
             color: whitesmoke;
         }

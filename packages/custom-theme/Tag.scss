@@ -1,0 +1,5 @@
+@import '../common-theme/Tag.scss';
+.fv-custom-Tag{
+  @include fv-Tag();
+}
+    

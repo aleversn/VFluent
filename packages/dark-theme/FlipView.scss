@@ -7,11 +7,12 @@
     {
         .slidebtn
         {
-            color: whitesmoke;
+            background: rgba(36, 36, 36, 0.3);
+            color: rgba(245, 245, 245, 0.6);
 
             &:hover
             {
-                background: rgba(242,242,242,0.1);
+                color: whitesmoke;
             }
         }
 

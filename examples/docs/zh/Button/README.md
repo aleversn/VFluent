@@ -44,7 +44,7 @@
 |     icon     |              [string]              |       No       |       N/A       | Icon with Fabric-Icon |
 |  foreground  |          [string(color)]           |       No       |       N/A       |     Button 前景色     |
 |  background  |          [string(color)]           |       No       |       N/A       |     Button 背景色     |
-| borderRadius |              [number]              |       No       |       N/A       |    Button 圆角大小    |
+| borderRadius |              [number]              |       No       |        3        |    Button 圆角大小    |
 |   fontSize   |              [number]              |       No       |       N/A       |    Button 字体大小    |
 |  fontWeight  |              [string]              |       No       |     normal      |   Button 字体粗细度   |
 | isBoxShadow  |             [boolean]              |       No       |      false      |   开启`Button`阴影    |

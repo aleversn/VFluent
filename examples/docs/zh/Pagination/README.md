@@ -77,7 +77,7 @@
 | 属性(attr) |             类型(type)             | 必填(required) |   默认值(default)    | 说明(statement) |
 |:----------:|:----------------------------------:|:--------------:|:--------------------:|:---------------:|
 |   value    |              [number]              |       No       |          1           |   当前页码数    |
-| foreground |          [string(color)]           |       No       | rgba(0, 120, 212, 1) |                 |
+| foreground |          [string(color)]           |       No       | rgba(0, 90, 158, 1) |                 |
 | background |          [string(color)]           |       No       |     transparent      |                 |
 |   total    |              [number]              |       No       |          10          |    总页码数     |
 | maxVisual  |              [number]              |       No       |          7           |  最大可视按钮   |

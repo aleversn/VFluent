@@ -1,7 +1,7 @@
 <template>
 <div class="text-box-container">
     <input v-if="mode == 'default'" v-model="thisValue" :type="type" :placeholder="placeholder" class="input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" @keydown="keyDown" @keyup="$emit('keyup', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"/>
-    <mask-input v-if="mode == 'mask'" v-model="thisMaskValue" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="isReadOnly" :disabled="isDisabled" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"></mask-input>
+    <mask-input v-if="mode == 'mask'" ref="mask_input" v-model="thisMaskValue" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="isReadOnly" :disabled="isDisabled" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"></mask-input>
 </div>
 </template>
 
@@ -109,6 +109,12 @@ export default {
             this.$emit("keydown", event);
             if(!event.key.match(this.thisPattern))
                 event.preventDefault();
+        },
+        focusInspect () {
+            if(this.mode == 'mask')
+                this.$refs.mask_input.focusInspect();
+            else
+                this.$refs.input.focus();
         }
     }
 };

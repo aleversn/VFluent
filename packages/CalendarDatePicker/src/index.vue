@@ -125,6 +125,18 @@ export default {
                 }
                 if (!_self) this.show.calendar = false;
             });
+            window.addEventListener("touchend", event => {
+                let x = event.target;
+                let _self = false;
+                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) this.show.calendar = false;
+            });
         },
         chooseDates (val) {
             this.dates = val;

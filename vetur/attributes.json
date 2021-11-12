@@ -25,11 +25,11 @@
   },
   "fv-button/border-radius": {
     "type": "number",
-    "description": "Button 圆角大小"
+    "description": "Button 圆角大小,default=3"
   },
   "fv-button/:border-radius": {
     "type": "number",
-    "description": "Button 圆角大小"
+    "description": "Button 圆角大小,default=3"
   },
   "fv-button/font-size": {
     "type": "number",
@@ -755,11 +755,11 @@
   },
   "fv-text-box/border-radius": {
     "type": "number",
-    "description": "Textbox圆角大小, 启用revealBorder时将失效"
+    "description": "Textbox圆角大小, 启用revealBorder时将失效,default=3"
   },
   "fv-text-box/:border-radius": {
     "type": "number",
-    "description": "Textbox圆角大小, 启用revealBorder时将失效"
+    "description": "Textbox圆角大小, 启用revealBorder时将失效,default=3"
   },
   "fv-text-box/is-box-shadow": {
     "type": "boolean",
@@ -924,6 +924,38 @@
   "fv-radio/:icon": {
     "type": "string",
     "description": "MS-ICON,default=null"
+  },
+  "fv-radio/color": {
+    "type": "string",
+    "description": "文字和图标前景色,default=null"
+  },
+  "fv-radio/:color": {
+    "type": "string",
+    "description": "文字和图标前景色,default=null"
+  },
+  "fv-radio/foreground": {
+    "type": "string",
+    "description": "Radio前景色,default=rgba(0, 120, 212, 0.829)"
+  },
+  "fv-radio/:foreground": {
+    "type": "string",
+    "description": "Radio前景色,default=rgba(0, 120, 212, 0.829)"
+  },
+  "fv-radio/icon-block-border-radius": {
+    "type": "string",
+    "description": "带图标样式圆角大小,default=3"
+  },
+  "fv-radio/:icon-block-border-radius": {
+    "type": "string",
+    "description": "带图标样式圆角大小,default=3"
+  },
+  "fv-radio/icon-block-border-width": {
+    "type": "string",
+    "description": "带图标样式边框大小,default=2"
+  },
+  "fv-radio/:icon-block-border-width": {
+    "type": "string",
+    "description": "带图标样式边框大小,default=2"
   },
   "fv-radio/image": {
     "type": "string",
@@ -1815,6 +1847,14 @@
     "type": "string",
     "description": ""
   },
+  "fv-combobox/input-background": {
+    "type": "string",
+    "description": ""
+  },
+  "fv-combobox/:input-background": {
+    "type": "string",
+    "description": ""
+  },
   "fv-combobox/title-foreground": {
     "type": "string",
     "description": ",default=ChevronDown"
@@ -1872,6 +1912,72 @@
   "fv-combobox/@choose-item": {
     "type": "method",
     "description": "Combobox choose item"
+  },
+  "fv-time-picker/v-model": {
+    "type": "",
+    "description": "绑定的时间,default=Date()"
+  },
+  "fv-time-picker/:v-model": {
+    "type": "",
+    "description": "绑定的时间,default=Date()"
+  },
+  "fv-time-picker/theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-time-picker/:theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-time-picker/time-type": {
+    "type": "number",
+    "description": "时间制（可选12，24）,default=12"
+  },
+  "fv-time-picker/:time-type": {
+    "type": "number",
+    "description": "时间制（可选12，24）,default=12"
+  },
+  "fv-time-picker/period": {
+    "type": "object",
+    "description": "上午下午显示,default=['A.M.','P.M.']"
+  },
+  "fv-time-picker/:period": {
+    "type": "object",
+    "description": "上午下午显示,default=['A.M.','P.M.']"
+  },
+  "fv-time-picker/options-style": {
+    "type": "object",
+    "description": "选项菜单样式,default={}"
+  },
+  "fv-time-picker/:options-style": {
+    "type": "object",
+    "description": "选项菜单样式,default={}"
+  },
+  "fv-time-picker/select-style": {
+    "type": "object",
+    "description": "选项菜单中间选项蒙版样式,default={}"
+  },
+  "fv-time-picker/:select-style": {
+    "type": "object",
+    "description": "选项菜单中间选项蒙版样式,default={}"
+  },
+  "fv-time-picker/disabled": {
+    "type": "boolean",
+    "description": "是否禁用选项框,default=false"
+  },
+  "fv-time-picker/:disabled": {
+    "type": "boolean",
+    "description": "是否禁用选项框,default=false"
   },
   "fv-shimmer/theme": {
     "options": [
@@ -2067,6 +2173,74 @@
     "type": "method",
     "description": "取消`InfoBox`时触发事件"
   },
+  "fv-drawer/theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-drawer/:theme": {
+    "options": [
+      "system",
+      "dark",
+      "light",
+      "custom"
+    ],
+    "description": "主题色,default='system'"
+  },
+  "fv-drawer/visible": {
+    "type": "boolean",
+    "description": "是否可视,default=false"
+  },
+  "fv-drawer/:visible": {
+    "type": "boolean",
+    "description": "是否可视,default=false"
+  },
+  "fv-drawer/length": {
+    "type": "number",
+    "description": "300,default=No"
+  },
+  "fv-drawer/:length": {
+    "type": "number",
+    "description": "300,default=No"
+  },
+  "fv-drawer/focus-trap": {
+    "type": "boolen",
+    "description": "是否聚焦,default=false"
+  },
+  "fv-drawer/:focus-trap": {
+    "type": "boolen",
+    "description": "是否聚焦,default=false"
+  },
+  "fv-drawer/disabled": {
+    "type": "boolean",
+    "description": "是否禁用选项框,default=false"
+  },
+  "fv-drawer/:disabled": {
+    "type": "boolean",
+    "description": "是否禁用选项框,default=false"
+  },
+  "fv-drawer/position": {
+    "options": [
+      "bottom",
+      "left",
+      "top",
+      "right"
+    ],
+    "description": "位置,default='bottom'"
+  },
+  "fv-drawer/:position": {
+    "options": [
+      "bottom",
+      "left",
+      "top",
+      "right"
+    ],
+    "description": "位置,default='bottom'"
+  },
   "fv-badge/value": {
     "type": "string,number",
     "description": ""
@@ -2199,11 +2373,11 @@
   },
   "fv-pagination/foreground": {
     "type": "string",
-    "description": ",default=rgba(0, 120, 212, 1)"
+    "description": ",default=rgba(0, 90, 158, 1)"
   },
   "fv-pagination/:foreground": {
     "type": "string",
-    "description": ",default=rgba(0, 120, 212, 1)"
+    "description": ",default=rgba(0, 90, 158, 1)"
   },
   "fv-pagination/background": {
     "type": "string",
@@ -2360,5 +2534,251 @@
       "system"
     ],
     "description": ",default=system"
+  },
+  "fv-animated-icon/value": {
+    "type": "string",
+    "description": "动画预设名称,default=scaleDown"
+  },
+  "fv-animated-icon/:value": {
+    "type": "string",
+    "description": "动画预设名称,default=scaleDown"
+  },
+  "fv-animated-icon/icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon"
+  },
+  "fv-animated-icon/:icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon"
+  },
+  "fv-animated-icon/customize-animation": {
+    "type": "object",
+    "description": "自定义动画"
+  },
+  "fv-animated-icon/:customize-animation": {
+    "type": "object",
+    "description": "自定义动画"
+  },
+  "fv-animated-icon/background": {
+    "type": "string",
+    "description": "背景色"
+  },
+  "fv-animated-icon/:background": {
+    "type": "string",
+    "description": "背景色"
+  },
+  "fv-animated-icon/font-size": {
+    "type": "number",
+    "description": "AnimatedIcon 字体大小,default=16"
+  },
+  "fv-animated-icon/:font-size": {
+    "type": "number",
+    "description": "AnimatedIcon 字体大小,default=16"
+  },
+  "fv-animated-icon/hide-content": {
+    "type": "bool",
+    "description": "隐藏文本内容,default=false"
+  },
+  "fv-animated-icon/:hide-content": {
+    "type": "bool",
+    "description": "隐藏文本内容,default=false"
+  },
+  "fv-animated-icon/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-animated-icon/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-animated-icon/click": {
+    "type": "method",
+    "description": "AnimatedIcon onclick"
+  },
+  "fv-animated-icon/@click": {
+    "type": "method",
+    "description": "AnimatedIcon onclick"
+  },
+  "fv-tag/value": {
+    "type": "string",
+    "description": "标签数组,default=[]"
+  },
+  "fv-tag/:value": {
+    "type": "string",
+    "description": "标签数组,default=[]"
+  },
+  "fv-tag/new-tag-placeholder": {
+    "type": "string",
+    "description": "NewTag Placeholder,default=New Tag"
+  },
+  "fv-tag/:new-tag-placeholder": {
+    "type": "string",
+    "description": "NewTag Placeholder,default=New Tag"
+  },
+  "fv-tag/size": {
+    "type": "string",
+    "description": "尺寸`normal`, `medium`, `small`, `xsmall`"
+  },
+  "fv-tag/:size": {
+    "type": "string",
+    "description": "尺寸`normal`, `medium`, `small`, `xsmall`"
+  },
+  "fv-tag/new-tag-background": {
+    "type": "string",
+    "description": "NewTag按钮背景色,default=null"
+  },
+  "fv-tag/:new-tag-background": {
+    "type": "string",
+    "description": "NewTag按钮背景色,default=null"
+  },
+  "fv-tag/is-new-tag": {
+    "type": "bool",
+    "description": "是否启用NewTag,default=false"
+  },
+  "fv-tag/:is-new-tag": {
+    "type": "bool",
+    "description": "是否启用NewTag,default=false"
+  },
+  "fv-tag/is-del": {
+    "type": "bool",
+    "description": "是否启用删除按钮,default=false"
+  },
+  "fv-tag/:is-del": {
+    "type": "bool",
+    "description": "是否启用删除按钮,default=false"
+  },
+  "fv-tag/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-tag/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "Custom theme,default=system"
+  },
+  "fv-tag/add-item": {
+    "type": "method",
+    "description": "添加标签时触发并返回添加项"
+  },
+  "fv-tag/@add-item": {
+    "type": "method",
+    "description": "添加标签时触发并返回添加项"
+  },
+  "fv-tag/del-item": {
+    "type": "method",
+    "description": "删除标签时触发并返回删除项"
+  },
+  "fv-tag/@del-item": {
+    "type": "method",
+    "description": "删除标签时触发并返回删除项"
+  },
+  "fv-collapse/value": {
+    "type": "boolean",
+    "description": "是否展开`Collapse`,default=false"
+  },
+  "fv-collapse/:value": {
+    "type": "boolean",
+    "description": "是否展开`Collapse`,default=false"
+  },
+  "fv-collapse/icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon,default=CollapseMenu"
+  },
+  "fv-collapse/:icon": {
+    "type": "string",
+    "description": "Icon with Fabric-Icon,default=CollapseMenu"
+  },
+  "fv-collapse/title": {
+    "type": "string",
+    "description": "标题,default=Title of Collapse."
+  },
+  "fv-collapse/:title": {
+    "type": "string",
+    "description": "标题,default=Title of Collapse."
+  },
+  "fv-collapse/content": {
+    "type": "string",
+    "description": "副标题信息,default=Content information of Collapse."
+  },
+  "fv-collapse/:content": {
+    "type": "string",
+    "description": "副标题信息,default=Content information of Collapse."
+  },
+  "fv-collapse/background": {
+    "type": "string",
+    "description": "客制化`Collapse`背景"
+  },
+  "fv-collapse/:background": {
+    "type": "string",
+    "description": "客制化`Collapse`背景"
+  },
+  "fv-collapse/default-height": {
+    "type": "number",
+    "description": "默认高度,default=70"
+  },
+  "fv-collapse/:default-height": {
+    "type": "number",
+    "description": "默认高度,default=70"
+  },
+  "fv-collapse/max-height": {
+    "type": "number",
+    "description": "展开最大高度,default=300"
+  },
+  "fv-collapse/:max-height": {
+    "type": "number",
+    "description": "展开最大高度,default=300"
+  },
+  "fv-collapse/disabled-collapse": {
+    "type": "boolean",
+    "description": "禁用展开`Collapse`,default=false"
+  },
+  "fv-collapse/:disabled-collapse": {
+    "type": "boolean",
+    "description": "禁用展开`Collapse`,default=false"
+  },
+  "fv-collapse/theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "主题样式, 默认跟随系统,default=system"
+  },
+  "fv-collapse/:theme": {
+    "options": [
+      "light",
+      "dark",
+      "custom",
+      "system"
+    ],
+    "description": "主题样式, 默认跟随系统,default=system"
+  },
+  "fv-collapse/item-click": {
+    "type": "method",
+    "description": "返回`Collapse`属性`value`的值"
+  },
+  "fv-collapse/@item-click": {
+    "type": "method",
+    "description": "返回`Collapse`属性`value`的值"
   }
 }

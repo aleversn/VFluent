@@ -5,20 +5,20 @@
 		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
 	>
         <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground}">
-            <input :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
+            <input class="input" :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
 		    <i class="ms-Icon right-icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </div>
 		<transition name="fv-combobox">
             <div v-show="status" class="combobox-item-container" :style="{background: background, overflow: 'auto'}" ref="co_items">
-                <option
+                <div
                     v-for="(item, index) in options"
-                    class="combobox-item"
+                    class="fv-combobox-item"
                     :class="{hr:item.type == 'divider', normal: (item.type == 'default' || item.type == undefined) && !item.disabled, disabled: item.disabled, choose: item === thisValue, title: item.type == 'header'}"
                     :style="{background: item === thisValue ? choosenBackground : '', color: item.type === 'header' ? titleForeground : ''}"
                     @click="Choose($event, item)"
                     :key="index"
                     :title="item.text"
-                >{{item.type !== 'divider' ? item.text : ''}}</option>
+                >{{item.type !== 'divider' ? item.text : ''}}</div>
             </div>
         </transition>
 	</div>
@@ -155,6 +155,18 @@ export default {
 				}
 				if (!_self) this.status = false;
 			});
+            window.addEventListener("touchend", event => {
+				let x = event.target;
+				let _self = false;
+				while (x && x.tagName && x.tagName.toLowerCase() != "body") {
+					if (x == this.$el) {
+						_self = true;
+						break;
+					}
+					x = x.parentNode;
+				}
+				if (!_self) this.status = false;
+			});
 		},
 		Choose (event, item) {
             if(item.disabled)
@@ -163,7 +175,7 @@ export default {
                 return 0;
 			this.thisValue = item;
             let target = event.target;
-            while(target.getAttribute("class").indexOf("combobox-item") < 0) {
+            while(target.getAttribute("class").indexOf("fv-combobox-item") < 0) {
                 target = target.parentNode;
             }
             this.$refs.co_items.scrollTop = target.offsetTop;

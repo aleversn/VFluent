@@ -1,31 +1,77 @@
 <template>
-  <main class="page">
-    <slot name="top" />
+    <main class="page" :class="{ dark: isDark }">
+        <slot name="top" />
+        <div class="page-top">
+            <span class="text">Theme</span>
+            <fv-toggle-switch
+                class="toggle"
+                v-model="isDark"
+                on="Dark"
+                off="Light"
+            ></fv-toggle-switch>
+        </div>
+        <Content class="theme-default-content" />
+        <PageEdit />
 
-    <Content class="theme-default-content" />
-    <PageEdit />
+        <PageNav v-bind="{ sidebarItems }" />
 
-    <PageNav v-bind="{ sidebarItems }" />
-
-    <slot name="bottom" />
-  </main>
+        <slot name="bottom" />
+    </main>
 </template>
 
 <script>
-import PageEdit from '@theme/components/PageEdit.vue'
-import PageNav from '@theme/components/PageNav.vue'
+import PageEdit from "@theme/components/PageEdit.vue";
+import PageNav from "@theme/components/PageNav.vue";
 
 export default {
-  components: { PageEdit, PageNav },
-  props: ['sidebarItems']
-}
+    components: { PageEdit, PageNav },
+    props: ["sidebarItems"],
+    computed: {
+        isDark: {
+            set(val) {
+                if (val) {
+                    this.$fvGlobal.commit("changeTheme", "dark");
+                } else {
+                    this.$fvGlobal.commit("changeTheme", "light");
+                }
+            },
+            get() {
+                return this.$fvGlobal.state.theme == "dark";
+            },
+        },
+    },
+};
 </script>
 
+<style lang="scss" scoped>
+.page-top {
+    margin: 0 auto;
+    padding-top: 50px;
+    max-width: 740px;
+    .toggle {
+        display: inline-flex;
+    }
+    .text {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+}
+@media (max-width: 959px) {
+    .page-top {
+        padding: 2rem;
+    }
+}
+</style>
+
 <style lang="stylus">
-@require '../styles/wrapper.styl'
+@require '../styles/wrapper.styl';
 
-.page
-  padding-bottom 2rem
-  display block
-
+.page {
+    padding-bottom: 2rem;
+    display: block;
+    &.dark{
+      background:#0d1117;
+      color:white;
+    }
+}
 </style>

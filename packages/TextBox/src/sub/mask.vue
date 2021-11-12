@@ -219,6 +219,9 @@ export default {
                 result.push(this.thisValue[i].content);
             }
             this.$emit("input", result);
+        },
+        focusInspect () {
+            this.$refs.input.focus();
         }
     }
 };

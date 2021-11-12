@@ -1,76 +1,243 @@
 @mixin fv-callout {
-    position: fixed;
-    box-sizing: border-box;
-    z-index: 3000;
-    background-color: rgba(242, 242, 242, 1);
-    color: rgba(50, 49, 48, 1);
-    padding: 12px;
-    margin: 0;
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 3000;
+  background-color: rgba(242, 242, 242, 1);
+  color: rgba(50, 49, 48, 1);
+  padding: 12px;
+  margin: 0;
+  border-radius: 5px;
+  font-size: 13.8px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px,
+    rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
+  .fv-callout-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: inherit;
     border-radius: 5px;
-    font-size: 13.8px;
-    line-height: 1.5;
-    box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
-    .fv-callout-bg {
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: inherit;
-        border-radius: 5px;
-    }
-    .beak {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        z-index: -2;
-        left: 50%;
-        background: inherit;
-        box-shadow: inherit;
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-    .header {
-        position: relative;
-        padding: 0;
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-    .main {
-        position: relative;
-        padding: 0;
-        border-radius: 3px;
-    }
-    .footer {
-        position: relative;
-        padding: 0;
-        font-size: 0.8em;
-    }
+  }
+  .beak {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: -2;
+    left: 50%;
+    background: inherit;
+    box-shadow: inherit;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .header {
+    position: relative;
+    padding: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .main {
+    position: relative;
+    padding: 0;
+    border-radius: 3px;
+  }
+  .footer {
+    position: relative;
+    padding: 0;
+    font-size: 0.8em;
+  }
+  &.bottomLeft {
+    transform-origin: 0% 0%;
+  }
+  &.bottomCenter {
+    transform: translate(-50%, 0);
+    transform-origin: 50% 0%;
+  }
+  &.bottomRight {
+    transform-origin: 100% 0%;
+    transform: translate(-100%, 0);
+  }
+  &.topLeft {
+    transform: translate(0, -100%);
+    transform-origin: 0% 100%;
+  }
+  &.topRight {
+    transform: translate(-100%, -100%);
+    transform-origin: 100% 100%;
+  }
+  &.topCenter {
+    transform: translate(-50%, -100%);
+    transform-origin: 50% 100%;
+  }
+  &.leftTop {
+    transform: translate(-100%, 0);
+    transform-origin: 100% 0%;
+  }
+  &.leftBottom {
+    transform: translate(-100%, -100%);
+    transform-origin: 100% 100%;
+  }
+  &.leftCenter {
+    transform: translate(-100%, -50%);
+    transform-origin: 100% 50%;
+  }
+  &.rightTop {
+    transform-origin: 0% 0%;
+  }
+  &.rightBottom {
+    transform: translate(0, -100%);
+    transform-origin: 0% 100%;
+  }
+  &.rightCenter {
+    transform: translate(0, -50%);
+    transform-origin: 0% 50%;
+  }
 }
 
 .fv-callout-fade-enter-active {
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .fv-callout-fade-enter {
-    transform: scale(0);
-    opacity: 0;
+  transform: scale(0);
+  opacity: 0;
+  &.bottomCenter {
+    transform: translate(-50%, 0) scale(0);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(0);
+  }
+  &.topLeft {
+    transform: translate(0, -100%) scale(0);
+  }
+  &.topRight {
+    transform: translate(-100%, -100%) scale(0);
+  }
+  &.topCenter {
+    transform: translate(-50%, -100%) scale(0);
+  }
+  &.leftTop {
+    transform: translate(-100%, 0) scale(0);
+  }
+  &.leftBottom {
+    transform: translate(-100%, -100%) scale(0);
+  }
+  &.leftCenter {
+    transform: translate(-100%, -50%) scale(0);
+  }
+  &.rightBottom {
+    transform: translate(0, -100%) scale(0);
+  }
+  &.rightCenter {
+    transform: translate(0, -50%) scale(0);
+  }
 }
 
 .fv-callout-fade-enter-to {
-    transform: scale(1);
-    opacity: 1;
+  transform: scale(1);
+  opacity: 1;
+  &.bottomCenter {
+    transform: translate(-50%, 0) scale(1);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(1);
+  }
+  &.topLeft {
+    transform: translate(0, -100%) scale(1);
+  }
+  &.topRight {
+    transform: translate(-100%, -100%) scale(1);
+  }
+  &.topCenter {
+    transform: translate(-50%, -100%) scale(1);
+  }
+  &.leftTop {
+    transform: translate(-100%, 0) scale(1);
+  }
+  &.leftBottom {
+    transform: translate(-100%, -100%) scale(1);
+  }
+  &.leftCenter {
+    transform: translate(-100%, -50%) scale(1);
+  }
+  &.rightBottom {
+    transform: translate(0, -100%) scale(1);
+  }
+  &.rightCenter {
+    transform: translate(0, -50%) scale(1);
+  }
 }
 
 .fv-callout-fade-leave-active {
-    transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 .fv-callout-fade-leave {
-    transform: scale(1);
+  transform: scale(1);
+  &.bottomCenter {
+    transform: translate(-50%, 0) scale(1);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(1);
+  }
+  &.topLeft {
+    transform: translate(0, -100%) scale(1);
+  }
+  &.topRight {
+    transform: translate(-100%, -100%) scale(1);
+  }
+  &.topCenter {
+    transform: translate(-50%, -100%) scale(1);
+  }
+  &.leftTop {
+    transform: translate(-100%, 0) scale(1);
+  }
+  &.leftBottom {
+    transform: translate(-100%, -100%) scale(1);
+  }
+  &.leftCenter {
+    transform: translate(-100%, -50%) scale(1);
+  }
+  &.rightBottom {
+    transform: translate(0, -100%) scale(1);
+  }
+  &.rightCenter {
+    transform: translate(0, -50%) scale(1);
+  }
 }
 
 .fv-callout-fade-leave-to {
-    transform: scale(0);
+  transform: scale(0);
+  &.bottomCenter {
+    transform: translate(-50%, 0) scale(0);
+  }
+  &.bottomRight {
+    transform: translate(-100%, 0) scale(0);
+  }
+  &.topLeft {
+    transform: translate(0, -100%) scale(0);
+  }
+  &.topRight {
+    transform: translate(-100%, -100%) scale(0);
+  }
+  &.topCenter {
+    transform: translate(-50%, -100%) scale(0);
+  }
+  &.leftTop {
+    transform: translate(-100%, 0) scale(0);
+  }
+  &.leftBottom {
+    transform: translate(-100%, -100%) scale(0);
+  }
+  &.leftCenter {
+    transform: translate(-100%, -50%) scale(0);
+  }
+  &.rightBottom {
+    transform: translate(0, -100%) scale(0);
+  }
+  &.rightCenter {
+    transform: translate(0, -50%) scale(0);
+  }
 }

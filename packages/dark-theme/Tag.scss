@@ -1,0 +1,42 @@
+@import "../common-theme/Tag.scss";
+.fv-dark-Tag {
+    @include fv-Tag();
+
+    .fv-tag-item
+    {
+        background: rgba(25, 106, 167, 1);
+        border-color: rgba(25, 106, 167, 1) solid thin;
+        color: whitesmoke;
+
+        &.success
+        {
+            background: rgba(0, 204, 153, 1);
+            border-color: rgba(0, 204, 153, 1) solid thin;
+            color: whitesmoke;
+        }
+
+        &.warning
+        {
+            background: rgba(255, 200, 10, 1);
+            border-color: rgba(255, 200, 10, 1) solid thin;
+            color: whitesmoke;
+        }
+
+        &.error
+        {
+            background: rgba(173, 38, 45, 1);
+            border-color: rgba(173, 38, 45, 1) solid thin;
+            color: whitesmoke;
+        }
+
+        .fv-tag-icon
+        {
+            color: whitesmoke;
+
+            &:hover
+            {
+                background: rgba(220, 220, 220, 0.3);
+            }
+        }
+    }
+}

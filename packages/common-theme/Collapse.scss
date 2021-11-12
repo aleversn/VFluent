@@ -1,0 +1,128 @@
+@mixin fv-Collapse {
+    
+    position: relative;
+    background: #fbfbfd;
+    border: 1px solid #e3e5e8;
+    border-radius: 6px;
+    user-select: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.3s;
+    overflow: hidden;
+    cursor: default;
+
+    .collapse-description-container
+    {
+        position: relative;
+        width: 100%;
+        flex-shrink: 0;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .collapse-icon-box
+        {
+            width: 60px;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+
+            .collapse-icon-item
+            {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .collapse-description-box
+        {
+            position: relative;
+            width: 100%;
+
+            .collapse-description
+            {
+                line-height: 1.6rem;
+
+                .collapse-text
+                {
+                    line-height: inherit;
+                    .collapse-title,
+                    .collapse-info
+                    {
+                        line-height: inherit;
+                    }
+                    .collapse-title
+                    {
+                        font-size: 0.9rem;
+                    }
+                    .collapse-info
+                    {
+                        color: #6a6a6b;
+                        font-size: 0.7rem;
+                    }
+                }
+                .collapse-expand-icon
+                {
+                    position: absolute;
+                    top: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: calc(100% - 5px);
+                    padding-bottom: 5px;
+                    width: 32px;
+                    right: 0;
+                    font-size: 0.8rem;
+                    i
+                    {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .collapse-detail
+    {
+        position: relative;
+        flex: 1;
+        flex-shrink: 0;
+        padding: 15px 10px;
+        box-sizing: border-box;
+        overflow: auto;
+    }
+
+    &:hover
+    {
+        background: #f5f6f8;
+    }
+
+    .collapse-expanded-enter-active
+    {
+        transform-origin: 50% 0%;
+        animation: rotatePullTop 0.5s both ease;
+    }
+    .collapse-expanded-leave-active
+    {
+        transform-origin: 50% 0%;
+        animation: rotatePushBottom 0.5s both ease;
+    }
+    @keyframes rotatePullTop {
+        from {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+    }
+    @keyframes rotatePushBottom {
+        to {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+    }
+}

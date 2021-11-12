@@ -49,6 +49,9 @@ import Badge from '@/Badge/index.js'
 import Panel from '@/Panel/index.js'
 import Pagination from '@/Pagination/index.js'
 import Breadcrumb from '@/Breadcrumb/index.js'
+import AnimatedIcon from '@/AnimatedIcon/index.js'
+import Tag from '@/Tag/index.js'
+import Collapse from '@/Collapse/index.js'
 
 
 let components = [
@@ -93,6 +96,9 @@ let components = [
   Panel,
   Pagination,
   Breadcrumb,
+  AnimatedIcon,
+  Tag,
+  Collapse,
 
 ]
 
@@ -153,6 +159,9 @@ export default {
   Panel,
   Pagination,
   Breadcrumb,
+  AnimatedIcon,
+  Tag,
+  Collapse,
 
 }
 

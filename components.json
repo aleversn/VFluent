@@ -326,5 +326,29 @@
       "Dark": "@/dark-theme/Breadcrumb.scss",
       "Custom": "@/custom-theme/Breadcrumb.scss"
     }
+  },
+  "AnimatedIcon": {
+    "entry": "@/AnimatedIcon/index.js",
+    "theme": {
+      "Light": "@/light-theme/AnimatedIcon.scss",
+      "Dark": "@/dark-theme/AnimatedIcon.scss",
+      "Custom": "@/custom-theme/AnimatedIcon.scss"
+    }
+  },
+  "Tag": {
+    "entry": "@/Tag/index.js",
+    "theme": {
+      "Light": "@/light-theme/Tag.scss",
+      "Dark": "@/dark-theme/Tag.scss",
+      "Custom": "@/custom-theme/Tag.scss"
+    }
+  },
+  "Collapse": {
+    "entry": "@/Collapse/index.js",
+    "theme": {
+      "Light": "@/light-theme/Collapse.scss",
+      "Dark": "@/dark-theme/Collapse.scss",
+      "Custom": "@/custom-theme/Collapse.scss"
+    }
   }
 }

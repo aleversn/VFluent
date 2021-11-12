@@ -66,6 +66,13 @@ Disabled
 <fv-SearchBox icon="Search" placeholder="Search" :options="items" disabled></fv-SearchBox>
 ```
 
+### SearchBox-RevealBorder
+
+<fv-SearchBox placeholder="Please enter the text here." icon="Search" :options="items" :revealBorder="true" borderColor="rgba(0, 0, 0, 0.01)" borderRadius="3" :isBoxShadow="true"></fv-SearchBox>
+
+```vue
+<fv-SearchBox placeholder="Please enter the text here." icon="Search" :options="items" :revealBorder="true" borderColor="rgba(0, 0, 0, 0.01)" borderRadius="3" :isBoxShadow="true"></fv-SearchBox>
+```
 
 ### SearchBox-Custom Search Result
 ---

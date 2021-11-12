@@ -24,7 +24,7 @@
 
     &.editor-mode
     {
-        border: rgba(0, 120, 212, 1) solid thin;
+        border: rgba(0, 90, 158, 1) solid thin;
         outline: rgba(0, 120, 212, 0.6) solid 2px;
     }
 
@@ -102,9 +102,9 @@
 @mixin fv-Breadcrumb-separator-content {
     width: auto;
     height: auto;
-    padding: 2px 8px;
+    padding: 3px 8px;
     margin: 0px;
-    border-radius: 3px;
+    border-radius: 8px;
     color: rgba(105, 105, 105, 1);
     box-sizing: border-box;
     display: flex;

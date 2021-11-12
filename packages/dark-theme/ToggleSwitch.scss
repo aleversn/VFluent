@@ -6,17 +6,40 @@
     display: flex;
     align-items: center;
 
-    div
+    .fv-toggle-border
     {
-        border: rgba(242,242,242,0.8) solid 2px;
-        p
+        border: rgba(207, 207, 207, 0.8) solid 1.5px;
+
+        &:hover
         {
-            background: rgba(242,242,242,0.8);
+            background: rgba(207, 207, 207, 0.05);
+            opacity: 1;
+        }
+        
+        &:active
+        {
+            background: rgba(207, 207, 207, 0.1);
+        }
+        
+        .fv-toggle-ring
+        {
+            background: rgba(207, 207, 207, 0.8);
+        }
+
+        &.toggle-on
+        {
+            background: rgba(109, 169, 216, 0.8);
+            border-color: transparent;
+
+            .fv-toggle-ring
+            {
+                background: black;
+            }
         }
     }
     
-    p
+    .fv-toggle-content
     {
-        color: rgba(255,255,255,1);
+        color: whitesmoke;
     }
 }

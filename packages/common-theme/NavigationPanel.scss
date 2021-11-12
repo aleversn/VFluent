@@ -3,7 +3,7 @@
     position: relative;
     width: 350px;
     height: 100%;
-    transition: all 0.3s;
+    transition: width 0.3s;
     z-index: 1;
 
     .panel-container
@@ -16,67 +16,12 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        transition: all 0.3s;
+        transition: width 0.3s;
         z-index: 1;
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
 
-        span.default-item
-        {
-            position: relative;
-            width: 100%;
-            height: 40px;
-            padding: 0px;
-            border: transparent solid thin;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-
-            &.control
-            {
-                z-index: 2;
-            }
-
-            i.icon {
-                position: relative;
-                width: 40px;
-                height: 100%;
-                color: rgba(0, 0, 0, 1);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            p.name {
-                @include nowrap;
-
-                position: relative;
-                width: 100%;
-                height: 100%;
-                flex: 1;
-                margin: 0px;
-                padding: 0px 12px;
-                font-weight: normal;
-                color: rgba(0, 0, 0, 1);
-                user-select: none;
-                box-sizing: border-box;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-
-                &.title
-                {
-                    font-size: 13.8px;
-                    font-weight: 600;
-                }
-            }
-
-            &:hover
-            {
-                background: rgba(158, 158, 158, 0.3);
-            }
-        }
+        @include default-item;
 
         span.search
         {
@@ -107,19 +52,40 @@
         }
     }
 
-    .panel-container.mobile
+    .panel-container-mobile
     {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: auto;
+        height: 40px;
+        padding: 0px;
+        background: transparent;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        display: flex;
+        flex-direction: row;
         display: none;
+        z-index: 2;
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+
+        @include default-item;
     }
 
     &.compact
     {
         width: 40px;
         
-        .panel-container
+        .panel-container-mobile, .panel-container
         {
-            span.default-item
+            .fv-nav-default-item
             {
+                i.icon
+                {
+                    width: 30px;
+                }
+
                 p.name
                 {
                     display: none;
@@ -129,66 +95,6 @@
             span.search
             {
                 display: none;
-            }
-        }
-
-        &.mobile
-        {
-            width: 80px;
-            
-            .panel-container.mobile
-            {
-                max-width: 80px;
-
-                *{
-                    display: flex;
-                }
-            }
-
-            .panel-container
-            {
-                width: 0px;
-                max-width: 0px;
-
-                *{
-                    display: none;
-                }
-            }
-        }
-    }
-
-    &.mobile
-    {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-
-        .panel-container
-        {
-            padding-top: 40px;
-
-            .default-item.control
-            {
-                display: none;
-            }
-        }
-        
-        .panel-container.mobile
-        {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: auto;
-            height: auto;
-            padding: 0px;
-            background: transparent;
-            display: flex;
-            flex-direction: row;
-            z-index: 2;
-
-            .default-item
-            {
-                width: 40px;
             }
         }
     }
@@ -203,7 +109,79 @@
             position: absolute;
             left: 0px;
             top: 0px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             box-shadow: $ms-depth-shadow-8;
+        }
+
+        &.compact
+        {
+            .panel-container
+            {
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+        }
+    }
+
+    &.mobile
+    {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+
+        .panel-container
+        {
+            padding-top: 40px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            .fv-nav-default-item.control
+            {
+                display: none;
+            }
+        }
+
+        .panel-container-mobile
+        {
+            display: flex;
+
+            .fv-nav-default-item
+            {
+                width: 40px;
+                margin-left: 0px;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        &.compact
+        {
+            width: 80px;
+            height: 40px;
+
+            .panel-container-mobile
+            {
+                max-width: 80px;
+                background: rgba(239, 239, 239, 0.6);
+
+                *{
+                    display: flex;
+                }
+            }
+
+            .panel-container
+            {
+                width: 80px;
+                height: 40px;
+                max-height: 40px;
+                padding: 0px;
+                
+                *
+                {
+                    display: none;
+                }
+            }
         }
     }
 
@@ -216,5 +194,72 @@
     .zoom-in-top-enter,.zoom-in-top-leave-active {
         opacity: 0;
         transform: scaleY(0);
+    }
+}
+
+@mixin default-item {
+    .fv-nav-default-item
+    {
+        position: relative;
+        width: calc(100% - 10px);
+        height: 40px;
+        margin-left: 5px;
+        padding: 0px;
+        border-radius: 6px;
+        border: transparent solid thin;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &.control
+        {
+            z-index: 2;
+        }
+
+        i.icon {
+            position: relative;
+            width: 40px;
+            height: 100%;
+            font-size: 13.8px;
+            color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p.name {
+            @include nowrap;
+
+            position: relative;
+            width: 100%;
+            height: 100%;
+            flex: 1;
+            margin: 0px;
+            padding-left: 12px;
+            font-weight: normal;
+            color: rgba(0, 0, 0, 1);
+            user-select: none;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            &.title
+            {
+                font-size: 13.8px;
+                font-weight: 600;
+            }
+        }
+
+        &:hover
+        {
+            background: rgba(158, 158, 158, 0.2);
+        }
+
+        &:active
+        {
+            opacity: 0.8;
+        }
     }
 }

@@ -15,7 +15,7 @@
                 </div>
                 <div v-show="isFooter" class="fv-panel-footer">
                     <slot name="footer">
-                        <fv-button theme="dark" background="rgba(0, 120, 212, 1)">OK</fv-button>
+                        <fv-button theme="dark" background="rgba(0, 90, 158, 1)">OK</fv-button>
                         <fv-button>Cancel</fv-button>
                     </slot>
                 </div>

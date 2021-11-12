@@ -13,7 +13,7 @@
     overflow: hidden;
     -webkit-backdrop-filter: blur(25px);
 
-    .control-block
+    .fv-calendar-control-block
     {
         width: 100%;
         height: 45px;
@@ -23,20 +23,28 @@
         -webkit-backdrop-filter: blur(25px);
         z-index: 1;
 
-        .switcher
+        .calendar-switcher
         {
-            margin-left: 8px;
-            font-weight: 100;
-            color: gray;
+            width: 100%;
+            height: 100%;
+            max-height: 39px;
+            padding-left: 8px;
+            border: transparent solid 1.5px;
+            border-radius: 3px;
+            font-weight: normal;
+            color: rgba(50, 49, 48, 1);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
             transition: all 0.2s;
             user-select: none;
             -webkit-transition: all 0.2s;
             -webkit-user-select: none;
-            cursor: pointer;
+            cursor: default;
             
             &:hover
             {
-                opacity: 0.8;
+                border-color: rgba(120, 120, 120, 0.1);
             }
             
             &.dark
@@ -47,21 +55,37 @@
         
         .slider-bar
         {
-            width: 50px;
+            width: 78px;
+            height: 100%;
+            max-height: 39px;
             display: flex;
             justify-content: space-around;
+            align-items: center;
             
-            p
+            .slider-btn
             {
+                width: 39px;
+                height: 100%;
+                border: transparent solid 1.5px;
+                border-radius: 3px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 transition: all 0.3s;
                 -webkit-transition: all 0.3s;
                 user-select: none;
                 -webkit-user-select: none;
-                cursor: pointer;
+                cursor: default;
                 
                 &:hover
                 {
-                    opacity: 0.6;
+                    border-color: rgba(120, 120, 120, 0.1);
+                }
+
+                .ms-Icon
+                {
+                    font-size: 12px;
+                    transform: scale(0.8);
                 }
             }
             
@@ -122,7 +146,7 @@
             transition: all 0.3s ease-in-out;
             -ms-overflow-style: -ms-autohiding-scrollbar;
             
-            button.btn
+            button.picker-btn
             {
                 position: relative;
                 width: 70.5px;
@@ -175,7 +199,7 @@
 
                 &.choose
                 {
-                    border: rgba(0, 120, 215, 1) solid 2px;
+                    border: rgba(0, 90, 158, 1) solid 2px;
                 }
                 
                 &.day
@@ -190,5 +214,69 @@
         {
             display: none;
         }
+    }
+    
+    .fv-calendar-scale-up-enter-active
+    {
+        transition: opacity 0.3s, transform 0.2s;
+    }
+    
+    .fv-calendar-scale-up-enter
+    {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    .fv-calendar-scale-up-enter-to
+    {
+        transform: scale(1);
+    }
+
+    .fv-calendar-scale-up-leave-active
+    {
+        transition: opacity 0.1s, transform 0.1s;
+    }
+
+    .fv-calendar-scale-up-leave
+    {
+        transform: scale(1);
+    }
+
+    .fv-calendar-scale-up-leave-to
+    {
+        opacity: 0;
+        transform: scale(1.6);
+    }
+
+    .fv-calendar-scale-down-enter-active
+    {
+        transition: opacity 0.2s, transform 0.2s;
+    }
+    
+    .fv-calendar-scale-down-enter
+    {
+        opacity: 0;
+        transform: scale(1.6);
+    }
+
+    .fv-calendar-scale-down-enter-to
+    {
+        transform: scale(1);
+    }
+
+    .fv-calendar-scale-down-leave-active
+    {
+        transition: opacity 0.01s, transform 0.01s;
+    }
+
+    .fv-calendar-scale-down-leave
+    {
+        transform: scale(1);
+    }
+
+    .fv-calendar-scale-down-leave-to
+    {
+        opacity: 0;
+        transform: scale(0.9);
     }
 }
