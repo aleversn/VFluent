@@ -1,14 +1,5 @@
 <template>
 <div :class="'fv-'+$theme+'-FlipView'">
-    <div class="container-panel">
-        <transition-group :name="currentAnimation" tag="div" class="container-panel">
-            <div v-show="currentIndex === index" v-for="(item, index) in thisValue" :key="`flipview: ${index}`" class="container-item" :style="styles.containerItem">
-                <slot name="item" :data="item" :index="index">
-                    <p style="font-size: 36px;">{{index + 1}}</p>
-                </slot>
-            </div>
-        </transition-group>
-    </div>
     <div class="control-panel" :class="[showControlPanel]" :style="styles.controlPanel">
         <transition name="fade-in">
             <span class="slidebtn fst" :class="[direction]" @click="slidePrev">
@@ -26,6 +17,15 @@
             <p class="sec ms-Icon" :class="[thisAutoPlay.toString() == 'true' ? 'ms-Icon--Pause' : 'ms-Icon--Play']" @click="thisAutoPlay = !thisAutoPlay"></p>
         </span>
         </transition>
+    </div>
+    <div class="container-panel">
+        <transition-group :name="currentAnimation" tag="div" class="container-panel">
+            <div v-show="currentIndex === index" v-for="(item, index) in thisValue" :key="`flipview: ${index}`" class="container-item" :style="styles.containerItem">
+                <slot name="item" :data="item" :index="index">
+                    <p style="font-size: 36px;">{{index + 1}}</p>
+                </slot>
+            </div>
+        </transition-group>
     </div>
 </div>
 </template>

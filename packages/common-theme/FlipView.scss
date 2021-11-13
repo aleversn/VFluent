@@ -76,6 +76,7 @@
             -webkit-backdrop-filter: blur(25px);
             -webkit-transition: all 0.5s, color 0.01s;
             user-select: none;
+            z-index: 1;
 
             &:hover
             {
@@ -139,6 +140,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            z-index: 1;
 
             .fst
             {
