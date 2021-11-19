@@ -138,14 +138,23 @@ export default {
             event: {
                 label: {
                     mouseover: () => {
-                        this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.3).cssa());
+                        this.$set(
+                            this.style.label,
+                            'backgroundColor',
+                            this.viewStyle.backgroundColorHover !== undefined ? this.viewStyle.backgroundColorHover : this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.3).cssa()
+                        );
                     },
                     mouseout: () => {
-                        if (!this.item.selected) {
-                            this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
-                        } else {
-                            this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.2).cssa());
-                        }
+                        this.setLabelBackgroundColor(this.item.selected);
+                        // if (!this.item.selected) {
+                        //     this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
+                        // } else {
+                        //     if (this.viewStyle.backgroundColorHover!==undefined){
+                        //         this.$set(this.style.label,"backgroundColor",this.viewStyle.backgroundColorHover)
+                        //     }else{
+                        //         this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.2).cssa());
+                        //     }
+                        // }
                     },
                 },
             },
@@ -333,6 +342,10 @@ export default {
         },
         setLabelBackgroundColor(val) {
             if (val) {
+                if (this.viewStyle.backgroundColorHover !== undefined) {
+                    this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColorHover);
+                    return;
+                }
                 this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.2).cssa());
             } else {
                 this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
