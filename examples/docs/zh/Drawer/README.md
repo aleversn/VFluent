@@ -43,17 +43,14 @@
 
 ### Drawer
 
-<div :style="divStyle">
-THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$theme"/>
-</div>
 
-<fv-button @click="toggle" :theme="$theme">Show/Hide</fv-button>
+<fv-button @click="toggle" >Show/Hide</fv-button>
 
-<fv-drawer :visible.sync="visible" :theme="$theme">
+<fv-drawer :visible.sync="visible">
 </fv-drawer>
 
 ``` vue
-<fv-drawer :visible.sync="visible" :theme="$theme">
+<fv-drawer :visible.sync="visible">
 </fv-drawer>
 ```
 

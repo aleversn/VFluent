@@ -48,59 +48,47 @@
   }
 </script>
 
-<div :style="divStyle">
-THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$theme"/>
-</div>
-
 ### DatePicker-Default
 
-<div :style="divStyle">
 <ClientOnly>
-<fv-DatePicker style="width:150px" v-model="date" :theme="$theme">
+<fv-DatePicker style="width:150px" v-model="date" >
 </fv-DatePicker>
 </ClientOnly>
-</div>
 
 ``` vue
-<fv-DatePicker v-model="date" :theme="$theme">
+<fv-DatePicker v-model="date" >
 </fv-DatePicker>
 ```
 
 ### DatePicker-Simple
 
-<div :style="divStyle">
 <ClientOnly>
-<fv-DatePicker v-model="date" :theme="$theme" :hideYear="true">
+<fv-DatePicker v-model="date" :hideYear="true">
 </fv-DatePicker>
 </ClientOnly>
-</div>
 
 ``` vue
-<fv-DatePicker v-model="date" :theme="$theme" :hideYear="true">
+<fv-DatePicker v-model="date"  :hideYear="true">
 </fv-DatePicker>
 ```
 
 ### DatePicker-Full
 
-<div :style="divStyle">
 <ClientOnly>
-<fv-DatePicker v-model="date" :theme="$theme" :showWeek="true">
+<fv-DatePicker v-model="date"  :showWeek="true">
 </fv-DatePicker>
 </ClientOnly>
-</div>
 
 ``` vue
-<fv-DatePicker v-model="date" :theme="$theme" :showWeek="true">
+<fv-DatePicker v-model="date" :showWeek="true">
 </fv-DatePicker>
 ```
 
 ### DatePicker-Custom
 
-<div :style="divStyle">
 <ClientOnly>
 <fv-DatePicker 
 v-model="date" 
-:theme="$theme" 
 :showWeek="true" 
 class="custom_style" 
 innerBorderColor="rgb(0, 204, 153)"
@@ -109,12 +97,10 @@ innerBorderColor="rgb(0, 204, 153)"
 >
 </fv-DatePicker>
 </ClientOnly>
-</div>
 
 ``` vue
 <fv-DatePicker 
   v-model="date" 
-  :theme="$theme" 
   :showWeek="true" 
   class="custom_style" 
   innerBorderColor="rgb(0, 204, 153)"
