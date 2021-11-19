@@ -77,7 +77,7 @@ export default {
   methods:{
   },
   watch:{
-    "window.show"(val){
+    "window.popperShow"(val){
       if (!val){
         this.callout.show=false;
       }

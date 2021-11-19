@@ -111,7 +111,7 @@ export default {
         let target = this.getFirstDefaultSlotElement();
         let slots = this.slot();
         return (
-            <div>
+            <div style="all:inherit;">
                 {target}
                 <Popper ref="popper" theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} nodes={slots} />
             </div>
@@ -424,13 +424,14 @@ export default {
                         clearInterval(this.timeout.hoverClose);
                     }, 300);
                 };
+                // for menuflyout
                 this.popperEvent.mouseenter = () => {
                     let el = this.$parent;
                     while (el) {
                         if (el.$options.name === 'FvOutsidePopper') {
-                            if (!el.show) {
-                                this.popperShow = true;
+                            if (!el.popperShow) {
                                 el = el.target;
+                                el.popperShow = true;
                             } else {
                                 break;
                             }
@@ -446,9 +447,10 @@ export default {
                     let el = this.$parent;
                     while (el) {
                         if (el.$options.name === 'FvOutsidePopper' && el.target.effect == 'hover') {
-                            if (el.show) {
+                            if (el.popperShow) {
                                 this.popperShow = false;
                                 el = el.target;
+                                el.popperEvent.mouseleave()
                             } else {
                                 break;
                             }
@@ -507,7 +509,6 @@ export default {
     mounted() {
         document.body.append(this._popper.$el);
         this.init();
-
     },
     beforeDestroy() {
         this.destoryEvent();
