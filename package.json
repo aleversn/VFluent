@@ -1,93 +1,93 @@
 {
-    "name": "vfluentdesign",
-    "version": "0.1.57",
-    "author": "Creator-SN",
-    "bugs": {
-        "url": "https://github.com/aleversn/VFluent/issues"
+  "name": "vfluentdesign",
+  "version": "0.1.57",
+  "private": false,
+  "description": "Vue Components , Fluent Vue Design inspired by Microsoft Fluent Design",
+  "author": "Creator-SN",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "bin:entry": "node build/entry.js",
+    "bin:new": "node build/new.js",
+    "bin:rm": "node build/remove.js",
+    "bin:vetur": "node build/buildVuter.js",
+    "docs:build": "yarn && vuepress build examples/docs",
+    "docs:dev": "yarn && vuepress dev examples/docs",
+    "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
+    "lib:update": "powershell ./build/updateVersion.ps1",
+    "pub": "yarn && yarn lib && yarn publish",
+    "pub:pages": "build/page.sh"
+  },
+  "main": "lib/index.umd.min.js",
+  "files": [
+    "lib",
+    "packages",
+    "types",
+    "vetur"
+  ],
+  "dependencies": {
+    "core-js": "^3.4.3",
+    "fluent-reveal-effect": "^1.1.1",
+    "gsap": "^3.1.1",
+    "office-ui-fabric-core": "^11.0.0",
+    "onecolor": "^3.1.0",
+    "vuedraggable": "^2.23.2",
+    "vuex": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-react": "^7.12.10",
+    "@vue/babel-preset-app": "^4.5.9",
+    "@vue/cli-plugin-babel": "~5.0.1",
+    "@vue/cli-plugin-eslint": "~5.0.1",
+    "@vue/cli-service": "~5.0.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "file-save": "^0.2.0",
+    "process": "^0.11.10",
+    "sass": "^1.43.4",
+    "sass-loader": "^8.0.0",
+    "uppercamelcase": "^3.0.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.2.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "description": "Vue Components , Fluent Vue Design inspired by Microsoft Fluent Design",
-    "main": "lib/index.umd.min.js",
-    "private": false,
-    "files": [
-        "lib",
-        "packages",
-        "types",
-        "vetur"
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
     ],
-    "keywords": [
-        "fluent",
-        "vue",
-        "component",
-        "ui"
-    ],
-    "repository": "https://github.com/aleversn/VFluent",
-    "types": "types/index.d.ts",
-    "vetur": {
-        "tags": "vetur/tags.json",
-        "attributes": "vetur/attributes.json"
+    "rules": {
+      "no-console": "off"
     },
-    "homepage": "https://aleversn.github.io",
-    "license": "MIT",
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "lib": "vue-cli-service build --target lib --name index --dest lib examples/index.js",
-        "lint": "vue-cli-service lint",
-        "docs:dev": "yarn && vuepress dev examples/docs",
-        "docs:build": "yarn && vuepress build examples/docs",
-        "bin:new": "node build/new.js",
-        "bin:rm": "node build/remove.js",
-        "bin:entry": "node build/entry.js",
-        "pub": "yarn && yarn lib && yarn publish",
-        "pub:pages": "build/page.sh",
-        "bin:vetur": "node build/buildVuter.js",
-        "lib:update": "powershell ./build/updateVersion.ps1"
-    },
-    "dependencies": {
-        "core-js": "^3.4.3",
-        "fluent-reveal-effect": "^1.1.1",
-        "gsap": "^3.1.1",
-        "office-ui-fabric-core": "^11.0.0",
-        "onecolor": "^3.1.0",
-        "vuedraggable": "^2.23.2",
-        "vuex": "^3.1.2"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.12.10",
-        "@babel/preset-react": "^7.12.10",
-        "@vue/babel-preset-app": "^4.5.9",
-        "@vue/cli-plugin-babel": "^4.1.0",
-        "@vue/cli-plugin-eslint": "^4.1.0",
-        "@vue/cli-service": "^4.1.0",
-        "babel-eslint": "^10.0.3",
-        "eslint": "^5.16.0",
-        "eslint-plugin-vue": "^5.0.0",
-        "file-save": "^0.2.0",
-        "process": "^0.11.10",
-        "sass": "^1.43.4",
-        "sass-loader": "^8.0.0",
-        "uppercamelcase": "^3.0.0",
-        "vue": "^2.6.10",
-        "vue-template-compiler": "^2.6.10",
-        "vuepress": "^1.2.0"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "rules": {
-            "no-console": "off"
-        },
-        "parserOptions": {
-            "parser": "babel-eslint"
-        }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
-    ]
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "bugs": {
+    "url": "https://github.com/aleversn/VFluent/issues"
+  },
+  "homepage": "https://aleversn.github.io",
+  "keywords": [
+    "fluent",
+    "vue",
+    "component",
+    "ui"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/aleversn/VFluent",
+  "types": "types/index.d.ts",
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
+  }
 }

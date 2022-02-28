@@ -91,8 +91,9 @@
 v-model="date" 
 :showWeek="true" 
 class="custom_style" 
+hoverColor="rgba(0, 204, 153,0.7)"
 innerBorderColor="rgb(0, 204, 153)"
-:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.6)',color:'white',borderColor:'rgba(0, 204, 153,0.6)'}"
+:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
 :selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
 >
 </fv-DatePicker>
@@ -103,6 +104,7 @@ innerBorderColor="rgb(0, 204, 153)"
   v-model="date" 
   :showWeek="true" 
   class="custom_style" 
+  hoverColor="rgba(0, 204, 153,0.7)"
   innerBorderColor="rgb(0, 204, 153)"
   :optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.6)',color:'white',borderColor:'rgba(0, 204, 153,0.6)'}"
   :selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
@@ -138,6 +140,7 @@ innerBorderColor="rgb(0, 204, 153)"
 | optionsStyle | [object] | No | {} | 选项菜单样式 |
 | selectStyle | [object] | No | {} | 选项菜单中间选项蒙版样式 |
 | disabled | [boolean] | No | false | 是否禁用选项框 |
+| hoverColor | [string] | No | undefined | 选项的Hover值 |
 
 ### Events
 ---
