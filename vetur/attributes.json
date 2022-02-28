@@ -1717,6 +1717,14 @@
     "type": "boolean",
     "description": "是否禁用选项框,default=false"
   },
+  "fv-date-picker/hover-color": {
+    "type": "string",
+    "description": "选项的Hover值,default=undefined"
+  },
+  "fv-date-picker/:hover-color": {
+    "type": "string",
+    "description": "选项的Hover值,default=undefined"
+  },
   "fv-persona/src": {
     "type": "string",
     "description": "Persona图像资源链接"
@@ -1913,72 +1921,6 @@
     "type": "method",
     "description": "Combobox choose item"
   },
-  "fv-time-picker/v-model": {
-    "type": "",
-    "description": "绑定的时间,default=Date()"
-  },
-  "fv-time-picker/:v-model": {
-    "type": "",
-    "description": "绑定的时间,default=Date()"
-  },
-  "fv-time-picker/theme": {
-    "options": [
-      "system",
-      "dark",
-      "light",
-      "custom"
-    ],
-    "description": "主题色,default='system'"
-  },
-  "fv-time-picker/:theme": {
-    "options": [
-      "system",
-      "dark",
-      "light",
-      "custom"
-    ],
-    "description": "主题色,default='system'"
-  },
-  "fv-time-picker/time-type": {
-    "type": "number",
-    "description": "时间制（可选12，24）,default=12"
-  },
-  "fv-time-picker/:time-type": {
-    "type": "number",
-    "description": "时间制（可选12，24）,default=12"
-  },
-  "fv-time-picker/period": {
-    "type": "object",
-    "description": "上午下午显示,default=['A.M.','P.M.']"
-  },
-  "fv-time-picker/:period": {
-    "type": "object",
-    "description": "上午下午显示,default=['A.M.','P.M.']"
-  },
-  "fv-time-picker/options-style": {
-    "type": "object",
-    "description": "选项菜单样式,default={}"
-  },
-  "fv-time-picker/:options-style": {
-    "type": "object",
-    "description": "选项菜单样式,default={}"
-  },
-  "fv-time-picker/select-style": {
-    "type": "object",
-    "description": "选项菜单中间选项蒙版样式,default={}"
-  },
-  "fv-time-picker/:select-style": {
-    "type": "object",
-    "description": "选项菜单中间选项蒙版样式,default={}"
-  },
-  "fv-time-picker/disabled": {
-    "type": "boolean",
-    "description": "是否禁用选项框,default=false"
-  },
-  "fv-time-picker/:disabled": {
-    "type": "boolean",
-    "description": "是否禁用选项框,default=false"
-  },
   "fv-shimmer/theme": {
     "options": [
       "light",
@@ -2172,74 +2114,6 @@
   "fv-info-box/@close": {
     "type": "method",
     "description": "取消`InfoBox`时触发事件"
-  },
-  "fv-drawer/theme": {
-    "options": [
-      "system",
-      "dark",
-      "light",
-      "custom"
-    ],
-    "description": "主题色,default='system'"
-  },
-  "fv-drawer/:theme": {
-    "options": [
-      "system",
-      "dark",
-      "light",
-      "custom"
-    ],
-    "description": "主题色,default='system'"
-  },
-  "fv-drawer/visible": {
-    "type": "boolean",
-    "description": "是否可视,default=false"
-  },
-  "fv-drawer/:visible": {
-    "type": "boolean",
-    "description": "是否可视,default=false"
-  },
-  "fv-drawer/length": {
-    "type": "number",
-    "description": "300,default=No"
-  },
-  "fv-drawer/:length": {
-    "type": "number",
-    "description": "300,default=No"
-  },
-  "fv-drawer/focus-trap": {
-    "type": "boolen",
-    "description": "是否聚焦,default=false"
-  },
-  "fv-drawer/:focus-trap": {
-    "type": "boolen",
-    "description": "是否聚焦,default=false"
-  },
-  "fv-drawer/disabled": {
-    "type": "boolean",
-    "description": "是否禁用选项框,default=false"
-  },
-  "fv-drawer/:disabled": {
-    "type": "boolean",
-    "description": "是否禁用选项框,default=false"
-  },
-  "fv-drawer/position": {
-    "options": [
-      "bottom",
-      "left",
-      "top",
-      "right"
-    ],
-    "description": "位置,default='bottom'"
-  },
-  "fv-drawer/:position": {
-    "options": [
-      "bottom",
-      "left",
-      "top",
-      "right"
-    ],
-    "description": "位置,default='bottom'"
   },
   "fv-badge/value": {
     "type": "string,number",
