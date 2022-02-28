@@ -13,7 +13,7 @@ module.exports = {
     css: {
         // Separate StyleSheet
         extract: true,
-        requireModuleExtension: true,
+        // requireModuleExtension: true,
         sourceMap: false
     },
     productionSourceMap: false,
