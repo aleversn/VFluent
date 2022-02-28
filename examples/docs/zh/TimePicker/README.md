@@ -83,11 +83,24 @@
 v-model="date" 
 class="custom_style" 
 innerBorderColor="rgb(0, 204, 153)"
-:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.6)',color:'white',borderColor:'rgba(0, 204, 153,0.6)'}"
+hoverColor="rgba(0, 204, 153,0.7)"
+:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
 :selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
 >
 </fv-TimePicker>
 </ClientOnly>
+
+``` vue
+<fv-TimePicker 
+v-model="date" 
+class="custom_style" 
+innerBorderColor="rgb(0, 204, 153)"
+hoverColor="rgba(0, 204, 153,0.7)"
+:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
+:selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
+>
+</fv-TimePicker>
+```
 
 ### Propoties
 ---
@@ -100,6 +113,8 @@ innerBorderColor="rgb(0, 204, 153)"
 | optionsStyle | [object] | No | {} | 选项菜单样式 |
 | selectStyle | [object] | No | {} | 选项菜单中间选项蒙版样式 |
 | disabled | [boolean] | No | false | 是否禁用选项框 |
+| hoverColor | [string] | No | undefined | 选项的Hover值 |
+
 
 ### Events
 ---
