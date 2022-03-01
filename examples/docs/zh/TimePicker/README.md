@@ -48,59 +48,59 @@
   }
 </script>
 
-<div :style="divStyle">
-THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$theme"/>
-</div>
-
 ### TimePicker-Default
 
-<div :style="divStyle">
 <ClientOnly>
-  <fv-TimePicker style="width:50px" v-model="date" :theme="$theme" />
+  <fv-TimePicker style="width:50px" v-model="date"  />
 </ClientOnly>
-</div>
 
 ``` vue
-<fv-TimePicker v-model="date" :theme="$theme" />
+<fv-TimePicker v-model="date"  />
 ```
 
 ### TimePicker-24-hours
-<div :style="divStyle">
 <ClientOnly>
-  <fv-TimePicker v-model="date" :theme="$theme" :timeType="24" />
+  <fv-TimePicker v-model="date" :timeType="24" />
 </ClientOnly>
-</div>
 
 ``` vue
-<fv-TimePicker v-model="date" :theme="$theme" :timeType="24" />
+<fv-TimePicker v-model="date"  :timeType="24" />
 ```
 
 ### TimePicker-Disabled
-<div :style="divStyle">
 <ClientOnly>
-  <fv-TimePicker v-model="date" :theme="$theme" :timeType="24" :disabled="true" />
+  <fv-TimePicker v-model="date":timeType="24" :disabled="true" />
 </ClientOnly>
-</div>
 
 ``` vue
-<fv-TimePicker v-model="date" :theme="$theme" :timeType="24" :disabled="true" />
+<fv-TimePicker v-model="date" :timeType="24" :disabled="true" />
 ```
 
 ### TimePicker-Custom-Style
 
-<div :style="divStyle">
 <ClientOnly>
 <fv-TimePicker 
 v-model="date" 
-:theme="$theme" 
 class="custom_style" 
 innerBorderColor="rgb(0, 204, 153)"
-:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.6)',color:'white',borderColor:'rgba(0, 204, 153,0.6)'}"
+hoverColor="rgba(0, 204, 153,0.7)"
+:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
 :selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
 >
 </fv-TimePicker>
 </ClientOnly>
-</div>
+
+``` vue
+<fv-TimePicker 
+v-model="date" 
+class="custom_style" 
+innerBorderColor="rgb(0, 204, 153)"
+hoverColor="rgba(0, 204, 153,0.7)"
+:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
+:selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
+>
+</fv-TimePicker>
+```
 
 ### Propoties
 ---
@@ -113,6 +113,8 @@ innerBorderColor="rgb(0, 204, 153)"
 | optionsStyle | [object] | No | {} | 选项菜单样式 |
 | selectStyle | [object] | No | {} | 选项菜单中间选项蒙版样式 |
 | disabled | [boolean] | No | false | 是否禁用选项框 |
+| hoverColor | [string] | No | undefined | 选项的Hover值 |
+
 
 ### Events
 ---

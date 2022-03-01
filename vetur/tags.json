@@ -780,6 +780,8 @@
       ":months",
       "weeks",
       ":weeks",
+      "hover-color",
+      ":hover-color",
       "options-style",
       ":options-style",
       "select-style",
@@ -863,6 +865,8 @@
       ":inner-border-color",
       "disabled",
       ":disabled",
+      "hover-color",
+      ":hover-color",
       "@input"
     ]
   },

@@ -9,6 +9,7 @@ sidebarDepth: 2
       return {
         theme:0,
         backgroundColor:'rgba(5, 76, 94, 1)',
+        backgroundColorHover:'rgba(5,76,94,1)',
         foregroundColor:'#fff',
           files:[
           {
@@ -47,25 +48,6 @@ sidebarDepth: 2
     computed:{
       $theme(){
         return !this.theme?'light':'dark';
-      },
-      divStyle(){
-        if (this.$theme=='light'){
-          return {
-            height: '200px',
-            backgroundColor:'#fff',
-            padding:'20px',
-            color:'#000',
-            overflow: 'auto'
-          }
-        }else{
-          return {
-            height: '200px',
-            backgroundColor:'#000',
-            padding:'20px',
-            color:'#fff',
-            overflow: 'auto'
-          }
-        }
       },
     },
     methods:{
@@ -163,13 +145,23 @@ foregroundColor:
 </main>
 </fv-callout>
 </ClientOnly>
+backgroundColorHover:
+<ClientOnly>
+<fv-callout>
+<div :style="{width:'20px',height:'20px',backgroundColor:backgroundColorHover}" style="border:1px solid #000" />
+<main>
+  <fv-colorPicker v-model="backgroundColorHover" style="width:500px"/>
+</main>
+</fv-callout>
+</ClientOnly>
+
 
 <fv-TreeView 
   :theme="$theme" 
   v-model="files" 
   :checkable="true" 
   @click="click" 
-  :viewStyle=" {backgroundColor:backgroundColor,color:'#000'}" 
+  :viewStyle="{backgroundColor,backgroundColorHover}" 
   :foreground="foregroundColor"
   :draggable="true" 
   :space="10">
@@ -181,7 +173,7 @@ foregroundColor:
   v-model="files" 
   :checkable="true" 
   @click="click" 
-  :viewStyle=" {backgroundColor:backgroundColor,color:'#000'}" 
+  :viewStyle="{backgroundColor,backgroundColorHover}" 
   :foreground="foregroundColor"
   :draggable="true" 
   :space="10">

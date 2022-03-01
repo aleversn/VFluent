@@ -9,6 +9,9 @@
     <a href="BUILD">
       <img src="https://travis-ci.com/aleversn/VFluent.svg?branch=master">
     </a>
+    <a href="">
+      <img src="https://img.shields.io/npm/dw/vfluentdesign">
+    </a>
 </p>
 
 ## Fluent UI Components based on Vue Cli

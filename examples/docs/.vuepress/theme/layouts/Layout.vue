@@ -1,15 +1,10 @@
 <template>
-  <div
-    class="theme-container"
-    :class="pageClasses"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
-    <!-- <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" /> -->
+    <div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
+        <!-- <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" /> -->
 
-    <!-- <div class="sidebar-mask" @click="toggleSidebar(false)" /> -->
+        <!-- <div class="sidebar-mask" @click="toggleSidebar(false)" /> -->
 
-    <!-- <Sidebar
+        <!-- <Sidebar
       :items="sidebarItems"
       @toggle-sidebar="toggleSidebar"
     >
@@ -20,124 +15,130 @@
         <slot name="sidebar-bottom" />
       </template>
     </Sidebar>-->
-    <NavPanel @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description"></NavPanel>
+        <NavPanel @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description"></NavPanel>
 
-    <Home v-if="$page.frontmatter.home" />
+        <Home v-if="$page.frontmatter.home" />
 
-    <Page v-else :sidebar-items="sidebarItems">
-      <template #top>
-        <slot name="page-top" />
-      </template>
-      <template #bottom>
-        <slot name="page-bottom" />
-      </template>
-    </Page>
-  </div>
+        <Page v-else :sidebar-items="sidebarItems">
+            <template #top>
+                <slot name="page-top" />
+            </template>
+            <template #bottom>
+                <slot name="page-bottom" />
+            </template>
+        </Page>
+    </div>
 </template>
 
 <script>
-import Home from "@theme/components/Home.vue";
-import Navbar from "@theme/components/Navbar.vue";
-import Page from "@theme/components/Page.vue";
-import Sidebar from "@theme/components/Sidebar.vue";
-import { resolveSidebarItems } from "../util";
-import NavPanel from "@theme/components/custom/NavPanel.vue";
+import Home from '@theme/components/Home.vue';
+import Navbar from '@theme/components/Navbar.vue';
+import Page from '@theme/components/Page.vue';
+import Sidebar from '@theme/components/Sidebar.vue';
+import { resolveSidebarItems } from '../util';
+import NavPanel from '@theme/components/custom/NavPanel.vue';
 
 export default {
-  name: "Layout",
+    name: 'Layout',
 
-  components: {
-    Home,
-    Page,
-    Sidebar,
-    Navbar,
-    NavPanel
-  },
-
-  data() {
-    return {
-      isSidebarOpen: false
-    };
-  },
-
-  computed: {
-    shouldShowNavbar() {
-      const { themeConfig } = this.$site;
-      const { frontmatter } = this.$page;
-      if (frontmatter.navbar === false || themeConfig.navbar === false) {
-        return false;
-      }
-      return (
-        this.$title ||
-        themeConfig.logo ||
-        themeConfig.repo ||
-        themeConfig.nav ||
-        this.$themeLocaleConfig.nav
-      );
+    components: {
+        Home,
+        Page,
+        Sidebar,
+        Navbar,
+        NavPanel,
     },
 
-    shouldShowSidebar() {
-      const { frontmatter } = this.$page;
-      return (
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
-      );
+    data() {
+        return {
+            isSidebarOpen: false,
+        };
     },
 
-    sidebarItems() {
-      return resolveSidebarItems(
-        this.$page,
-        this.$page.regularPath,
-        this.$site,
-        this.$localePath
-      );
-    },
-
-    pageClasses() {
-      const userPageClass = this.$page.frontmatter.pageClass;
-      return [
-        {
-          "no-navbar": !this.shouldShowNavbar,
-          "sidebar-open": this.isSidebarOpen,
-          "no-sidebar": !this.shouldShowSidebar
+    computed: {
+        shouldShowNavbar() {
+            const { themeConfig } = this.$site;
+            const { frontmatter } = this.$page;
+            if (frontmatter.navbar === false || themeConfig.navbar === false) {
+                return false;
+            }
+            return this.$title || themeConfig.logo || themeConfig.repo || themeConfig.nav || this.$themeLocaleConfig.nav;
         },
-        userPageClass
-      ];
-    }
-  },
 
-  mounted() {
-    this.$router.afterEach(() => {
-      this.isSidebarOpen = false;
-    });
-  },
+        shouldShowSidebar() {
+            const { frontmatter } = this.$page;
+            return !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length;
+        },
 
-  methods: {
-    toggleSidebar(to) {
-      this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
-      this.$emit("toggle-sidebar", this.isSidebarOpen);
+        sidebarItems() {
+            return resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
+        },
+
+        pageClasses() {
+            const userPageClass = this.$page.frontmatter.pageClass;
+            return [
+                {
+                    'no-navbar': !this.shouldShowNavbar,
+                    'sidebar-open': this.isSidebarOpen,
+                    'no-sidebar': !this.shouldShowSidebar,
+                },
+                userPageClass,
+            ];
+        },
     },
 
-    // side swipe
-    onTouchStart(e) {
-      this.touchStart = {
-        x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY
-      };
+    mounted() {
+        this.$router.afterEach(() => {
+            this.isSidebarOpen = false;
+        });
     },
 
-    onTouchEnd(e) {
-      const dx = e.changedTouches[0].clientX - this.touchStart.x;
-      const dy = e.changedTouches[0].clientY - this.touchStart.y;
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-        if (dx > 0 && this.touchStart.x <= 80) {
-          this.toggleSidebar(true);
-        } else {
-          this.toggleSidebar(false);
-        }
-      }
-    }
-  }
+    methods: {
+        toggleSidebar(to) {
+            this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen;
+            this.$emit('toggle-sidebar', this.isSidebarOpen);
+        },
+
+        // side swipe
+        onTouchStart(e) {
+            this.touchStart = {
+                x: e.changedTouches[0].clientX,
+                y: e.changedTouches[0].clientY,
+            };
+        },
+
+        onTouchEnd(e) {
+            const dx = e.changedTouches[0].clientX - this.touchStart.x;
+            const dy = e.changedTouches[0].clientY - this.touchStart.y;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                if (dx > 0 && this.touchStart.x <= 80) {
+                    this.toggleSidebar(true);
+                } else {
+                    this.toggleSidebar(false);
+                }
+            }
+        },
+    },
 };
 </script>
+
+<style>
+*::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+*::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+*::-webkit-scrollbar-corner {
+    background: #179a16;
+}
+</style>

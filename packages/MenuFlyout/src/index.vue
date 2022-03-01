@@ -17,7 +17,7 @@
 				'box-shadow':'rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px'
 				}"
             :position="position"
-            :popperClass="'fv-'+$theme+'-menuFlyoutPopper'"
+            :popperClass="['fv-'+$theme+'-menuFlyoutPopper']"
             :theme="$theme"
             :disabled="disabled"
         >
