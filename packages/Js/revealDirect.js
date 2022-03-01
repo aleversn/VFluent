@@ -1,6 +1,7 @@
 export class RevealHelper
 {
-    static getOffset(element) {
+    static getOffset(element)
+    {
         return {
             top: element.el.getBoundingClientRect().top,
             left: element.el.getBoundingClientRect().left
@@ -108,6 +109,17 @@ export class RevealHelper
         return res;
     }
     
+
+    /**
+     *
+     * judge if the cursor is inside the element
+     * @static
+     * @param {*} element
+     * @param {*} cursorX
+     * @param {*} cursorY
+     * @returns
+     * @memberof RevealHelper
+     */
     static isInsideElement(element, cursorX, cursorY) {
         const el_area = {
             left: element.el.getBoundingClientRect().left,
@@ -119,7 +131,17 @@ export class RevealHelper
         return (cursorX >= el_area.left && cursorX <= el_area.right && cursorY >= el_area.top && cursorY <= el_area.bottom);
     }
 
-    // distance with the boundary of element, when inside the el, all values should less than 0 //
+    
+    /**
+     * calculate the distance to the boundary of element, when inside the el, all values should less than 0
+     *
+     * @static
+     * @param {*} element
+     * @param {*} cursorX
+     * @param {*} cursorY
+     * @returns
+     * @memberof RevealHelper
+     */
     static distanceOfElement(element, cursorX, cursorY)
     {
         const el_area = {
@@ -148,7 +170,7 @@ export class RevealHelper
 
 export class RevealEffects
 {
-    constructor (carrier_selector, options) {
+    constructor (attach_el, options) {
         this.options = {
             selector: ".eff-reveal-border",
             backgroundGradientSize: 150,
@@ -160,20 +182,20 @@ export class RevealEffects
         // update options
         this.options = Object.assign(this.options, options);
 
-        this.childrenRefresh(carrier_selector);
+        this.childrenRefresh(attach_el);
         RevealEffects.clearUselessElements();
-        this.applyCommonEffects(carrier_selector);
+        this.applyCommonEffects(attach_el);
 
         this.timer = setInterval(() => {
-            this.childrenRefresh(carrier_selector);
+            this.childrenRefresh(attach_el);
         }, 300);
     }
 
-    childrenRefresh (carrier_selector) {
+    childrenRefresh (attach_el) {
         if(window.FvRevealElements == undefined)
             window.FvRevealElements = {};
         
-        const els = this.getSelector(carrier_selector);
+        const els = this.getSelector(attach_el);
         for(let item of els) {
             let children = this.getSelector(this.options.selector, item);
             if(window.FvRevealElements[item.el.hashCode] == undefined)
@@ -192,6 +214,15 @@ export class RevealEffects
         }
     }
 
+
+    /**
+     *
+     * get element by selector
+     * @param {*} selector can be string or element
+     * @param {*} [parent=null]
+     * @returns
+     * @memberof RevealEffects
+     */
     getSelector (selector, parent=null) {
         if(parent == null)
             parent = document;
@@ -202,9 +233,9 @@ export class RevealEffects
         return RevealHelper.preProcessElements([selector]);
     }
 
-    applyCommonEffects (carrier_selector) {
+    applyCommonEffects (attach_el) {
 
-        const els =  this.getSelector(carrier_selector);
+        const els =  this.getSelector(attach_el);
         if(window.FvRevealCarriers == undefined)
             window.FvRevealCarriers = [];
 
