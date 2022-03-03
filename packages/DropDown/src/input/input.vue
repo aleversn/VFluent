@@ -1,9 +1,9 @@
 <template>
-<div class="drop-down-box" :style="styles.dropDownBox">
-    <div class="drop-down-container">
+<div class="drop-down-box" :style="{padding: `${borderWidth}px`, 'border-radius': `${borderRadius}px`}">
+    <div class="drop-down-container" :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}">
         <slot name="input" :placeholder="placeholder" :value="inputValue">
-            <input class="input" :placeholder="placeholder" readonly :value="inputValue" :style="styles.input"/>
-            <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="styles.icon"></i>
+            <input class="input" :placeholder="placeholder" readonly :value="inputValue" :style="{color: inputForeground}"/>
+            <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </slot>
     </div>
 </div>
@@ -42,20 +42,7 @@ export default {
     },
     data () {
         return {
-            choosenValue: this.value,
-            styles: {
-                dropDownBox: {
-                    padding: '2px',
-                    borderRadius: ''
-                },
-                input: {
-                    color: '',
-                    background: ''
-                },
-                icon: {
-                    color: ''
-                }
-            }
+            choosenValue: this.value
         };
     },
     watch: {
@@ -64,21 +51,6 @@ export default {
         },
         choosenValue (val) {
             this.$emit('input', val);
-        },
-        borderWidth () {
-            this.stylesInit();
-        },
-        borderRadius () {
-            this.stylesInit();
-        },
-        inputForeground () {
-            this.stylesInit();
-        },
-        inputBackground () {
-            this.stylesInit();
-        },
-        dropDownIconForeground () {
-            this.stylesInit();
         },
         theme (val) {
             this.FRInit();
@@ -121,7 +93,6 @@ export default {
     },
     mounted () {
         this.FRInit();
-        this.stylesInit();
     },
     methods: {
         FRInit () {
@@ -133,13 +104,6 @@ export default {
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor
             });
-        },
-        stylesInit () {
-            this.styles.dropDownBox.padding = `${this.borderWidth}px`;
-            this.styles.dropDownBox.borderRadius = `${this.borderRadius}px`;
-            this.styles.input.color = this.inputForeground;
-            this.styles.input.background = this.inputBackground;
-            this.styles.icon.color = this.dropDownIconForeground;
         }
     }
 };

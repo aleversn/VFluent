@@ -4,7 +4,7 @@
 		ref="co_head"
 		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
 	>
-        <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground}">
+        <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}">
             <input class="input" :placeholder="placeholder" readonly :value="thisValue.text" :style="{color: inputForeground}"/>
 		    <i class="ms-Icon right-icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </div>
@@ -13,12 +13,16 @@
                 <div
                     v-for="(item, index) in options"
                     class="fv-combobox-item"
-                    :class="{hr:item.type == 'divider', normal: (item.type == 'default' || item.type == undefined) && !item.disabled, disabled: item.disabled, choose: item === thisValue, title: item.type == 'header'}"
-                    :style="{background: item === thisValue ? choosenBackground : '', color: item.type === 'header' ? titleForeground : ''}"
+                    :class="{hr:valueTrigger(item.type) == 'divider', normal: (valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined) && !valueTrigger(item.disabled), disabled: valueTrigger(item.disabled), choose: item === thisValue, title: valueTrigger(item.type) == 'header'}"
+                    :style="{background: item === thisValue ? choosenBackground : '', color: valueTrigger(item.type) === 'header' ? titleForeground : ''}"
                     @click="Choose($event, item)"
                     :key="index"
-                    :title="item.text"
-                >{{item.type !== 'divider' ? item.text : ''}}</div>
+                    :title="valueTrigger(item.text)"
+                >
+                    <slot :item="item">
+                        {{valueTrigger(item.type) !== 'divider' ? valueTrigger(item.text) : ''}}
+                    </slot>
+                </div>
             </div>
         </transition>
 	</div>
@@ -168,10 +172,14 @@ export default {
 				if (!_self) this.status = false;
 			});
 		},
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
+        },
 		Choose (event, item) {
-            if(item.disabled)
+            if(this.valueTrigger(item.disabled))
                 return 0;
-            if(item.type == 'header' || item.type == 'divider')
+            if(this.valueTrigger(item.type) == 'header' || this.valueTrigger(item.type) == 'divider')
                 return 0;
 			this.thisValue = item;
             let target = event.target;

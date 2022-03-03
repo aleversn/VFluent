@@ -198,3 +198,5 @@ options: [
     { key: "lettuce", text: "Lettuce" }
 ]
 ```
+
+**特别地** 0.1.62版本后支持采用函数式字段, 其中支持的字段包括`text`, `disabled`, `type`
