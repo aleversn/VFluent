@@ -66,9 +66,9 @@ export default {
             let result = '';
             for(let item of this.choosenValue) {
                 if(result == '')
-                    result += item.text;
+                    result += this.valueTrigger(item.text);
                 else
-                    result += `,${item.text}`;
+                    result += `,${this.valueTrigger(item.text)}`;
             }
             return result;
         },
@@ -104,6 +104,10 @@ export default {
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor
             });
+        },
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
         }
     }
 };
