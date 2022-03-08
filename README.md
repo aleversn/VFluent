@@ -96,6 +96,8 @@ Here is the icon using sample.
 
 In particular, if you're using a component of Fluent Vue Design and it contains a prop that support icon, you only need to type the icon's name in prop.
 
+**We have updated the new Windows 11 Fluent Icons, Check the Icon Dictionary on <a href="https://docs.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font">here</a>.**
+
 ### ✨ We Need You (Become a contributor) ✨
 VFluent still needs to improve. The documentation is not yet complete, there are still some details to work out.
 
@@ -107,7 +109,7 @@ If you have some other creative ideas, we're happy to hear them from you.
 
 MIT License
 
-Copyright (c) 2021 Creator SN®
+Copyright (c) 2022 Creator SN®
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

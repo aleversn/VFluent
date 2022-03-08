@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import 'office-ui-fabric-core/dist/css/fabric.min.css';
+import '../../office-ui-fabric-core/dist/css/fabric.min.css';
 import TreeContent from './components/content';
 
 export default {

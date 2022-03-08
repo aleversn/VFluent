@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import 'office-ui-fabric-core/dist/css/fabric.min.css';
+import '../../../office-ui-fabric-core/dist/css/fabric.min.css';
 import one from 'onecolor';
 import id from '../mixins/id.js';
 import checkbox from './checkbox.vue';

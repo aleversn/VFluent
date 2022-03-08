@@ -10,7 +10,7 @@ import {SDate} from './usual.js'
 import {SUtility} from './usual.js'
 import {RevealEffects,RevealEffectsMasked} from './usual.js'
 import '../examples/style/global-transition.css'
-import 'office-ui-fabric-core/dist/css/fabric.min.css'
+import './office-ui-fabric-core/dist/css/fabric.min.css'
 {{imports}}
 
 let components = [

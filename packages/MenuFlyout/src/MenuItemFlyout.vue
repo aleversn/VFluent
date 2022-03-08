@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import "office-ui-fabric-core/dist/css/fabric.min.css";
+import "../../office-ui-fabric-core/dist/css/fabric.min.css";
 import checkbox from './mixins/checkbox.js'
 import item from './mixins/item.js'
 
