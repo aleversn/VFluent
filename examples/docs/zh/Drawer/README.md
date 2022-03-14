@@ -46,7 +46,7 @@
 
 <fv-button @click="toggle" >Show/Hide</fv-button>
 
-<fv-drawer :visible.sync="visible">
+<fv-drawer :visible.sync="visible" position="right" >
 </fv-drawer>
 
 ``` vue
