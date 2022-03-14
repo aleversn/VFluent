@@ -78,21 +78,21 @@ export default {
 
 2. Custom Style
 
-<fv-DropDown :options="options" placeholder="Select options" :multiple="true" borderWidth="1" borderRadius="5" inputBackground="rgba(0,204,153,0.9)" inputForeground="whitesmoke" dropDownIcon="AddTo" dropDownIconForeground="whitesmoke" dropDownListForeground="rgba(0,204,153,1)" dropDownListBackground="rgba(239,239,239,0.6)" style="z-index: 13;"></fv-DropDown>
-
+<fv-DropDown :options="options" placeholder="Select options" :multiple="true" borderWidth="1" borderRadius="5" inputBackground="rgba(0,204,153,0.9)" checkBoxBackground="rgba(0, 204, 153, 0.9)" inputForeground="whitesmoke" dropDownIcon="AddTo" dropDownIconForeground="whitesmoke" dropDownListForeground="rgba(0,204,153,1)" dropDownListBackground="rgba(239,239,239,0.6)" style="z-index: 13;"></fv-DropDown>
+ 
 ```vue
-<fv-DropDown :options="options" placeholder="Select options" :multiple="true" borderWidth="1" borderRadius="5" inputBackground="rgba(0,204,153,0.9)" inputForeground="whitesmoke" dropDownIcon="AddTo" dropDownIconForeground="whitesmoke" dropDownListForeground="rgba(0,204,153,1)" dropDownListBackground="rgba(239,239,239,0.6)"></fv-DropDown>
+<fv-DropDown :options="options" placeholder="Select options" :multiple="true" borderWidth="1" borderRadius="5" inputBackground="rgba(0,204,153,0.9)" checkBoxBackground="rgba(0, 204, 153, 0.9)" inputForeground="whitesmoke" dropDownIcon="AddTo" dropDownIconForeground="whitesmoke" dropDownListForeground="rgba(0,204,153,1)" dropDownListBackground="rgba(239,239,239,0.6)"></fv-DropDown>
 ```
 
 3. Custom Drop Down Input
 
-<fv-DropDown :options="options" placeholder="Select options" :multiple="true" style="z-index: 12;"><template v-slot:input="x"><i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i><input :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px;"/><i class="ms-Icon ms-Icon--DelveAnalyticsLogo right-icon"></i></template></fv-DropDown>
+<fv-DropDown :options="options" placeholder="Select options" :multiple="true" style="z-index: 12;"><template v-slot:input="x"><i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i><input :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px; border: none;"/><i class="ms-Icon ms-Icon--DelveAnalyticsLogo right-icon"></i></template></fv-DropDown>
 
 ```vue
 <fv-DropDown :options="options" placeholder="Select options" :multiple="true">
     <template v-slot:input="x">
         <i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i>
-        <input class="input" :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px;"/>
+        <input class="input" :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px; border: none;"/>
         <i class="ms-Icon ms-Icon--DelveAnalyticsLogo right-icon"></i>
     </template>
 </fv-DropDown>
@@ -128,26 +128,27 @@ export default {
 
 ### Propoties
 ---
-|       属性(attr)       |             类型(type)             | 必填(required) |      默认值(default)       |      说明(statement)       |
-|:----------------------:|:----------------------------------:|:--------------:|:--------------------------:|:--------------------------:|
-|         value          |              [array]               |       No       |            N/A             |       Choosed Value        |
-|        options         |              [array]               |       No       |            N/A             |   Dropdown options array   |
-|        multiple        |             [boolean]              |       No       |            N/A             | Is enable multiple select  |
-|      borderWidth       |              [number]              |       No       |             2              |   Dropdown border width    |
-|      borderRadius      |              [number]              |       No       |             3              |   Dropdown border radius   |
-|      placeholder       |              [string]              |       No       |          Dropdown          |    Dropdown placeholder    |
-|       maxHeight        |              [number]              |       No       |            N/A             |  Dropdown list max height  |
-|    inputForeground     |          [string(color)]           |       No       |            N/A             |                            |
-| dropDownListForeground |          [string(color)]           |       No       |    rgba(0,120,215,0.9)     |                            |
-|    inputBackground     |          [string(color)]           |       No       |            N/A             |                            |
-| dropDownListBackground |          [string(color)]           |       No       |            N/A             |                            |
-|      dropDownIcon      |              [string]              |       No       |        ChevronDown         |   Icon with Fabric-Icon    |
-| dropDownIconForeground |          [string(color)]           |       No       |            N/A             |                            |
-|       showError        |             [boolean]              |       No       |           false            |                            |
-|      errorMessage      |              [string]              |       No       | This dropdown has an error |                            |
-|        disabled        |             [boolean]              |       No       |           false            |                            |
-|        setFocus        |             [boolean]              |       No       |           false            | Whether Dropdown list show |
-|         theme          | ['light','dark','custom','system'] |       No       |           system           |       Dropdown theme       |
+|       属性(attr)       |             类型(type)             | 必填(required) |      默认值(default)       |          说明(statement)          |
+|:----------------------:|:----------------------------------:|:--------------:|:--------------------------:|:---------------------------------:|
+|         value          |              [array]               |       No       |            N/A             |           Choosed Value           |
+|        options         |              [array]               |       No       |            N/A             |      Dropdown options array       |
+|        multiple        |             [boolean]              |       No       |            N/A             |     Is enable multiple select     |
+|      borderWidth       |              [number]              |       No       |             2              |       Dropdown border width       |
+|      borderRadius      |              [number]              |       No       |             3              |      Dropdown border radius       |
+|      placeholder       |              [string]              |       No       |          Dropdown          |       Dropdown placeholder        |
+|       maxHeight        |              [number]              |       No       |            N/A             |     Dropdown list max height      |
+|   checkBoxBackground   |          [string(color)]           |       No       |            N/A             | CheckBox Background when Multiple |
+|    inputForeground     |          [string(color)]           |       No       |            N/A             |                                   |
+| dropDownListForeground |          [string(color)]           |       No       |    rgba(0,120,215,0.9)     |                                   |
+|    inputBackground     |          [string(color)]           |       No       |            N/A             |                                   |
+| dropDownListBackground |          [string(color)]           |       No       |            N/A             |                                   |
+|      dropDownIcon      |              [string]              |       No       |        ChevronDown         |       Icon with Fabric-Icon       |
+| dropDownIconForeground |          [string(color)]           |       No       |            N/A             |                                   |
+|       showError        |             [boolean]              |       No       |           false            |                                   |
+|      errorMessage      |              [string]              |       No       | This dropdown has an error |                                   |
+|        disabled        |             [boolean]              |       No       |           false            |                                   |
+|        setFocus        |             [boolean]              |       No       |           false            |    Whether Dropdown list show     |
+|         theme          | ['light','dark','custom','system'] |       No       |           system           |          Dropdown theme           |
 
 ### Events
 ---

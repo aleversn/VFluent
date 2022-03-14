@@ -31,6 +31,21 @@ export default {
 <fv-progressRing loading="true">
 </fv-progressRing>
 ```
+<fv-progressRing loading="true" r="20" borderWidth="5">
+</fv-progressRing>
+
+```vue
+<fv-progressRing loading="true" r="20" borderWidth="5">
+</fv-progressRing>
+```
+
+<fv-progressRing loading="true" r="10" borderWidth="2">
+</fv-progressRing>
+
+```vue
+<fv-progressRing loading="true" r="10" borderWidth="2">
+</fv-progressRing>
+```
 
 ### Default ProgressRing
 ---
@@ -39,6 +54,22 @@ export default {
 
 ```vue
 <fv-progressRing v-model="percent[0]">
+</fv-progressRing>
+```
+
+<fv-progressRing v-model="percent[0]" r="20" borderWidth="5">
+</fv-progressRing>
+
+```vue
+<fv-progressRing v-model="percent[0]" r="20" borderWidth="5">
+</fv-progressRing>
+```
+
+<fv-progressRing v-model="percent[0]" r="10" borderWidth="2">
+</fv-progressRing>
+
+```vue
+<fv-progressRing v-model="percent[0]" r="10" borderWidth="2">
 </fv-progressRing>
 ```
 

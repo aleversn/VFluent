@@ -17,6 +17,9 @@
         flex: 1;
         box-sizing: border-box;
         display: flex;
+        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: auto;
 
         .command-bar-item
         {
@@ -24,6 +27,7 @@
             width: auto;
             height: 100%;
             margin: 0px 1px;
+            flex-shrink: 0;
             padding: 0px 12px;
             border: transparent solid thin;
             box-sizing: border-box;

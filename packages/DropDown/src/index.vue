@@ -36,6 +36,7 @@
                 :options="options"
                 :multiple="multiple"
                 :borderRadius="borderRadius"
+                :checkBoxBackground="checkBoxBackground"
                 :dropDownListForeground="dropDownListForeground"
                 :dropDownListBackground="dropDownListBackground"
                 :showStatus="dropDownListShowStatus"
@@ -89,13 +90,16 @@ export default {
         inputForeground: {
             default: ""
         },
-        dropDownListForeground: {
-            default: "rgba(0,120,215,0.9)"
-        },
-        inputBackground: {
+        checkBoxBackground: {
             default: ""
         },
+        dropDownListForeground: {
+            default: "rgba(0, 120, 215, 0.9)"
+        },
         dropDownListBackground: {
+            default: ""
+        },
+        inputBackground: {
             default: ""
         },
         dropDownIcon: {

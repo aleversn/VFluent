@@ -1,11 +1,54 @@
 @import '../common-theme/CheckBox.scss';
 .fv-dark-checkBox {
     @include fv-checkBox();
-    .checkbox-rec
+    .fv-checkbox-rec
     {
-        .checkbox-border
+        &:hover
         {
-            border-color: rgba(204, 204, 204, 1);
+            background: rgba(200, 200, 200, 0.2);
+
+            .fv-checkbox-border
+            {
+                opacity: 0.6;
+            }
+        }
+
+        &:active
+        {
+            background: rgba(200, 200, 200, 0.1);
+
+            .fv-checkbox-border
+            {
+                opacity: 0.3;
+            }
+        }
+        
+        &.check
+        {
+            .fv-checkbox-border
+            {
+                border-color: transparent;
+
+                &:hover
+                {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .fv-checkbox-border
+        {
+            border-color: rgba(204, 204, 204, 0.5);
+        }
+
+        .fv-checkbox-content-block
+        {
+            color: rgba(36, 36, 36, 1);
+
+            .fv-checkbox-content
+            {
+                color: rgba(36, 36, 36, 1);
+            }
         }
     }
 

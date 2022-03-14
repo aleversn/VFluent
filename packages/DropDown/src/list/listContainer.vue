@@ -23,8 +23,8 @@
                         v-model="item.choosen"
                         v-show="valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined && multiple"
                         :disabled="valueTrigger(item.disabled)"
-                        :borderColor="dropDownListForeground"
-                        :background="dropDownListForeground"
+                        :foreground="dropDownListForeground"
+                        :background="checkBoxBackground"
                         :theme="theme"
                     >{{valueTrigger(item.text)}}</fv-check-box>
                     <p v-show="valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined && !multiple">{{valueTrigger(item.text)}}</p>
@@ -52,11 +52,14 @@ export default {
         borderRadius: {
             default: '3'
         },
+        checkBoxBackground: {
+            default: ""
+        },
         dropDownListForeground: {
-            default: "rgba(0,120,215,0.9)"
+            default: "rgba(0, 120, 215, 0.9)"
         },
         dropDownListBackground: {
-            default: ""
+            default: "rgba(0, 90, 158, 1)"
         },
         showStatus: {
             default: () => {
