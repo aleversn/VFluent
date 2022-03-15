@@ -1,0 +1,5 @@
+@import '../common-theme/InfiniteScrollView.scss';
+.fv-dark-InfiniteScrollView{
+  @include fv-InfiniteScrollView();
+}
+    

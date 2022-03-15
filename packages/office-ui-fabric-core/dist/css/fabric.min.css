@@ -6562,7 +6562,7 @@
 }
 .ms-Icon {
     display: inline-block;
-    font-family: FabricMDL2Icons;
+    font-family: FluentIcons, FabricMDL2Icons;
     font-style: normal;
     font-weight: 400;
     speak: none;
@@ -16807,6 +16807,12 @@ ms-Icon--VerticalBatteryCharging3::before {
 
 @font-face {
     font-family: FabricMDL2Icons;
+    src: url(../../../fonts/fabricmdl2icons-3.54.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: FluentIcons;
     src: url(../../../fonts/Segoe-Fluent-Icons.woff) format("woff");
     font-weight: 400;
     font-style: normal;
