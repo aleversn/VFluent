@@ -87,6 +87,30 @@ export default {
 |:------------:|:--------------:|:--------------------:|
 | choose-item  |  value/object  | Combobox choose item |
 
+### Slot
+
+---
+
+1. Default
+
+用户可自定义 Combobx Item 内容
+
+```vue
+<slot :item="item">
+    {{valueTrigger(item.type) !== 'divider' ? valueTrigger(item.text) : ''}}
+</slot>
+```
+
+用户自定义样式时, 包含以下可选属性
+
+- item: 当前组数据
+
+```vue
+<template v-slot:default="x">
+  <i>{{x.item.text}}</i>
+</template>
+```
+
 ### Data
 ---
 1. options
@@ -110,3 +134,4 @@ options: [
 ]
 ```
   
+**特别地** 0.1.62版本后支持采用函数式字段, 其中支持的字段包括`text`, `disabled`, `type`

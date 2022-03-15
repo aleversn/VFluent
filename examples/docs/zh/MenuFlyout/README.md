@@ -43,15 +43,10 @@ sidebarDepth: 2
   }
 </script>
 
-<div :style="divStyle">
-THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$theme"/>
-</div>
-
 ### MenuFlyout
 
 <ClientOnly>
-<div :style="divStyle">
-<fv-menuFlyout :theme="$theme" borderRadius="2px">
+<fv-menuFlyout  borderRadius="2px">
 <fv-menu-sub-flyout label="Actions"> 
 <fv-menu-item-flyout  label="New">
 </fv-menu-item-flyout>
@@ -66,11 +61,10 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 <fv-menu-item-flyout>
 </fv-menu-item-flyout>
 </fv-menuFlyout>
-</div>
 </ClientOnly>
 
 ```vue
-<fv-menuFlyout :theme="$theme" borderRadius="2px">
+<fv-menuFlyout borderRadius="2px">
   <fv-menu-sub-flyout label="Actions">
     <fv-menu-item-flyout label="New"> </fv-menu-item-flyout>
     <fv-menu-sub-flyout label="Remove">
@@ -86,15 +80,13 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 ### MenuFlyout Custom Block
 
 <ClientOnly>
-<div :style="divStyle">
-<fv-menu-flyout :theme="$theme">
-  <fv-menu-block-flyout>
-    <template v-slot:header>Actions</template>
-    <fv-menu-item-flyout label="New" @click="alert('New');">
-    </fv-menu-item-flyout>
-    <fv-menu-item-flyout label="Remove" @click="alert('Remove');">
-    </fv-menu-item-flyout>
-  </fv-menu-block-flyout>
+<fv-menu-flyout>
+  <fv-menu-block-flyout><template v-slot:header>Actions</template>
+<fv-menu-item-flyout label="New" @click="alert('New');">
+</fv-menu-item-flyout>
+<fv-menu-item-flyout label="Remove" @click="alert('Remove');">
+</fv-menu-item-flyout>
+</fv-menu-block-flyout>
   <hr/>
   <fv-menu-block-flyout>
     <template v-slot:header>Share</template>
@@ -106,7 +98,6 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
     </fv-menu-sub-flyout>
   </fv-menu-block-flyout>
 </fv-menu-flyout>
-</div>
 </ClientOnly>
 
 ```vue
@@ -134,8 +125,7 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 ### MenuFlyout Checkable
 
 <ClientOnly>
-<div :style="divStyle">
-<fv-menuFlyout :checkable="true" :theme="$theme" label="Files">
+<fv-menuFlyout :checkable="true" label="Files">
 <fv-menu-sub-flyout label="Show">
   <fv-menu-item-flyout label="Name" /> 
   <fv-menu-item-flyout label="Time" />
@@ -145,11 +135,10 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 <fv-menu-sub-flyout label="disabled" :disabled="true" />
 <fv-menu-item-flyout label="disabledItem" :disabled="true" />
 </fv-menuFlyout>
-</div>
 </ClientOnly>
 
 ``` vue
-<fv-menuFlyout :checkable="true" :theme="$theme">
+<fv-menuFlyout :checkable="true">
 <fv-menu-sub-flyout label="Show">
   <fv-menu-item-flyout label="Name" /> 
   <fv-menu-item-flyout label="Time" />
@@ -162,20 +151,18 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 ### MenuFlyout Disabled
 
 <ClientOnly>
-<div :style="divStyle">
-<fv-menuFlyout :checkable="true" :theme="$theme" label="Files" :disabled="true">
+<fv-menuFlyout :checkable="true" label="Files" :disabled="true">
 <fv-menu-sub-flyout label="Show">
-  <fv-menu-item-flyout label="Name" /> 
-  <fv-menu-item-flyout label="Time" />
-  <fv-menu-item-flyout label="Author" />
+<fv-menu-item-flyout label="Name" /> 
+<fv-menu-item-flyout label="Time" />
+<fv-menu-item-flyout label="Author" />
 </fv-menu-sub-flyout>
 <fv-menu-item-flyout label="This is a long text for menuflyout item" />
 </fv-menuFlyout>
-</div>
 </ClientOnly>
 
 ``` vue
-<fv-menuFlyout :checkable="true" :theme="$theme" label="Files" :disabled="true">
+<fv-menuFlyout :checkable="true" label="Files" :disabled="true">
 <fv-menu-sub-flyout label="Show">
   <fv-menu-item-flyout label="Name" /> 
   <fv-menu-item-flyout label="Time" />
@@ -188,25 +175,21 @@ THEME:<fv-toggle-switch v-model="theme" :on="$theme" :off="$theme" :theme="$them
 ### MenuFlyout Custom Style
 
 <ClientOnly>
-  <div :style="divStyle">
-  <fv-menuFlyout :checkable="true" label="Files" theme="dark" :beak="15" backgroundColor="#00cc99" color="#fff" borderColor="#00cc99">
-  <fv-menu-sub-flyout label="Show">
-    <fv-menu-item-flyout label="Name" /> 
-    <fv-menu-item-flyout label="Time" />
-    <fv-menu-item-flyout label="Author" />
-  </fv-menu-sub-flyout>
-  <fv-menu-item-flyout label="This is a long text for menuflyout item" />
-  <fv-menu-block-flyout>
-  <template v-slot:header>
-  Share
-  </template>
-  <fv-menu-item-flyout label="github">
-  </fv-menu-item-flyout>
-   <fv-menu-item-flyout label="codeforces" :disabled="true">
-  </fv-menu-item-flyout>
-  </fv-menu-block-flyout>
-  </fv-menuFlyout>
-  </div>
+<fv-menuFlyout :checkable="true" label="Files" theme="dark" :beak="15" backgroundColor="#00cc99" color="#fff" borderColor="#00cc99">
+<fv-menu-sub-flyout label="Show">
+<fv-menu-item-flyout label="Name" /> 
+<fv-menu-item-flyout label="Time" />
+<fv-menu-item-flyout label="Author" />
+</fv-menu-sub-flyout>
+<fv-menu-item-flyout label="This is a long text for menuflyout item" />
+<fv-menu-block-flyout>
+<template v-slot:header>
+Share
+</template>
+<fv-menu-item-flyout label="github" /> 
+<fv-menu-item-flyout label="codeforces" :disabled="true" />
+</fv-menu-block-flyout>
+</fv-menuFlyout>
 </ClientOnly>
 
 ``` vue

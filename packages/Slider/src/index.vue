@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import "office-ui-fabric-core/dist/css/fabric.min.css";
+import "../../office-ui-fabric-core/dist/css/fabric.min.css";
 export default {
     name: "FvSlider",
     data() {

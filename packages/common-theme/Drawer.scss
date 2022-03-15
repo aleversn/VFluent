@@ -1,8 +1,10 @@
 @mixin fv-drawer {
-  position: fixed;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-  overflow: hidden;
-  transition: all .3s;
-  // filter:blur(2px);
-  transition-timing-function: ease-in-out;
+    
+    position: fixed;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(50px);
+    overflow: hidden;
+    transition: transform 0.3s;
+    // filter:blur(2px);
+    transition-timing-function: ease-in-out;
 }

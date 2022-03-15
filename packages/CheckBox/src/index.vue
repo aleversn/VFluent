@@ -1,12 +1,16 @@
 <template>
 <div :class="['fv-'+$theme+'-checkBox', boxSide == 'end' ? 'box-side-end' : '']" @click="Checked">
-    <div class="checkbox-rec" :class="[{disabled: isDisabled}]">
-        <p class="checkbox-border" :class="{check: isCheck}" :style="{background: Indeterminate ? background : '', borderColor: Indeterminate ? 'transparent' : borderColor, borderWidth: `${borderWidth}px`}"></p>
-        <transition name="font-scale-in">
-            <p v-show="isCheck" class="checkbox-content ms-Icon ms-Icon--CheckMark" :style="{background: background}"></p>
+    <div class="fv-checkbox-rec" :class="[{disabled: isDisabled, check: thisValue || Indeterminate}]" :style="{background: thisValue || Indeterminate ? background : ''}">
+        <p class="fv-checkbox-border" :style="{borderColor: Indeterminate ? 'transparent' : borderColor, borderWidth: `${borderWidth}px`}"></p>
+        <transition name="font-clip-in">
+            <div v-show="thisValue && !Indeterminate" class="fv-checkbox-content-block">
+                <i class="fv-checkbox-content ms-Icon ms-Icon--CheckMark"></i>
+            </div>
         </transition>
-        <transition name="font-scale-in">
-            <p v-show="Indeterminate" class="CheckboxIndeterminate"></p>
+        <transition name="font-clip-in">
+            <div v-show="Indeterminate" class="fv-checkbox-content-block">
+                <i class="fv-checkbox-content ms-Icon ms-Icon--CheckboxIndeterminate"></i>
+            </div>
         </transition>
     </div>
     <span class="text-content-block" :style="{color: foreground}"><slot></slot></span>
@@ -48,14 +52,14 @@ export default {
     },
     data () {
         return {
-            isCheck: this.value
+            thisValue: this.value
         };
     },
     watch: {
         value (val) {
-            this.isCheck = val;
+            this.thisValue = val;
         },
-        isCheck (val) {
+        thisValue (val) {
             this.$emit('input', val);
         }
     },
@@ -66,21 +70,22 @@ export default {
             return this.theme;
         },
         Indeterminate () {
-            return (this.isCheck === '' || this.isCheck === undefined);
+            if(this.thisValue === true || this.thisValue === false) return false;
+            return true;
         },
         isDisabled () {
             return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
         }
     },
     mounted () {
-        this.isCheck = this.value;
+        this.thisValue = this.value;
     },
     methods: {
         Checked () {
             if(this.isDisabled)
                 return 0;
-            this.isCheck = !this.isCheck;
-            this.$emit('click', this.isCheck);   //@event click//
+            this.thisValue = !this.thisValue;
+            this.$emit('click', this.thisValue);   //@event click//
         }
     }
 };

@@ -1,10 +1,10 @@
-let styleEmbedding=(el,styleName)=>{
-  if (el[styleName]){
+let styleEmbedding = (el, styleName) => {
+  if (el[styleName]) {
     return el[styleName]
-  }else{
-    if (el.parent){
-      if (el.parent['$'+styleName])
-        return el.parent['$'+styleName]()
+  } else {
+    if (el.parent) {
+      if (el.parent['$' + styleName])
+        return el.parent['$' + styleName]()
       else
         return el.parent[styleName]
     }
@@ -23,16 +23,17 @@ export default {
       default: false,
       type: Boolean
     },
-    backgroundColor:{},
-    color:{},
-    borderRadius:{}
+    backgroundColor: {},
+    color: {},
+    borderRadius: {}
   },
   data() {
     return {
       clickEvent: [],
       item: {
-        hover:false,
-      }
+        hover: false,
+      },
+      window: {}
     };
   },
   computed: {
@@ -44,7 +45,21 @@ export default {
       return this.theme;
     },
   },
-  beforeCreate() {
+  watch: {
+    "window.target"(val) {
+      let component = val
+      while (component) {
+        if (
+          component.$options.name === "FvMenuSubFlyout" ||
+          component.$options.name === "FvMenuFlyout"
+        ) {
+          this.parent = component;
+        }
+        component = component.$parent;
+      }
+    }
+  },
+  mounted() {
     let component = this.$parent;
     while (component) {
       if (component.$options.name === "FvOutsidePopper") {
@@ -60,12 +75,9 @@ export default {
         component.$options.name === "FvMenuFlyout"
       ) {
         this.parent = component;
-        break;
       }
       component = component.$parent;
     }
-  },
-  mounted() {
     this.clickEvent.push(() => {
       if (this.item && this.item.checkable) {
         this.item.checked ^= true;
@@ -75,7 +87,12 @@ export default {
           if (this.window) {
             if (this.window.target.popperEvent.mouseleave)
               this.window.target.popperEvent.mouseleave();
-            else this.window.show ^= true;
+            else {
+              if (this.window.target.popperShow)
+                this.window.target.popperShow = false;
+              else
+                this.window.target.popperShow = true;
+            }
           }
         } else {
           this.show();
@@ -84,20 +101,20 @@ export default {
     });
   },
   methods: {
-    $backgroundColor(){
-      return styleEmbedding(this,'backgroundColor')
+    $backgroundColor() {
+      return styleEmbedding(this, 'backgroundColor')
     },
-    $color(){
-      return styleEmbedding(this,'color')
+    $color() {
+      return styleEmbedding(this, 'color')
     },
-    $borderRadius(){
-      return styleEmbedding(this,'borderRadius')
+    $borderRadius() {
+      return styleEmbedding(this, 'borderRadius')
     },
-    $overflow(){
-      return styleEmbedding(this,'overflow')
+    $overflow() {
+      return styleEmbedding(this, 'overflow')
     },
     show() {
-      this.window.show = true;
+      this.window.target.popperShow = true;
       if (this.callout) {
         this.callout.focusTrap = true;
         setTimeout(() => {

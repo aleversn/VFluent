@@ -3,6 +3,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    user-select: none;
     cursor: pointer;
 
     &.box-side-end
@@ -16,16 +17,18 @@
         }
     }
 
-    .checkbox-rec
+    .fv-checkbox-rec
     {
         position: relative;
         width: 20px;
         height: 20px;
+        border-radius: 3px;
         display: flex;
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
-        transition: all 0.5s;
+        transition: all 0.05s;
+        overflow: hidden;
 
         &.disabled
         {
@@ -34,7 +37,47 @@
             cursor: default;
         }
 
-        .checkbox-border
+        &.check
+        {
+            background: rgba(0, 90, 158, 1);
+
+            &:hover
+            {
+                background: rgba(0, 90, 158, 1);
+            }
+
+            .fv-checkbox-border
+            {
+                border-color: transparent;
+
+                &:hover
+                {
+                    border-color: transparent;
+                }
+            }
+        }
+
+        &:hover
+        {
+            background: rgba(200, 200, 200, 0.2);
+
+            .fv-checkbox-border
+            {
+                opacity: 0.6;
+            }
+        }
+
+        &:active
+        {
+            background: rgba(200, 200, 200, 0.3);
+
+            .fv-checkbox-border
+            {
+                opacity: 0.3;
+            }
+        }
+
+        .fv-checkbox-border
         {
             width: 100%;
             height: 100%;
@@ -47,69 +90,72 @@
             overflow: hidden;
             opacity: 0.75;
             -webkit-font-smoothing: antialiased;
-
-            &:hover
-            {
-                opacity: 1;
-            }
-
-            .check
-            {
-                border-color: transparent;
-
-                &:hover
-                {
-                    border-color: inherit;
-                }
-            }
         }
 
-        .checkbox-content
+        .fv-checkbox-content-block
         {
             position: absolute;
+            left: 0px;
+            top: 0px;
             width: 100%;
             height: 100%;
             margin: 0px;
             padding: 0px;
             font-size: 13px;
+            font-weight: bold;
             border-radius: 3px;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            user-select: none;
+            overflow: hidden;
             cursor: pointer;
-        }
 
-        .CheckboxIndeterminate
-        {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            margin: 0px;
-            padding: 0px;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &:hover
-        {
-            .content
+            .fv-checkbox-content
             {
-                z-index: -1;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                left: 0px;
+                top: 0px;
+                margin: 0px;
+                padding: 0px;
+                font-size: 13px;
+                font-weight: bold;
+                border-radius: 3px;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
             }
         }
-        
-        .font-scale-in-enter,.font-scale-in-leave-to
+
+        .font-clip-in-enter-active, .font-clip-in-leave-active
         {
-            transition: all 0.05s;
-            transform: scale(0.9);
+            transition: all 0.5s;
         }
-        .font-scale-in-enter-to,.font-scale-in-leave
+        
+        .font-clip-in-enter
         {
-            transition: all 0.05s;
-            transform: scale(1);
+            width: 0px;
+        }
+        .font-clip-in-enter-to
+        {
+            width: 100%;
+        }
+
+        .font-clip-in-leave-active
+        {
+            transition: all 0.1s;
+        }
+
+        .font-clip-in-leave
+        {
+            width: 100%;
+        }
+
+        .font-clip-in-leave-to
+        {
+            width: 0px;
         }
     }
 

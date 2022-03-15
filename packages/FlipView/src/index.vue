@@ -1,5 +1,19 @@
 <template>
-<div :class="'fv-'+$theme+'-FlipView'">
+<div :class="'fv-'+$theme+'-FlipView'" @mouseenter="hoverTrigger = true" @mouseleave="hoverTrigger = false" @touchstart="hoverTrigger = true" @touchend="hoverTrigger = false">
+    <transition name="fade-in">
+        <div v-show="showControlPanel !== 'hidden' && hoverTrigger" class="control-panel" :style="styles.controlPanel">
+            <span class="slidebtn fst" :class="[direction]" @click="slidePrev">
+                <p class="icon" :class="[`ms-Icon ms-Icon--${firstBtn}`]"></p>
+            </span>
+            <span class="slidebtn sec" :class="[direction]" @click="slideNext">
+                    <p class="icon" :class="[`ms-Icon ms-Icon--${secondBtn}`]"></p>
+                </span>
+            <span class="bottom-controller" :class="[direction]">
+                <p v-for="(item, index) in thisValue" :key="`ring: ${index}`" class="fst ms-Icon" :class="[currentIndex == index ? 'ms-Icon--CircleFill' : 'ms-Icon--CircleRing']" @click="slideIndex(index)"></p>
+                <p class="sec ms-Icon" :class="[thisAutoPlay.toString() == 'true' ? 'ms-Icon--Pause' : 'ms-Icon--Play']" @click="thisAutoPlay = !thisAutoPlay"></p>
+            </span>
+        </div>
+    </transition>
     <div class="container-panel">
         <transition-group :name="currentAnimation" tag="div" class="container-panel">
             <div v-show="currentIndex === index" v-for="(item, index) in thisValue" :key="`flipview: ${index}`" class="container-item" :style="styles.containerItem">
@@ -8,24 +22,6 @@
                 </slot>
             </div>
         </transition-group>
-    </div>
-    <div class="control-panel" :class="[showControlPanel]" :style="styles.controlPanel">
-        <transition name="fade-in">
-            <span class="slidebtn fst" :class="[direction]" @click="slidePrev">
-                <p class="icon" :class="[`ms-Icon ms-Icon--${firstBtn}`]"></p>
-            </span>
-        </transition>
-        <transition name="fade-in">
-            <span class="slidebtn sec" :class="[direction]" @click="slideNext">
-                <p class="icon" :class="[`ms-Icon ms-Icon--${secondBtn}`]"></p>
-            </span>
-        </transition>
-        <transition name="fade-in">
-        <span class="bottom-controller" :class="[direction]">
-            <p v-for="(item, index) in thisValue" :key="`ring: ${index}`" class="fst ms-Icon" :class="[currentIndex == index ? 'ms-Icon--CircleFill' : 'ms-Icon--CircleRing']" @click="slideIndex(index)"></p>
-            <p class="sec ms-Icon" :class="[thisAutoPlay.toString() == 'true' ? 'ms-Icon--Pause' : 'ms-Icon--Play']" @click="thisAutoPlay = !thisAutoPlay"></p>
-        </span>
-        </transition>
     </div>
 </div>
 </template>
@@ -67,6 +63,7 @@ export default {
             thisValue: this.value,
             currentIndex: 0,
             currentAnimation: '',
+            hoverTrigger: false,
             thisAutoPlay: this.autoPlay,
             animationMap: {
                 move: 'move',

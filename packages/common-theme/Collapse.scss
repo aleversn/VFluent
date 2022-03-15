@@ -44,6 +44,8 @@
         {
             position: relative;
             width: 100%;
+            flex: 1;
+            overflow: hidden;
 
             .collapse-description
             {

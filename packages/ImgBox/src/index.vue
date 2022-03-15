@@ -117,7 +117,7 @@ export default {
                         let base64 = event.target.result;
                         this.UpdateStore(base64);
                     }
-                    if(data_type === 'image')
+                    if(data_type !== 'text')
                         FR.readAsDataURL(blob);
                     else
                         FR.readAsText(blob);

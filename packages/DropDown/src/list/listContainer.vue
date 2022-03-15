@@ -7,13 +7,13 @@
         >
             <div
                 class="list-item"
-                :class="{hr:item.type == 'divider', normal:item.type == 'default' || item.type == undefined, disabled: item.disabled, choose: item.choosen}"
+                :class="{hr:valueTrigger(item.type) == 'divider', normal:valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled), choose: item.choosen}"
             >
                 <p
-                    v-show="item.type == 'header'"
+                    v-show="valueTrigger(item.type) == 'header'"
                     class="title"
                     :style="styles.title"
-                >{{item.text}}</p>
+                >{{valueTrigger(item.text)}}</p>
                 <slot
                     name="options"
                     :option="item"
@@ -21,13 +21,13 @@
                 >
                     <fv-check-box
                         v-model="item.choosen"
-                        v-show="item.type == 'default' || item.type == undefined && multiple"
-                        :disabled="item.disabled"
-                        :borderColor="dropDownListForeground"
-                        :background="dropDownListForeground"
+                        v-show="valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined && multiple"
+                        :disabled="valueTrigger(item.disabled)"
+                        :foreground="dropDownListForeground"
+                        :background="checkBoxBackground"
                         :theme="theme"
-                    >{{item.text}}</fv-check-box>
-                    <p v-show="item.type == 'default' || item.type == undefined && !multiple">{{item.text}}</p>
+                    >{{valueTrigger(item.text)}}</fv-check-box>
+                    <p v-show="valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined && !multiple">{{valueTrigger(item.text)}}</p>
                 </slot>
             </div>
         </div>
@@ -52,11 +52,14 @@ export default {
         borderRadius: {
             default: '3'
         },
+        checkBoxBackground: {
+            default: ""
+        },
         dropDownListForeground: {
-            default: "rgba(0,120,215,0.9)"
+            default: "rgba(0, 120, 215, 0.9)"
         },
         dropDownListBackground: {
-            default: ""
+            default: "rgba(0, 90, 158, 1)"
         },
         showStatus: {
             default: () => {
@@ -142,6 +145,10 @@ export default {
             this.styles.listContainer.maxHeight = `${this.showStatus.maxHeight}px`;
             this.styles.listContainer.overflow = this.showStatus.overflow;
             this.styles.title.color = this.dropDownListForeground;
+        },
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
         },
         onClick(cur) {
             if (cur.disabled) return 0;

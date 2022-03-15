@@ -21,13 +21,21 @@ const getCompoentAttributes = (compoentName) => {
             emits.push(emit.match(/\$emit\(['"` ]+(.*)['"` ]+,.*\)/m)[1])
         }
 
-    js = js.replace(/<\/{0,1}script>/g, "").replace(/export default (\{[\s\S]*\});{0,1}/mg, "($1)").replace(/;\s*$/g, "").replace(/import (.*) from ["']{1}.*["']{1}/g, "const $1={};").replace(/import ["'].*css["'];/g, "").replace(/import ["'].*js["'];/g,"")
-        
-    fs.writeFileSync("./temp.js",js)
-    js = babel.transform(js, {
-        filename: "buildVuter.js",
-        presets: ["@vue/babel-preset-app"],
-    }).code
+    js = js.replace(/<\/{0,1}script>/g, "").replace(/export default (\{[\s\S]*\});{0,1}/mg, "($1)").replace(/;\s*$/g, "").replace(/import (.*) from ["']{1}.*["']{1}/g, "const $1={};").replace(/import ["'].*css["'];/g, "").replace(/import ["'].*js["'];/g, "")
+
+    try {
+        js = babel.transform(js, {
+            filename: "buildVuter.js",
+            presets: [["@vue/babel-preset-jsx", {
+                "injectH": false
+            }]],
+        }).code
+    } catch (e) {
+        if (e instanceof TypeError) {
+            console.log(js)
+        }
+        throw e
+    }
     let component = eval(`${js}`)
     let attributes = []
     for (let key in component.props) {

@@ -163,6 +163,10 @@ export default {
             posX: 0,
             posY: 0,
             rightMenuHeight: 0,
+            windowResize: {
+                trigger: false,
+                width: 0
+            },
             sort: {
                 name: "",
                 desc: false
@@ -177,7 +181,8 @@ export default {
                 }
             },
             timer: {
-                width: {}
+                width: {},
+                resize: {}
             }
         };
     },
@@ -293,6 +298,7 @@ export default {
         this.lazyLoadInit();
         this.rightMenuClearInit();
         this.listWidthRefreshInit();
+        this.watchWindowResizeInit();
         this.filterValue();
         this.FRInit();
         this.stylesInit();
@@ -306,13 +312,12 @@ export default {
                 backgroundLightColor: this.backgroundLightColor,
                 childrenSelector: this.$el.querySelectorAll('.list-head .col')
             });
-            let FR_Right_Menu = new this.$RevealEffectsMasked('body', {
-                selector: this.$el.querySelectorAll('.fv-rightMenu div')[0],
-                backgroundGradientSize: 80,
-                borderGradientSize: 60,
+            let FR_Right_Menu = new this.$RevealEffects(this.$el, {
+                selector: this.$el.querySelectorAll('.fv-rightMenu div span'),
+                borderGradientSize: 38,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-                childrenSelector: this.$el.querySelectorAll('.fv-rightMenu div span')
+                backgroundGradientSize: 120,
+                backgroundLightColor: this.backgroundLightColor
             });
         },
         stylesInit () {
@@ -390,6 +395,22 @@ export default {
                     w-=36;
                 this.listWidth = w;
             }, 30);
+        },
+        watchWindowResizeInit () {
+            window.addEventListener("resize", () => {
+                this.windowResize.trigger = true;
+            });
+            this.timer.resize = setInterval(() => {
+                let currentWidth = document.body.clientWidth;
+                if(this.windowResize.trigger) {
+                    if(this.windowResize.width == currentWidth) {
+                        this.headInit();
+                        this.widthFormat(0);
+                        this.windowResize.trigger = false;
+                    }
+                }
+                this.windowResize.width = currentWidth;
+            }, 350);
         },
         lazyLoadInit () {
             this.$SUtility.ScrollToLoadInit(this.$refs.l1, () => {

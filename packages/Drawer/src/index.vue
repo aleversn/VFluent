@@ -8,19 +8,19 @@
 export default {
     name: 'FvDrawer',
     props: {
-        theme: {
-            type: String,
-            default: 'system',
+        value: {
+            default: false,
         },
         position: {
             type: String,
             default: 'bottom',
         },
         length: {
-            type: [Number, String],
             default: 300,
         },
-        visible: {},
+        background: {
+            default: '',
+        },
         zIndex: {
             type: Number,
             default: 9999,
@@ -29,9 +29,9 @@ export default {
             type: Boolean,
             default: false,
         },
-        appendBody: {
-            type: Boolean,
-            default: false,
+        theme: {
+            type: String,
+            default: 'system',
         },
     },
     data() {
