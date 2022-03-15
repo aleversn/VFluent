@@ -1,5 +1,5 @@
 <template>
-    <div :class="['fv-' + $theme + '-drawer']" :style="style.drawer">
+    <div :class="['fv-' + $theme + '-drawer']" :style="[style.drawer, {background: background}]">
         <slot></slot>
     </div>
 </template>
@@ -8,9 +8,8 @@
 export default {
     name: 'FvDrawer',
     props: {
-        theme: {
-            type: String,
-            default: 'system',
+        value: {
+            default: false
         },
         position: {
             type: String,
@@ -19,7 +18,9 @@ export default {
         length: {
             default: 300,
         },
-        visible: {},
+        background: {
+            default: ''
+        },
         zIndex: {
             type: Number,
             default: 9999,
@@ -28,6 +29,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        theme: {
+            type: String,
+            default: 'system',
+        }
     },
     data() {
         return {
@@ -38,7 +43,7 @@ export default {
                 },
             },
             show: {
-                drawer: this.visible == undefined ? false : this.visible,
+                drawer: this.value,
             },
             window: {
                 click: (evt) => {
@@ -65,11 +70,11 @@ export default {
         },
         computeVisible: {
             get() {
-                return this.visible == undefined ? this.show.drawer : this.visible;
+                return this.value == undefined ? this.show.drawer : this.value;
             },
             set(val) {
                 this.show.drawer = val;
-                this.$emit('update:visible', val);
+                this.$emit('input', val);
             },
         },
     },
@@ -95,7 +100,7 @@ export default {
         },
         setStyle() {
             let length = this.length;
-            if (typeof this.length == 'number') {
+            if (this.length.toString().indexOf('px') < 0 && this.length.toString().indexOf('%') < 0) {
                 length += 'px';
             }
             if (this.position == 'bottom') {
