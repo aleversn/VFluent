@@ -1,5 +1,5 @@
 <template>
-    <div ref="drawer" :class="['fv-' + $theme + '-drawer']" :style="style.drawer">
+    <div ref="drawer" :class="['fv-' + $theme + '-drawer']" :style="[style.drawer, { background: background }]">
         <slot></slot>
     </div>
 </template>
@@ -8,9 +8,6 @@
 export default {
     name: 'FvDrawer',
     props: {
-        value: {
-            default: false,
-        },
         position: {
             type: String,
             default: 'bottom',
@@ -19,7 +16,10 @@ export default {
             default: 300,
         },
         background: {
-            default: '',
+            default: undefined,
+        },
+        value: {
+            default: undefined,
         },
         zIndex: {
             type: Number,
@@ -33,6 +33,10 @@ export default {
             type: String,
             default: 'system',
         },
+        appendBody: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
@@ -43,7 +47,7 @@ export default {
                 },
             },
             show: {
-                drawer: this.visible == undefined ? false : this.visible,
+                drawer: this.value == undefined ? false : this.value,
             },
             window: {
                 click: (evt) => {
@@ -80,11 +84,11 @@ export default {
         },
         computeVisible: {
             get() {
-                return this.visible == undefined ? this.show.drawer : this.visible;
+                return this.value == undefined ? this.show.drawer : this.value;
             },
             set(val) {
                 this.show.drawer = val;
-                this.$emit('update:visible', val);
+                this.$emit('input', val);
             },
         },
     },
@@ -140,6 +144,7 @@ export default {
         },
         setStyle() {
             let length = this.length;
+            // e.g. 100vw 100% 100 and so on.
             if (typeof this.length == 'number') {
                 length += 'px';
             }
