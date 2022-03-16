@@ -31,6 +31,7 @@ export default {
         return {
             thisValue: this.value,
             dynamicValue: [],
+            initLoading: true,
             timer: {}
         }
     },
@@ -59,8 +60,8 @@ export default {
     },
     methods: {
         init () {
-            clearInterval(this.timer);
             this.timer = setInterval(() => {
+                if(!this.initLoading) return;
                 this.$nextTick(() => {
                     if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length) {
                         this.loadMore();
@@ -68,11 +69,11 @@ export default {
                     }
                     else
                     {
+                        this.initLoading = false;
                         this.$emit('init-end');
-                        clearInterval(this.timer);
                     }
                 });
-            }, 300);
+            }, 100);
         },
         loadMore () {
             if(this.static) {
@@ -87,7 +88,7 @@ export default {
         },
         dataChange () {
             this.dynamicValue = [];
-            this.init();
+            this.initLoading = true;
         },
         lazyLoadInit () {
             this.$el.addEventListener("scroll", event => {
