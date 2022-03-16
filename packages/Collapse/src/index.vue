@@ -56,7 +56,7 @@ export default {
         },
         icon: {
             type: String,
-            default: "CollapseMenu",
+            default: "ShowBcc",
         },
         title: {
             type: String,

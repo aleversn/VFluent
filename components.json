@@ -350,5 +350,13 @@
       "Dark": "@/dark-theme/Collapse.scss",
       "Custom": "@/custom-theme/Collapse.scss"
     }
+  },
+  "InfiniteScrollView": {
+    "entry": "@/InfiniteScrollView/index.js",
+    "theme": {
+      "Light": "@/light-theme/InfiniteScrollView.scss",
+      "Dark": "@/dark-theme/InfiniteScrollView.scss",
+      "Custom": "@/custom-theme/InfiniteScrollView.scss"
+    }
   }
 }

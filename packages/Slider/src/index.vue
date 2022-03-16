@@ -102,7 +102,7 @@ export default {
         },
         icon: {
             type: String,
-            default: "LocationFill",
+            default: "StatusCircleOuter",
             // default:"StatusCircleOuter"
         },
         vertical: {

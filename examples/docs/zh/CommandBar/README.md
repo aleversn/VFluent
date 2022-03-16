@@ -18,7 +18,7 @@ export default {
                     { type: "divider" },
                     { name: "Calendar event", func: this.customFunc, icon: "WebAppBuilderModule" }
                 ]},
-                { name: "Edit", func: this.customFunc, icon: "SingleColumnEdit", disabled: true },
+                { name: "Edit", func: this.customFunc, icon: "Edit", disabled: true },
                 { type: "divider" },
                 { name: "Share", func: this.customFunc, icon: "Share" },
                 { type: "more", secondary: [

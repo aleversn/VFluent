@@ -7,7 +7,7 @@ import {SDate} from './usual.js'
 import {SUtility} from './usual.js'
 import {RevealEffects,RevealEffectsMasked} from './usual.js'
 import '../examples/style/global-transition.css'
-import 'office-ui-fabric-core/dist/css/fabric.min.css'
+import './office-ui-fabric-core/dist/css/fabric.min.css'
 import Button from '@/Button/index.js'
 import ProgressRing from '@/ProgressRing/index.js'
 import CheckBox from '@/CheckBox/index.js'
@@ -52,6 +52,7 @@ import Breadcrumb from '@/Breadcrumb/index.js'
 import AnimatedIcon from '@/AnimatedIcon/index.js'
 import Tag from '@/Tag/index.js'
 import Collapse from '@/Collapse/index.js'
+import InfiniteScrollView from '@/InfiniteScrollView/index.js'
 
 
 let components = [
@@ -99,6 +100,7 @@ let components = [
   AnimatedIcon,
   Tag,
   Collapse,
+  InfiniteScrollView,
 
 ]
 
@@ -162,6 +164,7 @@ export default {
   AnimatedIcon,
   Tag,
   Collapse,
+  InfiniteScrollView,
 
 }
 
