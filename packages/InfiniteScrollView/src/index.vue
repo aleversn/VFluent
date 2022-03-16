@@ -81,8 +81,7 @@ export default {
             return addition > 0;
         },
         dataChange () {
-            let currentSize = this.dynamicValue.length;
-            this.dynamicValue = this.thisValue.slice(0, currentSize);
+            this.dynamicValue = [];
             this.init();
         },
         lazyLoadInit () {
