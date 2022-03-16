@@ -61,14 +61,12 @@ export default {
     methods: {
         init () {
             this.timer = setInterval(() => {
-                this.$nextTick(() => {
-                    if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length) {
-                        this.loadMore();
-                        this.$emit('init-start');
-                    }
-                    else
-                        this.$emit('init-end');
-                });
+                if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length) {
+                    this.loadMore();
+                    this.$emit('init-start');
+                }
+                else
+                    this.$emit('init-end');
             }, 100);
         },
         loadMore () {
