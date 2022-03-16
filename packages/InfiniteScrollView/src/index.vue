@@ -31,7 +31,7 @@ export default {
         return {
             thisValue: this.value,
             dynamicValue: [],
-            initLoading: true,
+            lock: true,
             timer: {}
         }
     },
@@ -68,10 +68,7 @@ export default {
                         this.$emit('init-start');
                     }
                     else
-                    {
-                        this.initLoading = false;
                         this.$emit('init-end');
-                    }
                 });
             }, 100);
         },
@@ -80,15 +77,18 @@ export default {
                 this.dynamicValue = this.thisValue;
                 return;
             }
+            if(!this.lock)  return;
+            this.lock = false;
             let item = this.dynamicValue[this.dynamicValue.length - 1];
             let index = this.thisValue.indexOf(item);
             let addition = this.thisValue.slice(index + 1, index + this.batchSize + 1);
             this.dynamicValue = this.dynamicValue.concat(addition);
+            this.lock = true;
             return addition > 0;
         },
         dataChange () {
-            this.dynamicValue = [];
-            this.initLoading = true;
+            let size = this.dynamicValue.length;
+            this.dynamicValue = this.thisValue.slice(0, size);
         },
         lazyLoadInit () {
             this.$el.addEventListener("scroll", event => {
