@@ -65,16 +65,6 @@ export default {
                     if (!_self) this.computeVisible = false;
                 },
             },
-            parentBox: null,
-            parent: {
-                scroll: () => {
-                    // to follow scroll
-                    let top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                    let left = document.documentElement.scrollLeft || window.pageXOffset || document.body.scrollLeft;
-                    this.parentBox.style.top = `${top}px`;
-                    this.parentBox.style.left = `${left}px`;
-                },
-            },
         };
     },
     computed: {
@@ -110,10 +100,6 @@ export default {
         for (let key in this.window) {
             window.removeEventListener(key, this.window);
         }
-        if (this.parentBox != null) {
-            this.parentBox.remove();
-            window.removeEventListener('scroll', this.parent.scroll);
-        }
     },
     methods: {
         init() {
@@ -123,23 +109,8 @@ export default {
             // For compatibility with IOS
             if (this.appendBody) {
                 // change position style: absolute
-                this.parentBox = document.createElement('div');
-                document.body.append(this.parentBox);
                 this.$refs.drawer.remove();
-                this.parentBox.append(this.$refs.drawer);
-                this.$refs.drawer.style.position = 'absolute';
-                this.$refs.drawer.style.visibility = 'visible';
-
-                this.parentBox.style.top = '0';
-                this.parentBox.style.left = '0';
-                this.parentBox.style.position = 'absolute';
-                this.parentBox.style.width = '100%';
-                this.parentBox.style.height = '100%';
-                this.parentBox.style.background = 'red';
-                this.parentBox.style.zIndex = 9999;
-                this.parentBox.style.overflow = 'hidden';
-                this.parentBox.style.visibility = 'hidden';
-                window.addEventListener('scroll', this.parent.scroll);
+                document.body.appendChild(this.$refs.drawer);
             }
         },
         setStyle() {
