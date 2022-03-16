@@ -43,7 +43,7 @@ sidebarDepth: 2
 ### Callout 
 
 <ClientOnly>
-<fv-callout :visible.sync="show" effect="hover" position="bottomLeft">
+<fv-callout :visible.sync="show" effect="hover" position="bottomLeft" :keepalive="false">
   <fv-button icon="ActionCenter" borderRadius="3" style="width: 120px; height: 45px;">Color</fv-button>
   <main>
     <fv-color-picker v-model="color" style="width:500px"></fv-color-picker>

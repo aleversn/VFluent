@@ -53,6 +53,10 @@ export default {
                 return [];
             },
         },
+        keepalive: {
+            type: Boolean,
+            default: true,
+        },
     },
     data() {
         return {
@@ -113,7 +117,7 @@ export default {
         return (
             <div style="all:inherit;">
                 {target}
-                <Popper ref="popper" theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} nodes={slots} />
+                <Popper ref="popper" keepalive={this.keepalive} theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} nodes={slots} />
             </div>
         );
     },
@@ -169,8 +173,8 @@ export default {
             let startIndex = this.positionName.indexOf(position);
             let showFlag = false;
             for (let index = 0; index < this.positionName.length; ++index) {
-                startIndex = (startIndex + index) % this.positionName.length;
-                let position = this.positionName[startIndex];
+                endIndex = (startIndex + index) % this.positionName.length;
+                let position = this.positionName[endIndex];
                 let predictRect = this.locate(this._popper.targetElement, this.beak + this.space, position, height, width);
                 if (!this.isOutBody(predictRect)) {
                     this.setPopperPosition(position);
@@ -450,7 +454,7 @@ export default {
                             if (el.popperShow) {
                                 this.popperShow = false;
                                 el = el.target;
-                                el.popperEvent.mouseleave()
+                                el.popperEvent.mouseleave();
                             } else {
                                 break;
                             }
