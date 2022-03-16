@@ -61,7 +61,6 @@ export default {
     methods: {
         init () {
             this.timer = setInterval(() => {
-                if(!this.initLoading) return;
                 this.$nextTick(() => {
                     if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length) {
                         this.loadMore();
@@ -77,7 +76,7 @@ export default {
                 this.dynamicValue = this.thisValue;
                 return;
             }
-            if(!this.lock)  return;
+            if(!this.lock) return;
             this.lock = false;
             let item = this.dynamicValue[this.dynamicValue.length - 1];
             let index = this.thisValue.indexOf(item);
