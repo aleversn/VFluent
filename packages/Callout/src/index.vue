@@ -173,7 +173,7 @@ export default {
             let startIndex = this.positionName.indexOf(position);
             let showFlag = false;
             for (let index = 0; index < this.positionName.length; ++index) {
-                endIndex = (startIndex + index) % this.positionName.length;
+                let endIndex = (startIndex + index) % this.positionName.length;
                 let position = this.positionName[endIndex];
                 let predictRect = this.locate(this._popper.targetElement, this.beak + this.space, position, height, width);
                 if (!this.isOutBody(predictRect)) {
