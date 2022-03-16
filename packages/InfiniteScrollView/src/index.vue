@@ -62,12 +62,17 @@ export default {
             clearInterval(this.timer);
             this.timer = setInterval(() => {
                 this.$nextTick(() => {
-                    if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length)
+                    if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length) {
                         this.loadMore();
+                        this.$emit('init-start');
+                    }
                     else
+                    {
+                        this.$emit('init-end');
                         clearInterval(this.timer);
-                    });
-            }, 600);
+                    }
+                });
+            }, 300);
         },
         loadMore () {
             if(this.static) {
