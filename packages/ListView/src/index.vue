@@ -269,7 +269,7 @@ export default {
         },
         selectionFormat (cur) {
             this.thisValue.forEach((el, idx) => {
-                if(el.key === cur.key) {
+                if(el.key === cur.key && el.name === cur.name) {
                     el.selected = true;
                     this.$set(this.thisValue, idx, el);
                 } else {
