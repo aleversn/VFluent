@@ -82,10 +82,15 @@
                 background: rgba(0, 120, 212, 0.3);
             }
 
+            &.selected
+            {
+                border: rgba(50, 49, 48, 0.2) solid 2px;
+            }
+
             &.hr
             {
                 height: 1px;
-                border-bottom: rgba(36,36,36,0.1) solid thin;
+                border-bottom: rgba(36, 36, 36, 0.1) solid thin;
             }
         }
     }

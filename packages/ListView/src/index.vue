@@ -1,7 +1,7 @@
 <template>
-<div :class="'fv-'+$theme+'-ListView'">
+<div :class="'fv-'+$theme+'-ListView'" @click="focus = true">
     <div class="list-view-container" ref="container">
-        <span v-show="valueTrigger(item.show) !== false" v-for="(item, index) in thisValue" :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled)}" class="item" :key="index" :style="{ background: valueTrigger(item.choosen) ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
+        <span v-show="valueTrigger(item.show) !== false" v-for="(item, index) in thisValue" :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled), selected: item.selected && showSelectedBorder}" class="item" :key="index" :style="{ background: valueTrigger(item.choosen) ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
             <slot name="listItem" :item="item" :index="index" :valueTrigger="valueTrigger">
                 <p :style="{ color: valueTrigger(item.type) == 'header' ? headerForeground : '' }">{{valueTrigger(item.name)}}</p>
             </slot>
@@ -36,7 +36,9 @@ export default {
     },
     data () {
         return {
-            thisValue: []
+            thisValue: [],
+            focus: false,
+            showSelectedBorder: false
         }
     },
     watch: {
@@ -95,6 +97,11 @@ export default {
     mounted () {
         this.FRInit();
         this.valueInit();
+        this.outSideClickInit();
+        this.keyDownEventInit();
+        window.addEventListener("click", () => {
+            this.showSelectedBorder = false;
+        });
     },
     methods: {
         FRInit () {
@@ -111,6 +118,7 @@ export default {
                 name: "",
                 show: true,
                 choosen: false,
+                selected: false,
                 disabled: false
             };
 
@@ -121,6 +129,28 @@ export default {
                 result.push(Object.assign(m, item));
             }
             this.thisValue = result;
+        },
+        outSideClickInit () {
+            window.addEventListener("click", event => {
+                let x = event.target;
+                let _self = false;
+                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) this.focus = false;
+            });
+        },
+        keyDownEventInit () {
+            window.addEventListener("keydown", event => {
+                if(!this.focus) return;
+                if(event.keyCode === 40) this.move(event, 1);
+                else if(event.keyCode === 38) this.move(event, -1);
+                if(event.keyCode === 13) this.enter(event);
+            });
         },
         valueTrigger (val) {
             if(typeof(val) === 'function')  return val();
@@ -147,7 +177,8 @@ export default {
                 this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
             }
 
-            this.scrollFormat($event);
+            this.selectionFormat(cur);
+            this.scrollFormat($event.target);
 
             this.$emit("chooseItem", {
                 item: cur,
@@ -157,8 +188,75 @@ export default {
 
             this.$emit("choosen-items", this.currentChoosen);
         },
-        scrollFormat (event) {
-            let targetPos = event.target.getBoundingClientRect();
+        move ($event, direction) {
+            $event.preventDefault();
+            this.showSelectedBorder = true;
+            let selectedItem = this.thisValue.find(it => it.selected === true);
+            if(!selectedItem) {
+                selectedItem = this.thisValue.find(it => {
+                    if (this.valueTrigger(it.disabled)) return false;
+                    if (this.valueTrigger(it.type) === "header" || this.valueTrigger(it.type) == "divider") return false;
+                    return true;
+                });
+                if(!selectedItem) return;
+                let selectedItemIndex = this.thisValue.indexOf(selectedItem);
+                this.selectionFormat(selectedItem);
+                this.scrollFormat(this.$refs[`list_item_${selectedItemIndex}`][0]);
+                return;
+            }
+            let selectedItemIndex = this.thisValue.indexOf(selectedItem);
+            if(direction == 1) {
+                for(let i = selectedItemIndex + 1; i < this.thisValue.length; i++) {
+                    if(this.valueTrigger(this.thisValue[i].disabled)) continue;
+                    if(this.valueTrigger(this.thisValue[i].type) === "header" || this.valueTrigger(this.thisValue[i].type) == "divider") continue;
+                    selectedItem = this.thisValue[i];
+                    selectedItemIndex = i;
+                    break;
+                }
+            }
+            else if(direction == -1) {
+                for(let i = selectedItemIndex - 1; i >= 0; i--) {
+                    if(this.valueTrigger(this.thisValue[i].disabled)) continue;
+                    if(this.valueTrigger(this.thisValue[i].type) === "header" || this.valueTrigger(this.thisValue[i].type) == "divider") continue;
+                    selectedItem = this.thisValue[i];
+                    selectedItemIndex = i;
+                    break;
+                }
+            }
+            this.selectionFormat(selectedItem);
+            this.scrollFormat(this.$refs[`list_item_${selectedItemIndex}`][0]);
+        },
+        enter ($event) {
+            let cur = this.thisValue.find(it => it.selected === true);
+            if(!cur) return;
+            if (this.multiple) {
+                let t = this.currentChoosen.find(item => item.key === cur.key);
+                if (t != undefined) {
+                    cur.choosen = false;
+                    this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
+                } else {
+                    cur.choosen = true;
+                    this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
+                }
+            } else {
+                for (let it of this.currentChoosen) {
+                    it.choosen = false;
+                    this.$set(this.thisValue, this.thisValue.indexOf(it), it);
+                }
+                cur.choosen = true;
+                this.$set(this.thisValue, this.thisValue.indexOf(cur), cur);
+            }
+
+            this.$emit("chooseItem", {
+                item: cur,
+                index: this.thisValue.indexOf(cur),
+                event: $event
+            });
+
+            this.$emit("choosen-items", this.currentChoosen);
+        },
+        scrollFormat (target) {
+            let targetPos = target.getBoundingClientRect();
             let elPos = this.$refs.container.getBoundingClientRect();
             if(targetPos.top < elPos.top) {
                 let dis = elPos.top - targetPos.top;
@@ -168,6 +266,17 @@ export default {
                 let dis = elPos.bottom - targetPos.bottom;
                 this.$refs.container.scrollTop -= dis;
             }
+        },
+        selectionFormat (cur) {
+            this.thisValue.forEach((el, idx) => {
+                if(el.key === cur.key) {
+                    el.selected = true;
+                    this.$set(this.thisValue, idx, el);
+                } else {
+                    el.selected = false;
+                    this.$set(this.thisValue, idx, el);
+                }
+            });
         },
         inspectItemAPI (cur) {
             let c = this.thisValue.find(it => {

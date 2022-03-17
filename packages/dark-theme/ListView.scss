@@ -32,6 +32,11 @@
             {
                 border-bottom: rgba(216, 216, 216, 0.3) solid thin;
             }
+
+            &.selected
+            {
+                border: rgba(200, 200, 200, 0.2) solid 2px;
+            }
         }
     }
 }
