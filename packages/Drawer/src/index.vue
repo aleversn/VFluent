@@ -1,5 +1,5 @@
 <template>
-    <div ref="drawer" :class="['fv-' + $theme + '-drawer']" :style="[style.drawer, { background: background }]">
+    <div v-show="initShow" ref="drawer" :class="['fv-' + $theme + '-drawer']" :style="[style.drawer, { background: background }]">
         <slot></slot>
     </div>
 </template>
@@ -49,6 +49,7 @@ export default {
             show: {
                 drawer: this.value == undefined ? false : this.value,
             },
+            initShow: this.computeVisible,
             window: {
                 click: (evt) => {
                     if (!this.computeVisible || this.lock) return;
@@ -95,6 +96,7 @@ export default {
     mounted() {
         this.init();
         this.setStyle();
+        this.initShow = true;
     },
     beforeDestroy() {
         for (let key in this.window) {

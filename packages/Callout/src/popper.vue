@@ -28,6 +28,10 @@ export default {
             type: String,
             default: 'light',
         },
+        keepalive: {
+            type: Boolean,
+            default: true,
+        },
     },
     data() {
         return {
@@ -65,15 +69,21 @@ export default {
                 <div name="fv-callout" style={[this.style.callout, this.popperStyle]} class={['fv-' + this.theme + '-callout', this.popperClass, this.class.callout]} v-show={this.popperShow}>
                     <div class="fv-callout-bg"></div>
                     <div class="beak" style={this.style.beak}></div>
-                    <div class="header" v-show={this.nodes.header.length} key="header">
-                        {this.nodes.header}
-                    </div>
-                    <div class="main" v-show={this.nodes.main.length} key="main">
-                        {this.nodes.main}
-                    </div>
-                    <div class="footer" v-show={this.nodes.footer.length} key="footer">
-                        {this.nodes.footer}
-                    </div>
+                    {(this.show || this.keepalive) ? (
+                        <div>
+                            <div class="header" v-show={this.nodes.header.length} key="header">
+                                {this.nodes.header}
+                            </div>
+                            <div class="main" v-show={this.nodes.main.length} key="main">
+                                {this.nodes.main}
+                            </div>
+                            <div class="footer" v-show={this.nodes.footer.length} key="footer">
+                                {this.nodes.footer}
+                            </div>
+                        </div>
+                    ) : (
+                        <div></div>
+                    )}
                 </div>
             </transition>
         );
