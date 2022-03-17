@@ -171,20 +171,24 @@ export default {
             const { width, height } = rect;
             // 循环枚举方向
             let startIndex = this.positionName.indexOf(position);
-            let showFlag = false;
+            let positionPriority = [];
             for (let index = 0; index < this.positionName.length; ++index) {
                 let endIndex = (startIndex + index) % this.positionName.length;
-                let position = this.positionName[endIndex];
-                let predictRect = this.locate(this._popper.targetElement, this.beak + this.space, position, height, width);
-                if (!this.isOutBody(predictRect)) {
-                    this.setPopperPosition(position);
-                    showFlag = true;
-                    break;
+                let cur_position = this.positionName[endIndex];
+                let predictRect = this.locate(this._popper.targetElement, this.beak + this.space, cur_position, height, width);
+                // calculate the position priority
+                let priority = this.isOutBody(predictRect);
+                if (cur_position == position) {
+                    priority |= 1;
                 }
+                positionPriority.push([priority, cur_position]);
             }
-            if (!showFlag) {
-                this.setPopperPosition(position);
-            }
+            // Sort by largest to smallest
+            positionPriority = positionPriority.sort((a, b) => {
+                return b[0] - a[0];
+            });
+            // set first priority position
+            this.setPopperPosition(positionPriority[0][1]);
         },
         /**
          * 获取悬浮窗的定位
@@ -260,10 +264,26 @@ export default {
          * @returns {Boolean} 是否出界
          */
         isOutBody(rect) {
-            if (rect.left < 0 || rect.top < 0 || rect.height + rect.top > window.innerHeight || rect.width + rect.left > window.innerWidth) {
-                return true;
+            // use binary flag to set priority
+            // left > top > right > bottom
+            let priority = 0;
+            // left
+            if (rect.left >= 0) {
+                priority |= 16;
             }
-            return false;
+            // top
+            if (rect.top >= 0) {
+                priority |= 8;
+            }
+            // right
+            if (rect.width + rect.left <= window.innerWidth) {
+                priority |= 4;
+            }
+            // bottom
+            if (rect.height + rect.top <= window.innerHeight) {
+                priority |= 2;
+            }
+            return priority;
         },
         /**
          * @summary 设置悬浮的位置
