@@ -272,6 +272,7 @@ export default {
                 if(el.key === cur.key && el.name === cur.name) {
                     el.selected = true;
                     this.$set(this.thisValue, idx, el);
+                    this.$emit('selection-change', el);
                 } else {
                     el.selected = false;
                     this.$set(this.thisValue, idx, el);

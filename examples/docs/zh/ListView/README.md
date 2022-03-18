@@ -95,10 +95,11 @@ export default {
 
 ### Events
 ---
-| 事件名(Name)  | 参数类型(args) |       说明(statement)        |
-|:-------------:|:--------------:|:----------------------------:|
-|  chooseItem   |     object     |     选中项点击后返回选项     |
-| choosen-items |     array      | 选中项点击后返回所有被选中项 |
+|   事件名(Name)   | 参数类型(args) |       说明(statement)        |
+|:----------------:|:--------------:|:----------------------------:|
+|    chooseItem    |     object     |     选中项点击后返回选项     |
+|  choosen-items   |     array      | 选中项点击后返回所有被选中项 |
+| selection-change |     object     |  光标选择某一项后返回选中项  |
 
 ### Slot
 ---
