@@ -126,3 +126,35 @@ Basic
 |  root-click  |     object     | 单击根图标触发  |
 |  item-click  |     object     | 单击路由项触发  |
   
+
+### Slot
+
+---
+
+1. root
+
+定义下拉内容
+
+- rootIcon: 根图标
+- separatorIcon: 分割图标
+- separator: 分隔符
+
+```vue
+<template v-slot:root="x">
+    <i class="fv-bc-separator-content ms-Icon" :class="[`ms-Icon--${x.rootIcon}`]"></i>
+    <i class="fv-bc-separator-icon ms-Icon" :class="[x.separatorIcon ? `ms-Icon--${x.separator}` : '']">{{x.separatorIcon ? '' : x.separator}}</i>
+</template>
+```
+
+2. route-item
+
+自定义`Collapse`显示图标
+
+- item: 当前项
+- index: 当前索引
+
+```vue
+<template v-slot:route-item="x">
+    <i class="ms-Icon" :class="[`ms-Icon--${x.icon}`]"></i>
+</template>
+```

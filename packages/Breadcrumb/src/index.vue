@@ -2,7 +2,7 @@
     <div :class="['fv-'+$theme+'-Breadcrumb', { readOnly: readOnly, 'editor-mode': mode === 'editor', disabled: isDisabled }]" :style="{'border-radius': `${borderRadius}px`, 'border-color': mode === 'editor' ? borderColor : '', 'outline-color': mode === 'editor' ? borderColor : ''}">
         <div class="fv-bc-route-list" ref="main" @click="editorMode">
             <div v-show="showRoot" class="fv-bc-route-item" @click="routeClick">
-                <slot name="root">
+                <slot name="root" :rootIcon="rootIcon" :separator="separator" :separatorIcon="separatorIcon">
                     <i class="fv-bc-separator-content ms-Icon" :class="[`ms-Icon--${rootIcon}`]"></i>
                     <i class="fv-bc-separator-icon ms-Icon" :class="[separatorIcon ? `ms-Icon--${separator}` : '']">{{separatorIcon ? '' : separator}}</i>
                 </slot>
