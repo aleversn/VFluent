@@ -1,6 +1,6 @@
 <template>
 <div class="text-box-container internal">
-    <input :type="type" class="input" :readonly="isReadOnly" :disabled="isDisabled" ref="input" @input="input" @keydown="keyDown" @keyup="$emit('keyup', $event)" @focus="$emit('focus', true)" @blur="$emit('blur', false)"/>
+    <input :type="type" class="fv-text-box-input" :readonly="isReadOnly" :disabled="isDisabled" ref="input" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight}" @input="input" @keydown="keyDown" @keyup="$emit('keyup', $event)" @focus="$emit('focus', true)" @blur="$emit('blur', false)"/>
 </div>
 </template>
 
@@ -31,6 +31,12 @@ export default {
         },
         disabled: {
             default: false
+        },
+        fontSize: {
+            default: 13.3
+        },
+        fontWeight: {
+            default: 'normal'
         },
         theme: {
             type: String,

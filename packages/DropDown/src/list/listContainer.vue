@@ -18,6 +18,7 @@
                     name="options"
                     :option="item"
                     :index="index"
+                    :valueTrigger="valueTrigger"
                 >
                     <fv-check-box
                         v-model="item.choosen"
