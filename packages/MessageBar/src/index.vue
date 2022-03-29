@@ -10,7 +10,7 @@
         <i v-show="showClose" class="ms-Icon ms-Icon--Cancel close-block" @click="destroySelf"></i>
     </span>
     <span v-show="showControl" class="control-block">
-        <slot name="control">
+        <slot name="control" :theme="$theme" :cancel="destroySelf">
             <fv-button>Yes</fv-button>
         </slot>
     </span>

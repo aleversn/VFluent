@@ -26,9 +26,46 @@ export default {
             this.$infoBox(h('div', [
                 h('span', { class: 'header' }, 'Message'),
                 'This is a toast info.',
-                h('a', 'Visit our website.')
+                h('a', {
+                    style: {
+                        fontWeight: 'bold'
+                    }
+                }, 'Visit our website.')
             ]), {
                 status: 'correct',
+                confirm: () => { alert('Confirm'); },
+                cancel: () => { alert('Cancel'); }
+            });
+        },
+        show3 () {
+            const h = this.$createElement;
+            this.$infoBox(h('div', [
+                h('span', { class: 'header' }, 'Message'),
+                'This is a toast info.',
+                h('a', {
+                    style: {
+                        fontWeight: 'bold'
+                    }
+                }, 'Visit our website.')
+            ]), {
+                status: 'correct',
+                showTitleBar: false,
+                control_panel: x => {
+                return h('fv-button', {
+                        style: {
+                            width: '200px'
+                        },
+                        props: {
+                            background: x.iconList['correct'].backgroundColor,
+                            theme: "dark"
+                        },
+                        on: {
+                            click: () => {
+                                x.confirm();
+                            }
+                        }
+                    }, 'Custom Control Button');
+                },
                 confirm: () => { alert('Confirm'); },
                 cancel: () => { alert('Cancel'); }
             });
@@ -42,25 +79,60 @@ Default
 <fv-InfoBox>
 </fv-InfoBox>
 
+```vue
+<fv-InfoBox>
+</fv-InfoBox>
+```
+
 Error
 
 <fv-InfoBox status="error">
 </fv-InfoBox>
+
+```vue
+<fv-InfoBox status="error">
+</fv-InfoBox>
+```
 
 Blocked
 
 <fv-InfoBox status="blocked">
 </fv-InfoBox>
 
+```vue
+<fv-InfoBox status="blocked">
+</fv-InfoBox>
+```
+
 Correct
 
 <fv-InfoBox status="correct">
 </fv-InfoBox>
 
+```vue
+<fv-InfoBox status="correct">
+</fv-InfoBox>
+```
+
 Warning
 
 <fv-InfoBox status="warning">
 </fv-InfoBox>
+
+```vue
+<fv-InfoBox status="warning">
+</fv-InfoBox>
+```
+
+Without TitleBar
+
+<fv-InfoBox :showTitleBar="false">
+</fv-InfoBox>
+
+```vue
+<fv-InfoBox :showTitleBar="false">
+</fv-InfoBox>
+```
 
 ### InfoBox-Dark Theme
 ---
@@ -69,25 +141,60 @@ Default
 <fv-InfoBox theme="dark">
 </fv-InfoBox>
 
+```vue
+<fv-InfoBox theme="dark">
+</fv-InfoBox>
+```
+
 Error
 
 <fv-InfoBox status="error" theme="dark">
 </fv-InfoBox>
+
+```vue
+<fv-InfoBox status="error" theme="dark">
+</fv-InfoBox>
+```
 
 Blocked
 
 <fv-InfoBox status="blocked" theme="dark">
 </fv-InfoBox>
 
+```vue
+<fv-InfoBox status="blocked" theme="dark">
+</fv-InfoBox>
+```
+
 Correct
 
 <fv-InfoBox status="correct" theme="dark">
 </fv-InfoBox>
 
+```vue
+<fv-InfoBox status="correct" theme="dark">
+</fv-InfoBox>
+```
+
 Warning
 
 <fv-InfoBox status="warning" theme="dark">
 </fv-InfoBox>
+
+```vue
+<fv-InfoBox status="warning" theme="dark">
+</fv-InfoBox>
+```
+
+Without TitleBar
+
+<fv-InfoBox theme="dark" :showTitleBar="false">
+</fv-InfoBox>
+
+```vue
+<fv-InfoBox theme="dark" :showTitleBar="false">
+</fv-InfoBox>
+```
 
 ### InfoBox-Toast
 ---
@@ -121,9 +228,55 @@ const h = this.$createElement;
 this.$infoBox(h('div', [
     h('span', { class: 'header' }, 'Message'),
     'This is a toast info.',
-    h('a', 'Visit our website.')
+    h('a', {
+        style: {
+            fontWeight: 'bold'
+        }
+    }, 'Visit our website.')
 ]), {
     status: 'correct',
+    confirm: () => { alert('Confirm'); },
+    cancel: () => { alert('Cancel'); }
+});
+```
+
+3. Customize Control Panel
+
+<fv-button style="width: 200px;" @click="show3">Show InfoBox</fv-button>
+
+```vue
+<fv-button style="width: 200px;" @click="show3">Show InfoBox</fv-button>
+```
+
+```javascript
+const h = this.$createElement;
+this.$infoBox(h('div', [
+    h('span', { class: 'header' }, 'Message'),
+    'This is a toast info.',
+    h('a', {
+        style: {
+            fontWeight: 'bold'
+        }
+    }, 'Visit our website.')
+]), {
+    status: 'correct',
+    showTitleBar: false,
+    control_panel: x => {
+    return h('fv-button', {
+            style: {
+                width: '200px'
+            },
+            props: {
+                background: x.iconList['correct'].backgroundColor,
+                theme: "dark"
+            },
+            on: {
+                click: () => {
+                    x.confirm();
+                }
+            }
+        }, 'Custom Control Button');
+    },
     confirm: () => { alert('Confirm'); },
     cancel: () => { alert('Cancel'); }
 });
@@ -140,6 +293,7 @@ this.$infoBox(h('div', [
 | confirmTitle |                     [string]                      |       No       |      确定       |         确定按钮标题          |
 | cancelTitle  |                     [string]                      |       No       |      取消       |         取消按钮标题          |
 |   acrylic    |                     [boolean]                     |       No       |      false      |      是否开启背景毛玻璃       |
+| showTitleBar |                     [boolean]                     |       No       |      true       |        是否显示标题栏         |
 |    theme     |        ['light','dark','custom','system']         |       No       |     system      |                               |
 
 ### Events
@@ -164,6 +318,19 @@ this.$infoBox(h('div', [
 </template>
 ```
 
+2. Control Panel
+
+- confirm: 确认函数
+- cancel: 取消函数
+- theme: 当前主题
+- iconList: 图标列表及颜色数组
+
+```vue
+<template v-slot:control-panel="x">
+    <fv-button :theme="'dark'" :background="x.iconList[status].backgroundColor" :isBoxShadow="true" :borderRadius="6" style="width: 50%; height: 35px; margin-right: 2.5px;" @click="x.confirm">Confirm</fv-button>
+    <fv-button :theme="x.theme" :isBoxShadow="true" :borderRadius="6" style="width: 50%; height: 35px; margin-left: 2.5px;" @click="x.cancel">Cancel</fv-button>
+</template>
+
 ### Toast
 ---
 
@@ -178,7 +345,11 @@ this.$infoBox(msg, options = {
     acrylic: false,
     confirm: async () => {},
     cancel: async () => {},
+    control_panel: null,
     theme: 'system'
 });
+
+msg: h() // 传入$createElement函数
+control_panel: x => h() // 传入具名插槽属性参数的函数, 函数返回值为$createElement函数
 ```
   

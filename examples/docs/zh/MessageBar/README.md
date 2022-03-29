@@ -38,22 +38,37 @@ export default {
                 status: 'correct',
                 showControl: true,
                 autoClose: -1,
-                control: [
-                    h('fv-button', { 
-                        on: {
-                            click: () => {
-                                alert('Yes');
-                            }
+                control: x => {
+                    return h('div', {
+                        style: {
+                            display: "flex",
+                            alignItems: "center"
                         }
-                    }, 'Yes'),
-                    h('fv-button', {
-                        on: {
-                            click: () => {
-                                alert('No');
+                    }, [
+                        h('fv-button', { 
+                            on: {
+                                click: () => {
+                                    alert('Yes');
+                                    x.cancel();
+                                }
                             }
-                        },
-                        style: 'margin-left: 5px;' }, 'No')
-                ]
+                        }, 'Yes'),
+                        h('fv-button', {
+                            on: {
+                                click: () => {
+                                    alert('No');
+                                    x.cancel();
+                                }
+                            },
+                            style: 'margin-left: 5px;' }, 'No')
+                    ]);
+                }
+            });
+        },
+        showSwiftWarning () {
+            this.$swiftWarning(document.getElementById('example'), {
+                color: "rgba(173, 38, 45, 1)",
+                replaceTitle: "You clicked Swift Warning."
             });
         }
     }
@@ -165,22 +180,50 @@ this.$barWarning(h('div', [
     status: 'correct',
     showControl: true,
     autoClose: -1,
-    control: [
-        h('fv-button', { 
-            on: {
-                click: () => {
-                    alert('Yes');
-                }
+    control: x => {
+        return h('div', {
+            style: {
+                display: "flex",
+                alignItems: "center"
             }
-        }, 'Yes'),
-        h('fv-button', {
-            on: {
-                click: () => {
-                    alert('No');
+        }, [
+            h('fv-button', { 
+                on: {
+                    click: () => {
+                        alert('Yes');
+                        x.cancel();
+                    }
                 }
-            },
-            style: 'margin-left: 5px;' }, 'No')
-    ]
+            }, 'Yes'),
+            h('fv-button', {
+                on: {
+                    click: () => {
+                        alert('No');
+                        x.cancel();
+                    }
+                },
+                style: 'margin-left: 5px;' }, 'No')
+        ]);
+    }
+});
+```
+
+### SwiftWarning
+
+<p id="example">Swift Warning</p>
+
+<fv-button style="width: 200px;" @click="showSwiftWarning">Click to Show SwiftWarning</fv-button>
+
+```vue
+<p id="example">Swift Warning</p>
+
+<fv-button style="width: 200px;" @click="showSwiftWarning">Click to Show SwiftWarning</fv-button>
+```
+
+```javascript
+this.$swiftWarning(document.getElementById('example'), {
+    color: "rgba(173, 38, 45, 1)",
+    replaceTitle: "You clicked Swift Warning."
 });
 ```
 
@@ -217,9 +260,12 @@ this.$barWarning(h('div', [
 
 2. Control
 
+- cancel: 取消函数
+- theme: 当前主题
+
 ```vue
-<template v-slot:control>
-    <fv-button>Yes</fv-button>
+<template v-slot:control="x">
+    <fv-button @click="x.cancel()">Yes</fv-button>
 </template>
 ```
 
@@ -231,10 +277,12 @@ this.$barWarning(msg, options = {
     status: 'default',
     showControl: false,
     showClose: true,
-    control: '',
+    control: null,
     mode: 'fixed',
     autoClose: 3000
 });
+
+control_panel: x => h() // 传入具名插槽属性参数的函数, 函数返回值为$createElement函数
 ```
 
 ```javascript

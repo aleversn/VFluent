@@ -103,11 +103,12 @@ export default {
 <fv-DropDown :options="options" placeholder="Select options" :multiple="true" style="z-index: 12;"><template v-slot:drop-carrier="x"><fv-button :theme="x.theme" :isBoxShadow="true" style="width: 150px;"><p>DropDown</p><i class="ms-Icon ms-Icon--ChevronDown" style="margin-left: 8px;"></i></fv-button></template></fv-DropDown>
 
 ```vue
-<fv-DropDown :options="options" placeholder="Select options" :multiple="true">
-    <template v-slot:input="x">
-        <i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i>
-        <input class="input" :placeholder="x.placeholder" :value="x.value" style="padding-left: 36px; border: none;"/>
-        <i class="ms-Icon ms-Icon--DelveAnalyticsLogo right-icon"></i>
+<fv-DropDown :options="options" placeholder="Select options" :multiple="true" style="z-index: 12;">
+    <template v-slot:drop-carrier="x">
+        <fv-button :theme="x.theme" :isBoxShadow="true" style="width: 150px;">
+            <p>DropDown</p>
+            <i class="ms-Icon ms-Icon--ChevronDown" style="margin-left: 8px;"></i>
+        </fv-button>
     </template>
 </fv-DropDown>
 ```

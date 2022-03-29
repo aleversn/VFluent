@@ -1,10 +1,10 @@
 <template>
 <div :class="'fv-'+$theme+'-CommandBar'">
     <div class="left-command-bar-container" :style="{background: background}">
-        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" @click="itemClick($event, item)">
+        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" :title="item.name" @click="itemClick($event, item)">
             <span v-show="valueTrigger(item.type) !== 'more'" class="s1-container">
                 <i class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(item.icon)}`]" :style="{color: valueTrigger(item.iconColor)}"></i>
-                <p class="name">
+                <p v-show="!compact" class="name">
                     {{valueTrigger(item.name)}}
                 </p>
                 <i v-show="item.secondary.length > 0" class="ms-Icon ms-Icon--ChevronDown icon"></i>
@@ -21,8 +21,8 @@
         <div v-show="showDropDown" class="command-bar-list-view-container" :class="{'toward-up': toward == 'up'}" :style="{left: `${currentLeft}px`, background: background}">
             <fv-list-view v-model="thisValue.secondary" style="height: auto;" @chooseItem="chooseItem">
                 <template v-slot:listItem="x">
-                    <i v-show="valueTrigger(x.item.icon) !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(x.item.icon)}`]" :style="{color: valueTrigger(x.item.iconColor)}"></i>
-                    <p class="name">{{valueTrigger(x.item.name)}}</p>
+                    <i v-show="valueTrigger(x.item.icon) !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(x.item.icon)}`]" :style="{color: valueTrigger(x.item.iconColor)}" style="font-size: 12px;"></i>
+                    <p class="name" style="font-size: 12px;">{{valueTrigger(x.item.name)}}</p>
                 </template>
             </fv-list-view>
         </div>
@@ -47,6 +47,9 @@ export default {
         },
         background: {
             default: ""
+        },
+        compact: {
+            default: false
         },
         theme: {
             type: String,
@@ -83,21 +86,21 @@ export default {
         },
         borderLightColor () {
             if(this.$theme == 'light') {
-                return 'rgba(121, 119, 117, 0.6)';
+                return 'rgba(121, 119, 117, 0.1)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.6)';
+                return 'rgba(255, 255, 255, 0.1)';
             }
-            return 'rgba(121, 119, 117, 0.6)';
+            return 'rgba(121, 119, 117, 0.1)';
         },
         backgroundLightColor () {
             if(this.$theme == 'light') {
-                return 'rgba(121, 119, 117, 0.3)';
+                return 'rgba(121, 119, 117, 0.2)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.3)';
+                return 'rgba(255, 255, 255, 0.2)';
             }
-            return 'rgba(121, 119, 117, 0.3)';
+            return 'rgba(121, 119, 117, 0.2)';
         },
         $theme () {
             if (this.theme=='system')

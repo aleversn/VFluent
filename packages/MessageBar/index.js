@@ -12,7 +12,7 @@ MessageBar.install = function (Vue)
             status: 'default',
             showControl: false,
             showClose: true,
-            control: '',
+            control: null,
             mode: 'fixed',
             autoClose: 3000
         };
@@ -38,7 +38,9 @@ MessageBar.install = function (Vue)
             propsData
         })
         m.$slots.msg = [msg];
-        m.$slots.control = [control];
+        m.$scopedSlots = {
+            control: props => control(props)
+        };
         m.$mount();
         m.$on('close', onClose);
         document.body.appendChild(m.$el);
