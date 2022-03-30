@@ -13,6 +13,7 @@ export default {
         return {
             basic: false,
             nearSide: false,
+            centralSide: false,
             lightDismiss: false,
             acrylic: false,
             footer: false,
@@ -45,6 +46,20 @@ export default {
 
 ```vue
 <fv-Panel v-model="nearSide" :isNearSide="true">
+</fv-Panel>
+```
+
+### Panel Central Side
+---
+
+<ClientOnly>
+<fv-button style="width: 200px;" @click="centralSide = true">Open Panel</fv-button>
+<fv-Panel v-model="centralSide" :isCentralSide="true" width="calc(90% - 50px)" height="calc(90% - 50px)">
+</fv-Panel>
+</ClientOnly>
+
+```vue
+<fv-Panel v-model="centralSide" :isCentralSide="true" width="calc(90% - 50px)" height="calc(90% - 50px)">
 </fv-Panel>
 ```
 
@@ -133,10 +148,13 @@ Acrylic
 |:--------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
 |     value      |             [boolean]              |       No       |      false      |   显示/隐藏`Panel`    |
 |     title      |              [string]              |       No       |  Sample Panel   |         标题          |
-|     width      |              [number]              |       No       |       340       |         宽度          |
+|     width      |          [number,string]           |       No       |       340       |         宽度          |
+|     height     |          [number,string]           |       No       |      100%       |         宽度          |
 |   background   |          [string(color)]           |       No       |       N/A       |     `Panel`背景色     |
 |   isNearSide   |             [boolean]              |       No       |      false      |    是否从左侧显示     |
+| isCentralSide  |             [boolean]              |       No       |      false      |    是否从中央显示     |
 | isLightDismiss |             [boolean]              |       No       |      false      |  是否单击空白处关闭   |
+|  showTitleBar  |             [boolean]              |       No       |      false      |    是否显示标题栏     |
 |    isFooter    |             [boolean]              |       No       |      false      |   是否显示底部控制    |
 |   isAcrylic    |             [boolean]              |       No       |      false      | 是否开启`Acrylic`效果 |
 |     theme      | ['light','dark','custom','system'] |       No       |     system      |         主题          |

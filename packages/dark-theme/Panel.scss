@@ -35,9 +35,15 @@
 
                 &:hover
                 {
+                    background: rgba(120, 120, 120, 0.3);
                     color: whitesmoke;
                 }
             }
+        }
+
+        .fv-panel-footer
+        {
+            background: rgba(56, 56, 56, 0.6);
         }
     }
 }

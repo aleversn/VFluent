@@ -9,7 +9,7 @@
 	background: white;
 	color: rgba(95,95,95,1);
     border: rgba(0,0,0,0.1) solid thin;
-    border-radius: 5px;
+    border-radius: 8px;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -32,14 +32,26 @@
         top: 0px;
         width: 100%;
         min-height: 30px;
-        height: 30px;
+        height: 35px;
         font-size: 13px;
+        font-weight: bold;
         box-sizing: border-box;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        transition: all 0.6s;
         cursor: move;
         z-index: 2;
+
+        &:hover
+        {
+            background: rgba(160, 160, 160, 0.1);
+        }
+
+        &:active
+        {
+            background: rgba(75, 75, 75, 0.1);
+        }
 
         .control-btn
         {
@@ -48,7 +60,7 @@
             height: 100%;
             border: thin;
             background: transparent;
-            font-size: 12px;
+            font-size: 13.8px;
             color: rgba(56,56,56,1);
             outline: none;
             display: flex;

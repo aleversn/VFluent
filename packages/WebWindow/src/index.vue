@@ -1,6 +1,6 @@
 <template>
-	<div v-show="thisValue" :class="['fv-'+$theme+'-WebWindow', {'static-transition' : !moveable,dark : theme == 'dark'}]" :style="{left: currentLeft, top: currentTop}" ref="block">
-		<div class="title-bar" @mousedown="forward" @mouseup="stop" @touchstart="forward($event.targetTouches[0])" @touchend="stop">
+	<div v-show="thisValue" :class="['fv-'+$theme+'-WebWindow', {'static-transition' : !freezeTransition, dark : theme == 'dark'}]" :style="{left: currentLeft, top: currentTop}" ref="block">
+		<div draggable="false" class="title-bar" @mousedown="forward" @mouseup="stop" @touchstart="forward($event.targetTouches[0])" @touchend="stop">
 			<p style="margin-left: 10px; user-select: none;">{{title}}</p>
 			<button class="control-btn shut-down" @mousedown="stopPropagation" @click="close">
 				<i class="ms-Icon ms-Icon--Cancel"></i>
@@ -30,10 +30,13 @@ export default {
 		return {
             thisValue: this.value,
             moveable: false,
+            freezeTransition: true,
             disX: 0,
             disY: 0,
             currentLeft: "0px",
             currentTop: "0px",
+            xWidth: 0,
+            xHeight: 0,
             timer: null
         };
     },
@@ -81,12 +84,6 @@ export default {
                 }
             }));
             this.timer = setInterval(() => {
-                if(this.xwidth == undefined)
-                {
-                    this.xwidth = this.$el.clientWidth;
-                    this.xheight = this.$el.clientHeight;
-                    return 0;
-                }
                 if(this.xwidth != this.$el.clientWidth)
                 {
                     this.posInit();
@@ -101,7 +98,7 @@ export default {
                     this.xheight = this.$el.clientHeight;
                     return 0;
                 }
-            }, 300);
+            }, 30);
         },
         posInit () {
             let el = this;
@@ -112,11 +109,14 @@ export default {
         },
         forward (event) {
             this.moveable = true;
+            this.freezeTransition = true;
+            event.preventDefault();
             this.disX = event.clientX - this.$el.getBoundingClientRect().left;
             this.disY = event.clientY - this.$el.getBoundingClientRect().top;
         },
         stop () {
             this.moveable = false;
+            this.freezeTransition = false;
             if (this.$el.getBoundingClientRect().left < 0)
                 this.currentLeft = `0px`;
             if (this.$el.getBoundingClientRect().top < 0)
@@ -125,6 +125,9 @@ export default {
                 this.currentLeft = `${window.innerWidth - this.$el.clientWidth}px`;
             if (this.$el.getBoundingClientRect().top + this.$el.clientHeight > window.innerHeight)
                 this.currentTop = `${window.innerHeight - this.$el.clientHeight}px`;
+            setTimeout(() => {
+                this.freezeTransition = true;
+            }, 300);
         },
         stopPropagation (event) {
             event.stopPropagation();
