@@ -13,6 +13,19 @@
     overflow: hidden;
     cursor: default;
 
+    &.visibleOverflow
+    {
+        overflow: visible;
+
+        .collapse-description-container
+        {
+            .collapse-description-box
+            {
+                overflow: visible;
+            }
+        }
+    }
+
     .collapse-description-container
     {
         position: relative;
@@ -94,6 +107,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                overflow: visible;
             }
         }
 

@@ -2,7 +2,7 @@
 <transition name="fv-panel-show">
     <div v-show="thisValue" :class="['fv-'+$theme+'-Panel']">
         <div class="fv-panel-back-board" @click="isLightDismiss ? thisValue = false : 0"></div>
-        <transition :name="transitionInName">
+        <transition :name="transitionInName" :duration="isCentralSide ? 300 : 1000">
             <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'central-side': isCentralSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, height: finalHeight, background: background}">
                 <div v-show="showTitleBar" class="fv-panel-control-block">
                     <slot name="header">
