@@ -170,7 +170,16 @@ Acrylic
 </template>
 ```
 
-2. Footer
+2. Header
+
+自定义标题栏内容
+
+```javascript
+<template v-slot:header>
+</template>
+```
+
+3. Footer
 
 自定义`Footer`内容
 

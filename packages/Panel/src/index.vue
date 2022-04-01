@@ -5,8 +5,10 @@
         <transition :name="transitionInName">
             <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'central-side': isCentralSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, height: finalHeight, background: background}">
                 <div v-show="showTitleBar" class="fv-panel-control-block">
-                    <p class="panel-title">{{title}}</p>
-                    <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+                    <slot name="header">
+                        <p class="panel-title">{{title}}</p>
+                        <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+                    </slot>
                 </div>
                 <div class="fv-panel-main-container">
                     <slot name="container">

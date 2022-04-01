@@ -20,6 +20,22 @@
 </fv-Collapse>
 ```
 
+Disabled Collapse
+
+<div>
+    <fv-Collapse :disabledCollapse="true">
+        <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
+    </fv-Collapse>
+</div>
+
+```vue
+<div>
+    <fv-Collapse :disabledCollapse="true">
+        <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
+    </fv-Collapse>
+</div>
+```
+
 ### Collapse-Customize Background
 ---
 
