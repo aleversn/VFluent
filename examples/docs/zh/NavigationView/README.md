@@ -179,9 +179,12 @@ export default {
 
 ```vue
 <template v-slot:listItem="x">
-    <p></p>
+    <i v-show="x.valueTrigger(x.item.icon) !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.valueTrigger(x.item.icon)}`]"></i>
+    <p class="name" :style="{ color: x.valueTrigger(x.item.type) == 'header' ? foreground : ''}">{{x.valueTrigger(x.item.name)}}</p>
 </template>
 ```
+
+注意在收缩时要隐藏<p>标签的话一定要将其类型加上`name`.
 
 ### Data
 
