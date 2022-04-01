@@ -29,11 +29,27 @@ Disabled Collapse
 </div>
 
 ```vue
+<fv-Collapse :disabledCollapse="true">
+    <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
+</fv-Collapse>
+```
+
+Extension
+
 <div>
     <fv-Collapse :disabledCollapse="true">
-        <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
+        <template v-slot:extension>
+            <fv-button>Operation</fv-button>
+        </template>
     </fv-Collapse>
 </div>
+
+```vue
+<fv-Collapse :disabledCollapse="true">
+    <template v-slot:extension>
+        <fv-button>Operation</fv-button>
+    </template>
+</fv-Collapse>
 ```
 
 ### Collapse-Customize Background
@@ -125,7 +141,17 @@ Disabled Collapse
 </template>
 ```
 
-4. title
+4. Extension
+
+扩展操作内容
+
+```vue
+<template v-slot:extension>
+    <fv-button>Operation</fv-button>
+</template>
+```
+
+5. title
 
 自定义标题
 
@@ -137,7 +163,7 @@ Disabled Collapse
 </template>
 ```
 
-5. content
+6. content
 
 自定义副标题
 
@@ -149,7 +175,7 @@ Disabled Collapse
 </template>
 ```
 
-5. expand-icon
+7. expand-icon
 
 自定义展开状态图标
 
