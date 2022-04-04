@@ -38,9 +38,11 @@ MessageBar.install = function (Vue)
             propsData
         })
         m.$slots.msg = [msg];
-        m.$scopedSlots = {
-            control: props => control(props)
-        };
+        if(control) {
+            m.$scopedSlots = {
+                control: props => control(props)
+            };
+        }
         m.$mount();
         m.$on('close', onClose);
         document.body.appendChild(m.$el);
