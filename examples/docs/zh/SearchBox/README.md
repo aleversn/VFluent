@@ -292,10 +292,11 @@ Customize background
 默认情况下用户可直接在`options`中定义`name`来应用默认样式, 不需要修改此模板, 可缺省
 用户自定义样式时, 包含以下可选属性
 - data: 传入的`filterOptions`
+- chooseResult: 用于回调的选择出发函数, 需要传入一个对象, 包含`item`和`item.name`属性
 
 ```vue
  <template v-slot:searchResult="x">
-    <div></div>
+    <fv-list-view v-model="x.data" :theme="theme" style="width: 100%; height: auto;" @chooseItem="x.chooseResult"></fv-list-view>
 </template>
 ```
 

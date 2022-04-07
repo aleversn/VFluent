@@ -15,7 +15,7 @@
     </div>
     <transition name="zoom-in-top">
         <div v-show="show.searchResult" class="search-result-container" ref="filterResult">
-            <slot name="searchResult" :data="filterOptions">
+            <slot name="searchResult" :data="filterOptions" :chooseResult="chooseResult">
                 <fv-list-view v-model="filterOptions" :theme="theme" style="width: 100%; height: auto;" @chooseItem="chooseResult"></fv-list-view>
             </slot>
         </div>
