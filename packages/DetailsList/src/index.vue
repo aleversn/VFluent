@@ -312,13 +312,13 @@ export default {
                 backgroundLightColor: this.backgroundLightColor,
                 childrenSelector: this.$el.querySelectorAll('.list-head .col')
             });
-            let FR_Right_Menu = new this.$RevealEffects(this.$el, {
-                selector: this.$el.querySelectorAll('.fv-rightMenu div span'),
-                borderGradientSize: 38,
-                borderLightColor: this.borderLightColor,
-                backgroundGradientSize: 120,
-                backgroundLightColor: this.backgroundLightColor
-            });
+            // let FR_Right_Menu = new this.$RevealEffects(this.$el, {  // Follow the Windows 11, we temporarily disable the right menu reveal effect.
+            //     selector: this.$el.querySelectorAll('.fv-rightMenu div span'),
+            //     borderGradientSize: 38,
+            //     borderLightColor: this.borderLightColor,
+            //     backgroundGradientSize: 120,
+            //     backgroundLightColor: this.backgroundLightColor
+            // });
         },
         stylesInit () {
             this.styles.listHead.background = this.headBackground;

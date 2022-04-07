@@ -3,28 +3,31 @@
         :class="['fv-'+$theme+'-DropDown', isDisabled ? 'disabled' : '']"
         :style="styles.dropDown"
     >
-        <drop-down-input
-            v-model="choosenValue"
-            :placeholder="placeholder"
-            :theme="$theme"
-            :borderWidth="borderWidth"
-            :borderRadius="borderRadius"
-            :inputForeground="inputForeground"
-            :inputBackground="inputBackground"
-            :dropDownIcon="dropDownIcon"
-            :dropDownIconForeground="dropDownIconForeground"
-            :class="{error: showError}"
-            ref="input"
-            @click.native="show.listContainer = !isDisabled ? !show.listContainer : false"
-        >
-            <template v-slot:input="x">
-                <slot
-                    name="input"
-                    :placeholder="x.placeholder"
-                    :value="x.value"
-                ></slot>
-            </template>
-        </drop-down-input>
+        <div class="fv-drop-down-input-container" ref="input" @click="show.listContainer = !isDisabled ? !show.listContainer : false">
+            <slot name="drop-carrier" :value="choosenValue" :placeholoder="placeholder" :theme="$theme">
+                <drop-down-input
+                    v-model="choosenValue"
+                    :placeholder="placeholder"
+                    :theme="$theme"
+                    :borderWidth="borderWidth"
+                    :borderRadius="borderRadius"
+                    :inputForeground="inputForeground"
+                    :inputBackground="inputBackground"
+                    :dropDownIcon="dropDownIcon"
+                    :dropDownIconForeground="dropDownIconForeground"
+                    :class="{error: showError}"
+                >
+                    <template v-slot:input="x">
+                        <slot
+                            name="input"
+                            :placeholder="x.placeholder"
+                            :value="x.value"
+                            :valueTrigger="x.valueTrigger"
+                        ></slot>
+                    </template>
+                </drop-down-input>
+            </slot>
+        </div>
         <p
             v-show="showError"
             class="err-msg"
@@ -79,7 +82,7 @@ export default {
             default: 2
         },
         borderRadius: {
-            default: "3"
+            default: "6"
         },
         placeholder: {
             default: "Dropdown"
@@ -231,14 +234,14 @@ export default {
             clearInterval(this.timer);
             this.timer = setInterval(() => {
                 try {
-                    this.topRemainHeight = this.$refs.input.$el.getBoundingClientRect().top;
+                    this.topRemainHeight = this.$refs.input.getBoundingClientRect().top;
                 } catch (e) {
                     this.topRemainHeight = window.innerHeight;
                 }
                 try {
                     this.bottomRemainHeight =
                         window.innerHeight -
-                        this.$refs.input.$el.getBoundingClientRect().bottom;
+                        this.$refs.input.getBoundingClientRect().bottom;
                 } catch (e) {
                     this.bottomRemainHeight = window.innerHeight;
                 }

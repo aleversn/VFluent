@@ -1,12 +1,12 @@
 <template>
-<div :class="['fv-'+$theme+'-Collapse']" :style="{height: !thisValue ? `${defaultHeight}px` : `${maxHeight}px`, 'max-height': `${maxHeight}px`, background: hover ? hoverBackground : background}" @mouseenter="hover = true" @touchstart="hover = true" @mouseleave="hover = false" @touchend="hover = false">
-    <div class="collapse-description-container" :style="{height: `${defaultHeight}px`}">
+<div :class="['fv-'+$theme+'-Collapse', {visibleOverflow: disabledCollapse}]" :style="{height: !thisValue ? `${defaultHeight}px` : `${maxHeight}px`, 'max-height': `${maxHeight}px`, background: hover ? hoverBackground : background}" @mouseenter="hover = true" @touchstart="hover = true" @mouseleave="hover = false" @touchend="hover = false">
+    <div class="collapse-description-container" :style="{height: `${defaultHeight}px`}" @click="itemClick">
         <div class="collapse-icon-box">
             <slot name="icon">
                 <i class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
             </slot>
         </div>
-        <div class="collapse-description-box" @click="itemClick">
+        <div class="collapse-description-box">
             <div class="collapse-description">
                 <div class="collapse-text">
                     <slot name="container" :title="title" :contnet="content">
@@ -18,23 +18,26 @@
                         </slot>
                     </slot>
                 </div>
-                <div class="collapse-expand-icon">
-                    <slot name="expand-icon" :value="thisValue" :disabledCollaspe="disabledCollapse">
-                        <i
-                            v-show="thisValue"
-                            class="ms-Icon ms-Icon--ChevronUpMed"
-                        ></i>
-                        <i
-                            v-show="!thisValue && !disabledCollapse"
-                            class="ms-Icon ms-Icon--ChevronDownMed"
-                        ></i>
-                        <i
-                            v-show="!thisValue && disabledCollapse"
-                            class="ms-Icon ms-Icon--ChevronRightMed"
-                        ></i>
-                    </slot>
-                </div>
             </div>
+            <div class="collapse-description-extension-block">
+                <slot name="extension"></slot>
+            </div>
+        </div>
+        <div class="collapse-expand-icon-block">
+            <slot name="expand-icon" :value="thisValue" :disabledCollaspe="disabledCollapse">
+                <i
+                    v-show="thisValue"
+                    class="ms-Icon ms-Icon--ChevronUpMed"
+                ></i>
+                <i
+                    v-show="!thisValue && !disabledCollapse"
+                    class="ms-Icon ms-Icon--ChevronDownMed"
+                ></i>
+                <i
+                    v-show="!thisValue && disabledCollapse"
+                    class="ms-Icon ms-Icon--ChevronRightMed"
+                ></i>
+            </slot>
         </div>
     </div>
     <transition name="collapse-expanded">
@@ -56,7 +59,7 @@ export default {
         },
         icon: {
             type: String,
-            default: "ShowBcc",
+            default: "Mail",
         },
         title: {
             type: String,

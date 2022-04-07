@@ -17,7 +17,7 @@
             background: rgba(36,35,34,0.9);
             box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
 
-            .input
+            .fv-drop-down-input
             {
                 color: whitesmoke;
                 user-select: none;
@@ -45,10 +45,20 @@
             {
                 p
                 {
-                    &:hover
-                    {
-                        color: rgba(0,153,204,1);
-                    }
+                    // &:hover
+                    // {
+                    //     color: rgba(0,153,204,1);
+                    // }
+                }
+
+                &:hover
+                {
+                    background-color: rgba(120, 120, 120, 0.6);
+                }
+
+                &:active
+                {
+                    background-color: rgba(100, 100, 100, 0.6);
                 }
             }
 

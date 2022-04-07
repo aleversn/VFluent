@@ -2,11 +2,13 @@
 <transition name="fv-panel-show">
     <div v-show="thisValue" :class="['fv-'+$theme+'-Panel']">
         <div class="fv-panel-back-board" @click="isLightDismiss ? thisValue = false : 0"></div>
-        <transition :name="transitionInName">
-            <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, background: background}">
-                <div class="fv-panel-control-block">
-                    <p class="panel-title">{{title}}</p>
-                    <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+        <transition :name="transitionInName" :duration="isCentralSide ? 300 : 1000">
+            <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'central-side': isCentralSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, height: finalHeight, background: background}">
+                <div v-show="showTitleBar" class="fv-panel-control-block">
+                    <slot name="header">
+                        <p class="panel-title">{{title}}</p>
+                        <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+                    </slot>
                 </div>
                 <div class="fv-panel-main-container">
                     <slot name="container">
@@ -38,14 +40,23 @@ export default {
         width: {
             default: "340"
         },
+        height: {
+            default: "100%"
+        },
         background: {
             default: ''
         },
         isNearSide: {
             default: false
         },
+        isCentralSide: {
+            default: false
+        },
         isLightDismiss: {
             default: false
+        },
+        showTitleBar: {
+            default: true
         },
         isFooter: {
             default: false
@@ -77,11 +88,33 @@ export default {
     },
     computed: {
         finalWidth () {
-            if(this.width > this.screenWidth)
-                return `${this.screenWidth}px`;
-            return `${this.width}px`;
+            if(isNaN(this.width)) {
+                return this.width;
+            }
+            else
+            {
+                if(this.width > this.screenWidth)
+                    return `${this.screenWidth}px`;
+                return `${this.width}px`;
+            }
+        },
+        finalHeight () {
+            if(isNaN(this.height)) {
+                return this.height;
+            }
+            else
+            {
+                if(this.height > this.screenHeight)
+                    return `${this.screenHeight}px`;
+                return `${this.height}px`;
+            }
         },
         transitionInName () {
+            if(this.isCentralSide)
+                if(this.thisValue)
+                    return 'scale-up-to-up';
+                else
+                    return 'scale-down-to-down';
             if(this.isNearSide)
                 if(this.thisValue)
                     return 'move-left-to-right';

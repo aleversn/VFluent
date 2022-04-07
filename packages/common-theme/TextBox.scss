@@ -71,7 +71,7 @@
 
         div.text-box-container
         {
-            .input
+            .fv-text-box-input
             {
                 opacity: 0.5;
             }
@@ -155,7 +155,7 @@
             padding: 0px;
         }
         
-        .input
+        .fv-text-box-input
         {
             position: relative;
             width: 100%;
@@ -165,7 +165,7 @@
             outline: none;
         }
 
-        .input::placeholder
+        .fv-text-box-input::placeholder
         {
             user-select: none;
         }

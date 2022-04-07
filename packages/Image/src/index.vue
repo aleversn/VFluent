@@ -31,8 +31,12 @@ export default {
     },
     watch: {
         src (to, from) {
-            if(to !== from)
+            if(to !== from) {
                 this.status = false;
+            }
+            if(!this.lazy) {
+                this.thisSrc = this.src;
+            }
         },
         lazy (val) {
             if(val === false)

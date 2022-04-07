@@ -48,6 +48,18 @@ export default {
 </div>
 ```
 
+Compact Mode
+<div style="width: 100%;">
+    <fv-CommandBar v-model="value" :options="options" :compact="true" style="z-index: 2;"></fv-CommandBar>
+</div>
+
+```vue
+<div style="width: 100%;">
+    <fv-CommandBar v-model="value" :options="options" :compact="true"></fv-CommandBar>
+</div>
+```
+
+
 ### CommandBar-Toward Up
 
 ---
@@ -123,11 +135,12 @@ export default {
 ---
 
 | 属性(attr) |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
-| :--------: | :--------------------------------: | :------------: | :-------------: | :--------------------: |
+|:----------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
 |   value    |              [object]              |       No       |       N/A       |   绑定当前选中的对象   |
 |  options   |              [array]               |      Yes       |       N/A       |   CommandBar 数据源    |
 |   toward   |           ['down','up']            |       No       |      down       |     下拉菜单的朝向     |
 | background |          [string(color)]           |       No       |       N/A       |    CommandBar 背景     |
+|  compact   |             [boolean]              |       No       |      false      |        紧凑样式        |
 |   theme    | ['light','dark','custom','system'] |       No       |     system      | 主题样式, 默认跟随系统 |
 
 ### Events
@@ -135,7 +148,7 @@ export default {
 ---
 
 | 事件名(Name) | 参数类型(args) |     说明(statement)      |
-| :----------: | :------------: | :----------------------: |
+|:------------:|:--------------:|:------------------------:|
 |  item-click  |     object     | 选中项目时返回当前数据项 |
 
 ### Slot

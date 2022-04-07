@@ -20,7 +20,7 @@ export class RevealHelper
         let borderLight;
         let backgroundLight;
 
-        borderLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${borderLightColor}, rgba(255,255,255,0)) 25% 25% 25% 25%`; //切成九块, 去掉中间块剩余8块, 为了使得显示均匀, 我们要保证相邻两块比例要一样, 因为每一块最终会被应用于border的每一块上拉伸, 比例相同能保证拉伸时相邻块能够衔接, 因此比率尽可能大(从而保证切边交点在圆内)又要满足8块比例一致则 100% / 4 = 25%. 
+        borderLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${borderLightColor}, rgba(255,255,255,0)) 5% 5% 5% 5%`; //切成九块, 去掉中间块剩余8块, 为了使得显示均匀, 我们要保证相邻两块比例要一样, 因为每一块最终会被应用于border的每一块上拉伸, 比例相同能保证拉伸时相邻块能够衔接, 因此比率尽可能大(从而保证切边交点在圆内)又要满足8块比例一致则 100% / 4 = 25%. 
         if (clickEffect === false) {
             backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0))`;
         } else {
@@ -43,6 +43,7 @@ export class RevealHelper
                             element.wave = cur;
                             backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0)), radial-gradient(circle ${element.wave}px at ${pos.x}px ${pos.y}px, rgba(255,255,255,0), ${backgroundLightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`;
                             element.el.style.backgroundImage = backgroundLight;
+                            element.el.style.backgroundRepeat = "no-repeat";
                         }
                     }
                     catch (e) {}
@@ -54,6 +55,7 @@ export class RevealHelper
                 element.wave = 0;
                 backgroundLight = `radial-gradient(circle ${gradientSize}px at ${pos.x}px ${pos.y}px, ${backgroundLightColor}, rgba(255,255,255,0))`;
                 element.el.style.backgroundImage = backgroundLight;
+                element.el.style.backgroundRepeat = "no-repeat";
             }
         }
         else if(mode == 'border') {
@@ -92,6 +94,7 @@ export class RevealHelper
             res.push({
                 oriBg: getComputedStyle(el)["background-image"],
                 oriBorder: getComputedStyle(el)["border-image"],
+                oriBgRepeat: getComputedStyle(el)["background-repeat"],
                 wave: 0,
                 clickWave: {},
                 revealPosition: {
@@ -322,6 +325,7 @@ export class RevealEffects
         clearInterval(element.clickWave);
         element.wave = 0;
         element.el.style.backgroundImage = element.oriBg;
+        element.el.style.backgroundRepeat = element.oriRepeat;
     }
     
     static clearBorder(element) {

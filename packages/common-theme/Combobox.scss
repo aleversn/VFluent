@@ -102,7 +102,7 @@
         height: auto;
         max-height: 300px;
         padding: 8px 0px;
-        background: rgba(239,239,239,0.95);
+        background: rgba(239, 239, 239, 0.95);
         border-radius: 5px;
         box-sizing: border-box;
         display: flex;
@@ -188,7 +188,7 @@
             {
                 min-height: 1px;
                 height: 1px;
-                border-bottom: rgba(36,36,36,0.1) solid thin;
+                border-bottom: rgba(36, 36, 36, 0.1) solid thin;
             }
         }
     }
@@ -205,34 +205,37 @@
 
         .combobox-container
         {
-            background: rgba(243,242,241,1);
+            background: rgba(243, 242, 241, 1);
             box-shadow: none;
 
             .input
             {
-                background: rgba(243,242,241,1);
-                color: rgba(161,159,157,0.6);
+                background: rgba(243, 242, 241, 1);
+                color: rgba(161, 159, 157, 0.6);
                 cursor: no-drop;
             }
 
             i
             {
-                color: rgba(50,49,48,0.6);
+                color: rgba(50, 49, 48, 0.6);
             }
         }
+    }
+
+    .fv-combobox-enter-active
+    {
+        transition: all 0.3s;
     }
 
     .fv-combobox-enter
     {
         transform: scale(0.98);
         opacity: 0;
-        transition: all 0.3s;
     }
 
     .fv-combobox-enter-to
     {
         transform: scale(1);
         opacity: 1;
-        transition: all 0.3s;
     }
 }

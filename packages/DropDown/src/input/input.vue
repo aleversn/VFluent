@@ -2,7 +2,7 @@
 <div class="drop-down-box" :style="{padding: `${borderWidth}px`, 'border-radius': `${borderRadius}px`}">
     <div class="drop-down-container" :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}">
         <slot name="input" :placeholder="placeholder" :value="inputValue">
-            <input class="input" :placeholder="placeholder" readonly :value="inputValue" :style="{color: inputForeground}"/>
+            <input class="fv-drop-down-input" :placeholder="placeholder" readonly :value="inputValue" :style="{color: inputForeground}"/>
             <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </slot>
     </div>

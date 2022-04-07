@@ -1,11 +1,11 @@
 <template>
-<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[isFocus ? focusStyles.textBox : styles.textBox, { 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @click="isFocus = true">
+<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[{ 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { background: background, borderWidth: `${borderWidth}px`, borderColor: isFocus ? focusBorderColor : borderColor }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @click="isFocus = true">
     <div class="text-box-reveal-container" :style="{ background: background, borderRadius: `${borderRadius}px` }">
         <div v-show="prefix != ''" class="fix-block">
             <p>{{prefix}}</p>
         </div>
         <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
-        <core v-model="thisValue" ref="core" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
+        <core v-model="thisValue" ref="core" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :fontSize="fontSize" :fontWeight="fontWeight" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
         <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
         <div v-show="suffix != ''" class="fix-block">
             <p>{{suffix}}</p>
@@ -80,6 +80,12 @@ export default {
         focusBorderColor: {
             default: ""
         },
+        fontSize: {
+            default: 13.3
+        },
+        fontWeight: {
+            default: 'normal'
+        },
         borderRadius: {
             default: 3
         },
@@ -106,19 +112,7 @@ export default {
     data () {
         return {
             thisValue: this.value,
-            isFocus: false,
-            styles: {
-                textBox: {
-                    borderWidth: `${this.borderWidth}px`,
-                    borderColor: `${this.borderColor}`
-                }
-            },
-            focusStyles: {
-                textBox: {
-                    borderWidth: `${this.borderWidth}px`,
-                    borderColor: `${this.focusBorderColor}`
-                }
-            }
+            isFocus: false
         };
     },
     watch: {
@@ -127,20 +121,6 @@ export default {
         },
         thisValue (val) {
             this.$emit("input", val);
-        },
-        background (val) {
-            this.stylesInit();
-            this.onFocusStylesInit();
-        },
-        borderWidth (val) {
-            this.stylesInit();
-            this.onFocusStylesInit();
-        },
-        borderColor (val) {
-            this.stylesInit();
-        },
-        focusBorderColor (val) {
-            this.onFocusStylesInit();
         },
         revealBorder (val) {
             if(val) {
@@ -189,8 +169,6 @@ export default {
     mounted () {
         if(this.revealBorder)
             this.FRInit();
-        this.stylesInit();
-        this.onFocusStylesInit();
     },
     methods: {
         FRInit () {
@@ -201,16 +179,6 @@ export default {
                 backgroundLightColor: this.backgroundLightColor,
                 childrenSelector: this.$el.querySelectorAll('.text-box-reveal-container')[0]
             });
-        },
-        stylesInit () {
-            this.styles.textBox.background = this.background;
-            this.styles.textBox.borderWidth = `${this.borderWidth}px`;
-            this.styles.textBox.borderColor = this.borderColor;
-        },
-        onFocusStylesInit () {
-            this.focusStyles.textBox.background = this.background;
-            this.focusStyles.textBox.borderWidth = `${this.borderWidth}px`;
-            this.focusStyles.textBox.borderColor = this.focusBorderColor;
         },
         focus () {
             this.$refs.core.focusInspect();

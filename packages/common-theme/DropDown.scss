@@ -2,6 +2,7 @@
 
     position: relative;
     width: 300px;
+    font-family: "微软雅黑", Segoe MDL2;
     overflow-y: visible;
 
     &:hover
@@ -41,13 +42,14 @@
             align-items: center;
             box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
 
-            .input
+            .fv-drop-down-input
             {
                 position: relative;
                 width: 100%;
                 height: 100%;
                 padding: 0px 36px 0px 8px;
                 background: transparent;
+                font-family: "微软雅黑", Segoe MDL2;
                 border: none;
                 outline: none;
                 font-size: 13.5px;
@@ -93,22 +95,26 @@
         left: 0px;
         width: 100%;
         height: auto;
-        background: rgba(255,255,255,0.95);
-        border-radius: 3px;
+        padding: 0px 2px;
+        background: rgba(245, 245, 245, 0.95);
+        border-radius: 6px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        box-shadow: $ms-depth-shadow-16;
         overflow: hidden;
 
         .list-item
         {
             position: relative;
             width: 100%;
-            height: 36px;
+            height: 32px;
+            margin: 2px 0px;
             padding: 0px 8px;
+            border-radius: 6px;
             box-sizing: border-box;
             display: flex;
             align-items: center;
@@ -121,15 +127,20 @@
                 {
                     cursor: pointer;
 
-                    &:hover
-                    {
-                        color: rgba(0,120,212,1);
-                    }
+                    // &:hover
+                    // {
+                    //     color: rgba(0, 120, 212, 1);
+                    // }
                 }
 
                 &:hover
                 {
-                    background-color: rgba(237,235,233,0.6);
+                    background-color: rgba(220, 220, 220, 0.6);
+                }
+
+                &:active
+                {
+                    background-color: rgba(200, 200, 200, 0.6);
                 }
             }
 
@@ -139,7 +150,7 @@
                 
                 p
                 {
-                    color: rgba(95,95,95,0.6);
+                    color: rgba(95, 95, 95, 0.6);
                 }
 
                 &:hover
@@ -161,7 +172,7 @@
 
             p
             {
-                font-size: 15px;
+                font-size: 13.8px;
                 font-weight: 400;
                 color: rgba(32,31,30,1);
                 text-overflow: ellipsis;
@@ -206,7 +217,7 @@
                 background: rgba(243,242,241,1);
                 box-shadow: none;
 
-                .input
+                .fv-drop-down-input
                 {
                     background: rgba(243,242,241,1);
                     color: rgba(161,159,157,0.6);
@@ -220,56 +231,66 @@
             }
         }
     }
+    
+    .fv-drop-down-top-enter-active, .fv-drop-down-bottom-enter-active
+    {
+        transition: all 0.2s ease-out;
+    }
+
+    .fv-drop-down-top-leave-active, .fv-drop-down-bottom-leave-active
+    {
+        transition: all 0.1s;
+    }
 
     .fv-drop-down-top-enter
     {
-        margin-bottom: -3px;
+        margin-bottom: -20px;
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
         opacity: 0;
-        transition: all 0.3s;
     }
 
     .fv-drop-down-top-enter-to
     {
         margin-top: 0px;
+        transform: scaleY(1);
+        transform-origin: 50% 100%;
         opacity: 1;
-        transition: all 0.3s;
     }
 
     .fv-drop-down-top-leave
     {
         opacity: 1;
-        transition: all 0.1s;
     }
 
     .fv-drop-down-top-leave-to
     {
         opacity: 0;
-        transition: all 0.1s;
     }
 
     .fv-drop-down-bottom-enter
     {
-        margin-top: -3px;
+        margin-top: -20px;
         opacity: 0;
-        transition: all 0.3s;
+        transform: scaleY(0);
+        transform-origin: 50% 0%;
     }
 
     .fv-drop-down-bottom-enter-to
     {
         margin-top: 0px;
         opacity: 1;
-        transition: all 0.3s;
+        transform: scaleY(1);
+        transform-origin: 50% 0%;
     }
 
     .fv-drop-down-bottom-leave
     {
         opacity: 1;
-        transition: all 0.1s;
     }
 
     .fv-drop-down-bottom-leave-to
     {
         opacity: 0;
-        transition: all 0.1s;
     }
 }

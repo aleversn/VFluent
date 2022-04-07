@@ -7,7 +7,22 @@
     color: whitesmoke;
 
     .sinfo-box-block {
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(43, 43, 43, 0.9);
         border: rgba(0, 0, 0, 0.5) solid 1px;
+
+        .title-bar
+        {
+            background: rgba(32, 32, 32, 1);
+
+            .title-content
+            {
+                color: rgba(239, 239, 239, 1);
+            }
+        }
+
+        .info-box-control-block
+        {
+            background: rgba(32, 32, 32, 1);
+        }
     }
 }

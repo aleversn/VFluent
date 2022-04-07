@@ -13,6 +13,8 @@
         position: relative;
         width: 100%;
         height: 100%;
+        padding: 0px 6px;
+        box-sizing: border-box;
         overflow-x: hidden;
         overflow-y: auto;
         -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -21,11 +23,13 @@
         {
             position: relative;
             width: 100%;
-            height: 45px;
-            padding: 0px 12px;
-            border: transparent solid thin;
-            border-left: none;
-            border-right: none;
+            height: 40px;
+            margin: 2px 0px;
+            padding: 0px 6px;
+            border: transparent solid 2px;
+            // border-left: none;
+            // border-right: none;
+            clip-path: inset(0 round 5px);
             box-sizing: border-box;
             display: flex;
             justify-content: flex-start;
@@ -50,7 +54,7 @@
 
             &:hover
             {
-                background: rgba(200, 200, 200, 0.3);
+                background: rgba(200, 200, 200, 0.2);
             }
 
             &.disabled

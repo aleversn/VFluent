@@ -58,12 +58,12 @@ export default {
         },
         backgroundLightColor () {
             if(this.$theme == 'light') {
-                return 'rgba(160, 160, 160, 0.1)';
+                return 'rgba(160, 160, 160, 0.2)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
                 return 'rgba(255, 255, 255, 0.1)';
             }
-            return 'rgba(160, 160, 160, 0.1)';
+            return 'rgba(160, 160, 160, 0.2)';
         },
         currentChoosen () {
             let result = [];
@@ -107,7 +107,7 @@ export default {
         FRInit () {
             let FR = new this.$RevealEffects(this.$el, {
                 selector: `.fv-${this.$theme}-ListView .list-view-container .item.normal`,
-                borderGradientSize: 38,
+                borderGradientSize: 25,
                 borderLightColor: this.borderLightColor,
                 backgroundGradientSize: 120,
                 backgroundLightColor: this.backgroundLightColor

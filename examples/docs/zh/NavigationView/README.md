@@ -167,6 +167,25 @@ export default {
 | expand-change |    boolean     |         当折叠或展开时触发事件并提供当前状态          |
 |     back      |   MouseEvent   |               返回选项被点击后触发事件                |
 
+### Slot
+
+---
+
+1. ListItem
+
+默认以value中每一项的属性name作为默认显示, 参考`ListView`, 包含以下可选属性
+- item: 当前项
+- index: 当前项索引
+
+```vue
+<template v-slot:listItem="x">
+    <i v-show="x.valueTrigger(x.item.icon) !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.valueTrigger(x.item.icon)}`]"></i>
+    <p class="name" :style="{ color: x.valueTrigger(x.item.type) == 'header' ? foreground : ''}">{{x.valueTrigger(x.item.name)}}</p>
+</template>
+```
+
+注意在收缩时要隐藏<p>标签的话一定要将其类型加上`name`.
+
 ### Data
 
 ---

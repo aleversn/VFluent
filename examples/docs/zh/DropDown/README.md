@@ -98,6 +98,21 @@ export default {
 </fv-DropDown>
 ```
 
+3. Custom Drop Down Carrier
+
+<fv-DropDown :options="options" placeholder="Select options" :multiple="true" style="z-index: 12;"><template v-slot:drop-carrier="x"><fv-button :theme="x.theme" :isBoxShadow="true" style="width: 150px;"><p>DropDown</p><i class="ms-Icon ms-Icon--ChevronDown" style="margin-left: 8px;"></i></fv-button></template></fv-DropDown>
+
+```vue
+<fv-DropDown :options="options" placeholder="Select options" :multiple="true" style="z-index: 12;">
+    <template v-slot:drop-carrier="x">
+        <fv-button :theme="x.theme" :isBoxShadow="true" style="width: 150px;">
+            <p>DropDown</p>
+            <i class="ms-Icon ms-Icon--ChevronDown" style="margin-left: 8px;"></i>
+        </fv-button>
+    </template>
+</fv-DropDown>
+```
+
 ### DropDown-Show Error
 ---
 <fv-DropDown :options="options" placeholder="Select an option" :showError="true" style="z-index: 11;"></fv-DropDown>
@@ -134,7 +149,7 @@ export default {
 |        options         |              [array]               |       No       |            N/A             |      Dropdown options array       |
 |        multiple        |             [boolean]              |       No       |            N/A             |     Is enable multiple select     |
 |      borderWidth       |              [number]              |       No       |             2              |       Dropdown border width       |
-|      borderRadius      |              [number]              |       No       |             3              |      Dropdown border radius       |
+|      borderRadius      |              [number]              |       No       |             6              |      Dropdown border radius       |
 |      placeholder       |              [string]              |       No       |          Dropdown          |       Dropdown placeholder        |
 |       maxHeight        |              [number]              |       No       |            N/A             |     Dropdown list max height      |
 |   checkBoxBackground   |          [string(color)]           |       No       |            N/A             | CheckBox Background when Multiple |
@@ -161,6 +176,9 @@ export default {
 ---
 1. Input
 
+- placeholder: 当前选中内容
+- value: 当前Placeholder
+
 ```javascript
 <template v-slot:input="x">
     <i class="ms-Icon ms-Icon--Dynamics365Logo left-icon"></i>
@@ -171,9 +189,25 @@ export default {
 
 2. Options
 
+- option: 当前项内容
+- index: 当前项索引
+- valueTrigger: 支持函数式驱动的值函数
+
 ```javascript
-<template v-slot:options="item">
-    <p>{{item.index}}</p>
+<template v-slot:options="x">
+    <p>{{x.item.index}}</p>
+</template>
+```
+
+3. Drop Carrier
+
+- value: 当前选中内容
+- placeholoder: 当前Placeholder
+- theme: 当前主题
+
+```javascript
+<template v-slot:drop-carrier="x">
+    <button>DropDown</button>
 </template>
 ```
 

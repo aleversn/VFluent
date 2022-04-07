@@ -74,12 +74,12 @@
     
     div.text-box-container
     {
-        .input
+        .fv-text-box-input
         {
             color: rgba(243, 242, 241, 1);
         }
 
-        .input::placeholder
+        .fv-text-box-input::placeholder
         {
             color: rgba(220, 220, 220, 1);
         }
