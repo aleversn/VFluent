@@ -3,7 +3,9 @@
     <div class="collapse-description-container" :style="{height: `${defaultHeight}px`}" @click="itemClick">
         <div class="collapse-icon-box">
             <slot name="icon">
-                <i class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
+                <div class="collapse-icon-box-default">
+                    <i class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
+                </div>
             </slot>
         </div>
         <div class="collapse-description-box">
