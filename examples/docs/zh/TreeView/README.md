@@ -164,6 +164,7 @@ backgroundColorHover:
   :viewStyle="{backgroundColor,backgroundColorHover}" 
   :foreground="foregroundColor"
   :draggable="true" 
+  :background="backgroundColor"
   :space="10">
 </fv-TreeView>
 
@@ -175,6 +176,7 @@ backgroundColorHover:
   @click="click" 
   :viewStyle="{backgroundColor,backgroundColorHover}" 
   :foreground="foregroundColor"
+  :background="backgroundColor"
   :draggable="true" 
   :space="10">
 </fv-TreeView>
@@ -201,6 +203,7 @@ backgroundColorHover:
 |        space         |              [number]              |       No       |       20        |          树形父与子间的间距(px)          |
 |     borderWidth      |              [number]              |       No       |        2        |                 边框大小                 |
 |      foreground      |              [string]              |       No       |       N/A       |                  前景色                  |
+|      background      |              [string]              |       No       |       N/A       |                  背景色                  |
 |     expandedIcon     |              [string]              |       No       |       N/A       |               扩展后的箭头               |
 | expandedIconPosition |          ['right','left']          |       No       |     'left'      |                箭头的位置                |
 |    unexpandedIcon    |              [string]              |       No       |       N/A       |               未扩展的箭头               |

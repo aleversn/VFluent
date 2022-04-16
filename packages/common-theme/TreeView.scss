@@ -4,12 +4,13 @@
   min-width: 200px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding:  3px;
   user-select: none;
   .fv-TreeView__item {
     cursor: default;
     width: 100%;
     margin: 0;
+    padding: 0;
     color: inherit;
     background-color: inherit;
     .fv-TreeView__label-border {
@@ -30,12 +31,12 @@
         i {
           padding: 0;
           height: 100%;
-          line-height: 30px;
-          margin: 0 10px 0 0;
+          line-height: 26px;
+          margin: 0 6px 0 0;
           font-size: 12px;
         }
         .fv-TreeView__checkbox {
-          margin: 0 10px 0 0;
+          margin: 0 6px 0 0;
         }
         .fv-TreeView__icon {
           height: 30px;
@@ -62,6 +63,7 @@
     // margin: 5px;
     // border-radius: 5px;
     padding: 0;
+    margin:0;
     background-color: inherit;
     color: inherit;
   }
