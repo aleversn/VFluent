@@ -4,8 +4,9 @@
   min-width: 200px;
   list-style: none;
   margin: 0;
-  padding:  3px;
+  padding: 0px 3px;
   user-select: none;
+  box-sizing: border-box;
   .fv-TreeView__item {
     cursor: default;
     width: 100%;
