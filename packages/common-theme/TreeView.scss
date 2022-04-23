@@ -4,42 +4,46 @@
   min-width: 200px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0px 3px;
   user-select: none;
+  box-sizing: border-box;
   .fv-TreeView__item {
     cursor: default;
     width: 100%;
     margin: 0;
+    padding: 0;
     color: inherit;
     background-color: inherit;
     .fv-TreeView__label-border {
       padding: 0px;
-      height: 38px;
+      height: 30px;
+      margin: 4px 0;
       .fv-TreeView__label {
-        position: relative;
+        position: relative; 
+        border-radius: 5px;
         color: inherit;
-        padding: 0 20px;
+        padding: 0 0px;
         border: transparent solid 2px;
         box-sizing: border-box;
-        height: 38px;
+        height: 30px;
         display: inline-flex;
         align-items: center;
         width: 100%;
         i {
           padding: 0;
           height: 100%;
-          line-height: 38px;
-          margin: 0 10px 0 0;
+          line-height: 26px;
+          margin: 0 6px 0 0;
           font-size: 12px;
         }
         .fv-TreeView__checkbox {
-          margin: 0 10px 0 0;
+          margin: 0 6px 0 0;
         }
         .fv-TreeView__icon {
-          height: 38px;
+          height: 30px;
           font-size: 16px;
           width: auto;
-          margin: 0 10px;
+          margin: 0 12px;
         }
         img.fv-TreeView__icon {
           height: 24px;
@@ -57,8 +61,10 @@
   }
   .fv-TreeView__tree {
     list-style: none;
-    margin: 0;
+    // margin: 5px;
+    // border-radius: 5px;
     padding: 0;
+    margin:0;
     background-color: inherit;
     color: inherit;
   }

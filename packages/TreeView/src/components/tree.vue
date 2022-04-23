@@ -9,7 +9,6 @@
             <div
                 ref="label"
                 class="fv-TreeView__label"
-                :class="revealEffectClass"
                 @click="expandFolder($event) && !checkable && click($event)"
                 @mousedown="clickItem(item)"
                 :style="[
@@ -119,10 +118,6 @@ export default {
         borderWidth: {
             default: 2,
         },
-        revealEffect: {
-            type: Boolean,
-            default: true,
-        },
         viewStyle: {},
         checkable: {
             type: Boolean,
@@ -198,7 +193,7 @@ export default {
             this.$set(this.style.label, 'paddingLeft', 10 + this.deepth * val + 'px');
         },
         $theme() {
-            this.initFR();
+            // this.initFR();
             this.initStyle();
         },
     },
@@ -222,24 +217,24 @@ export default {
         this.$set(this.item, 'checkboxStatus', this.getStatus());
         this.initEvent();
         this.$nextTick(() => {
-            this.initFR();
+            // this.initFR();
             this.initStyle();
         });
     },
     methods: {
         initFR() {
-            let className = this.revealEffectClass.length ? '.' + this.revealEffectClass[0] : '';
-            new this.$RevealEffects('body', {
-                selector: '.fv-TreeView__label' + className,
-                borderLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
-                    .alpha(0.15)
-                    .cssa(),
-                borderGradientSize: 30,
-                backgroundLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
-                    .alpha(0.1)
-                    .cssa(),
-                backgroundGradientSize: 150,
-            });
+            // let className = this.revealEffectClass.length ? '.' + this.revealEffectClass[0] : '';
+            // new this.$RevealEffects('body', {
+            //     selector: '.fv-TreeView__label' + className,
+            //     borderLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
+            //         .alpha(0.15)
+            //         .cssa(),
+            //     borderGradientSize: 30,
+            //     backgroundLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
+            //         .alpha(0.1)
+            //         .cssa(),
+            //     backgroundGradientSize: 150,
+            // });
         },
         initStyle() {
             this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
