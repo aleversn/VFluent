@@ -2,7 +2,7 @@
 <transition name="fv-panel-show">
     <div v-show="thisValue" :class="['fv-'+$theme+'-Panel']">
         <div class="fv-panel-back-board" @click="isLightDismiss ? thisValue = false : 0"></div>
-        <transition :name="transitionInName" :duration="isCentralSide ? 300 : 1000">
+        <transition :name="transitionInName">
             <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'central-side': isCentralSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, height: finalHeight, background: background}">
                 <div v-show="showTitleBar" class="fv-panel-control-block">
                     <slot name="header">
@@ -112,9 +112,9 @@ export default {
         transitionInName () {
             if(this.isCentralSide)
                 if(this.thisValue)
-                    return 'scale-up-to-up';
+                    return 'fv-panel-scale-up-to-up';
                 else
-                    return 'scale-down-to-down';
+                    return 'fv-panel-scale-down-to-down';
             if(this.isNearSide)
                 if(this.thisValue)
                     return 'move-left-to-right';

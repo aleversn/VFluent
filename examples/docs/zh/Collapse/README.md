@@ -99,9 +99,12 @@ Extension
 
 ### Events
 ---
-| 事件名(Name) | 参数类型(args) |        说明(statement)        |
-|:------------:|:--------------:|:-----------------------------:|
-|  item-click  |    boolean     | 返回`Collapse`属性`value`的值 |
+|   事件名(Name)   | 参数类型(args) |        说明(statement)        |
+|:----------------:|:--------------:|:-----------------------------:|
+|    item-click    |    boolean     | 返回`Collapse`属性`value`的值 |
+| descrption-click |      N/A       |          描述框点击           |
+|    icon-click    |      N/A       |         右侧图标点击          |
+| left-icon-click  |      N/A       |         左侧图标点击          |
   
 ### Slot
 

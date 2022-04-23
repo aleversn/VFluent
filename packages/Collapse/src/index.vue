@@ -1,7 +1,7 @@
 <template>
 <div :class="['fv-'+$theme+'-Collapse', {visibleOverflow: disabledCollapse}]" :style="{height: !thisValue ? `${defaultHeight}px` : `${maxHeight}px`, 'max-height': `${maxHeight}px`, background: hover ? hoverBackground : background}" @mouseenter="hover = true" @touchstart="hover = true" @mouseleave="hover = false" @touchend="hover = false">
     <div class="collapse-description-container" :style="{height: `${defaultHeight}px`}" @click="itemClick">
-        <div class="collapse-icon-box">
+        <div class="collapse-icon-box" @click="$emit('left-icon-click')">
             <slot name="icon">
                 <div class="collapse-icon-box-default">
                     <i class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
@@ -9,7 +9,7 @@
             </slot>
         </div>
         <div class="collapse-description-box">
-            <div class="collapse-description">
+            <div class="collapse-description" @click="$emit('description-click')">
                 <div class="collapse-text">
                     <slot name="container" :title="title" :contnet="content">
                         <slot name="title" :title="title">
@@ -25,7 +25,7 @@
                 <slot name="extension"></slot>
             </div>
         </div>
-        <div class="collapse-expand-icon-block">
+        <div class="collapse-expand-icon-block" @click="$emit('icon-click')">
             <slot name="expand-icon" :value="thisValue" :disabledCollaspe="disabledCollapse">
                 <i
                     v-show="thisValue"
