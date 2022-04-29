@@ -58,7 +58,6 @@ export default {
                 this.$emit("touchstart", event);
         },
         stop (event) {
-            event.preventDefault();
             this.moveable = false;
             if(!event) return;
             if(event.type === 'mouseup')

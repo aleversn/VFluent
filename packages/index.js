@@ -53,6 +53,7 @@ import AnimatedIcon from '@/AnimatedIcon/index.js'
 import Tag from '@/Tag/index.js'
 import Collapse from '@/Collapse/index.js'
 import InfiniteScrollView from '@/InfiniteScrollView/index.js'
+import TextField from '@/TextField/index.js'
 
 
 let components = [
@@ -101,6 +102,7 @@ let components = [
   Tag,
   Collapse,
   InfiniteScrollView,
+  TextField,
 
 ]
 
@@ -165,6 +167,7 @@ export default {
   Tag,
   Collapse,
   InfiniteScrollView,
+  TextField,
 
 }
 

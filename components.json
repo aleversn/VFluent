@@ -358,5 +358,13 @@
       "Dark": "@/dark-theme/InfiniteScrollView.scss",
       "Custom": "@/custom-theme/InfiniteScrollView.scss"
     }
+  },
+  "TextField": {
+    "entry": "@/TextField/index.js",
+    "theme": {
+      "Light": "@/light-theme/TextField.scss",
+      "Dark": "@/dark-theme/TextField.scss",
+      "Custom": "@/custom-theme/TextField.scss"
+    }
   }
 }
