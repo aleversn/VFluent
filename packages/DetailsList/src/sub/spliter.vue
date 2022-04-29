@@ -50,6 +50,7 @@ export default {
             }));
         },
         forward(event) {
+            event.preventDefault();
             this.moveable = true;
             if(event.type === 'mousedown')
                 this.$emit("mousedown", event);
@@ -57,6 +58,7 @@ export default {
                 this.$emit("touchstart", event);
         },
         stop (event) {
+            event.preventDefault();
             this.moveable = false;
             if(!event) return;
             if(event.type === 'mouseup')

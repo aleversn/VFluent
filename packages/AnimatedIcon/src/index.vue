@@ -208,7 +208,8 @@ export default {
             this.animationsQueue = this.animationsQueue.concat(animation);
             this.popAnimation();
         },
-        down () {
+        down (event) {
+            event.preventDefault();
             let animation = this.getAnimation('down');
             if(!animation)
                 return false;
@@ -218,7 +219,8 @@ export default {
             this.animationsQueue = this.animationsQueue.concat(animation);
             this.popAnimation();
         },
-        up () {
+        up (event) {
+            event.preventDefault();
             let animation = this.getAnimation('up');
             if(!animation)
                 return false;

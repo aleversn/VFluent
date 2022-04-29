@@ -81,7 +81,8 @@ export default {
         this.thisValue = this.value;
     },
     methods: {
-        Checked () {
+        Checked (event) {
+            event.preventDefault();
             if(this.isDisabled)
                 return 0;
             this.thisValue = !this.thisValue;
