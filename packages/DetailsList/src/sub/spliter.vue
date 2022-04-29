@@ -1,5 +1,5 @@
 <template>
-<div class="spliter" @mousedown="forward" @mouseup="stop" @touchstart="forward" @touchend="stop">
+<div class="fv-details-list-spliter" @mousedown="forward" @mouseup="stop" @touchstart="forward" @touchend="stop">
     <i></i>
 </div>
 </template>

@@ -13,7 +13,7 @@
                 <i class="ms-Icon ms-Icon--ChevronRight"></i>
             </span>
         </span>
-        <span v-show="item.show" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{'min-width': colWidth[index], width: colWidth[index], background: styles.listHead.background}">
+        <span v-show="item.show && item.visible" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{'min-width': colWidth[index], width: colWidth[index], background: styles.listHead.background}">
             <span class="col-content" @click="sortClick(item)">
                 <slot name="head" :item="item" :index="index">
                     <p class="default-title">{{item.content}}</p>
@@ -33,7 +33,7 @@
                     <i class="ms-Icon ms-Icon--Completed ll"></i>
                 </span>
             </span>
-            <span v-show="col.show" v-for="(col, idx) in thisHead" class="col" :key="`row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
+            <span v-show="col.show && col.visible" v-for="(col, idx) in thisHead" class="col" :key="`row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
                 <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
                     <p>{{`row: ${index} col: ${idx}`}}</p>
                 </slot>
@@ -74,7 +74,7 @@
                     </span>
                 </span>
                 <span class="col" style="width: 36px;" @click="chooseCurrent(item)"></span>
-                <span v-show="col.show" v-for="(col, idx) in thisHead" class="col" :key="`group: ${i} row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
+                <span v-show="col.show && col.visible" v-for="(col, idx) in thisHead" class="col" :key="`group: ${i} row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
                     <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
                         <p>{{`row: ${index} col: ${idx}`}}</p>
                     </slot>
@@ -197,8 +197,12 @@ export default {
             }
             this.groupInit();
         },
-        head (val) {
-            this.headInit();
+        head: {
+            deep: true,
+            handler () {
+                this.headInit();
+                this.widthFormat(0);
+            }
         },
         group (val) {
             this.groupInit();
@@ -331,7 +335,8 @@ export default {
                 disX: 0,
                 sortName: false,
                 customSort: false,
-                show: true
+                show: true,
+                visible: true
             };
             this.thisHead = [];
             for(let item of this.head) {
@@ -471,6 +476,12 @@ export default {
             this.$set(this.thisHead, index, item);
         },
         resizeMove (event, index) {
+            for(let i = this.thisHead.length - 1; i >= 0; i--) {
+                if(this.thisHead[i].visible) {
+                    if(i === index) return;
+                    break;
+                }
+            }
             let item = this.thisHead[index];
             let dis = event.clientX - item.disX;
             item.disX = event.clientX;
@@ -489,14 +500,21 @@ export default {
             {
                 let sum = 0;
                 for(let i = 0; i <= index; i++) {
+                    if(!this.thisHead[i].visible)
+                        continue;
                     sum += this.thisHead[i].width;
                 }
                 let remain = this.listWidth - sum;
                 let r = remain;
                 let need = 0;
-                for(let i = index + 1; i < this.thisHead.length; i++)
+                for(let i = index + 1; i < this.thisHead.length; i++) {
+                    if(!this.thisHead[i].visible)
+                        continue;
                     need += this.thisHead[i].width;
+                }
                 for(let i = this.thisHead.length - 1; i > index; i--) {
+                    if(!this.thisHead[i].visible)
+                        continue;
                     let n = need - this.thisHead[i].width;
                     if(n + this.thisHead[i].minWidth <= remain) {
                         let item = this.thisHead[i];

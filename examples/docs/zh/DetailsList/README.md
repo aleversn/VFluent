@@ -245,26 +245,31 @@ export default {
                   content: "Name",
                   minWidth: 60,
                   width: 80,
-                  sortName: "name"
+                  sortName: "name",
+                  visible: true
               }, {
                   content: "Publisher",
                   minWidth: 60,
                   width: 80,
-                  sortName: "publisher"
+                  sortName: "publisher",
+                  visible: true
               }, {
                   content: "Publish Time",
                   minWidth: 60,
                   width: 190,
-                  sortName: "publish_time"
+                  sortName: "publish_time",
+                  visible: true
               }, {
                   content: "Prop",
                   minWidth: 60,
                   width: 92,
-                  sortName: "prop"
+                  sortName: "prop",
+                  visible: true
               }, {
                   content: "User Name",
                   minWidth: 60,
-                  width: 80
+                  width: 80,
+                  visible: true
           }],
           group: [
               {
@@ -319,6 +324,9 @@ export default {
     <fv-text-box v-model="filter.value" placeholder="Filter by name"></fv-text-box>
     <fv-toggle-switch v-model="multiSelection" on="Multi-Selection" off="Single-Selection"></fv-toggle-switch>
     <fv-toggle-switch v-model="compact" on="Compact" off="Normal"></fv-toggle-switch>
+    <div style="padding: 15px; 0px; display: flex; overflow-x: auto;">
+        <fv-check-box v-model="item.visible" v-for="(item, index) in head" :key="index" style="margin-right: 5px;">{{item.visible ? 'Show' : 'Hide'}} {{item.content}}</fv-check-box>
+    </div>
     <fv-DetailsList v-model="value" :head="head" :filter="filter" :multiSelection="multiSelection" :compact="compact">
         <template v-slot:column_0="x">
             <p>{{x.item.name}}</p>
@@ -755,30 +763,35 @@ head: [
     content: "Name",
     minWidth: 60,
     width: 80,
-    sortName: "name"
+    sortName: "name",
+    visible: true
   },
   {
     content: "Publisher",
     minWidth: 60,
     width: 80,
-    sortName: "publisher"
+    sortName: "publisher",
+    visible: true
   },
   {
     content: "Publish Time",
     minWidth: 60,
     width: 190,
-    sortName: "publish_time"
+    sortName: "publish_time",
+    visible: true
   },
   {
     content: "Prop",
     minWidth: 60,
     width: 92,
-    sortName: "prop"
+    sortName: "prop",
+    visible: true
   },
   {
     content: "User Name",
     minWidth: 60,
-    width: 80
+    width: 80,
+    visible: true
   }
 ];
 ```

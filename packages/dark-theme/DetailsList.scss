@@ -2,7 +2,7 @@
 .fv-dark-DetailsList {
 	@include fv-DetailsList();
 
-	.spliter
+	.fv-details-list-spliter
 	{
 		&:hover
 		{
@@ -17,7 +17,7 @@
 			i
 			{
 				background: rgba(200, 198, 196, 1);
-				box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.3);
+				box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.3);
 			}
 		}
 	}
