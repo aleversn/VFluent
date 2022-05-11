@@ -269,6 +269,7 @@ Customize background
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
 | disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |
 |          status          |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
+|      debounceDelay       |              [number]              |       No       |       300       |             搜索节流延迟时间              |
 |         disabled         |             [boolean]              |       No       |      false      |                                           |
 |          theme           | ['light','dark','custom','system'] |       No       |     system      |                                           |
 
@@ -284,6 +285,7 @@ Customize background
 | update:resultPlaceholder |     array      | 更新搜索占位数组, 在清除搜索框时触发清除搜索占位数组, 再按下退格键时若文本为空, 清除最后一个搜索占位数据项 |
 |       clear-click        |     array      |                                            清除搜索框文本时触发                                            |
 |      choose-result       |     object     |                                       搜索结果框选中项目后返回当前项                                       |
+|      debounce-input      |     string     |                                              搜索节流内容反馈                                              |
 
 ### Slot
 ---

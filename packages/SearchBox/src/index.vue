@@ -90,6 +90,9 @@ export default {
         status: {
             default: ""
         },
+        debounceDelay: {
+            default: 300
+        },
         disabled: {
             default: false
         },
@@ -105,6 +108,9 @@ export default {
             filterOptions: this.options,
             show: {
                 searchResult: false
+            },
+            timer: {
+                debounce: null
             }
         }
     },
@@ -113,6 +119,10 @@ export default {
             this.thisValue = val;
         },
         thisValue (val) {
+            clearTimeout(this.timer.debounce);
+            this.timer.debounce = setTimeout(() => {
+                this.$emit('debounce-input', this.thisValue);
+            }, this.debounceDelay);
             this.$emit("input", val);
             this.refreshFilter();
         },

@@ -101,6 +101,9 @@ export default {
         status: {
             default: ""
         },
+        debounceDelay: {
+            default: 300
+        },
         disabled: {
             default: false
         },
@@ -112,7 +115,10 @@ export default {
     data () {
         return {
             thisValue: this.value,
-            isFocus: false
+            isFocus: false,
+            timer: {
+                debounce: null
+            }
         };
     },
     watch: {
@@ -120,6 +126,10 @@ export default {
             this.thisValue = val;
         },
         thisValue (val) {
+            clearTimeout(this.timer.debounce);
+            this.timer.debounce = setTimeout(() => {
+                this.$emit('debounce-input', this.thisValue);
+            }, this.debounceDelay);
             this.$emit("input", val);
         },
         revealBorder (val) {

@@ -85,6 +85,25 @@ export class SDate
             return d;
         }
     }
+    static Format(fmt, Date) {
+        let ret;
+        const opt = {
+            "Y+": Date.getFullYear().toString(),        // 年
+            "m+": (Date.getMonth() + 1).toString(),     // 月
+            "d+": Date.getDate().toString(),            // 日
+            "H+": Date.getHours().toString(),           // 时
+            "M+": Date.getMinutes().toString(),         // 分
+            "S+": Date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            };
+        };
+        return fmt;
+    }
     static DisTime(startDate, endDate)
     {
         return endDate.getTime() - startDate.getTime();

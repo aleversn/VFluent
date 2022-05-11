@@ -249,14 +249,16 @@ Customize background
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
 | disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |
 |          status          |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
+|      debounceDelay       |              [number]              |       No       |       300       |             搜索节流延迟时间              |
 |         disabled         |             [boolean]              |       No       |      false      |                                           |
 |          theme           | ['light','dark','custom','system'] |       No       |     system      |                                           |
 
 ### Events
 ---
-|  事件名(Name)   | 参数类型(args) | 说明(statement) |
-|:---------------:|:--------------:|:---------------:|
-|     keydown     |     event      |                 |
-|      keyup      |     event      |                 |
-| left-icon-click |     event      |                 |
-|   icon-click    |     event      |                 |
+|  事件名(Name)   | 参数类型(args) | 说明(statement)  |
+|:---------------:|:--------------:|:----------------:|
+|     keydown     |     event      |                  |
+|      keyup      |     event      |                  |
+| left-icon-click |     event      |                  |
+|   icon-click    |     event      |                  |
+| debounce-input  |     string     | 搜索节流内容反馈 |

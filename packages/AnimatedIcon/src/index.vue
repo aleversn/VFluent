@@ -1,5 +1,5 @@
 <template>
-<div :class="['fv-'+$theme+'-AnimatedIcon']" :style="[{width: `${fontSize * 1 + 3}px`, background: background, fontSize: `${fontSize}px`}]" @mousedown="down" @mouseup="up" @touchstart="down" @touchend="up" @mouseenter="enter" @mousemove="move" @touchmove="move" @mouseleave="leave" @click="onClick">
+<div :class="['fv-'+$theme+'-AnimatedIcon']" :style="[{width: `${fontSize * 1 + 3}px`, background: background, fontSize: `${fontSize}px`}]" @mousedown="down" @mouseup="up" @touchstart="down" @touchend="up" @mouseenter="enter" @mousemove="move" @touchmove="move" @mouseleave="leave">
     <div draggable="false" class="fv-animated-icon-container" :style="[animatedStyle]">
         <slot>
             <i ref="a" class="ms-Icon" :class="[`ms-Icon--${icon}`]"></i>
@@ -221,6 +221,7 @@ export default {
         },
         up (event) {
             event.preventDefault();
+            this.onClick(event);
             let animation = this.getAnimation('up');
             if(!animation)
                 return false;

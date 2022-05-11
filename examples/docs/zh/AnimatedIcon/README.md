@@ -73,7 +73,7 @@ export default {
 </fv-AnimatedIcon>
 ```
 
-4. Scale Y Down
+4. Back Scale
 <fv-AnimatedIcon value="backScale" fontSize="20" icon="Back">
 </fv-AnimatedIcon>
 
