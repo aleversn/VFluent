@@ -1,5 +1,5 @@
 <template>
-<div :class="['fv-'+$theme+'-Collapse', {visibleOverflow: disabledCollapse}]" :style="{height: !thisValue ? `${defaultHeight}px` : `${maxHeight}px`, 'max-height': `${maxHeight}px`, background: hover ? hoverBackground : background}" @mouseenter="hover = true" @touchstart="hover = true" @mouseleave="hover = false" @touchend="hover = false">
+<div :class="['fv-'+$theme+'-Collapse', {visibleOverflow: disabledCollapse && visibleOverflow}]" :style="{height: !thisValue ? `${defaultHeight}px` : `${maxHeight}px`, 'max-height': `${maxHeight}px`, background: hover ? hoverBackground : background}" @mouseenter="hover = true" @touchstart="hover = true" @mouseleave="hover = false" @touchend="hover = false">
     <div class="collapse-description-container" :style="{height: `${defaultHeight}px`}" @click="itemClick">
         <div class="collapse-icon-box" @click="$emit('left-icon-click')">
             <slot name="icon">
@@ -82,6 +82,9 @@ export default {
         },
         disabledCollapse: {
             default: false
+        },
+        visibleOverflow: {
+            default: true
         },
         theme: {
             type: String,
