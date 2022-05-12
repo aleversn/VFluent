@@ -180,7 +180,7 @@ Compact Mode
 
 ```javascript
 options = [
-  { name: "", icon: "", iconColor: "", type: "", func: {}, secondary: [], disabled: false }
+  { name: "", icon: "", iconColor: "", type: "", func: {}, show: true, secondary: [], disabled: false }
 ];
 
 //e.g.//

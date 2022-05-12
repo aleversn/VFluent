@@ -1,7 +1,7 @@
 <template>
 <div :class="'fv-'+$theme+'-CommandBar'">
     <div class="left-command-bar-container" :style="{background: background}">
-        <span v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" :title="item.name" @click="itemClick($event, item)">
+        <span v-show="valueTrigger(item.show)" v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" :title="valueTrigger(item.name)" @click="itemClick($event, item)">
             <span v-show="valueTrigger(item.type) !== 'more'" class="s1-container">
                 <i class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(item.icon)}`]" :style="{color: valueTrigger(item.iconColor)}"></i>
                 <p v-show="!compact" class="name">
@@ -127,6 +127,7 @@ export default {
                 name: "",
                 type: "normal",
                 icon: "",
+                show: true,
                 choosen: false,
                 secondary: []
             };
