@@ -32,7 +32,7 @@ export default {
             thisValue: this.value,
             dynamicValue: [],
             lock: true,
-            timer: {}
+            looper: true
         }
     },
     watch: {
@@ -59,15 +59,20 @@ export default {
         this.lazyLoadInit();
     },
     methods: {
-        init () {
-            this.timer = setInterval(() => {
+        async init () {
+            while(this.looper) {
                 if(this.$el.scrollHeight <= this.$el.clientHeight && this.thisValue.length > this.dynamicValue.length) {
                     this.loadMore();
                     this.$emit('init-start');
                 }
                 else
                     this.$emit('init-end');
-            }, 100);
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(1);
+                    }, 100);
+                });
+            }
         },
         loadMore () {
             if(this.static) {
@@ -95,7 +100,7 @@ export default {
         }
     },
     beforeDestroy () {
-        clearInterval(this.timer);
+        this.looper = false;
     }
 }
 </script>
