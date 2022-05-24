@@ -1,7 +1,7 @@
 <template>
     <div :class="['fv-'+$theme+'-TextField', status, {focus: isFocus}, {disabled: isDisabled}, {underline: isUnderline}, { shadow: isBoxShadow }]" :style="[{ 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { background: background, borderWidth: `${borderWidth}px`, borderColor: isFocus ? focusBorderColor : borderColor }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]">
         <div class="text-field-reveal-container" :style="{ background: background, borderRadius: `${borderRadius}px` }">
-            <textarea v-model="thisValue" :placeholder="placeholder" class="fv-text-field-input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight}" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="focus(true, $event)" @blur="focus(false, $event)"></textarea>
+            <textarea v-model="thisValue" :placeholder="placeholder" class="fv-text-field-input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight, color: foreground, 'text-align': textAlign}" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)" @focus="focus(true, $event)" @blur="focus(false, $event)"></textarea>
         </div>
     </div>
 </template>
@@ -45,6 +45,12 @@ export default {
         },
         fontWeight: {
             default: 'normal'
+        },
+        foreground: {
+            default: ""
+        },
+        textAlign: {
+            default: 'left'
         },
         borderRadius: {
             default: 3

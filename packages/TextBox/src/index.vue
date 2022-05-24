@@ -5,7 +5,7 @@
             <p>{{prefix}}</p>
         </div>
         <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
-        <core v-model="thisValue" ref="core" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :fontSize="fontSize" :fontWeight="fontWeight" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)"></core>
+        <core v-model="thisValue" ref="core" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :fontSize="fontSize" :fontWeight="fontWeight" :foreground="foreground" :textAlign="textAlign" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)"></core>
         <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
         <div v-show="suffix != ''" class="fix-block">
             <p>{{suffix}}</p>
@@ -86,8 +86,14 @@ export default {
         fontWeight: {
             default: 'normal'
         },
+        foreground: {
+            default: ""
+        },
         borderRadius: {
             default: 3
+        },
+        textAlign: {
+            default: 'left'
         },
         isBoxShadow: {
             default: false

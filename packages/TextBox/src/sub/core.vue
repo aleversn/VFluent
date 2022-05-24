@@ -1,7 +1,7 @@
 <template>
 <div class="text-box-container">
-    <input v-if="mode == 'default'" v-model="thisValue" :type="type" :placeholder="placeholder" class="fv-text-box-input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight}" @keydown="keyDown" @keyup="$emit('keyup', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"/>
-    <mask-input v-if="mode == 'mask'" ref="mask_input" v-model="thisMaskValue" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="isReadOnly" :disabled="isDisabled" :fontSize="fontSize" :fontWeight="fontWeight" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"></mask-input>
+    <input v-if="mode == 'default'" v-model="thisValue" :type="type" :placeholder="placeholder" class="fv-text-box-input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight, color: foreground, 'text-align': textAlign}" @keydown="keyDown" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"/>
+    <mask-input v-if="mode == 'mask'" ref="mask_input" v-model="thisMaskValue" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="isReadOnly" :disabled="isDisabled" :fontSize="fontSize" :fontWeight="fontWeight" :textAlign="textAlign" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)" @focus="$emit('update:focus', true)" @blur="$emit('update:focus', false)"></mask-input>
 </div>
 </template>
 
@@ -54,6 +54,12 @@ export default {
         },
         fontWeight: {
             default: 'normal'
+        },
+        foreground: {
+            default: ""
+        },
+        textAlign: {
+            default: 'left'
         },
         theme: {
             type: String,

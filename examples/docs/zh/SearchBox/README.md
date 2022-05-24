@@ -265,6 +265,10 @@ Customize background
 |       borderWidth        |             [boolean]              |       No       |        1        |                                           |
 |       borderColor        |          [string(color)]           |       No       |       N/A       |                                           |
 |     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                           |
+|         fontSize         |              [number]              |       No       |      13.3       |                                           |
+|        fontWeight        |          [string,number]           |       No       |     normal      |                                           |
+|        foreground        |          [string(color)]           |       No       |       N/A       |                                           |
+|        textAlign         |              [string]              |       No       |      left       |                                           |
 |       borderRadius       |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
 | disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |
@@ -279,6 +283,8 @@ Customize background
 |:------------------------:|:--------------:|:----------------------------------------------------------------------------------------------------------:|
 |         keydown          |     event      |                                                                                                            |
 |          keyup           |     event      |                                                                                                            |
+|          change          |     event      |                                                                                                            |
+|          paste           |     event      |                                                                                                            |
 |     left-icon-click      |     event      |                                                                                                            |
 |        icon-click        |     event      |                                                                                                            |
 |         lazyload         |     array      |                      搜索结果框滚动加载事件, 滑动到最底部时触发, 返回当前搜索筛选数据                      |

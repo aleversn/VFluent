@@ -54,6 +54,7 @@ import Tag from '@/Tag/index.js'
 import Collapse from '@/Collapse/index.js'
 import InfiniteScrollView from '@/InfiniteScrollView/index.js'
 import TextField from '@/TextField/index.js'
+import VerifyBox from '@/VerifyBox/index.js'
 
 
 let components = [
@@ -103,6 +104,7 @@ let components = [
   Collapse,
   InfiniteScrollView,
   TextField,
+  VerifyBox,
 
 ]
 
@@ -168,6 +170,7 @@ export default {
   Collapse,
   InfiniteScrollView,
   TextField,
+  VerifyBox,
 
 }
 

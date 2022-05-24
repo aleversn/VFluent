@@ -243,7 +243,9 @@ Customize background
 |       borderColor        |          [string(color)]           |       No       |       N/A       |                                           |
 |     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                           |
 |         fontSize         |              [number]              |       No       |      13.3       |                                           |
-|        fontWeight        |              [string               |    number]     |       No        |                  normal                   |
+|        fontWeight        |          [string,number]           |       No       |     normal      |                                           |
+|        foreground        |          [string(color)]           |       No       |       N/A       |                                           |
+|        textAlign         |              [string]              |       No       |      left       |                                           |
 |       borderRadius       |              [number]              |       No       |        3        | Textbox圆角大小, 启用revealBorder时将失效 |
 |       isBoxShadow        |             [boolean]              |       No       |      false      |             开启`TextBox`阴影             |
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
@@ -259,6 +261,8 @@ Customize background
 |:---------------:|:--------------:|:----------------:|
 |     keydown     |     event      |                  |
 |      keyup      |     event      |                  |
+|     change      |     event      |                  |
+|      paste      |     event      |                  |
 | left-icon-click |     event      |                  |
 |   icon-click    |     event      |                  |
 | debounce-input  |     string     | 搜索节流内容反馈 |

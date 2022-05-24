@@ -366,5 +366,13 @@
       "Dark": "@/dark-theme/TextField.scss",
       "Custom": "@/custom-theme/TextField.scss"
     }
+  },
+  "VerifyBox": {
+    "entry": "@/VerifyBox/index.js",
+    "theme": {
+      "Light": "@/light-theme/VerifyBox.scss",
+      "Dark": "@/dark-theme/VerifyBox.scss",
+      "Custom": "@/custom-theme/VerifyBox.scss"
+    }
   }
 }

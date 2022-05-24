@@ -46,6 +46,7 @@ import { FvTag } from './tag'
 import { FvCollapse } from './collapse'
 import { FvInfiniteScrollView } from './infinitescrollview'
 import { FvTextField } from './textfield'
+import { FvVerifyBox } from './verifybox'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -145,4 +146,6 @@ export type Theme = FluentVueTheme
   export class InfiniteScrollView extends FvInfiniteScrollView {}
 /** TextField component */
   export class TextField extends FvTextField {}
+/** VerifyBox component */
+  export class VerifyBox extends FvVerifyBox {}
 

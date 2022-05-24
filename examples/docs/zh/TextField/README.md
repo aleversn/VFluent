@@ -145,30 +145,34 @@ Customize background
 
 ### Propoties
 ---
-|        属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |              说明(statement)              |
-|:------------------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------:|
-|          value           |              [string]              |       No       |                 |     Using v-model binding input value     |
-|       placeholder        |              [string]              |       No       |       N/A       |              等同HTML[input]              |
-|         readonly         |             [boolean]              |       No       |      false      |              等同HTML[input]              |
-|        maxlength         |              [number]              |       No       |       N/A       |              等同HTML[input]              |
+|        属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |               说明(statement)               |
+|:------------------------:|:----------------------------------:|:--------------:|:---------------:|:-------------------------------------------:|
+|          value           |              [string]              |       No       |                 |      Using v-model binding input value      |
+|       placeholder        |              [string]              |       No       |       N/A       |               等同HTML[input]               |
+|         readonly         |             [boolean]              |       No       |      false      |               等同HTML[input]               |
+|        maxlength         |              [number]              |       No       |       N/A       |               等同HTML[input]               |
 |        underline         |             [boolean]              |       No       |      false      |      是否开启Underline风格的TextField       |
-|        background        |          [string(color)]           |       No       |       N/A       |                                           |
-|       borderWidth        |             [boolean]              |       No       |       N/A       |                                           |
-|       borderColor        |          [string(color)]           |       No       |       N/A       |                                           |
-|     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                           |
-|         fontSize         |              [number]              |       No       |      13.3       |                                           |
-|        fontWeight        |              [string               |    number]     |       No        |                  normal                   |
+|        background        |          [string(color)]           |       No       |       N/A       |                                             |
+|       borderWidth        |             [boolean]              |       No       |       N/A       |                                             |
+|       borderColor        |          [string(color)]           |       No       |       N/A       |                                             |
+|     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                             |
+|         fontSize         |              [number]              |       No       |      13.3       |                                             |
+|        fontWeight        |              [string               |    number]     |       No        |                   normal                    |
+|        foreground        |          [string(color)]           |       No       |       N/A       |                                             |
+|        textAlign         |              [string]              |       No       |      left       |                                             |
 |       borderRadius       |              [number]              |       No       |        3        | TextField圆角大小, 启用revealBorder时将失效 |
 |       isBoxShadow        |             [boolean]              |       No       |      false      |             开启`TextField`阴影             |
-|       revealBorder       |             [boolean]              |       No       |      false      |                                           |
-| disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |
-|          status          |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
-|         disabled         |             [boolean]              |       No       |      false      |                                           |
-|          theme           | ['light','dark','custom','system'] |       No       |     system      |                                           |
+|       revealBorder       |             [boolean]              |       No       |      false      |                                             |
+| disabledBorderWhenReveal |             [boolean]              |       No       |      true       |       使用`Reveal`边框是禁用默认边框        |
+|          status          |         ['warn','correct']         |       No       |       N/A       |     状态边框预设, 默认有警告和正确两种      |
+|         disabled         |             [boolean]              |       No       |      false      |                                             |
+|          theme           | ['light','dark','custom','system'] |       No       |     system      |                                             |
 
 ### Events
 ---
-|  事件名(Name)   | 参数类型(args) | 说明(statement) |
-|:---------------:|:--------------:|:---------------:|
-|     keydown     |     event      |                 |
-|      keyup      |     event      |                 |
+| 事件名(Name) | 参数类型(args) | 说明(statement) |
+|:------------:|:--------------:|:---------------:|
+|   keydown    |     event      |                 |
+|    keyup     |     event      |                 |
+|    change    |     event      |                 |
+|    paste     |     event      |                 |

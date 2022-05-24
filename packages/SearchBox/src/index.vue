@@ -8,7 +8,7 @@
             </div>
         </transition>
         <div class="search-box-container">
-            <input v-model="thisValue" :type="type" :placeholder="placeholder" class="input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @focus="isFocus = true" @blur="isFocus = false"/>
+            <input v-model="thisValue" :type="type" :placeholder="placeholder" class="input" :readonly="isReadOnly" :disabled="isDisabled" :maxlength="maxlength" ref="input" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight, color: foreground, 'text-align': textAlign}" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)" @focus="isFocus = true" @blur="isFocus = false"/>
         </div>
         <i v-show="thisValue.length > 0 || resultPlaceholder.length > 0" class="ms-Icon ms-Icon--Cancel icon-block" @click="clearValue"></i>
         <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
@@ -74,6 +74,18 @@ export default {
         },
         focusBorderColor: {
             default: ""
+        },
+        foreground: {
+            default: ""
+        },
+        fontSize: {
+            default: 13.3
+        },
+        fontWeight: {
+            default: 'normal'
+        },
+        textAlign: {
+            default: 'left'
         },
         borderRadius: {
             default: 3

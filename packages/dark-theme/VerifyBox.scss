@@ -1,0 +1,5 @@
+@import '../common-theme/VerifyBox.scss';
+.fv-dark-VerifyBox{
+  @include fv-VerifyBox();
+}
+    
