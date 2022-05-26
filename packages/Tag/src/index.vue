@@ -1,6 +1,6 @@
 <template>
     <div :class="['fv-'+$theme+'-Tag']">
-        <div v-for="(item, index) in thisValue" :key="index" class="fv-tag-item" :class="[item.type ? item.type : '', size, {disabled: item.disabled}]" :style="{background: item.background ? getColor(item.background)['background'] : '', borderColor: item.background ? getColor(item.background)['borderColor'] : '', color: item.background ? getColor(item.background)['color'] : ''}">
+        <div v-for="(item, index) in thisValue" :key="index" class="fv-tag-item" :class="[item.type ? item.type : '', size, {disabled: item.disabled}]" :style="{background: item.background ? getColor(item.background)['background'] : '', borderColor: item.background ? getColor(item.background)['borderColor'] : '', color: item.background ? getColor(item.background)['color'] : ''}" @click="$emit('tag-click', item)">
             <span class="fv-tag-content">
                 <slot>
                     {{item.text}}

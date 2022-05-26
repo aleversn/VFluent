@@ -604,7 +604,7 @@ export default {
 
 ```vue
 <template v-slot:head="x">
-  <p class="default-title">{{ x.content }}</p>
+  <p class="default-title">{{ x.item.content }}</p>
 </template>
 ```
 
