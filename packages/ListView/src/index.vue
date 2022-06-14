@@ -1,7 +1,7 @@
 <template>
 <div :class="'fv-'+$theme+'-ListView'" @click="focus = true">
     <div class="list-view-container" ref="container">
-        <span v-show="valueTrigger(item.show) !== false" v-for="(item, index) in thisValue" :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled), selected: item.selected && showSelectedBorder}" class="item" :key="index" :style="{ background: valueTrigger(item.choosen) ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
+        <span v-show="valueTrigger(item.show) !== false" v-for="(item, index) in thisValue" :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled), selected: item.selected && showSelectedBorder}" class="item" :key="index" :style="{ height: _rowHeight, background: valueTrigger(item.choosen) ? choosenBackground : '' }" :ref="`list_item_${index}`" @click="onClick($event, item)">
             <slot name="listItem" :item="item" :index="index" :valueTrigger="valueTrigger">
                 <p :style="{ color: valueTrigger(item.type) == 'header' ? headerForeground : '' }">{{valueTrigger(item.name)}}</p>
             </slot>
@@ -87,6 +87,11 @@ export default {
                     count++;
             }
             return count;
+        },
+        _rowHeight () {
+            if(isNaN(this.rowHeight))
+                return this.rowHeight;
+            return this.rowHeight + 'px';
         },
         $theme () {
             if (this.theme=='system')
