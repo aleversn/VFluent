@@ -166,6 +166,7 @@ export default {
         },
         accept() {
             this.$emit('input', new Date(this.selected.date));
+            this.$emit("change", new Date(this.selected.date));
             this.show = false;
         },
         cancel() {
