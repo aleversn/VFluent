@@ -115,8 +115,8 @@ export default {
     },
     computed: {
         currentLeft() {
-            let index = -1;
             if(!this.thisValue) return 0;
+            let index = -1;
             if(this.thisValue.key) index = this.thisItems.findIndex(item => item.key === this.thisValue.key);
             else index = this.thisItems.findIndex(item => item.name === this.thisValue.name);
             if (index < 0) return 0;
