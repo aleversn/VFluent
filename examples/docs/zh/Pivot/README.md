@@ -37,6 +37,14 @@ export default {
 <fv-Pivot :items="items" :tab="true"></fv-Pivot>
 ```
 
+### Pivot-Tab Customize
+---
+<fv-Pivot v-model="value" :items="items" :tab="true" :sliderBoxshadow="true" :background="'rgba(238, 238, 239, 1)'"></fv-Pivot>
+
+```vue
+<fv-Pivot v-model="value" :items="items" :tab="true" :sliderBoxshadow="true" :background="'rgba(238, 238, 239, 1)'"></fv-Pivot>
+```
+
 ### Pivot-Dark Theme
 ---
 <div style="width: 100%; background: black;">
@@ -67,14 +75,16 @@ export default {
 
 ### Propoties
 ---
-|    属性(attr)    |             类型(type)             | 必填(required) |        默认值(default)         | 说明(statement) |
-|:----------------:|:----------------------------------:|:--------------:|:------------------------------:|:---------------:|
-|      value       |              [object]              |       No       |              N/A               |  当前选中项值   |
-|      items       |              [array]               |       No       | [{ name: "Pivot", width: 80 }] |   选项卡数据    |
-|       tab        |             [boolean]              |       No       |             false              | 是否开启tab样式 |
-|    foreground    |          [string(color)]           |       No       |              N/A               |     前景色      |
-| sliderBackground |          [string(color)]           |       No       |              N/A               |   滑块背景色    |
-|      theme       | ['light','dark','custom','system'] |       No       |             system             |      主题       |
+|    属性(attr)    |             类型(type)             | 必填(required) |        默认值(default)         | 说明(statement)  |
+|:----------------:|:----------------------------------:|:--------------:|:------------------------------:|:----------------:|
+|      value       |              [object]              |       No       |              N/A               |   当前选中项值   |
+|      items       |              [array]               |       No       | [{ name: "Pivot", width: 80 }] |    选项卡数据    |
+|       tab        |             [boolean]              |       No       |             false              | 是否开启tab样式  |
+|    foreground    |          [string(color)]           |       No       |              N/A               |      前景色      |
+| sliderBackground |          [string(color)]           |       No       |              N/A               |    滑块背景色    |
+| sliderBoxshadow  |             [boolean]              |       No       |             false              | 是否开启滑块阴影 |
+|    background    |          [string(color)]           |       No       |              N/A               |      背景色      |
+|      theme       | ['light','dark','custom','system'] |       No       |             system             |       主题       |
 
 ### Events
 ---

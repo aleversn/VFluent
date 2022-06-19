@@ -1,6 +1,6 @@
 <template>
 <div class="slider">
-    <span class="s" :style="{'margin-left': `${thisLeft}px`, width: `${thisWidth}px`}">
+    <span class="fv-pivot-s" :class="[{'is-boxshadow': sliderBoxshadow}]" :style="{'margin-left': `${thisLeft}px`, width: `${thisWidth}px`}">
         <p :style="{background: styles.slider.background}"></p>
     </span>
 </div>
@@ -16,6 +16,9 @@ export default {
         },
         width: {
             default: 60
+        },
+        sliderBoxshadow: {
+            default: false
         },
         background: {
             default: ""

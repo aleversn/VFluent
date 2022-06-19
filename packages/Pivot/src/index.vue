@@ -1,5 +1,5 @@
 <template>
-    <div :class="['fv-' + $theme + '-Pivot', tab ? 'tab' : '']">
+    <div :class="['fv-' + $theme + '-Pivot', tab ? 'tab' : '']" :style="{background: background}">
         <div class="pivot-container">
             <span
                 v-show="item.show"
@@ -23,6 +23,7 @@
         <slider
             :left="currentLeft"
             :width="currentWidth"
+            :sliderBoxshadow="sliderBoxshadow"
             :background="styles.slider.background"
         ></slider>
     </div>
@@ -54,6 +55,12 @@ export default {
         sliderBackground: {
             default: "",
         },
+        sliderBoxshadow: {
+            default: false
+        },
+        background: {
+            default: "",
+        },
         theme: {
             type: String,
             default: "system",
@@ -75,18 +82,20 @@ export default {
     },
     watch: {
         value(val) {
-            for(let item of this.thisItems) {
-                let match = true;
-                for(let key in val) {
-                    if(item[key] !== val[key]) {
-                        match = false;
-                        break;
-                    }
-                }
-                if(match) {
-                    this.thisValue = item;
-                    return 0;
-                }
+            if(val.key) {
+                let match = this.thisItems.find(item => item.key === val.key);
+                if(match)
+                    this.thisValue = match;
+                else
+                    this.thisValue = val;
+                return;
+            }
+            else if(val.name) {
+                let match = this.thisItems.find(item => item.name === val.name);
+                if(match)
+                    this.thisValue = match;
+                else
+                    this.thisValue = val;
             }
             this.thisValue = val;
         },
@@ -106,7 +115,9 @@ export default {
     },
     computed: {
         currentLeft() {
-            let index = this.thisItems.indexOf(this.thisValue);
+            let index = -1;
+            if(this.thisValue.key) index = this.thisItems.findIndex(item => item.key === this.thisValue.key);
+            else index = this.thisItems.findIndex(item => item.name === this.thisValue.name);
             if (index < 0) return 0;
             let count = 0;
             for (let i = 0; i < index; i++) {
