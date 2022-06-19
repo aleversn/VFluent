@@ -84,6 +84,18 @@
 </fv-DatePicker>
 ```
 
+### DatePicker-Disabled
+
+<ClientOnly>
+<fv-DatePicker v-model="date"  :showWeek="true" disabled>
+</fv-DatePicker>
+</ClientOnly>
+
+``` vue
+<fv-DatePicker v-model="date" :showWeek="true">
+</fv-DatePicker>
+```
+
 ### DatePicker-Custom
 
 <ClientOnly>
@@ -147,4 +159,5 @@ innerBorderColor="rgb(0, 204, 153)"
 | 事件名(Name) | 参数类型(args) | 说明(statement) |
 |:------------:|:--------------:|:---------------:|
 | focus        |                |  触发焦点时触发 |
+| change       |                | 当选中的时间发生变化时 |
   

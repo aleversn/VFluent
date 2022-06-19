@@ -1,5 +1,5 @@
 <template>
-    <div name="fv-DatePicker" :class="['fv-' + $theme + '-DatePicker']">
+    <div name="fv-DatePicker" :class="['fv-' + $theme + '-DatePicker', { disabled: disabled }]">
         <!-- Outside Box -->
         <div class="fv-DatePicker__input" @click="focus()">
             <button v-if="!hideMonth" class="fv-DatePicker__input-month">{{ months[value.getMonth()] }}</button>
@@ -426,7 +426,8 @@ export default {
             this.popper.show = true;
         },
         confirm() {
-            this.$emit('input', this.selected.date);
+            this.$emit('input', new Date(this.selected.date));
+            this.$emit('change', new Date(this.selected.date));
             this.popper.show = false;
         },
         cancel() {

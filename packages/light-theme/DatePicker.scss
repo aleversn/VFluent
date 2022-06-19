@@ -50,4 +50,9 @@
       }
     }
   }
+  &.disabled{
+    background-color: rgb(243, 242, 241);
+    cursor: not-allowed;
+    color:#999;
+  }
 }
