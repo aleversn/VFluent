@@ -325,7 +325,7 @@ export class RevealEffects
         clearInterval(element.clickWave);
         element.wave = 0;
         element.el.style.backgroundImage = element.oriBg;
-        element.el.style.backgroundRepeat = element.oriRepeat;
+        element.el.style.backgroundRepeat = element.oriBgRepeat;
     }
     
     static clearBorder(element) {
