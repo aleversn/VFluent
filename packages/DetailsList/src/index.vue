@@ -13,7 +13,7 @@
                 <i class="ms-Icon ms-Icon--ChevronRight"></i>
             </span>
         </span>
-        <span v-show="item.show && item.visible" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{'min-width': colWidth[index], width: colWidth[index], background: styles.listHead.background}">
+        <span v-show="item.show && valueTrigger(item.visible)" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{'min-width': colWidth[index], width: colWidth[index], background: styles.listHead.background}">
             <span class="col-content" @click="sortClick(item)">
                 <slot name="head" :item="item" :index="index">
                     <p class="default-title">{{item.content}}</p>
@@ -33,7 +33,7 @@
                     <i class="ms-Icon ms-Icon--Completed ll"></i>
                 </span>
             </span>
-            <span v-show="col.show && col.visible" v-for="(col, idx) in thisHead" class="col" :key="`row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
+            <span v-show="col.show && valueTrigger(col.visible)" v-for="(col, idx) in thisHead" class="col" :key="`row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
                 <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
                     <p>{{`row: ${index} col: ${idx}`}}</p>
                 </slot>
@@ -74,7 +74,7 @@
                     </span>
                 </span>
                 <span class="col" style="width: 36px;" @click="chooseCurrent(item)"></span>
-                <span v-show="col.show && col.visible" v-for="(col, idx) in thisHead" class="col" :key="`group: ${i} row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
+                <span v-show="col.show && valueTrigger(col.visible)" v-for="(col, idx) in thisHead" class="col" :key="`group: ${i} row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
                     <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
                         <p>{{`row: ${index} col: ${idx}`}}</p>
                     </slot>
@@ -694,6 +694,10 @@ export default {
                 transfer: target,
                 value: this.thisValue
             });
+        },
+        valueTrigger (val) {
+            if(typeof(val) === 'function')  return val();
+            return val;
         }
     },
     beforeDestroy () {
