@@ -11,7 +11,7 @@ function midline(name) {
     return name.replace(/\B([A-Z])/g, "-$1").toLowerCase()
 }
 
-const getCompoentAttributes = (compoentName) => {
+const getComponentAttributes = (compoentName) => {
     let vueSingleCompoent = fs.readFileSync(`./packages/${compoentName}/src/index.vue`).toString();
     let js = vueSingleCompoent.match(/<script>[\s\S]*<\/script>/g)[0]
     let emitsOrigin = vueSingleCompoent.match(/\$emit\(['"` ]+(.*)['"` ]+,.*\)/mg)
@@ -44,6 +44,8 @@ const getCompoentAttributes = (compoentName) => {
     for (let key of emits) {
         attributes.push(midline(`@${key}`))
     }
+    // show attributes in console
+    console.log("attributes", attributes)
     return attributes
 }
 
@@ -71,11 +73,18 @@ const decodeMarkdownTable = (tableString) => {
 }
 
 
-
-const getCompoentAttributeDetails = (compoentName) => {
-    let vueSingleReadme = fs.readFileSync(`./examples/docs/zh/${compoentName}/README.md`).toString();
-    let propsTable = vueSingleReadme.match(/### Propoties\r\n---\r\n\|[\s\S]*?\r\n\r\n/m)
+/**
+ * Decode component attributes from markdown table
+ * @param {string} componentName Component Name
+ * @returns {Object} Component attributes
+ */
+const getComponentAttributeDetails = (componentName) => {
+    let filePath = `./examples/docs/zh/${componentName.trim()}/README.md`
+    let vueSingleReadme = fs.readFileSync(filePath).toString();
+    console.log("vueSingleReadme", vueSingleReadme)
+    let propsTable = vueSingleReadme.match(/### Propoties\n---\n\|[\s\S]*?\n\n/m)
     let componentDetails = {}
+    // decode props table
     if (propsTable && propsTable.length > 0) {
         propsTable = decodeMarkdownTable(propsTable[0])
         for (let index = 2; index < propsTable.length; ++index) {
@@ -92,12 +101,13 @@ const getCompoentAttributeDetails = (compoentName) => {
                 obj.type = type
             }
             obj.description = `${items[4]}${items[3] == 'N/A' ? "" : ",default=" + items[3]}`
-            componentDetails[midline(`fv-${compoentName}/${items[0]}`)] = obj
-            componentDetails[midline(`fv-${compoentName}/:${items[0]}`)] = obj
+            componentDetails[midline(`fv-${componentName}/${items[0]}`)] = obj
+            componentDetails[midline(`fv-${componentName}/:${items[0]}`)] = obj
         }
     }
 
-    let eventsTable = vueSingleReadme.match(/### Events\r\n---\r\n\|[\s\S]*?\r\n\r\n/m);
+    // decode events table
+    let eventsTable = vueSingleReadme.match(/### Events\n---\n\|[\s\S]*?\n\n/m);
     if (eventsTable && eventsTable.length > 0) {
         eventsTable = decodeMarkdownTable(eventsTable[0])
         for (let index = 2; index < eventsTable.length; ++index) {
@@ -106,10 +116,11 @@ const getCompoentAttributeDetails = (compoentName) => {
                 type: "method",
                 description: items[2]
             }
-            componentDetails[midline(`fv-${compoentName}/${items[0]}`)] = obj
-            componentDetails[midline(`fv-${compoentName}/@${items[0]}`)] = obj
+            componentDetails[midline(`fv-${componentName}/${items[0]}`)] = obj
+            componentDetails[midline(`fv-${componentName}/@${items[0]}`)] = obj
         }
     }
+    console.log("componentDetails", componentDetails)
     return componentDetails
 }
 
@@ -117,11 +128,11 @@ const getCompoentAttributeDetails = (compoentName) => {
 
 let tags = {}
 let attributes = {}
-for (let compoentName in components) {
-    tags[midline(`fv-${compoentName}`)] = {
-        attributes: getCompoentAttributes(compoentName)
+for (let componentName in components) {
+    tags[midline(`fv-${componentName}`)] = {
+        attributes: getComponentAttributes(componentName)
     }
-    attributes = Object.assign(attributes, getCompoentAttributeDetails(compoentName))
+    attributes = Object.assign(attributes, getComponentAttributeDetails(componentName))
 }
 
 

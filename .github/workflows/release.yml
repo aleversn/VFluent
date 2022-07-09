@@ -1,0 +1,59 @@
+name: 🚲Publish NPM Package
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+          cache: "yarn"
+
+      - name: 🚓loading denpendencies
+        run: yarn
+
+      - name: 🚗build the json file of vetur helper
+        run: yarn bin:vetur
+
+      - name: 🚕build library
+        run: yarn lib
+
+      - name: 🚚npm publish package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  deploydocs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+          cache: "yarn"
+
+      - name: 🚓loading denpendencies
+        run: yarn
+
+      - name: 🚕build docs
+        run: yarn docs:build
+
+      - name: 🚄deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./examples/docs/.vuepress/dist
