@@ -154,3 +154,4 @@ export default {
 |  background  |  [string(color)]   |       No       | rgba(204, 204, 204, 1) |                                                          |
 | borderWidth  |      [number]      |       No       |           8            |                                                          |
 |    legacy    |     [boolean]      |       No       |         false          |          Use the legacy version of ProgressRing          |
+

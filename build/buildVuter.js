@@ -45,7 +45,7 @@ const getComponentAttributes = (compoentName) => {
         attributes.push(midline(`@${key}`))
     }
     // show attributes in console
-    console.log("attributes", attributes)
+    // console.log("attributes", attributes)
     return attributes
 }
 
@@ -81,8 +81,7 @@ const decodeMarkdownTable = (tableString) => {
 const getComponentAttributeDetails = (componentName) => {
     let filePath = `./examples/docs/zh/${componentName.trim()}/README.md`
     let vueSingleReadme = fs.readFileSync(filePath).toString();
-    console.log("vueSingleReadme", vueSingleReadme)
-    let propsTable = vueSingleReadme.match(/### Propoties\n---\n\|[\s\S]*?\n\n/m)
+    let propsTable = vueSingleReadme.match(/### Propoties(\r\n|\n)+?---(\r\n|\n)+?\|[\s\S]*?(\r\n|\n)+?((\r\n|\n)+?|$)/m)
     let componentDetails = {}
     // decode props table
     if (propsTable && propsTable.length > 0) {
@@ -107,7 +106,7 @@ const getComponentAttributeDetails = (componentName) => {
     }
 
     // decode events table
-    let eventsTable = vueSingleReadme.match(/### Events\n---\n\|[\s\S]*?\n\n/m);
+    let eventsTable = vueSingleReadme.match(/### Events(\r\n|\n)+?---(\r\n|\n)+?\|[\s\S]*?((\r\n|\n)+?|$)/m);
     if (eventsTable && eventsTable.length > 0) {
         eventsTable = decodeMarkdownTable(eventsTable[0])
         for (let index = 2; index < eventsTable.length; ++index) {
@@ -120,7 +119,11 @@ const getComponentAttributeDetails = (componentName) => {
             componentDetails[midline(`fv-${componentName}/@${items[0]}`)] = obj
         }
     }
-    console.log("componentDetails", componentDetails)
+    // console.log("componentDetails", componentDetails)
+    if (Object.keys(componentDetails).length == 0) {
+        console.log(componentName)
+    }
+
     return componentDetails
 }
 
