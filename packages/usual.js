@@ -111,7 +111,7 @@ export class SDate
     static DisDay(startDate, endDate)
     {
         let dis = SDate.DisHour(startDate, endDate);
-        if(dis > 24)
+        if(Math.abs(dis) > 24)
             return Math.floor(dis / 24);
         else
             return startDate.getDate() == endDate.getDate() ? 0 : 1;
