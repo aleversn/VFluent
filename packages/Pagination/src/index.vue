@@ -3,10 +3,11 @@
         <div class="fv-pagination-container">
             <fv-button
                 :disabled="thisValue == 1 || isDisabled"
-                :class="{ small: small, shadow: shadow }"
+                :class="{ small: small }"
                 class="page-btn"
                 :theme="theme"
                 :background="background"
+                :is-box-shadow="shadow"
                 borderRadius="3"
                 @click="prev"
             >
@@ -16,12 +17,13 @@
                 <fv-button
                     v-if="item.show"
                     :key="index"
-                    :class="{ small: small, shadow: shadow }"
+                    :class="{ small: small }"
                     class="page-btn"
                     :theme="theme"
                     :disabled="isDisabled"
                     :background="background"
                     :foreground="thisValue == item.num ? foreground : ''"
+                    :is-box-shadow="shadow"
                     borderRadius="3"
                     fontWeight="bold"
                     @click="handleClick(item)"
