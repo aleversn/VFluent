@@ -1,27 +1,9 @@
 <template>
-    <!-- <div
-        @click="$emit('click', $event)"
-        class="fv-TreeView__checkbox"
-        :class="[status]"
-        role="checkbox"
-        :style="{
-            borderColor: $attrs.foreground,
-        }"
-    >
-        <i
-            class="ms-Icon"
-            :style="{
-                color:color,
-                backgroundColor: status?$attrs.foreground:undefined,
-            }"
-            :class="icon()"
-        />
-    </div> -->
     <div>
         <fv-check-box
             role="checkbox"
             class="fv-TreeView__checkbox"
-            @click="check"
+            @click.native.stop="check"
             :value="checkBoxValue"
             :borderColor="$attrs.foreground"
             :background="color"

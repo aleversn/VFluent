@@ -1,82 +1,54 @@
 <template>
-    <li
-        class="fv-TreeView__item"
-        :style="{
-            color: $attrs.foreground,
-        }"
-    >
-        <div class="fv-TreeView__label-border">
-            <div
-                ref="label"
-                class="fv-TreeView__label"
-                @click="expandFolder($event) && !checkable && click($event)"
-                @mousedown="clickItem(item)"
-                :style="[
+    <!-- item -->
+    <li class="fv-TreeView__item" :style="{
+        color: $attrs.foreground,
+    }">
+        <div class="fv-TreeView__label-border" :style="{
+            height: style.label.height
+        }">
+            <div ref="label" class="fv-TreeView__label"
+                @click.stop="expandFolder($event) && !checkable && click($event)" @mousedown="clickItem(item)" :style="[
                     style.label,
                     {
                         'border-width': `${borderWidth}px`,
                     },
-                ]"
-            >
-                <checkbox v-if="checkable" ref="checkbox" :status="item.checkboxStatus" v-bind="$attrs" @click="checkable && click($event)" />
+                ]">
+                <checkbox v-if="checkable" ref="checkbox" :status="item.checkboxStatus" v-bind="$attrs"
+                    @click="checkable && click($event)" />
                 <!-- expandFolder twice to ignore parent -->
-                <component
-                    :is="isUrl($attrs.expandedIcon) ? 'img' : 'i'"
-                    ref="expanded"
+                <component :is="isUrl($attrs.expandedIcon) ? 'img' : 'i'" ref="expanded"
                     v-if="$attrs.expandedIconPosition == 'left' && isFolder && item.expanded"
                     :class="[!isUrl($attrs.expandedIcon) ? `ms-Icon--${$attrs.expandedIcon}` : undefined, !isUrl($attrs.expandedIcon) ? 'ms-Icon' : undefined]"
-                    :src="isUrl($attrs.expandedIcon) ? $attrs.expandedIcon : undefined"
-                    draggable="false"
-                />
-                <component
-                    v-else-if="$attrs.expandedIconPosition == 'left' && isFolder && !item.expanded"
-                    :is="isUrl($attrs.unexpandedIcon) ? 'img' : 'i'"
-                    ref="expanded"
+                    :src="isUrl($attrs.expandedIcon) ? $attrs.expandedIcon : undefined" draggable="false" />
+                <component v-else-if="$attrs.expandedIconPosition == 'left' && isFolder && !item.expanded"
+                    :is="isUrl($attrs.unexpandedIcon) ? 'img' : 'i'" ref="expanded"
                     :class="[!isUrl($attrs.unexpandedIcon) ? `ms-Icon--${$attrs.unexpandedIcon}` : undefined, !isUrl($attrs.unexpandedIcon) ? 'ms-Icon' : undefined]"
-                    :src="isUrl($attrs.unexpandedIcon) ? $attrs.unexpandedIcon : undefined"
-                    draggable="false"
-                />
+                    :src="isUrl($attrs.unexpandedIcon) ? $attrs.unexpandedIcon : undefined" draggable="false" />
                 <i v-else-if="$attrs.expandedIconPosition == 'left'" style="width: 12px" />
                 <slot :item="item">
                     <template v-if="item.icon">
-                        <i v-if="!isUrl(item.icon)" class="ms-Icon fv-TreeView__icon" :class="[`ms-Icon--${item.icon}`]" />
+                        <i v-if="!isUrl(item.icon)" class="ms-Icon fv-TreeView__icon"
+                            :class="[`ms-Icon--${item.icon}`]" />
                         <img v-else :src="item.icon" class="fv-TreeView__icon" draggable="false" />
                     </template>
                     <span class="fv-TreeView__text">{{ item.label }}</span>
                 </slot>
                 <div class="fv-TreeView__right-box" v-if="$attrs.expandedIconPosition == 'right'">
-                    <component
-                        :is="isUrl($attrs.expandedIcon) ? 'img' : 'i'"
-                        ref="expanded"
+                    <component :is="isUrl($attrs.expandedIcon) ? 'img' : 'i'" ref="expanded"
                         v-if="isFolder && item.expanded"
                         :class="[!isUrl($attrs.expandedIcon) ? `ms-Icon--${$attrs.expandedIcon}` : undefined, !isUrl($attrs.expandedIcon) ? 'ms-Icon' : undefined]"
-                        :src="isUrl($attrs.expandedIcon) ? $attrs.expandedIcon : undefined"
-                        draggable="false"
-                    />
-                    <component
-                        v-else-if="isFolder && !item.expanded"
-                        :is="isUrl($attrs.unexpandedIcon) ? 'img' : 'i'"
+                        :src="isUrl($attrs.expandedIcon) ? $attrs.expandedIcon : undefined" draggable="false" />
+                    <component v-else-if="isFolder && !item.expanded" :is="isUrl($attrs.unexpandedIcon) ? 'img' : 'i'"
                         ref="expanded"
                         :class="[!isUrl($attrs.unexpandedIcon) ? `ms-Icon--${$attrs.unexpandedIcon}` : undefined, !isUrl($attrs.unexpandedIcon) ? 'ms-Icon' : undefined]"
-                        :src="isUrl($attrs.unexpandedIcon) ? $attrs.unexpandedIcon : undefined"
-                        draggable="false"
-                    />
+                        :src="isUrl($attrs.unexpandedIcon) ? $attrs.unexpandedIcon : undefined" draggable="false" />
                 </div>
             </div>
         </div>
+        <!-- children -->
         <transition name="fv-tree-item-show">
-            <tree-content
-                ref="content"
-                v-if="isFolder"
-                v-show="item.expanded"
-                v-bind="$attrs"
-                :children="item.children"
-                :deepth="deepth"
-                :viewStyle="viewStyle"
-                :checkable="checkable"
-                :padding="padding"
-                @click="clickItem"
-            >
+            <tree-content ref="content" v-if="isFolder" v-show="item.expanded" v-bind="$attrs" :children="item.children"
+                :deepth="deepth" :viewStyle="viewStyle" :checkable="checkable" :padding="padding" @click="clickItem">
                 <template v-slot:default="prop">
                     <slot :item="prop.item"> </slot>
                 </template>
@@ -141,15 +113,6 @@ export default {
                     },
                     mouseout: () => {
                         this.setLabelBackgroundColor(this.item.selected);
-                        // if (!this.item.selected) {
-                        //     this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
-                        // } else {
-                        //     if (this.viewStyle.backgroundColorHover!==undefined){
-                        //         this.$set(this.style.label,"backgroundColor",this.viewStyle.backgroundColorHover)
-                        //     }else{
-                        //         this.$set(this.style.label, 'backgroundColor', this.hoverColor(this.viewStyle.backgroundColor || '#fff', 0.95, 0.2).cssa());
-                        //     }
-                        // }
                     },
                 },
             },
@@ -185,7 +148,6 @@ export default {
         viewStyle: {
             handler: function () {
                 this.setLabelBackgroundColor(this.item.selected);
-                this.initFR();
             },
             deepth: true,
         },
@@ -193,7 +155,6 @@ export default {
             this.$set(this.style.label, 'paddingLeft', 10 + this.deepth * val + 'px');
         },
         $theme() {
-            // this.initFR();
             this.initStyle();
         },
     },
@@ -217,27 +178,18 @@ export default {
         this.$set(this.item, 'checkboxStatus', this.getStatus());
         this.initEvent();
         this.$nextTick(() => {
-            // this.initFR();
             this.initStyle();
         });
     },
     methods: {
-        initFR() {
-            // let className = this.revealEffectClass.length ? '.' + this.revealEffectClass[0] : '';
-            // new this.$RevealEffects('body', {
-            //     selector: '.fv-TreeView__label' + className,
-            //     borderLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
-            //         .alpha(0.15)
-            //         .cssa(),
-            //     borderGradientSize: 30,
-            //     backgroundLightColor: this.hoverColor(this.viewStyle.backgroundColor || '#000', 0.3, 1)
-            //         .alpha(0.1)
-            //         .cssa(),
-            //     backgroundGradientSize: 150,
-            // });
-        },
         initStyle() {
             this.$set(this.style.label, 'backgroundColor', this.viewStyle.backgroundColor || '#fff');
+            if (typeof this.viewStyle.height === "string") {
+                this.$set(this.style.label, "height", this.viewStyle.height)
+            } else if (typeof this.viewStyle.height === "number") {
+                this.$set(this.style.label, "height", `${this.viewStyle.height}px`)
+            }
+            console.log(this.style.label)
         },
         initEvent() {
             for (let key in this.event) {

@@ -5,11 +5,12 @@ sidebarDepth: 2
 
 <script>
   export default {
+
     data(){
       return {
         theme:0,
-        backgroundColor:'rgba(5, 76, 94, 1)',
-        backgroundColorHover:'rgba(5,76,94,1)',
+        backgroundColor:'rgba(41, 181, 255,0.9)',
+        backgroundColorHover:'rgba(41, 181, 255,1)',
         foregroundColor:'#fff',
           files:[
           {
@@ -40,7 +41,7 @@ sidebarDepth: 2
         },
         {
           label:"File",
-                  icon: "FileCode"
+        icon: "FileCode"
 
         }]
       }
@@ -64,32 +65,34 @@ sidebarDepth: 2
         return JSON.stringify(val,null,4).replace(/\n/g,'<br/>').replace(/\s/g,'&nbsp;')
       }
     }
+
   }
 </script>
 
 [[toc]]
 
 ### TreeView
+
    
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
 
 </fv-TreeView>
 
-``` vue
+```vue
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
 
 </fv-TreeView>
 ```
 
 ### Slot
-    
+
 <fv-TreeView v-model="files" style="width:200px">
   <template v-slot:default="prop">
     {{prop.item.label}}
   </template>
 </fv-TreeView>
 
-``` vue
+```vue
 <fv-TreeView v-model="files" style="width:200px">
   <template v-slot:default="prop">
     {{prop.item.label}}
@@ -98,11 +101,12 @@ sidebarDepth: 2
 ```
 
 ### TreeView Expand Position
+
   
 <fv-TreeView  v-model="files" expandedIconPosition="right" style="width:200px">
 </fv-TreeView>
 
-``` vue
+```vue
 <fv-TreeView 
   v-model="files"
   expandedIconPosition="right">
@@ -110,12 +114,12 @@ sidebarDepth: 2
 ```
 
 ### TreeView Chcekable
+
   
 <fv-TreeView v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
 </fv-TreeView>
 
-
-``` vue
+```vue
 <fv-TreeView 
   v-model="files" 
   :checkable="true"
@@ -126,11 +130,10 @@ sidebarDepth: 2
 
 ### TreeView CustomStyle Draggable
 
-
 backgroundColor:
 <ClientOnly>
 <fv-callout>
-<div :style="{width:'20px',height:'20px',backgroundColor:backgroundColor}" style="border:1px solid #000" />
+<div :style="{width:'20px', height:'20px', backgroundColor:backgroundColor}" style="border:1px solid #000" />
 <main>
   <fv-colorPicker v-model="backgroundColor" style="width:500px"/>
 </main>
@@ -139,7 +142,7 @@ backgroundColor:
 foregroundColor:
 <ClientOnly>
 <fv-callout>
-<div :style="{width:'20px',height:'20px',backgroundColor:foregroundColor}" style="border:1px solid #000" />
+<div :style="{width:'20px', height:'20px', backgroundColor:foregroundColor}" style="border:1px solid #000" />
 <main>
   <fv-colorPicker v-model="foregroundColor" style="width:500px"/>
 </main>
@@ -148,20 +151,19 @@ foregroundColor:
 backgroundColorHover:
 <ClientOnly>
 <fv-callout>
-<div :style="{width:'20px',height:'20px',backgroundColor:backgroundColorHover}" style="border:1px solid #000" />
+<div :style="{width:'20px', height:'20px', backgroundColor:backgroundColorHover}" style="border:1px solid #000" />
 <main>
   <fv-colorPicker v-model="backgroundColorHover" style="width:500px"/>
 </main>
 </fv-callout>
 </ClientOnly>
 
-
 <fv-TreeView 
   :theme="$theme" 
   v-model="files" 
   :checkable="true" 
   @click="click" 
-  :viewStyle="{backgroundColor,backgroundColorHover}" 
+  :viewStyle="{backgroundColor, backgroundColorHover, height:50}" 
   :foreground="foregroundColor"
   :draggable="true" 
   :background="backgroundColor"
@@ -174,15 +176,15 @@ backgroundColorHover:
   v-model="files" 
   :checkable="true" 
   @click="click" 
-  :viewStyle="{backgroundColor,backgroundColorHover}" 
+  :viewStyle="{backgroundColor, backgroundColorHover,height:50}" 
   :foreground="foregroundColor"
   :background="backgroundColor"
   :draggable="true" 
   :space="10">
 </fv-TreeView>
 </div>
-```
 
+```
 
 <br/>
 <br/>
@@ -207,6 +209,7 @@ backgroundColorHover:
 |     expandedIcon     |              [string]              |       No       |       N/A       |               扩展后的箭头               |
 | expandedIconPosition |          ['right','left']          |       No       |     'left'      |                箭头的位置                |
 |    unexpandedIcon    |              [string]              |       No       |       N/A       |               未扩展的箭头               |
+
 ### Events
 
 ---
@@ -255,12 +258,10 @@ backgroundColorHover:
 
 ```
 
-
 #### Slots
 
-``` vue
+```vue
 <template v-slot:default="prop">
   {{prop.item.label}}
 </template>
 ```
-
