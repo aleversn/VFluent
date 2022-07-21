@@ -1,38 +1,28 @@
 <template>
-    <div
-        :class="['fv-'+$theme+'-menuFlyout',{actived:callout.show},{disabled:disabled}]"
-        :style="flyout"
-    >
-        <fv-callout
-            :visible.sync="callout.show"
-            :beak="beak"
-            :focusTrap="callout.focusTrap"
-            :popperStyle="{
-				padding:'0px',
-				minWidth:'300px',
-				backgroundColor:backgroundColor,
-				color:color,
-				borderRadius:borderRadius,
-				overflow:overflow,
-				'box-shadow':'rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px'
-				}"
-            :position="position"
-            :popperClass="['fv-'+$theme+'-menuFlyoutPopper']"
-            :theme="$theme"
-            :disabled="disabled"
-        >
-            <button
-                class="fv-menuFlyout__button"
-                :style="{borderColor:borderColor}"
-            >
-                <span>{{label?label:"Click the Menu"}}</span>
-                <i class="ms-Icon ms-Icon--ChevronDown right-icon"></i>
-            </button>
-            <main>
-                <slot></slot>
-            </main>
-        </fv-callout>
-    </div>
+    <fv-callout 
+        :class="['fv-' + $theme + '-menuFlyout', { actived: callout.show }, { disabled: disabled }]"
+        :style="flyout" 
+        :visible.sync="callout.show" 
+        :beak="beak" 
+        :focusTrap="callout.focusTrap" 
+        :popperStyle="{
+            padding: '0px',
+            minWidth: '300px',
+            backgroundColor: backgroundColor,
+            color: color,
+            borderRadius: borderRadius,
+            overflow: overflow,
+            'box-shadow': 'rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px'
+        }" :position="position" :popperClass="['fv-' + $theme + '-menuFlyoutPopper']" :theme="$theme"
+        :disabled="disabled">
+        <button ref="button" class="fv-menuFlyout__button" :style="{ borderColor: borderColor }">
+            <span>{{ label ? label : "Click the Menu" }}</span>
+            <i class="ms-Icon ms-Icon--ChevronDown right-icon"></i>
+        </button>
+        <main>
+            <slot></slot>
+        </main>
+    </fv-callout>
 </template>
 
 <script>
@@ -114,7 +104,7 @@ export default {
                 selector: this.$el,
                 childrenSelector: this.$el.querySelectorAll(".fv-menuFlyout__button"),
                 borderGradientSize: 80,
-                backgroundGradientSize: 120,
+                backgroundGradientSize: 100,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,
             });

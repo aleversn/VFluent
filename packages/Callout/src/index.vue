@@ -115,7 +115,7 @@ export default {
         let target = this.getFirstDefaultSlotElement();
         let slots = this.slot();
         return (
-            <div style="all:inherit;">
+            <div>
                 {target}
                 <Popper ref="popper" keepalive={this.keepalive} theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} nodes={slots} />
             </div>

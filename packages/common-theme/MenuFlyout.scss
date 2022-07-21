@@ -1,16 +1,19 @@
 @mixin fv-menuFlyout {
-    position: relative;
-    width: 300px;
-    height: 36px;
-    padding: 2px;
-    border-radius: 3px;
+	position: relative;
+	width: 300px;
+	height: 36px;
+	border-radius: 3px;
+	margin: 0;
 	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	cursor: pointer;
-    box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
-    
+	box-sizing: border-box;
+	box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+
 	.fv-menuFlyout__button {
-        width: 100%;
+		width: 100%;
 		cursor: inherit;
 		color: inherit;
 		border-radius: inherit;
@@ -19,37 +22,35 @@
 		margin: 0;
 		padding: 0 3px;
 		background: inherit;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
 
 		span {
-            height: 100%;
-            margin: 0 4px;
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        
-        .right-icon
-        {
-            width: 20px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+			height: 100%;
+			margin: 0 4px;
+			flex: 1;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		.right-icon {
+			width: 20px;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 	&.disabled {
 		cursor: not-allowed;
-    }
-    
-    .main-block
-    {
-        position: relative;
-        padding: 0px;
-    }
+	}
+
+	.main-block {
+		position: relative;
+		padding: 0px;
+	}
 }
 
 @mixin fv-menuFlyoutPopper {
@@ -82,9 +83,9 @@
 		height: 40px;
 		line-height: 30px;
 		box-sizing: border-box;
-        // margin-right: 30px;
-        display: flex;
-        align-items: center;
+		// margin-right: 30px;
+		display: flex;
+		align-items: center;
 		i {
 			width: 20px;
 		}
@@ -157,9 +158,9 @@
 		border: none;
 		height: 40px;
 		width: 100%;
-        padding: 0 12px;
-        display: flex;
-        align-items: center;
+		padding: 0 12px;
+		display: flex;
+		align-items: center;
 		text-align: left;
 		cursor: inherit;
 		i {
@@ -174,7 +175,7 @@
 @mixin fv-menuBlockFlyout {
 	.fv-menuBlockFlyout__header {
 		padding: 0 12px;
-        font-size: 13.8px;
-        font-weight: 600;
+		font-size: 13.8px;
+		font-weight: 600;
 	}
 }
