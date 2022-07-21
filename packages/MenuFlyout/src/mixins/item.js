@@ -127,8 +127,8 @@ export default {
     },
     click() {
       if (this.disabled) return;
-      for (let index in this.clickEvent) {
-        this.clickEvent[index]();
+      for (let event of this.clickEvent) {
+        event();
       }
       this.$emit("click");
     }

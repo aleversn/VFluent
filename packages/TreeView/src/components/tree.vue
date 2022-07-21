@@ -189,7 +189,6 @@ export default {
             } else if (typeof this.viewStyle.height === "number") {
                 this.$set(this.style.label, "height", `${this.viewStyle.height}px`)
             }
-            console.log(this.style.label)
         },
         initEvent() {
             for (let key in this.event) {
