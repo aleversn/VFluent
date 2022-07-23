@@ -9,6 +9,7 @@
                     v-model="choosenValue"
                     :placeholder="placeholder"
                     :theme="$theme"
+                    :disabled="isDisabled"
                     :borderWidth="borderWidth"
                     :borderRadius="borderRadius"
                     :inputForeground="inputForeground"

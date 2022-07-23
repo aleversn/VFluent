@@ -1,5 +1,4 @@
-import { RevealEffects } from './Js/revealDirect';
-import { RevealEffectsMasked } from './Js/revealMasked';
+import { RevealDirect, RevealMasked } from './Js/RevealEffect';
 
 export class SDate
 {
@@ -214,5 +213,4 @@ export class SUtility
     }
 }
 
-export { RevealEffects }
-export { RevealEffectsMasked }
+export {RevealDirect, RevealMasked}

@@ -60,7 +60,8 @@ export default {
         return {
             thisValue: {},
             thisOptions: [],
-            currentLeft: 0
+            currentLeft: 0,
+            FR: null
         }
     },
     watch: {
@@ -115,7 +116,7 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffects("body", {
+            this.FR = this.$RevealDirect.apply(this.$el, {
                 selector: `.fv-${this.$theme}-CommandBar .left-command-bar-container .command-bar-item.normal.not_disabled`,
                 borderGradientSize: 80,
                 borderLightColor: this.borderLightColor,

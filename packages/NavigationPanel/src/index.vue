@@ -111,6 +111,7 @@ export default {
     },
     data() {
         return {
+            FR: null,
             thisExpand: this.expand,
             thisExpandBackup: this.expand,
             screenWidth: window.innerWidth,
@@ -189,7 +190,7 @@ export default {
     },
     methods: {
         FRInit() {
-            let FR = new this.$RevealEffects("body", {
+            this.FR = this.$RevealDirect.apply(this.$el, {
                 selector: `.fv-${this.$theme}-NavigationPanel .panel-container .fv-nav-default-item`,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,

@@ -172,6 +172,7 @@ export default {
                 desc: false
             },
             dragTransfer: {},
+            FR_Table_Head: null,
             show: {
                 rightMenu: false
             },
@@ -309,12 +310,12 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR_Table_Head = new this.$RevealEffectsMasked('body', {
-                selector: this.$refs.list_head,
+            this.FR_Table_Head = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$refs.list_head,
                 borderGradientSize: 80,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,
-                childrenSelector: this.$el.querySelectorAll('.list-head .col')
+                selector: this.$el.querySelectorAll('.list-head .col')
             });
             // let FR_Right_Menu = new this.$RevealEffects(this.$el, {  // Follow the Windows 11, we temporarily disable the right menu reveal effect.
             //     selector: this.$el.querySelectorAll('.fv-rightMenu div span'),

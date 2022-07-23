@@ -58,6 +58,7 @@ export default {
     },
     data() {
         return {
+            FR: null,
             callout: {
                 show: false,
                 focusTrap: false,
@@ -100,9 +101,9 @@ export default {
     },
     methods: {
         FRInit() {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el,
-                childrenSelector: this.$el.querySelectorAll(".fv-menuFlyout__button"),
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$el,
+                selector: this.$el.querySelectorAll(".fv-menuFlyout__button"),
                 borderGradientSize: 80,
                 backgroundGradientSize: 100,
                 borderLightColor: this.borderLightColor,

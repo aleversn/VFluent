@@ -81,6 +81,8 @@ export default {
 	data() {
 		return {
 			thisValue: this.value,
+            FR: null,
+            FR_list: null,
 			status: false
 		};
 	},
@@ -130,16 +132,17 @@ export default {
 	},
 	methods: {
         FRInit () {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el,
-                childrenSelector: this.$el.querySelectorAll('.combobox-container'),
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$el,
+                selector: this.$el.querySelectorAll('.combobox-container'),
                 borderGradientSize: 80,
                 backgroundGradientSize: 120,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
+                backgroundLightColor: this.backgroundLightColor,
+                status: () => this.isDisabled ? 'disabled' : 'enabled'
             });
 
-            let FR_list = new this.$RevealEffects(this.$el, {
+            this.FR_list = this.$RevealDirect.apply(this.$el, {
                 selector: `.fv-${this.$theme}-Combobox .combobox-item-container option.normal`,
                 borderGradientSize: 30,
                 borderLightColor: this.borderLightColor,

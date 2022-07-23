@@ -36,12 +36,16 @@ export default {
         dropDownIconForeground: {
             default: ''
         },
+        disabled: {
+            default: false,
+        },
         theme: {
             default: 'system'
         }
     },
     data () {
         return {
+            FR: null,
             choosenValue: this.value
         };
     },
@@ -96,13 +100,14 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el,
-                childrenSelector: this.$el.querySelectorAll('input'),
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$el,
+                selector: this.$el.querySelectorAll('input'),
                 borderGradientSize: 80,
                 backgroundGradientSize: 120,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
+                backgroundLightColor: this.backgroundLightColor,
+                status: () => this.disabled ? 'disabled' : 'enabled'
             });
         },
         valueTrigger (val) {

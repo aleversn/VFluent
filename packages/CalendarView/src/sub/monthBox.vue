@@ -45,6 +45,7 @@ export default {
                 { en: 'Dec', zh: '十二月'}
             ],
             currentRange: 0,
+            FR: null,
             timer: {
                 updateRange: {},
                 scroller: {}
@@ -111,9 +112,9 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$refs.main,
-                childrenSelector: [],
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$refs.main,
+                selector: [],
                 borderGradientSize: 90,
                 backgroundGradientSize: 120,
                 borderLightColor: this.borderLightColor,

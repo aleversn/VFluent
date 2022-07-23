@@ -4,12 +4,13 @@ class RevealHelper {
         let res = [];
 
         elements.forEach(el => {
-            if (el.hashCode)
+            if (!el.hashCode)
                 el.hashCode = this.GuidWithoutDash();
             let result = {
                 oriBg: getComputedStyle(el)["background-image"],
                 oriBorder: getComputedStyle(el)["border-image"],
                 oriBgRepeat: getComputedStyle(el)["background-repeat"],
+                isBindingClickEvent: false,
                 wave: 0,
                 clickWave: {},
                 revealPosition: {
@@ -78,7 +79,7 @@ class RevealHelper {
             else {
                 clearInterval(elObj.clickWave);
                 elObj.wave = 0;
-                backgroundLight = `radial-gradient(circle ${this.valueTrigger(elObj.options.borderGradientSize)}px at ${elObj.revealPosition.x}px ${elObj.revealPosition.y}px, ${this.valueTrigger(elObj.options.backgroundLightColor)}, rgba(255,255,255,0))`;
+                backgroundLight = `radial-gradient(circle ${this.valueTrigger(elObj.options.backgroundGradientSize)}px at ${elObj.revealPosition.x}px ${elObj.revealPosition.y}px, ${this.valueTrigger(elObj.options.backgroundLightColor)}, rgba(255,255,255,0))`;
                 elObj.el.style.backgroundImage = backgroundLight;
                 elObj.el.style.backgroundRepeat = "no-repeat";
             }
@@ -183,6 +184,11 @@ class RevealHelper {
         };
     }
 
+    static typeObj(obj) {
+        let type = Object.prototype.toString.call(obj);
+        return type.substring(8, type.length - 1);
+    }
+
     static GuidWithoutDash() {
         function S4() {
             return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -191,11 +197,24 @@ class RevealHelper {
     }
 }
 
-export class RevealDirectX {
+export class RevealDirect {
     constructor() {
-        this.FvRevealElementList = [];
+        // 旗下代表以什么元素作为eventListener的承载元素, 全局为window, 字典内包含其他组件父节点.
+        // 也可以绑定在父节点下.
+        this.FvRevealElementList = {
+            'window': {}
+        };
         this.applyCommonEffects();
-        this.applyClickEffects();
+        this.timer = setInterval(() => {
+            for (let key in this.FvRevealElementList['window']) {
+                this.refreshChildren(key);
+            }
+            for (let key in this.FvRevealElementList) {
+                if (key != 'window') {
+                    this.refreshChildren(key);
+                }
+            }
+        }, 1000);
     }
 
     apply(parent, options) {
@@ -206,6 +225,7 @@ export class RevealDirectX {
             borderGradientSize: 80,
             borderLightColor: "rgba(255, 255, 255, 0.25)",
             backgroundLightColor: "rgba(255, 255, 255, 0.25)",
+            eventTriggerMode: "window", // window, parent. to choose which element to trigger the reveal event.
             status: "enabled"   // enabled, disabled
         };
 
@@ -213,42 +233,86 @@ export class RevealDirectX {
         options = Object.assign(_options, options);
 
         let children = this.getChildren(parent, options);
-        this.FvRevealElementList.push({
-            key: options.key,
-            el: parent,
-            options: options,
-            children: this.getChildrenX(children, options),
-        });
+
+        if (options.eventTriggerMode === "window") {
+            this.FvRevealElementList['window'][options.key] = {
+                key: options.key,
+                el: parent,
+                options: options,
+                children: this.getChildrenX(children, options),
+            };
+        }
+        else {
+            this.FvRevealElementList[options.key] = {
+                key: options.key,
+                el: parent,
+                options: options,
+                children: this.getChildrenX(children, options),
+            };
+            this.applyCommonEffects(options.key);
+        }
+
 
         return options.key;
     }
 
     refreshChildren(key) {
-        let item = this.FvRevealElementList.find(x => x.key === key);
+        let item = this.FvRevealElementList[key];
+        if (!item) item = this.FvRevealElementList['window'][key];
         let children = [].slice.call(this.getChildren(item.el, item.options), 0);
         item.children = [...item.children, ...this.getChildrenX(children.filter(x => !x.hashCode), item.options)];
     }
 
+
+    /**
+     * Get all children of an element
+     *
+     * @param {*} parent
+     * @param {*} options
+     * @returns
+     * @memberof RevealDirect
+     */
     getChildren(parent, options) {
         if (parent == null)
             parent = document;
+        if(!options.selector) return [];
         if (typeof (options.selector) === "string") return parent.querySelectorAll(options.selector);
-        else if (options.selector.length > 0) return options.selector;
+        else if (Array.isArray(options.selector)) return options.maskedSelector;
+        else if (RevealHelper.typeObj(options.selector) === 'NodeList') return options.selector;
         return [options.selector];
     }
 
+
+    /**
+     * Process the children of an childrenList
+     *
+     * @param {*} children
+     * @param {*} options
+     * @returns
+     * @memberof RevealDirect
+     */
     getChildrenX(children, options) {
-        return RevealHelper.preProcessElements(children, options);
+        let childrenX = RevealHelper.preProcessElements(children, options);
+        for (let childX of childrenX) {
+            this.applyClickEffects(childX);
+        }
+        return childrenX;
     }
 
-    applyCommonEffects() {
+    applyCommonEffects(key = 'window') {
+
+        let target = window;
+        if (key != 'window') target = this.FvRevealElementList[key].el;
+
+        let forList = key === 'window' ? this.FvRevealElementList['window'] : { key: this.FvRevealElementList[key] };
 
         let eventSelectorMove = e => {
             if (e.type.indexOf("mouse") < 0)
                 e = e.targetTouches[0];
-            for (let elObj of this.FvRevealElementList) {
+            for (let parentKey in forList) {
+                let elObj = forList[parentKey];
                 for (let child of elObj.children) {
-                    if (RevealHelper.valueTrigger(child.status) === "disabled")
+                    if (RevealHelper.valueTrigger(child.options.status) === "disabled")
                         continue;
                     let x = e.pageX - RevealHelper.getOffset(child).left - window.scrollX;
                     let y = e.pageY - RevealHelper.getOffset(child).top - window.scrollY;
@@ -271,18 +335,30 @@ export class RevealDirectX {
             }
         }
 
+        let leaveEvent = e => {
+            for (let parentKey in forList) {
+                let elObj = forList[parentKey];
+                for (let child of elObj.children) {
+                    RevealHelper.clearBackground(child);
+                    RevealHelper.clearBorder(child);
+                }
+            }
+        };
 
-        window.addEventListener("mousemove", eventSelectorMove);
-        window.addEventListener("touchmove", eventSelectorMove);
+
+        target.addEventListener("mousemove", eventSelectorMove);
+        target.addEventListener("touchmove", eventSelectorMove);
+        target.addEventListener("mouseleave", leaveEvent);
+        target.addEventListener("touchend", leaveEvent);
     }
 
-    applyClickEffects() {
+    applyClickEffects(elementX) {
 
         let insideElement = event => {
             let x = event.target;
             let _self = false;
             while (x && x.tagName && x.tagName.toLowerCase() != "body") {
-                if (x == this.$el) {
+                if (x == elementX.el) {
                     _self = true;
                     break;
                 }
@@ -292,41 +368,27 @@ export class RevealDirectX {
         }
 
         let downEvent = e => {
-            for (let elObj of this.FvRevealElementList) {
-                for (let child of elObj.children) {
-                    if (!insideElement(child)) continue;
-                    if (e.type.indexOf("mouse") < 0)
-                        e = e.targetTouches[0];
-                    let x = e.pageX - RevealHelper.getOffset(child).left - window.scrollX;
-                    let y = e.pageY - RevealHelper.getOffset(child).top - window.scrollY;
-                    child.revealPosition.x = x;
-                    child.revealPosition.y = y;
-                    RevealHelper.drawEffectBackground(child, true);
-                }
-            }
+            if (!insideElement(e)) return;
+            if (RevealHelper.valueTrigger(elementX.options.status) === "disabled") return;
+            if (e.type.indexOf("mouse") < 0)
+                e = e.targetTouches[0];
+            let x = e.pageX - RevealHelper.getOffset(elementX).left - window.scrollX;
+            let y = e.pageY - RevealHelper.getOffset(elementX).top - window.scrollY;
+            elementX.revealPosition.x = x;
+            elementX.revealPosition.y = y;
+            RevealHelper.drawEffectBackground(elementX, true);
         };
 
         let upEvent = e => {
-            for (let elObj of this.FvRevealElementList) {
-                for (let child of elObj.children) {
-                    RevealHelper.drawEffectBackground(child);
-                }
-            }
+            RevealHelper.drawEffectBackground(elementX);
         };
 
-        let leaveEvent = e => {
-            for (let elObj of this.FvRevealElementList) {
-                for (let child of elObj.children) {
-                    RevealHelper.clearBackground(child);
-                    RevealHelper.clearBorder(child);
-                }
-            }
-        };
 
-        window.addEventListener("mousedown", downEvent);
-        window.addEventListener("touchstart", downEvent);
-        window.addEventListener("mouseup", upEvent);
-        window.addEventListener("mouseleave", leaveEvent);
-        window.addEventListener("touchend", leaveEvent);
+        if (!elementX.isBindingClickEvent) {
+            elementX.el.addEventListener("mousedown", downEvent);
+            elementX.el.addEventListener("touchstart", downEvent);
+            elementX.el.addEventListener("mouseup", upEvent);
+            elementX.isBindingClickEvent = true;
+        }
     }
 }

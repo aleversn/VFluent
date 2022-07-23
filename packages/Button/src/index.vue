@@ -65,6 +65,7 @@ export default {
 	},
 	data() {
 		return {
+            FR: null,
 			styles: {
 				revealBorder: {
 					padding: "2px",
@@ -140,12 +141,13 @@ export default {
 	},
 	methods: {
 		FRInit() {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el.querySelectorAll('.fv-button-reveal-border')[0],
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$el.querySelectorAll('.fv-button-reveal-border')[0],
                 borderGradientSize: 80,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,
-                childrenSelector: this.$el.querySelectorAll('.fv-button-reveal-container')[0]
+                selector: this.$el.querySelectorAll('.fv-button-reveal-container')[0],
+                status: () => this.isDisabled ? 'disabled' : 'enabled'
             });
 		},
 		stylesInit() {

@@ -36,6 +36,7 @@ export default {
     },
     data () {
         return {
+            FR: null,
             thisValue: [],
             focus: false,
             showSelectedBorder: false
@@ -110,12 +111,13 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffects(this.$el, {
+            this.FR = this.$RevealDirect.apply(this.$el, {
                 selector: `.fv-${this.$theme}-ListView .list-view-container .item.normal`,
                 borderGradientSize: 25,
                 borderLightColor: this.borderLightColor,
                 backgroundGradientSize: 120,
-                backgroundLightColor: this.backgroundLightColor
+                backgroundLightColor: this.backgroundLightColor,
+                eventTriggerMode: "parent"
             });
         },
         valueInit () {

@@ -50,6 +50,7 @@ export default {
     },
     data() {
         return {
+            FR: null,
             thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             days: [],
             weekdays: {
@@ -130,9 +131,9 @@ export default {
     },
     methods: {
         FRInit() {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$refs.main,
-                childrenSelector: [],
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$refs.main,
+                selector: [],
                 borderGradientSize: 90,
                 backgroundGradientSize: 120,
                 borderLightColor: this.borderLightColor,

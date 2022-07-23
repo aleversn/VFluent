@@ -36,6 +36,9 @@ export default {
         dropDownIconForeground: {
             default: ''
         },
+        disabled: {
+            default: false,
+        },
         theme: {
             default: 'system'
         }
@@ -43,6 +46,7 @@ export default {
     data () {
         return {
             choosenValue: this.value,
+            FR: null,
             styles: {
                 dropDownBox: {
                     padding: '2px',
@@ -124,13 +128,14 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el,
-                childrenSelector: this.$el.querySelectorAll('.calendar-picker-drop-down-container input'),
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$el,
+                selector: this.$el.querySelectorAll('.calendar-picker-drop-down-container input'),
                 borderGradientSize: 80,
                 backgroundGradientSize: 120,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
+                backgroundLightColor: this.backgroundLightColor,
+                status: () => this.disabled ? 'disabled' : 'enabled'
             });
         },
         stylesInit () {

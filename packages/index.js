@@ -5,7 +5,7 @@ import './custom-theme/index.scss'
 import global from './global.js'
 import {SDate} from './usual.js'
 import {SUtility} from './usual.js'
-import {RevealEffects,RevealEffectsMasked} from './usual.js'
+import {RevealDirect, RevealMasked} from './usual.js'
 import '../examples/style/global-transition.css'
 import './office-ui-fabric-core/dist/css/fabric.min.css'
 import Button from '@/Button/index.js'
@@ -113,8 +113,8 @@ const install = function(Vue){
   Vue.prototype.$fvGlobal=global
   Vue.prototype.$SDate=SDate
   Vue.prototype.$SUtility=SUtility
-  Vue.prototype.$RevealEffects=RevealEffects
-  Vue.prototype.$RevealEffectsMasked=RevealEffectsMasked
+  Vue.prototype.$RevealDirect=new RevealDirect();
+  Vue.prototype.$RevealMasked=new RevealMasked();
   components.map(component => Vue.use(component))
 }
 

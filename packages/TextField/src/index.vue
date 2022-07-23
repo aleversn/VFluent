@@ -74,6 +74,7 @@ export default {
     },
     data () {
         return {
+            FR: null,
             thisValue: (typeof(this.value)).toString() == 'string' ? this.value : '',
             isFocus: false,
         }
@@ -138,12 +139,13 @@ export default {
     },
     methods: {
         FRInit () {
-            let FR = new this.$RevealEffectsMasked("body", {
-                selector: this.$el,
+            this.FR = this.$RevealMasked.apply(this.$el, {
+                maskedSelector: this.$el,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,
                 backgroundLightColor: this.backgroundLightColor,
-                childrenSelector: this.$el.querySelectorAll('.text-field-reveal-container')[0]
+                selector: this.$el.querySelectorAll('.text-field-reveal-container')[0],
+                status: () => this.isDisabled ? 'disabled' : 'enabled'
             });
         },
         focus(status, event) {
