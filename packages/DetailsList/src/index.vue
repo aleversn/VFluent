@@ -278,22 +278,26 @@ export default {
             return true;
         },
         borderLightColor () {
-            if(this.$theme == 'light') {
+            return () => {
+                if(this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.6)';
+                }
+                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.6)';
+                }
                 return 'rgba(121, 119, 117, 0.6)';
             }
-            if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.6)';
-            }
-            return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
-            if(this.$theme == 'light') {
+            return () => {
+                if(this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.3)';
+                }
+                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.3)';
+                }
                 return 'rgba(121, 119, 117, 0.3)';
             }
-            if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.3)';
-            }
-            return 'rgba(121, 119, 117, 0.3)';
         }
     },
     mounted () {
@@ -705,6 +709,8 @@ export default {
         for(let item in this.timer) {
             clearInterval(this.timer[item]);
         }
+
+        this.$RevealMasked.destroy(this.FR_Table_Head);
     }
 };
 </script>

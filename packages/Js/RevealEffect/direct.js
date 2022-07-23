@@ -391,4 +391,16 @@ export class RevealDirect {
             elementX.isBindingClickEvent = true;
         }
     }
+
+    destroy (key) {
+        let exists = [];
+        if(this.FvRevealElementList['window'][key]) exists.push('window');
+        if(this.FvRevealElementList[key]) exists.push('parent');
+        delete this.FvRevealElementList['window'][key];
+        delete this.FvRevealElementList[key];
+        return {
+            exists: exists,
+            key: key
+        }
+    }
 }

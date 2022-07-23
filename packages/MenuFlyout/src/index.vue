@@ -81,22 +81,26 @@ export default {
             };
         },
         borderLightColor() {
-            if (this.$theme == "light") {
+            return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.6)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.6)";
+                }
                 return "rgba(121, 119, 117, 0.6)";
             }
-            if (this.$theme == "dark" || this.$theme == "custom") {
-                return "rgba(255, 255, 255, 0.6)";
-            }
-            return "rgba(121, 119, 117, 0.6)";
         },
         backgroundLightColor() {
-            if (this.$theme == "light") {
+            return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.3)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.3)";
+                }
                 return "rgba(121, 119, 117, 0.3)";
             }
-            if (this.$theme == "dark" || this.$theme == "custom") {
-                return "rgba(255, 255, 255, 0.3)";
-            }
-            return "rgba(121, 119, 117, 0.3)";
         },
     },
     methods: {
@@ -117,5 +121,8 @@ export default {
             }, 100);
         },
     },
+    beforeDestroy () {
+        this.$RevealMasked.destroy(this.FR);
+    }
 };
 </script>

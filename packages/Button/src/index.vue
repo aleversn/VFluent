@@ -112,20 +112,24 @@ export default {
 			return this.theme;
 		},
 		borderLightColor() {
-			if (this.$theme == "light") {
-				return "rgba(121, 119, 117, 0.6)";
-			}
-			if (this.$theme == "dark" || this.$theme == "custom") {
-				return "rgba(255, 255, 255, 0.6)";
-			}
+			return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.6)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.6)";
+                }
+            }
 		},
 		backgroundLightColor() {
-			if (this.$theme == "light") {
-				return "rgba(121, 119, 117, 0.3)";
-			}
-			if (this.$theme == "dark" || this.$theme == "custom") {
-				return "rgba(255, 255, 255, 0.3)";
-			}
+			return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.3)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.3)";
+                }
+            }
 		},
 		isDisabled() {
 			return (
@@ -165,6 +169,9 @@ export default {
                 return 0;
 			this.$emit("click", event);
 		}
-	}
+	},
+    beforeDestroy () {
+        this.$RevealMasked.destroy(this.FR);
+    }
 };
 </script>

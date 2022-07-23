@@ -49,22 +49,26 @@ export default {
     },
     computed: {
         borderLightColor () {
-            if(this.$theme == 'light') {
+            return () => {
+                if(this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.6)';
+                }
+                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.6)';
+                }
                 return 'rgba(121, 119, 117, 0.6)';
             }
-            if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.6)';
-            }
-            return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
-            if(this.$theme == 'light') {
+            return () => {
+                if(this.$theme == 'light') {
+                    return 'rgba(160, 160, 160, 0.2)';
+                }
+                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.1)';
+                }
                 return 'rgba(160, 160, 160, 0.2)';
             }
-            if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.1)';
-            }
-            return 'rgba(160, 160, 160, 0.2)';
         },
         currentChoosen () {
             let result = [];
@@ -295,6 +299,9 @@ export default {
             let items = this.$refs.container.querySelectorAll(".item");
             this.onClick({ target: items[index] }, cur);
         }
+    },
+    beforeDestroy () {
+        this.$RevealDirect.destroy(this.FR);
     }
 }
 </script>

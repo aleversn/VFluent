@@ -86,22 +86,26 @@ export default {
             return false;
         },
         borderLightColor () {
-            if(this.$theme == 'light') {
+            return () => {
+                if(this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.1)';
+                }
+                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.1)';
+                }
                 return 'rgba(121, 119, 117, 0.1)';
             }
-            if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.1)';
-            }
-            return 'rgba(121, 119, 117, 0.1)';
         },
         backgroundLightColor () {
-            if(this.$theme == 'light') {
+            return () => {
+                if(this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.2)';
+                }
+                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.2)';
+                }
                 return 'rgba(121, 119, 117, 0.2)';
             }
-            if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.2)';
-            }
-            return 'rgba(121, 119, 117, 0.2)';
         },
         $theme () {
             if (this.theme=='system')
@@ -200,6 +204,9 @@ export default {
             else
                 this.currentLeft = targetLeft - thisLeft;
         }
+    },
+    beforeDestroy () {
+        this.$RevealDirect.destroy(this.FR);
     }
 }
 </script>

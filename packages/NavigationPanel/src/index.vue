@@ -162,22 +162,26 @@ export default {
             return false;
         },
         borderLightColor() {
-            if (this.$theme == "light") {
+            return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.6)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.6)";
+                }
                 return "rgba(121, 119, 117, 0.6)";
             }
-            if (this.$theme == "dark" || this.$theme == "custom") {
-                return "rgba(255, 255, 255, 0.6)";
-            }
-            return "rgba(121, 119, 117, 0.6)";
         },
         backgroundLightColor() {
-            if (this.$theme == "light") {
+            return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.3)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.3)";
+                }
                 return "rgba(121, 119, 117, 0.3)";
             }
-            if (this.$theme == "dark" || this.$theme == "custom") {
-                return "rgba(255, 255, 255, 0.3)";
-            }
-            return "rgba(121, 119, 117, 0.3)";
         },
         $theme() {
             if (this.theme == "system") return this.$fvGlobal.state.theme;
@@ -239,6 +243,8 @@ export default {
     },
     beforeDestroy() {
         clearInterval(this.timer.widthTimer);
+
+        this.$RevealDirect.destroy(this.FR);
     },
 };
 </script>
