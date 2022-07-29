@@ -7,6 +7,10 @@
 
 ### Pagination-DEMO 
 
+
+<ClientOnly>
+
+
 <fv-Pagination>
 </fv-Pagination>
 
@@ -71,6 +75,10 @@
 <fv-Pagination theme="dark" background="black">
 </fv-Pagination>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

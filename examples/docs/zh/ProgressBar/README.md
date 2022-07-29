@@ -24,6 +24,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 <fv-ProgressBar>
 </fv-ProgressBar>
 
@@ -91,6 +95,10 @@ export default {
 <fv-ProgressBar v-model="percent[3]" background="rgba(0,204,153,0.6)">
 </fv-ProgressBar>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

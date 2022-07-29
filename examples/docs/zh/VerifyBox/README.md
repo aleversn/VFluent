@@ -17,6 +17,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 Standard
 
 <fv-VerifyBox v-model="value">
@@ -60,6 +64,10 @@ Reveal Border
 ```vue
 <fv-VerifyBox disabled></fv-VerifyBox>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

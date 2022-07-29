@@ -7,6 +7,10 @@
 
 ### Tag-DEMO 
 
+
+<ClientOnly>
+
+
 <fv-Tag :value="[{text: 'default', type: 'default' }]">
 </fv-Tag>
 
@@ -57,6 +61,10 @@
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" theme="dark">
 </fv-Tag>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

@@ -50,6 +50,10 @@
 
 ### TimePicker-Default
 
+
+<ClientOnly>
+
+
 <ClientOnly>
   <fv-TimePicker style="width:50px" v-model="date"  />
 </ClientOnly>
@@ -101,6 +105,10 @@ hoverColor="rgba(0, 204, 153,0.7)"
 >
 </fv-TimePicker>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

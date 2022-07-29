@@ -9,6 +9,10 @@
 
 Basic
 
+
+<ClientOnly>
+
+
 <fv-Breadcrumb value="/creatorsn/vfluent/breadcrumb">
 </fv-Breadcrumb>
 
@@ -102,6 +106,10 @@ Basic
     </fv-Breadcrumb>
 </div>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

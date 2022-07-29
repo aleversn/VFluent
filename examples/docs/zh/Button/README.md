@@ -7,6 +7,10 @@
 
 ### Button-DEMO
 
+
+<ClientOnly>
+
+
 <fv-button borderRadius="3"></fv-button>
 
 ```vue
@@ -36,6 +40,10 @@
 ```vue
 <fv-button disabled icon="CalculatorAddition">Add</fv-button>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

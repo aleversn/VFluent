@@ -24,6 +24,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 <fv-progressRing loading="true">
 </fv-progressRing>
 
@@ -140,6 +144,10 @@ export default {
 <fv-progressRing v-model="percent[3]" background="rgba(0, 204, 153, 0.6)">
 </fv-progressRing>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

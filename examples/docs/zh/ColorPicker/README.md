@@ -17,6 +17,10 @@ export default {
 
 #### ColorPicker Default
 
+
+<ClientOnly>
+
+
 <fv-colorPicker v-model="value">
 </fv-colorPicker>
 
@@ -36,6 +40,10 @@ export default {
 <fv-color-picker v-model="value" hideAlpha hidePreview>
 </fv-color-picker>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

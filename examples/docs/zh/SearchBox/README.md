@@ -52,6 +52,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 Standard
 <fv-SearchBox icon="Search" placeholder="Search" :options="items"></fv-SearchBox>
 
@@ -244,6 +248,10 @@ Customize background
     <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" background="rgba(0,153,204,1)" borderColor="rgba(0,153,204,1)"></fv-SearchBox>
 </div>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

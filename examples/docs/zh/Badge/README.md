@@ -7,6 +7,10 @@
 
 ### Badge-DEMO
 
+
+<ClientOnly>
+
+
 <fv-Badge :value="3">
 <fv-button>Badge</fv-button>
 </fv-Badge>
@@ -94,6 +98,10 @@ Primary
     <fv-button>Badge</fv-button>
 </fv-Badge>
 ```
+
+</ClientOnly>
+
+
 
 ### Propoties
 ---

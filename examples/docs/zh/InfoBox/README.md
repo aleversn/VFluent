@@ -76,6 +76,10 @@ export default {
 
 Default
 
+
+<ClientOnly>
+
+
 <fv-InfoBox>
 </fv-InfoBox>
 
@@ -281,6 +285,10 @@ this.$infoBox(h('div', [
     cancel: () => { alert('Cancel'); }
 });
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

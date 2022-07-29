@@ -75,6 +75,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 Default
 
 <fv-MessageBar>
@@ -226,6 +230,10 @@ this.$swiftWarning(document.getElementById('example'), {
     replaceTitle: "You clicked Swift Warning."
 });
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

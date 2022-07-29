@@ -35,6 +35,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 <fv-AnimatedIcon fontSize="36">
 </fv-AnimatedIcon>
 
@@ -148,6 +152,8 @@ data () {
 }
 </script>
 ```
+
+</ClientOnly>
 
 - Event types include `enter`, `move`, `down`, `up`, `leave` and corresponding to the `MouseEvent` and `TouchEvent` automatically.
 

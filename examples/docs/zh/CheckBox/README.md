@@ -7,6 +7,10 @@
 
 ### CheckBox-DEMO 
 
+<ClientOnly>
+
+
+
 <fv-checkBox>Indeterminate checkbox</fv-checkBox>
 
 ```vue
@@ -43,6 +47,10 @@
 ```vue
 <fv-checkBox borderColor="rgba(0,204,153,1)" foreground="rgba(0,204,153,1)" background="rgba(0,204,153,1)">Checkbox</fv-checkBox>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

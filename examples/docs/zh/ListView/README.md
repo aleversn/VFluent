@@ -28,6 +28,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 <div style="width: 100%; height: 500px; padding: 15px;">
     <fv-ListView v-model="items">
     </fv-ListView>
@@ -81,6 +85,10 @@ export default {
     </fv-ListView>
 </div>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

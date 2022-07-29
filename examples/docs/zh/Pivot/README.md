@@ -23,6 +23,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 <fv-Pivot v-model="value" :items="items"></fv-Pivot>
 
 ```vue
@@ -72,6 +76,10 @@ export default {
     <fv-Pivot :items="items" :tab="true" theme="dark" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
 </div>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

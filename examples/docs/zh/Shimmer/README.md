@@ -9,6 +9,10 @@
 
 Avatar with item
 
+
+<ClientOnly>
+
+
 <div>
     <fv-Shimmer style="height: auto;">
         <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
@@ -149,6 +153,10 @@ List items with two column
     </div>
 </fv-Shimmer>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

@@ -27,6 +27,10 @@
 
 ### Slider-Light
    
+
+   <ClientOnly>
+
+   
 <fv-slider :mininum="9" :maxinum="30" :showLabel="true">
 <template slot-scope="prop" >
   <span>{{prop.value}}</span>
@@ -112,6 +116,10 @@ Slider: {{value}}%  Change: {{changeTime}} Click: {{clickTime}}
 </template>
 </fv-slider>  
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

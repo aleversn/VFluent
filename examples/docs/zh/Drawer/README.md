@@ -41,6 +41,10 @@
 ### Drawer
 
 
+
+<ClientOnly>
+
+
 <fv-button @click="toggle" >Show/Hide</fv-button>
 
 <fv-drawer v-model="visible"appendBody>
@@ -50,6 +54,10 @@
 <fv-drawer v-model="visible" appendBody>
 </fv-drawer>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

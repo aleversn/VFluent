@@ -73,7 +73,11 @@ sidebarDepth: 2
 
 ### TreeView
 
-   
+
+
+<ClientOnly>
+
+
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
 
 </fv-TreeView>
@@ -186,9 +190,11 @@ backgroundColorHover:
 
 ```
 
-<br/>
-<br/>
-<br/>
+
+
+</ClientOnly>
+
+
 
 ### Propoties
 

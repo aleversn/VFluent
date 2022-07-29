@@ -7,6 +7,10 @@
 
 ### ToggleSwitch-DEMO 
 
+
+<ClientOnly>
+
+
 <fv-ToggleSwitch>
 </fv-ToggleSwitch>
 
@@ -56,6 +60,10 @@
 <fv-ToggleSwitch borderColor="rgba(0,204,153,1)" ringBackground="rgba(0,204,153,1)" onForeground="rgba(0,204,153,1)" offForeground="rgba(0,204,153,1)" switchOnBackground="rgba(0,204,153,1)">
 </fv-ToggleSwitch>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

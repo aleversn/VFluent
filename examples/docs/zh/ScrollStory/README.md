@@ -6,6 +6,10 @@
 [[toc]]
 
 ### ScrollStory-DEMO
+
+<ClientOnly>
+
+
 <div style="height: 500px;"></div>
 <fv-ScrollStory name="scale-up-to-up"><fv-colorPicker></fv-colorPicker></fv-ScrollStory>
 
@@ -35,6 +39,10 @@
     <fv-colorPicker></fv-colorPicker>
 </fv-ScrollStory>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

@@ -23,6 +23,10 @@ export default {
 }
 </script>
 
+
+<ClientOnly>
+
+
 <fv-InfiniteScrollView v-model="value">
 </fv-InfiniteScrollView>
 
@@ -30,6 +34,10 @@ export default {
 <fv-InfiniteScrollView v-model="value">
 </fv-InfiniteScrollView>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---

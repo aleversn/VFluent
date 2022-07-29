@@ -8,6 +8,10 @@
 ### Collapse-DEMO 
 
 
+<ClientOnly>
+
+
+
 <div>
     <fv-Collapse>
         <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
@@ -82,6 +86,10 @@ Extension
     <div style="position: relative; height: 500px; background: whitesmoke; transition: all 0.3s;"></div>
 </fv-Collapse>
 ```
+
+
+</ClientOnly>
+
 
 ### Propoties
 ---
