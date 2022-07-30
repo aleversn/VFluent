@@ -39,11 +39,12 @@
 
 ### Propoties
 ---
-|  属性(attr)  | 类型(type) | 必填(required) | 默认值(default) |                 说明(statement)                  |
-|:------------:|:----------:|:--------------:|:---------------:|:------------------------------------------------:|
-|     url      |  [string]  |      Yes       |       N/A       | Image url, be careful don't use cross-domain url |
-|    onlazy    | [boolean]  |       No       |      false      |                 Lazy load image                  |
-| onbackground | [boolean]  |       No       |      false      |                Show as background                |
+|  属性(attr)  |     类型(type)     |   必填(required)    |                   默认值(default)                    |                 说明(statement)                  |
+|:------------:|:------------------:|:-------------------:|:----------------------------------------------------:|:------------------------------------------------:|
+|     url      |      [string]      |         Yes         |                         N/A                          | Image url, be careful don't use cross-domain url |
+|    onlazy    |     [boolean]      |         No          |                        false                         |                 Lazy load image                  |
+| loadingColor | [string(color)] No | rgba(0, 90, 158, 1) | The foreground of the progress-ring or progress-bar. |                                                  |
+| onbackground |     [boolean]      |         No          |                        false                         |                Show as background                |
 
 ### Events
 ---
