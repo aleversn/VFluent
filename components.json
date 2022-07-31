@@ -374,5 +374,13 @@
       "Dark": "@/dark-theme/VerifyBox.scss",
       "Custom": "@/custom-theme/VerifyBox.scss"
     }
+  },
+  "RevealContainer": {
+    "entry": "@/RevealContainer/index.js",
+    "theme": {
+      "Light": "@/light-theme/RevealContainer.scss",
+      "Dark": "@/dark-theme/RevealContainer.scss",
+      "Custom": "@/custom-theme/RevealContainer.scss"
+    }
   }
 }

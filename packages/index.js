@@ -55,6 +55,7 @@ import Collapse from '@/Collapse/index.js'
 import InfiniteScrollView from '@/InfiniteScrollView/index.js'
 import TextField from '@/TextField/index.js'
 import VerifyBox from '@/VerifyBox/index.js'
+import RevealContainer from '@/RevealContainer/index.js'
 
 
 let components = [
@@ -105,6 +106,7 @@ let components = [
   InfiniteScrollView,
   TextField,
   VerifyBox,
+  RevealContainer,
 
 ]
 
@@ -171,6 +173,7 @@ export default {
   InfiniteScrollView,
   TextField,
   VerifyBox,
+  RevealContainer,
 
 }
 

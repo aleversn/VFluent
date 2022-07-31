@@ -4,8 +4,9 @@ import vue from 'vue'
 vue.use(vuex)
 export default new vuex.Store({
     state: {
-        theme:'light',
-        imgUriList: []  //{data:Base64String,key:String,state:('none'|'loading'|'done')}
+        theme: 'light',
+        imgUriList: [],  //{data:Base64String,key:String,state:('none'|'loading'|'done')}
+        revealHandlerList: []   //{id: String, moveHandler: Function, leaveHandler: Function}
     },
     getters: {
         imgUri: (state) => (key) => {
@@ -13,27 +14,36 @@ export default new vuex.Store({
         }
     },
     mutations: {
-        changeTheme (state,theme) {
-            state.theme=theme
+        changeTheme(state, theme) {
+            state.theme = theme
         },
-        setImgUri (state,imgUri) {
+        setImgUri(state, imgUri) {
             let status = imgUri.state;
-            if(imgUri.key == undefined)
+            if (imgUri.key == undefined)
                 return 0;
-            if(status != 'none' && status != 'loading' && status != 'done')
+            if (status != 'none' && status != 'loading' && status != 'done')
                 imgUri.state = 'none';
             let item = state.imgUriList.find(item => item.key === imgUri.key);
-            if(item == undefined)
-                state.imgUriList.push({data:imgUri.data,key:imgUri.key,state:imgUri.state});
+            if (item == undefined)
+                state.imgUriList.push({ data: imgUri.data, key: imgUri.key, state: imgUri.state });
             else
-                vue.set(state.imgUriList,state.imgUriList.indexOf(item),{data:imgUri.data,key:imgUri.key,state:imgUri.state});
+                vue.set(state.imgUriList, state.imgUriList.indexOf(item), { data: imgUri.data, key: imgUri.key, state: imgUri.state });
         },
-        clearImgUri (state, key) {
+        clearImgUri(state, key) {
             let item = state.imgUriList.find(item => key === item.key);
-            if(item == undefined)
+            if (item == undefined)
                 return 0;
             else
-                state.imgUriList.splice(state.imgUriList.indexOf(item),1);
+                state.imgUriList.splice(state.imgUriList.indexOf(item), 1);
+        },
+        setRevealHandler(state, revealHandler) {
+            state.revealHandlerList.push(revealHandler);
+        },
+        removeRevealHandler(state, id) {
+            let index = state.revealHandlerList.findIndex(item => id === item.id);
+            if (index == -1)
+                return;
+            state.revealHandlerList.splice(index, 1);
         }
     }
 })

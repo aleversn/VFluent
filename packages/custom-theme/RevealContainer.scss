@@ -1,0 +1,5 @@
+@import '../common-theme/RevealContainer.scss';
+.fv-custom-RevealContainer{
+  @include fv-RevealContainer();
+}
+    

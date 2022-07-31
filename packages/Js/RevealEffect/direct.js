@@ -309,6 +309,7 @@ export class RevealDirect {
         let eventSelectorMove = e => {
             if (e.type.indexOf("mouse") < 0)
                 e = e.targetTouches[0];
+            if(!forList) return;
             for (let parentKey in forList) {
                 let elObj = forList[parentKey];
                 for (let child of elObj.children) {
@@ -336,6 +337,7 @@ export class RevealDirect {
         }
 
         let leaveEvent = e => {
+            if(!forList) return;
             for (let parentKey in forList) {
                 let elObj = forList[parentKey];
                 for (let child of elObj.children) {
