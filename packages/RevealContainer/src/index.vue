@@ -200,6 +200,7 @@ export default {
     },
     mounted() {
         this.mouseMoveInit();
+        this.mouseClickInit();
     },
     methods: {
         mouseMoveInit() {
@@ -207,8 +208,6 @@ export default {
                 this.$fvGlobal.commit('setRevealHandler', {
                     id: this.id,
                     moveHandler: this.moveEvent,
-                    downHandler: this.downEvent,
-                    upHandler: this.upEvent,
                     leaveHandler: this.leaveEvent,
                 });
                 if (window.$FvRevealContainer) return;
@@ -217,12 +216,6 @@ export default {
                 window.addEventListener('mousemove', this.globalMoveEventListener);
                 window.removeEventListener('touchmove', this.globalMoveEventListener);
                 window.addEventListener('touchmove', this.globalMoveEventListener);
-                window.removeEventListener('mousedown', this.globalDownEventListener);
-                window.addEventListener('mousedown', this.globalDownEventListener);
-                window.removeEventListener('touchdown', this.globalDownEventListener);
-                window.addEventListener('touchdown', this.globalDownEventListener);
-                window.removeEventListener('mouseup', this.globalUpEventListener);
-                window.addEventListener('mouseup', this.globalUpEventListener);
                 window.removeEventListener('mouseleave', this.globalLeaveEventListener);
                 window.addEventListener('mouseleave', this.globalLeaveEventListener);
                 window.removeEventListener('touchend', this.globalLeaveEventListener);
@@ -241,16 +234,27 @@ export default {
                 this.revealContainer.el().addEventListener('mousemove', this.globalMoveEventListener);
                 this.revealContainer.el().removeEventListener('touchmove', this.globalMoveEventListener);
                 this.revealContainer.el().addEventListener('touchmove', this.globalMoveEventListener);
-                this.revealContainer.el().removeEventListener('mousedown', this.globalDownEventListener);
-                this.revealContainer.el().addEventListener('mousedown', this.globalDownEventListener);
-                this.revealContainer.el().removeEventListener('touchdown', this.globalDownEventListener);
-                this.revealContainer.el().addEventListener('touchdown', this.globalDownEventListener);
-                this.revealContainer.el().removeEventListener('mouseup', this.globalUpEventListener);
-                this.revealContainer.el().addEventListener('mouseup', this.globalUpEventListener);
                 this.revealContainer.el().removeEventListener('mouseleave', this.globalLeaveEventListener);
                 this.revealContainer.el().addEventListener('mouseleave', this.globalLeaveEventListener);
                 this.revealContainer.el().removeEventListener('touchend', this.globalLeaveEventListener);
                 this.revealContainer.el().addEventListener('touchend', this.globalLeaveEventListener);
+            }
+        },
+        mouseClickInit() {
+            if (this.parent) {
+                this.parent().removeEventListener('mousedown', this.downEvent);
+                this.parent().addEventListener('mousedown', this.downEvent);
+                this.parent().removeEventListener('touchdown', this.downEvent);
+                this.parent().addEventListener('touchdown', this.downEvent);
+                this.parent().removeEventListener('mouseup', this.upEvent);
+                this.parent().addEventListener('mouseup', this.upEvent);
+            } else {
+                this.$el.removeEventListener('mousedown', this.downEvent);
+                this.$el.addEventListener('mousedown', this.downEvent);
+                this.$el.removeEventListener('touchdown', this.downEvent);
+                this.$el.addEventListener('touchdown', this.downEvent);
+                this.$el.removeEventListener('mouseup', this.upEvent);
+                this.$el.addEventListener('mouseup', this.upEvent);
             }
         },
         globalMoveEventListener(e) {
@@ -261,28 +265,6 @@ export default {
             } else {
                 for (let item of this.revealContainer.revealHandlerList) {
                     if (item.moveHandler) item.moveHandler(e);
-                }
-            }
-        },
-        globalDownEventListener(e) {
-            if (this.revealContainer === false) {
-                for (let item of this.$fvGlobal.state.revealHandlerList) {
-                    if (item.downHandler) item.downHandler(e);
-                }
-            } else {
-                for (let item of this.revealContainer.revealHandlerList) {
-                    if (item.downHandler) item.downHandler(e);
-                }
-            }
-        },
-        globalUpEventListener(e) {
-            if (this.revealContainer === false) {
-                for (let item of this.$fvGlobal.state.revealHandlerList) {
-                    if (item.upHandler) item.upHandler(e);
-                }
-            } else {
-                for (let item of this.revealContainer.revealHandlerList) {
-                    if (item.upHandler) item.upHandler(e);
                 }
             }
         },
@@ -299,6 +281,7 @@ export default {
         },
         moveEvent(e) {
             if (this.isDisabled) return;
+            if (!this.inVisual()) return;
             if (e.type.indexOf('mouse') < 0) e = e.targetTouches[0];
 
             const { left, top } = this.getOffset(this.$el);
@@ -379,6 +362,18 @@ export default {
             }
             return _self;
         },
+        inVisual() {
+            const { left, top, right, bottom } = this.$el.getBoundingClientRect();
+            const width = right - left;
+            const height = bottom - top;
+            const clientWidth = window.innerWidth;
+            const clientHeight = window.innerHeight;
+            let h = false;
+            let v = false;
+            if (bottom >= 0 && bottom <= clientHeight + height) v = true;
+            if (right >= 0 && right <= clientWidth + width) h = true;
+            return h && v;
+        },
         GuidWithoutDash() {
             function S4() {
                 return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -396,6 +391,12 @@ export default {
         } else {
             let index = this.revealContainer.revealHandlerList.findIndex((item) => item.id == this.id);
             if (index > -1) this.revealContainer.revealHandlerList.splice(index, 1);
+        }
+
+        if (this.parent) {
+            this.parent().removeEventListener('mousedown', this.downEvent);
+            this.parent().removeEventListener('touchdown', this.downEvent);
+            this.parent().removeEventListener('mouseup', this.upEvent);
         }
     },
 };
