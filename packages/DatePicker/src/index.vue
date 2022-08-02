@@ -7,7 +7,9 @@
                 {{ value.getDate() }}
                 <span v-if="showWeek">({{ weeks[value.getDay()] }})</span>
             </button>
-            <button v-if="!hideYear" :style="{ borderColor: innerBorderColor }" class="fv-DatePicker__input-year">{{ value.getFullYear() }}</button>
+            <button v-if="!hideYear" :style="{ borderColor: innerBorderColor }" class="fv-DatePicker__input-year">{{
+                    value.getFullYear()
+            }}</button>
         </div>
         <!-- Popper Box -->
         <div v-show="popper.show" class="fv-DatePicker__input-options" :style="optionsStyle">
@@ -19,14 +21,9 @@
                         <i class="ms-Icon ms-Icon--ChevronUp"></i>
                     </div>
                     <div ref="month" :style="style.monthCol" class="fv-DatePicker__input-options-col-items">
-                        <div
-                            class="fv-DatePicker__input-options-col-item"
-                            :class="[selectItemClass]"
-                            v-for="(item, index) in options.month"
-                            v-hover="hover"
-                            :key="`month${item}${index}`"
-                            @click="clickItem('month', index)"
-                        >
+                        <div class="fv-DatePicker__input-options-col-item" :class="[selectItemClass]"
+                            v-for="(item, index) in options.month" v-hover="hover" :key="`month${item}${index}`"
+                            @click="clickItem('month', index)">
                             {{ months[item] }}
                         </div>
                     </div>
@@ -40,14 +37,9 @@
                         <i class="ms-Icon ms-Icon--ChevronUp"></i>
                     </div>
                     <div ref="day" :style="style.dayCol" class="fv-DatePicker__input-options-col-items">
-                        <div
-                            class="fv-DatePicker__input-options-col-item"
-                            v-hover="hover"
-                            :class="[selectItemClass]"
-                            v-for="(item, index) in options.day"
-                            :key="`day${item}${index}`"
-                            @click="clickItem('day', index)"
-                        >
+                        <div class="fv-DatePicker__input-options-col-item" v-hover="hover" :class="[selectItemClass]"
+                            v-for="(item, index) in options.day" :key="`day${item}${index}`"
+                            @click="clickItem('day', index)">
                             {{ item > 0 ? item : '' }}
                             <span v-if="showWeek">({{ weeks[weekIndex(item)] }})</span>
                         </div>
@@ -62,14 +54,9 @@
                         <i class="ms-Icon ms-Icon--ChevronUp"></i>
                     </div>
                     <div ref="year" class="fv-DatePicker__input-options-col-items">
-                        <div
-                            class="fv-DatePicker__input-options-col-item"
-                            :class="[selectItemClass]"
-                            v-for="(item, index) in options.year"
-                            v-hover="hover"
-                            :key="`year${item}${index}`"
-                            @click="clickItem('year', index)"
-                        >
+                        <div class="fv-DatePicker__input-options-col-item" :class="[selectItemClass]"
+                            v-for="(item, index) in options.year" v-hover="hover" :key="`year${item}${index}`"
+                            @click="clickItem('year', index)">
                             {{ item > 0 ? item : '' }}
                         </div>
                     </div>
@@ -441,18 +428,22 @@ export default {
             let origin = this.$refs[colName].scrollTop;
             this.$refs[colName].scrollTop += index - 5; // init important
             let count = Math.abs(index - 5);
-            let timeout = setInterval(() => {
-                if (this.$refs[colName].scrollTop == origin) {
-                    --count;
-                    if (!count) {
-                        clearInterval(timeout);
-                        this.config.clickLock = false;
-                        return;
+            if (count > 0) {
+                let timeout = setInterval(() => {
+                    if (this.$refs[colName].scrollTop == origin) {
+                        --count;
+                        if (!count) {
+                            this.config.clickLock = false;
+                            clearInterval(timeout);
+                            return;
+                        }
                     }
-                }
-                this.config.scrollLock = true;
-                this.$refs[colName].scrollTop += (index - 5) * 3;
-            }, 20);
+                    this.config.scrollLock = true;
+                    this.$refs[colName].scrollTop += (index - 5) * 3;
+                }, 20);
+            } else {
+                this.config.clickLock = false;
+            }
         },
         weekIndex(day) {
             let date = new Date(this.selected.date);

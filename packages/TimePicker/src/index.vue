@@ -2,24 +2,24 @@
     <div :class="['fv-' + $theme + '-timePicker', { disabled: disabled }]">
         <div class="fv-TimePicker__input" @click="focus()">
             <button class="fv-TimePicker__input-item">{{ showTime(0, value.getHours()) }}</button>
-            <button class="fv-TimePicker__input-item" :style="{ borderColor: innerBorderColor }">{{ showTime(1, value.getMinutes()) }}</button>
-            <button :style="{ borderColor: innerBorderColor }" class="fv-TimePicker__input-item" v-if="timeType == 12">{{ showTime(2, Math.floor(value.getHours() / 11.9)) }}</button>
+            <button class="fv-TimePicker__input-item" :style="{ borderColor: innerBorderColor }">{{ showTime(1,
+                    value.getMinutes())
+            }}</button>
+            <button :style="{ borderColor: innerBorderColor }" class="fv-TimePicker__input-item"
+                v-if="timeType == 12">{{ showTime(2, Math.floor(value.getHours() / 11.9)) }}</button>
         </div>
         <div v-show="show" class="fv-TimePicker__options" :style="optionsStyle">
             <div class="fv-TimePicker__options-body">
                 <div class="fv-TimePicker__options-body-mask" :style="selectStyle"></div>
-                <div v-for="(col, index1) in data" :key="`options-col${index1}`" class="fv-TimePicker__options-body-col" v-hover="hoverUpAndDown">
+                <div v-for="(col, index1) in data" :key="`options-col${index1}`" class="fv-TimePicker__options-body-col"
+                    v-hover="hoverUpAndDown">
                     <div class="fv-TimePicker__options-body-col-up" @click="clickItem(`col${index1}`, 4)">
                         <i class="ms-Icon ms-Icon--ChevronUp"></i>
                     </div>
                     <div class="fv-TimePicker__options-body-items" :ref="`col${index1}`">
-                        <div
-                            class="fv-TimePicker__options-body-item"
-                            v-hover="hover"
-                            v-for="(item, index) in col"
+                        <div class="fv-TimePicker__options-body-item" v-hover="hover" v-for="(item, index) in col"
                             :key="`options-col-item${index1}-${item}-${index}`"
-                            @click="clickItem(`col${index1}`, index)"
-                        >
+                            @click="clickItem(`col${index1}`, index)">
                             {{ showTime(index1, item) }}
                         </div>
                     </div>
@@ -336,18 +336,22 @@ export default {
             let origin = this.$refs[colName][0].scrollTop;
             this.$refs[colName][0].scrollTop += index - 5; // init important
             let count = Math.abs(index - 5);
-            let timeout = setInterval(() => {
-                if (this.$refs[colName][0].scrollTop == origin) {
-                    --count;
-                    if (!count) {
-                        clearInterval(timeout);
-                        this.config.clickLock = false;
-                        return;
+            if (count > 0) {
+                let timeout = setInterval(() => {
+                    if (this.$refs[colName][0].scrollTop == origin) {
+                        --count;
+                        if (!count) {
+                            clearInterval(timeout);
+                            this.config.clickLock = false;
+                            return;
+                        }
                     }
-                }
-                this.config.scrollLock = true;
-                this.$refs[colName][0].scrollTop += (index - 5) * 3;
-            }, 20);
+                    this.config.scrollLock = true;
+                    this.$refs[colName][0].scrollTop += (index - 5) * 3;
+                }, 20);
+            } else {
+                this.config.clickLock = false;
+            }
         },
         numberFixTwo(num) {
             if (num < 10) {
