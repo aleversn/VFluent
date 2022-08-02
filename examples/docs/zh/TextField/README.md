@@ -171,7 +171,6 @@ Customize background
 |       borderRadius       |              [number]              |       No       |        3        | TextField圆角大小, 启用revealBorder时将失效 |
 |       isBoxShadow        |             [boolean]              |       No       |      false      |             开启`TextField`阴影             |
 |       revealBorder       |             [boolean]              |       No       |      false      |                                             |
-| disabledBorderWhenReveal |             [boolean]              |       No       |      true       |       使用`Reveal`边框是禁用默认边框        |
 |          status          |         ['warn','correct']         |       No       |       N/A       |     状态边框预设, 默认有警告和正确两种      |
 |         disabled         |             [boolean]              |       No       |      false      |                                             |
 |          theme           | ['light','dark','custom','system'] |       No       |     system      |                                             |

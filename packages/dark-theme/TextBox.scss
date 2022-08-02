@@ -3,85 +3,67 @@
     @include fv-TextBox();
 
     background: transparent;
-    border: rgba(36, 36, 36, 1) solid thin;
 
-    &:hover
-    {
-        border: rgba(36, 36, 36, 1) solid thin;
+    &.focus {
+        .fv-text-box-wrapper-container {
+            border: rgba(36, 36, 36, 1) solid thin;
+        }
     }
 
-    &.focus
-    {
-        border: rgba(36, 36, 36, 1) solid thin;
-    }
-
-    &.shadow
-    {
+    &.shadow {
         box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
     }
 
-    &.underline
-    {
-        border-left: none;
-        border-top: none;
-        border-right: none;
+    &.underline {
+        .fv-text-box-wrapper-container {
+            border-left: none;
+            border-top: none;
+            border-right: none;
 
-        div.fix-block
-        {
-            background: transparent;
+            div.fix-block {
+                background: transparent;
 
-            p
-            {
-                color: rgba(243, 242, 241, 1);
+                p {
+                    color: rgba(243, 242, 241, 1);
+                }
             }
         }
     }
 
-    &.disabled
-    {
+    &.disabled {
+        background: rgb(48, 47, 46);
         border-color: transparent;
-        
-        .text-box-reveal-container
-        {
-            background: rgb(48, 47, 46);
-        }
 
-        &:hover
-        {
-            border-color: transparent;
+        .fv-text-box-wrapper-container {
+            &:hover {
+                border-color: transparent;
+            }
         }
     }
 
-    .text-box-reveal-container
-    {
-        background: transparent;
-    }
+    .fv-text-box-wrapper-container {
+        border: rgba(200, 200, 200, 0.1) solid thin;
 
-    div.fix-block
-    {
-        background: transparent;
+        div.fix-block {
+            background: transparent;
 
-        p
-        {
-            color: rgba(243, 242, 241, 1);
+            p {
+                color: rgba(243, 242, 241, 1);
+            }
         }
-    }
 
-    .icon-block
-    {
-        color: rgba(243, 242, 241, 1);
-    }
-    
-    div.text-box-container
-    {
-        .fv-text-box-input
-        {
+        .icon-block {
             color: rgba(243, 242, 241, 1);
         }
 
-        .fv-text-box-input::placeholder
-        {
-            color: rgba(220, 220, 220, 1);
+        div.text-box-container {
+            .fv-text-box-input {
+                color: rgba(243, 242, 241, 1);
+            }
+
+            .fv-text-box-input::placeholder {
+                color: rgba(220, 220, 220, 1);
+            }
         }
     }
 }

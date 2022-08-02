@@ -27,10 +27,25 @@
 
 ### Button Customize
 ---
+
+<fv-button icon="CalculatorAddition" :isBoxShadow="true">Add</fv-button>
+
+```vue
+<fv-button icon="CalculatorAddition" :isBoxShadow="true">Add</fv-button>
+```
+
 <fv-button icon="CalculatorAddition" theme="dark" background="linear-gradient(to right, #000046, #1cb5e0)" borderRadius="3" :isBoxShadow="true">Add</fv-button>
 
 ```vue
 <fv-button icon="CalculatorAddition" theme="dark" background="linear-gradient(to right, #000046, #1cb5e0)" borderRadius="3" :isBoxShadow="true">Add</fv-button>
+```
+
+Customize Reveal Border
+
+<fv-button icon="CalculatorAddition" theme="dark" background="#000046" revealBorderColor="#1cb5e0" revealBackgroundColor="rgba(28, 181, 226, 0.3)" borderRadius="3" borderWidth="3" :isBoxShadow="true">Add</fv-button>
+
+```vue
+<fv-button icon="CalculatorAddition" theme="dark" background="#000046" revealBorderColor="#1cb5e0" revealBackgroundColor="rgba(28, 181, 226, 0.3)" borderRadius="3" borderWidth="3" :isBoxShadow="true">Add</fv-button>
 ```
 
 ### Button Disabled
@@ -47,18 +62,21 @@
 
 ### Propoties
 ---
-|  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)    |
-|:------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
-|     icon     |              [string]              |       No       |       N/A       | Icon with Fabric-Icon |
-|  foreground  |          [string(color)]           |       No       |       N/A       |     Button 前景色     |
-|  background  |          [string(color)]           |       No       |       N/A       |     Button 背景色     |
-| borderRadius |              [number]              |       No       |        3        |    Button 圆角大小    |
-|   fontSize   |              [number]              |       No       |       N/A       |    Button 字体大小    |
-|  fontWeight  |              [string]              |       No       |     normal      |   Button 字体粗细度   |
-| isBoxShadow  |             [boolean]              |       No       |      false      |   开启`Button`阴影    |
-|   disabled   |             [boolean]              |       No       |      false      |    Disabled button    |
-| borderWidth  |              [number]              |       No       |        2        |    Button 边框大小    |
-|    theme     | ['light','dark','custom','system'] |       No       |     system      |     Custom theme      |
+|      属性(attr)       |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
+|:---------------------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
+|         icon          |              [string]              |       No       |       N/A       | Icon with Fabric-Icon  |
+|      foreground       |          [string(color)]           |       No       |       N/A       |     Button 前景色      |
+|      background       |          [string(color)]           |       No       |       N/A       |     Button 背景色      |
+|     borderRadius      |              [number]              |       No       |        3        |    Button 圆角大小     |
+|      borderColor      |          [string(color)]           |       No       |       N/A       |    Button 边框颜色     |
+|       fontSize        |              [number]              |       No       |       N/A       |    Button 字体大小     |
+|      fontWeight       |              [string]              |       No       |     normal      |   Button 字体粗细度    |
+|   revealBorderColor   |          [string(color)]           |       No       |      false      | Button Reveal 边框颜色 |
+| revealBackgroundColor |          [string(color)]           |       No       |      false      | Button Reveal 背景颜色 |
+|      isBoxShadow      |             [boolean]              |       No       |      false      |    开启`Button`阴影    |
+|       disabled        |             [boolean]              |       No       |      false      |    Disabled button     |
+|      borderWidth      |              [number]              |       No       |        1        |    Button 边框大小     |
+|         theme         | ['light','dark','custom','system'] |       No       |     system      |      Custom theme      |
 
 ### Events
 ---

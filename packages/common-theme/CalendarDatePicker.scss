@@ -19,7 +19,16 @@
 
         &.error
         {
-            background: rgba(164,38,44,1);
+            background: rgba(164, 38, 44, 1);
+        }
+
+        .fv-calendar-date-picker-reveal-container
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .calendar-picker-drop-down-container
@@ -102,19 +111,19 @@
         {
             .calendar-picker-drop-down-container
             {
-                background: rgba(243,242,241,1);
+                background: rgba(243, 242, 241, 1);
                 box-shadow: none;
 
                 .input
                 {
-                    background: rgba(243,242,241,1);
-                    color: rgba(161,159,157,0.6);
+                    background: rgba(243, 242, 241, 1);
+                    color: rgba(161, 159, 157, 0.6);
                     cursor: no-drop;
                 }
 
                 i
                 {
-                    color: rgba(50,49,48,0.6);
+                    color: rgba(50, 49, 48, 0.6);
                 }
             }
         }

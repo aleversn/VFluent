@@ -154,6 +154,7 @@ export default {
 |       maxHeight        |              [number]              |       No       |            N/A             |     Dropdown list max height      |
 |   checkBoxBackground   |          [string(color)]           |       No       |            N/A             | CheckBox Background when Multiple |
 |    inputForeground     |          [string(color)]           |       No       |            N/A             |                                   |
+|    inputBorderColor    |          [string(color)]           |       No       |            N/A             |                                   |
 | dropDownListForeground |          [string(color)]           |       No       |    rgba(0,120,215,0.9)     |                                   |
 |    inputBackground     |          [string(color)]           |       No       |            N/A             |                                   |
 | dropDownListBackground |          [string(color)]           |       No       |            N/A             |                                   |

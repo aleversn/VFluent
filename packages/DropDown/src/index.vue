@@ -14,6 +14,7 @@
                     :borderRadius="borderRadius"
                     :inputForeground="inputForeground"
                     :inputBackground="inputBackground"
+                    :inputBorderColor="inputBorderColor"
                     :dropDownIcon="dropDownIcon"
                     :dropDownIconForeground="dropDownIconForeground"
                     :class="{error: showError}"
@@ -80,7 +81,7 @@ export default {
             default: false
         },
         borderWidth: {
-            default: 2
+            default: 1
         },
         borderRadius: {
             default: "6"
@@ -94,11 +95,14 @@ export default {
         inputForeground: {
             default: ""
         },
+        inputBorderColor: {
+            default: ""
+        },
         checkBoxBackground: {
             default: ""
         },
         dropDownListForeground: {
-            default: "rgba(0, 120, 215, 0.9)"
+            default: ""
         },
         dropDownListBackground: {
             default: ""

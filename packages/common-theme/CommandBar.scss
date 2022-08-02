@@ -32,12 +32,21 @@
             flex-shrink: 0;
             padding: 0px 12px;
             border: transparent solid thin;
-            clip-path: inset(0 round 6px);
+            border-radius: 6px;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: visible;
+
+            .fv-command-bar-reveal-container
+            {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+            }
 
             i.icon {
                 position: relative;

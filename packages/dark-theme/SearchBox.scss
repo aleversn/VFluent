@@ -1,83 +1,74 @@
-@import '../common-theme/SearchBox.scss';
-.fv-dark-SearchBox{
-    
+@import "../common-theme/SearchBox.scss";
+.fv-dark-SearchBox {
     @include fv-SearchBox();
 
     background: rgba(200, 200, 200, 0.1);
-    border: rgba(50, 50, 50, 0.1) solid thin;
 
-    &:hover
-    {
-        border: rgba(120, 120, 120, 0.1) solid thin;
+    &:hover {
+        .search-box-wrapper-container {
+            border: rgba(120, 120, 120, 0.1) solid thin;
+        }
     }
 
-    &.focus
-    {
-        border: rgba(120, 120, 120, 0.1) solid thin;
+    &.focus {
+        .search-box-wrapper-container {
+            border: rgba(120, 120, 120, 0.1) solid thin;
+        }
     }
 
-    &.underline
-    {
-        border: rgba(120, 120, 120, 0.1) solid thin;
-        border-left-color: transparent;
-        border-top-color: transparent;
-        border-right-color: transparent;
-
-        &.focus
-        {
-            border-color: rgba(118, 185, 237, 1);
+    &.underline {
+        .search-box-wrapper-container {
+            border: rgba(120, 120, 120, 0.1) solid thin;
             border-left-color: transparent;
             border-top-color: transparent;
             border-right-color: transparent;
         }
+
+        &.focus {
+            .search-box-wrapper-container {
+                border-color: rgba(118, 185, 237, 1);
+                border-left-color: transparent;
+                border-top-color: transparent;
+                border-right-color: transparent;
+            }
+        }
     }
 
-    &.disabled
-    {
+    &.disabled {
         background: rgb(48, 47, 46);
 
-        &:hover
-        {
+        &:hover {
             border-color: transparent;
         }
     }
 
-    .search-box-reveal-container
-    {
-        background: transparent;
-    }
-
-    .icon-block
-    {
+    .icon-block {
         color: rgba(243, 242, 241, 1);
     }
-    
-    div.search-box-container
-    {   
-        .input
-        {
-            color: rgba(243, 242, 241, 1);
-        }
 
-        .input::placeholder
-        {
-            color: rgba(200, 200, 200, 1);
+    .search-box-wrapper-container {
+        border: rgba(120, 120, 120, 0.1) solid thin;
+
+        div.search-box-container {
+            .input {
+                color: rgba(243, 242, 241, 1);
+            }
+
+            .input::placeholder {
+                color: rgba(200, 200, 200, 1);
+            }
         }
     }
 
-    .search-result-container
-    {
+    .search-result-container {
         background: rgba(0, 0, 0, 0.8);
 
-        .list-item
-        {
+        .list-item {
             color: whitesmoke;
         }
 
-        .list-title
-        {
+        .list-title {
             color: rgba(239, 239, 239, 0.8);
         }
     }
 }
-    

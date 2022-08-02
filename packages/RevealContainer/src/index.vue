@@ -96,21 +96,21 @@
                 </radialGradient>
             </defs>
             <rect
-                :x="borderWidth"
-                :y="borderWidth"
+                :x="borderWidth / 2"
+                :y="borderWidth / 2"
                 :rx="borderRadius"
                 :ry="borderRadius"
                 style="box-sizing: border-box;"
-                :style="{width: `${offset.right - offset.left - 2 * borderWidth}px`, height: `${offset.bottom - offset.top - 2 * borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth}"
+                :style="{width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth}"
             />
             <rect
                 v-show="clickDown"
-                :x="borderWidth"
-                :y="borderWidth"
+                :x="borderWidth / 2"
+                :y="borderWidth / 2"
                 :rx="borderRadius"
                 :ry="borderRadius"
                 style="stroke: transparent; box-sizing: border-box;"
-                :style="{width: `${offset.right - offset.left - 2 * borderWidth}px`, height: `${offset.bottom - offset.top - 2 * borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth}"
+                :style="{width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth}"
             />
         </svg>
     </div>
@@ -181,6 +181,13 @@ export default {
                 wave: null,
             },
         };
+    },
+    watch: {
+        inside (val) {
+            if(!val) {
+                this.leaveEvent(null);
+            }
+        }
     },
     computed: {
         $theme() {
@@ -393,7 +400,7 @@ export default {
             if (index > -1) this.revealContainer.revealHandlerList.splice(index, 1);
         }
 
-        if (this.parent) {
+        if (this.parent && this.parent()) {
             this.parent().removeEventListener('mousedown', this.downEvent);
             this.parent().removeEventListener('touchdown', this.downEvent);
             this.parent().removeEventListener('mouseup', this.upEvent);

@@ -1,13 +1,22 @@
 <template>
 	<div :class="'fv-'+$theme+'-button'" @click="onClick">
-		<div class="fv-button-reveal-border" :class="[{disabled: isDisabled}, { shadow: isBoxShadow }]" :style="styles.revealBorder">
-            <div class="fv-button-reveal-container"></div>
+		<div class="fv-button-main-container" :class="[{disabled: isDisabled}, { shadow: isBoxShadow }]" :style="{borderRadius: `${borderRadius}px`}">
+            <fv-reveal-container
+                :parent="() => $el"
+                class="fv-button-reveal-container"
+                :backgroundColor="backgroundLightColor"
+                :borderColor="borderLightColor"
+                :borderGradientSize="80"
+                :borderWidth="borderWidth"
+                :borderRadius="borderRadius"
+                :disabled="isDisabled"
+            ></fv-reveal-container>
 			<button
 				:disabled="disabled"
 				class="button-container"
-				:style="styles.buttonContainer"
+				:style="{background: background, borderColor: borderColor, borderWidth: `${borderWidth}px`, borderRadius: `${borderRadius}px`}"
 			>
-				<span class="content-block" :style="styles.contentBlock">
+				<span class="content-block" :style="{color: foreground, 'font-size': `${fontSize}px`, 'font-weight': fontWeight}">
 					<i
 						class="ms-Icon"
 						:class="`ms-Icon--${icon}`"
@@ -43,6 +52,9 @@ export default {
 		borderRadius: {
 			default: 3
         },
+        borderColor: {
+            default: ""
+        },
         fontSize: {
 			default: "",
 			type: String
@@ -51,60 +63,29 @@ export default {
 			default: "normal",
 			type: String
         },
+        revealBorderColor: {
+            default: false,
+        },
+        revealBackgroundColor: {
+            default: false,
+        },
         isBoxShadow: {
             default: false
         },
 		disabled: {
-			default: false,
-			type: Boolean
+			default: false
 		},
 		borderWidth: {
-			default: 2,
-			type: Number
+			default: 1,
 		}
 	},
 	data() {
 		return {
-            FR: null,
-			styles: {
-				revealBorder: {
-					padding: "2px",
-					borderRadius: ""
-				},
-				buttonContainer: {
-					background: "",
-					borderRadius: ""
-				},
-				contentBlock: {
-                    color: "",
-                    fontSize: "",
-					fontWeight: "normal"
-				}
-			}
+            
 		};
 	},
 	watch: {
-		theme(val) {
-			this.FRInit();
-		},
-		borderWidth(val) {
-			this.stylesInit();
-		},
-		foreground(val) {
-			this.stylesInit();
-		},
-		background(val) {
-			this.stylesInit();
-		},
-		borderRadius(val) {
-			this.stylesInit();
-        },
-        fontSize(val) {
-			this.stylesInit();
-		},
-		fontWeight(val) {
-			this.stylesInit();
-		}
+		
 	},
 	computed: {
 		$theme() {
@@ -112,23 +93,21 @@ export default {
 			return this.theme;
 		},
 		borderLightColor() {
-			return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.6)";
-                }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.6)";
-                }
+            if(this.revealBorderColor) return this.revealBorderColor;
+			if (this.$theme == "light") {
+                return "rgba(121, 119, 117, 0.6)";
+            }
+            if (this.$theme == "dark" || this.$theme == "custom") {
+                return "rgba(255, 255, 255, 0.6)";
             }
 		},
 		backgroundLightColor() {
-			return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.3)";
-                }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.3)";
-                }
+            if(this.revealBackgroundColor) return this.revealBackgroundColor;
+			if (this.$theme == "light") {
+                return "rgba(121, 119, 117, 0.3)";
+            }
+            if (this.$theme == "dark" || this.$theme == "custom") {
+                return "rgba(255, 255, 255, 0.3)";
             }
 		},
 		isDisabled() {
@@ -140,29 +119,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.FRInit();
-		this.stylesInit();
+		
 	},
 	methods: {
-		FRInit() {
-            this.FR = this.$RevealMasked.apply(this.$el, {
-                maskedSelector: this.$el.querySelectorAll('.fv-button-reveal-border')[0],
-                borderGradientSize: 80,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-                selector: this.$el.querySelectorAll('.fv-button-reveal-container')[0],
-                status: () => this.isDisabled ? 'disabled' : 'enabled'
-            });
-		},
-		stylesInit() {
-			this.styles.revealBorder.padding = `${this.borderWidth}px`;
-			this.styles.revealBorder.borderRadius = `${this.borderRadius}px`;
-			this.styles.contentBlock.color = this.foreground;
-			this.styles.buttonContainer.background = this.background;
-            this.styles.buttonContainer.borderRadius = `${this.borderRadius}px`;
-            this.styles.contentBlock.fontSize = `${this.fontSize}px`;
-			this.styles.contentBlock.fontWeight = this.fontWeight;
-		},
 		onClick(event) {
             event.preventDefault();
             if(this.isDisabled)
@@ -171,7 +130,7 @@ export default {
 		}
 	},
     beforeDestroy () {
-        this.$RevealMasked.destroy(this.FR);
+
     }
 };
 </script>

@@ -1,9 +1,20 @@
 <template>
-<div class="calendar-picker-drop-down" :style="styles.dropDownBox" :title="inputValue">
-    <div class="calendar-picker-drop-down-container">
+<div class="calendar-picker-drop-down" :style="{ borderRadius: `${borderRadius}px`}" :title="inputValue">
+    <fv-reveal-container
+        :parent="() => $el"
+        class="fv-calendar-date-picker-reveal-container"
+        :backgroundColor="backgroundLightColor"
+        :borderColor="borderLightColor"
+        :backgroundGradientSize="120"
+        :borderGradientSize="80"
+        :borderWidth="borderWidth"
+        :borderRadius="borderRadius"
+        :disabled="disabled"
+    ></fv-reveal-container>
+    <div class="calendar-picker-drop-down-container" :style="{borderRadius: `${borderRadius}px`}">
         <slot name="input" :placeholder="placeholder" :value="inputValue">
-            <input class="input" :placeholder="placeholder" readonly :value="inputValue" :style="styles.input"/>
-            <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" aria-hidden="true" :style="styles.icon"></i>
+            <input class="input" :placeholder="placeholder" readonly :value="inputValue" :style="{ color: inputForeground, background: inputBackground, borderRadius: `${borderRadius}px`}"/>
+            <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" aria-hidden="true" :style="{color: dropDownIconForeground}"></i>
         </slot>
     </div>
 </div>
@@ -46,20 +57,7 @@ export default {
     data () {
         return {
             choosenValue: this.value,
-            FR: null,
-            styles: {
-                dropDownBox: {
-                    padding: '2px',
-                    borderRadius: ''
-                },
-                input: {
-                    color: '',
-                    background: ''
-                },
-                icon: {
-                    color: ''
-                }
-            }
+            FR: null
         };
     },
     watch: {
@@ -68,24 +66,6 @@ export default {
         },
         choosenValue (val) {
             this.$emit('input', val);
-        },
-        borderWidth () {
-            this.stylesInit();
-        },
-        borderRadius () {
-            this.stylesInit();
-        },
-        inputForeground () {
-            this.stylesInit();
-        },
-        inputBackground () {
-            this.stylesInit();
-        },
-        dropDownIconForeground () {
-            this.stylesInit();
-        },
-        theme (val) {
-            this.FRInit();
         }
     },
     computed: {
@@ -104,54 +84,28 @@ export default {
             return result;
         },
         borderLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.6)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.6)';
-                }
+            if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.6)';
+            }
+            return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.3)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.3)';
-                }
+            if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
         }
     },
     mounted () {
-        this.FRInit();
-        this.stylesInit();
     },
     methods: {
-        FRInit () {
-            this.FR = this.$RevealMasked.apply(this.$el, {
-                maskedSelector: this.$el,
-                selector: this.$el.querySelectorAll('.calendar-picker-drop-down-container input'),
-                borderGradientSize: 80,
-                backgroundGradientSize: 120,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-                status: () => this.disabled ? 'disabled' : 'enabled'
-            });
-        },
-        stylesInit () {
-            this.styles.dropDownBox.padding = `${this.borderWidth}px`;
-            this.styles.dropDownBox.borderRadius = `${this.borderRadius}px`;
-            this.styles.input.color = this.inputForeground;
-            this.styles.input.background = this.inputBackground;
-            this.styles.icon.color = this.dropDownIconForeground;
-        }
-    },
-    beforeDestroy () {
-        this.$RevealMasked.destroy(this.FR);
+        
     }
 };
 </script>

@@ -142,6 +142,10 @@ Disabled
     <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" underline></fv-SearchBox>
 </div>
 
+3. Underline with Reveal
+
+<fv-SearchBox icon="Search" placeholder="Search" :options="items" :revealBorder="true" underline></fv-SearchBox>
+
 ```vue
 1. Light
 
@@ -149,9 +153,11 @@ Disabled
 
 2. Dark
 
-<div style="width: 100%; padding: 25px; background: black;">
-    <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" underline></fv-SearchBox>
-</div>
+<fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" underline></fv-SearchBox>
+
+3. Underline with Reveal
+
+<fv-SearchBox icon="Search" placeholder="Search" :options="items" :revealBorder="true" underline></fv-SearchBox>
 ```
 
 ### SearchBox-Dark Theme
@@ -279,7 +285,6 @@ Customize background
 |        textAlign         |              [string]              |       No       |      left       |                                           |
 |       borderRadius       |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
-| disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |
 |          status          |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
 |      debounceDelay       |              [number]              |       No       |       300       |             搜索节流延迟时间              |
 |         disabled         |             [boolean]              |       No       |      false      |                                           |

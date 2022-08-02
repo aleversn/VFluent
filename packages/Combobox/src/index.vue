@@ -5,7 +5,18 @@
 		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
 	>
         <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}">
-            <input class="input" :placeholder="placeholder" readonly :value="valueTrigger(thisValue.text)" :style="{color: inputForeground}"/>
+            <fv-reveal-container
+                :parent="() => $el"
+                class="fv-combobox-reveal-container"
+                :backgroundColor="backgroundLightColor"
+                :borderColor="borderLightColor"
+                :backgroundGradientSize="120"
+                :borderGradientSize="80"
+                :borderWidth="borderWidth"
+                :borderRadius="borderRadius"
+                :disabled="isDisabled"
+            ></fv-reveal-container>
+            <input class="input" :placeholder="placeholder" readonly :value="valueTrigger(thisValue.text)" :style="{color: inputForeground, 'border-radius': `${borderRadius}px`}"/>
 		    <i class="ms-Icon right-icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </div>
 		<transition name="fv-combobox">
@@ -20,6 +31,7 @@
                     :title="valueTrigger(item.text)"
                 >
                     <slot :item="item">
+                        <i class="before-choosen" :style="{background: choosenSliderBackground}"></i>
                         {{valueTrigger(item.type) !== 'divider' ? valueTrigger(item.text) : ''}}
                     </slot>
                 </div>
@@ -55,6 +67,9 @@ export default {
         choosenBackground: {
             default: ""
         },
+        choosenSliderBackground: {
+            default: ""
+        },
 		inputForeground: {
 			default: ""
         },
@@ -81,8 +96,6 @@ export default {
 	data() {
 		return {
 			thisValue: this.value,
-            FR: null,
-            FR_list: null,
 			status: false
 		};
 	},
@@ -104,26 +117,22 @@ export default {
             );
         },
 		borderLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.6)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.6)';
-                }
+            if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.6)';
+            }
+            return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.3)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.3)';
-                }
+            if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
         },
 		$theme() {
 			if (this.theme == "system") return this.$fvGlobal.state.theme;
@@ -131,28 +140,9 @@ export default {
 		}
 	},
 	mounted () {
-        this.FRInit();
 		this.outSideClickInit();
 	},
 	methods: {
-        FRInit () {
-            this.FR = this.$RevealMasked.apply(this.$el, {
-                maskedSelector: this.$el,
-                selector: this.$el.querySelectorAll('.combobox-container'),
-                borderGradientSize: 80,
-                backgroundGradientSize: 120,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-                status: () => this.isDisabled ? 'disabled' : 'enabled'
-            });
-
-            this.FR_list = this.$RevealDirect.apply(this.$el, {
-                selector: `.fv-${this.$theme}-Combobox .combobox-item-container option.normal`,
-                borderGradientSize: 30,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
-            });
-        },
 		outSideClickInit() {
 			window.addEventListener("click", event => {
 				let x = event.target;

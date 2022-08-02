@@ -1,8 +1,19 @@
 <template>
-<div class="drop-down-box" :style="{padding: `${borderWidth}px`, 'border-radius': `${borderRadius}px`}">
+<div class="drop-down-box" :style="{'border-radius': `${borderRadius}px`}">
     <div class="drop-down-container" :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}">
+        <fv-reveal-container
+            :parent="() => $el"
+            class="fv-dropdown-reveal-container"
+            :backgroundColor="backgroundLightColor"
+            :borderColor="borderLightColor"
+            :backgroundGradientSize="120"
+            :borderGradientSize="80"
+            :borderWidth="borderWidth"
+            :borderRadius="borderRadius"
+            :disabled="disabled"
+        ></fv-reveal-container>
         <slot name="input" :placeholder="placeholder" :value="inputValue">
-            <input class="fv-drop-down-input" :placeholder="placeholder" readonly :value="inputValue" :style="{color: inputForeground}"/>
+            <input class="fv-drop-down-input" :placeholder="placeholder" readonly :value="inputValue" :style="{color: inputForeground, 'border-radius': `${borderRadius}px`, borderWidth: `${borderWidth}px`, borderColor: inputBorderColor}"/>
             <i class="right-icon ms-Icon" :class="[`ms-Icon--${dropDownIcon}`]" :style="{color: dropDownIconForeground}"></i>
         </slot>
     </div>
@@ -16,7 +27,7 @@ export default {
             default: () => []
         },
         borderWidth: {
-            default: 2
+            default: 1
         },
         placeholder: {
             default: 'Dropdown'
@@ -28,6 +39,9 @@ export default {
             default: ''
         },
         inputBackground: {
+            default: ''
+        },
+        inputBorderColor: {
             default: ''
         },
         dropDownIcon: {
@@ -55,9 +69,6 @@ export default {
         },
         choosenValue (val) {
             this.$emit('input', val);
-        },
-        theme (val) {
-            this.FRInit();
         }
     },
     computed: {
@@ -96,20 +107,8 @@ export default {
         }
     },
     mounted () {
-        this.FRInit();
     },
     methods: {
-        FRInit () {
-            this.FR = this.$RevealMasked.apply(this.$el, {
-                maskedSelector: this.$el,
-                selector: this.$el.querySelectorAll('input'),
-                borderGradientSize: 80,
-                backgroundGradientSize: 120,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-                status: () => this.disabled ? 'disabled' : 'enabled'
-            });
-        },
         valueTrigger (val) {
             if(typeof(val) === 'function')  return val();
             return val;
