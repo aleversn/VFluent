@@ -70,22 +70,23 @@ export default {
 
 ### Propoties
 ---
-|       属性(attr)       |             类型(type)             | 必填(required) | 默认值(default) |  说明(statement)   |
-|:----------------------:|:----------------------------------:|:--------------:|:---------------:|:------------------:|
-|     value/v-model      |              [object]              |       No       |       N/A       | Combobox当前项绑定 |
-|        options         |              [array]               |      Yes       |       N/A       |    Combobox数据    |
-|      borderWidth       |              [number]              |       No       |        2        |                    |
-|      placeholder       |              [string]              |       No       |    Combobox     |                    |
-|      borderRadius      |              [number]              |       No       |        3        |                    |
-|       background       |          [string(color)]           |       No       |       N/A       |                    |
-|   choosenBackground    |          [string(color)]           |       No       |       N/A       |                    |
-|    inputForeground     |          [string(color)]           |       No       |       N/A       |                    |
-|    inputBackground     |          [string(color)]           |       No       |       N/A       |                    |
-|    titleForeground     |          [string(color)]           |       No       |   ChevronDown   |                    |
-|      dropDownIcon      |              [string]              |       No       |       N/A       |                    |
-| dropDownIconForeground |          [string(color)]           |       No       |       N/A       |                    |
-|        disabled        |             [boolean]              |       No       |       N/A       |                    |
-|         theme          | ['light','dark','custom','system'] |       No       |     system      |   Dropdown theme   |
+|       属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |  说明(statement)   |
+|:-----------------------:|:----------------------------------:|:--------------:|:---------------:|:------------------:|
+|      value/v-model      |              [object]              |       No       |       N/A       | Combobox当前项绑定 |
+|         options         |              [array]               |      Yes       |       N/A       |    Combobox数据    |
+|       borderWidth       |              [number]              |       No       |        2        |                    |
+|       placeholder       |              [string]              |       No       |    Combobox     |                    |
+|      borderRadius       |              [number]              |       No       |        3        |                    |
+|       background        |          [string(color)]           |       No       |       N/A       |                    |
+|    choosenBackground    |          [string(color)]           |       No       |       N/A       |                    |
+| choosenSliderBackground |          [string(color)]           |       No       |       N/A       |                    |
+|     inputForeground     |          [string(color)]           |       No       |       N/A       |                    |
+|     inputBackground     |          [string(color)]           |       No       |       N/A       |                    |
+|     titleForeground     |          [string(color)]           |       No       |   ChevronDown   |                    |
+|      dropDownIcon       |              [string]              |       No       |       N/A       |                    |
+| dropDownIconForeground  |          [string(color)]           |       No       |       N/A       |                    |
+|        disabled         |             [boolean]              |       No       |       N/A       |                    |
+|          theme          | ['light','dark','custom','system'] |       No       |     system      |   Dropdown theme   |
 
 ### Events
 ---

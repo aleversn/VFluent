@@ -153,11 +153,15 @@ Disabled
 2. Dark
 
 <div style="width: 100%; padding: 25px; background: black;">
-    
 <ClientOnly>
 <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" underline></fv-SearchBox>
 </ClientOnly>
 </div>
+
+3. Underline with Reveal
+<ClientOnly>
+<fv-SearchBox icon="Search" placeholder="Search" :options="items" :revealBorder="true" underline></fv-SearchBox>
+</ClientOnly>
 
 ```vue
 1. Light
@@ -166,9 +170,11 @@ Disabled
 
 2. Dark
 
-<div style="width: 100%; padding: 25px; background: black;">
-    <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" underline></fv-SearchBox>
-</div>
+<fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" underline></fv-SearchBox>
+
+3. Underline with Reveal
+
+<fv-SearchBox icon="Search" placeholder="Search" :options="items" :revealBorder="true" underline></fv-SearchBox>
 ```
 
 ### SearchBox-Dark Theme
@@ -177,7 +183,6 @@ Disabled
 1. Original Template
 
 <div style="width: 100%; padding: 25px; background: black;">
-    
 <ClientOnly>
 <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items"></fv-SearchBox>
 </ClientOnly>
@@ -187,7 +192,6 @@ Disabled
 2. Custom Template
 
 <div style="width: 100%; padding: 25px; background: black;">
-    
 <ClientOnly>
 <fv-SearchBox v-model="value" icon="Search" placeholder="Search" theme="dark" :options="custom_items" :focusShow="true" :customFilter="customFilterFunc" :resultPlaceholder.sync="resultPlaceholder">
     <template v-slot:resultPlaceholder="x">
@@ -252,7 +256,6 @@ Disabled
 ---
 Customize border color
 <div style="width: 100%; padding: 25px; background: black;">
-    
 <ClientOnly>
 <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" borderColor="rgba(0,153,204,1)" focusBorderColor="rgba(0,204,153,1)"></fv-SearchBox>
 </ClientOnly>
@@ -260,7 +263,6 @@ Customize border color
 
 Customize background
 <div style="width: 100%; padding: 25px; background: black;">
-    
 <ClientOnly>
 <fv-SearchBox icon="Search" placeholder="Search" theme="dark" :options="items" background="rgba(0,153,204,1)" borderColor="rgba(0,153,204,1)"></fv-SearchBox>
 </ClientOnly>
@@ -306,7 +308,6 @@ Customize background
 |        textAlign         |              [string]              |       No       |      left       |                                           |
 |       borderRadius       |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
 |       revealBorder       |             [boolean]              |       No       |      false      |                                           |
-| disabledBorderWhenReveal |             [boolean]              |       No       |      true       |      使用`Reveal`边框是禁用默认边框       |
 |          status          |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
 |      debounceDelay       |              [number]              |       No       |       300       |             搜索节流延迟时间              |
 |         disabled         |             [boolean]              |       No       |      false      |                                           |

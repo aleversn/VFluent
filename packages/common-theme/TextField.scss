@@ -2,7 +2,8 @@
     position: relative;
     width: 300px;
     height: auto;
-    border: rgba(237, 237, 237, 1) solid thin;
+    background: white;
+    border: none;
     border-radius: 2px;
     box-sizing: border-box;
     display: flex;
@@ -11,58 +12,62 @@
     -webkit-appearance: none;
     overflow: hidden;
 
-    &.warn
-    {
-        border: $border-error-color solid thin;
+    &.warn {
+        .text-field-wrapper-container {
+            border: $border-error-color solid thin;
+        }
     }
 
-    &.correct
-    {
-        border: $border-correct-color solid thin;
+    &.correct {
+        .text-field-wrapper-container {
+            border: $border-correct-color solid thin;
+        }
     }
 
-    &.shadow
-    {
+    &.shadow {
         box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
     }
 
-    &.focus
-    {
-        div.text-field-container
-        {
+    &.focus {
+        div.text-field-container {
             margin: 0px;
         }
     }
 
-    &.underline
-    {
-        border: rgba(0, 90, 158, 1) solid thin;
-        border-left: none;
-        border-top: none;
-        border-right: none;
+    &.underline {
+        .fv-text-box-wrapper-container {
+            border: rgba(0, 90, 158, 1) solid thin;
+            border-left: none;
+            border-top: none;
+            border-right: none;
+        }
     }
 
-    &.disabled
-    {
-        border-color: transparent;
+    &.disabled {
+        background: rgba(243, 242, 241, 1);
 
-        .text-field-reveal-container
-        {
-            background: rgba(243, 242, 241, 1);
+        .text-field-wrapper-container {
+            border-color: transparent;
         }
 
-        .fv-text-field-input
-        {
+        .fv-text-field-input {
             opacity: 0.5;
         }
     }
 
-    .text-field-reveal-container
-    {
+    .fv-text-field-reveal-container {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .text-field-wrapper-container {
         position: relative;
         width: 100%;
         height: 100%;
-        background: white;
+        border: rgba(36, 36, 36, 0.1) solid thin;
         box-sizing: border-box;
         display: flex;
         justify-content: space-between;
@@ -71,22 +76,21 @@
         overflow: hidden;
     }
 
-    .fv-text-field-input
-    {
+    .fv-text-field-input {
         position: relative;
         width: 100%;
         height: 100%;
         padding: 3px;
         background: transparent;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
+            "Droid Sans", "Helvetica Neue", sans-serif;
         border: none;
         outline: none;
         resize: none;
         box-sizing: border-box;
     }
 
-    .fv-text-field-input::placeholder
-    {
+    .fv-text-field-input::placeholder {
         user-select: none;
     }
 }

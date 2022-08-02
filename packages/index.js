@@ -127,7 +127,6 @@ const install = function (Vue) {
     Object.defineProperty(Vue.prototype, '$RevealMasked', {
         get() {
             if (Vue.prototype.$_RevealMasked === undefined) {
-                console.log('get');
                 Vue.prototype.$_RevealMasked = new RevealMasked();
             }
             return Vue.prototype.$_RevealMasked;

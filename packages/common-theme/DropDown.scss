@@ -18,7 +18,6 @@
         position: relative;
         width: 100%;
         height: 36px;
-        padding: 2px;
         border-radius: 3px;
         box-sizing: border-box;
         display: flex;
@@ -42,6 +41,15 @@
             align-items: center;
             box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
 
+            .fv-dropdown-reveal-container
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
             .fv-drop-down-input
             {
                 position: relative;
@@ -50,7 +58,7 @@
                 padding: 0px 36px 0px 8px;
                 background: transparent;
                 font-family: "微软雅黑", Segoe MDL2;
-                border: none;
+                border: rgba(0, 0, 0, 0.1) solid thin;
                 outline: none;
                 font-size: 13.5px;
                 font-weight: 400;
@@ -95,9 +103,9 @@
         left: 0px;
         width: 100%;
         height: auto;
-        padding: 0px 2px;
+        padding: 0px 8px;
         background: rgba(245, 245, 245, 0.95);
-        border-radius: 6px;
+        border-radius: 3px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -182,7 +190,7 @@
 
                 &.title
                 {
-                    color: rgba(0,120,212,1);
+                    color: rgba(0, 98, 158, 1);
                     font-weight: 600;
                 }
             }

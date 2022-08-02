@@ -18,7 +18,7 @@
                 @click="onClick($event, item)"
             >
                 <fv-reveal-container
-                    v-if="valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined"
+                    v-if="(valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined) && !valueTrigger(item.disabled)"
                     :revealContainer="FR"
                     :parent="() => $refs[`list_item_${index}`][0]"
                     class="fv-listview-reveal-container"

@@ -20,6 +20,7 @@
             .fv-drop-down-input
             {
                 color: whitesmoke;
+                border: rgba(200, 200, 200, 0.1) solid thin;
                 user-select: none;
 
                 &::placeholder
@@ -83,8 +84,34 @@
 
                 &.title
                 {
-                    color: rgba(0,153,204,1);
+                    color: rgba(118, 185, 237, 1);
                 }
+            }
+        }
+    }
+
+    &.disabled
+    {
+        &:hover
+        {
+            .drop-down-box
+            {
+                background: rgba(36, 36, 36, 0.8);
+            }
+        }
+
+        .drop-down-box
+        {
+            .drop-down-container
+            {
+                background: rgba(36, 36, 36, 0.8);
+
+                .fv-drop-down-input
+                {
+                    background: rgba(36, 36, 36, 0.8);
+                    border-color: transparent;
+                }
+
             }
         }
     }

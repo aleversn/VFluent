@@ -1,117 +1,40 @@
 <template>
-    <div
-        :class="['fv-'+$theme+'-RevealContainer']"
-        :style="{'border-radius': `${borderRadius}px`}"
-        @click="$event => {
-            if(!isDisabled)
-                $emit('click', $event);
-        }"
-    >
-        <svg
-            v-show="offset.right - offset.left > 0"
-            width="100%"
-            height="100%"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-        >
+    <div :class="['fv-' + $theme + '-RevealContainer']" :style="{ 'border-radius': `${borderRadius}px` }" @click="$event => {
+        if (!isDisabled)
+            $emit('click', $event);
+    }">
+        <svg v-show="offset.right - offset.left > 0" width="100%" height="100%" version="1.1"
+            xmlns="http://www.w3.org/2000/svg">
             >
             <defs>
-                <radialGradient
-                    cx="50%"
-                    cy="50%"
-                    :r="backgroundGradientSize"
-                    gradientUnits="userSpaceOnUse"
-                    spreadMethod="pad"
-                    :id="`backgroundG_${id}`"
-                    :gradientTransform="borderMatrix"
-                >
-                    <stop
-                        v-if="backgroundGradientList.length == 0"
-                        offset="0"
-                        :stop-color="backgroundColor"
-                    />
-                    <stop
-                        v-if="backgroundGradientList.length == 0"
-                        offset="1"
-                        stop-color="rgba(255, 255, 255, 0)"
-                    />
-                    <stop
-                        v-for="(color, index) in backgroundGradientList"
-                        :offset="1 / backgroundGradientList.length * index"
-                        :stop-color="color"
-                        :key="`bg:${index}`"
-                    />
+                <radialGradient cx="50%" cy="50%" :r="backgroundGradientSize" gradientUnits="userSpaceOnUse"
+                    spreadMethod="pad" :id="`backgroundG_${id}`" :gradientTransform="borderMatrix">
+                    <stop v-if="backgroundGradientList.length == 0" offset="0" :stop-color="backgroundColor" />
+                    <stop v-if="backgroundGradientList.length == 0" offset="1" stop-color="rgba(255, 255, 255, 0)" />
+                    <stop v-for="(color, index) in backgroundGradientList"
+                        :offset="1 / backgroundGradientList.length * index" :stop-color="color" :key="`bg:${index}`" />
                 </radialGradient>
-                <radialGradient
-                    cx="50%"
-                    cy="50%"
-                    :r="borderGradientSize"
-                    gradientUnits="userSpaceOnUse"
-                    spreadMethod="pad"
-                    :id="`borderG_${id}`"
-                    :gradientTransform="borderMatrix"
-                >
-                    <stop
-                        v-if="borderGradientList.length == 0"
-                        offset="0"
-                        :stop-color="borderColor"
-                    />
-                    <stop
-                        v-if="borderGradientList.length == 0"
-                        offset="1"
-                        stop-color="rgba(255, 255, 255, 0)"
-                    />
-                    <stop
-                        v-for="(color, index) in borderGradientList"
-                        :offset="1 / borderGradientList.length * index"
-                        :stop-color="color"
-                        :key="`border:${index}`"
-                    />
+                <radialGradient cx="50%" cy="50%" :r="borderGradientSize" gradientUnits="userSpaceOnUse"
+                    spreadMethod="pad" :id="`borderG_${id}`" :gradientTransform="borderMatrix">
+                    <stop v-if="borderGradientList.length == 0" offset="0" :stop-color="borderColor" />
+                    <stop v-if="borderGradientList.length == 0" offset="1" stop-color="rgba(255, 255, 255, 0)" />
+                    <stop v-for="(color, index) in borderGradientList" :offset="1 / borderGradientList.length * index"
+                        :stop-color="color" :key="`border:${index}`" />
                 </radialGradient>
-                <radialGradient
-                    cx="50%"
-                    cy="50%"
-                    :r="wave"
-                    gradientUnits="userSpaceOnUse"
-                    spreadMethod="pad"
-                    :id="`clickG_${id}`"
-                    :gradientTransform="borderMatrix"
-                >
-                    <stop
-                        offset="0"
-                        stop-color="rgba(255, 255, 255, 0)"
-                    />
-                    <stop
-                        offset="0.33"
-                        :stop-color="backgroundColor"
-                    />
-                    <stop
-                        offset="0.66"
-                        stop-color="rgba(255, 255, 255, 0)"
-                    />
-                    <stop
-                        offset="1"
-                        stop-color="rgba(255, 255, 255, 0)"
-                    />
+                <radialGradient cx="50%" cy="50%" :r="wave" gradientUnits="userSpaceOnUse" spreadMethod="pad"
+                    :id="`clickG_${id}`" :gradientTransform="borderMatrix">
+                    <stop offset="0" stop-color="rgba(255, 255, 255, 0)" />
+                    <stop offset="0.33" :stop-color="backgroundColor" />
+                    <stop offset="0.66" stop-color="rgba(255, 255, 255, 0)" />
+                    <stop offset="1" stop-color="rgba(255, 255, 255, 0)" />
                 </radialGradient>
             </defs>
-            <rect
-                :x="borderWidth"
-                :y="borderWidth"
-                :rx="borderRadius"
-                :ry="borderRadius"
+            <rect :x="borderWidth / 2" :y="borderWidth / 2" :rx="borderRadius" :ry="borderRadius"
                 style="box-sizing: border-box;"
-                :style="{width: `${offset.right - offset.left - 2 * borderWidth}px`, height: `${offset.bottom - offset.top - 2 * borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth}"
-            />
-            <rect
-                v-show="clickDown"
-                :x="borderWidth"
-                :y="borderWidth"
-                :rx="borderRadius"
-                :ry="borderRadius"
+                :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth }" />
+            <rect v-show="clickDown" :x="borderWidth / 2" :y="borderWidth / 2" :rx="borderRadius" :ry="borderRadius"
                 style="stroke: transparent; box-sizing: border-box;"
-                :style="{width: `${offset.right - offset.left - 2 * borderWidth}px`, height: `${offset.bottom - offset.top - 2 * borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth}"
-            />
+                :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth }" />
         </svg>
     </div>
 </template>
@@ -171,8 +94,10 @@ export default {
                 bottom: 0,
             },
             disEl: {
-                x: window.innerWidth,
-                y: window.innerHeight,
+                // x: window.innerWidth,
+                // y: window.innerHeight,
+                x: 0,
+                y: 0
             },
             inside: false,
             wave: 0,
@@ -181,6 +106,13 @@ export default {
                 wave: null,
             },
         };
+    },
+    watch: {
+        inside(val) {
+            if (!val) {
+                this.leaveEvent(null);
+            }
+        }
     },
     computed: {
         $theme() {
@@ -199,6 +131,9 @@ export default {
         },
     },
     mounted() {
+        // mount data
+        this.disEl.y = window.innerHeight
+        this.disEl.x = window.innerWidth
         this.mouseMoveInit();
         this.mouseClickInit();
     },
@@ -306,7 +241,7 @@ export default {
                     cur += step;
                     if (cur >= 1000) clearInterval(this.timer.wave);
                     else this.wave = cur;
-                } catch (e) {}
+                } catch (e) { }
             }, 50);
         },
         upEvent(e) {
@@ -393,7 +328,7 @@ export default {
             if (index > -1) this.revealContainer.revealHandlerList.splice(index, 1);
         }
 
-        if (this.parent) {
+        if (this.parent && this.parent()) {
             this.parent().removeEventListener('mousedown', this.downEvent);
             this.parent().removeEventListener('touchdown', this.downEvent);
             this.parent().removeEventListener('mouseup', this.upEvent);

@@ -2,7 +2,7 @@
 .fv-dark-button{
     @include fv-button();
 
-    div.fv-button-reveal-border
+    div.fv-button-main-container
     {
         &:hover
         {
@@ -12,6 +12,7 @@
         button.button-container
         {
             background: #605e5c;
+            border: rgba(200, 200, 200, 0.1) solid thin;
             
             span.content-block
             {

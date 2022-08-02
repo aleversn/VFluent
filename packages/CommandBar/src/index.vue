@@ -3,6 +3,16 @@
     <div class="left-command-bar-container" :style="{background: background}">
         <span v-show="valueTrigger(item.show)" v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" :title="valueTrigger(item.name)" @click="itemClick($event, item)">
             <span v-show="valueTrigger(item.type) !== 'more'" class="s1-container">
+                <fv-reveal-container
+                    v-if="valueTrigger(item.type) != 'divider' && !valueTrigger(item.disabled)"
+                    :parent="() => $el"
+                    class="fv-command-bar-reveal-container"
+                    :backgroundColor="backgroundLightColor"
+                    :borderColor="borderLightColor"
+                    :borderGradientSize="80"
+                    :borderWidth="1"
+                    :borderRadius="6"
+                ></fv-reveal-container>
                 <i class="ms-Icon icon" :class="[`ms-Icon--${valueTrigger(item.icon)}`]" :style="{color: valueTrigger(item.iconColor)}"></i>
                 <p v-show="!compact" class="name">
                     {{valueTrigger(item.name)}}
@@ -61,7 +71,6 @@ export default {
             thisValue: {},
             thisOptions: [],
             currentLeft: 0,
-            FR: null
         }
     },
     watch: {
@@ -86,26 +95,22 @@ export default {
             return false;
         },
         borderLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.1)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.1)';
-                }
-                return 'rgba(121, 119, 117, 0.1)';
+            if(this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.3)';
             }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
         },
         backgroundLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.2)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.2)';
-                }
+            if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.2)';
             }
+            if(this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.2)';
+            }
+            return 'rgba(121, 119, 117, 0.2)';
         },
         $theme () {
             if (this.theme=='system')
@@ -115,18 +120,9 @@ export default {
     },
     mounted () {
         this.optionsInit();
-        this.FRInit();
         this.outSideClickInit();
     },
     methods: {
-        FRInit () {
-            this.FR = this.$RevealDirect.apply(this.$el, {
-                selector: `.fv-${this.$theme}-CommandBar .left-command-bar-container .command-bar-item.normal.not_disabled`,
-                borderGradientSize: 80,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor
-            });
-        },
         optionsInit () {
             let model = {
                 name: "",
@@ -192,7 +188,7 @@ export default {
         },
         leftFormat (event) {
             let x = event.target;
-            while (x.getAttribute("class").indexOf("command-bar-item") < 0)
+            while (!x.getAttribute("class") || x.getAttribute("class").indexOf("command-bar-item") < 0)
                 x = x.parentNode;
             let thisLeft = this.$el.getBoundingClientRect().left;
             let thisRight = this.$el.getBoundingClientRect().right;

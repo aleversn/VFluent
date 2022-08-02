@@ -1,213 +1,231 @@
 <template>
-<div :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]" :style="[{ 'border': disabledBorderWhenReveal && revealBorder ? 'none' : `` }, { background: background, borderWidth: `${borderWidth}px`, borderColor: isFocus ? focusBorderColor : borderColor }, { borderRadius: `${borderRadius}px` }, { padding: revealBorder ? `${borderWidth}px` : ''}]" @click="isFocus = true">
-    <div class="text-box-reveal-container" :style="{ background: background, borderRadius: `${borderRadius}px` }">
-        <div v-show="prefix != ''" class="fix-block">
-            <p>{{prefix}}</p>
-        </div>
-        <i v-show="leftIcon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${leftIcon}`]" @click="$emit('left-icon-click', $event)"></i>
-        <core v-model="thisValue" ref="core" :mode="mode" :type="type" :placeholder="placeholder" :mask="mask" :flag="flag" :pattern="pattern" :readonly="readonly" :maxlength="maxlength" :disabled="disabled" :fontSize="fontSize" :fontWeight="fontWeight" :foreground="foreground" :textAlign="textAlign" :focus.sync="isFocus" @keydown="$emit('keydown', $event)" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)"></core>
-        <i v-show="icon != ''" class="ms-Icon icon-block" :class="[`ms-Icon--${icon}`]" @click="$emit('icon-click', $event)"></i>
-        <div v-show="suffix != ''" class="fix-block">
-            <p>{{suffix}}</p>
+    <div
+        :class="['fv-'+$theme+'-TextBox', status, isFocus ? 'focus' : '', isDisabled ? 'disabled' : '', isUnderline ? 'underline': '', { shadow: isBoxShadow }]"
+        :style="[{ background: background, borderRadius: `${borderRadius}px` }]"
+        @click="isFocus = true"
+    >
+        <fv-reveal-container
+            :parent="() => $el"
+            class="fv-text-box-reveal-container"
+            :backgroundColor="backgroundLightColor"
+            :borderColor="borderLightColor"
+            :backgroundGradientSize="120"
+            :borderGradientSize="60"
+            :borderWidth="borderWidth"
+            :borderRadius="borderRadius"
+            :disabled="isDisabled || !revealBorder"
+        ></fv-reveal-container>
+        <div
+            class="fv-text-box-wrapper-container"
+            :style="{borderWidth: `${borderWidth}px`, borderColor: isFocus ? focusBorderColor : borderColor, borderRadius: `${borderRadius}px`}"
+        >
+            <div
+                v-show="prefix != ''"
+                class="fix-block"
+            >
+                <p>{{prefix}}</p>
+            </div>
+            <i
+                v-show="leftIcon != ''"
+                class="ms-Icon icon-block"
+                :class="[`ms-Icon--${leftIcon}`]"
+                @click="$emit('left-icon-click', $event)"
+            ></i>
+            <core
+                v-model="thisValue"
+                ref="core"
+                :mode="mode"
+                :type="type"
+                :placeholder="placeholder"
+                :mask="mask"
+                :flag="flag"
+                :pattern="pattern"
+                :readonly="readonly"
+                :maxlength="maxlength"
+                :disabled="disabled"
+                :fontSize="fontSize"
+                :fontWeight="fontWeight"
+                :foreground="foreground"
+                :textAlign="textAlign"
+                :focus.sync="isFocus"
+                @keydown="$emit('keydown', $event)"
+                @keyup="$emit('keyup', $event)"
+                @change="$emit('change', $event)"
+                @paste="$emit('paste', $event)"
+            ></core>
+            <i
+                v-show="icon != ''"
+                class="ms-Icon icon-block"
+                :class="[`ms-Icon--${icon}`]"
+                @click="$emit('icon-click', $event)"
+            ></i>
+            <div
+                v-show="suffix != ''"
+                class="fix-block"
+            >
+                <p>{{suffix}}</p>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
 import core from './sub/core.vue';
 
 export default {
-    name: "FvTextBox",
+    name: 'FvTextBox',
     components: {
-        core
+        core,
     },
     props: {
         value: {
-            default: ""
+            default: '',
         },
         mode: {
-            default: "default"
+            default: 'default',
         },
         placeholder: {
-            default: ""
+            default: '',
         },
         type: {
-            default: "text"
+            default: 'text',
         },
         mask: {
             type: String,
-            default: "mask:___"
+            default: 'mask:___',
         },
         flag: {
             type: String,
-            default: "_"
+            default: '_',
         },
         pattern: {
             type: String,
-            default: "[\S\s]*"
+            default: '[Ss]*',
         },
         readonly: {
-            default: false
+            default: false,
         },
         maxlength: {
-            default: ''
+            default: '',
         },
         prefix: {
-            default: ""
+            default: '',
         },
         suffix: {
-            default: ""
+            default: '',
         },
         leftIcon: {
-            default: ""
+            default: '',
         },
         icon: {
-            default: ""
+            default: '',
         },
         underline: {
-            default: false
+            default: false,
         },
         background: {
-            default: ""
+            default: '',
         },
         borderWidth: {
-            default: 1
+            default: 1,
         },
         borderColor: {
-            default: ""
+            default: '',
         },
         focusBorderColor: {
-            default: ""
+            default: '',
         },
         fontSize: {
-            default: 13.3
+            default: 13.3,
         },
         fontWeight: {
-            default: 'normal'
+            default: 'normal',
         },
         foreground: {
-            default: ""
+            default: '',
         },
         borderRadius: {
-            default: 3
+            default: 3,
         },
         textAlign: {
-            default: 'left'
+            default: 'left',
         },
         isBoxShadow: {
-            default: false
+            default: false,
         },
         revealBorder: {
-            default: false
-        },
-        disabledBorderWhenReveal: {
-            default: true
+            default: false,
         },
         status: {
-            default: ""
+            default: '',
         },
         debounceDelay: {
-            default: 300
+            default: 300,
         },
         disabled: {
-            default: false
+            default: false,
         },
         theme: {
             type: String,
-            default: "system"
-        }
+            default: 'system',
+        },
     },
-    data () {
+    data() {
         return {
-            FR: null,
             thisValue: this.value,
             isFocus: false,
             timer: {
-                debounce: null
-            }
+                debounce: null,
+            },
         };
     },
     watch: {
-        value (val) {
+        value(val) {
             this.thisValue = val;
         },
-        thisValue (val) {
+        thisValue(val) {
             clearTimeout(this.timer.debounce);
             this.timer.debounce = setTimeout(() => {
                 this.$emit('debounce-input', this.thisValue);
             }, this.debounceDelay);
-            this.$emit("input", val);
+            this.$emit('input', val);
         },
-        revealBorder (val) {
-            if(val) {
-                this.FRInit();
-            }
-        }
     },
     computed: {
         $theme() {
-            if (this.theme == "system") return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
-        isUnderline () {
-            return (
-                this.underline.toString() == "true" ||
-                this.underline == "underline" ||
-                this.underline === ""
-            );
+        isUnderline() {
+            return this.underline.toString() == 'true' || this.underline == 'underline' || this.underline === '';
         },
-        isDisabled () {
-            return (
-                this.disabled.toString() == "true" ||
-                this.disabled == "disabled" ||
-                this.disabled === ""
-            );
+        isDisabled() {
+            return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
         },
-        borderLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.6)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.6)';
-                }
+        borderLightColor() {
+            if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
+            if (this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.6)';
+            }
+            return 'rgba(121, 119, 117, 0.6)';
         },
-        backgroundLightColor () {
-            return () => {
-                if(this.$theme == 'light') {
-                    return 'rgba(121, 119, 117, 0.3)';
-                }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
-                    return 'rgba(255, 255, 255, 0.3)';
-                }
+        backgroundLightColor() {
+            if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }
-        }
-    },
-    mounted () {
-        if(this.revealBorder)
-            this.FRInit();
-    },
-    methods: {
-        FRInit () {
-            this.FR = this.$RevealMasked.apply(this.$el, {
-                maskedSelector: this.$el,
-                borderGradientSize: 60,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-                selector: this.$el.querySelectorAll('.text-box-reveal-container')[0],
-                status: () => this.isDisabled ? 'disabled' : 'enabled'
-            });
+            if (this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
         },
-        focus () {
-            this.$refs.core.focusInspect();
-        }
     },
-    beforeDestroy () {
-        this.$RevealMasked.destroy(this.FR);
-    }
+    mounted() {},
+    methods: {
+        focus() {
+            this.$refs.core.focusInspect();
+        },
+    },
 };
 </script>

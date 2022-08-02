@@ -301,6 +301,9 @@ export class RevealDirect {
             target = window;
         }
         if (key != 'window') target = this.FvRevealElementList[key].el;
+        if (target === undefined) {
+            return;
+        }
 
         let forList = key === 'window' ? this.FvRevealElementList['window'] : { key: this.FvRevealElementList[key] };
 

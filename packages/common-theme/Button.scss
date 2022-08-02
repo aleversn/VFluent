@@ -7,12 +7,11 @@
     display: flex;
     user-select: none;
 
-    div.fv-button-reveal-border
+    div.fv-button-main-container
     {
         position: relative;
         width: 100%;
         height: 100%;
-        padding: 2px;
         box-sizing: border-box;
         display: flex;
         overflow: hidden;
@@ -25,13 +24,14 @@
 
         &.shadow
         {
-            box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+            box-shadow: rgba(0, 0, 0, 0.133) 0px 1px 2px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
         }
         
         &.disabled
         {
             background: transparent;
             filter: grayscale(1);
+            box-shadow: none;
             opacity: 0.6;
         }
 
@@ -49,7 +49,7 @@
             width: 100%;
             height: 100%;
             background: #edebe9;
-            border: none;
+            border: rgba(0, 0, 0, 0.1) solid thin;
             outline: none;
             box-sizing: border-box;
             transition: all 0.3s;

@@ -9,7 +9,6 @@
 
 Avatar with item
 
-
 <div>
 <ClientOnly>
 <fv-Shimmer style="height: auto;">

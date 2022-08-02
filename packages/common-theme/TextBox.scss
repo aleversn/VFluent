@@ -1,9 +1,9 @@
 @mixin fv-TextBox {
-
     position: relative;
     width: 300px;
     height: 32px;
-    border: rgba(237, 237, 237, 1) solid thin;
+    background: white;
+    border: none;
     border-radius: 2px;
     box-sizing: border-box;
     display: flex;
@@ -12,162 +12,151 @@
     -webkit-appearance: none;
     overflow: hidden;
 
-    &.warn
-    {
-        border: $border-error-color solid thin;
+    &.warn {
+        .fv-text-box-wrapper-container {
+            border: $border-error-color solid thin;
+        }
     }
 
-    &.correct
-    {
-        border: $border-correct-color solid thin;
+    &.correct {
+        .fv-text-box-wrapper-container {
+            border: $border-correct-color solid thin;
+        }
     }
 
-    &.shadow
-    {
+    &.shadow {
         box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
     }
 
-    &.focus
-    {
-        div.text-box-container
-        {
+    &.focus {
+        div.text-box-container {
             margin: 0px;
         }
 
-        div.fix-block
-        {
+        div.fix-block {
             margin: 0px;
         }
     }
 
-    &.underline
-    {
-        border: rgba(0, 90, 158, 1) solid thin;
-        border-left: none;
-        border-top: none;
-        border-right: none;
+    &.underline {
+        .fv-text-box-wrapper-container {
+            border: rgba(0, 90, 158, 1) solid thin;
+            border-left: none;
+            border-top: none;
+            border-right: none;
 
-        div.fix-block
-        {
-            background: transparent;
+            div.fix-block {
+                background: transparent;
 
-            p
-            {
-                font-weight: 600;
-                color: $t-light-50;
-                cursor: default;
+                p {
+                    font-weight: 600;
+                    color: $t-light-50;
+                    cursor: default;
+                }
             }
         }
     }
 
-    &.disabled
-    {
+    &.disabled {
+        background: rgba(243, 242, 241, 1);
         border-color: transparent;
 
-        .text-box-reveal-container
-        {
-            background: rgba(243, 242, 241, 1);
-        }
+        .fv-text-box-wrapper-container {
+            div.text-box-container {
+                .fv-text-box-input {
+                    opacity: 0.5;
+                }
+            }
 
-        div.text-box-container
-        {
-            .fv-text-box-input
-            {
+            div.fix-block {
+                p {
+                    opacity: 0.5;
+                }
+            }
+
+            .icon-block {
                 opacity: 0.5;
             }
-        }
-
-        div.fix-block
-        {
-            p
-            {
-                opacity: 0.5;
-            }
-        }
-
-        .icon-block
-        {
-            opacity: 0.5;
         }
     }
 
-    .text-box-reveal-container
-    {
+    .fv-text-box-reveal-container {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .fv-text-box-wrapper-container {
         position: relative;
         width: 100%;
         height: 100%;
-        background: white;
+        border: rgba(36, 36, 36, 0.1) solid thin;
         box-sizing: border-box;
         display: flex;
         justify-content: space-between;
         align-items: center;
         -webkit-appearance: none;
         overflow: hidden;
-    }
 
-    div.fix-block
-    {
-        position: relative;
-        height: 100%;
-        margin: 1px;
-        padding: 0px 10px;
-        background: rgba(243, 242, 241, 1);
-        font-size: 13.5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        user-select: none;
+        div.fix-block {
+            position: relative;
+            height: 100%;
+            margin: 1px;
+            padding: 0px 10px;
+            background: rgba(243, 242, 241, 1);
+            font-size: 13.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
 
-        p
-        {
-            color: $t-light-96;
+            p {
+                color: $t-light-96;
+            }
         }
-    }
 
-    .icon-block
-    {
-        position: relative;
-        width: 30px;
-        height: 100%;
-        padding: 0px 10px;
-        font-size: 12px;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: text;
-    }
-    
-    div.text-box-container
-    {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        margin: 1px;
-        padding: 0px 8px;
-        flex: 1;
-        box-sizing: border-box;
-        display: flex;
-
-        &.internal
-        {
-            margin: 0px;
-            padding: 0px;
+        .icon-block {
+            position: relative;
+            width: 30px;
+            height: 100%;
+            padding: 0px 10px;
+            font-size: 12px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: text;
         }
-        
-        .fv-text-box-input
-        {
+
+        div.text-box-container {
             position: relative;
             width: 100%;
             height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-        }
+            margin: 1px;
+            padding: 0px 8px;
+            flex: 1;
+            box-sizing: border-box;
+            display: flex;
 
-        .fv-text-box-input::placeholder
-        {
-            user-select: none;
+            &.internal {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            .fv-text-box-input {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+
+            .fv-text-box-input::placeholder {
+                user-select: none;
+            }
         }
     }
 }
