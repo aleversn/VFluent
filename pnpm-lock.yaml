@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': ^7.12.10
   '@babel/preset-react': ^7.12.10
   '@vue/babel-preset-app': ^4.5.9
+  '@vue/babel-preset-jsx': ^1.3.1
   '@vue/cli-plugin-babel': ^4.1.0
   '@vue/cli-plugin-eslint': ^4.1.0
   '@vue/cli-service': ^4.1.0
@@ -39,6 +40,7 @@ devDependencies:
   '@babel/core': 7.18.10
   '@babel/preset-react': 7.18.6_@babel+core@7.18.10
   '@vue/babel-preset-app': 4.5.19_vue@2.7.8
+  '@vue/babel-preset-jsx': 1.3.1_tkmmhmvzsavb4fxhxdcfoykbmy
   '@vue/cli-plugin-babel': 4.5.19_co5okxmme2qz3y7hmlytk6mv5a
   '@vue/cli-plugin-eslint': 4.5.19_q2624y2yg44c3jnsdoxpfw7ex4
   '@vue/cli-service': 4.5.19_fdhppcegsnnzujkhzvxdtkm4jm
