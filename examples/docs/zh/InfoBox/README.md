@@ -78,10 +78,9 @@ Default
 
 
 <ClientOnly>
-
-
 <fv-InfoBox>
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox>
@@ -90,8 +89,11 @@ Default
 
 Error
 
+
+<ClientOnly>
 <fv-InfoBox status="error">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="error">
@@ -100,8 +102,11 @@ Error
 
 Blocked
 
+
+<ClientOnly>
 <fv-InfoBox status="blocked">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="blocked">
@@ -110,8 +115,11 @@ Blocked
 
 Correct
 
+
+<ClientOnly>
 <fv-InfoBox status="correct">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="correct">
@@ -120,8 +128,11 @@ Correct
 
 Warning
 
+
+<ClientOnly>
 <fv-InfoBox status="warning">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="warning">
@@ -130,8 +141,11 @@ Warning
 
 Without TitleBar
 
+
+<ClientOnly>
 <fv-InfoBox :showTitleBar="false">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox :showTitleBar="false">
@@ -142,8 +156,11 @@ Without TitleBar
 ---
 Default
 
+
+<ClientOnly>
 <fv-InfoBox theme="dark">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox theme="dark">
@@ -152,8 +169,11 @@ Default
 
 Error
 
+
+<ClientOnly>
 <fv-InfoBox status="error" theme="dark">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="error" theme="dark">
@@ -162,8 +182,11 @@ Error
 
 Blocked
 
+
+<ClientOnly>
 <fv-InfoBox status="blocked" theme="dark">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="blocked" theme="dark">
@@ -172,8 +195,11 @@ Blocked
 
 Correct
 
+
+<ClientOnly>
 <fv-InfoBox status="correct" theme="dark">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="correct" theme="dark">
@@ -182,8 +208,11 @@ Correct
 
 Warning
 
+
+<ClientOnly>
 <fv-InfoBox status="warning" theme="dark">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox status="warning" theme="dark">
@@ -192,8 +221,11 @@ Warning
 
 Without TitleBar
 
+
+<ClientOnly>
 <fv-InfoBox theme="dark" :showTitleBar="false">
 </fv-InfoBox>
+</ClientOnly>
 
 ```vue
 <fv-InfoBox theme="dark" :showTitleBar="false">
@@ -204,7 +236,10 @@ Without TitleBar
 ---
 1. Standard
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="show1">Show InfoBox</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button style="width: 200px;" @click="show1">Show InfoBox</fv-button>
@@ -221,7 +256,10 @@ this.$infoBox('This is a toast info.', {
 
 2. Customize Message Template
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="show2">Show InfoBox</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button style="width: 200px;" @click="show2">Show InfoBox</fv-button>
@@ -246,7 +284,10 @@ this.$infoBox(h('div', [
 
 3. Customize Control Panel
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="show3">Show InfoBox</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button style="width: 200px;" @click="show3">Show InfoBox</fv-button>
@@ -285,9 +326,6 @@ this.$infoBox(h('div', [
     cancel: () => { alert('Cancel'); }
 });
 ```
-
-
-</ClientOnly>
 
 
 ### Propoties

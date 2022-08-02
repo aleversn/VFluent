@@ -29,12 +29,12 @@ export default {
 </script>
 
 
-<ClientOnly>
-
-
 <div style="width: 100%; height: 500px; padding: 15px;">
-    <fv-ListView v-model="items">
-    </fv-ListView>
+    
+<ClientOnly>
+<fv-ListView v-model="items">
+</fv-ListView>
+</ClientOnly>
 </div>
 
 ```vue
@@ -47,8 +47,11 @@ export default {
 ### ListView-Multiple
 ---
 <div style="width: 100%; height: 500px; padding: 15px;">
-    <fv-ListView v-model="items" :multiple="true">
-    </fv-ListView>
+    
+<ClientOnly>
+<fv-ListView v-model="items" :multiple="true">
+</fv-ListView>
+</ClientOnly>
 </div>
 
 ```vue
@@ -61,8 +64,11 @@ export default {
 ### ListView-Dark Theme
 ---
 <div style="width: 100%; height: 500px; padding: 15px; background: black;">
-    <fv-ListView v-model="items" theme="dark">
-    </fv-ListView>
+    
+<ClientOnly>
+<fv-ListView v-model="items" theme="dark">
+</fv-ListView>
+</ClientOnly>
 </div>
 
 ```vue
@@ -75,8 +81,11 @@ export default {
 ### ListView-Custom Choosen Background
 ---
 <div style="width: 100%; height: 500px; padding: 15px; background: black;">
-    <fv-ListView v-model="items" theme="dark" choosenBackground="rgba(0, 204, 153, 0.6)">
-    </fv-ListView>
+    
+<ClientOnly>
+<fv-ListView v-model="items" theme="dark" choosenBackground="rgba(0, 204, 153, 0.6)">
+</fv-ListView>
+</ClientOnly>
 </div>
 
 ```vue
@@ -86,8 +95,6 @@ export default {
 </div>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

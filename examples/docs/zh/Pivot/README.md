@@ -25,9 +25,8 @@ export default {
 
 
 <ClientOnly>
-
-
 <fv-Pivot v-model="value" :items="items"></fv-Pivot>
+</ClientOnly>
 
 ```vue
 <fv-Pivot :items="items"></fv-Pivot>
@@ -35,7 +34,10 @@ export default {
 
 ### Pivot-Tab Style
 ---
+
+<ClientOnly>
 <fv-Pivot v-model="value" :items="items" :tab="true"></fv-Pivot>
+</ClientOnly>
 
 ```vue
 <fv-Pivot :items="items" :tab="true"></fv-Pivot>
@@ -43,7 +45,10 @@ export default {
 
 ### Pivot-Tab Customize
 ---
+
+<ClientOnly>
 <fv-Pivot v-model="value" :items="items" :tab="true" :sliderBoxshadow="true" :background="'rgba(238, 238, 239, 1)'"></fv-Pivot>
+</ClientOnly>
 
 ```vue
 <fv-Pivot v-model="value" :items="items" :tab="true" :sliderBoxshadow="true" :background="'rgba(238, 238, 239, 1)'"></fv-Pivot>
@@ -52,8 +57,11 @@ export default {
 ### Pivot-Dark Theme
 ---
 <div style="width: 100%; background: black;">
-    <fv-Pivot v-model="value" :items="items" theme="dark"></fv-Pivot>
-    <fv-Pivot v-model="value" :items="items" :tab="true" theme="dark"></fv-Pivot>
+    
+<ClientOnly>
+<fv-Pivot v-model="value" :items="items" theme="dark"></fv-Pivot>
+<fv-Pivot v-model="value" :items="items" :tab="true" theme="dark"></fv-Pivot>
+</ClientOnly>
 </div>
 
 ```vue
@@ -66,8 +74,10 @@ export default {
 ### Pivot-Custom Style
 ---
 <div style="width: 100%; background: black;">
+</ClientOnly>
     <fv-Pivot v-model="value" :items="items" theme="dark" foreground="rgba(0, 204, 153, 1)" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
     <fv-Pivot v-model="value" :items="items" :tab="true" theme="dark" sliderBackground="rgba(0, 204, 153, 1)"></fv-Pivot>
+</ClientOnly>
 </div>
 
 ```vue
@@ -77,8 +87,6 @@ export default {
 </div>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

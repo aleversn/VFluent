@@ -28,14 +28,15 @@
 ### Slider-Light
    
 
-   <ClientOnly>
-
    
+
+<ClientOnly>
 <fv-slider :mininum="9" :maxinum="30" :showLabel="true">
 <template slot-scope="prop" >
   <span>{{prop.value}}</span>
 </template>
 </fv-slider>
+</ClientOnly>
 
 ```vue
 <fv-slider :mininum="9" :maxinum="30" :showLabel="true">
@@ -47,8 +48,11 @@
 
 ### Slider-Dark
 
+
+<ClientOnly>
 <fv-slider theme="dark">
 </fv-slider>
+</ClientOnly>
 
 ```vue
 <fv-slider theme="dark">
@@ -57,8 +61,11 @@
 
 ### Slider-With-Tick-Mark
 
+
+<ClientOnly>
 <fv-slider :scale="20" :unit="2">
 </fv-slider>
+</ClientOnly>
 
 ```vue
 <fv-slider :scale="20" :unit="2">
@@ -67,11 +74,14 @@
 
 ### Slider-With-Label
 
+
+<ClientOnly>
 <fv-slider :scale="20" :showLabel="true" :unit="20">
 <template slot-scope="prop" >
   <span>{{prop.value}}</span>
 </template>
 </fv-slider>
+</ClientOnly>
 
 ```vue
 <fv-slider :scale="20" :showLabel="true" :unit="20">
@@ -83,8 +93,11 @@
 
 ### Slider-With-Vertical
 
+
+<ClientOnly>
 <fv-slider v-model="value" :unit="20" :vertical="true" @change="change" @click="click">
 </fv-slider>
+</ClientOnly>
 
 ```vue
 <fv-slider v-model="value" :unit="20" :vertical="true" @change="change" @click="click">
@@ -94,8 +107,11 @@ Slider: {{value}}%  Change: {{changeTime}} Click: {{clickTime}}
 
 
 ### Silder-Disabled
+
+<ClientOnly>
 <fv-slider disabled>
-</fv-slider> 
+</fv-slider>
+</ClientOnly> 
 
 ```vue
 <fv-slider disabled>
@@ -103,11 +119,14 @@ Slider: {{value}}%  Change: {{changeTime}} Click: {{clickTime}}
 ```
 
 ### Silder-Custom-Style
+
+<ClientOnly>
 <fv-slider v-model="value" style="width:150px;" showLabel color="#2ed573">
 <template slot-scope="prop">
 {{prop.value}}
 </template>
-</fv-slider>  
+</fv-slider>
+</ClientOnly>  
 
 ```vue
 <fv-slider v-model="value" style="width:150px;" showLabel color="#2ed573">
@@ -116,9 +135,6 @@ Slider: {{value}}%  Change: {{changeTime}} Click: {{clickTime}}
 </template>
 </fv-slider>  
 ```
-
-
-</ClientOnly>
 
 
 ### Propoties

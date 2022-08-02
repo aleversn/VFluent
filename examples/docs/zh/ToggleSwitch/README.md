@@ -9,10 +9,9 @@
 
 
 <ClientOnly>
-
-
 <fv-ToggleSwitch>
 </fv-ToggleSwitch>
+</ClientOnly>
 
 ```vue
 <fv-ToggleSwitch>
@@ -21,8 +20,11 @@
 
 ### ToggleSwitch Disabled
 ---
+
+<ClientOnly>
 <fv-ToggleSwitch disabled>
 </fv-ToggleSwitch>
+</ClientOnly>
 
 ```vue
 <fv-ToggleSwitch disabled>
@@ -32,8 +34,11 @@
 ### ToggleSwitch Dark Theme
 ---
 <div style="background: black;">
+
+<ClientOnly>
 <fv-ToggleSwitch theme="dark">
 </fv-ToggleSwitch>
+</ClientOnly>
 </div>
 
 ```vue
@@ -43,8 +48,11 @@
 
 ### ToggleSwitch Custom Content
 ---
+
+<ClientOnly>
 <fv-ToggleSwitch on="开" off="关">
 </fv-ToggleSwitch>
+</ClientOnly>
 
 ```vue
 <fv-ToggleSwitch on="开" off="关">
@@ -53,16 +61,17 @@
 
 ### ToggleSwitch Custom Style
 ---
+
+<ClientOnly>
 <fv-ToggleSwitch borderColor="rgba(0,204,153,1)" ringBackground="rgba(0,204,153,1)" onForeground="rgba(0,204,153,1)" offForeground="rgba(0,204,153,1)" switchOnBackground="rgba(0,204,153,1)">
 </fv-ToggleSwitch>
+</ClientOnly>
 
 ```vue
 <fv-ToggleSwitch borderColor="rgba(0,204,153,1)" ringBackground="rgba(0,204,153,1)" onForeground="rgba(0,204,153,1)" offForeground="rgba(0,204,153,1)" switchOnBackground="rgba(0,204,153,1)">
 </fv-ToggleSwitch>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

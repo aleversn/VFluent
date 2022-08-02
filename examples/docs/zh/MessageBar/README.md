@@ -76,33 +76,46 @@ export default {
 </script>
 
 
-<ClientOnly>
-
 
 Default
 
+
+<ClientOnly>
 <fv-MessageBar>
 </fv-MessageBar>
+</ClientOnly>
 
 Error
 
+
+<ClientOnly>
 <fv-MessageBar status="error">
 </fv-MessageBar>
+</ClientOnly>
 
 Blocked
 
+
+<ClientOnly>
 <fv-MessageBar status="blocked">
 </fv-MessageBar>
+</ClientOnly>
 
 Correct
 
+
+<ClientOnly>
 <fv-MessageBar status="correct">
 </fv-MessageBar>
+</ClientOnly>
 
 Warning
 
+
+<ClientOnly>
 <fv-MessageBar status="warning">
 </fv-MessageBar>
+</ClientOnly>
 
 ```vue
 Default
@@ -135,7 +148,10 @@ Warning
 ---
 1. Standard
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="show1">Show MessageBar</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button style="width: 200px;" @click="show1">Show MessageBar</fv-button>
@@ -149,7 +165,10 @@ this.$barWarning('This is a toast message.', {
 
 2. Customize Message Template
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="show2">Show MessageBar</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button style="width: 200px;" @click="show2">Show MessageBar</fv-button>
@@ -168,7 +187,10 @@ this.$barWarning(h('div', [
 
 3. Customize Control Template
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="show3">Show MessageBar</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button style="width: 200px;" @click="show3">Show MessageBar</fv-button>
@@ -216,7 +238,10 @@ this.$barWarning(h('div', [
 
 <p id="example">Swift Warning</p>
 
+
+<ClientOnly>
 <fv-button style="width: 200px;" @click="showSwiftWarning">Click to Show SwiftWarning</fv-button>
+</ClientOnly>
 
 ```vue
 <p id="example">Swift Warning</p>
@@ -231,8 +256,6 @@ this.$swiftWarning(document.getElementById('example'), {
 });
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

@@ -10,8 +10,8 @@ sidebarDepth: 2
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
 <ClientOnly> 
 <fv-NavigationPanel flyoutDisplay="500"></fv-NavigationPanel>
-</ClientOnly> 
 <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</ClientOnly> 
 </div>
 
 ```vue
@@ -27,8 +27,8 @@ sidebarDepth: 2
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
 <ClientOnly>
 <fv-NavigationPanel expandMode="flyout"></fv-NavigationPanel>
-</ClientOnly>
 <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</ClientOnly>
 </div>
 
 ```vue
@@ -44,8 +44,8 @@ sidebarDepth: 2
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
 <ClientOnly>
 <fv-NavigationPanel mobileDisplay="100000000" flyoutDisplay="500"></fv-NavigationPanel>
-</ClientOnly>
 <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</ClientOnly>
 </div>
 
 ```vue
@@ -63,8 +63,8 @@ sidebarDepth: 2
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
 <ClientOnly>
 <fv-NavigationPanel theme="dark"></fv-NavigationPanel>
-</ClientOnly>
 <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</ClientOnly>
 </div>
 
 ```vue
@@ -76,8 +76,8 @@ sidebarDepth: 2
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
 <ClientOnly>
 <fv-NavigationPanel expandMode="flyout" theme="dark"></fv-NavigationPanel>
-</ClientOnly>
 <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</ClientOnly>
 </div>
 
 ```vue
@@ -89,8 +89,8 @@ sidebarDepth: 2
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
 <ClientOnly>
 <fv-NavigationPanel mobileDisplay="100000000" flyoutDisplay="500" theme="dark"></fv-NavigationPanel>
-</ClientOnly>
 <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+</ClientOnly>
 </div>
 
 ```vue

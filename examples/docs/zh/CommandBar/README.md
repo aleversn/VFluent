@@ -37,9 +37,11 @@ export default {
 }
 </script>
 
-<ClientOnly>
 <div style="width: 100%;">
-    <fv-CommandBar v-model="value" :options="options" style="z-index: 2;"></fv-CommandBar>
+    
+<ClientOnly>
+<fv-CommandBar v-model="value" :options="options" style="z-index: 2;"></fv-CommandBar>
+</ClientOnly>
 </div>
 
 ```vue
@@ -50,7 +52,10 @@ export default {
 
 Compact Mode
 <div style="width: 100%;">
-    <fv-CommandBar v-model="value" :options="options" :compact="true" style="z-index: 2;"></fv-CommandBar>
+    
+<ClientOnly>
+<fv-CommandBar v-model="value" :options="options" :compact="true" style="z-index: 2;"></fv-CommandBar>
+</ClientOnly>
 </div>
 
 ```vue
@@ -65,7 +70,10 @@ Compact Mode
 ---
 
 <div style="width: 100%;">
-    <fv-CommandBar :options="options" toward="up" style="z-index: 2;"></fv-CommandBar>
+    
+<ClientOnly>
+<fv-CommandBar :options="options" toward="up" style="z-index: 2;"></fv-CommandBar>
+</ClientOnly>
 </div>
 
 ```vue
@@ -79,13 +87,16 @@ Compact Mode
 ---
 
 <div style="width: 100%;">
-    <fv-CommandBar v-model="value" :options="options" style="z-index: 2;">
-        <template v-slot:right-space>
-            <span style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
-                <i class="ms-Icon ms-Icon--Error icon"></i>
-            </span>
-        </template>
-    </fv-CommandBar>
+    
+<ClientOnly>
+<fv-CommandBar v-model="value" :options="options" style="z-index: 2;">
+    <template v-slot:right-space>
+        <span style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+            <i class="ms-Icon ms-Icon--Error icon"></i>
+        </span>
+    </template>
+</fv-CommandBar>
+</ClientOnly>
 </div>
 
 ```vue
@@ -105,7 +116,10 @@ Compact Mode
 ---
 
 <div style="width: 100%;">
-    <fv-CommandBar :options="options" theme="dark" style="z-index: 2;"></fv-CommandBar>
+    
+<ClientOnly>
+<fv-CommandBar :options="options" theme="dark" style="z-index: 2;"></fv-CommandBar>
+</ClientOnly>
 </div>
 
 ```vue
@@ -119,7 +133,10 @@ Compact Mode
 ---
 
 <div style="width: 100%;">
-    <fv-CommandBar :options="options" theme="dark" background="rgba(0, 153, 204, 1)" style="z-index: 2;"></fv-CommandBar>
+    
+<ClientOnly>
+<fv-CommandBar :options="options" theme="dark" background="rgba(0, 153, 204, 1)" style="z-index: 2;"></fv-CommandBar>
+</ClientOnly>
 </div>
 
 ```vue
@@ -127,8 +144,6 @@ Compact Mode
     <fv-CommandBar :options="options" theme="dark" background="rgba(0, 153, 204, 1)"></fv-CommandBar>
 </div>
 ```
-
-</ClientOnly>
 
 ### Propoties
 

@@ -24,8 +24,6 @@
 
 
 <ClientOnly>
-
-
 <div>
 <fv-radio v-model="value" label="Option">
 Option
@@ -37,6 +35,7 @@ Option2
 Disabled
 </fv-radio>
 </div>
+</ClientOnly>
 
 ```vue
 <div>
@@ -54,10 +53,12 @@ Disabled
 
 ### Radio-Dark
 
+<ClientOnly>
 <div style="background:#000;height:30px;padding:20px;">
 <fv-radio v-model="value" label="Option" theme="dark">Option</fv-radio>
 <fv-radio v-model="value" label="Option2" theme="dark" disabled>Disabled</fv-radio>
 </div>
+</ClientOnly>
 
 ```vue
 <div style="background:#000;height:30px;padding:20px;">
@@ -68,12 +69,14 @@ Disabled
 
 ### Radio With Icon
 
+<ClientOnly>
 <div >
 <fv-radio v-model="value" label="Sort" icon="GroupedList">Sort</fv-radio>
 <fv-radio v-model="value" label="MSN" icon="MSNLogo" >MSN</fv-radio>
 <fv-radio v-model="value" label="MSN" icon="MSNLogo" disabled >Disabled</fv-radio>
 
 </div>
+</ClientOnly>
 
 ```vue
 <div >
@@ -87,7 +90,9 @@ Disabled
 ### Radio With Image
 
 <div>
+<ClientOnly>
 <fv-radio image="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png" activeImage="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png" v-model="value" label="chart" >Chart</fv-radio>
+</ClientOnly>
 </div>
 
 ```vue
@@ -98,11 +103,13 @@ Disabled
 
 ### Radio-Dark With Icon
 
+<ClientOnly>
 <div style="background:#000;padding:20px;">
 <fv-radio v-model="value" label="Sort" icon="GroupedList" theme="dark">Sort</fv-radio>
 <fv-radio v-model="value" label="Sort" icon="GroupedList" theme="dark" disabled>disabled</fv-radio>
 <fv-radio v-model="value" label="MSN" icon="MSNLogo" theme="dark">MSN</fv-radio>
 </div>
+</ClientOnly>
 
 ```vue
 <div style="background:#000;padding:20px;">
@@ -113,17 +120,15 @@ Disabled
 ```
 
 ### Radio Custom Color
+<ClientOnly>
 <fv-radio  icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" >Sort</fv-radio>
 <fv-radio icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" disabled>Disabled</fv-radio>
+</ClientOnly>
 
 ```vue
 <fv-radio  icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" >Sort</fv-radio>
 <fv-radio icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" disabled>Disabled</fv-radio>
 ```
-
-
-
-</ClientOnly>
 
 
 ### Propoties

@@ -5,12 +5,13 @@
   
 [[toc]]
 
-<ClientOnly>
-
 ### RevealContainer-DEMO 
 
+
+<ClientOnly>
 <fv-RevealContainer>
 </fv-RevealContainer>
+</ClientOnly>
 
 ```vue
 <fv-RevealContainer>
@@ -19,8 +20,11 @@
 
 Disabled 
 
+
+<ClientOnly>
 <fv-RevealContainer disabled>
 </fv-RevealContainer>
+</ClientOnly>
 
 ```vue
 <fv-RevealContainer disabled>
@@ -31,8 +35,11 @@ Disabled
 
 Single Color
 
+
+<ClientOnly>
 <fv-RevealContainer backgroundColor="rgba(0, 98, 158, 0.3)" borderColor="rgba(0, 98, 158, 0.3)">
 </fv-RevealContainer>
+</ClientOnly>
 
 ```vue
 <fv-RevealContainer backgroundColor="rgba(0, 98, 158, 0.3)" borderColor="rgba(0, 98, 158, 0.3)">
@@ -41,15 +48,16 @@ Single Color
 
 Gradient Color
 
+
+<ClientOnly>
 <fv-RevealContainer :backgroundGradientList="['rgba(0, 0, 0, 0.1)', 'rgba(255, 255, 255, 0)']" :borderGradientList="['#40e0d0', '#40e0d0', '#ff8c00', '#ff8c00', '#ff0080', 'rgba(255, 255, 255, 0)']" borderGradientSize="120">
 </fv-RevealContainer>
+</ClientOnly>
 
 ```vue
 <fv-RevealContainer :backgroundGradientList="['rgba(0, 0, 0, 0.1)', 'rgba(255, 255, 255, 0)']" :borderGradientList="['#40e0d0', '#40e0d0', '#ff8c00', '#ff8c00', '#ff0080', 'rgba(255, 255, 255, 0)']" borderGradientSize="120">
 </fv-RevealContainer>
 ```
-
-</ClientOnly>
 
 ### Propoties
 ---

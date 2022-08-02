@@ -2,58 +2,66 @@ name: 🚲Publish NPM Package
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    tags:
-      - "v*"
+    # Triggers the workflow on push or pull request events but only for the master branch
+    push:
+        tags:
+            - 'v*'
 
-  workflow_dispatch:
+    workflow_dispatch:
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-          cache: "yarn"
+            - uses: pnpm/action-setup@v2
+              with:
+                version: 6.32.9
 
-      - name: 🚓loading denpendencies
-        run: yarn
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+                  registry-url: https://registry.npmjs.org/
+                  cache: 'pnpm'
 
-      - name: 🚗build the json file of vetur helper
-        run: yarn bin:vetur
+            - name: 🚓loading denpendencies
+              run: pnpm i --frozen-lockfile
 
-      - name: 🚕build library
-        run: yarn lib
+            - name: 🚗build the json file of vetur helper
+              run: pnpm bin:vetur
 
-      - name: 🚚npm publish package
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: 🚕build library
+              run: pnpm lib
 
-  deploydocs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+            - name: 🚚pnpm publish package
+              run: pnpm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-          cache: "yarn"
+    deploydocs:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
 
-      - name: 🚓loading denpendencies
-        run: yarn
+            - uses: pnpm/action-setup@v2
+              with:
+                version: 6.32.9
 
-      - name: 🚕build docs
-        run: yarn docs:build
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+                  registry-url: https://registry.npmjs.org/
+                  cache: 'pnpm'
 
-      - name: 🚄deploy docs
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./examples/docs/.vuepress/dist
+            - name: 🚓loading denpendencies
+              run: pnpm i
+
+            - name: 🚕build docs
+              run: pnpm docs:build
+
+            - name: 🚄deploy docs
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./examples/docs/.vuepress/dist

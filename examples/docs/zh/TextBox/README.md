@@ -19,12 +19,13 @@ export default {
 </script>
 
 
-<ClientOnly>
-
 
 Standard
 
+
+<ClientOnly>
 <fv-TextBox></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox></fv-TextBox>
@@ -32,7 +33,10 @@ Standard
 
 Read-only
 
+
+<ClientOnly>
 <fv-TextBox v-model="readOnlyText" readonly></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox v-model="readOnlyText" readonly></fv-TextBox>
@@ -40,7 +44,10 @@ Read-only
 
 With placeholder
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Please enter the text here."></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Please enter the text here."></fv-TextBox>
@@ -48,7 +55,10 @@ With placeholder
 
 With an icon
 
+
+<ClientOnly>
 <fv-TextBox icon="Search"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox icon="Search"></fv-TextBox>
@@ -58,7 +68,10 @@ With an icon
 ---
 Standard
 
+
+<ClientOnly>
 <fv-TextBox mode="mask"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox mode="mask"></fv-TextBox>
@@ -66,7 +79,10 @@ Standard
 
 Customize
 
+
+<ClientOnly>
 <fv-TextBox v-model="maskValue" mode="mask" mask="Tel: +__ ___ - ____ - ____" flag="_"></fv-TextBox>
+</ClientOnly>
 <p>{{maskValue}}</p>
 
 ```vue
@@ -76,7 +92,10 @@ Customize
 
 Customize Flag
 
+
+<ClientOnly>
 <fv-TextBox v-model="maskValue" mode="mask" mask="mask: xx-xxx-xxxx-xxxx" flag="x"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox v-model="maskValue" mode="mask" mask="mask: xx-xxx-xxxx-xxxx" flag="x"></fv-TextBox>
@@ -86,7 +105,10 @@ Customize Flag
 ---
 1. Standard
 
+
+<ClientOnly>
 <fv-TextBox disabled></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox disabled></fv-TextBox>
@@ -94,7 +116,10 @@ Customize Flag
 
 2. With Input Mask
 
+
+<ClientOnly>
 <fv-TextBox mode="mask" disabled></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox mode="mask" disabled></fv-TextBox>
@@ -102,7 +127,10 @@ Customize Flag
 
 3. With placeholder
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Please enter the text here." disabled></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Please enter the text here." disabled></fv-TextBox>
@@ -110,7 +138,10 @@ Customize Flag
 
 4. With underline
 
+
+<ClientOnly>
 <fv-TextBox underline disabled prefix="Disabled:"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox underline disabled prefix="Disabled:"></fv-TextBox>
@@ -118,7 +149,10 @@ Customize Flag
 
 ### TextBox-With Limit
 ---
+
+<ClientOnly>
 <fv-TextBox maxlength="5" style="width: 120px;"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox maxlength="5" style="width: 120px;"></fv-TextBox>
@@ -126,7 +160,10 @@ Customize Flag
 
 ### TextBox-With Underline And Borderless
 ---
+
+<ClientOnly>
 <fv-TextBox underline prefix="Standard:" focusBorderColor="rgba(0, 90, 158, 1)"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox underline prefix="Standard:" focusBorderColor="rgba(0, 90, 158, 1)"></fv-TextBox>
@@ -136,7 +173,10 @@ Customize Flag
 ---
 Prefix
 
+
+<ClientOnly>
 <fv-TextBox prefix="https://"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox prefix="https://"></fv-TextBox>
@@ -144,7 +184,10 @@ Prefix
 
 Suffix
 
+
+<ClientOnly>
 <fv-TextBox suffix=".com"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox suffix=".com"></fv-TextBox>
@@ -152,7 +195,10 @@ Suffix
 
 Prefix and Suffix
 
+
+<ClientOnly>
 <fv-TextBox prefix="https://" suffix=".com"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox prefix="https://" suffix=".com"></fv-TextBox>
@@ -162,7 +208,10 @@ Prefix and Suffix
 ---
 Warn
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Warn text." status="warn"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Warn text." status="warn"></fv-TextBox>
@@ -170,7 +219,10 @@ Warn
 
 Correct
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Correct text." status="correct"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Correct text." status="correct"></fv-TextBox>
@@ -178,7 +230,10 @@ Correct
 
 ### TextBox-RevealBorder
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Please enter the text here." :revealBorder="true" borderColor="rgba(0, 0, 0, 0.01)" borderRadius="3" :isBoxShadow="true"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Please enter the text here." :revealBorder="true" borderColor="rgba(0, 0, 0, 0.01)" borderRadius="3" :isBoxShadow="true"></fv-TextBox>
@@ -188,7 +243,10 @@ Correct
 ---
 Customize border color
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Please enter the text here." borderColor="rgba(0,153,204,1)" focusBorderColor="rgba(0,204,153,1)"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Please enter the text here." borderColor="rgba(0,153,204,1)" focusBorderColor="rgba(0,204,153,1)"></fv-TextBox>
@@ -196,7 +254,10 @@ Customize border color
 
 Customize background
 
+
+<ClientOnly>
 <fv-TextBox placeholder="Please enter the text here." background="rgba(0,153,204,1)" borderColor="rgba(0,153,204,1)"></fv-TextBox>
+</ClientOnly>
 
 ```vue
 <fv-TextBox placeholder="Please enter the text here." background="rgba(0,153,204,1)" borderColor="rgba(0,153,204,1)"></fv-TextBox>
@@ -205,12 +266,14 @@ Customize background
 ### TextBox-Dark Theme
 ---
 <div style="padding: 15px; background: black;">
+</ClientOnly>
     <fv-TextBox placeholder="Please enter the text here." theme="dark"></fv-TextBox>
     <fv-TextBox placeholder="Please enter the text here." disabled theme="dark" value="123"></fv-TextBox>
     <fv-TextBox placeholder="Please enter the text here." prefix="https://" suffix=".com" theme="dark"></fv-TextBox>
     <fv-TextBox placeholder="Please enter the text here." prefix="https://" suffix=".com" disabled theme="dark"></fv-TextBox>
     <fv-TextBox underline prefix="Standard:" theme="dark" focusBorderColor="rgba(118, 185, 237, 1)"></fv-TextBox>
     <fv-TextBox underline prefix="Standard:" disabled theme="dark"></fv-TextBox>
+</ClientOnly>
 </div>
 
 ```vue
@@ -223,9 +286,6 @@ Customize background
     <fv-TextBox underline prefix="Standard:" disabled theme="dark"></fv-TextBox>
 </div>
 ```
-
-
-</ClientOnly>
 
 
 ### Propoties

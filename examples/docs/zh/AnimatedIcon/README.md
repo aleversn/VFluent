@@ -9,21 +9,25 @@
 
 <script>
 export default {
+
     data () {
         return {
             animation: {
                 enter: {
                     transform: 'rotate(-180deg)',
                     transition: `transform 0.1s`
+
                 },
                 leave: [
                     {
                         transform: 'rotate(365deg)',
                         transition: `transform 0.3s`
+
                     },
                     {
                         transform: 'rotate(360deg)',
                         transition: `transform 0.1s`
+
                     },
                     {
                         transform: 'rotate(0deg)'
@@ -32,15 +36,14 @@ export default {
             }
         }
     }
+
 }
 </script>
 
-
 <ClientOnly>
-
-
 <fv-AnimatedIcon fontSize="36">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon fontSize="36">
@@ -48,11 +51,14 @@ export default {
 ```
 
 ### Present Animation
+
 ---
 
 1. Scale Down
+<ClientOnly>
 <fv-AnimatedIcon fontSize="20">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon fontSize="20">
@@ -60,8 +66,10 @@ export default {
 ```
 
 2. Scale X Down
+<ClientOnly>
 <fv-AnimatedIcon value="scaleXDown" fontSize="20" icon="GlobalNavButton">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon value="scaleXDown" fontSize="20" icon="GlobalNavButton">
@@ -69,8 +77,10 @@ export default {
 ```
 
 3. Scale Y Down
+<ClientOnly>
 <fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause">
@@ -78,8 +88,10 @@ export default {
 ```
 
 4. Back Scale
+<ClientOnly>
 <fv-AnimatedIcon value="backScale" fontSize="20" icon="Back">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon value="backScale" fontSize="20" icon="Back">
@@ -87,8 +99,10 @@ export default {
 ```
 
 5. Bounce Rotate
+<ClientOnly>
 <fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
@@ -96,14 +110,17 @@ export default {
 ```
 
 ### AnimatedIcon-With Content
+
 ---
 
 <div>
-    <fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
-        <template v-slot:content>
-            <div style="margin-left: 15px;">Settings</div>
-        </template>
-    </fv-AnimatedIcon>
+<ClientOnly>
+<fv-AnimatedIcon value="bounceRotate" fontSize="20" icon="Settings">
+<template v-slot:content>
+<div style="margin-left: 15px;">Settings</div>
+</template>
+</fv-AnimatedIcon>
+</ClientOnly>
 </div>
 
 ```vue
@@ -115,11 +132,14 @@ export default {
 ```
 
 ### AnimatedIcon-Customize Animation
+
 ---
 
 <div>
-    <fv-AnimatedIcon :customizeAnimation="animation" fontSize="20" icon="Settings">
-    </fv-AnimatedIcon>
+<ClientOnly>
+<fv-AnimatedIcon :customizeAnimation="animation" fontSize="20" icon="Settings">
+</fv-AnimatedIcon>
+</ClientOnly>
 </div>
 
 ```vue
@@ -153,17 +173,18 @@ data () {
 </script>
 ```
 
-</ClientOnly>
+* Event types include `enter`,  `move`,  `down`,  `up`,  `leave` and corresponding to the `MouseEvent` and `TouchEvent` automatically.
 
-- Event types include `enter`, `move`, `down`, `up`, `leave` and corresponding to the `MouseEvent` and `TouchEvent` automatically.
-
-- Each event can be declared as an `object` contain styles or an `array` contain multiple styles object. The transitions of an `array` will execute in order.
+* Each event can be declared as an `object` contain styles or an `array` contain multiple styles object. The transitions of an `array` will execute in order.
 
 ### AnimatedIcon-Customize Background
+
 ---
 
+<ClientOnly>
 <fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause" background="whitesmoke">
 </fv-AnimatedIcon>
+</ClientOnly>
 
 ```vue
 <fv-AnimatedIcon value="scaleYDown" fontSize="20" icon="Pause" background="whitesmoke">
@@ -171,11 +192,14 @@ data () {
 ```
 
 ### AnimatedIcon-Dark Theme
+
 ---
 
-<div style="padding: 5px;background: black;">
-    <fv-AnimatedIcon theme="dark" fontSize="20">
-    </fv-AnimatedIcon>
+<div style="padding: 5px; background: black; ">
+<ClientOnly>
+<fv-AnimatedIcon theme="dark" fontSize="20">
+</fv-AnimatedIcon>
+</ClientOnly>
 </div>
 
 ```vue
@@ -184,6 +208,7 @@ data () {
 ```
 
 ### Propoties
+
 ---
 |     属性(attr)     |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)    |
 |:------------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
@@ -193,24 +218,27 @@ data () {
 |     background     |          [string(color)]           |       No       |       N/A       |        背景色         |
 |      fontSize      |              [number]              |       No       |       16        | AnimatedIcon 字体大小 |
 |    hideContent     |               [bool]               |       No       |      false      |     隐藏文本内容      |
-|       theme        | ['light','dark','custom','system'] |       No       |     system      |     Custom theme      |
+|       theme        | ['light', 'dark', 'custom', 'system'] |       No       |     system      |     Custom theme      |
 
 ### Events
+
 ---
 | 事件名(Name) | 参数类型(args) |   说明(statement)    |
 |:------------:|:--------------:|:--------------------:|
 |    click     |     event      | AnimatedIcon onclick |
 
 ### Slot
+
 ---
 1. Default
 
 默认模板是图标自定义模板
 
 ```javascript
-<fv-animated-icon>
-    <div></div>
-</fv-animated-icon>
+< fv - animated - icon >
+    <
+    div > < /div> <
+    /fv-animated-icon>
 ```
 
 2. Content
@@ -218,9 +246,11 @@ data () {
 客制化修改文字内容
 
 ```javascript
-<fv-animated-icon>
-    <template v-slot:content>
-        <div>Content</div>
-    </template>
-</fv-animated-icon>
+< fv - animated - icon >
+    <
+    template v - slot: content >
+    <
+    div > Content < /div> <
+    /template> <
+    /fv-animated-icon>
 ```

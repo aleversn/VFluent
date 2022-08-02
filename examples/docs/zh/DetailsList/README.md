@@ -344,6 +344,7 @@ export default {
         </template>
   </fv-DetailsList>
 </div>
+</ClientOnly>
 
 <div style="width: 100%; height: 100px;"></div>
 
@@ -370,6 +371,7 @@ export default {
 
 ---
 
+<ClientOnly>
 <div>
     <fv-DetailsList v-model="value" :head="head" :multiSelection="true" :compact="compact" :allowDrag="true">
         <template v-slot:column_0="x">
@@ -388,6 +390,7 @@ export default {
         </template>
   </fv-DetailsList>
 </div>
+</ClientOnly>
 
 <div style="width: 100%; height: 100px;"></div>
 
@@ -419,8 +422,9 @@ export default {
 ### DetailsList-Grouped
 
 ---
-
+<ClientOnly>
 <fv-DetailsList v-model="value" :head="head" :multiSelection="multiSelection" :compact="compact" :group="group" :showGroup="true" :allowDrag="true"><template v-slot:column_0="x"><p>{{x.item.name}}</p></template><template v-slot:column_1="x"><p class="sec">{{x.item.publisher}}</p></template><template v-slot:column_2="x"><p class="sec">{{x.item.publish_time}}</p></template><template v-slot:column_3="x"><p class="sec">{{x.item.prop}}</p></template><template v-slot:column_4="x"><p class="sec">{{x.item.userInfo.name}}</p></template></fv-DetailsList>
+</ClientOnly>
 
 <div style="width: 100%; height: 100px;"></div>
 
@@ -453,7 +457,7 @@ export default {
 ### DetailsList-Dark Theme
 
 ---
-
+<ClientOnly>
 <div style="position: relative; width: 100%; height: 700px; background: black;">
     <fv-DetailsList v-model="value" :head="head" :multiSelection="multiSelection" :compact="compact" :group="group" :showGroup="true" theme="dark">
         <template v-slot:column_0="x">
@@ -472,6 +476,7 @@ export default {
         </template>
   </fv-DetailsList>
 </div>
+</ClientOnly>
 
 <div style="width: 100%; height: 100px;"></div>
 
@@ -502,7 +507,7 @@ export default {
 ### DetailsList Customize Row CSS
 
 ---
-
+<ClientOnly>
 <div>
     <fv-DetailsList v-model="value" :head="head" :filter="filter" :multiSelection="multiSelection" :compact="compact" rowCss="fv-row-css">
         <template v-slot:column_0="x">

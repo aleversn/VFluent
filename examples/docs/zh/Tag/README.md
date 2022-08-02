@@ -8,11 +8,11 @@
 ### Tag-DEMO 
 
 
+
 <ClientOnly>
-
-
 <fv-Tag :value="[{text: 'default', type: 'default' }]">
 </fv-Tag>
+</ClientOnly>
 
 ```vue
 <fv-Tag :value="[{text: 'default', type: 'default' }]">
@@ -22,8 +22,11 @@
 ### Tag Different Types
 ---
 
+
+<ClientOnly>
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" :isDel="true" :isNewTag="true">
 </fv-Tag>
+</ClientOnly>
 
 ```vue
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" :isDel="true" :isNewTag="true">
@@ -33,8 +36,11 @@
 ### Tag Customize Color
 ---
 
+
+<ClientOnly>
 <fv-Tag :value="[{text: 'blue', type: 'default', background: 'rgba(0, 153, 204, 1)' }, {text: 'black', type: 'success', background: 'rgba(0, 0, 0, 1)' }, {text: 'pink', type: 'warning', background: 'pink' }]">
 </fv-Tag>
+</ClientOnly>
 
 ```vue
 <fv-Tag :value="[{text: 'blue', type: 'default', background: 'rgba(0, 153, 204, 1)' }, {text: 'black', type: 'success', background: 'rgba(0, 0, 0, 1)' }, {text: 'pink', type: 'warning', background: 'pink' }]">
@@ -43,8 +49,11 @@
 
 ### Tag-Disabled 
 
+
+<ClientOnly>
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'disabled', type: 'success',  disabled: true }, {text: 'warning', type: 'warning' }]" :isDel="true" :isNewTag="true">
 </fv-Tag>
+</ClientOnly>
 
 ```vue
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'disabled', type: 'success',  disabled: true }, {text: 'warning', type: 'warning' }]" :isDel="true" :isNewTag="true">
@@ -54,16 +63,17 @@
 ### Tag Dark Theme
 ---
 
+
+<ClientOnly>
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" theme="dark">
 </fv-Tag>
+</ClientOnly>
 
 ```vue
 <fv-Tag :value="[{text: 'default', type: 'default' }, {text: 'success', type: 'success' }, {text: 'warning', type: 'warning' }, {text: 'error', type: 'error' }]" theme="dark">
 </fv-Tag>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

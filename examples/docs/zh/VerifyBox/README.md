@@ -23,8 +23,11 @@ export default {
 
 Standard
 
+
+<ClientOnly>
 <fv-VerifyBox v-model="value">
 </fv-VerifyBox>
+</ClientOnly>
 
 ```vue
 <fv-VerifyBox v-model="value">
@@ -36,8 +39,11 @@ Standard
 
 With Highlight
 
+
+<ClientOnly>
 <fv-VerifyBox v-model="value" focusBorderColor="rgba(0, 153, 204, 0.6)" :border-width="2">
 </fv-VerifyBox>
+</ClientOnly>
 
 ```vue
 <fv-VerifyBox v-model="value" focusBorderColor="rgba(0, 153, 204, 0.6)" :border-width="2">
@@ -46,8 +52,11 @@ With Highlight
 
 Reveal Border
 
+
+<ClientOnly>
 <fv-VerifyBox v-model="value" :reveal-border="true" :border-width="2">
 </fv-VerifyBox>
+</ClientOnly>
 
 ```vue
 <fv-VerifyBox v-model="value" :reveal-border="true" :border-width="2">
@@ -59,7 +68,10 @@ Reveal Border
 ---
 1. Standard
 
+
+<ClientOnly>
 <fv-VerifyBox disabled></fv-VerifyBox>
+</ClientOnly>
 
 ```vue
 <fv-VerifyBox disabled></fv-VerifyBox>

@@ -26,10 +26,9 @@ export default {
 
 
 <ClientOnly>
-
-
 <fv-ProgressBar>
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar>
@@ -38,8 +37,11 @@ export default {
 
 ### Default ProgressBar
 ---
+
+<ClientOnly>
 <fv-ProgressBar v-model="percent[0]">
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar v-model="percent[0]">
@@ -48,8 +50,11 @@ export default {
 
 ### Indeterminate ProgressBar
 ---
+
+<ClientOnly>
 <fv-ProgressBar loading="true">
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar loading="true">
@@ -59,8 +64,11 @@ export default {
 ### ProgressBar Disabled
 ---
 1. Default
+
+<ClientOnly>
 <fv-ProgressBar v-model="percent[1]" disabled>
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar v-model="percent[1]" disabled>
@@ -68,8 +76,11 @@ export default {
 ```
 
 2. Indeterminate
+
+<ClientOnly>
 <fv-ProgressBar loading="true" disabled>
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar loading="true" disabled>
@@ -79,8 +90,11 @@ export default {
 ### ProgressBar Custom Style
 ---
 1. Custom Foreground
+
+<ClientOnly>
 <fv-ProgressBar v-model="percent[2]" foreground="rgba(0,204,153,1)">
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar v-model="percent[2]" foreground="rgba(0,204,153,1)">
@@ -88,16 +102,17 @@ export default {
 ```
 
 2. Custom Background
+
+<ClientOnly>
 <fv-ProgressBar v-model="percent[3]" background="rgba(0,204,153,0.6)">
 </fv-ProgressBar>
+</ClientOnly>
 
 ```vue
 <fv-ProgressBar v-model="percent[3]" background="rgba(0,204,153,0.6)">
 </fv-ProgressBar>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

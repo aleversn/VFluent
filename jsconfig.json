@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./packages/*"]
-    }
+    },
+    "jsx": "preserve"
   },
   "include": ["./packages/**/*"]
 }

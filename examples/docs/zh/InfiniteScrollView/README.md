@@ -24,19 +24,17 @@ export default {
 </script>
 
 
+
+
 <ClientOnly>
-
-
 <fv-InfiniteScrollView v-model="value">
 </fv-InfiniteScrollView>
+</ClientOnly>
 
 ```vue
 <fv-InfiniteScrollView v-model="value">
 </fv-InfiniteScrollView>
 ```
-
-
-</ClientOnly>
 
 
 ### Propoties

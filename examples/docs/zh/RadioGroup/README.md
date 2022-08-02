@@ -25,8 +25,6 @@
 
 
 <ClientOnly>
-
-
 <fv-radioGroup v-model="value" label="options:">
 <div>
   <fv-radio label="option1">option1</fv-radio>
@@ -36,6 +34,7 @@
   <fv-radio label="option3">option3</fv-radio>
 </div>
 </fv-radioGroup>
+</ClientOnly>
 
 ```vue
 <fv-radioGroup v-model="value" label="options:">
@@ -50,11 +49,12 @@
 ```
 
 ### RadioGroup inline 
-
+<ClientOnly>
 <fv-radioGroup v-model="value" label="options:" inline theme="dark">
   <fv-radio label="option1">option1</fv-radio>
   <fv-radio label="option2">option2</fv-radio>
 </fv-radioGroup>
+</ClientOnly>
 
 ```vue
 <fv-radioGroup v-model="value" label="options:" inline theme="dark">
@@ -65,6 +65,7 @@
 
 
 ### Radio Icon
+<ClientOnly>
 <fv-radio-group v-model="value"  label="options:">
 <div>
   <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
@@ -72,6 +73,7 @@
   <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
 </div>
 </fv-radio-group>
+</ClientOnly>
 
 ```vue
 <fv-radio-group v-model="value"  label="options:">
@@ -85,11 +87,13 @@
 
 
 ### Radio Icon Dark inline
+<ClientOnly>
 <fv-radio-group v-model="value"  label="options:" theme="dark" inline @change="change">
   <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
   <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
   <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
 </fv-radio-group>
+</ClientOnly>
 
 ```vue
 <fv-radio-group v-model="value"  label="options:" theme="dark" inline @change="change">
@@ -102,6 +106,7 @@
 {{label}}
 
 ### Radio Icon Dark Disabled
+<ClientOnly>
 <fv-radio-group v-model="value"  label="options:"  disabled>
 <div style="margin:5px 0">
   <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
@@ -114,6 +119,7 @@
   <fv-radio label="option6" icon="MSNLogo">option6</fv-radio>
 </div>
 </fv-radio-group>
+</ClientOnly>
 
 ```vue
 <fv-radio-group v-model="value"  label="options:"  disabled>
@@ -129,10 +135,6 @@
 </div>
 </fv-radio-group>
 ```
-
-
-</ClientOnly>
-
 
 ### Propoties
 ---

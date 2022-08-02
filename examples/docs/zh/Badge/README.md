@@ -7,13 +7,11 @@
 
 ### Badge-DEMO
 
-
 <ClientOnly>
-
-
 <fv-Badge :value="3">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge :value="3">
@@ -25,10 +23,11 @@
 ---
 
 Success
-
+<ClientOnly>
 <fv-Badge :value="12" type="success">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge :value="12" type="success">
@@ -38,9 +37,11 @@ Success
 
 Warning
 
+<ClientOnly>
 <fv-Badge :value="2" type="warning">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge :value="2" type="warning">
@@ -49,10 +50,11 @@ Warning
 ```
 
 Primary
-
+<ClientOnly>
 <fv-Badge :value="9" type="primary">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge :value="9" type="primary">
@@ -62,10 +64,11 @@ Primary
 
 ### Badge Customize Content
 ---
-
+<ClientOnly>
 <fv-Badge value="You">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge value="You">
@@ -75,10 +78,11 @@ Primary
 
 ### Badge Max Value
 ---
-
+<ClientOnly>
 <fv-Badge value="100" max="99">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge value="100" max="99">
@@ -88,18 +92,17 @@ Primary
 
 ### Badge Dot
 ---
-
+<ClientOnly>
 <fv-Badge :isDot="true">
 <fv-button>Badge</fv-button>
 </fv-Badge>
+</ClientOnly>
 
 ```vue
 <fv-Badge :isDot="true">
     <fv-button>Badge</fv-button>
 </fv-Badge>
 ```
-
-</ClientOnly>
 
 
 

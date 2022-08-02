@@ -9,9 +9,8 @@
 
 
 <ClientOnly>
-
-
 <fv-button borderRadius="3"></fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button borderRadius="3"></fv-button>
@@ -19,7 +18,9 @@
 
 ### Button With Icon
 ---
+<ClientOnly>
 <fv-button icon="CalculatorAddition" theme="dark">Add</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button icon="CalculatorAddition" theme="dark">Add</fv-button>
@@ -27,7 +28,9 @@
 
 ### Button Customize
 ---
+<ClientOnly>
 <fv-button icon="CalculatorAddition" theme="dark" background="linear-gradient(to right, #000046, #1cb5e0)" borderRadius="3" :isBoxShadow="true">Add</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button icon="CalculatorAddition" theme="dark" background="linear-gradient(to right, #000046, #1cb5e0)" borderRadius="3" :isBoxShadow="true">Add</fv-button>
@@ -35,14 +38,14 @@
 
 ### Button Disabled
 ---
+<ClientOnly>
 <fv-button disabled icon="CalculatorAddition">Add</fv-button>
+</ClientOnly>
 
 ```vue
 <fv-button disabled icon="CalculatorAddition">Add</fv-button>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

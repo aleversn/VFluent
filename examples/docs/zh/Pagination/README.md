@@ -8,11 +8,12 @@
 ### Pagination-DEMO 
 
 
+
+
 <ClientOnly>
-
-
 <fv-Pagination>
 </fv-Pagination>
+</ClientOnly>
 
 ```vue
 <fv-Pagination>
@@ -22,8 +23,11 @@
 ### Pagination With Background
 ---
 
+
+<ClientOnly>
 <fv-Pagination background="whitesmoke">
 </fv-Pagination>
+</ClientOnly>
 
 ```vue
 <fv-Pagination background="whitesmoke">
@@ -33,8 +37,11 @@
 ### Pagination With Boxshadow
 ---
 
+
+<ClientOnly>
 <fv-Pagination :total="100" background="whitesmoke" :shadow="true">
 </fv-Pagination>
+</ClientOnly>
 
 ```vue
 <fv-Pagination :total="100" background="whitesmoke" :shadow="true">
@@ -44,8 +51,11 @@
 ### Pagination Small Size
 ---
 
+
+<ClientOnly>
 <fv-Pagination :small="true">
 </fv-Pagination>
+</ClientOnly>
 
 ```vue
 <fv-Pagination :small="true">
@@ -55,8 +65,11 @@
 ### Pagination Disabled
 ---
 
+
+<ClientOnly>
 <fv-Pagination disabled>
 </fv-Pagination>
+</ClientOnly>
 
 ```vue
 <fv-Pagination disabled>
@@ -67,17 +80,17 @@
 ---
 
 <div style="padding: 10px 0px; background: black;">
-    <fv-Pagination theme="dark" background="black">
-    </fv-Pagination>
+    
+<ClientOnly>
+<fv-Pagination theme="dark" background="black">
+  </fv-Pagination>
+</ClientOnly>
 </div>
 
 ```vue
 <fv-Pagination theme="dark" background="black">
 </fv-Pagination>
 ```
-
-
-</ClientOnly>
 
 
 ### Propoties

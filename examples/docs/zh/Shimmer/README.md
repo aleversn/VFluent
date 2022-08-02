@@ -10,18 +10,17 @@
 Avatar with item
 
 
-<ClientOnly>
-
-
 <div>
-    <fv-Shimmer style="height: auto;">
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <div v-for="(item, index) in 5" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
-                <div class="sample" style="width: 35px; height: 35px; border-radius: 50%;"></div>
-                <div class="sample" style="width: 80%; margin-left: 15px;"></div>
-            </div>
+<ClientOnly>
+<fv-Shimmer style="height: auto;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+        <div v-for="(item, index) in 5" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
+            <div class="sample" style="width: 35px; height: 35px; border-radius: 50%;"></div>
+            <div class="sample" style="width: 80%; margin-left: 15px;"></div>
         </div>
-    </fv-Shimmer>
+    </div>
+</fv-Shimmer>
+</ClientOnly>
 </div>
 
 ```vue
@@ -38,13 +37,16 @@ Avatar with item
 List items
 
 <div>
-    <fv-Shimmer style="height: auto;">
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
-                <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${100 - index * 10}%`}"></div>
-            </div>
+    
+<ClientOnly>
+<fv-Shimmer style="height: auto;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+        <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
+            <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${100 - index * 10}%`}"></div>
         </div>
-    </fv-Shimmer>
+    </div>
+</fv-Shimmer>
+</ClientOnly>
 </div>
 
 ```vue
@@ -60,14 +62,17 @@ List items
 List items with two column
 
 <div>
-    <fv-Shimmer style="height: auto;">
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
-                <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
-                <div class="sample" style="width: 80%; height: 15px; margin-left: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
-            </div>
+    
+<ClientOnly>
+<fv-Shimmer style="height: auto;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+        <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
+            <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
+            <div class="sample" style="width: 80%; height: 15px; margin-left: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
         </div>
-    </fv-Shimmer>
+    </div>
+</fv-Shimmer>
+</ClientOnly>
 </div>
 
 ```vue
@@ -87,14 +92,17 @@ List items with two column
 Avatar with item
 
 <div style="background: black;">
-    <fv-Shimmer theme="dark" style="height: auto;">
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <div v-for="(item, index) in 5" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
-                <div class="sample" style="width: 35px; height: 35px; border-radius: 50%;"></div>
-                <div class="sample" style="width: 80%; margin-left: 15px;"></div>
-            </div>
+    
+<ClientOnly>
+<fv-Shimmer theme="dark" style="height: auto;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+        <div v-for="(item, index) in 5" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
+            <div class="sample" style="width: 35px; height: 35px; border-radius: 50%;"></div>
+            <div class="sample" style="width: 80%; margin-left: 15px;"></div>
         </div>
-    </fv-Shimmer>
+    </div>
+</fv-Shimmer>
+</ClientOnly>
 </div>
 
 ```vue
@@ -111,13 +119,16 @@ Avatar with item
 List items
 
 <div style="background: black;">
-    <fv-Shimmer theme="dark" style="height: auto;">
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
-                <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${100 - index * 10}%`}"></div>
-            </div>
+    
+<ClientOnly>
+<fv-Shimmer theme="dark" style="height: auto;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+        <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
+            <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${100 - index * 10}%`}"></div>
         </div>
-    </fv-Shimmer>
+    </div>
+</fv-Shimmer>
+</ClientOnly>
 </div>
 
 ```vue
@@ -133,14 +144,17 @@ List items
 List items with two column
 
 <div style="background: black;">
-    <fv-Shimmer theme="dark" style="height: auto;">
-        <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
-            <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
-                <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
-                <div class="sample" style="width: 80%; height: 15px; margin-left: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
-            </div>
+    
+<ClientOnly>
+<fv-Shimmer theme="dark" style="height: auto;">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+        <div v-for="(item, index) in 3" :key="index" style="margin-top: 5px; display: flex; align-items: center;">
+            <div class="sample" style="width: 80%; height: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
+            <div class="sample" style="width: 80%; height: 15px; margin-left: 15px;" :style="{width: `${50 - index * 10}%`}"></div>
         </div>
-    </fv-Shimmer>
+    </div>
+</fv-Shimmer>
+</ClientOnly>
 </div>
 
 ```vue
@@ -154,8 +168,6 @@ List items with two column
 </fv-Shimmer>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

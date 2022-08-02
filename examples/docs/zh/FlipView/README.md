@@ -21,6 +21,7 @@ export default {
 <ClientOnly>
 <fv-FlipView v-model="value">
 </fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="value">
@@ -30,8 +31,9 @@ export default {
 ### FlipView Custom Template
 
 ---
-
+<ClientOnly>
 <fv-FlipView v-model="images"><template v-slot:item="x"><img alt="" :src="x.data" style="width: 100%; height: 100%; object-fit: cover;"/></template></fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="images">
@@ -45,7 +47,10 @@ export default {
 
 ---
 
+
+<ClientOnly>
 <fv-FlipView v-model="images" direction="vertical"><template v-slot:item="x"><img alt="" :src="x.data" style="width: 100%; height: 100%; object-fit: cover;"/></template></fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="images" direction="vertical">
@@ -59,7 +64,10 @@ export default {
 
 ---
 
+
+<ClientOnly>
 <fv-FlipView v-model="images" mask="rgba(36,36,36,0.6)"><template v-slot:item="x"><img alt="" :src="x.data" style="width: 100%; height: 100%; object-fit: cover;"/></template></fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="images" mask="rgba(36,36,36,0.6)">
@@ -73,7 +81,10 @@ export default {
 
 ---
 
+
+<ClientOnly>
 <fv-FlipView v-model="images" animation="fold"><template v-slot:item="x"><img alt="" :src="x.data" style="width: 100%; height: 100%; object-fit: cover;"/></template></fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="images" animation="fold">
@@ -87,7 +98,10 @@ export default {
 
 ---
 
+
+<ClientOnly>
 <fv-FlipView v-model="images" theme="dark"><template v-slot:item="x"><div style="position: relative; width: 100%; height: 100%; background: rgba(36,36,36,1); display: flex; justify-content: center; align-items: center;"><p style="font-size: 36px; color: whitesmoke;">Dark Theme</p></div></template></fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="images" theme="dark">
@@ -103,7 +117,10 @@ export default {
 
 ---
 
+
+<ClientOnly>
 <fv-FlipView v-model="images" theme="dark" showControlPanel="hover"><template v-slot:item="x"><div style="position: relative; width: 100%; height: 100%; background: rgba(36,36,36,1); display: flex; justify-content: center; align-items: center;"><p style="font-size: 36px; color: whitesmoke;">Dark Theme</p></div></template></fv-FlipView>
+</ClientOnly>
 
 ```vue
 <fv-FlipView v-model="images" theme="dark" showControlPanel="hover">
@@ -114,7 +131,6 @@ export default {
     </template>
 </fv-FlipView>
 ```
-</ClientOnly>
 
 ### Propoties
 

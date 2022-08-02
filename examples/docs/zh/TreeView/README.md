@@ -76,11 +76,10 @@ sidebarDepth: 2
 
 
 <ClientOnly>
-
-
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
 
 </fv-TreeView>
+</ClientOnly>
 
 ```vue
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
@@ -90,11 +89,14 @@ sidebarDepth: 2
 
 ### Slot
 
+
+<ClientOnly>
 <fv-TreeView v-model="files" style="width:200px">
   <template v-slot:default="prop">
     {{prop.item.label}}
   </template>
 </fv-TreeView>
+</ClientOnly>
 
 ```vue
 <fv-TreeView v-model="files" style="width:200px">
@@ -107,8 +109,11 @@ sidebarDepth: 2
 ### TreeView Expand Position
 
   
+
+<ClientOnly>
 <fv-TreeView  v-model="files" expandedIconPosition="right" style="width:200px">
 </fv-TreeView>
+</ClientOnly>
 
 ```vue
 <fv-TreeView 
@@ -120,8 +125,11 @@ sidebarDepth: 2
 ### TreeView Chcekable
 
   
+
+<ClientOnly>
 <fv-TreeView v-model="files" :checkable="true" expandedIconPosition="right" @click="click">
 </fv-TreeView>
+</ClientOnly>
 
 ```vue
 <fv-TreeView 
@@ -162,6 +170,8 @@ backgroundColorHover:
 </fv-callout>
 </ClientOnly>
 
+
+<ClientOnly>
 <fv-TreeView 
   :theme="$theme" 
   v-model="files" 
@@ -173,6 +183,7 @@ backgroundColorHover:
   :background="backgroundColor"
   :space="10">
 </fv-TreeView>
+</ClientOnly>
 
 ``` vue 
 <fv-TreeView 
@@ -189,10 +200,6 @@ backgroundColorHover:
 </div>
 
 ```
-
-
-
-</ClientOnly>
 
 
 

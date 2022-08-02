@@ -29,5 +29,7 @@ export default {
 </script>
 
 <div style="width: 100%; height: 80px; display: flex; justify-content: center; align-items: center;">
+<ClientOnly>
 <fv-button theme="dark" fontSize="16" background="linear-gradient(to right, #11998e, #38ef7d)" borderRadius="3" :isBoxShadow="true" style="width: 128px; height: 58.9px;" @click.native="redirect">快速上手</fv-button>
+</ClientOnly>
 </div>

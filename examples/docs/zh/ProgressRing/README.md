@@ -24,27 +24,31 @@ export default {
 }
 </script>
 
+<ClientOnly>
+<fv-progressRing loading="true">
+</fv-progressRing>
+</ClientOnly>
+
+```vue
+<fv-progressRing loading="true">
+</fv-progressRing>
+```
 
 <ClientOnly>
-
-
-<fv-progressRing loading="true">
-</fv-progressRing>
-
-```vue
-<fv-progressRing loading="true">
-</fv-progressRing>
-```
 <fv-progressRing loading="true" r="20" borderWidth="5">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing loading="true" r="20" borderWidth="5">
 </fv-progressRing>
 ```
 
+
+<ClientOnly>
 <fv-progressRing loading="true" r="10" borderWidth="2">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing loading="true" r="10" borderWidth="2">
@@ -53,24 +57,33 @@ export default {
 
 ### Default ProgressRing
 ---
+
+<ClientOnly>
 <fv-progressRing v-model="percent[0]">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing v-model="percent[0]">
 </fv-progressRing>
 ```
 
+
+<ClientOnly>
 <fv-progressRing v-model="percent[0]" r="20" borderWidth="5">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing v-model="percent[0]" r="20" borderWidth="5">
 </fv-progressRing>
 ```
 
+
+<ClientOnly>
 <fv-progressRing v-model="percent[0]" r="10" borderWidth="2">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing v-model="percent[0]" r="10" borderWidth="2">
@@ -79,8 +92,11 @@ export default {
 
 ### Indeterminate ProgressRing
 ---
+
+<ClientOnly>
 <fv-progressRing loading="true">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing loading="true">
@@ -89,8 +105,11 @@ export default {
 
 ### ProgressRing Legacy
 ---
+
+<ClientOnly>
 <fv-progressRing :legacy="true">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing :legacy="true">
@@ -99,27 +118,39 @@ export default {
 
 ### Different Size(Legacy)
 ---
+
+<ClientOnly>
 <fv-progressRing size="xs" :legacy="true">
 </fv-progressRing>
+</ClientOnly>
 
 <fv-progressRing size="s" :legacy="true">
 </fv-progressRing>
 
+
+<ClientOnly>
 <fv-progressRing size="m" :legacy="true">
 </fv-progressRing>
+</ClientOnly>
 
 <fv-progressRing size="l" :legacy="true">
 </fv-progressRing>
 
 ```vue
+
+<ClientOnly>
 <fv-progressRing size="xs" :legacy="true">
 </fv-progressRing>
+</ClientOnly>
 
 <fv-progressRing size="s" :legacy="true">
 </fv-progressRing>
 
+
+<ClientOnly>
 <fv-progressRing size="m" :legacy="true">
 </fv-progressRing>
+</ClientOnly>
 
 <fv-progressRing size="l" :legacy="true">
 </fv-progressRing>
@@ -128,8 +159,11 @@ export default {
 ### ProgressBar Custom Style
 ---
 1. Custom Foreground
+
+<ClientOnly>
 <fv-progressRing v-model="percent[2]" color="rgba(0, 204, 153, 1)">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing v-model="percent[2]" color="rgba(0, 204, 153, 1)">
@@ -137,16 +171,17 @@ export default {
 ```
 
 2. Custom Background
+
+<ClientOnly>
 <fv-progressRing v-model="percent[3]" background="rgba(0, 204, 153, 0.6)">
 </fv-progressRing>
+</ClientOnly>
 
 ```vue
 <fv-progressRing v-model="percent[3]" background="rgba(0, 204, 153, 0.6)">
 </fv-progressRing>
 ```
 
-
-</ClientOnly>
 
 
 ### Propoties

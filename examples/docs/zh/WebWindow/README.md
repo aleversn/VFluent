@@ -24,6 +24,7 @@ export default {
 <div style="width: 100%; height: auto; padding: 25px; box-sizing: border-box;">
 </div>
 </fv-WebWindow>
+</ClientOnly>
 
 ```vue
 <fv-WebWindow>
@@ -31,7 +32,6 @@ export default {
     </div>
 </fv-WebWindow>
 ```
-</ClientOnly>
 
 ### Propoties
 ---

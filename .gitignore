@@ -22,3 +22,6 @@ yarn-error.log*
 *.sw?
 /.vs
 vetur/**/*
+
+# docs dist
+examples/docs/.vuepress/dist
