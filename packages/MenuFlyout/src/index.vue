@@ -1,11 +1,6 @@
 <template>
-    <fv-callout 
-        :class="['fv-' + $theme + '-menuFlyout', { actived: callout.show }, { disabled: disabled }]"
-        :style="flyout" 
-        :visible.sync="callout.show" 
-        :beak="beak" 
-        :focusTrap="callout.focusTrap" 
-        :popperStyle="{
+    <fv-callout :class="['fv-' + $theme + '-menuFlyout', { actived: callout.show }, { disabled: disabled }]"
+        :style="flyout" :visible.sync="callout.show" :beak="beak" :focusTrap="callout.focusTrap" :popperStyle="{
             padding: '0px',
             minWidth: '300px',
             backgroundColor: backgroundColor,
@@ -15,10 +10,16 @@
             'box-shadow': 'rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px'
         }" :position="position" :popperClass="['fv-' + $theme + '-menuFlyoutPopper']" :theme="$theme"
         :disabled="disabled">
-        <button ref="button" class="fv-menuFlyout__button" :style="{ borderColor: borderColor }">
-            <span>{{ label ? label : "Click the Menu" }}</span>
-            <i class="ms-Icon ms-Icon--ChevronDown right-icon"></i>
-        </button>
+        <template>
+            <button ref="button" class="fv-menuFlyout__button" :style="{ borderColor: borderColor }">
+                <fv-reveal-container :parent="() => $refs.button" class="fv-menuFlyout__reveal"
+                    :backgroundColor="backgroundLightColor()" :borderColor="borderLightColor()" :borderGradientSize="80"
+                    :borderWidth="0" :borderRadius="0" :disabled="disabled">
+                </fv-reveal-container>
+                <span>{{ label ? label : "Click the Menu" }}</span>
+                <i class="ms-Icon ms-Icon--ChevronDown right-icon"></i>
+            </button>
+        </template>
         <main>
             <slot></slot>
         </main>
@@ -66,9 +67,6 @@ export default {
             overflow: this.borderRadius ? "hidden" : undefined,
         };
     },
-    mounted() {
-        this.FRInit();
-    },
     computed: {
         $theme() {
             if (this.theme == "system") return this.$fvGlobal.state.theme;
@@ -104,16 +102,6 @@ export default {
         },
     },
     methods: {
-        FRInit() {
-            this.FR = this.$RevealMasked.apply(this.$el, {
-                maskedSelector: this.$el,
-                selector: this.$el.querySelectorAll(".fv-menuFlyout__button"),
-                borderGradientSize: 80,
-                backgroundGradientSize: 100,
-                borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
-            });
-        },
         show() {
             this.callout.focusTrap = true;
             setTimeout(() => {
@@ -121,8 +109,5 @@ export default {
             }, 100);
         },
     },
-    beforeDestroy () {
-        this.$RevealMasked.destroy(this.FR);
-    }
 };
 </script>

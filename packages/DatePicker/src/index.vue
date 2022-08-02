@@ -341,20 +341,25 @@ export default {
                 if (this.optionsConfig.year.scroll) {
                     this.$refs.year.removeEventListener('scroll', this.optionsConfig.year.scroll);
                 }
-                this.optionsConfig.year.scroll = () => {
-                    if (this.optionsConfig.year.slideLock) return;
+                this.optionsConfig.year.scroll = async () => {
+                    if (this.optionsConfig.year.slideLock) {
+                        return;
+                    }
+                    this.optionsConfig.year.slideLock = true;
                     if (this.$refs.year.scrollTop - origin > 0) {
                         if (this.adjustYear(this.selected.date.getFullYear() + 1) < 0) {
                             this.$refs.year.scrollTop = origin;
+                            this.optionsConfig.year.slideLock = false;
                             return;
                         }
                     } else {
                         if (this.adjustYear(this.selected.date.getFullYear() - 1) < 0) {
                             this.$refs.year.scrollTop = origin;
+                            this.optionsConfig.year.slideLock = false;
                             return;
                         }
                     }
-                    this.slideCol(
+                    await this.slideCol(
                         origin,
                         'year',
                         () => {
@@ -373,6 +378,7 @@ export default {
                         }
                     );
                     this.setDayOptions();
+                    this.optionsConfig.year.slideLock = false;
                 };
                 this.$refs.year.addEventListener('scroll', this.optionsConfig.year.scroll);
             });
@@ -384,16 +390,19 @@ export default {
             date.setDate(0);
             return date.getDate();
         },
-        slideCol(origin, refName, nxtCallback, preCallback) {
+        async slideCol(origin, refName, nxtCallback, preCallback) {
             if (Math.abs(this.$refs[refName].scrollTop - origin) >= 20) {
                 if (this.$refs[refName].scrollTop > origin) {
-                    nxtCallback();
+                    nxtCallback()
                 } else {
-                    preCallback();
+                    preCallback()
                 }
-                this.$nextTick(() => {
-                    this.$refs[refName].scrollTop = origin;
-                });
+                return await new Promise(resolve =>
+                    this.$nextTick(() => {
+                        this.$refs[refName].scrollTop = origin
+                        resolve()
+                    })
+                )
             }
         },
         adjustDay(from, to) {
