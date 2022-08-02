@@ -35,7 +35,7 @@ jobs:
               run: pnpm lib
 
             - name: 🚚pnpm publish package
-              run: pnpm publish
+              run: pnpm publish --no-git-checks
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -55,7 +55,7 @@ jobs:
                   cache: 'pnpm'
 
             - name: 🚓loading denpendencies
-              run: pnpm i
+              run: pnpm i --frozen-lockfile
 
             - name: 🚕build docs
               run: pnpm docs:build
