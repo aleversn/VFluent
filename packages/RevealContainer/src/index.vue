@@ -179,15 +179,15 @@ export default {
             if (this.parent) {
                 this.parent().removeEventListener('mousedown', this.downEvent);
                 this.parent().addEventListener('mousedown', this.downEvent);
-                this.parent().removeEventListener('touchdown', this.downEvent);
-                this.parent().addEventListener('touchdown', this.downEvent);
+                this.parent().removeEventListener('touchstart', this.downEvent);
+                this.parent().addEventListener('touchstart', this.downEvent);
                 this.parent().removeEventListener('mouseup', this.upEvent);
                 this.parent().addEventListener('mouseup', this.upEvent);
             } else {
                 this.$el.removeEventListener('mousedown', this.downEvent);
                 this.$el.addEventListener('mousedown', this.downEvent);
-                this.$el.removeEventListener('touchdown', this.downEvent);
-                this.$el.addEventListener('touchdown', this.downEvent);
+                this.$el.removeEventListener('touchstart', this.downEvent);
+                this.$el.addEventListener('touchstart', this.downEvent);
                 this.$el.removeEventListener('mouseup', this.upEvent);
                 this.$el.addEventListener('mouseup', this.upEvent);
             }
@@ -330,7 +330,7 @@ export default {
 
         if (this.parent && this.parent()) {
             this.parent().removeEventListener('mousedown', this.downEvent);
-            this.parent().removeEventListener('touchdown', this.downEvent);
+            this.parent().removeEventListener('touchstart', this.downEvent);
             this.parent().removeEventListener('mouseup', this.upEvent);
         }
     },
