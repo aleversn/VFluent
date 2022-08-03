@@ -1,40 +1,118 @@
 <template>
-    <div :class="['fv-' + $theme + '-RevealContainer']" :style="{ 'border-radius': `${borderRadius}px` }" @click="$event => {
+    <div
+        :class="['fv-' + $theme + '-RevealContainer']"
+        :style="{ 'border-radius': `${borderRadius}px` }"
+        @click="$event => {
+        $event.preventDefault();
         if (!isDisabled)
             $emit('click', $event);
-    }">
-        <svg v-show="offset.right - offset.left > 0" width="100%" height="100%" version="1.1"
-            xmlns="http://www.w3.org/2000/svg">
+    }"
+    >
+        <svg
+            v-show="offset.right - offset.left > 0"
+            width="100%"
+            height="100%"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             >
             <defs>
-                <radialGradient cx="50%" cy="50%" :r="backgroundGradientSize" gradientUnits="userSpaceOnUse"
-                    spreadMethod="pad" :id="`backgroundG_${id}`" :gradientTransform="borderMatrix">
-                    <stop v-if="backgroundGradientList.length == 0" offset="0" :stop-color="backgroundColor" />
-                    <stop v-if="backgroundGradientList.length == 0" offset="1" stop-color="rgba(255, 255, 255, 0)" />
-                    <stop v-for="(color, index) in backgroundGradientList"
-                        :offset="1 / backgroundGradientList.length * index" :stop-color="color" :key="`bg:${index}`" />
+                <radialGradient
+                    cx="50%"
+                    cy="50%"
+                    :r="backgroundGradientSize"
+                    gradientUnits="userSpaceOnUse"
+                    spreadMethod="pad"
+                    :id="`backgroundG_${id}`"
+                    :gradientTransform="borderMatrix"
+                >
+                    <stop
+                        v-if="backgroundGradientList.length == 0"
+                        offset="0"
+                        :stop-color="backgroundColor"
+                    />
+                    <stop
+                        v-if="backgroundGradientList.length == 0"
+                        offset="1"
+                        stop-color="rgba(255, 255, 255, 0)"
+                    />
+                    <stop
+                        v-for="(color, index) in backgroundGradientList"
+                        :offset="1 / backgroundGradientList.length * index"
+                        :stop-color="color"
+                        :key="`bg:${index}`"
+                    />
                 </radialGradient>
-                <radialGradient cx="50%" cy="50%" :r="borderGradientSize" gradientUnits="userSpaceOnUse"
-                    spreadMethod="pad" :id="`borderG_${id}`" :gradientTransform="borderMatrix">
-                    <stop v-if="borderGradientList.length == 0" offset="0" :stop-color="borderColor" />
-                    <stop v-if="borderGradientList.length == 0" offset="1" stop-color="rgba(255, 255, 255, 0)" />
-                    <stop v-for="(color, index) in borderGradientList" :offset="1 / borderGradientList.length * index"
-                        :stop-color="color" :key="`border:${index}`" />
+                <radialGradient
+                    cx="50%"
+                    cy="50%"
+                    :r="borderGradientSize"
+                    gradientUnits="userSpaceOnUse"
+                    spreadMethod="pad"
+                    :id="`borderG_${id}`"
+                    :gradientTransform="borderMatrix"
+                >
+                    <stop
+                        v-if="borderGradientList.length == 0"
+                        offset="0"
+                        :stop-color="borderColor"
+                    />
+                    <stop
+                        v-if="borderGradientList.length == 0"
+                        offset="1"
+                        stop-color="rgba(255, 255, 255, 0)"
+                    />
+                    <stop
+                        v-for="(color, index) in borderGradientList"
+                        :offset="1 / borderGradientList.length * index"
+                        :stop-color="color"
+                        :key="`border:${index}`"
+                    />
                 </radialGradient>
-                <radialGradient cx="50%" cy="50%" :r="wave" gradientUnits="userSpaceOnUse" spreadMethod="pad"
-                    :id="`clickG_${id}`" :gradientTransform="borderMatrix">
-                    <stop offset="0" stop-color="rgba(255, 255, 255, 0)" />
-                    <stop offset="0.33" :stop-color="backgroundColor" />
-                    <stop offset="0.66" stop-color="rgba(255, 255, 255, 0)" />
-                    <stop offset="1" stop-color="rgba(255, 255, 255, 0)" />
+                <radialGradient
+                    cx="50%"
+                    cy="50%"
+                    :r="wave"
+                    gradientUnits="userSpaceOnUse"
+                    spreadMethod="pad"
+                    :id="`clickG_${id}`"
+                    :gradientTransform="borderMatrix"
+                >
+                    <stop
+                        offset="0"
+                        stop-color="rgba(255, 255, 255, 0)"
+                    />
+                    <stop
+                        offset="0.33"
+                        :stop-color="backgroundColor"
+                    />
+                    <stop
+                        offset="0.66"
+                        stop-color="rgba(255, 255, 255, 0)"
+                    />
+                    <stop
+                        offset="1"
+                        stop-color="rgba(255, 255, 255, 0)"
+                    />
                 </radialGradient>
             </defs>
-            <rect :x="borderWidth / 2" :y="borderWidth / 2" :rx="borderRadius" :ry="borderRadius"
+            <rect
+                :x="borderWidth / 2"
+                :y="borderWidth / 2"
+                :rx="borderRadius"
+                :ry="borderRadius"
                 style="box-sizing: border-box;"
-                :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth }" />
-            <rect v-show="clickDown" :x="borderWidth / 2" :y="borderWidth / 2" :rx="borderRadius" :ry="borderRadius"
+                :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth }"
+            />
+            <rect
+                v-show="clickDown"
+                :x="borderWidth / 2"
+                :y="borderWidth / 2"
+                :rx="borderRadius"
+                :ry="borderRadius"
                 style="stroke: transparent; box-sizing: border-box;"
-                :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth }" />
+                :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth }"
+            />
         </svg>
     </div>
 </template>
@@ -97,7 +175,7 @@ export default {
                 // x: window.innerWidth,
                 // y: window.innerHeight,
                 x: 0,
-                y: 0
+                y: 0,
             },
             inside: false,
             wave: 0,
@@ -112,7 +190,7 @@ export default {
             if (!val) {
                 this.leaveEvent(null);
             }
-        }
+        },
     },
     computed: {
         $theme() {
@@ -132,8 +210,8 @@ export default {
     },
     mounted() {
         // mount data
-        this.disEl.y = window.innerHeight
-        this.disEl.x = window.innerWidth
+        this.disEl.y = window.innerHeight;
+        this.disEl.x = window.innerWidth;
         this.mouseMoveInit();
         this.mouseClickInit();
     },
@@ -153,8 +231,6 @@ export default {
                 window.addEventListener('touchmove', this.globalMoveEventListener);
                 window.removeEventListener('mouseleave', this.globalLeaveEventListener);
                 window.addEventListener('mouseleave', this.globalLeaveEventListener);
-                window.removeEventListener('touchend', this.globalLeaveEventListener);
-                window.addEventListener('touchend', this.globalLeaveEventListener);
             } else {
                 this.revealContainer.revealHandlerList.push({
                     id: this.id,
@@ -171,8 +247,6 @@ export default {
                 this.revealContainer.el().addEventListener('touchmove', this.globalMoveEventListener);
                 this.revealContainer.el().removeEventListener('mouseleave', this.globalLeaveEventListener);
                 this.revealContainer.el().addEventListener('mouseleave', this.globalLeaveEventListener);
-                this.revealContainer.el().removeEventListener('touchend', this.globalLeaveEventListener);
-                this.revealContainer.el().addEventListener('touchend', this.globalLeaveEventListener);
             }
         },
         mouseClickInit() {
@@ -183,6 +257,8 @@ export default {
                 this.parent().addEventListener('touchstart', this.downEvent);
                 this.parent().removeEventListener('mouseup', this.upEvent);
                 this.parent().addEventListener('mouseup', this.upEvent);
+                this.parent().removeEventListener('touchend', this.leaveEvent);
+                this.parent().addEventListener('touchend', this.leaveEvent);
             } else {
                 this.$el.removeEventListener('mousedown', this.downEvent);
                 this.$el.addEventListener('mousedown', this.downEvent);
@@ -190,6 +266,8 @@ export default {
                 this.$el.addEventListener('touchstart', this.downEvent);
                 this.$el.removeEventListener('mouseup', this.upEvent);
                 this.$el.addEventListener('mouseup', this.upEvent);
+                this.$el.removeEventListener('touchend', this.leaveEvent);
+                this.$el.addEventListener('touchend', this.leaveEvent);
             }
         },
         globalMoveEventListener(e) {
@@ -232,8 +310,18 @@ export default {
         downEvent(e) {
             if (this.isDisabled) return;
             if (!this.clickInsideElement(e)) return;
+            if (e.type.indexOf('mouse') < 0) e = e.targetTouches[0];
+
+            const { left, top } = this.getOffset(this.$el);
+            let x = e.pageX - left - window.scrollX;
+            let y = e.pageY - top - window.scrollY;
+            this.disEl.x = x;
+            this.disEl.y = y;
+
             this.wave = 120;
+            this.inside = true;
             this.clickDown = true;
+            clearInterval(this.timer.wave);
             this.timer.wave = setInterval(() => {
                 try {
                     let cur = this.wave;
@@ -241,7 +329,7 @@ export default {
                     cur += step;
                     if (cur >= 1000) clearInterval(this.timer.wave);
                     else this.wave = cur;
-                } catch (e) { }
+                } catch (e) {}
             }, 50);
         },
         upEvent(e) {

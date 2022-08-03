@@ -1,7 +1,6 @@
 <template>
 	<div
 		:class="['fv-'+$theme+'-Combobox', {disabled: isDisabled}]"
-		ref="co_head"
 		:style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
 	>
         <div class="combobox-container" @click="status = !isDisabled ? !status : false" :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}">
@@ -187,9 +186,6 @@ export default {
             this.status = false;
 			this.$emit("choose-item", this.thisValue);
 		}
-	},
-    beforeDestroy () {
-        this.$RevealMasked.destroy(this.FR);
-    }
+	}
 };
 </script>

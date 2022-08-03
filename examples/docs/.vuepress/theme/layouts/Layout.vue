@@ -122,7 +122,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 *::-webkit-scrollbar {
     height: 8px;
     width: 8px;
@@ -140,5 +140,23 @@ export default {
 }
 *::-webkit-scrollbar-corner {
     background: #179a16;
+}
+
+body
+{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    #app
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
 }
 </style>
