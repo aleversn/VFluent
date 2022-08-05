@@ -36,7 +36,7 @@ export default {
     },
     watch: {
         show (val) {
-            this.expand = val;
+            this.expand = true;
         },
         value(val, from) {
             if (val !== from) {
