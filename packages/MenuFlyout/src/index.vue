@@ -1,112 +1,215 @@
 <template>
-    <fv-callout :class="['fv-' + $theme + '-menuFlyout', { actived: callout.show }, { disabled: disabled }]"
-        :style="flyout" :visible.sync="callout.show" :beak="beak" :focusTrap="callout.focusTrap" :popperStyle="{
-            padding: '0px',
-            minWidth: '300px',
-            backgroundColor: backgroundColor,
-            color: color,
-            borderRadius: borderRadius,
-            overflow: overflow,
-            'box-shadow': 'rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px'
-        }" :position="position" :popperClass="['fv-' + $theme + '-menuFlyoutPopper']" :theme="$theme"
-        :disabled="disabled">
-        <template>
-            <button ref="button" class="fv-menuFlyout__button" :style="{ borderColor: borderColor }">
-                <fv-reveal-container :parent="() => $refs.button" class="fv-menuFlyout__reveal"
-                    :backgroundColor="backgroundLightColor()" :borderColor="borderLightColor()" :borderGradientSize="80"
-                    :borderWidth="0" :borderRadius="0" :disabled="disabled">
-                </fv-reveal-container>
-                <span>{{ label ? label : "Click the Menu" }}</span>
-                <i class="ms-Icon ms-Icon--ChevronDown right-icon"></i>
-            </button>
-        </template>
-        <main>
-            <slot></slot>
-        </main>
-    </fv-callout>
+    <div
+        :class="['fv-'+$theme+'-menuFlyout', {disabled: isDisabled}]"
+        :style="{background: background, padding: borderWidth, 'border-radius': `${borderRadius}px`, 'z-index': status ? 3 : '', overflow: 'visible'}"
+    >
+        <div
+            class="menu-flyout-container"
+            @click="status = !isDisabled ? !status : false"
+            :style="{background: inputBackground, 'border-radius': `${borderRadius}px`}"
+        >
+            <fv-reveal-container
+                :parent="() => $el"
+                class="fv-menu-flyout-reveal-container"
+                :backgroundColor="backgroundLightColor"
+                :borderColor="borderLightColor"
+                :backgroundGradientSize="120"
+                :borderGradientSize="80"
+                :borderWidth="borderWidth"
+                :borderRadius="borderRadius"
+                :disabled="isDisabled"
+            ></fv-reveal-container>
+            <input
+                class="input"
+                :placeholder="placeholder"
+                readonly
+                :value="computedValue"
+                :style="{color: inputForeground, 'border-radius': `${borderRadius}px`}"
+            />
+            <i
+                class="ms-Icon right-icon"
+                :class="[`ms-Icon--${dropDownIcon}`]"
+                :style="{color: dropDownIconForeground}"
+            ></i>
+        </div>
+        <menu-flyout-children-container
+            v-show="status"
+            :value="thisValue"
+            :options="options"
+            :background="background"
+            :choosenBackground="choosenBackground"
+            :titleForeground="titleForeground"
+            @choose-item="Choose"
+        >
+            <template v-slot:item="x">
+                <slot :item="x.item" :choosenSliderBackground="x.choosenSliderBackground">
+                    <i
+                        class="before-choosen"
+                        :style="{background: x.choosenSliderBackground}"
+                    ></i>
+                    {{valueTrigger(x.item.type) !== 'divider' ? valueTrigger(x.item.text) : ''}}
+                    <i
+                        v-show="x.item.children"
+                        class="ms-Icon ms-Icon--ChevronRight after-expand"
+                    ></i>
+                </slot>
+            </template>
+        </menu-flyout-children-container>
+    </div>
 </template>
 
 <script>
+import menuFlyoutChildrenContainer from './menuFlyoutChildrenContainer.vue';
+
 export default {
-    name: "FvMenuFlyout",
+    name: 'FvMenuFlyout',
+    components: { menuFlyoutChildrenContainer },
     props: {
-        theme: {
-            type: String,
-            default: "system",
+        value: {
+            default: () => {
+                return [];
+            },
         },
-        label: {
-            type: String,
+        options: {
+            default: () => [],
         },
-        position: {
-            type: String,
-            default: "bottomLeft",
+        borderWidth: {
+            default: 2,
         },
-        beak: {
-            type: Number,
-            default: 0,
+        placeholder: {
+            default: 'menuFlyout',
         },
-        checkable: {
-            default: false,
+        borderRadius: {
+            default: '3',
+        },
+        background: {
+            default: '',
+        },
+        choosenBackground: {
+            default: '',
+        },
+        choosenSliderBackground: {
+            default: '',
+        },
+        inputForeground: {
+            default: '',
+        },
+        inputBackground: {
+            default: '',
+        },
+        titleForeground: {
+            default: '',
+        },
+        dropDownIcon: {
+            default: 'ChevronDown',
+        },
+        dropDownIconForeground: {
+            default: '',
+        },
+        pivotPlaceholder: {
+            default: 'Please Choose',
         },
         disabled: {
-            type: Boolean,
             default: false,
         },
-        backgroundColor: {},
-        color: {},
-        borderColor: {},
-        borderRadius: {},
+        theme: {
+            type: String,
+            default: 'system',
+        },
     },
     data() {
         return {
-            FR: null,
-            callout: {
-                show: false,
-                focusTrap: false,
-            },
-            overflow: this.borderRadius ? "hidden" : undefined,
+            thisValue: this.value,
+            status: false,
         };
     },
-    computed: {
-        $theme() {
-            if (this.theme == "system") return this.$fvGlobal.state.theme;
-            return this.theme;
+    watch: {
+        value(val) {
+            this.thisValue = val;
         },
-        flyout() {
-            return {
-                backgroundColor: this.backgroundColor,
-                color: this.color,
-            };
-        },
-        borderLightColor() {
-            return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.6)";
-                }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.6)";
-                }
-                return "rgba(121, 119, 117, 0.6)";
-            }
-        },
-        backgroundLightColor() {
-            return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.3)";
-                }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.3)";
-                }
-                return "rgba(121, 119, 117, 0.3)";
-            }
+        thisValue(val) {
+            this.$emit('input', val);
         },
     },
+    computed: {
+        isDisabled() {
+            return this.options.length == 0 || this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
+        },
+        borderLightColor() {
+            if (this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.6)';
+            }
+            if (this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.6)';
+            }
+            return 'rgba(121, 119, 117, 0.6)';
+        },
+        backgroundLightColor() {
+            if (this.$theme == 'light') {
+                return 'rgba(121, 119, 117, 0.3)';
+            }
+            if (this.$theme == 'dark' || this.$theme == 'custom') {
+                return 'rgba(255, 255, 255, 0.3)';
+            }
+            return 'rgba(121, 119, 117, 0.3)';
+        },
+        computedValue() {
+            let finalText = [];
+            for (let item of this.thisValue) {
+                finalText.push(item.text);
+            }
+            return finalText.join(' / ');
+        },
+        $theme() {
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
+            return this.theme;
+        },
+    },
+    mounted() {
+        this.outSideClickInit();
+    },
     methods: {
-        show() {
-            this.callout.focusTrap = true;
-            setTimeout(() => {
-                this.callout.focusTrap = false;
-            }, 100);
+        outSideClickInit() {
+            window.addEventListener('click', (event) => {
+                let x = event.target;
+                let _self = false;
+                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) this.status = false;
+            });
+            window.addEventListener('touchend', (event) => {
+                let x = event.target;
+                let _self = false;
+                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                    if (x == this.$el) {
+                        _self = true;
+                        break;
+                    }
+                    x = x.parentNode;
+                }
+                if (!_self) this.status = false;
+            });
+        },
+        valueTrigger(val) {
+            if (typeof val === 'function') return val();
+            return val;
+        },
+        Choose(event) {
+            let { item, index } = event;
+            if (index == -1) this.thisValue.push(item);
+            else {
+                this.thisValue.splice(index + 1);
+                this.$set(this.thisValue, index, item);
+            }
+            if (!item.children) {
+                this.status = false;
+            }
+            this.$emit('choose-item', this.thisValue);
         },
     },
 };

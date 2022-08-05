@@ -1,83 +1,59 @@
 @import "../common-theme/MenuFlyout.scss";
 .fv-dark-menuFlyout {
-  @include fv-menuFlyout();
-  color:#f0efee;
-  background-color: #252423;
-  box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
-  .fv-menuFlyout__button{
-    border: none;
-  }
-  &:hover {
-    background-color: #252423;
-  }
-  &.actived {
-    background-color: #252423;
-  }
-  &.disabled{
-    background-color: #252423;
-    color:#797775;
-  }
-}
+    @include fv-menuFlyout();
 
-.fv-dark-menuFlyoutPopper {
-  @include fv-menuFlyoutPopper();
-  hr{
-    border-color: #292827;
-  }
-  background-color: #252423;
-  color: #f0efee;
-}
+    .menu-flyout-container {
+        color: whitesmoke;
+        background: rgba(36, 36, 36, 1);
 
-.fv-dark-menuSubFlyout {
-  @include fv-menuSubFlyout();
-  color: inherit;
-  background-color: inherit;
-  font-size: 15px;
-  &:hover {
-    .fv-menuSubFlyout__bg {
-      background-color: #323130;
+        .input {
+            color: whitesmoke;
+        }
     }
-    .fv-menuSubFlyout__label + .fv-menuSubFlyout__button-box:hover {
-      background-color: #323130;
-    }
-  }
-  .fv-menuSubFlyout__button-box:hover + .fv-menuSubFlyout__bg {
-    background-color: inherit;
-  }
-  &.actived {
-    .fv-menuSubFlyout__button-box {
-      background-color: #323130;
-    }
-  }
-  &.disabled{
-    background-color: inherit;
-    color:#797775;
-  }
-}
 
-.fv-dark-menuItemFlyout {
-  @include fv-menuItemFlyout;
-  background-color: inherit;
-  &:hover {
-    background-color: #323130;
-  }
-  color: #f0efee;
-  .fv-menuItemFlyout__icon{
-    color: #0078d4;
-  }
-  &.disabled{
-    background-color: inherit;
-    color:#797775;
-  }
-}
+    &:hover {
+        border-color: rgba(250, 250, 250, 0.6);
+    }
 
-.fv-dark-menuBlockFlyout{
-  @include fv-menuBlockFlyout();
-  background-color: inherit;
-  color:inherit;
-  .fv-menuBlockFlyout__header{
-    height: 30px;
-    line-height: 30px;
-    color:inherit;
-  }
+    &:active {
+        background: rgba(250, 250, 250, 0.1);
+        border-color: rgba(250, 250, 250, 0.3);
+    }
+
+    .menu-flyout-list-container {
+        background: rgba(36, 36, 36, 0.9);
+        
+        .menu-flyout-item-container {
+    
+            .fv-menu-flyout-item {
+                color: whitesmoke;
+    
+                &.title {
+                    color: rgba(118, 185, 237, 1);
+                }
+    
+                .before-choosen {
+                    background: rgba(118, 185, 237, 1);
+                }
+            }
+        }
+    }
+
+    &.disabled {
+        .menu-flyout-container {
+            background: rgba(36, 36, 36, 0.8);
+
+            .input {
+                background: rgba(36, 36, 36, 0);
+            }
+
+            &:hover {
+                background: rgba(36, 36, 36, 0.8);
+
+                .input {
+                    background: rgba(36, 36, 36, 0);
+                }
+            }
+        }
+    }
 }

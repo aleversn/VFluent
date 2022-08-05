@@ -96,6 +96,7 @@ export default {
 |      value       |              [object]              |       No       |              N/A               |   当前选中项值   |
 |      items       |              [array]               |       No       | [{ name: "Pivot", width: 80 }] |    选项卡数据    |
 |       tab        |             [boolean]              |       No       |             false              | 是否开启tab样式  |
+|     fontSize     |              [number]              |       No       |              N/A               |   默认字体大小   |
 |    foreground    |          [string(color)]           |       No       |              N/A               |      前景色      |
 | sliderBackground |          [string(color)]           |       No       |              N/A               |    滑块背景色    |
 | sliderBoxshadow  |             [boolean]              |       No       |             false              | 是否开启滑块阴影 |
@@ -126,10 +127,12 @@ export default {
 ---
 1. items
 
+Pivot只针对对象的`key`和`name`进行匹配, 当`value`传入的这两个属性能够在`options`中匹配时, 选中项即为被匹配项.
+
 ```javascript
-items = [{ name: "Pivot", width: 80, show: true, disabled: false }]
+items = [{ key: 0, name: "Pivot", width: 80, show: true, disabled: false }]
 
 //e.g.//
 
-items: [{ name: "Pivot", width: 80 }]
+items: [{ key: 0, name: "Pivot", width: 80 }]
 ```

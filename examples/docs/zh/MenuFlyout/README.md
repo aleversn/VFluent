@@ -6,281 +6,171 @@ sidebarDepth: 2
 [[toc]]
 
 <script>
-  export default {
-    data(){
-      return {
-        theme:0,
-      }
-    },
-    computed:{
-      $theme(){
-        return !this.theme?'light':'dark';
-      },
-      divStyle(){
-        if (this.$theme=='light'){
-          return {
-            backgroundColor:'#fff',
-            padding:'20px',
-            color:'#000',
-          }
-        }else{
-          return {
-            backgroundColor:'#000',
-            padding:'20px',
-            color:'#fff',
-          }
+export default {
+    data () {
+        return {
+            value: [],
+            options: [
+                { key: "fruitsHeader", text: "Fruits", type: "header" },
+                { key: "apple", text: "Apple", children: [
+                    { key: "A", text: "A" },
+                    { key: "B", text: "B" },
+                    { key: "Apple C", text: "Apple C", children: [
+                        { key: "A", text: "A" },
+                        { key: "B", text: "B" },
+                        { key: "Apple C-C", text: "Apple C-C", children: [
+                            { key: "A", text: "A" },
+                            { key: "B", text: "B" },
+                            { key: "Apple C-C-C", text: "Apple C-C-C" }
+                        ] }
+                    ] }
+                ] },
+                { key: "banana", text: "Banana" },
+                { key: "orange", text: "Orange", disabled: true },
+                { key: "grape", text: "Grape", children: [
+                    { key: "A", text: "A" },
+                    { key: "B", text: "B" },
+                    { key: "C", text: "C" }
+                ] },
+                { key: "divider_1", text: "-", type: "divider" },
+                { key: "vegetablesHeader", text: "Vegetables", type: "header" },
+                { key: "broccoli", text: "Broccoli" },
+                { key: "carrot", text: "Carrot" },
+                { key: "lettuce", text: "Lettuce" }
+            ]
         }
-      }
-    },
-    methods:{
-      alert(text){
-        alert(text);
-      },
-      go(url){
-        window.location.href=url
-      }
     }
-  }
+}
 </script>
 
 ### MenuFlyout
 
 <ClientOnly>
-<fv-menuFlyout  borderRadius="2px">
-<fv-menu-sub-flyout label="Actions"> 
-<fv-menu-item-flyout  label="New">
-</fv-menu-item-flyout>
-<fv-menu-sub-flyout label="Remove">  
-<fv-menu-item-flyout label="Item">
-</fv-menu-item-flyout>
-</fv-menu-sub-flyout>
-</fv-menu-sub-flyout>
-<hr/>
-<fv-menu-item-flyout>
-</fv-menu-item-flyout>
-<fv-menu-item-flyout>
-</fv-menu-item-flyout>
+<fv-menuFlyout v-model="value" :options="options" placeholder="Pick a option">
 </fv-menuFlyout>
 </ClientOnly>
 
 ```vue
-<fv-menuFlyout borderRadius="2px">
-  <fv-menu-sub-flyout label="Actions">
-    <fv-menu-item-flyout label="New"> </fv-menu-item-flyout>
-    <fv-menu-sub-flyout label="Remove">
-      <fv-menu-item-flyout label="Item"> </fv-menu-item-flyout>
-    </fv-menu-sub-flyout>
-  </fv-menu-sub-flyout>
-  <hr />
-  <fv-menu-item-flyout> </fv-menu-item-flyout>
-  <fv-menu-item-flyout> </fv-menu-item-flyout>
+<fv-menuFlyout v-model="value" :options="options" placeholder="Pick a option">
 </fv-menuFlyout>
 ```
 
-### MenuFlyout Custom Block
+### menuFlyout-Disabled
+---
 
 <ClientOnly>
-<fv-menu-flyout>
-  <fv-menu-block-flyout><template v-slot:header>Actions</template>
-<fv-menu-item-flyout label="New" @click="alert('New');">
-</fv-menu-item-flyout>
-<fv-menu-item-flyout label="Remove" @click="alert('Remove');">
-</fv-menu-item-flyout>
-</fv-menu-block-flyout>
-  <hr/>
-  <fv-menu-block-flyout>
-    <template v-slot:header>Share</template>
-    <fv-menu-sub-flyout label="Microsoft" :spilt="true">
-      <fv-menu-item-flyout label="outlook" icon="OutlookLogo16">
-      </fv-menu-item-flyout>
-      <fv-menu-item-flyout label="github" icon="GitGraph" @click="go('https://github.com')">
-      </fv-menu-item-flyout>
-    </fv-menu-sub-flyout>
-  </fv-menu-block-flyout>
-</fv-menu-flyout>
+<fv-menuFlyout v-model="value" :options="options" placeholder="Pick a option" disabled>
+</fv-menuFlyout>
 </ClientOnly>
 
 ```vue
-<fv-menu-flyout>
-  <fv-menu-block-flyout>
-    <template v-slot:header>Actions</template>
-    <fv-menu-item-flyout label="New" @click="alert('New');">
-    </fv-menu-item-flyout>
-    <fv-menu-item-flyout label="Remove" @click="alert('Remove');">
-    </fv-menu-item-flyout>
-  </fv-menu-block-flyout>
-  <hr/>
-  <fv-menu-block-flyout>
-    <template v-slot:header>Share</template>
-    <fv-menu-sub-flyout label="Microsoft" :spilt="true">
-      <fv-menu-item-flyout label="outlook" icon="OutlookLogo16">
-      </fv-menu-item-flyout>
-      <fv-menu-item-flyout label="github" icon="GitGraph" @click="go('https://github.com')">
-      </fv-menu-item-flyout>
-    </fv-menu-sub-flyout>
-  </fv-menu-block-flyout>
-</fv-menu-flyout>
-```
-
-### MenuFlyout Checkable
-
-<ClientOnly>
-<fv-menuFlyout :checkable="true" label="Files">
-<fv-menu-sub-flyout label="Show">
-  <fv-menu-item-flyout label="Name" /> 
-  <fv-menu-item-flyout label="Time" />
-  <fv-menu-item-flyout label="Author" />
-</fv-menu-sub-flyout>
-<fv-menu-item-flyout label="This is a long text for menuflyout item" />
-<fv-menu-sub-flyout label="disabled" :disabled="true" />
-<fv-menu-item-flyout label="disabledItem" :disabled="true" />
-</fv-menuFlyout>
-</ClientOnly>
-
-``` vue
-<fv-menuFlyout :checkable="true">
-<fv-menu-sub-flyout label="Show">
-  <fv-menu-item-flyout label="Name" /> 
-  <fv-menu-item-flyout label="Time" />
-  <fv-menu-item-flyout label="Author" />
-</fv-menu-sub-flyout>
-<fv-menu-item-flyout label="This is a long text for menuflyout item" />
+<fv-menuFlyout v-model="value" :options="options" placeholder="Pick a option" disabled>
 </fv-menuFlyout>
 ```
 
-### MenuFlyout Disabled
-
+### menuFlyout-Dark Theme
+---
+<div style="width: 100%; background: black;">
+    
 <ClientOnly>
-<fv-menuFlyout :checkable="true" label="Files" :disabled="true">
-<fv-menu-sub-flyout label="Show">
-<fv-menu-item-flyout label="Name" /> 
-<fv-menu-item-flyout label="Time" />
-<fv-menu-item-flyout label="Author" />
-</fv-menu-sub-flyout>
-<fv-menu-item-flyout label="This is a long text for menuflyout item" />
+<fv-menuFlyout v-model="value" :options="options" placeholder="Pick a option" theme="dark">
 </fv-menuFlyout>
 </ClientOnly>
+</div>
 
-``` vue
-<fv-menuFlyout :checkable="true" label="Files" :disabled="true">
-<fv-menu-sub-flyout label="Show">
-  <fv-menu-item-flyout label="Name" /> 
-  <fv-menu-item-flyout label="Time" />
-  <fv-menu-item-flyout label="Author" />
-</fv-menu-sub-flyout>
-<fv-menu-item-flyout label="This is a long text for menuflyout item" />
+```vue
+<fv-menuFlyout v-model="value" :options="options" placeholder="Pick a option" theme="dark">
 </fv-menuFlyout>
-```
-
-### MenuFlyout Custom Style
-
-<ClientOnly>
-<fv-menuFlyout :checkable="true" label="Files" theme="dark" :beak="15" backgroundColor="#00cc99" color="#fff" borderColor="#00cc99">
-<fv-menu-sub-flyout label="Show">
-<fv-menu-item-flyout label="Name" /> 
-<fv-menu-item-flyout label="Time" />
-<fv-menu-item-flyout label="Author" />
-</fv-menu-sub-flyout>
-<fv-menu-item-flyout label="This is a long text for menuflyout item" />
-<fv-menu-block-flyout>
-<template v-slot:header>
-Share
-</template>
-<fv-menu-item-flyout label="github" /> 
-<fv-menu-item-flyout label="codeforces" :disabled="true" />
-</fv-menu-block-flyout>
-</fv-menuFlyout>
-</ClientOnly>
-
-``` vue
- <fv-menuFlyout :checkable="true" label="Files" theme="dark" :beak="15" backgroundColor="#00cc99" color="#fff" borderColor="#00cc99">
-  <fv-menu-sub-flyout label="Show">
-    <fv-menu-item-flyout label="Name" /> 
-    <fv-menu-item-flyout label="Time" />
-    <fv-menu-item-flyout label="Author" />
-  </fv-menu-sub-flyout>
-  <fv-menu-item-flyout label="This is a long text for menuflyout item" />
-  <fv-menu-block-flyout>
-  <template v-slot:header>
-  Share
-  </template>
-  <fv-menu-item-flyout label="github">
-  </fv-menu-item-flyout>
-  </fv-menu-block-flyout>
-  </fv-menuFlyout>
 ```
 
 ### Propoties
-
 ---
-
-#### Menu
-
-| 属性(attr) | 类型(type) | 必填(required) | 默认值(default) | 说明(statement) |
-| :--------: | :--------: | :------------: | :-------------: | :-------------: |
-| label | [string] | No | 'Click the Menu' | 标签值 |
-| theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| disabled | [boolean] | No | false | 是否禁用 |
-| checkable | [boolean] | No | false | 是否可选 |
-| position | [string] | No | 'bottomLeft' | callout默认位置 |
-| beak | [number] | No | 0 | 角标大小，大于等于10时显示 |
-| backgroundColor | [string] | No | undefined | 背景色 |
-| borderColor | [string] | No | undefined | 按钮边框颜色 |
-| borderRaidus | [string] | No | undefined | 弹窗圆角 |
-| color | [string] | No | undefined | 颜色 |
-
-#### SubMenu 
-
-| 属性(attr) | 类型(type) | 必填(required) | 默认值(default) | 说明(statement) |
-| :--------: | :--------: | :------------: | :-------------: | :-------------: |
-| label | [string] | No | 'Click the Menu' | 标签值 |
-| theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| disabled | [boolean] | No | false | 是否禁用 |
-| checkable | [boolean] | No | false | 是否可选 |
-| position | [string] | No | 'rightTop' | callout默认位置 |
-| checked.sync | [boolean] | No | false | 是否选中 |
-| backgroundColor | [string] | No | undefined | 背景色 |
-| color | [string] | No | undefined | 颜色 |
-| split | [boolean] | No | false | 标签和子菜单是否分离 |
-| icon | [string] | No | undefined | Fabric图标 |
-
-#### Item 
-
-| 属性(attr) | 类型(type) | 必填(required) | 默认值(default) | 说明(statement) |
-| :--------: | :--------: | :------------: | :-------------: | :-------------: |
-| label | [string] | No | 'Click the Menu' | 标签值 |
-| theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| disabled | [boolean] | No | false | 是否禁用 |
-| checkable | [boolean] | No | false | 是否可选 |
-| checked.sync | [boolean] | No | false | 是否选中 |
-| backgroundColor | [string] | No | undefined | 背景色 |
-| color | [string] | No | undefined | 颜色 |
-| icon | [string] | No | undefined | Fabric图标 |
-
+|       属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |  说明(statement)   |
+|:-----------------------:|:----------------------------------:|:--------------:|:---------------:|:------------------:|
+|      value/v-model      |              [object]              |       No       |       N/A       | Combobox当前项绑定 |
+|         options         |              [array]               |      Yes       |       N/A       |    Combobox数据    |
+|       borderWidth       |              [number]              |       No       |        2        |                    |
+|       placeholder       |              [string]              |       No       |    Combobox     |                    |
+|      borderRadius       |              [number]              |       No       |        3        |                    |
+|       background        |          [string(color)]           |       No       |       N/A       |                    |
+|    choosenBackground    |          [string(color)]           |       No       |       N/A       |                    |
+| choosenSliderBackground |          [string(color)]           |       No       |       N/A       |                    |
+|     inputForeground     |          [string(color)]           |       No       |       N/A       |                    |
+|     inputBackground     |          [string(color)]           |       No       |       N/A       |                    |
+|     titleForeground     |          [string(color)]           |       No       |   ChevronDown   |                    |
+|      dropDownIcon       |              [string]              |       No       |       N/A       |                    |
+| dropDownIconForeground  |          [string(color)]           |       No       |       N/A       |                    |
+|    pivotPlaceholder     |              [string]              |       No       |  Please Choose  |                    |
+|        disabled         |             [boolean]              |       No       |       N/A       |                    |
+|          theme          | ['light','dark','custom','system'] |       No       |     system      |   Dropdown theme   |
 
 ### Events
-
 ---
-
-#### SubMenu
-
-| 事件名(Name) | 参数类型(args) | 说明(statement) |
-| :----------: | :------------: | :-------------: |
-| click | null | 标签点击触发 |
-
-#### Item
-
-| 事件名(Name) | 参数类型(args) | 说明(statement) |
-| :----------: | :------------: | :-------------: |
-| click | null | 点击触发 |
-
+| 事件名(Name) | 参数类型(args) |   说明(statement)    |
+|:------------:|:--------------:|:--------------------:|
+| choose-item  |  value/object  | Combobox choose item |
 
 ### Slot
 
-#### Block
+---
 
-``` vue
-<template v-slot:header>
-  Header
+1. Default
+
+用户可自定义 MenuFlyout Item 内容
+
+```vue
+<slot :item="item">
+    {{valueTrigger(item.type) !== 'divider' ? valueTrigger(item.text) : ''}}
+</slot>
+```
+
+用户自定义样式时, 包含以下可选属性
+
+- item: 当前组数据
+
+```vue
+<template v-slot:default="x">
+  <i>{{x.item.text}}</i>
 </template>
 ```
+
+### Data
+---
+1. options
+
+```javascript
+options = [{key: '', text: '', type: '', disabled: ''}]
+
+//e.g.//
+
+options: [
+    { key: "fruitsHeader", text: "Fruits", type: "header" },
+    { key: "apple", text: "Apple", children: [
+        { key: "A", text: "A" },
+        { key: "B", text: "B" },
+        { key: "Apple C", text: "Apple C", children: [
+            { key: "A", text: "A" },
+            { key: "B", text: "B" },
+            { key: "Apple C-C", text: "Apple C-C", children: [
+                { key: "A", text: "A" },
+                { key: "B", text: "B" },
+                { key: "Apple C-C-C", text: "Apple C-C-C" }
+            ] }
+        ] }
+    ] },
+    { key: "banana", text: "Banana" },
+    { key: "orange", text: "Orange", disabled: true },
+    { key: "grape", text: "Grape", children: [
+        { key: "A", text: "A" },
+        { key: "B", text: "B" },
+        { key: "C", text: "C" }
+    ] },
+    { key: "divider_1", text: "-", type: "divider" },
+    { key: "vegetablesHeader", text: "Vegetables", type: "header" },
+    { key: "broccoli", text: "Broccoli" },
+    { key: "carrot", text: "Carrot" },
+    { key: "lettuce", text: "Lettuce" }
+]
+```
+  
+**其中** `text`, `disabled`, `type`属性支持函数式声明.

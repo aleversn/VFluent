@@ -50,7 +50,8 @@
         position: relative;
         width: 100%;
         height: 100%;
-        float: left;
+        display: flex;
+        overflow-x: auto;
         z-index: 0;
 
         .pivot-item
@@ -58,11 +59,11 @@
             position: relative;
             height: 100%;
             padding: 0px 3px;
+            flex-shrink: 0;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
-            float: left;
 
             p
             {

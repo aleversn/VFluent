@@ -14,7 +14,7 @@
                 @click="itemClick(item)"
             >
                 <slot name="container" :item="item" :index="index">
-                    <p :style="{ color: styles.container.color }">
+                    <p :style="{ fontSize: `${fontSize}px`, color: styles.container.color }">
                         {{ item.name }}
                     </p>
                 </slot>
@@ -49,6 +49,9 @@ export default {
         tab: {
             default: false,
         },
+        fontSize: {
+            default: ""
+        },
         foreground: {
             default: "",
         },
@@ -82,22 +85,7 @@ export default {
     },
     watch: {
         value(val) {
-            if(val.key) {
-                let match = this.thisItems.find(item => item.key === val.key);
-                if(match)
-                    this.thisValue = match;
-                else
-                    this.thisValue = val;
-                return;
-            }
-            else if(val.name) {
-                let match = this.thisItems.find(item => item.name === val.name);
-                if(match)
-                    this.thisValue = match;
-                else
-                    this.thisValue = val;
-            }
-            this.thisValue = val;
+            this.findCurrentValue();
         },
         items(val) {
             this.itemsInit();
@@ -155,9 +143,32 @@ export default {
                 items.push(m);
             }
             this.thisItems = items;
+            this.findCurrentValue();
             if (!this.thisValue || !this.value) {
                 this.thisValue = this.thisItems[0];
             }
+        },
+        findCurrentValue () {
+            if(!this.value) {
+                this.thisValue = this.value;
+                return;
+            }
+            if(this.value.key) {
+                let match = this.thisItems.find(item => item.key === this.value.key);
+                if(match)
+                    this.thisValue = match;
+                else
+                    this.thisValue = this.value;
+                return;
+            }
+            else if(this.value.name) {
+                let match = this.thisItems.find(item => item.name === this.value.name);
+                if(match)
+                    this.thisValue = match;
+                else
+                    this.thisValue = this.value;
+            }
+            this.thisValue = this.value;
         },
         stylesInit() {
             this.styles.slider.background = this.sliderBackground;
