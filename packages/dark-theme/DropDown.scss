@@ -12,10 +12,11 @@
 
     .drop-down-box
     {
+        box-shadow: rgba(255, 255, 255, 0.2) 0px -0.5px 2px;
+
         .drop-down-container
         {
             background: rgba(36,35,34,0.9);
-            box-shadow: rgba(165, 165, 165, 0.133) 0px 3.2px 7.2px 0px, rgba(224, 224, 224, 0.11) 0px 0.6px 1.8px 0px;
 
             .fv-drop-down-input
             {

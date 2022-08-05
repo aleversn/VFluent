@@ -7,10 +7,12 @@
             :title="'Fluent Vue Design'"
             :options="currentData"
             :expand.sync="expand"
-            expandWidth="319"
             fullSizeDisplay="500"
+            mobileDisplay="500"
+            expandDisplay="0"
             :showSetting="false"
             :showExpand="false"
+            @expand-click="$emit('expand-click', $event)"
             @back="go('/')"
         ></fv-NavigationView>
     </ClientOnly>
@@ -20,6 +22,9 @@
 export default {
     name: "NavPanel",
     props: {
+        show: {
+            default: false
+        },
         items: {},
         title: {},
     },
@@ -30,6 +35,9 @@ export default {
         };
     },
     watch: {
+        show (val) {
+            this.expand = val;
+        },
         value(val, from) {
             if (val !== from) {
                 this.go(val.path);

@@ -218,20 +218,7 @@ export default {
                     x = x.parentNode;
                 }
                 if (!_self) {
-                    if (this.isFlyout || this.isMobile) this.thisExpand = false;
-                }
-            });
-            window.addEventListener("touchend", (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
-                    if (x == this.$el) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
-                }
-                if (!_self) {
+                    
                     if (this.isFlyout || this.isMobile) this.thisExpand = false;
                 }
             });
@@ -239,6 +226,7 @@ export default {
         expandClick() {
             this.thisExpandBackup = !this.thisExpand;
             this.thisExpand = !this.thisExpand;
+            this.$emit('expand-click', this.thisExpand);
         },
     },
     beforeDestroy() {

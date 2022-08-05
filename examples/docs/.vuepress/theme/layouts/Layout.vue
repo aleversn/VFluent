@@ -15,7 +15,7 @@
         <slot name="sidebar-bottom" />
       </template>
     </Sidebar>-->
-        <NavPanel @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description"></NavPanel>
+        <NavPanel :show="isSidebarOpen" @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description" @expand-click="isSidebarOpen ^= true"></NavPanel>
 
         <Home v-if="$page.frontmatter.home" />
 
