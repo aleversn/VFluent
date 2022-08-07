@@ -173,7 +173,7 @@ List items with two column
 ---
 | 属性(attr) |             类型(type)             | 必填(required) | 默认值(default) | 说明(statement) |
 |:----------:|:----------------------------------:|:--------------:|:---------------:|:---------------:|
-|   theme    | ['light','dark','custom','system'] |       No       |     system      | Dropdown theme  |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Slot
 ---

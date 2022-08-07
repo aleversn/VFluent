@@ -109,16 +109,16 @@ Extension
 ---
 |    属性(attr)    |             类型(type)             | 必填(required) |         默认值(default)          |              说明(statement)               |
 |:----------------:|:----------------------------------:|:--------------:|:--------------------------------:|:------------------------------------------:|
-|      value       |             [boolean]              |       No       |              false               |             是否展开 `Collapse` |
-|       icon       |              [string]              |       No       |           CollapseMenu           |           Icon with Fabric-Icon            |
-|      title       |              [string]              |       No       |        Title of Collapse.        |                    标题                    |
-|     content      |              [string]              |       No       | Content information of Collapse. |                 副标题信息                 |
+|      value       |             Boolean              |       No       |              false               |             是否展开 `Collapse` |
+|       icon       |              String              |       No       |           CollapseMenu           |           Icon with Fabric-Icon            |
+|      title       |              String              |       No       |        Title of Collapse.        |                    标题                    |
+|     content      |              String              |       No       | Content information of Collapse. |                 副标题信息                 |
 |    background    |          [string(color)]           |       No       |               N/A                |            客制化 `Collapse` 背景            |
-|  defaultHeight   |              [number]              |       No       |                70                |                  默认高度                  |
-|    maxHeight     |              [number]              |       No       |               300                |                展开最大高度                |
-| disabledCollapse |             [boolean]              |       No       |              false               |             禁用展开 `Collapse` |
-| visibleOverflow  |             [boolean]              |       No       |               true               | 在禁用展开 `Collapse` , 允许overflow内容显示 |
-|      theme       | ['light', 'dark', 'custom', 'system'] |       No       |              system              |           主题样式, 默认跟随系统           |
+|  defaultHeight   |              Number              |       No       |                70                |                  默认高度                  |
+|    maxHeight     |              Number              |       No       |               300                |                展开最大高度                |
+| disabledCollapse |             Boolean              |       No       |              false               |             禁用展开 `Collapse` |
+| visibleOverflow  |             Boolean              |       No       |               true               | 在禁用展开 `Collapse` , 允许overflow内容显示 |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

@@ -173,26 +173,26 @@ export default {
 ---
 |       属性(attr)       |             类型(type)             | 必填(required) |      默认值(default)       |          说明(statement)          |
 |:----------------------:|:----------------------------------:|:--------------:|:--------------------------:|:---------------------------------:|
-|         value          |              [array]               |       No       |            N/A             |           Choosed Value           |
-|        options         |              [array]               |       No       |            N/A             |      Dropdown options array       |
-|        multiple        |             [boolean]              |       No       |            N/A             |     Is enable multiple select     |
-|      borderWidth       |              [number]              |       No       |             2              |       Dropdown border width       |
-|      borderRadius      |              [number]              |       No       |             6              |      Dropdown border radius       |
-|      placeholder       |              [string]              |       No       |          Dropdown          |       Dropdown placeholder        |
-|       maxHeight        |              [number]              |       No       |            N/A             |     Dropdown list max height      |
+|         value          |              Array               |       No       |            N/A             |           Choosed Value           |
+|        options         |              Array               |       No       |            N/A             |      Dropdown options array       |
+|        multiple        |             Boolean              |       No       |            N/A             |     Is enable multiple select     |
+|      borderWidth       |              Number              |       No       |             2              |       Dropdown border width       |
+|      borderRadius      |              Number              |       No       |             6              |      Dropdown border radius       |
+|      placeholder       |              String              |       No       |          Dropdown          |       Dropdown placeholder        |
+|       maxHeight        |              Number              |       No       |            N/A             |     Dropdown list max height      |
 |   checkBoxBackground   |          [string(color)]           |       No       |            N/A             | CheckBox Background when Multiple |
 |    inputForeground     |          [string(color)]           |       No       |            N/A             |                                   |
 |    inputBorderColor    |          [string(color)]           |       No       |            N/A             |                                   |
 | dropDownListForeground |          [string(color)]           |       No       |    rgba(0,120,215,0.9)     |                                   |
 |    inputBackground     |          [string(color)]           |       No       |            N/A             |                                   |
 | dropDownListBackground |          [string(color)]           |       No       |            N/A             |                                   |
-|      dropDownIcon      |              [string]              |       No       |        ChevronDown         |       Icon with Fabric-Icon       |
+|      dropDownIcon      |              String              |       No       |        ChevronDown         |       Icon with Fabric-Icon       |
 | dropDownIconForeground |          [string(color)]           |       No       |            N/A             |                                   |
-|       showError        |             [boolean]              |       No       |           false            |                                   |
-|      errorMessage      |              [string]              |       No       | This dropdown has an error |                                   |
-|        disabled        |             [boolean]              |       No       |           false            |                                   |
-|        setFocus        |             [boolean]              |       No       |           false            |    Whether Dropdown list show     |
-|         theme          | ['light','dark','custom','system'] |       No       |           system           |          Dropdown theme           |
+|       showError        |             Boolean              |       No       |           false            |                                   |
+|      errorMessage      |              String              |       No       | This dropdown has an error |                                   |
+|        disabled        |             Boolean              |       No       |           false            |                                   |
+|        setFocus        |             Boolean              |       No       |           false            |    Whether Dropdown list show     |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

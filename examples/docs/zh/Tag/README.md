@@ -80,13 +80,13 @@
 ---
 |    属性(attr)     |             类型(type)             | 必填(required) | 默认值(default) |              说明(statement)              |
 |:-----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------:|
-|       value       |              [string]              |       No       |       []        |                 标签数组                  |
-| newTagPlaceholder |              [string]              |       No       |     New Tag     |            NewTag Placeholder             |
-|       size        |              [string]              |       No       |       N/A       | 尺寸`normal`, `medium`, `small`, `xsmall` |
+|       value       |              String              |       No       |       []        |                 标签数组                  |
+| newTagPlaceholder |              String              |       No       |     New Tag     |            NewTag Placeholder             |
+|       size        |              String              |       No       |       N/A       | 尺寸`normal`, `medium`, `small`, `xsmall` |
 | newTagBackground  |          [string(color)]           |       No       |      null       |             NewTag按钮背景色              |
 |     isNewTag      |               [bool]               |       No       |      false      |              是否启用NewTag               |
 |       isDel       |               [bool]               |       No       |      false      |             是否启用删除按钮              |
-|       theme       | ['light','dark','custom','system'] |       No       |     system      |               Custom theme                |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

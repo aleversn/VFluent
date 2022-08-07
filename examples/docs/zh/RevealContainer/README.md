@@ -64,18 +64,18 @@ Gradient Color
 ---
 |       属性(attr)       |        类型(type)         | 必填(required) |     默认值(default)      |         说明(statement)          |
 |:----------------------:|:-------------------------:|:--------------:|:------------------------:|:--------------------------------:|
-|    revealContainer     |         [object]          |       No       |          false           |                                  |
+|    revealContainer     |         Object          |       No       |          false           |                                  |
 |         parent         |        [function]         |       No       |           null           |                                  |
-|      borderWidth       |         [number]          |       No       |            1             |                                  |
-|      borderRadius      |         [number]          |       No       |            6             |                                  |
+|      borderWidth       |         Number          |       No       |            1             |                                  |
+|      borderRadius      |         Number          |       No       |            6             |                                  |
 |    backgroundColor     |      [string(color)]      |       No       | rgba(121, 119, 117, 0.6) |                                  |
-| backgroundGradientList |          [array]          |       No       |            []            |                                  |
-| backgroundGradientSize |         [number]          |       No       |           120            |                                  |
+| backgroundGradientList |          Array          |       No       |            []            |                                  |
+| backgroundGradientSize |         Number          |       No       |           120            |                                  |
 |      borderColor       |      [string(color)]      |       No       | rgba(121, 119, 117, 0.6) |                                  |
-|   borderGradientList   |          [array]          |       No       |            []            |                                  |
-|   borderGradientSize   |         [number]          |       No       |            60            |                                  |
-|    debounceDistance    |         [number]          |       No       |           300            | 节流, 超过此距离时, 不去计算渲染 |
-|        disabled        |         [boolean]         |       No       |          false           |                                  |
+|   borderGradientList   |          Array          |       No       |            []            |                                  |
+|   borderGradientSize   |         Number          |       No       |            60            |                                  |
+|    debounceDistance    |         Number          |       No       |           300            | 节流, 超过此距离时, 不去计算渲染 |
+|        disabled        |         Boolean         |       No       |          false           |                                  |
 |         theme          | ['system','light','dark'] |       No       |          system          |                                  |
 
 ### Events

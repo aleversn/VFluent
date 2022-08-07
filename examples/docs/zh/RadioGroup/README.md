@@ -140,11 +140,11 @@
 ---
 |    属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                 说明(statement)                 |
 |:----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------------:|
-| v-model | [object] | No | undefined | 选中值 |
+| v-model | Object | No | undefined | 选中值 |
 | theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| label | [string] | No | undefined | 标签 |
-| disabled | [boolean] | No | false | 是否禁用 |
-| inline | [boolean] | No | false | |
+| label | String | No | undefined | 标签 |
+| disabled | Boolean | No | false | 是否禁用 |
+| inline | Boolean | No | false | |
 
 ### Events
 ---

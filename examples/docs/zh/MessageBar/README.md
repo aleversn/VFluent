@@ -263,10 +263,10 @@ this.$swiftWarning(document.getElementById('example'), {
 | 属性(attr)  |                    类型(type)                     | 必填(required) | 默认值(default) |                       说明(statement)                        |
 |:-----------:|:-------------------------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------:|
 |   status    | ['default','warning','correct','blocked','error'] |       No       |     default     |                     显示状态, 一共有5种                      |
-| showControl |                     [boolean]                     |       No       |      false      |                       是否显示控制按钮                       |
-|  showClose  |                     [boolean]                     |       No       |      true       |                       是否显示关闭按钮                       |
+| showControl |                     Boolean                     |       No       |      false      |                       是否显示控制按钮                       |
+|  showClose  |                     Boolean                     |       No       |      true       |                       是否显示关闭按钮                       |
 |    mode     |               ['relative','fixed']                |       No       |    relative     |   显示模式`relative`下位相对定位, `fixed`下为悬浮固定定位    |
-|  autoClose  |                     [number]                      |       No       |      3000       | MessageBar自动关闭时间, 单位为`ms`, 设为`-1`时永远不自动消失 |
+|  autoClose  |                     Number                      |       No       |      3000       | MessageBar自动关闭时间, 单位为`ms`, 设为`-1`时永远不自动消失 |
 
 ### Events
 ---

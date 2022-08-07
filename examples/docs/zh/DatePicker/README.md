@@ -143,16 +143,16 @@ innerBorderColor="rgb(0, 204, 153)"
 |:-----------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
 |  v-model           |     [Date]                               |            No | Date(1970,0,1)                 |       绑定的时间                  |
 | theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| months | [Array] | No | ["January","February",...] | 月份显示数组 |
-| weeks | [Array] | No | ["Sun.","Mon."...] | 星期显示输出 |
-| hideYear | [Boolean] | No | false | 是否隐藏年份 |
-| hideMonth | [Boolean] | No | false | 是否隐藏月份 |
-| hideDay | [Boolean] | No | false | 是否隐藏天数 |
-| showWeek | [Boolean] | No | false | 是否显示星期 |
-| optionsStyle | [object] | No | {} | 选项菜单样式 |
-| selectStyle | [object] | No | {} | 选项菜单中间选项蒙版样式 |
-| disabled | [boolean] | No | false | 是否禁用选项框 |
-| hoverColor | [string] | No | undefined | 选项的Hover值 |
+| months | Array | No | ["January","February",...] | 月份显示数组 |
+| weeks | Array | No | ["Sun.","Mon."...] | 星期显示输出 |
+| hideYear | Boolean | No | false | 是否隐藏年份 |
+| hideMonth | Boolean | No | false | 是否隐藏月份 |
+| hideDay | Boolean | No | false | 是否隐藏天数 |
+| showWeek | Boolean | No | false | 是否显示星期 |
+| optionsStyle | Object | No | {} | 选项菜单样式 |
+| selectStyle | Object | No | {} | 选项菜单中间选项蒙版样式 |
+| disabled | Boolean | No | false | 是否禁用选项框 |
+| hoverColor | String | No | undefined | 选项的Hover值 |
 
 ### Events
 ---

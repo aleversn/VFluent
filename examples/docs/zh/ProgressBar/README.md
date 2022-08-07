@@ -119,11 +119,11 @@ export default {
 ---
 | 属性(attr) |   类型(type)    | 必填(required) | 默认值(default) |       说明(statement)        |
 |:----------:|:---------------:|:--------------:|:---------------:|:----------------------------:|
-|   value    |    [number]     |       No       |        0        |      Progressbar value       |
-|  loading   |    [boolean]    |       No       |      false      | Is progressbar indeterminate |
+|   value    |    Number     |       No       |        0        |      Progressbar value       |
+|  loading   |    Boolean    |       No       |      false      | Is progressbar indeterminate |
 | foreground | [string(color)] |       No       |       N/A       |                              |
 | background | [string(color)] |       No       |       N/A       |                              |
-|  disabled  |    [boolean]    |       No       |      false      |                              |
+|  disabled  |    Boolean    |       No       |      false      |                              |
 
 ### Events
 ---

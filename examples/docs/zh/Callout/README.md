@@ -122,18 +122,18 @@ position:
 
 |  属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
 | :----------: | :--------------------------------: | :------------: | :-------------: | :--------------------: |
-| visible.sync |             [boolean]              |       No       |      false      |        是否显示        |
+| visible.sync |             Boolean              |       No       |      false      |        是否显示        |
 |    theme     | ['system','light','dark','custom'] |       No       |    'system'     |         主题色         |
-|   disabled   |             [boolean]              |       No       |      false      |        是否禁用        |
-|    space     |              [number]              |       No       |        0        |        间距(px)        |
-|     beak     |              [number]              |       No       |       10        |      角标大小(px)      |
+|   disabled   |             Boolean              |       No       |      false      |        是否禁用        |
+|    space     |              Number              |       No       |        0        |        间距(px)        |
+|     beak     |              Number              |       No       |       10        |      角标大小(px)      |
 |   position   |    ['topLeft','topCenter',...]     |       No       | 'bottomCenter'  |          位置          |
-|  lockScroll  |             [boolean]              |       No       |      false      |      是否锁定滚动      |
-|  focusTrap   |             [boolean]              |       No       |      false      |        是否聚焦        |
-|  delayClose  |              [number]              |       No       |        0        | 显示时是否延时关闭(ms) |
+|  lockScroll  |             Boolean              |       No       |      false      |      是否锁定滚动      |
+|  focusTrap   |             Boolean              |       No       |      false      |        是否聚焦        |
+|  delayClose  |              Number              |       No       |        0        | 显示时是否延时关闭(ms) |
 |    effect    |     [’click','hover','always']     |       No       |     'click'     |      显示触发方式      |
-| popperStyle  |              [object]              |       No       |       {}        |      悬浮窗的样式      |
-| popperClass  |              [array]               |       No       |       []        |      悬浮窗的 css      |
+| popperStyle  |              Object              |       No       |       {}        |      悬浮窗的样式      |
+| popperClass  |              Array               |       No       |       []        |      悬浮窗的 css      |
 
 ### Appendix
 

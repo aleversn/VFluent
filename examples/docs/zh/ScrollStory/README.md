@@ -53,9 +53,9 @@
 ---
 |  属性(attr)  | 类型(type) | 必填(required) | 默认值(default) |     说明(statement)     |
 |:------------:|:----------:|:--------------:|:---------------:|:-----------------------:|
-|     name     | [boolean]  |       No       |       N/A       | Vue transition css name |
-|   infinite   | [boolean]  |       No       |      false      |      Infinite show      |
-| overCollapse | [boolean]  |       No       |      false      |  Scroll over collapse   |
+|     name     | Boolean  |       No       |       N/A       | Vue transition css name |
+|   infinite   | Boolean  |       No       |      false      |      Infinite show      |
+| overCollapse | Boolean  |       No       |      false      |  Scroll over collapse   |
 
 ### Events
 

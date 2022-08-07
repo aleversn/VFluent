@@ -85,21 +85,21 @@ Reveal Border
 ---
 |    属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |               说明(statement)               |
 |:----------------:|:----------------------------------:|:--------------:|:---------------:|:-------------------------------------------:|
-|      value       |              [string]              |       No       |                 |      Using v-model binding input value      |
-|      length      |              [number]              |       No       |       N/A       |                 验证码长度                  |
-|    underline     |             [boolean]              |       No       |      false      |      是否开启Underline风格的VerifyBox       |
+|      value       |              String              |       No       |                 |      Using v-model binding input value      |
+|      length      |              Number              |       No       |       N/A       |                 验证码长度                  |
+|    underline     |             Boolean              |       No       |      false      |      是否开启Underline风格的VerifyBox       |
 |    background    |          [string(color)]           |       No       |       N/A       |                                             |
-|   borderWidth    |             [boolean]              |       No       |       N/A       |                                             |
+|   borderWidth    |             Boolean              |       No       |       N/A       |                                             |
 |   borderColor    |          [string(color)]           |       No       |       N/A       |                                             |
 | focusBorderColor |          [string(color)]           |       No       |       N/A       |                                             |
-|     fontSize     |              [number]              |       No       |       18        |                                             |
+|     fontSize     |              Number              |       No       |       18        |                                             |
 |    fontWeight    |          [string,number]           |       No       |      bold       |                                             |
 |    foreground    |          [string(color)]           |       No       |       N/A       |                                             |
-|   borderRadius   |              [number]              |       No       |        3        | VerifyBox圆角大小, 启用revealBorder时将失效 |
-|   isBoxShadow    |             [boolean]              |       No       |      false      |             开启`VerifyBox`阴影             |
-|   revealBorder   |             [boolean]              |       No       |      false      |                                             |
-|     disabled     |             [boolean]              |       No       |      false      |                                             |
-|      theme       | ['light','dark','custom','system'] |       No       |     system      |                                             |
+|   borderRadius   |              Number              |       No       |        3        | VerifyBox圆角大小, 启用revealBorder时将失效 |
+|   isBoxShadow    |             Boolean              |       No       |      false      |             开启`VerifyBox`阴影             |
+|   revealBorder   |             Boolean              |       No       |      false      |                                             |
+|     disabled     |             Boolean              |       No       |      false      |                                             |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

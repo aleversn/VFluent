@@ -51,10 +51,10 @@ export default {
 ---
 |  属性(attr)   | 类型(type) | 必填(required) | 默认值(default) |  说明(statement)   |
 |:-------------:|:----------:|:--------------:|:---------------:|:------------------:|
-| v-model/value |  [string]  |       No       |      #fff       |      颜色HEX       |
-|     alpha     |  [number]  |       No       |        1        |       透明度       |
-|   hideAlpha   | [boolean]  |       No       |      false      | 是否隐藏透明度调节 |
-|  hidePreview  | [boolean]  |       No       |      false      |   是否隐藏预览框   |
+| v-model/value |  String  |       No       |      #fff       |      颜色HEX       |
+|     alpha     |  Number  |       No       |        1        |       透明度       |
+|   hideAlpha   | Boolean  |       No       |      false      | 是否隐藏透明度调节 |
+|  hidePreview  | Boolean  |       No       |      false      |   是否隐藏预览框   |
 
 
 

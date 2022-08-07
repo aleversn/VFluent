@@ -69,19 +69,19 @@ Customize Reveal Border
 ---
 |      属性(attr)       |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
 |:---------------------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
-|         icon          |              [string]              |       No       |       N/A       | Icon with Fabric-Icon  |
+|         icon          |              String              |       No       |       N/A       | Icon with Fabric-Icon  |
 |      foreground       |          [string(color)]           |       No       |       N/A       |     Button 前景色      |
 |      background       |          [string(color)]           |       No       |       N/A       |     Button 背景色      |
-|     borderRadius      |              [number]              |       No       |        3        |    Button 圆角大小     |
+|     borderRadius      |              Number              |       No       |        3        |    Button 圆角大小     |
 |      borderColor      |          [string(color)]           |       No       |       N/A       |    Button 边框颜色     |
-|       fontSize        |              [number]              |       No       |       N/A       |    Button 字体大小     |
-|      fontWeight       |              [string]              |       No       |     normal      |   Button 字体粗细度    |
+|       fontSize        |              Number              |       No       |       N/A       |    Button 字体大小     |
+|      fontWeight       |              String              |       No       |     normal      |   Button 字体粗细度    |
 |   revealBorderColor   |          [string(color)]           |       No       |      false      | Button Reveal 边框颜色 |
 | revealBackgroundColor |          [string(color)]           |       No       |      false      | Button Reveal 背景颜色 |
-|      isBoxShadow      |             [boolean]              |       No       |      false      |    开启`Button`阴影    |
-|       disabled        |             [boolean]              |       No       |      false      |    Disabled button     |
-|      borderWidth      |              [number]              |       No       |        1        |    Button 边框大小     |
-|         theme         | ['light','dark','custom','system'] |       No       |     system      |      Custom theme      |
+|      isBoxShadow      |             Boolean              |       No       |      false      |    开启`Button`阴影    |
+|       disabled        |             Boolean              |       No       |      false      |    Disabled button     |
+|      borderWidth      |              Number              |       No       |        1        |    Button 边框大小     |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

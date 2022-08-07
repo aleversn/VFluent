@@ -46,7 +46,7 @@
 ---
 |  属性(attr)  |     类型(type)     |   必填(required)    |                   默认值(default)                    |                                              说明(statement)                                              |
 |:------------:|:------------------:|:-------------------:|:----------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
-|     src      |      [string]      |         Yes         |                         N/A                          | 图像资源路径, 支持跨域和本域, 本域下将默认启用ImgBox进行缓存管理, 跨域时启用Image进行加载, 但无法实现缓存 |
-|    onlazy    |     [boolean]      |         No          |                        false                         |                                              Lazy load image                                              |
+|     src      |      String      |         Yes         |                         N/A                          | 图像资源路径, 支持跨域和本域, 本域下将默认启用ImgBox进行缓存管理, 跨域时启用Image进行加载, 但无法实现缓存 |
+|    onlazy    |     Boolean      |         No          |                        false                         |                                              Lazy load image                                              |
 | loadingColor | [string(color)] No | rgba(0, 90, 158, 1) | The foreground of the progress-ring or progress-bar. |                                                                                                           |
-| onbackground |     [boolean]      |         No          |                        false                         |                                            Show as background                                             |
+| onbackground |     Boolean      |         No          |                        false                         |                                            Show as background                                             |

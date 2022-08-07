@@ -569,19 +569,19 @@ export default {
 
 |   属性(attr)   |             类型(type)             | 必填(required) | 默认值(default) |                                       说明(statement)                                       |
 |:--------------:|:----------------------------------:|:--------------:|:---------------:|:-------------------------------------------------------------------------------------------:|
-|     value      |              [Array]               |      Yes       |       N/A       |                              列表数据, 数据格式详见数据格式表                               |
-|      head      |              [Array]               |      Yes       |       N/A       |                              表头数据, 数据格式详见数据格式表                               |
-|     group      |              [Array]               |       No       |       N/A       |                              分组数据, 数据格式详见数据格式表                               |
-|     filter     |              [string]              |       No       |       N/A       |                  搜索筛选, 数据格式详见数据格式表, 控制表显示哪些搜索字段                   |
-|   showGroup    |             [boolean]              |       No       |      false      | 是否开启按组分割显示, 开启后排序功能将失效, 默认不开启, 若 group 为空, 则开启后表格内容为空 |
-|   autoHeight   |             [boolean]              |       No       |      false      |                                      是否开启自动高度                                       |
+|     value      |              Array               |      Yes       |       N/A       |                              列表数据, 数据格式详见数据格式表                               |
+|      head      |              Array               |      Yes       |       N/A       |                              表头数据, 数据格式详见数据格式表                               |
+|     group      |              Array               |       No       |       N/A       |                              分组数据, 数据格式详见数据格式表                               |
+|     filter     |              String              |       No       |       N/A       |                  搜索筛选, 数据格式详见数据格式表, 控制表显示哪些搜索字段                   |
+|   showGroup    |             Boolean              |       No       |      false      | 是否开启按组分割显示, 开启后排序功能将失效, 默认不开启, 若 group 为空, 则开启后表格内容为空 |
+|   autoHeight   |             Boolean              |       No       |      false      |                                      是否开启自动高度                                       |
 | headBackground |          [string(color)]           |       No       |       N/A       |         表头背景, 不会修改点燃颜色, 若要修改点燃颜色请自定义 fv-custom-head 类样式          |
-|    compact     |             [boolean]              |       No       |      false      |                                      是否开启收缩模式                                       |
-| multiSelection |             [boolean]              |       No       |      false      |                                      是否开启多选模式                                       |
-|   allowDrag    |             [boolean]              |       No       |      false      |                                      是否开启拖动排序                                       |
-|     rowCSS     |              [string]              |       No       |       N/A       |                                     客制化每一行的样式                                      |
-| rightMenuWidth |              [number]              |       No       |       200       |                                      右键菜单宽度设置                                       |
-|     theme      | ['light','dark','custom','system'] |       No       |     system      |                                   主题样式, 默认跟随系统                                    |
+|    compact     |             Boolean              |       No       |      false      |                                      是否开启收缩模式                                       |
+| multiSelection |             Boolean              |       No       |      false      |                                      是否开启多选模式                                       |
+|   allowDrag    |             Boolean              |       No       |      false      |                                      是否开启拖动排序                                       |
+|     rowCSS     |              String              |       No       |       N/A       |                                     客制化每一行的样式                                      |
+| rightMenuWidth |              Number              |       No       |       200       |                                      右键菜单宽度设置                                       |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

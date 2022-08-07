@@ -41,11 +41,11 @@ export default {
 ---
 | 属性(attr) |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
 |:----------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
-|   value    |              [array]               |       No       |       []        |      要装载的数组      |
-| batchSize  |              [number]              |       No       |       30        | 动态加载的每一批次大小 |
-|   offset   |              [number]              |       No       |       100       |     滚动加载偏移量     |
-|   static   |             [boolean]              |       No       |      false      |    是否取消动态加载    |
-|   theme    | ['light','dark','custom','system'] |       No       |     system      |         主题色         |
+|   value    |              Array               |       No       |       []        |      要装载的数组      |
+| batchSize  |              Number              |       No       |       30        | 动态加载的每一批次大小 |
+|   offset   |              Number              |       No       |       100       |     滚动加载偏移量     |
+|   static   |             Boolean              |       No       |      false      |    是否取消动态加载    |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 
 ### Events

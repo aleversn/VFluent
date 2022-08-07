@@ -125,16 +125,16 @@ Basic
 ---
 |  属性(attr)   |             类型(type)             | 必填(required) | 默认值(default)  |       说明(statement)        |
 |:-------------:|:----------------------------------:|:--------------:|:----------------:|:----------------------------:|
-|     value     |              [string]              |       No       |       N/A        |          字符串路径          |
-|   separator   |              [string]              |       No       |        /         | 分隔符显示, 可以是字符或图标 |
-| separatorChar |              [string]              |       No       |        /         |      以什么字符分割路径      |
-|   showRoot    |             [boolean]              |       No       |       true       |          显示根图标          |
-|   rootIcon    |              [string]              |       No       | FolderHorizontal |            根图标            |
-|   readOnly    |             [boolean]              |       No       |       true       |           是否只读           |
+|     value     |              String              |       No       |       N/A        |          字符串路径          |
+|   separator   |              String              |       No       |        /         | 分隔符显示, 可以是字符或图标 |
+| separatorChar |              String              |       No       |        /         |      以什么字符分割路径      |
+|   showRoot    |             Boolean              |       No       |       true       |          显示根图标          |
+|   rootIcon    |              String              |       No       | FolderHorizontal |            根图标            |
+|   readOnly    |             Boolean              |       No       |       true       |           是否只读           |
 |  borderColor  |          [string(color)]           |       No       |       N/A        |                              |
-|   disabled    |             [boolean]              |       No       |      false       |                              |
-| borderRadius  |              [number]              |       No       |        2         |                              |
-|     theme     | ['light','dark','custom','system'] |       No       |      system      |                              |
+|   disabled    |             Boolean              |       No       |      false       |                              |
+| borderRadius  |              Number              |       No       |        2         |                              |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 
 ### Events

@@ -286,32 +286,32 @@ Customize background
 ---
 |        属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |              说明(statement)              |
 |:------------------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------:|
-|          value           |              [string]              |       No       |                 |     Using v-model binding input value     |
+|          value           |              String              |       No       |                 |     Using v-model binding input value     |
 |         options          |         [array or object]          |      Yes       |       N/A       |           SearchBox搜索候选数据           |
-|       placeholder        |              [string]              |       No       |       N/A       |              等同HTML[input]              |
-|           type           |              [string]              |       No       |      text       |              等同HTML[input]              |
-|         readonly         |             [boolean]              |       No       |      false      |              等同HTML[input]              |
-|        maxlength         |              [number]              |       No       |       N/A       |              等同HTML[input]              |
+|       placeholder        |              String              |       No       |       N/A       |              等同HTML[input]              |
+|           type           |              String              |       No       |      text       |              等同HTML[input]              |
+|         readonly         |             Boolean              |       No       |      false      |              等同HTML[input]              |
+|        maxlength         |              Number              |       No       |       N/A       |              等同HTML[input]              |
 |       customFilter       |         [object(function)]         |       No       |       N/A       |            客制化搜索筛选函数             |
-|    resultPlaceholder     |              [array]               |       No       |       N/A       |     结果占位数据, 显示在SearchBox左端     |
-|        focusShow         |             [boolean]              |       No       |      false      |       是否开启获取焦点时显示结果框        |
-|         leftIcon         |              [string]              |       No       |       N/A       |                  左图标                   |
-|           icon           |              [string]              |       No       |       N/A       |                  右图标                   |
-|        underline         |             [boolean]              |       No       |      false      |     是否开启Underline风格的SearchBox      |
+|    resultPlaceholder     |              Array               |       No       |       N/A       |     结果占位数据, 显示在SearchBox左端     |
+|        focusShow         |             Boolean              |       No       |      false      |       是否开启获取焦点时显示结果框        |
+|         leftIcon         |              String              |       No       |       N/A       |                  左图标                   |
+|           icon           |              String              |       No       |       N/A       |                  右图标                   |
+|        underline         |             Boolean              |       No       |      false      |     是否开启Underline风格的SearchBox      |
 |        background        |          [string(color)]           |       No       |       N/A       |                  背景色                   |
-|       borderWidth        |             [boolean]              |       No       |        1        |                                           |
+|       borderWidth        |             Boolean              |       No       |        1        |                                           |
 |       borderColor        |          [string(color)]           |       No       |       N/A       |                                           |
 |     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                           |
-|         fontSize         |              [number]              |       No       |      13.3       |                                           |
+|         fontSize         |              Number              |       No       |      13.3       |                                           |
 |        fontWeight        |          [string,number]           |       No       |     normal      |                                           |
 |        foreground        |          [string(color)]           |       No       |       N/A       |                                           |
-|        textAlign         |              [string]              |       No       |      left       |                                           |
-|       borderRadius       |              [number]              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
-|       revealBorder       |             [boolean]              |       No       |      false      |                                           |
+|        textAlign         |              String              |       No       |      left       |                                           |
+|       borderRadius       |              Number              |       No       |       N/A       | Textbox圆角大小, 启用revealBorder时将失效 |
+|       revealBorder       |             Boolean              |       No       |      false      |                                           |
 |          status          |         ['warn','correct']         |       No       |       N/A       |    状态边框预设, 默认有警告和正确两种     |
-|      debounceDelay       |              [number]              |       No       |       300       |             搜索节流延迟时间              |
-|         disabled         |             [boolean]              |       No       |      false      |                                           |
-|          theme           | ['light','dark','custom','system'] |       No       |     system      |                                           |
+|      debounceDelay       |              Number              |       No       |       300       |             搜索节流延迟时间              |
+|         disabled         |             Boolean              |       No       |      false      |                                           |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

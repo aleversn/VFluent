@@ -97,15 +97,15 @@
 ---
 | 属性(attr) |             类型(type)             | 必填(required) |   默认值(default)    | 说明(statement) |
 |:----------:|:----------------------------------:|:--------------:|:--------------------:|:---------------:|
-|   value    |              [number]              |       No       |          1           |   当前页码数    |
+|   value    |              Number              |       No       |          1           |   当前页码数    |
 | foreground |          [string(color)]           |       No       | rgba(0, 90, 158, 1) |                 |
 | background |          [string(color)]           |       No       |     transparent      |                 |
-|   total    |              [number]              |       No       |          10          |    总页码数     |
-| maxVisual  |              [number]              |       No       |          7           |  最大可视按钮   |
-|   small    |             [boolean]              |       No       |        false         |  小型分页按钮   |
-|   shadow   |             [boolean]              |       No       |        false         |                 |
-|  disabled  |             [boolean]              |       No       |        false         |                 |
-|   theme    | ['light','dark','custom','system'] |       No       |        system        |  Custom theme   |
+|   total    |              Number              |       No       |          10          |    总页码数     |
+| maxVisual  |              Number              |       No       |          7           |  最大可视按钮   |
+|   small    |             Boolean              |       No       |        false         |  小型分页按钮   |
+|   shadow   |             Boolean              |       No       |        false         |                 |
+|  disabled  |             Boolean              |       No       |        false         |                 |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

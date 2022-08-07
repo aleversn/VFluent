@@ -93,15 +93,15 @@ export default {
 ---
 |    属性(attr)    |             类型(type)             | 必填(required) |        默认值(default)         | 说明(statement)  |
 |:----------------:|:----------------------------------:|:--------------:|:------------------------------:|:----------------:|
-|      value       |              [object]              |       No       |              N/A               |   当前选中项值   |
-|      items       |              [array]               |       No       | [{ name: "Pivot", width: 80 }] |    选项卡数据    |
-|       tab        |             [boolean]              |       No       |             false              | 是否开启tab样式  |
-|     fontSize     |              [number]              |       No       |              N/A               |   默认字体大小   |
+|      value       |              Object              |       No       |              N/A               |   当前选中项值   |
+|      items       |              Array               |       No       | [{ name: "Pivot", width: 80 }] |    选项卡数据    |
+|       tab        |             Boolean              |       No       |             false              | 是否开启tab样式  |
+|     fontSize     |              Number              |       No       |              N/A               |   默认字体大小   |
 |    foreground    |          [string(color)]           |       No       |              N/A               |      前景色      |
 | sliderBackground |          [string(color)]           |       No       |              N/A               |    滑块背景色    |
-| sliderBoxshadow  |             [boolean]              |       No       |             false              | 是否开启滑块阴影 |
+| sliderBoxshadow  |             Boolean              |       No       |             false              | 是否开启滑块阴影 |
 |    background    |          [string(color)]           |       No       |              N/A               |      背景色      |
-|      theme       | ['light','dark','custom','system'] |       No       |             system             |       主题       |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

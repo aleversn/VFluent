@@ -111,9 +111,9 @@ Primary
 | 属性(attr) |                          类型(type)                           | 必填(required) | 默认值(default) |         说明(statement)         |
 |:----------:|:-------------------------------------------------------------:|:--------------:|:---------------:|:-------------------------------:|
 |   value    |                        [string,number]                        |      Yes       |       N/A       |                                 |
-|    max     |                           [number]                            |       No       |    Infinity     |                                 |
-|   isDot    |                           [boolean]                           |       No       |      false      |                                 |
-|   hidden   |                           [boolean]                           |       No       |      false      |                                 |
+|    max     |                           Number                            |       No       |    Infinity     |                                 |
+|   isDot    |                           Boolean                           |       No       |      false      |                                 |
+|   hidden   |                           Boolean                           |       No       |      false      |                                 |
 |    type    | ['primary','success','warning','danger','info',string(color)] |       No       |     default     | `Badge`类型, 可以输入颜色字符串 |
 
 ### Slot

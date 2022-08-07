@@ -151,12 +151,12 @@ Compact Mode
 
 | 属性(attr) |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
 |:----------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
-|   value    |              [object]              |       No       |       N/A       |   绑定当前选中的对象   |
-|  options   |              [array]               |      Yes       |       N/A       |   CommandBar 数据源    |
+|   value    |              Object              |       No       |       N/A       |   绑定当前选中的对象   |
+|  options   |              Array               |      Yes       |       N/A       |   CommandBar 数据源    |
 |   toward   |           ['down','up']            |       No       |      down       |     下拉菜单的朝向     |
 | background |          [string(color)]           |       No       |       N/A       |    CommandBar 背景     |
-|  compact   |             [boolean]              |       No       |      false      |        紧凑样式        |
-|   theme    | ['light','dark','custom','system'] |       No       |     system      | 主题样式, 默认跟随系统 |
+|  compact   |             Boolean              |       No       |      false      |        紧凑样式        |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

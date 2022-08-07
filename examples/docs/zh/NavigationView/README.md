@@ -137,23 +137,23 @@ export default {
 
 |   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
 |:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
-|      value      |              [array]               |       No       |       N/A       |                          当前选中项, 用`v-model`绑定                           |
-|     options     |              [array]               |      Yes       |       N/A       |                  选项数据, 参照`ListView`中的`items`数据格式                   |
-|      title      |              [string]              |       No       | NavigationView  |                              NavigationView 标题                               |
-|     expand      |             [boolean]              |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
+|      value      |              Array               |       No       |       N/A       |                          当前选中项, 用`v-model`绑定                           |
+|     options     |              Array               |      Yes       |       N/A       |                  选项数据, 参照`ListView`中的`items`数据格式                   |
+|      title      |              String              |       No       | NavigationView  |                              NavigationView 标题                               |
+|     expand      |             Boolean              |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
 |   expandMode    |       ['relative','flyout']        |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
-|   expandWidth   |              [number]              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
-|  expandDisplay  |              [number]              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
-|  flyoutDisplay  |              [number]              |       No       |        0        | 浏览器宽度小于多少时开启浮动模式, 若`expandMode`设为`flyout`, 则始终为浮动模式 |
-| fullSizeDisplay |              [number]              |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
-|  mobileDisplay  |              [number]              |       No       |        0        |                       浏览器宽度小于多少时开启移动端模式                       |
-|    showBack     |             [boolean]              |       No       |      true       |                                是否显示后退按钮                                |
-|   showSearch    |             [boolean]              |       No       |      true       |                                 是否显示搜索框                                 |
-|  settingTitle   |              [string]              |       No       |    Settings     |                                 设置选项的标题                                 |
-|   showSetting   |             [boolean]              |       No       |      true       |                                是否显示设置选项                                |
+|   expandWidth   |              Number              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
+|  expandDisplay  |              Number              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
+|  flyoutDisplay  |              Number              |       No       |        0        | 浏览器宽度小于多少时开启浮动模式, 若`expandMode`设为`flyout`, 则始终为浮动模式 |
+| fullSizeDisplay |              Number              |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
+|  mobileDisplay  |              Number              |       No       |        0        |                       浏览器宽度小于多少时开启移动端模式                       |
+|    showBack     |             Boolean              |       No       |      true       |                                是否显示后退按钮                                |
+|   showSearch    |             Boolean              |       No       |      true       |                                 是否显示搜索框                                 |
+|  settingTitle   |              String              |       No       |    Settings     |                                 设置选项的标题                                 |
+|   showSetting   |             Boolean              |       No       |      true       |                                是否显示设置选项                                |
 |   foreground    |          [string(color)]           |       No       |       N/A       |                             NavigationView 前景色                              |
 |   background    |          [string(color)]           |       No       |       N/A       |                             NavigationView 背景色                              |
-|      theme      | ['light','dark','custom','system'] |       No       |     system      |                                                                                |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

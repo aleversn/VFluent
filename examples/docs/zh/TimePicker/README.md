@@ -112,22 +112,22 @@ hoverColor="rgba(0, 204, 153,0.7)"
 
 ### Propoties
 ---
-| 属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |     说明(statement)     |
-|:-----------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
-|  v-model           |                                    |            No | Date()                 |       绑定的时间                  |
-| theme | ['system','dark','light','custom'] | No | 'system' | 主题色 |
-| timeType | [Number] | No | 12 | 时间制（可选12，24） |
-| period | [Array] | No | ['A.M.','P.M.'] | 上午下午显示 |
-| optionsStyle | [object] | No | {} | 选项菜单样式 |
-| selectStyle | [object] | No | {} | 选项菜单中间选项蒙版样式 |
-| disabled | [boolean] | No | false | 是否禁用选项框 |
-| hoverColor | [string] | No | undefined | 选项的Hover值 |
+|  属性(attr)  |              类型(type)               | 必填(required) | 默认值(default) |     说明(statement)      |
+|:------------:|:-------------------------------------:|:--------------:|:---------------:|:------------------------:|
+|   v-model    |                                       |       No       |     Date()      |        绑定的时间        |
+|   timeType   |                Number                 |       No       |       12        |   时间制（可选12，24）   |
+|    period    |                 Array                 |       No       | ['A.M.','P.M.'] |       上午下午显示       |
+| optionsStyle |                Object                 |       No       |       {}        |       选项菜单样式       |
+| selectStyle  |                Object                 |       No       |       {}        | 选项菜单中间选项蒙版样式 |
+|   disabled   |                Boolean                |       No       |      false      |      是否禁用选项框      |
+|  hoverColor  |                String                 |       No       |    undefined    |      选项的Hover值       |
+|    theme     | ['light', 'dark', 'custom', 'system'] |       No       |     system      |       Custom theme       |
 
 
 ### Events
 ---
-| 事件名(Name) | 参数类型(args) | 说明(statement) |
-|:------------:|:--------------:|:---------------:|
-| focus        |                |  触发焦点时触发 |
-| change       |                | 当选中的时间发生变化时 |
+| 事件名(Name) | 参数类型(args) |    说明(statement)     |
+|:------------:|:--------------:|:----------------------:|
+|    focus     |                |     触发焦点时触发     |
+|    change    |                | 当选中的时间发生变化时 |
 

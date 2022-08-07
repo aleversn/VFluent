@@ -86,11 +86,11 @@ export default {
 | 属性(attr) |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)     |
 |:----------:|:----------------------------------:|:--------------:|:---------------:|:----------------------:|
 |   value    |               [date]               |       No       |   CurrentDate   |                        |
-|   start    |              [number]              |       No       |      1900       |      Minium Year.      |
-|    end     |              [number]              |       No       |      3000       |      Maxium Year.      |
+|   start    |              Number              |       No       |      1900       |      Minium Year.      |
+|    end     |              Number              |       No       |      3000       |      Maxium Year.      |
 |  multiple  |   ['single','multiple','range']    |       No       |     single      |                        |
 |    lan     |            ['en','zh']             |       No       |       en        | CalendarView language. |
-|   theme    | ['light','dark','custom','system'] |       No       |     system      |                        |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

@@ -35,11 +35,11 @@ export default {
 
 ### Propoties
 ---
-|  属性(attr)   |             类型(type)             | 必填(required) | 默认值(default) |   说明(statement)   |
-|:-------------:|:----------------------------------:|:--------------:|:---------------:|:-------------------:|
-| value/v-model |             [boolean]              |       No       |      true       | 开启或关闭WebWindow |
-|     title     |              [string]              |       No       |       N/A       |    WebWindow标题    |
-|     theme     | ['light','dark','custom','system'] |       No       |     system      |                     |
+|  属性(attr)   | 类型(type) | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:-------------:|:----------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+| value/v-model | Boolean  |       No       |      true       |                    开启或关闭WebWindow                    |
+|     title     |  String  |       No       |       N/A       |                       WebWindow标题                       |
+|     theme     |  String  |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Events
 ---

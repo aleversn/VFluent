@@ -101,12 +101,12 @@ export default {
 ---
 |    属性(attr)     |             类型(type)             | 必填(required) | 默认值(default) | 说明(statement)  |
 |:-----------------:|:----------------------------------:|:--------------:|:---------------:|:----------------:|
-|       value       |              [array]               |      Yes       |       N/A       | ListView数据绑定 |
-|     multiple      |             [boolean]              |       No       |      false      |   是否开启多选   |
-|     rowHeight     |              [number]              |       No       |       N/A       |    每一项高度    |
+|       value       |              Array               |      Yes       |       N/A       | ListView数据绑定 |
+|     multiple      |             Boolean              |       No       |      false      |   是否开启多选   |
+|     rowHeight     |              Number              |       No       |       N/A       |    每一项高度    |
 | headerForeground  |          [string(color)]           |       No       |       N/A       |    标题前景色    |
 | choosenBackground |          [string(color)]           |       No       |       N/A       |   选中项背景色   |
-|       theme       | ['light','dark','custom','system'] |       No       |     system      |                  |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

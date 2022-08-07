@@ -63,5 +63,5 @@ export default {
 
 | 属性(attr) | 类型(type) | 必填(required) | 默认值(default) |           说明(statement)            |
 | :--------: | :--------: | :------------: | :-------------: | :----------------------------------: |
-|    src     |  [string]  |      Yes       |       N/A       | 图像 src, 支持跨域加载, 但不支持缓存 |
-|   onlazy   | [boolean]  |       No       |      false      |            是否开启懒加载            |
+|    src     |  String  |      Yes       |       N/A       | 图像 src, 支持跨域加载, 但不支持缓存 |
+|   onlazy   | Boolean  |       No       |      false      |            是否开启懒加载            |

@@ -87,22 +87,22 @@ export default {
 ---
 |       属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |  说明(statement)   |
 |:-----------------------:|:----------------------------------:|:--------------:|:---------------:|:------------------:|
-|      value/v-model      |              [object]              |       No       |       N/A       | Combobox当前项绑定 |
-|         options         |              [array]               |      Yes       |       N/A       |    Combobox数据    |
-|       borderWidth       |              [number]              |       No       |        2        |                    |
-|       placeholder       |              [string]              |       No       |    Combobox     |                    |
-|      borderRadius       |              [number]              |       No       |        3        |                    |
+|      value/v-model      |              Object              |       No       |       N/A       | Combobox当前项绑定 |
+|         options         |              Array               |      Yes       |       N/A       |    Combobox数据    |
+|       borderWidth       |              Number              |       No       |        2        |                    |
+|       placeholder       |              String              |       No       |    Combobox     |                    |
+|      borderRadius       |              Number              |       No       |        3        |                    |
 |       background        |          [string(color)]           |       No       |       N/A       |                    |
 |    choosenBackground    |          [string(color)]           |       No       |       N/A       |                    |
 | choosenSliderBackground |          [string(color)]           |       No       |       N/A       |                    |
 |     inputForeground     |          [string(color)]           |       No       |       N/A       |                    |
 |     inputBackground     |          [string(color)]           |       No       |       N/A       |                    |
 |     titleForeground     |          [string(color)]           |       No       |   ChevronDown   |                    |
-|      dropDownIcon       |              [string]              |       No       |       N/A       |                    |
+|      dropDownIcon       |              String              |       No       |       N/A       |                    |
 | dropDownIconForeground  |          [string(color)]           |       No       |       N/A       |                    |
-|    pivotPlaceholder     |              [string]              |       No       |  Please Choose  |                    |
-|        disabled         |             [boolean]              |       No       |       N/A       |                    |
-|          theme          | ['light','dark','custom','system'] |       No       |     system      |   Dropdown theme   |
+|    pivotPlaceholder     |              String              |       No       |  Please Choose  |                    |
+|        disabled         |             Boolean              |       No       |       N/A       |                    |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

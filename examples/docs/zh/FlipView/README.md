@@ -138,15 +138,15 @@ export default {
 
 |    属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                 说明(statement)                 |
 |:----------------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------------------------------:|
-|      value       |              [array]               |      Yes       |       []        |             Flipview template data              |
+|      value       |              Array               |      Yes       |       []        |             Flipview template data              |
 |    direction     |     ['horizontal','vertical']      |       No       |   horizontal    |                                                 |
-|    animation     |              [string]              |       No       |      move       | move, moveFade, moveDifferent, glue, push, fold |
-|     duration     |              [number]              |       No       |       800       |                                                 |
-|     autoPlay     |             [boolean]              |       No       |      true       |                                                 |
-| autoPlayDuration |              [number]              |       No       |      5000       |                                                 |
+|    animation     |              String              |       No       |      move       | move, moveFade, moveDifferent, glue, push, fold |
+|     duration     |              Number              |       No       |       800       |                                                 |
+|     autoPlay     |             Boolean              |       No       |      true       |                                                 |
+| autoPlayDuration |              Number              |       No       |      5000       |                                                 |
 | showControlPanel |       ['','hidden','hover']        |       No       |       N/A       |                                                 |
 |       mask       |          [string(color)]           |       No       |       N/A       |         The mask color of control panel         |
-|      theme       | ['light','dark','custom','system'] |       No       |     system      |                                                 |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

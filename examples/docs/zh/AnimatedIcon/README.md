@@ -212,13 +212,13 @@ data () {
 ---
 |     属性(attr)     |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)    |
 |:------------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
-|       value        |              [string]              |       No       |    scaleDown    |     动画预设名称      |
-|        icon        |              [string]              |       No       |       N/A       | Icon with Fabric-Icon |
-| customizeAnimation |              [object]              |       No       |       N/A       |      自定义动画       |
+|       value        |              String              |       No       |    scaleDown    |     动画预设名称      |
+|        icon        |              String              |       No       |       N/A       | Icon with Fabric-Icon |
+| customizeAnimation |              Object              |       No       |       N/A       |      自定义动画       |
 |     background     |          [string(color)]           |       No       |       N/A       |        背景色         |
-|      fontSize      |              [number]              |       No       |       16        | AnimatedIcon 字体大小 |
+|      fontSize      |              Number              |       No       |       16        | AnimatedIcon 字体大小 |
 |    hideContent     |               [bool]               |       No       |      false      |     隐藏文本内容      |
-|       theme        | ['light', 'dark', 'custom', 'system'] |       No       |     system      |     Custom theme      |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

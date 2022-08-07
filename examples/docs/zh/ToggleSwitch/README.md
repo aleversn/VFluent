@@ -78,16 +78,16 @@
 ---
 |     属性(attr)     |             类型(type)             | 必填(required) | 默认值(default) |                   说明(statement)                   |
 |:------------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------------------------------------:|
-|       value        |              [number]              |       No       |      false      |                 Toggleswitch value                  |
-|         on         |              [string]              |       No       |       On        |       Toggleswitch content when value is true       |
-|        off         |              [string]              |       No       |       Off       |      Toggleswitch content when value is false       |
+|       value        |              Number              |       No       |      false      |                 Toggleswitch value                  |
+|         on         |              String              |       No       |       On        |       Toggleswitch content when value is true       |
+|        off         |              String              |       No       |       Off       |      Toggleswitch content when value is false       |
 |    onForeground    |          [string(color)]           |       No       |       N/A       | Toggleswitch content foreground when value is true  |
 |   offForeground    |          [string(color)]           |       No       |       N/A       | Toggleswitch content foreground when value is false |
 |    borderColor     |          [string(color)]           |       No       |       N/A       |                                                     |
 |   ringBackground   |          [string(color)]           |       No       |       N/A       |                                                     |
 | switchOnBackground |          [string(color)]           |       No       |       N/A       |                                                     |
-|      disabled      |             [boolean]              |       No       |       N/A       |                                                     |
-|       theme        | ['light','dark','custom','system'] |       No       |     system      |                                                     |
+|      disabled      |             Boolean              |       No       |       N/A       |                                                     |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 ---

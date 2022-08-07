@@ -68,14 +68,14 @@
 ---
 | 属性(attr)  |             类型(type)             | 必填(required) | 默认值(default) |     说明(statement)     |
 |:-----------:|:----------------------------------:|:--------------:|:---------------:|:-----------------------:|
-|    value    |             [boolean]              |       No       |     [empty]     |     Checkbox value      |
-| foreground  |              [string]              |       No       |       N/A       |   Checkbox foreground   |
-| borderColor |              [string]              |       No       |       N/A       |  Checkbox borderColor   |
-| background  |              [string]              |       No       |       N/A       |    Checkbox background    |
+|    value    |             Boolean              |       No       |     [empty]     |     Checkbox value      |
+| foreground  |              String              |       No       |       N/A       |   Checkbox foreground   |
+| borderColor |              String              |       No       |       N/A       |  Checkbox borderColor   |
+| background  |              String              |       No       |       N/A       |    Checkbox background    |
 |   boxSide   |          ['start', 'end']           |       No       |      start      | CheckBox text font weight |
-|  disabled   |             [boolean]              |       No       |      false      |     Disabled checkbox     |
-| borderWidth |              [number]              |       No       |        1        |   Checkbox border width   |
-|    theme    | ['light', 'dark', 'custom', 'system'] |       No       |     system      |      Custom theme       |
+|  disabled   |             Boolean              |       No       |      false      |     Disabled checkbox     |
+| borderWidth |              Number              |       No       |        1        |   Checkbox border width   |
+|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
 
 ### Events
 

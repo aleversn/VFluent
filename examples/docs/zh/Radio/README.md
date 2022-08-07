@@ -135,17 +135,17 @@ Disabled
 ---
 |      属性(attr)       |             类型(type)             | 必填(required) |     默认值(default)      |    说明(statement)     |
 |:---------------------:|:----------------------------------:|:--------------:|:------------------------:|:----------------------:|
-|     v-model/value     |              [object]              |      Yes       |        undefined         |         选项值         |
-|         label         |              [object]              |      Yes       |        undefined         |         选项值         |
+|     v-model/value     |              Object              |      Yes       |        undefined         |         选项值         |
+|         label         |              Object              |      Yes       |        undefined         |         选项值         |
 |         theme         | ['system','dark','light','custom'] |       No       |         'system'         |         主题色         |
-|         icon          |              [string]              |       No       |           null           |        MS-ICON         |
+|         icon          |              String              |       No       |           null           |        MS-ICON         |
 |         color         |          [string(color)]           |       No       |           null           |    文字和图标前景色    |
 |      foreground       |          [string(color)]           |       No       | rgba(0, 120, 212, 0.829) |      Radio前景色       |
 | iconBlockBorderRadius |          [string(color)]           |       No       |            3             |   带图标样式圆角大小   |
 | iconBlockBorderWidth  |          [string(color)]           |       No       |            2             |   带图标样式边框大小   |
-|         image         |              [string]              |       No       |           null           |     32*32 图像链接     |
-|      activeImage      |              [string]              |       No       |           null           | 32*32 选中时的图像链接 |
-|       disabled        |             [boolean]              |       No       |          false           |        是否禁用        |
+|         image         |              String              |       No       |           null           |     32*32 图像链接     |
+|      activeImage      |              String              |       No       |           null           | 32*32 选中时的图像链接 |
+|       disabled        |             Boolean              |       No       |          false           |        是否禁用        |
 
 ### Events
 ---
