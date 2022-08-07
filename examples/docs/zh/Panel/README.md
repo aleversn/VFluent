@@ -6,6 +6,7 @@
 [[toc]]
 
 ### Panel-DEMO
+---
 
 <script>
 export default {

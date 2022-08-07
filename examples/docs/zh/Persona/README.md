@@ -6,6 +6,7 @@
 [[toc]]
 
 ### Persona-DEMO
+---
 
 <script>
 export default {

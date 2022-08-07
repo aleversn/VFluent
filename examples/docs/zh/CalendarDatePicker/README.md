@@ -6,6 +6,7 @@
 [[toc]]
 
 ### CalendarDatePicker-DEMO
+---
 
 <script>
 export default {

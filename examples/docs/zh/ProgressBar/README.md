@@ -6,6 +6,7 @@
 [[toc]]
 
 ### ProgressBar-DEMO
+---
 
 <script>
 export default {

@@ -32,7 +32,7 @@
                     v-show="resultPlaceholder.length > 0"
                     class="search-box-placeholder"
                 >
-                    <slot name="resultPlaceholder"></slot>
+                    <slot name="resultPlaceholder" :resultPlaceholder="resultPlaceholder"></slot>
                 </div>
             </transition>
             <div class="search-box-container">

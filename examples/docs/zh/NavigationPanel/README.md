@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### NavigationPanel-DEMO
+---
 
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
 <ClientOnly> 

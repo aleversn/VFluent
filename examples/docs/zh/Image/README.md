@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### Image-DEMO
+---
 
 <script>
 export default {

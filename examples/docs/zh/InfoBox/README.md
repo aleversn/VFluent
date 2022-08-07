@@ -6,6 +6,7 @@
 [[toc]]
 
 ### InfoBox-DEMO
+---
 
 <script>
 export default {

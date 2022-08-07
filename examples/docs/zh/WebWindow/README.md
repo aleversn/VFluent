@@ -6,6 +6,7 @@
 [[toc]]
 
 ### WebWindow-DEMO
+---
 
 <script>
 export default {

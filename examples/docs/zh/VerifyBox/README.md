@@ -5,7 +5,8 @@
   
 [[toc]]
 
-### VerifyBox-DEMO 
+### VerifyBox-DEMO
+--- 
 
 <script>
 export default {

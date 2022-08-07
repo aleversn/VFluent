@@ -6,6 +6,7 @@
 [[toc]]
 
 ### TextBox-DEMO
+---
 
 <script>
 export default {

@@ -5,7 +5,8 @@
   
 [[toc]]
 
-### Collapse-DEMO 
+### Collapse-DEMO
+--- 
 
 <div>    
 <ClientOnly>

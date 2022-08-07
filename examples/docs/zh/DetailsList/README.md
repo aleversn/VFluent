@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### DetailsList-DEMO
+---
 
 <script>
 export default {

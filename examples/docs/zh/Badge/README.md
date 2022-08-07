@@ -6,6 +6,7 @@
 [[toc]]
 
 ### Badge-DEMO
+---
 
 <ClientOnly>
 <fv-Badge :value="3">

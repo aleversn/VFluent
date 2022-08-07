@@ -6,6 +6,7 @@
 [[toc]]
 
 ### InfiniteScrollView-DEMO
+---
 
 <script>
 export default {

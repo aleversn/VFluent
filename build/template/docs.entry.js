@@ -11,7 +11,8 @@ module.exports=`---
   
 [[toc]]
 
-### {{chineseName}}-DEMO 
+### {{chineseName}}-DEMO
+--- 
 
 <{{prefix}}-{{componentname}}>
 </{{prefix}}-{{componentname}}>

@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### FlipView-DEMO
+---
 
 <script>
 export default {

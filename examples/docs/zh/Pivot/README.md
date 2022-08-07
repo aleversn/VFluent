@@ -6,6 +6,7 @@
 [[toc]]
 
 ### Pivot-DEMO
+---
 
 <script>
 export default {

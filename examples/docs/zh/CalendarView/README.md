@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### CalendarView-DEMO
+---
 
 <script>
 export default {

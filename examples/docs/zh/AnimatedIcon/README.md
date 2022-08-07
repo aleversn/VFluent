@@ -6,6 +6,7 @@
 [[toc]]
 
 ### AnimatedIcon-DEMO
+---
 
 <script>
 export default {

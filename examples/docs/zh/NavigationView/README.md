@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### NavigationView-DEMO
+---
 
 <script>
 export default {

@@ -6,6 +6,7 @@
 [[toc]]
 
 ### MessageBar-DEMO
+---
 
 <script>
 export default {

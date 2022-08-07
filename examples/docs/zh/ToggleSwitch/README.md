@@ -5,7 +5,8 @@
   
 [[toc]]
 
-### ToggleSwitch-DEMO 
+### ToggleSwitch-DEMO
+--- 
 
 
 <ClientOnly>

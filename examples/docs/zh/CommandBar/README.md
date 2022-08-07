@@ -6,6 +6,7 @@ sidebarDepth: 2
 [[toc]]
 
 ### CommandBar-DEMO
+---
 
 <script>
 export default {
