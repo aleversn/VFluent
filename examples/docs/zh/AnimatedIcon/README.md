@@ -236,10 +236,9 @@ data () {
 默认模板是图标自定义模板
 
 ```javascript
-< fv - animated - icon >
-    <
-    div > < /div> <
-    /fv-animated-icon>
+<fv-animated-icon>
+    <div></div>
+</fv-animated-icon>
 ```
 
 2. Content
@@ -247,11 +246,9 @@ data () {
 客制化修改文字内容
 
 ```javascript
-< fv - animated - icon >
-    <
-    template v - slot: content >
-    <
-    div > Content < /div> <
-    /template> <
-    /fv-animated-icon>
+<fv-animated-icon>
+    <template v-slot:content>
+        <div>Content</div>
+    </template>
+</fv-animated-icon>
 ```

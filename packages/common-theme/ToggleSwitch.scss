@@ -69,8 +69,11 @@
         
         .fv-toggle-ring
         {
+            position: absolute;
             width: 12px;
             height: 12px;
+            left: 5px;
+            margin: 0px;
             background: rgba(87, 87, 87, 1);
             border-radius: 12px;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
@@ -84,7 +87,7 @@
 
             .fv-toggle-ring
             {
-                margin-left: 13px;
+                left: calc(100% - 17px);
                 background: rgba(255,255,255,1);
                 box-shadow: -3px 3px 10px rgba(0,0,0,0.2);
             }
@@ -94,7 +97,8 @@
                 .fv-toggle-ring
                 {
                     width: 15px;
-                    margin-left: 10px;
+                    left: calc(100% - 20px);
+                    transform-origin: 100% 50%;
                 }
             }
         }

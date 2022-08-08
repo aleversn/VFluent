@@ -14,7 +14,7 @@ export default {
     },
     data () {
 		return {
-            moveavle: false
+            moveable: false
         };
 	},
 	computed: {

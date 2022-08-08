@@ -1,105 +1,139 @@
 <template>
-<div :class="['fv-'+$theme+'-ToggleSwitch', isDisabled ? 'disabled' : '']" @click="toggle">
-    <div class="fv-toggle-border" :class="{'toggle-on': thisValue}" :style="styles.toggleStyle()">
-        <p class="fv-toggle-ring" :style="styles.themeRingStyle()"></p>
+    <div
+        :class="['fv-'+$theme+'-ToggleSwitch', isDisabled ? 'disabled' : '']"
+        @mouseup="toggle"
+        @touchend="toggle"
+    >
+        <div
+            class="fv-toggle-border"
+            :class="{'toggle-on': thisValue}"
+            ref="border"
+            :style="[{background: thisValue ? switchOnBackground : '', borderColor: thisValue ? '' : borderColor}]"
+        >
+            <toggle-ring
+                :value="thisValue"
+                :left="toggleLeft"
+                :ringBackground="ringBackground"
+                :theme="$theme"
+                ref="toggle"
+                @mousedown="toggleDown"
+                @touchstart="toggleDown"
+                @mousemove="toggleMove"
+                @touchmove="toggleMove"
+                @mouseup="toggleUp"
+            ></toggle-ring>
+        </div>
+        <p
+            class="fv-toggle-content"
+            :style="{color: thisValue ? onForeground : offForeground}"
+        >{{thisValue ? on: off}}</p>
     </div>
-    <p class="fv-toggle-content" :style="styles.themeContentStyle()">{{thisValue ? on: off}}</p>
-</div>
 </template>
 
 <script>
+import toggleRing from './toggleRing.vue';
+
 export default {
-    name: "FvToggleSwitch",
+    name: 'FvToggleSwitch',
+    components: {
+        toggleRing,
+    },
     props: {
         value: {
-            default: false
+            default: false,
         },
         on: {
-            default: 'On'
+            default: 'On',
         },
         off: {
-            default: 'Off'
+            default: 'Off',
         },
         onForeground: {
-            default: ''
+            default: '',
         },
         offForeground: {
-            default: ''
+            default: '',
         },
         borderColor: {
-            default: ''
+            default: '',
         },
         ringBackground: {
-            default: ''
+            default: '',
         },
         switchOnBackground: {
-            default: ''
+            default: '',
         },
         disabled: {
-            default: false
+            default: false,
         },
         theme: {
-            default: 'system'
-        }
-    },
-    watch: {
-        value (val) {
-            this.thisValue = val;
+            default: 'system',
         },
-        thisValue (val) {
-            this.$emit('input', val);
-        }
     },
-    data () {
+    data() {
         return {
             thisValue: this.value,
-            styles: {
-                toggleStyle: () => {
-                    if(!this.thisValue)
-                        return {
-                            borderColor: this.borderColor
-                        }
-                    else
-                        return {
-                            background: this.switchOnBackground
-                        }
-                },
-                themeRingStyle: () => {
-                    if(!this.thisValue)
-                        return {
-                            background: this.ringBackground
-                        }
-                },
-                themeContentStyle: () => {
-                    if(!this.thisValue)
-                        return {
-                            color: this.offForeground
-                        }
-                    else
-                        return{
-                            color: this.onForeground
-                        }
-                }
-            }
+            disX: 0, // record mouseX - offsetLeft   // so that left = mouseXNew - mouseX + offsetLeft, when mouseXNew == mouseX, the result is offsetLeft than 0.
+            mouseMove: false,
+            currentLeft: 0,
+            toggleLeft: '',
         };
+    },
+    watch: {
+        value(val) {
+            this.thisValue = val;
+        },
+        thisValue(val) {
+            this.$emit('input', val);
+        },
+        currentLeft() {
+            this.toggleLeft = this.computedLeft;
+        },
     },
     computed: {
         $theme() {
-            if(this.theme == 'system')
-                return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
-        isDisabled () {
+        isDisabled() {
             return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
-        }
+        },
+        computedLeft() {
+            if (!this.$refs.border) return 5;
+            if (this.currentLeft < 5) return 5;
+            if (this.currentLeft > this.$refs.border.clientWidth - 17) return this.$refs.border.clientWidth - 17;
+            return this.currentLeft;
+        },
     },
-    methods:{
-        toggle () {
-            if(this.isDisabled)
-                return 0;
+    methods: {
+        toggleDown(event) {
+            if (this.isDisabled) return;
+            if (event.type.indexOf('mouse') < 0) event = event.targetTouches[0];
+            this.disX = event.clientX - this.$refs.toggle.$el.offsetLeft;
+        },
+        toggleMove(event) {
+            if (this.isDisabled) return;
+            if (event.type.indexOf('mouse') < 0) event = event.targetTouches[0];
+            this.mouseMove = true;
+            this.currentLeft = event.clientX - this.disX;
+        },
+        toggleUp(event) {
+            event.stopPropagation();
+            if (this.isDisabled) return;
+            if (this.mouseMove) {
+                if (this.$refs.toggle.$el.offsetLeft + this.$refs.toggle.$el.clientWidth / 2 > this.$refs.border.clientWidth / 2) this.thisValue = true;
+                else this.thisValue = false;
+                this.mouseMove = false;
+            } else this.thisValue = !this.thisValue;
+            this.$emit('toggle', this.thisValue);
+            this.currentLeft = this.$refs.toggle.$el.offsetLeft;
+            this.disX = 0;
+        },
+        toggle(event) {
+            if (this.isDisabled) return;
             this.thisValue = !this.thisValue;
             this.$emit('toggle', this.thisValue);
-        }
-    }
+        },
+    },
 };
 </script>

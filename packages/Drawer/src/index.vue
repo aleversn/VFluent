@@ -23,7 +23,7 @@ export default {
         },
         zIndex: {
             type: Number,
-            default: 9999,
+            default: 10,
         },
         focusTrap: {
             type: Boolean,

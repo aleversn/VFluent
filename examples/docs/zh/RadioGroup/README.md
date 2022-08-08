@@ -69,9 +69,9 @@
 <ClientOnly>
 <fv-radio-group v-model="value"  label="options:">
 <div>
-  <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
-  <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
-  <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
+  <fv-radio label="option1" icon="QuickNote">option1</fv-radio>
+  <fv-radio label="option2" icon="QuickNote">option2</fv-radio>
+  <fv-radio label="option3" icon="QuickNote">option3</fv-radio>
 </div>
 </fv-radio-group>
 </ClientOnly>
@@ -79,9 +79,9 @@
 ```vue
 <fv-radio-group v-model="value"  label="options:">
 <div>
-  <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
-  <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
-  <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
+  <fv-radio label="option1" icon="QuickNote">option1</fv-radio>
+  <fv-radio label="option2" icon="QuickNote">option2</fv-radio>
+  <fv-radio label="option3" icon="QuickNote">option3</fv-radio>
 </div>
 </fv-radio-group>
 ```
@@ -90,17 +90,17 @@
 ### Radio Icon Dark inline
 <ClientOnly>
 <fv-radio-group v-model="value"  label="options:" theme="dark" inline @change="change">
-  <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
-  <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
-  <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
+  <fv-radio label="option1" icon="QuickNote">option1</fv-radio>
+  <fv-radio label="option2" icon="QuickNote">option2</fv-radio>
+  <fv-radio label="option3" icon="QuickNote">option3</fv-radio>
 </fv-radio-group>
 </ClientOnly>
 
 ```vue
 <fv-radio-group v-model="value"  label="options:" theme="dark" inline @change="change">
-  <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
-  <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
-  <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
+  <fv-radio label="option1" icon="QuickNote">option1</fv-radio>
+  <fv-radio label="option2" icon="QuickNote">option2</fv-radio>
+  <fv-radio label="option3" icon="QuickNote">option3</fv-radio>
 </fv-radio-group>
 ```
 
@@ -110,14 +110,14 @@
 <ClientOnly>
 <fv-radio-group v-model="value"  label="options:"  disabled>
 <div style="margin:5px 0">
-  <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
-  <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
-  <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
+  <fv-radio label="option1" icon="QuickNote">option1</fv-radio>
+  <fv-radio label="option2" icon="QuickNote">option2</fv-radio>
+  <fv-radio label="option3" icon="QuickNote">option3</fv-radio>
 </div>
 <div>
-  <fv-radio label="option4" icon="MSNLogo">option4</fv-radio>
-  <fv-radio label="option5" icon="MSNLogo">option5</fv-radio>
-  <fv-radio label="option6" icon="MSNLogo">option6</fv-radio>
+  <fv-radio label="option4" icon="QuickNote">option4</fv-radio>
+  <fv-radio label="option5" icon="QuickNote">option5</fv-radio>
+  <fv-radio label="option6" icon="QuickNote">option6</fv-radio>
 </div>
 </fv-radio-group>
 </ClientOnly>
@@ -125,14 +125,14 @@
 ```vue
 <fv-radio-group v-model="value"  label="options:"  disabled>
 <div style="margin:5px 0">
-  <fv-radio label="option1" icon="MSNLogo">option1</fv-radio>
-  <fv-radio label="option2" icon="MSNLogo">option2</fv-radio>
-  <fv-radio label="option3" icon="MSNLogo">option3</fv-radio>
+  <fv-radio label="option1" icon="QuickNote">option1</fv-radio>
+  <fv-radio label="option2" icon="QuickNote">option2</fv-radio>
+  <fv-radio label="option3" icon="QuickNote">option3</fv-radio>
 </div>
 <div>
-  <fv-radio label="option4" icon="MSNLogo">option4</fv-radio>
-  <fv-radio label="option5" icon="MSNLogo">option5</fv-radio>
-  <fv-radio label="option6" icon="MSNLogo">option6</fv-radio>
+  <fv-radio label="option4" icon="QuickNote">option4</fv-radio>
+  <fv-radio label="option5" icon="QuickNote">option5</fv-radio>
+  <fv-radio label="option6" icon="QuickNote">option6</fv-radio>
 </div>
 </fv-radio-group>
 ```

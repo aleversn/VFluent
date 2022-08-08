@@ -296,7 +296,7 @@ export default {
 自定义主体内容
 
 ```vue
-<template v-slot>
+<template>
     <p></p>
 </template>
 ```
