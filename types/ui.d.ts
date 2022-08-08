@@ -48,6 +48,7 @@ import { FvInfiniteScrollView } from './infinitescrollview'
 import { FvTextField } from './textfield'
 import { FvVerifyBox } from './verifybox'
 import { FvRevealContainer } from './revealcontainer'
+import { FvSwipeControl } from './swipecontrol'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -151,4 +152,6 @@ export type Theme = FluentVueTheme
   export class VerifyBox extends FvVerifyBox {}
 /** RevealContainer component */
   export class RevealContainer extends FvRevealContainer {}
+/** SwipeControl component */
+  export class SwipeControl extends FvSwipeControl {}
 

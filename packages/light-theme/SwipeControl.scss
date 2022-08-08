@@ -1,0 +1,5 @@
+@import '../common-theme/SwipeControl.scss';
+.fv-light-SwipeControl{
+  @include fv-SwipeControl();
+}
+    

@@ -27,7 +27,7 @@
                     :borderGradientSize="35"
                     :borderWidth="1"
                 ></fv-reveal-container>
-                <div class="item-content">
+                <div class="item-content" :style="{padding: itemPadding}">
                     <slot
                         name="listItem"
                         :item="item"
@@ -60,6 +60,9 @@ export default {
         },
         choosenBackground: {
             default: '',
+        },
+        itemPadding: {
+            default: ''
         },
         theme: {
             type: String,

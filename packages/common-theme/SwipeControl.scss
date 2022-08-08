@@ -1,0 +1,140 @@
+@mixin fv-SwipeControl {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    .fv-swiper-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .fv-SwipeControl-left {
+            position: relative;
+            width: 100px;
+            height: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            flex-direction: row-reverse;
+            display: flex;
+            align-items: center;
+
+            .fv-SwipeControl-btn {
+                justify-content: flex-end;
+            }
+        }
+
+        .fv-SwipeControl-main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .fv-SwipeControl-right {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .fv-SwipeControl-btn {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            color: whitesmoke;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            transition: all 0.3s;
+
+            .fv-SwipeControl-btn-content-block {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: width 0.1s;
+            }
+
+            &:hover {
+                &.info {
+                    background: rgba(0, 120, 212, 0.8);
+                }
+
+                &.correct {
+                    background: rgba(95, 210, 85, 0.8);
+                }
+
+                &.delete {
+                    background: rgba(235, 85, 69, 0.8);
+                }
+
+                &.tool {
+                    background: rgba(93, 92, 222, 0.8);
+                }
+
+                &.warning {
+                    background: rgba(248, 176, 75, 0.8);
+                }
+            }
+
+            &:active {
+                &.info {
+                    background: rgba(0, 120, 212, 0.9);
+                }
+
+                &.correct {
+                    background: rgba(95, 210, 85, 0.9);
+                }
+
+                &.delete {
+                    background: rgba(235, 85, 69, 0.9);
+                }
+
+                &.tool {
+                    background: rgba(93, 92, 222, 0.9);
+                }
+
+                &.warning {
+                    background: rgba(248, 176, 75, 0.9);
+                }
+            }
+
+            &.info {
+                background: rgba(0, 120, 212, 1);
+            }
+
+            &.correct {
+                background: rgba(95, 210, 85, 1);
+            }
+
+            &.delete {
+                background: rgba(235, 85, 69, 1);
+            }
+
+            &.tool {
+                background: rgba(93, 92, 222, 1);
+            }
+
+            &.warning {
+                background: rgba(248, 176, 75, 1);
+            }
+        }
+    }
+}

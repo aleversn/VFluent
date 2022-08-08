@@ -32,7 +32,7 @@
             align-items: center;
             float: left;
 
-            *{
+            span, p, i {
                 @include nowrap;
 
                 position: relative;
@@ -119,6 +119,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            overflow: hidden;
         }
     }
 }

@@ -382,5 +382,13 @@
       "Dark": "@/dark-theme/RevealContainer.scss",
       "Custom": "@/custom-theme/RevealContainer.scss"
     }
+  },
+  "SwipeControl": {
+    "entry": "@/SwipeControl/index.js",
+    "theme": {
+      "Light": "@/light-theme/SwipeControl.scss",
+      "Dark": "@/dark-theme/SwipeControl.scss",
+      "Custom": "@/custom-theme/SwipeControl.scss"
+    }
   }
 }
