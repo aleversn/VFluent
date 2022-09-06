@@ -40,17 +40,17 @@ components.json # 组件目录(Component directory)
 vue.config.js # Vue cli 配置(Vue cli config)
 ```
 
-### NPM Script CMDs (updated on 2019-12-16) 脚本命令(2019-12-16 更新)
+### NPM Script CMDs
 
 ```bash
-npm run pub # 打包推送到npm(Pack and push to NPM)
-npm run docs:dev # 开发文档模式(Run as development document mode)
-npm run bin:new componentName chineseName #新建组件(Create new component)
-npm run bin:rm componentName #移除组件并重新定制入口(Remove the component and re-customize the entry)
-npm run bin:entry # 定制入口(Custom entry)
+pnpm run pub # 打包推送到npm(Pack and push to NPM)
+pnpm run docs:dev # 开发文档模式(Run as development document mode)
+pnpm run bin:new componentName chineseName #新建组件(Create new component)
+pnpm run bin:rm componentName #移除组件并重新定制入口(Remove the component and re-customize the entry)
+pnpm run bin:entry # 定制入口(Custom entry)
 ```
 
-### Fluent Design UI (Vue 2.0+)
+### Fluent Design UI (Vue 2.7+)
 
 #### DOCS
 
@@ -58,14 +58,10 @@ npm run bin:entry # 定制入口(Custom entry)
 
 #### How to use
 
-1. install via npm
+1. install via pnpm
 
 ```bash
-  yarn add vfluentdesign # recommend
-```
-
-```bash
-  npm i vfluentdesign
+  pnpm i vfluentdesign # recommend
 ```
 
 2. import (vue entry main.js)
@@ -128,3 +124,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+### Status
+
+---
+
+![Alt](https://repobeats.axiom.co/api/embed/c3151fa6bc7f4329d5d136aff5300b5a858f8b67.svg "Repobeats analytics image")
