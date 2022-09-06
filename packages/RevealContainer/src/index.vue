@@ -1,7 +1,7 @@
 <template>
     <div
         :class="['fv-' + $theme + '-RevealContainer']"
-        :style="{ 'border-radius': `${borderRadius}px` }"
+        :style="{ 'border-radius': `${computedBorderRadius}px` }"
         @click="$event => {
         $event.preventDefault();
         if (!isDisabled)
@@ -99,8 +99,8 @@
             <rect
                 :x="borderWidth / 2"
                 :y="borderWidth / 2"
-                :rx="borderRadius"
-                :ry="borderRadius"
+                :rx="computedBorderRadius"
+                :ry="computedBorderRadius"
                 style="box-sizing: border-box;"
                 :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, stroke: `url(#borderG_${id})`, fill: inside ? `url(#backgroundG_${id})` : 'transparent', 'stroke-width': borderWidth }"
             />
@@ -108,8 +108,8 @@
                 v-show="clickDown"
                 :x="borderWidth / 2"
                 :y="borderWidth / 2"
-                :rx="borderRadius"
-                :ry="borderRadius"
+                :rx="computedBorderRadius"
+                :ry="computedBorderRadius"
                 style="stroke: transparent; box-sizing: border-box;"
                 :style="{ width: `${offset.right - offset.left - borderWidth}px`, height: `${offset.bottom - offset.top - borderWidth}px`, fill: inside ? `url(#clickG_${id})` : 'transparent', 'stroke-width': borderWidth }"
             />
@@ -203,6 +203,13 @@ export default {
             let height = bottom - top;
             let matrix = [1, 0, 0, 1, (this.disEl.x - width / 2).toFixed(3), (this.disEl.y - height / 2).toFixed(3)];
             return `matrix(${matrix.join(' ')})`;
+        },
+        computedBorderRadius() {
+            let width = this.offset.right - this.offset.left;
+            let height = this.offset.bottom - this.offset.top;
+            let v = width > height ? height : width;
+            if (v == 0) return this.borderRadius;
+            return this.borderRadius > v / 2 ? v / 2 : this.borderRadius;
         },
         isDisabled() {
             return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
