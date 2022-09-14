@@ -111,7 +111,6 @@ let components = [
 ];
 
 const install = function (Vue) {
-    if (install.installed) return;
     Vue.prototype.$fvGlobal = global;
     Vue.prototype.$SDate = SDate;
     Vue.prototype.$SUtility = SUtility;
@@ -136,10 +135,6 @@ const install = function (Vue) {
     });
     components.map((component) => Vue.use(component));
 };
-
-if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
-}
 
 export default {
     install,
