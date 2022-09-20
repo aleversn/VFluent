@@ -56,8 +56,7 @@ export default {
             default: ""
         },
         fontSize: {
-			default: 13.3,
-			type: String
+			default: 13.3
 		},
 		fontWeight: {
 			default: "normal",
