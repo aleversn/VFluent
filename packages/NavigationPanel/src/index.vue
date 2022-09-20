@@ -7,7 +7,7 @@
             <fv-animated-icon v-show="showBack" value="backScale" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="$emit('back', $event)">
                 <i class="ms-Icon ms-Icon--Back icon"></i>
             </fv-animated-icon>
-            <fv-animated-icon value="scaleXDown" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="expandClick">
+            <fv-animated-icon v-show="showNav" value="scaleXDown" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="expandClick">
                 <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
             </fv-animated-icon>
         </div>
@@ -21,7 +21,7 @@
                     <p class="name title">{{title}}</p>
                 </template>
             </fv-animated-icon>
-            <fv-animated-icon value="scaleXDown" class="fv-nav-default-item control" style="width: calc(100% - 10px);" @click="expandClick">
+            <fv-animated-icon v-show="showNav" value="scaleXDown" class="fv-nav-default-item control" style="width: calc(100% - 10px);" @click="expandClick">
                 <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
                 <template v-slot:content>
                     <p
@@ -91,6 +91,9 @@ export default {
         },
         showBack: {
             default: true,
+        },
+        showNav: {
+            default: true
         },
         showSearch: {
             default: true,

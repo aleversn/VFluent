@@ -11,10 +11,10 @@
                 :borderRadius="borderRadius"
                 :disabled="isDisabled"
             ></fv-reveal-container>
-			<button
+			<div
 				:disabled="disabled"
-				class="button-container"
-				:style="{background: background, borderColor: borderColor, borderWidth: `${borderWidth}px`, borderRadius: `${borderRadius}px`}"
+				class="fv-button-container"
+				:style="{background: background, 'background-repeat': 'no-repeat', 'background-clip': 'content-box', borderColor: borderColor, borderWidth: `${borderWidth}px`, borderRadius: `${borderRadius}px`}"
 			>
 				<span class="content-block" :style="{color: foreground, 'font-size': `${fontSize}px`, 'font-weight': fontWeight}">
 					<i
@@ -24,7 +24,7 @@
 					></i>
 					<slot>Button</slot>
 				</span>
-			</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -56,7 +56,7 @@ export default {
             default: ""
         },
         fontSize: {
-			default: "",
+			default: 13.3,
 			type: String
 		},
 		fontWeight: {

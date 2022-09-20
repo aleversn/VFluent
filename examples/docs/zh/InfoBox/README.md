@@ -18,6 +18,8 @@ export default {
             this.$infoBox('This is a toast info.', {
                 status: 'correct',
                 title: 'Toast Info',
+                confirmTitle: 'Confirm',
+                cancelTitle: 'Cancel',
                 confirm: () => { alert('Confirm'); },
                 cancel: () => { alert('Cancel'); }
             });
@@ -34,6 +36,8 @@ export default {
                 }, 'Visit our website.')
             ]), {
                 status: 'correct',
+                confirmTitle: 'Confirm',
+                cancelTitle: 'Cancel',
                 confirm: () => { alert('Confirm'); },
                 cancel: () => { alert('Cancel'); }
             });
@@ -50,6 +54,8 @@ export default {
                 }, 'Visit our website.')
             ]), {
                 status: 'correct',
+                confirmTitle: 'Confirm',
+                cancelTitle: 'Cancel',
                 showTitleBar: false,
                 control_panel: x => {
                 return h('fv-button', {
@@ -278,6 +284,8 @@ this.$infoBox(h('div', [
     }, 'Visit our website.')
 ]), {
     status: 'correct',
+    confirmTitle: 'Confirm',
+    cancelTitle: 'Cancel',
     confirm: () => { alert('Confirm'); },
     cancel: () => { alert('Cancel'); }
 });
@@ -331,17 +339,17 @@ this.$infoBox(h('div', [
 
 ### Propoties
 ---
-|  属性(attr)  |                    类型(type)                     | 必填(required) | 默认值(default) |        说明(statement)        |
-|:------------:|:-------------------------------------------------:|:--------------:|:---------------:|:-----------------------------:|
-|    title     |                     String                      |       No       |       Tip       |       `InfoBox`窗口标题       |
-|    status    | ['default','warning','correct','blocked','error'] |       No       |     default     |      显示状态, 一共有5种      |
-|     mode     |          ['relative','absolute','fixed']          |       No       |    relative     |         显示定位模式          |
-|    toast     |                     Boolean                     |       No       |      false      | 点击按钮后是否采用`toast`模式 |
-| confirmTitle |                     String                      |       No       |      确定       |         确定按钮标题          |
-| cancelTitle  |                     String                      |       No       |      取消       |         取消按钮标题          |
-|   acrylic    |                     Boolean                     |       No       |      false      |      是否开启背景毛玻璃       |
-| showTitleBar |                     Boolean                     |       No       |      true       |        是否显示标题栏         |
-|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
+|  属性(attr)  |                    类型(type)                     | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:------------:|:-------------------------------------------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+|    title     |                      String                       |       No       |       Tip       |                     `InfoBox`窗口标题                     |
+|    status    | ['default','warning','correct','blocked','error'] |       No       |     default     |                    显示状态, 一共有5种                    |
+|     mode     |          ['relative','absolute','fixed']          |       No       |    relative     |                       显示定位模式                        |
+|    toast     |                      Boolean                      |       No       |      false      |               点击按钮后是否采用`toast`模式               |
+| confirmTitle |                      String                       |       No       |      确定       |                       确定按钮标题                        |
+| cancelTitle  |                      String                       |       No       |      取消       |                       取消按钮标题                        |
+|   acrylic    |                      Boolean                      |       No       |      false      |                    是否开启背景毛玻璃                     |
+| showTitleBar |                      Boolean                      |       No       |      true       |                      是否显示标题栏                       |
+|    theme     |                      String                       |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Events
 ---
