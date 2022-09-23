@@ -73,8 +73,6 @@ sidebarDepth: 2
 
 ### TreeView
 
-
-
 <ClientOnly>
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
 
@@ -88,7 +86,6 @@ sidebarDepth: 2
 ```
 
 ### Slot
-
 
 <ClientOnly>
 <fv-TreeView v-model="files" style="width:200px">
@@ -170,17 +167,19 @@ backgroundColorHover:
 </fv-callout>
 </ClientOnly>
 
-
 <ClientOnly>
 <fv-TreeView 
   :theme="$theme" 
   v-model="files" 
   :checkable="true" 
   @click="click" 
-  :viewStyle="{backgroundColor, backgroundColorHover, height:50}" 
+  :viewStyle="{backgroundColor, height:50}" 
+  :backgroundColorHover="backgroundColorHover"
+  :backgroundColorActive="backgroundColorHover"
   :foreground="foregroundColor"
   :draggable="true" 
   :background="backgroundColor"
+  expandClickMode="icon"
   :space="10">
 </fv-TreeView>
 </ClientOnly>
@@ -191,17 +190,17 @@ backgroundColorHover:
   v-model="files" 
   :checkable="true" 
   @click="click" 
-  :viewStyle="{backgroundColor, backgroundColorHover,height:50}" 
+  :viewStyle="{backgroundColor, height:50}" 
+  :backgroundColorHover="backgroundColorHover"
   :foreground="foregroundColor"
   :background="backgroundColor"
+  expandClickMode="icon"
   :draggable="true" 
   :space="10">
 </fv-TreeView>
 </div>
 
 ```
-
-
 
 ### Propoties
 
@@ -222,6 +221,10 @@ backgroundColorHover:
 |     expandedIcon     |              String              |       No       |       N/A       |               扩展后的箭头               |
 | expandedIconPosition |          ['right','left']          |       No       |     'left'      |                箭头的位置                |
 |    unexpandedIcon    |              String              |       No       |       N/A       |               未扩展的箭头               |
+|    expandClickMode    |              ['normal','icon']             |       No       |       'normal'       |               文件夹展开模式              |
+|    backgroundColorHover    |              String              |       No       |       N/A       |               子项Hover的颜色               |
+|    backgroundColorActive   |              String              |       No       |       N/A       |               子项激活的颜色               |
+|    itemHeight   |              String              |       No       |       N/A       |               子项高度             |        
 
 ### Events
 

@@ -19,7 +19,9 @@
       height: 30px;
       margin: 4px 0;
       .fv-TreeView__label {
-        position: relative; 
+        --fv-TreeView__label-hover-color: initial;
+        --fv-TreeView__label-color: initial;
+        position: relative;
         border-radius: 5px;
         color: inherit;
         padding: 0 0px;
@@ -59,7 +61,7 @@
   .fv-TreeView__tree {
     list-style: none;
     padding: 0;
-    margin:0;
+    margin: 0;
     background-color: inherit;
     color: inherit;
   }

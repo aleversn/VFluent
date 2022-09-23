@@ -1,18 +1,9 @@
 <template>
     <draggable v-bind="dragOptions" class="fv-TreeView__tree" tag="ul" :list="children" @change="change">
-        <item
-            v-for="(item, index) in children"
-            :checkable="checkable"
-            :viewStyle="viewStyle"
-            :key="index"
-            :item="item"
-            :deepth="deepth + 1"
-            :padding="padding"
-            :borderWidth="borderWidth"
-            :revealEffect="revealEffect"
-            @click="click"
-            v-bind="$attrs"
-        >
+        <item v-for="(item, index) in children" :checkable="checkable" :viewStyle="viewStyle" :key="index" :item="item"
+            :deepth="deepth + 1" :padding="padding" :borderWidth="borderWidth" :revealEffect="revealEffect"
+            :backgroundColorHover="backgroundColorHover" :backgroundColorActive="backgroundColorActive" @click="click"
+            :expandClickMode="expandClickMode" v-bind="$attrs" :itemHeight="itemHeight">
             <template v-slot:default="prop">
                 <slot :item="prop.item"></slot>
             </template>
@@ -46,6 +37,19 @@ export default {
             default: 2,
         },
         revealEffect: {},
+        backgroundColorHover: {
+            type: String
+        },
+        backgroundColorActive: {
+            type: String
+        },
+        expandClickMode: {
+            type: String,
+            default: "normal"
+        },
+        itemHeight: {
+            type: String,
+        }
     },
     computed: {
         dragOptions() {

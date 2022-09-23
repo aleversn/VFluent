@@ -1,22 +1,11 @@
 <template>
     <div :class="['fv-' + $theme + '-TreeView']" :style="{ background }" ref="view">
-        <tree-content
-            :style="style"
-            :children="items"
-            :deepth="0"
-            :viewStyle="style"
-            :checkable="checkable"
-            :padding="space"
-            :draggable="draggable"
-            :foreground="foreground"
-            :borderWidth="borderWidth"
-            :revealEffect="revealEffect"
-            :expandedIcon="expandedIcon"
-            :unexpandedIcon="unexpandedIcon"
-            :expandedIconPosition="expandedIconPosition"
-            :background="background"
-            @click="click"
-        >
+        <tree-content :style="style" :children="items" :deepth="0" :viewStyle="style" :checkable="checkable"
+            :padding="space" :draggable="draggable" :foreground="foreground" :borderWidth="borderWidth"
+            :revealEffect="revealEffect" :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon"
+            :expandedIconPosition="expandedIconPosition" :background="background" @click="click"
+            :backgroundColorHover="backgroundColorHover" :backgroundColorActive="backgroundColorActive"
+            :expandClickMode="expandClickMode">
             <template v-slot:default="prop">
                 <slot :item="prop.item"> </slot>
             </template>
@@ -84,6 +73,19 @@ export default {
             type: String,
             default: 'left',
         },
+        backgroundColorHover: {
+            type: String,
+        },
+        backgroundColorActive: {
+            type: String
+        },
+        expandClickMode: {
+            type: String,
+            default: "normal"
+        },
+        itemHeight: {
+            type: String,
+        }
     },
     data() {
         return {

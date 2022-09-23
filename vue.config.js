@@ -22,5 +22,7 @@ module.exports = {
         if (debug)
             config.devtool('source-map')
     },
+    configureWebpack:{
+    },
     lintOnSave: false
 };
