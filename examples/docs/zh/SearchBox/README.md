@@ -1,5 +1,5 @@
 ---
-  title: SearchBox SearchBox
+  title: SearchBox
   sidebarDepth: 2
 ---
   

@@ -1,5 +1,5 @@
 ---
-title: MenuFlyout MenuFlyout
+title: MenuFlyout
 sidebarDepth: 2
 ---
 

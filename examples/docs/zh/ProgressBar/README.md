@@ -1,5 +1,5 @@
 ---
-  title: ProgressBar ProgressBar
+  title: ProgressBar
   sidebarDepth: 2
 ---
   

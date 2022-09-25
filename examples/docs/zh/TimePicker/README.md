@@ -1,5 +1,5 @@
 ---
-  title: TimePicker TimePicker
+  title: TimePicker
   sidebarDepth: 2
 ---
   

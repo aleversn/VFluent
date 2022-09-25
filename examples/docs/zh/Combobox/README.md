@@ -1,5 +1,5 @@
 ---
-  title: Combobox Combobox
+  title: Combobox
   sidebarDepth: 2
 ---
   

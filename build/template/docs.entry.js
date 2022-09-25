@@ -5,7 +5,7 @@
  */
 
 module.exports=`---
-  title: {{chineseName}} {{ComponentName}}
+  title: {{ComponentName}}
   sidebarDepth: 2
 ---
   

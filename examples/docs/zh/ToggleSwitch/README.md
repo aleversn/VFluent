@@ -1,5 +1,5 @@
 ---
-  title: ToggleSwitch ToggleSwitch
+  title: ToggleSwitch
   sidebarDepth: 2
 ---
   

@@ -1,5 +1,5 @@
 ---
-  title: WebWindow WebWindow
+  title: WebWindow
   sidebarDepth: 2
 ---
   

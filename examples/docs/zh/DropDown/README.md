@@ -1,5 +1,5 @@
 ---
-  title: DropDown DropDown
+  title: DropDown
   sidebarDepth: 2
 ---
   

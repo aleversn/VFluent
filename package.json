@@ -52,7 +52,7 @@
     "uppercamelcase": "^3.0.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "^1.2.0"
+    "vuepress": "1.9.7"
   },
   "eslintConfig": {
     "root": true,

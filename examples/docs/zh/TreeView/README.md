@@ -1,5 +1,5 @@
 ---
-title: TreeView TreeView
+title: TreeView
 sidebarDepth: 2
 ---
 

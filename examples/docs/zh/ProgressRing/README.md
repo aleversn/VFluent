@@ -1,5 +1,5 @@
 ---
-  title: ProgressRing ProgressRing
+  title: ProgressRing
   sidebarDepth: 2
 ---
   

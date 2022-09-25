@@ -1,5 +1,5 @@
 ---
-  title: RevealContainer RevealContainer
+  title: RevealContainer
   sidebarDepth: 2
 ---
   

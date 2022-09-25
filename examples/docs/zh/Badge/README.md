@@ -1,5 +1,5 @@
 ---
-  title: Badge Badge
+  title: Badge
   sidebarDepth: 2
 ---
   

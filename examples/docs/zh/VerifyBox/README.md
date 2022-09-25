@@ -1,5 +1,5 @@
 ---
-  title: VerifyBox VerifyBox
+  title: VerifyBox
   sidebarDepth: 2
 ---
   

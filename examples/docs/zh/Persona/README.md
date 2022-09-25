@@ -1,5 +1,5 @@
 ---
-  title: Persona Persona
+  title: Persona
   sidebarDepth: 2
 ---
   

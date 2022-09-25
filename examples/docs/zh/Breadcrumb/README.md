@@ -1,5 +1,5 @@
 ---
-  title: Breadcrumb Breadcrumb
+  title: Breadcrumb
   sidebarDepth: 2
 ---
   

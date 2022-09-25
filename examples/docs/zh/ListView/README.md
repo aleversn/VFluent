@@ -1,5 +1,5 @@
 ---
-  title: ListView ListView
+  title: ListView
   sidebarDepth: 2
 ---
   

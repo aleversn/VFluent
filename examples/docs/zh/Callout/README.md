@@ -1,5 +1,5 @@
 ---
-title: Callout Callout
+title: Callout
 sidebarDepth: 2
 ---
 

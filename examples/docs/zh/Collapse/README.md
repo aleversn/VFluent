@@ -1,5 +1,5 @@
 ---
-  title: Collapse Collapse
+  title: Collapse
   sidebarDepth: 2
 ---
   

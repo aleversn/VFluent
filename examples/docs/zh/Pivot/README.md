@@ -1,5 +1,5 @@
 ---
-  title: Pivot Pivot
+  title: Pivot
   sidebarDepth: 2
 ---
   

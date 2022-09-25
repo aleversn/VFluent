@@ -1,5 +1,5 @@
 ---
-  title: TextField TextField
+  title: TextField
   sidebarDepth: 2
 ---
   

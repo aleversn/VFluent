@@ -1,5 +1,5 @@
 ---
-  title: DatePicker DatePicker
+  title: DatePicker
   sidebarDepth: 2
 ---
   

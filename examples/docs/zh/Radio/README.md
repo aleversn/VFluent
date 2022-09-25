@@ -1,5 +1,5 @@
 ---
-  title: Radio Radio
+  title: Radio
   sidebarDepth: 2
 ---
 

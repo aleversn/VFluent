@@ -5,6 +5,7 @@
 @require './wrapper'
 @require './toc'
 
+
 html, body
   padding 0
   margin 0
@@ -19,8 +20,9 @@ body
   background whitesmoke
   min-height 100vh
 
-.page
-  padding-left $sidebarWidth
+.page 
+  &.expand
+    padding-left 350px
 
 .navbar
   position fixed

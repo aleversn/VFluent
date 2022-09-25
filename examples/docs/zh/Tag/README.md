@@ -1,5 +1,5 @@
 ---
-  title: Tag Tag
+  title: Tag
   sidebarDepth: 2
 ---
   

@@ -1,25 +1,12 @@
 <template>
     <div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
-        <!-- <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" /> -->
 
-        <!-- <div class="sidebar-mask" @click="toggleSidebar(false)" /> -->
-
-        <!-- <Sidebar
-      :items="sidebarItems"
-      @toggle-sidebar="toggleSidebar"
-    >
-      <template #top>
-        <slot name="sidebar-top" />
-      </template>
-      <template #bottom>
-        <slot name="sidebar-bottom" />
-      </template>
-    </Sidebar>-->
-        <NavPanel :show="isSidebarOpen" @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description" @expand-click="isSidebarOpen ^= true"></NavPanel>
+        <NavPanel :show.sync="isSidebarOpen" @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description"
+            @expand-click="isSidebarOpen ^= true"></NavPanel>
 
         <Home v-if="$page.frontmatter.home" />
 
-        <Page v-else :sidebar-items="sidebarItems">
+        <Page v-else :sidebar-items="sidebarItems" :expand="isSidebarOpen">
             <template #top>
                 <slot name="page-top" />
             </template>
@@ -127,32 +114,32 @@ export default {
     height: 8px;
     width: 8px;
 }
+
 *::-webkit-scrollbar-track {
     background: rgb(239, 239, 239);
     border-radius: 2px;
 }
+
 *::-webkit-scrollbar-thumb {
     background: #bfbfbf;
     border-radius: 5px;
 }
+
 *::-webkit-scrollbar-thumb:hover {
     background: #999;
 }
+
 *::-webkit-scrollbar-corner {
     background: #179a16;
 }
 
-body
-{
-    position: fixed;
+body {
     left: 0px;
     top: 0px;
     width: 100%;
     height: 100%;
-    overflow: hidden;
 
-    #app
-    {
+    #app {
         position: relative;
         width: 100%;
         height: 100%;
