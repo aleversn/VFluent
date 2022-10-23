@@ -9,10 +9,12 @@
   }
   .fv-TreeView--item {
     .fv-TreeView--item-field {
-      --fv-TreeView--item-field-padding-left: 0px;
+      --fv-TreeView--item-field-padding-left: initial;
+      --fv-TreeView--item-field-height: initial;
       padding-left: var(--fv-TreeView--item-field-padding-left);
       display: flex;
       align-items: center;
+      height: var(--fv-TreeView--item-field-height);
       .fv-TreeView--item-checkbox {
         margin-right: 5px;
       }

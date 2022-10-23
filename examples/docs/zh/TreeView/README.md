@@ -13,36 +13,36 @@ sidebarDepth: 2
         backgroundColorHover:'rgba(41, 181, 255,1)',
         foregroundColor:'#fff',
           files:[
-          {
-          label:"Folder",
-          icon: "https://img.icons8.com/bubbles/2x/folder-invoices.png",
-          children:[
             {
-              label:"Folder",
-              icon: "Folder",
-              children:[
-                {
-                  label:"File",
-                  icon: "FileCode"
-
-                },
-                
-            {
-              label:"File",
-                  icon: "FileCode"
-            }
-              ]
-            },
-            {
-              label:"File",
-                  icon: "FileCode"
-            },
-          ]
+            label:"Folder",
+            icon: "https://img.icons8.com/bubbles/2x/folder-invoices.png",
+            children:[
+              {
+                label:"Folder",
+                icon: "Folder",
+                children:[
+                  {
+                    label:"File",
+                    icon: "FileCode"
+                  },
+                  {
+                    "label": "File",
+                    "icon": "FileCode"
+                  },
+              ]},    
+              {
+                label:"File",
+                    icon: "FileCode"
+              },
+              {
+                label:"File",
+                    icon: "FileCode"
+              },
+            ]
         },
         {
           label:"File",
-        icon: "FileCode"
-
+          icon: "FileCode"
         }]
       }
     },
@@ -51,15 +51,23 @@ sidebarDepth: 2
         return !this.theme?'light':'dark';
       },
     },
+    mounted(){
+      let item = this.files[0].children[0];
+      let temp = []
+      for (let i = 0;i<100;++i){
+          temp.push(Object.assign({},item.children[0]));
+      }
+      item.children.push(...temp);
+    },
     methods:{
       alert(text){
         alert(text);
       },
+      click(){
+
+      },
       go(url){
         window.location.href=url
-      },
-      click(item){
-        // console.log(item)
       },
       json(val){
         return JSON.stringify(val,null,4).replace(/\n/g,'<br/>').replace(/\s/g,'&nbsp;')
@@ -90,7 +98,9 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-TreeView v-model="files" style="width:200px">
   <template v-slot:default="prop">
+
     {{prop.item.label}}
+
   </template>
 </fv-TreeView>
 </ClientOnly>
@@ -257,7 +267,8 @@ backgroundColorHover:
           {
             "label": "File",
             "icon": "FileCode"
-          }
+          },
+          
         ]
       },
       {

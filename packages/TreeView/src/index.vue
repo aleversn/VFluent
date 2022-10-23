@@ -1,7 +1,7 @@
 <template>
     <ul :class="[`fv-${$theme}-TreeView`]">
         <!-- Tree -->
-        <item v-for="(item,index) in value" :key="index" :item="item">
+        <item v-for="(item,index) in value" :key="index" :item="item" :checkable="checkable">
         </item>
     </ul>
 </template>
