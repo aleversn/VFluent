@@ -10,8 +10,8 @@ sidebarDepth: 2
       return {
         theme:0,
         backgroundColor:'rgba(41, 181, 255,0.9)',
-        backgroundColorHover:'rgba(41, 181, 255,1)',
-        foregroundColor:'#fff',
+        backgroundColorHover:'rgba(0, 162, 247,1)',
+        foregroundColor:'#000',
           files:[
             {
             label:"Folder",
@@ -57,14 +57,14 @@ sidebarDepth: 2
       for (let i = 0;i<100;++i){
           temp.push(Object.assign({},item.children[0]));
       }
-      item.children.push(...temp);
+      item.children = temp;
     },
     methods:{
       alert(text){
         alert(text);
       },
-      click(){
-
+      click(item){
+        console.log(item)
       },
       go(url){
         window.location.href=url
@@ -83,13 +83,11 @@ sidebarDepth: 2
 
 <ClientOnly>
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
-
 </fv-TreeView>
 </ClientOnly>
 
 ```vue
 <fv-TreeView v-model="files" style="width:200px" :viewStyle="{backgroundColor:'transparent'}" background="transparent">
-
 </fv-TreeView>
 ```
 
@@ -113,23 +111,7 @@ sidebarDepth: 2
 </fv-TreeView>
 ```
 
-### TreeView Expand Position
-
-  
-
-<ClientOnly>
-<fv-TreeView  v-model="files" expandedIconPosition="right" style="width:200px">
-</fv-TreeView>
-</ClientOnly>
-
-```vue
-<fv-TreeView 
-  v-model="files"
-  expandedIconPosition="right">
-</fv-TreeView>
-```
-
-### TreeView Chcekable
+### TreeView Checkable
 
   
 
@@ -221,20 +203,19 @@ backgroundColorHover:
 |        theme         | ['system','dark','light','custom'] |       No       |    'system'     |                  主题色                  |
 |     data/v-model     |              Array               |      Yes       |       N/A       |              数据，详见data              |
 |       dragable       |             Boolean              |       No       |      false      |                是否可拖动                |
-|      viewStyle       |              Object              |       No       |       N/A       |   视图样式，同:style，但该样式为响应式   |
-|     revealEffect     |             Boolean              |       No       |      true       | fluentRevealEffect是否开启(仅为初始状态) |
 |      checkable       |             Boolean              |       No       |      false      |                 是否可选                 |
 |        space         |              Number              |       No       |       20        |          树形父与子间的间距(px)          |
-|     borderWidth      |              Number              |       No       |        2        |                 边框大小                 |
 |      foreground      |              String              |       No       |       N/A       |                  前景色                  |
 |      background      |              String              |       No       |       N/A       |                  背景色                  |
 |     expandedIcon     |              String              |       No       |       N/A       |               扩展后的箭头               |
-| expandedIconPosition |          ['right','left']          |       No       |     'left'      |                箭头的位置                |
 |    unexpandedIcon    |              String              |       No       |       N/A       |               未扩展的箭头               |
-|    expandClickMode    |              ['normal','icon']             |       No       |       'normal'       |               文件夹展开模式              |
 |    backgroundColorHover    |              String              |       No       |       N/A       |               子项Hover的颜色               |
 |    backgroundColorActive   |              String              |       No       |       N/A       |               子项激活的颜色               |
 |    itemHeight   |              String              |       No       |       N/A       |               子项高度             |        
+
+::: warning Break Change Warning
+Properties viewStyle, borderWidth, revealEffect, expandedIconPosition, expandClickMode are obsolete
+:::
 
 ### Events
 
@@ -242,8 +223,11 @@ backgroundColorHover:
 
 | 事件名(Name) | 参数类型(args) |            说明(statement)             |
 |:------------:|:--------------:|:--------------------------------------:|
-|    change    |      data      | 当data发生改变时触发，第一个参数为data |
 |    click     |      item      |  当点击时触发，第一个参数为点击的item  |
+
+::: warning Break Change Warning
+Event change are obsolete
+:::
 
 ### Data
 
