@@ -1,167 +1,109 @@
 <template>
-    <div :class="['fv-' + $theme + '-TreeView']" :style="{ background }" ref="view">
-        <tree-content :style="style" :children="items" :deepth="0" :viewStyle="style" :checkable="checkable"
-            :padding="space" :draggable="draggable" :foreground="foreground" :borderWidth="borderWidth"
-            :revealEffect="revealEffect" :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon"
-            :expandedIconPosition="expandedIconPosition" :background="background" @click="click"
-            :backgroundColorHover="backgroundColorHover" :backgroundColorActive="backgroundColorActive"
-            :expandClickMode="expandClickMode">
-            <template v-slot:default="prop">
-                <slot :item="prop.item"> </slot>
-            </template>
-        </tree-content>
-    </div>
+    <draggable-component tag="ul" :class="[`fv-${$theme}-TreeView`]" :style="listStyle" :list="value"
+        v-bind="dragOptions">
+        <!-- Tree -->
+        <item v-for="(item,index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
+            :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
+            :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect">
+        </item>
+    </draggable-component>
 </template>
 
 <script>
-import '../../office-ui-fabric-core/dist/css/fabric.min.css';
-import TreeContent from './components/content';
-
+import draggableComponent from 'vuedraggable';
+import Item from "./components/item.vue"
 export default {
     name: 'FvTreeView',
     components: {
-        TreeContent,
+        Item,
+        draggableComponent
     },
     props: {
         theme: {
             type: String,
-            default: 'system',
+            default: "system"
         },
         checkable: {
             type: Boolean,
-            default: false,
+            default: false
         },
-        data: {
-            default: function () {
-                return [];
-            },
+        value: {
             required: true,
             type: Array,
+            default: () => []
+        },
+        itemHeight: {
+            type: [String, Number],
         },
         space: {
-            default: 20,
             type: Number,
+            default: 20
         },
-        borderWidth: {
-            default: 2,
+        foreground: {
+            type: String
         },
-        revealEffect: {
-            type: Boolean,
-            default: true,
+        background: {
+            type: String
         },
-        draggable: {
-            type: Boolean,
-            default: false,
-        },
-        viewStyle: {},
         expandedIcon: {
             type: String,
-            default: 'ChevronDownMed',
+            default: "ChevronDownSmall"
         },
         unexpandedIcon: {
             type: String,
-            default: 'ChevronUpMed',
-        },
-        foreground: {
-            type: String,
-        },
-        background: {
-            type: String,
-            default: undefined,
-        },
-        expandedIconPosition: {
-            type: String,
-            default: 'left',
+            default: "ChevronRightSmall"
         },
         backgroundColorHover: {
-            type: String,
+            type: String
         },
         backgroundColorActive: {
             type: String
         },
-        expandClickMode: {
-            type: String,
-            default: "normal"
-        },
-        itemHeight: {
-            type: String,
+        draggable: {
+            type: Boolean,
+            default: false
         }
-    },
-    data() {
-        return {
-            style: {},
-            changeLock: false,
-        };
-    },
-    model: {
-        prop: 'data',
-        event: 'update:data',
     },
     computed: {
         $theme() {
             if (this.theme === 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
-        items: {
-            get: function () {
-                return this.data;
-            },
-            set: function (val) {
-                this.$emit('update:data', val);
-            },
+        listStyle() {
+            return {
+                "--fv-TreeView--item-field-height": this.itemHeight === undefined ? undefined : typeof this.itemHeight === 'string' ? this.itemHeight : `${this.itemHeight}px`,
+                "--fv-TreeView--item-field-color": this.foreground,
+                "--fv-TreeView--background": this.background,
+                "--fv-TreeView--item-field-hover-bg-color": this.backgroundColorHover,
+                "--fv-TreeView--item-field-active-bg-color": this.backgroundColorActive
+            }
         },
-    },
-    watch: {
-        $theme() {
-            this.$nextTick(() => {
-                this.initStyle();
-            });
-        },
-        data: {
-            handler() {
-                if (this.changeLock) return;
-                this.changeLock = true;
-                this.$emit('change', this.data);
-                setTimeout(() => {
-                    this.changeLock = false;
-                }, 100);
-            },
-            deep: true,
-        },
-        viewStyle: {
-            handler() {
-                this.initStyle();
-            },
-            deep: true,
-        },
-    },
-    mounted() {
-        this.initStyle();
+        dragOptions() {
+            return {
+                animation: 100,
+                group: 'TreeView',
+                disabled: !this.draggable,
+                ghostClass: 'ghost',
+            };
+        }
     },
     methods: {
-        initStyle() {
-            if (document.defaultView) {
-                this.style = this.viewStyle || {
-                    backgroundColor: document.defaultView.getComputedStyle(this.$refs.view, null).backgroundColor,
-                    color: document.defaultView.getComputedStyle(this.$refs.view, null).color,
-                };
-            }
+        onClickItem(item) {
+            this.$emit("click", item)
         },
-        mutexSelected(item, items) {
-            for (let index in items) {
-                let el = items[index];
-                if (el != item && el.selected == true) {
-                    el.selected = false;
-                }
-                if (el.children) {
-                    this.mutexSelected(item, el.children);
+        onSingleSelect(item) {
+            this.toggleDescendants(this.value, item);
+        },
+        toggleDescendants(children, target) {
+            if (Array.isArray(children)) {
+                for (let child of children) {
+                    if (child !== target) {
+                        this.$set(child, "selected", false);
+                    }
+                    this.toggleDescendants(child.children, target)
                 }
             }
         },
-        click(item) {
-            if (!this.checkable) this.mutexSelected(item, this.items);
-            this.$emit('click', item);
-        },
-    },
-};
+    }
+}
 </script>
