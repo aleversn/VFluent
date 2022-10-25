@@ -1,6 +1,7 @@
 @import "../common-theme/TreeView.scss";
 .fv-light-TreeView {
   @include fv-TreeView();
+  --fv-TreeView--item-field-color: rgba(0,0,0,1);
   --fv-TreeView--item-field-hover-bg-color: rgba(234, 234, 234, 1);
   --fv-TreeView--item-field-active-bg-color: rgba(234, 234, 234, 1);
 }

@@ -2,10 +2,9 @@
     <li class="fv-TreeView--item">
         <div class="fv-TreeView--item-field" :class="{
             active: item.selected === true
-        }" ref="field" @click.stop="clickSelected">
-
+        }" ref="field" @click.stop="clickSelected()">
             <div v-if="checkable" class="fv-TreeView--item-checkbox">
-                <fv-check-box v-model="item.selected" @click.native.stop="clickSelected" :background="foreground"
+                <fv-check-box v-model="item.selected" @click.native.stop="clickSelected(false)" :background="foreground"
                     :borderColor="foreground">
                 </fv-check-box>
             </div>
@@ -33,7 +32,8 @@
             <tree-item v-for="(child, index) in renderList" :key="index" :item="child" :deepth="deepth + 1"
                 :loadCount="loadCount" :space="space" @updateSelected="onChildSelect" :checkable="checkable"
                 :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
-                :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select', $event)">
+                :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select', $event)"
+                :expand-click-mode="expandClickMode">
                 <template v-slot:default="prop">
                     <slot :item="prop.item">
                     </slot>
@@ -86,6 +86,10 @@ export default {
         draggable: {
             type: Boolean,
             default: false
+        },
+        expandClickMode: {
+            type: String,
+            default: "icon"
         }
     },
     data() {
@@ -177,7 +181,13 @@ export default {
                 }
             }
         },
-        clickSelected() {
+        clickSelected(expanded=true) {
+            if (this.expandClickMode === 'normal' && expanded) {
+                if (this.item.expanded === null) {
+                    this.item.expanded = false;
+                }
+                this.item.expanded = !this.item.expanded
+            }
             if (this.checkable) {
                 // broadcast tree
                 this.updateDescendantsSelected(this.item, this.item.selected);
@@ -189,6 +199,7 @@ export default {
                 }
             }
             this.$emit("handle-click", this.item)
+            return true;
         },
         onChildSelect() {
             if (!this.checkable) {

@@ -4,7 +4,7 @@
         <!-- Tree -->
         <item v-for="(item, index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
             :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
-            :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect">
+            :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect" :expandClickMode="expandClickMode">
             <template v-slot:default="prop">
                 <slot :item="prop.item">
                 </slot>
@@ -69,6 +69,10 @@ export default {
         },
         leftIconForeground: {
             type: String,
+        },
+        expandClickMode: {
+            type: String,
+            default: 'icon'
         }
     },
     computed: {
