@@ -4,6 +4,7 @@
   --fv-TreeView--background: initial;
   --fv-TreeView--item-field-hover-bg-color: initial;
   --fv-TreeView--item-field-active-bg-color: initial;
+  --fv-TreeView--item-field-left-icon-color: rgba(0, 85, 161,1);
   padding: 1px 0;
   position: relative;
   border-radius: 5px;
@@ -41,7 +42,7 @@
           height: 16px;
           width: 3px;
           border-radius: 1.5px;
-          background-color: rgba(0, 85, 161,1);
+          background-color: var(--fv-TreeView--item-field-left-icon-color);
           transform: translate(-50%,0);
         }
       }

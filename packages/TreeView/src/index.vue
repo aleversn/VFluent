@@ -62,6 +62,9 @@ export default {
         draggable: {
             type: Boolean,
             default: false
+        },
+        leftIconForeground:{
+            type: String,
         }
     },
     computed: {
@@ -75,7 +78,8 @@ export default {
                 "--fv-TreeView--item-field-color": this.foreground,
                 "--fv-TreeView--background": this.background,
                 "--fv-TreeView--item-field-hover-bg-color": this.backgroundColorHover,
-                "--fv-TreeView--item-field-active-bg-color": this.backgroundColorActive
+                "--fv-TreeView--item-field-active-bg-color": this.backgroundColorActive,
+                "--fv-TreeView--item-field-left-icon-color": this.leftIconForeground
             }
         },
         dragOptions() {

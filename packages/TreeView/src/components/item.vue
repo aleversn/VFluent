@@ -1,7 +1,7 @@
 <template>
     <li class="fv-TreeView--item">
         <div class="fv-TreeView--item-field" :class="{
-            active: item.selected===true
+            active: item.selected === true
         }" ref="field" @click.stop="clickSelected">
             <slot :item="item">
                 <div v-if="checkable" class="fv-TreeView--item-checkbox">
@@ -11,7 +11,7 @@
                 </div>
                 <div class="fv-TreeView--item-expand" @click.stop="clickExpand">
                     <i v-if="item && item.children" class="ms-Icon" :class="[
-                        `ms-Icon--${item.expanded===true?expandedIcon:unexpandedIcon}`
+                        `ms-Icon--${item.expanded === true ? expandedIcon : unexpandedIcon}`
                     ]">
                     </i>
                 </div>
@@ -23,16 +23,16 @@
                     ">
                     </i>
                     <img v-if="item.icon && isURL(item.icon)" class="fv-TreeView--item-label-icon" :src="item.icon" />
-                    <span class="fv-TreeView--item-label-text">{{item.label}}</span>
+                    <span class="fv-TreeView--item-label-text">{{ item.label }}</span>
                 </div>
             </slot>
         </div>
         <draggable tag="ul" v-bind="dragOptions" class="fv-TreeView--children" :list="item.children"
-            v-if="item && item.children && item.expanded!==null" v-show="item.expanded" @change="dragChange">
-            <tree-item v-for="(child,index) in renderList" :key="index" :item="child" :deepth="deepth+1"
+            v-if="item && item.children && item.expanded !== null" v-show="item.expanded" @change="dragChange">
+            <tree-item v-for="(child, index) in renderList" :key="index" :item="child" :deepth="deepth + 1"
                 :loadCount="loadCount" :space="space" @updateSelected="onChildSelect" :checkable="checkable"
                 :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
-                :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select',$event)">
+                :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select', $event)">
             </tree-item>
         </draggable>
     </li>
@@ -107,6 +107,13 @@ export default {
             };
         }
     },
+    watch: {
+        "item.expanded"(val) {
+            if (val === true) {
+                this.loadNext();
+            }
+        }
+    },
     mounted() {
         this.initItemProperties(this.item)
         this.initItemPadding();
@@ -156,9 +163,6 @@ export default {
                 this.item.expanded = false;
             }
             this.item.expanded = !this.item.expanded
-            if (this.item.expanded) {
-                this.loadNext();
-            }
         },
         updateDescendantsSelected(item, selected) {
             this.$set(item, "selected", selected);

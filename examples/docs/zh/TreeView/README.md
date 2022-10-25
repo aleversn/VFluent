@@ -168,6 +168,7 @@ backgroundColorHover:
   :viewStyle="{backgroundColor, height:50}" 
   :backgroundColorHover="backgroundColorHover"
   :backgroundColorActive="backgroundColorHover"
+  leftIconForeground="black"
   :foreground="foregroundColor"
   :draggable="true" 
   :background="backgroundColor"
@@ -184,6 +185,8 @@ backgroundColorHover:
   @click="click" 
   :viewStyle="{backgroundColor, height:50}" 
   :backgroundColorHover="backgroundColorHover"
+  :backgroundColorActive="backgroundColorHover"
+  leftIconForeground="black"
   :foreground="foregroundColor"
   :background="backgroundColor"
   expandClickMode="icon"
@@ -212,6 +215,7 @@ backgroundColorHover:
 |    backgroundColorHover    |              String              |       No       |       N/A       |               子项Hover的颜色               |
 |    backgroundColorActive   |              String              |       No       |       N/A       |               子项激活的颜色               |
 |    itemHeight   |              String              |       No       |       N/A       |               子项高度             |        
+|    leftIconForeground |    String       |         No            |  N/A          | 子项选中后左边竖条的颜色        |
 
 ::: warning Break Change Warning
 Properties viewStyle, borderWidth, revealEffect, expandedIconPosition, expandClickMode are obsolete
