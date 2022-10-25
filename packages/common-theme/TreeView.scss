@@ -9,6 +9,8 @@
   position: relative;
   border-radius: 5px;
   background: var(--fv-TreeView--background);
+  overflow: auto;
+  box-sizing: border-box;
   ul,
   li {
     list-style: none;

@@ -96,9 +96,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-TreeView v-model="files" style="width:200px">
   <template v-slot:default="prop">
-
     {{prop.item.label}}
-
   </template>
 </fv-TreeView>
 </ClientOnly>

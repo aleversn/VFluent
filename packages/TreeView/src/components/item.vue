@@ -3,19 +3,20 @@
         <div class="fv-TreeView--item-field" :class="{
             active: item.selected === true
         }" ref="field" @click.stop="clickSelected">
-            <slot :item="item">
-                <div v-if="checkable" class="fv-TreeView--item-checkbox">
-                    <fv-check-box v-model="item.selected" @click.native.stop="clickSelected" :background="foreground"
-                        :borderColor="foreground">
-                    </fv-check-box>
-                </div>
-                <div class="fv-TreeView--item-expand" @click.stop="clickExpand">
-                    <i v-if="item && item.children" class="ms-Icon" :class="[
-                        `ms-Icon--${item.expanded === true ? expandedIcon : unexpandedIcon}`
-                    ]">
-                    </i>
-                </div>
-                <div class="fv-TreeView--item-label">
+
+            <div v-if="checkable" class="fv-TreeView--item-checkbox">
+                <fv-check-box v-model="item.selected" @click.native.stop="clickSelected" :background="foreground"
+                    :borderColor="foreground">
+                </fv-check-box>
+            </div>
+            <div class="fv-TreeView--item-expand" @click.stop="clickExpand">
+                <i v-if="item && item.children" class="ms-Icon" :class="[
+                    `ms-Icon--${item.expanded === true ? expandedIcon : unexpandedIcon}`
+                ]">
+                </i>
+            </div>
+            <div class="fv-TreeView--item-label">
+                <slot :item="item">
                     <i v-if="item.icon && !isURL(item.icon)" class="ms-Icon fv-TreeView--item-label-icon" :class="
                         [
                             `ms-Icon--${item.icon}`
@@ -24,8 +25,8 @@
                     </i>
                     <img v-if="item.icon && isURL(item.icon)" class="fv-TreeView--item-label-icon" :src="item.icon" />
                     <span class="fv-TreeView--item-label-text">{{ item.label }}</span>
-                </div>
-            </slot>
+                </slot>
+            </div>
         </div>
         <draggable tag="ul" v-bind="dragOptions" class="fv-TreeView--children" :list="item.children"
             v-if="item && item.children && item.expanded !== null" v-show="item.expanded" @change="dragChange">
@@ -33,6 +34,10 @@
                 :loadCount="loadCount" :space="space" @updateSelected="onChildSelect" :checkable="checkable"
                 :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
                 :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select', $event)">
+                <template v-slot:default="prop">
+                    <slot :item="prop.item">
+                    </slot>
+                </template>
             </tree-item>
         </draggable>
     </li>

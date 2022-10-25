@@ -2,9 +2,13 @@
     <draggable-component tag="ul" :class="[`fv-${$theme}-TreeView`]" :style="listStyle" :list="value"
         v-bind="dragOptions">
         <!-- Tree -->
-        <item v-for="(item,index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
+        <item v-for="(item, index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
             :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
             :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect">
+            <template v-slot:default="prop">
+                <slot :item="prop.item">
+                </slot>
+            </template>
         </item>
     </draggable-component>
 </template>
@@ -63,7 +67,7 @@ export default {
             type: Boolean,
             default: false
         },
-        leftIconForeground:{
+        leftIconForeground: {
             type: String,
         }
     },
