@@ -225,15 +225,17 @@ export default {
 
 ### Propoties
 ---
-| 属性(attr) |               类型(type)               | 必填(required) | 默认值(default) |   说明(statement)    |
-|:----------:|:--------------------------------------:|:--------------:|:---------------:|:--------------------:|
-|    src     |                String                |       No       |       N/A       | Persona图像资源链接  |
-|    name    |                String                |       No       |       N/A       |         名称         |
-|    size    |                Number                |       No       |       40        |   Persona头像大小    |
-|   status   | [online,offline,away,busy,dnd,blocked] |       No       |       N/A       |     Persona状态      |
-|    icon    |                String                |       No       |       N/A       |    自定义状态图标    |
-| iconColor  |            [string(color)]             |       No       |       N/A       | 自定义状态图标前景色 |
-|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
+| 属性(attr) |               类型(type)               | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:----------:|:--------------------------------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+|    src     |                 String                 |       No       |       N/A       |                    Persona图像资源链接                    |
+|    name    |                 String                 |       No       |       N/A       |                           名称                            |
+|    size    |                 Number                 |       No       |       40        |                      Persona头像大小                      |
+|   status   | [online,offline,away,busy,dnd,blocked] |       No       |       N/A       |                        Persona状态                        |
+|    icon    |                 String                 |       No       |       N/A       |                      自定义状态图标                       |
+| iconColor  |            [string(color)]             |       No       |       N/A       |                   自定义状态图标前景色                    |
+| background |            [string(color)]             |       No       |       N/A       |                   自定义状态图标背景色                    |
+|  showInfo  |                Boolean                 |       No       |      false      |                       是否显示信息                        |
+|   theme    |                 String                 |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Slot
 ---

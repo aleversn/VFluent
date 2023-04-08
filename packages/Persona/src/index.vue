@@ -1,7 +1,7 @@
 <template>
 <div :class="['fv-'+$theme+'-Persona']">
     <div class="persona-avatar" :style="{width: `${size}px`, height: `${size}px`}">
-        <div class="persona-bg" :style="{background: nameCardBackground, 'font-size': `${size / 2.3}px`}">{{nameCard}}</div>
+        <div class="persona-bg" :style="{background: background ? background : nameCardBackground, 'font-size': `${size / 2.3}px`}">{{nameCard}}</div>
         <fv-img v-if="src !== ''" :src="src" style="width: 100%; height: 100%; border-radius: 50%;"></fv-img>
         <i v-show="showStatus" class="ms-Icon status-icon" :class="[`ms-Icon--${currentIcon}`]" :style="{'font-size': `${iconFontSize}px`, color: currentIconColor}"></i>
     </div>
@@ -38,6 +38,9 @@ export default {
             default: ""
         },
         iconColor: {
+            default: ""
+        },
+        background: {
             default: ""
         },
         showInfo: {
