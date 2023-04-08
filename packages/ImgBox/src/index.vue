@@ -1,6 +1,6 @@
 <template>
 <div :class="'fv-'+$theme+'-ImgBox'" :style="{background: onbackground ? 'url('+imgUri.data+') no-repeat' : ''}">
-    <div v-show="imgUri.state!='done'" class="content">
+    <div v-show="imgUri.state!='done'" class="fv-img-box-content">
         <fv-progress-bar v-show="imgUri.state=='none'" :loading="true" :foreground="loadingColor" style="width: 100%;"></fv-progress-bar>
         <fv-progress-ring v-show="imgUri.state=='loading'" :loading="true" :legacy="true" :color="loadingColor"></fv-progress-ring>
     </div>

@@ -91,6 +91,9 @@ export default {
         },
         thisMaskValue (val) {
             this.$emit("input", val);
+        },
+        pattern (val) {
+            this.thisPattern = new RegExp(val);
         }
     },
     computed: {
@@ -114,12 +117,13 @@ export default {
         }
     },
     mounted () {
-        
+        this.thisPattern = new RegExp(this.pattern);
     },
     methods: {
         keyDown (event) {
             this.$emit("keydown", event);
-            if(!event.key.match(this.thisPattern))
+            if(!event.key) return;
+            if(!this.thisPattern.test(event.key))
                 event.preventDefault();
         },
         focusInspect () {

@@ -59,6 +59,26 @@ With an icon
 <fv-TextBox icon="Search"></fv-TextBox>
 ```
 
+With type
+
+<ClientOnly>
+<fv-TextBox icon="RevealPasswordMedium" type="password"></fv-TextBox>
+</ClientOnly>
+
+```vue
+<fv-TextBox icon="RevealPasswordMedium" type="password"></fv-TextBox>
+```
+
+With pattern
+
+<ClientOnly>
+<fv-TextBox pattern="[a-zA-Z]"></fv-TextBox>
+</ClientOnly>
+
+```vue
+<fv-TextBox pattern="[a-zA-Z]"></fv-TextBox>
+```
+
 ### TextBox-With Input Mask
 ---
 Standard

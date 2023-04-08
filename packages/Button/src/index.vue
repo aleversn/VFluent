@@ -16,7 +16,7 @@
 				class="fv-button-container"
 				:style="{background: background, 'background-repeat': 'no-repeat', 'background-clip': 'content-box', borderColor: borderColor, borderWidth: `${borderWidth}px`, borderRadius: `${borderRadius}px`}"
 			>
-				<span class="content-block" :style="{color: foreground, 'font-size': `${fontSize}px`, 'font-weight': fontWeight}">
+				<span class="fv-btn-content-block" :style="{color: foreground, 'font-size': `${fontSize}px`, 'font-weight': fontWeight}">
 					<i
 						class="ms-Icon"
 						:class="`ms-Icon--${icon}`"

@@ -120,6 +120,7 @@ export default {
     mounted () {
         this.thisValueInit();
         this.syncValue(this.value);
+        this.thisPattern = new RegExp(this.pattern);
         this.$refs.input.addEventListener('paste', event => {
             let data = event.clipboardData.getData('text/plain');
             let count = 0;
@@ -177,7 +178,7 @@ export default {
             }
 
             if(this.isInputCode(k) && !event.crtlKey) {
-                if(!event.key.match(this.thisPattern))
+                if(!this.thisPattern.test(event.key))
                     return 0;
                 if(index < this.thisValue.length - 1) {
                     this.$set(this.thisValue, index + 1, {

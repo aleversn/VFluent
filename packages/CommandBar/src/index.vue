@@ -1,6 +1,6 @@
 <template>
-<div :class="'fv-'+$theme+'-CommandBar'">
-    <div class="left-command-bar-container" :style="{background: background}">
+<div :class="'fv-'+$theme+'-CommandBar'" :style="{background: background}">
+    <div class="left-command-bar-container">
         <span v-show="valueTrigger(item.show)" v-for="(item, index) in thisOptions" class="command-bar-item" :class="[valueTrigger(item.type) == 'divider' ? 'hr' : 'normal', {not_disabled: !valueTrigger(item.disabled)}, {disabled: valueTrigger(item.disabled)}]" :key="index" :title="valueTrigger(item.name)" @click="itemClick($event, item)">
             <span v-show="valueTrigger(item.type) !== 'more'" class="s1-container">
                 <fv-reveal-container
