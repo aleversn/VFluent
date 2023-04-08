@@ -145,20 +145,23 @@ Acrylic
 
 ### Propoties
 ---
-|   属性(attr)   |             类型(type)             | 必填(required) | 默认值(default) |    说明(statement)    |
-|:--------------:|:----------------------------------:|:--------------:|:---------------:|:---------------------:|
-|     value      |             Boolean              |       No       |      false      |   显示/隐藏`Panel`    |
-|     title      |              String              |       No       |  Sample Panel   |         标题          |
-|     width      |          [number,string]           |       No       |       340       |         宽度          |
-|     height     |          [number,string]           |       No       |      100%       |         宽度          |
-|   background   |          [string(color)]           |       No       |       N/A       |     `Panel`背景色     |
-|   isNearSide   |             Boolean              |       No       |      false      |    是否从左侧显示     |
-| isCentralSide  |             Boolean              |       No       |      false      |    是否从中央显示     |
-| isLightDismiss |             Boolean              |       No       |      false      |  是否单击空白处关闭   |
-|  showTitleBar  |             Boolean              |       No       |      false      |    是否显示标题栏     |
-|    isFooter    |             Boolean              |       No       |      false      |   是否显示底部控制    |
-|   isAcrylic    |             Boolean              |       No       |      false      | 是否开启`Acrylic`效果 |
-|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
+|   属性(attr)   |   类型(type)    | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:--------------:|:---------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+|     value      |     Boolean     |       No       |      false      |                     显示/隐藏`Panel`                      |
+|     title      |     String      |       No       |  Sample Panel   |                           标题                            |
+|   titleSize    | [number,string] |       No       |       20        |                       标题字体大小                        |
+|  titleWeight   | [number,string] |       No       |       600       |                       标题字体粗细                        |
+|   titleColor   | [string(color)] |       No       |       N/A       |                       标题字体颜色                        |
+|     width      | [number,string] |       No       |       340       |                           宽度                            |
+|     height     | [number,string] |       No       |      100%       |                           宽度                            |
+|   background   | [string(color)] |       No       |       N/A       |                       `Panel`背景色                       |
+|   isNearSide   |     Boolean     |       No       |      false      |                      是否从左侧显示                       |
+| isCentralSide  |     Boolean     |       No       |      false      |                      是否从中央显示                       |
+| isLightDismiss |     Boolean     |       No       |      false      |                    是否单击空白处关闭                     |
+|  showTitleBar  |     Boolean     |       No       |      false      |                      是否显示标题栏                       |
+|    isFooter    |     Boolean     |       No       |      false      |                     是否显示底部控制                      |
+|   isAcrylic    |     Boolean     |       No       |      false      |                   是否开启`Acrylic`效果                   |
+|     theme      |     String      |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Slot
 ---

@@ -6,7 +6,7 @@
             <div v-show="thisValue" class="fv-panel-container" :class="[{'near-side': isNearSide, 'central-side': isCentralSide, 'acrylic-style': isAcrylic}]" :style="{width: finalWidth, height: finalHeight, background: background}">
                 <div v-show="showTitleBar" class="fv-panel-control-block">
                     <slot name="header">
-                        <p class="panel-title">{{title}}</p>
+                        <p class="panel-title" :style="{'font-size': `${titleSize}px`, 'font-weight': titleWeight, color: titleColor}">{{title}}</p>
                         <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
                     </slot>
                 </div>
@@ -36,6 +36,15 @@ export default {
         },
         title: {
             default: "Sample Panel"
+        },
+        titleSize: {
+            default: 20
+        },
+        titleWeight: {
+            default: 600
+        },
+        titleColor: {
+            default: ''
         },
         width: {
             default: "340"
