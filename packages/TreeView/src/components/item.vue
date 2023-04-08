@@ -1,21 +1,21 @@
 <template>
     <li class="fv-TreeView--item">
         <div class="fv-TreeView--item-field" :class="{
-            active: item.selected===true
-        }" ref="field" @click.stop="clickSelected">
-            <slot :item="item">
-                <div v-if="checkable" class="fv-TreeView--item-checkbox">
-                    <fv-check-box v-model="item.selected" @click.native.stop="clickSelected" :background="foreground"
-                        :borderColor="foreground">
-                    </fv-check-box>
-                </div>
-                <div class="fv-TreeView--item-expand" @click.stop="clickExpand">
-                    <i v-if="item && item.children" class="ms-Icon" :class="[
-                        `ms-Icon--${item.expanded===true?expandedIcon:unexpandedIcon}`
-                    ]">
-                    </i>
-                </div>
-                <div class="fv-TreeView--item-label">
+            active: item.selected === true
+        }" ref="field" @click.stop="clickSelected()">
+            <div v-if="checkable" class="fv-TreeView--item-checkbox">
+                <fv-check-box v-model="item.selected" @click.native.stop="clickSelected(false)" :background="foreground"
+                    :borderColor="foreground">
+                </fv-check-box>
+            </div>
+            <div class="fv-TreeView--item-expand" @click.stop="clickExpand">
+                <i v-if="item && item.children" class="ms-Icon" :class="[
+                    `ms-Icon--${item.expanded === true ? expandedIcon : unexpandedIcon}`
+                ]">
+                </i>
+            </div>
+            <div class="fv-TreeView--item-label">
+                <slot :item="item">
                     <i v-if="item.icon && !isURL(item.icon)" class="ms-Icon fv-TreeView--item-label-icon" :class="
                         [
                             `ms-Icon--${item.icon}`
@@ -23,16 +23,21 @@
                     ">
                     </i>
                     <img v-if="item.icon && isURL(item.icon)" class="fv-TreeView--item-label-icon" :src="item.icon" />
-                    <span class="fv-TreeView--item-label-text">{{item.label}}</span>
-                </div>
-            </slot>
+                    <span class="fv-TreeView--item-label-text">{{ item.label }}</span>
+                </slot>
+            </div>
         </div>
         <draggable tag="ul" v-bind="dragOptions" class="fv-TreeView--children" :list="item.children"
-            v-if="item && item.children && item.expanded!==null" v-show="item.expanded" @change="dragChange">
-            <tree-item v-for="(child,index) in renderList" :key="index" :item="child" :deepth="deepth+1"
+            v-if="item && item.children && item.expanded !== null" v-show="item.expanded" @change="dragChange">
+            <tree-item v-for="(child, index) in renderList" :key="index" :item="child" :deepth="deepth + 1"
                 :loadCount="loadCount" :space="space" @updateSelected="onChildSelect" :checkable="checkable"
                 :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
-                :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select',$event)">
+                :draggable="draggable" @handle-click="notifyClick" @single-select="$emit('single-select', $event)"
+                :expand-click-mode="expandClickMode">
+                <template v-slot:default="prop">
+                    <slot :item="prop.item">
+                    </slot>
+                </template>
             </tree-item>
         </draggable>
     </li>
@@ -81,6 +86,10 @@ export default {
         draggable: {
             type: Boolean,
             default: false
+        },
+        expandClickMode: {
+            type: String,
+            default: "icon"
         }
     },
     data() {
@@ -105,6 +114,13 @@ export default {
                 disabled: !this.draggable,
                 ghostClass: 'ghost',
             };
+        }
+    },
+    watch: {
+        "item.expanded"(val) {
+            if (val === true) {
+                this.loadNext();
+            }
         }
     },
     mounted() {
@@ -156,9 +172,6 @@ export default {
                 this.item.expanded = false;
             }
             this.item.expanded = !this.item.expanded
-            if (this.item.expanded) {
-                this.loadNext();
-            }
         },
         updateDescendantsSelected(item, selected) {
             this.$set(item, "selected", selected);
@@ -168,7 +181,13 @@ export default {
                 }
             }
         },
-        clickSelected() {
+        clickSelected(expanded=true) {
+            if (this.expandClickMode === 'normal' && expanded) {
+                if (this.item.expanded === null) {
+                    this.item.expanded = false;
+                }
+                this.item.expanded = !this.item.expanded
+            }
             if (this.checkable) {
                 // broadcast tree
                 this.updateDescendantsSelected(this.item, this.item.selected);
@@ -180,6 +199,7 @@ export default {
                 }
             }
             this.$emit("handle-click", this.item)
+            return true;
         },
         onChildSelect() {
             if (!this.checkable) {

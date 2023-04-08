@@ -2,9 +2,13 @@
     <draggable-component tag="ul" :class="[`fv-${$theme}-TreeView`]" :style="listStyle" :list="value"
         v-bind="dragOptions">
         <!-- Tree -->
-        <item v-for="(item,index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
+        <item v-for="(item, index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
             :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
-            :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect">
+            :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect" :expandClickMode="expandClickMode">
+            <template v-slot:default="prop">
+                <slot :item="prop.item">
+                </slot>
+            </template>
         </item>
     </draggable-component>
 </template>
@@ -62,6 +66,13 @@ export default {
         draggable: {
             type: Boolean,
             default: false
+        },
+        leftIconForeground: {
+            type: String,
+        },
+        expandClickMode: {
+            type: String,
+            default: 'icon'
         }
     },
     computed: {
@@ -75,7 +86,8 @@ export default {
                 "--fv-TreeView--item-field-color": this.foreground,
                 "--fv-TreeView--background": this.background,
                 "--fv-TreeView--item-field-hover-bg-color": this.backgroundColorHover,
-                "--fv-TreeView--item-field-active-bg-color": this.backgroundColorActive
+                "--fv-TreeView--item-field-active-bg-color": this.backgroundColorActive,
+                "--fv-TreeView--item-field-left-icon-color": this.leftIconForeground
             }
         },
         dragOptions() {

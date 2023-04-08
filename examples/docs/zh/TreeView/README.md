@@ -96,9 +96,7 @@ sidebarDepth: 2
 <ClientOnly>
 <fv-TreeView v-model="files" style="width:200px">
   <template v-slot:default="prop">
-
     {{prop.item.label}}
-
   </template>
 </fv-TreeView>
 </ClientOnly>
@@ -220,10 +218,6 @@ backgroundColorHover:
 
 ::: warning Break Change Warning
 Properties viewStyle, borderWidth, revealEffect, expandedIconPosition are obsolete
-:::
-
-::: warning Break Change Warning
-Properties viewStyle, borderWidth, revealEffect, expandedIconPosition, expandClickMode are obsolete
 :::
 
 ### Events
