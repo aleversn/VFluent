@@ -1,5 +1,5 @@
 ---
-  title: InfiniteScrollView InfiniteScrollView
+  title: InfiniteScrollView
   sidebarDepth: 2
 ---
   

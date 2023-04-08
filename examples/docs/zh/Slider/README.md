@@ -1,5 +1,5 @@
 ---
-  title: Slider Slider
+  title: Slider
   sidebarDepth: 2
 ---
   

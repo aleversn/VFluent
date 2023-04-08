@@ -1,5 +1,5 @@
 ---
-title: NavigationPanel NavigationPanel
+title: NavigationPanel
 sidebarDepth: 2
 ---
 

@@ -1,5 +1,5 @@
 ---
-  title: CalendarDatePicker CalendarDatePicker
+  title: CalendarDatePicker
   sidebarDepth: 2
 ---
   

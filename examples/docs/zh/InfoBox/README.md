@@ -1,5 +1,5 @@
 ---
-  title: InfoBox InfoBox
+  title: InfoBox
   sidebarDepth: 2
 ---
   

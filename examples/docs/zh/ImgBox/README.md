@@ -1,5 +1,5 @@
 ---
-  title: ImgBox ImgBox
+  title: ImgBox
   sidebarDepth: 2
 ---
   

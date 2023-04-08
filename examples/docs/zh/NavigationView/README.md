@@ -1,5 +1,5 @@
 ---
-title: NavigationView NavigationView
+title: NavigationView
 sidebarDepth: 2
 ---
 

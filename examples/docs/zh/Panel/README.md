@@ -1,5 +1,5 @@
 ---
-  title: Panel Panel
+  title: Panel
   sidebarDepth: 2
 ---
   

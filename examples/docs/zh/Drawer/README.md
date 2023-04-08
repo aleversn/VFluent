@@ -1,5 +1,5 @@
 ---
-  title: Drawer Drawer
+  title: Drawer
   sidebarDepth: 2
 ---
   

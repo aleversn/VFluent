@@ -1,5 +1,5 @@
 ---
-  title: Pagination Pagination
+  title: Pagination
   sidebarDepth: 2
 ---
   

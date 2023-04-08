@@ -1,5 +1,5 @@
 ---
-title: CommandBar CommandBar
+title: CommandBar
 sidebarDepth: 2
 ---
 

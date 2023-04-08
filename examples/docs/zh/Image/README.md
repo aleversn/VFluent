@@ -1,5 +1,5 @@
 ---
-title: Image Image
+title: Image
 sidebarDepth: 2
 ---
 

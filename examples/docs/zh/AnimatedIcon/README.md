@@ -1,5 +1,5 @@
 ---
-  title: AnimatedIcon AnimatedIcon
+  title: AnimatedIcon
   sidebarDepth: 2
 ---
   

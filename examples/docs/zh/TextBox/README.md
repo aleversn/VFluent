@@ -1,5 +1,5 @@
 ---
-  title: TextBox TextBox
+  title: TextBox
   sidebarDepth: 2
 ---
   

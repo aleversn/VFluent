@@ -1,5 +1,5 @@
 ---
-  title: Shimmer Shimmer
+  title: Shimmer
   sidebarDepth: 2
 ---
   

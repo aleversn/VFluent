@@ -1,20 +1,8 @@
 <template>
     <ClientOnly>
-        <fv-NavigationView
-            class="sidebar"
-            :class="{ dark: isDark }"
-            v-model="value"
-            :title="'Fluent Vue Design'"
-            :options="currentData"
-            :expand.sync="expand"
-            fullSizeDisplay="500"
-            mobileDisplay="500"
-            expandDisplay="0"
-            :showSetting="false"
-            :showExpand="false"
-            @expand-click="$emit('expand-click', $event)"
-            @back="go('/')"
-        ></fv-NavigationView>
+        <fv-NavigationView class="sidebar" :class="{ dark: isDark }" v-model="value" :title="'Fluent Vue Design'"
+            :options="currentData" :expand.sync="computedExpand" :showSetting="false" :showExpand="false"
+            @expand-click="$emit('expand-click', $event)" @back="go('/')"></fv-NavigationView>
     </ClientOnly>
 </template>
 
@@ -22,22 +10,18 @@
 export default {
     name: "NavPanel",
     props: {
-        show: {
-            default: false
-        },
         items: {},
         title: {},
+        show: {
+            default: false
+        }
     },
     data() {
         return {
-            expand: true,
             value: {},
         };
     },
     watch: {
-        show (val) {
-            this.expand = true;
-        },
         value(val, from) {
             if (val !== from) {
                 this.go(val.path);
@@ -45,6 +29,14 @@ export default {
         },
     },
     computed: {
+        computedExpand: {
+            get() {
+                return this.show;
+            },
+            set(val) {
+                this.$emit("update:show", val);
+            }
+        },
         isDark() {
             return this.$fvGlobal.state.theme == "dark";
         },
@@ -65,11 +57,11 @@ export default {
             return !this.search || this.search == ""
                 ? data
                 : data.filter(
-                      (item) =>
-                          item.title
-                              .toLowerCase()
-                              .indexOf(this.search.toLowerCase()) != -1
-                  );
+                    (item) =>
+                        item.title
+                            .toLowerCase()
+                            .indexOf(this.search.toLowerCase()) != -1
+                );
         },
     },
     methods: {

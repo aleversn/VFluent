@@ -1,5 +1,5 @@
 ---
-title: FlipView FlipView
+title: FlipView
 sidebarDepth: 2
 ---
 

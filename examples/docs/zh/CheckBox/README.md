@@ -1,5 +1,5 @@
 ---
-  title: CheckBox CheckBox
+  title: CheckBox
   sidebarDepth: 2
 ---
   

@@ -1,5 +1,5 @@
 ---
-  title: SwipeControl SwipeControl
+  title: SwipeControl
   sidebarDepth: 2
 ---
   

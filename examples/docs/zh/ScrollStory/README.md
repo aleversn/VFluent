@@ -1,5 +1,5 @@
 ---
-  title: ScrollStory ScrollStory
+  title: ScrollStory
   sidebarDepth: 2
 ---
   

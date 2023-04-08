@@ -1,5 +1,5 @@
 ---
-  title: RadioGroup RadioGroup
+  title: RadioGroup
   sidebarDepth: 2
 ---
   

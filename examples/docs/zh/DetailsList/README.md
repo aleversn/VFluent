@@ -1,5 +1,5 @@
 ---
-title: DetailsList DetailsList
+title: DetailsList
 sidebarDepth: 2
 ---
 

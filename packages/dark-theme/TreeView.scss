@@ -1,25 +1,7 @@
-@import '../common-theme/TreeView.scss';
-.fv-dark-TreeView{
+@import "../common-theme/TreeView.scss";
+.fv-dark-TreeView {
   @include fv-TreeView();
-  color: #fff;
-  background-color: #000;
-  .fv-TreeView__checkbox{
-    border-color:#666;
-    &:hover{
-      border-color:#d6d6d6;
-    }
-    &.checked{
-      background-color: #2f2f2f;
-      border-color:#2f2f2f;
-    }
-    &.Indeterminate{
-      background-color: #2f2f2f;
-      border-color:#2f2f2f;
-    }
-    i{
-      color:white;
-    }
-    
-  }
+  --fv-TreeView--item-field-color: rgba(255,255,255,1);
+  --fv-TreeView--item-field-hover-bg-color: rgba(45, 45, 45, 1);
+  --fv-TreeView--item-field-active-bg-color: rgba(45, 45, 45, 1);
 }
-    

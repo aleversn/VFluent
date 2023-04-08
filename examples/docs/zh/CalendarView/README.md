@@ -1,5 +1,5 @@
 ---
-title: CalendarView CalendarView
+title: CalendarView
 sidebarDepth: 2
 ---
 

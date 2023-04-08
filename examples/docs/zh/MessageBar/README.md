@@ -1,5 +1,5 @@
 ---
-  title: MessageBar MessageBar
+  title: MessageBar
   sidebarDepth: 2
 ---
   

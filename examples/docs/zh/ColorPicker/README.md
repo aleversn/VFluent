@@ -1,5 +1,5 @@
 ---
-  title: ColorPicker ColorPicker
+  title: ColorPicker
   sidebarDepth: 2
 ---
 
