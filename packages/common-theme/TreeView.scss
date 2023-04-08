@@ -4,13 +4,10 @@
   --fv-TreeView--background: initial;
   --fv-TreeView--item-field-hover-bg-color: initial;
   --fv-TreeView--item-field-active-bg-color: initial;
-  --fv-TreeView--item-field-left-icon-color: rgba(0, 85, 161,1);
   padding: 1px 0;
   position: relative;
   border-radius: 5px;
   background: var(--fv-TreeView--background);
-  overflow: auto;
-  box-sizing: border-box;
   ul,
   li {
     list-style: none;
@@ -18,7 +15,6 @@
     margin: 0;
   }
   .fv-TreeView--item {
-    color: var(--fv-TreeView--item-field-color);
     .fv-TreeView--item-field {
       position: relative;
       --fv-TreeView--item-field-padding-left: initial;
@@ -28,6 +24,7 @@
       padding-bottom: 2px;
       margin: 5px;
       border-radius: 5px;
+      color: var(--fv-TreeView--item-field-color);
       display: flex;
       align-items: center;
       height: var(--fv-TreeView--item-field-height);
@@ -44,7 +41,7 @@
           height: 16px;
           width: 3px;
           border-radius: 1.5px;
-          background-color: var(--fv-TreeView--item-field-left-icon-color);
+          background-color: rgba(0, 85, 161,1);
           transform: translate(-50%,0);
         }
       }
