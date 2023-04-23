@@ -172,6 +172,7 @@ export default {
                 this.item.expanded = false;
             }
             this.item.expanded = !this.item.expanded
+            this.$emit("handle-click", this.item);
         },
         updateDescendantsSelected(item, selected) {
             this.$set(item, "selected", selected);

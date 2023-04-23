@@ -1,192 +1,196 @@
-import './light-theme/index.scss';
-import './dark-theme/index.scss';
-import './custom-theme/index.scss';
+import './light-theme/index.scss'
+import './dark-theme/index.scss'
+import './custom-theme/index.scss'
 // Script Gen, Wanring: Edit template instead of it
-import global from './global.js';
-import { SDate } from './usual.js';
-import { SUtility } from './usual.js';
-import { RevealDirect, RevealMasked } from './usual.js';
-import '../examples/style/global-transition.css';
-import './office-ui-fabric-core/dist/css/fabric.min.css';
-import Button from '@/Button/index.js';
-import ProgressRing from '@/ProgressRing/index.js';
-import CheckBox from '@/CheckBox/index.js';
-import DropDown from '@/DropDown/index.js';
-import ProgressBar from '@/ProgressBar/index.js';
-import FlipView from '@/FlipView/index.js';
-import ToggleSwitch from '@/ToggleSwitch/index.js';
-import Slider from '@/Slider/index.js';
-import CalendarView from '@/CalendarView/index.js';
-import ColorPicker from '@/ColorPicker/index.js';
-import TextBox from '@/TextBox/index.js';
-import RadioGroup from '@/RadioGroup/index.js';
-import Radio from '@/Radio/index.js';
-import Callout from '@/Callout/index.js';
-import ImgBox from '@/ImgBox/index.js';
-import ScrollStory from '@/ScrollStory/index.js';
-import DetailsList from '@/DetailsList/index.js';
-import Pivot from '@/Pivot/index.js';
-import MenuFlyout from '@/MenuFlyout/index.js';
-import ListView from '@/ListView/index.js';
-import NavigationView from '@/NavigationView/index.js';
-import TreeView from '@/TreeView/index.js';
-import CommandBar from '@/CommandBar/index.js';
-import NavigationPanel from '@/NavigationPanel/index.js';
-import Image from '@/Image/index.js';
-import Img from '@/Img/index.js';
-import SearchBox from '@/SearchBox/index.js';
-import CalendarDatePicker from '@/CalendarDatePicker/index.js';
-import WebWindow from '@/WebWindow/index.js';
-import DatePicker from '@/DatePicker/index.js';
-import Persona from '@/Persona/index.js';
-import Combobox from '@/Combobox/index.js';
-import TimePicker from '@/TimePicker/index.js';
-import Shimmer from '@/Shimmer/index.js';
-import MessageBar from '@/MessageBar/index.js';
-import InfoBox from '@/InfoBox/index.js';
-import Drawer from '@/Drawer/index.js';
-import Badge from '@/Badge/index.js';
-import Panel from '@/Panel/index.js';
-import Pagination from '@/Pagination/index.js';
-import Breadcrumb from '@/Breadcrumb/index.js';
-import AnimatedIcon from '@/AnimatedIcon/index.js';
-import Tag from '@/Tag/index.js';
-import Collapse from '@/Collapse/index.js';
-import InfiniteScrollView from '@/InfiniteScrollView/index.js';
-import TextField from '@/TextField/index.js';
-import VerifyBox from '@/VerifyBox/index.js';
-import RevealContainer from '@/RevealContainer/index.js';
-import SwipeControl from '@/SwipeControl/index.js';
+import global from './global.js'
+import {SDate} from './usual.js'
+import {SUtility} from './usual.js'
+import {RevealDirect, RevealMasked} from './usual.js'
+import '../examples/style/global-transition.css'
+import './office-ui-fabric-core/dist/css/fabric.min.css'
+import Button from '@/Button/index.js'
+import ProgressRing from '@/ProgressRing/index.js'
+import CheckBox from '@/CheckBox/index.js'
+import DropDown from '@/DropDown/index.js'
+import ProgressBar from '@/ProgressBar/index.js'
+import FlipView from '@/FlipView/index.js'
+import ToggleSwitch from '@/ToggleSwitch/index.js'
+import Slider from '@/Slider/index.js'
+import CalendarView from '@/CalendarView/index.js'
+import ColorPicker from '@/ColorPicker/index.js'
+import TextBox from '@/TextBox/index.js'
+import RadioGroup from '@/RadioGroup/index.js'
+import Radio from '@/Radio/index.js'
+import Callout from '@/Callout/index.js'
+import ImgBox from '@/ImgBox/index.js'
+import ScrollStory from '@/ScrollStory/index.js'
+import DetailsList from '@/DetailsList/index.js'
+import Pivot from '@/Pivot/index.js'
+import MenuFlyout from '@/MenuFlyout/index.js'
+import ListView from '@/ListView/index.js'
+import NavigationView from '@/NavigationView/index.js'
+import TreeView from '@/TreeView/index.js'
+import CommandBar from '@/CommandBar/index.js'
+import NavigationPanel from '@/NavigationPanel/index.js'
+import Image from '@/Image/index.js'
+import Img from '@/Img/index.js'
+import SearchBox from '@/SearchBox/index.js'
+import CalendarDatePicker from '@/CalendarDatePicker/index.js'
+import WebWindow from '@/WebWindow/index.js'
+import DatePicker from '@/DatePicker/index.js'
+import Persona from '@/Persona/index.js'
+import Combobox from '@/Combobox/index.js'
+import TimePicker from '@/TimePicker/index.js'
+import Shimmer from '@/Shimmer/index.js'
+import MessageBar from '@/MessageBar/index.js'
+import InfoBox from '@/InfoBox/index.js'
+import Drawer from '@/Drawer/index.js'
+import Badge from '@/Badge/index.js'
+import Panel from '@/Panel/index.js'
+import Pagination from '@/Pagination/index.js'
+import Breadcrumb from '@/Breadcrumb/index.js'
+import AnimatedIcon from '@/AnimatedIcon/index.js'
+import Tag from '@/Tag/index.js'
+import Collapse from '@/Collapse/index.js'
+import InfiniteScrollView from '@/InfiniteScrollView/index.js'
+import TextField from '@/TextField/index.js'
+import VerifyBox from '@/VerifyBox/index.js'
+import RevealContainer from '@/RevealContainer/index.js'
+import SwipeControl from '@/SwipeControl/index.js'
+
 
 let components = [
+  Button,
+  ProgressRing,
+  CheckBox,
+  DropDown,
+  ProgressBar,
+  FlipView,
+  ToggleSwitch,
+  Slider,
+  CalendarView,
+  ColorPicker,
+  TextBox,
+  RadioGroup,
+  Radio,
+  Callout,
+  ImgBox,
+  ScrollStory,
+  DetailsList,
+  Pivot,
+  MenuFlyout,
+  ListView,
+  NavigationView,
+  TreeView,
+  CommandBar,
+  NavigationPanel,
+  Image,
+  Img,
+  SearchBox,
+  CalendarDatePicker,
+  WebWindow,
+  DatePicker,
+  Persona,
+  Combobox,
+  TimePicker,
+  Shimmer,
+  MessageBar,
+  InfoBox,
+  Drawer,
+  Badge,
+  Panel,
+  Pagination,
+  Breadcrumb,
+  AnimatedIcon,
+  Tag,
+  Collapse,
+  InfiniteScrollView,
+  TextField,
+  VerifyBox,
+  RevealContainer,
+  SwipeControl,
+
+]
+
+const install = function(Vue){
+  // fix(2022-09-15): fix Vue.use not work
+  if (Vue.prototype.$fvGlobal!==undefined) return;
+  Vue.prototype.$fvGlobal=global
+  Vue.prototype.$SDate=SDate
+  Vue.prototype.$SUtility=SUtility
+  // singleton
+  Vue.prototype.$_RevealDirect = undefined;
+  Object.defineProperty(Vue.prototype, '$RevealDirect', {
+      get() {
+          if (Vue.prototype.$_RevealDirect === undefined) {
+              Vue.prototype.$_RevealDirect = new RevealDirect();
+          }
+          return Vue.prototype.$_RevealDirect;
+      },
+  });s
+  Vue.prototype.$_RevealMasked = undefined;
+  Object.defineProperty(Vue.prototype, '$RevealMasked', {
+      get() {
+          if (Vue.prototype.$_RevealMasked === undefined) {
+              Vue.prototype.$_RevealMasked = new RevealMasked();
+          }
+          return Vue.prototype.$_RevealMasked;
+      },
+  });
+  components.map(component => Vue.use(component))
+}
+
+export default {
+  install,
     Button,
-    ProgressRing,
-    CheckBox,
-    DropDown,
-    ProgressBar,
-    FlipView,
-    ToggleSwitch,
-    Slider,
-    CalendarView,
-    ColorPicker,
-    TextBox,
-    RadioGroup,
-    Radio,
-    Callout,
-    ImgBox,
-    ScrollStory,
-    DetailsList,
-    Pivot,
-    MenuFlyout,
-    ListView,
-    NavigationView,
-    TreeView,
-    CommandBar,
-    NavigationPanel,
-    Image,
-    Img,
-    SearchBox,
-    CalendarDatePicker,
-    WebWindow,
-    DatePicker,
-    Persona,
-    Combobox,
-    TimePicker,
-    Shimmer,
-    MessageBar,
-    InfoBox,
-    Drawer,
-    Badge,
-    Panel,
-    Pagination,
-    Breadcrumb,
-    AnimatedIcon,
-    Tag,
-    Collapse,
-    InfiniteScrollView,
-    TextField,
-    VerifyBox,
-    RevealContainer,
-    SwipeControl,
-];
+  ProgressRing,
+  CheckBox,
+  DropDown,
+  ProgressBar,
+  FlipView,
+  ToggleSwitch,
+  Slider,
+  CalendarView,
+  ColorPicker,
+  TextBox,
+  RadioGroup,
+  Radio,
+  Callout,
+  ImgBox,
+  ScrollStory,
+  DetailsList,
+  Pivot,
+  MenuFlyout,
+  ListView,
+  NavigationView,
+  TreeView,
+  CommandBar,
+  NavigationPanel,
+  Image,
+  Img,
+  SearchBox,
+  CalendarDatePicker,
+  WebWindow,
+  DatePicker,
+  Persona,
+  Combobox,
+  TimePicker,
+  Shimmer,
+  MessageBar,
+  InfoBox,
+  Drawer,
+  Badge,
+  Panel,
+  Pagination,
+  Breadcrumb,
+  AnimatedIcon,
+  Tag,
+  Collapse,
+  InfiniteScrollView,
+  TextField,
+  VerifyBox,
+  RevealContainer,
+  SwipeControl,
 
-const install = function (Vue) {
-    Vue.prototype.$fvGlobal = global;
-    Vue.prototype.$SDate = SDate;
-    Vue.prototype.$SUtility = SUtility;
-    // singleton
-    Vue.prototype.$_RevealDirect = undefined;
-    Object.defineProperty(Vue.prototype, '$RevealDirect', {
-        get() {
-            if (Vue.prototype.$_RevealDirect === undefined) {
-                Vue.prototype.$_RevealDirect = new RevealDirect();
-            }
-            return Vue.prototype.$_RevealDirect;
-        },
-    });
-    Vue.prototype.$_RevealMasked = undefined;
-    Object.defineProperty(Vue.prototype, '$RevealMasked', {
-        get() {
-            if (Vue.prototype.$_RevealMasked === undefined) {
-                Vue.prototype.$_RevealMasked = new RevealMasked();
-            }
-            return Vue.prototype.$_RevealMasked;
-        },
-    });
-    components.map((component) => Vue.use(component));
-};
+}
 
-const plugin = {
-    install,
-    Button,
-    ProgressRing,
-    CheckBox,
-    DropDown,
-    ProgressBar,
-    FlipView,
-    ToggleSwitch,
-    Slider,
-    CalendarView,
-    ColorPicker,
-    TextBox,
-    RadioGroup,
-    Radio,
-    Callout,
-    ImgBox,
-    ScrollStory,
-    DetailsList,
-    Pivot,
-    MenuFlyout,
-    ListView,
-    NavigationView,
-    TreeView,
-    CommandBar,
-    NavigationPanel,
-    Image,
-    Img,
-    SearchBox,
-    CalendarDatePicker,
-    WebWindow,
-    DatePicker,
-    Persona,
-    Combobox,
-    TimePicker,
-    Shimmer,
-    MessageBar,
-    InfoBox,
-    Drawer,
-    Badge,
-    Panel,
-    Pagination,
-    Breadcrumb,
-    AnimatedIcon,
-    Tag,
-    Collapse,
-    InfiniteScrollView,
-    TextField,
-    VerifyBox,
-    RevealContainer,
-    SwipeControl,
-};
-
-export default plugin;

@@ -19,8 +19,7 @@ let components = [
 
 const install = function(Vue){
   // fix(2022-09-15): fix Vue.use not work
-  if (install.installed) return;
-  install.installed = true;
+  if (Vue.prototype.\${{prefix}}Global!==undefined) return;
   Vue.prototype.\${{prefix}}Global=global
   Vue.prototype.$SDate=SDate
   Vue.prototype.$SUtility=SUtility
