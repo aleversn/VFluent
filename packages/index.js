@@ -127,7 +127,7 @@ const install = function(Vue){
           }
           return Vue.prototype.$_RevealDirect;
       },
-  });s
+  });
   Vue.prototype.$_RevealMasked = undefined;
   Object.defineProperty(Vue.prototype, '$RevealMasked', {
       get() {
