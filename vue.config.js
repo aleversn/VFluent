@@ -24,7 +24,7 @@ module.exports = {
     },
     configureWebpack:{
         externals:{
-            vuex: 'Vuex',
+            // vuex: 'Vuex',
         },
         output: {
             libraryExport: 'default',

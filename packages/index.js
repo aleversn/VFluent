@@ -121,11 +121,28 @@ const install = function(Vue, vuex){
     }
   }
   console.log("[CreatorSN] fvComponents v"+pkg.version)
+  Vue.use(vuex)
   Vue.prototype.$fvGlobal=global(vuex)
   Vue.prototype.$SDate=SDate
   Vue.prototype.$SUtility=SUtility
-  Vue.prototype.$RevealDirect = new RevealDirect();
-  Vue.prototype.$_RevealMasked = new RevealMasked();
+  Vue.prototype.$_RevealDirect = undefined;
+  Object.defineProperty(Vue.prototype, '$RevealDirect', {
+      get() {
+          if (Vue.prototype.$_RevealDirect === undefined) {
+              Vue.prototype.$_RevealDirect = new RevealDirect();
+          }
+          return Vue.prototype.$_RevealDirect;
+      },
+  });
+  Vue.prototype.$_RevealMasked = undefined;
+  Object.defineProperty(Vue.prototype, '$RevealMasked', {
+      get() {
+          if (Vue.prototype.$_RevealMasked === undefined) {
+              Vue.prototype.$_RevealMasked = new RevealMasked();
+          }
+          return Vue.prototype.$_RevealMasked;
+      },
+  });
   components.map(component => Vue.use(component))
 }
 
