@@ -171,7 +171,7 @@ export default {
             if (this.item.expanded === null) {
                 this.item.expanded = false;
             }
-            this.item.expanded = !this.item.expanded
+            this.item.expanded = !this.item.expanded;
             this.$emit("handle-click", this.item);
         },
         updateDescendantsSelected(item, selected) {

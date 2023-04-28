@@ -1,4 +1,5 @@
 import components from '../../../packages'
+import vuex from "vuex"
 
 
 export default ({
@@ -7,5 +8,5 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  Vue.use(components)
+  Vue.use(components,vuex)
 }

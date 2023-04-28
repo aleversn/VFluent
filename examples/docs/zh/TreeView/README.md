@@ -54,7 +54,7 @@ sidebarDepth: 2
     mounted(){
       let item = this.files[0].children[0];
       let temp = []
-      for (let i = 0;i<100;++i){
+      for (let i = 0;i<20;++i){
           temp.push(Object.assign({},item.children[0]));
       }
       item.children = temp;

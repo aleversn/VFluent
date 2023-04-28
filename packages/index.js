@@ -58,6 +58,7 @@ import VerifyBox from '@/VerifyBox/index.js'
 import RevealContainer from '@/RevealContainer/index.js'
 import SwipeControl from '@/SwipeControl/index.js'
 
+import pkg from "../package.json"
 
 let components = [
   Button,
@@ -112,35 +113,25 @@ let components = [
 
 ]
 
-const install = function(Vue){
+const install = function(Vue, vuex){
   // fix(2022-09-15): fix Vue.use not work
-  if (Vue.prototype.$fvGlobal!==undefined) return;
-  Vue.prototype.$fvGlobal=global
+  for (let plugin of Vue._installedPlugins){
+    if (plugin.name==pkg.name){
+      return;
+    }
+  }
+  console.log("[CreatorSN] fvComponents v"+pkg.version)
+  Vue.prototype.$fvGlobal=global(vuex)
   Vue.prototype.$SDate=SDate
   Vue.prototype.$SUtility=SUtility
-  // singleton
-  Vue.prototype.$_RevealDirect = undefined;
-  Object.defineProperty(Vue.prototype, '$RevealDirect', {
-      get() {
-          if (Vue.prototype.$_RevealDirect === undefined) {
-              Vue.prototype.$_RevealDirect = new RevealDirect();
-          }
-          return Vue.prototype.$_RevealDirect;
-      },
-  });
-  Vue.prototype.$_RevealMasked = undefined;
-  Object.defineProperty(Vue.prototype, '$RevealMasked', {
-      get() {
-          if (Vue.prototype.$_RevealMasked === undefined) {
-              Vue.prototype.$_RevealMasked = new RevealMasked();
-          }
-          return Vue.prototype.$_RevealMasked;
-      },
-  });
+  Vue.prototype.$RevealDirect = new RevealDirect();
+  Vue.prototype.$_RevealMasked = new RevealMasked();
   components.map(component => Vue.use(component))
 }
 
 export default {
+  name: pkg.name,
+  version: pkg.version,
   install,
     Button,
   ProgressRing,

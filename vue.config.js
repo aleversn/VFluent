@@ -7,13 +7,13 @@ const debug = process.env.NODE_ENV === 'production' ? false : true;
 module.exports = {
     pages: {
         index: {
-            entry: "examples/index.js"
+            entry: "packages/index.js"
         }
     },
     css: {
         // Separate StyleSheet
         extract: true,
-        // requireModuleExtension: true,
+        requireModuleExtension: true,
         sourceMap: false
     },
     productionSourceMap: false,
@@ -23,6 +23,12 @@ module.exports = {
             config.devtool('source-map')
     },
     configureWebpack:{
+        externals:{
+            vuex: 'Vuex',
+        },
+        output: {
+            libraryExport: 'default',
+        },
     },
     lintOnSave: false
 };
