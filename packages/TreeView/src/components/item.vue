@@ -54,7 +54,9 @@ export default {
     props: {
         item: {
             type: Object,
-            default: () => { }
+            default: () => { 
+                expanded: undefined
+            }
         },
         checkable: {
             default: false,
@@ -102,8 +104,9 @@ export default {
     },
     computed: {
         renderList() {
-            if (Array.isArray(this.item.children))
+            if (Array.isArray(this.item.children)){
                 return this.item.children.slice(0, this.loadding.count);
+            }
             else
                 return [];
         },
@@ -121,10 +124,14 @@ export default {
             if (val === true) {
                 this.loadNext();
             }
+        },
+        "item.children"(val) {
+            if (Array.isArray(val) && val.length>0 && this.item.expanded === true) {
+                this.loadNext();
+            }
         }
     },
     mounted() {
-        this.initItemProperties(this.item)
         this.initItemPadding();
         if (this.item.expanded)
             this.loadNext();
@@ -147,14 +154,6 @@ export default {
                 this.loadding.lock = false;
             }
         },
-        initItemProperties(item) {
-            if (item.expanded === undefined) {
-                this.$set(item, "expanded", null);
-            }
-            if (item.selected === undefined) {
-                this.$set(item, "selected", false);
-            }
-        },
         /**
          * initialize padding offset
          */
@@ -168,10 +167,10 @@ export default {
             return false;
         },
         clickExpand() {
-            if (this.item.expanded === null) {
-                this.item.expanded = false;
+            if (this.item.expanded === undefined && Array.isArray(this.item.children)){
+                this.$set(this.item,"expanded",false)
             }
-            this.item.expanded = !this.item.expanded;
+            this.$set(this.item,"expanded",!this.item.expanded)
             this.$emit("handle-click", this.item);
         },
         updateDescendantsSelected(item, selected) {
@@ -184,17 +183,20 @@ export default {
         },
         clickSelected(expanded=true) {
             if (this.expandClickMode === 'normal' && expanded) {
-                if (this.item.expanded === null) {
-                    this.item.expanded = false;
+                if (this.item.expanded === undefined && Array.isArray(this.item.children)) {
+                    this.$set(this.item,"expanded",false)
                 }
                 this.item.expanded = !this.item.expanded
+            }
+            if (this.item.selected===undefined){
+                this.$set(this.item,"selected",false)
             }
             if (this.checkable) {
                 // broadcast tree
                 this.updateDescendantsSelected(this.item, this.item.selected);
                 this.$emit("updateSelected");
             } else {
-                this.item.selected = !this.item.selected;
+                this.$set(this.item,"selected",!this.item.selected);
                 if (this.item.selected) {
                     this.$emit("single-select", this.item);
                 }
