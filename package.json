@@ -1,6 +1,6 @@
 {
     "name": "vfluentdesign",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": false,
     "description": "Vue Components, Fluent Vue Design inspired by Microsoft Fluent Design",
     "author": "Creator-SN",
@@ -31,7 +31,7 @@
         "office-ui-fabric-core": "^11.0.0",
         "onecolor": "^3.1.0",
         "swiper": "^8.3.2",
-        "vuedraggable": "^2.23.2"     
+        "vuedraggable": "^2.23.2"
     },
     "devDependencies": {
         "@babel/core": "^7.12.10",
@@ -50,9 +50,9 @@
         "sass-loader": "^8.0.0",
         "uppercamelcase": "^3.0.0",
         "vue": "^2.6.10",
-        "vuex": "^3.1.2",
         "vue-template-compiler": "^2.6.10",
         "vuepress": "1.9.7",
+        "vuex": "^3.1.2",
         "webpack": "^4.36.0"
     },
     "eslintConfig": {
