@@ -137,3 +137,4 @@ items = [{ key: 0, name: "Pivot", width: 80, show: true, disabled: false }]
 
 items: [{ key: 0, name: "Pivot", width: 80 }]
 ```
+**特别地** 1.0.3版本后支持采用函数式字段, 其中支持的字段包括`name`, `disabled`, `show`, `width`

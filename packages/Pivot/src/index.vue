@@ -1,21 +1,28 @@
 <template>
-    <div :class="['fv-' + $theme + '-Pivot', tab ? 'tab' : '']" :style="{background: background}">
+    <div
+        :class="['fv-' + $theme + '-Pivot', tab ? 'tab' : '']"
+        :style="{background: background}"
+    >
         <div class="pivot-container">
             <span
-                v-show="item.show"
+                v-show="valueTrigger(item.show)"
                 class="pivot-item"
                 v-for="(item, index) in thisItems"
                 :key="index"
                 :class="{
                     choose: eqal(item),
-                    disabled: item.disabled,
+                    disabled: valueTrigger(item.disabled),
                 }"
                 :style="{ width: `${itemWidth(item)}px` }"
                 @click="itemClick(item)"
             >
-                <slot name="container" :item="item" :index="index">
+                <slot
+                    name="container"
+                    :item="item"
+                    :index="index"
+                >
                     <p :style="{ fontSize: `${fontSize}px`, color: styles.container.color }">
-                        {{ item.name }}
+                        {{ valueTrigger(item.name) }}
                     </p>
                 </slot>
             </span>
@@ -30,10 +37,10 @@
 </template>
 
 <script>
-import slider from "./sub/slider.vue";
+import slider from './sub/slider.vue';
 
 export default {
-    name: "FvPivot",
+    name: 'FvPivot',
     components: {
         slider,
     },
@@ -44,29 +51,29 @@ export default {
             },
         },
         items: {
-            default: () => [{ name: "Pivot", width: 80 }],
+            default: () => [{ name: 'Pivot', width: 80 }],
         },
         tab: {
             default: false,
         },
         fontSize: {
-            default: ""
+            default: '',
         },
         foreground: {
-            default: "",
+            default: '',
         },
         sliderBackground: {
-            default: "",
+            default: '',
         },
         sliderBoxshadow: {
-            default: false
+            default: false,
         },
         background: {
-            default: "",
+            default: '',
         },
         theme: {
             type: String,
-            default: "system",
+            default: 'system',
         },
     },
     data() {
@@ -75,10 +82,10 @@ export default {
             thisValue: this.value,
             styles: {
                 slider: {
-                    background: "",
+                    background: '',
                 },
                 container: {
-                    color: "",
+                    color: '',
                 },
             },
         };
@@ -91,8 +98,8 @@ export default {
             this.itemsInit();
         },
         thisValue(val) {
-            this.$emit("input", val);
-            this.$emit("change", val);
+            this.$emit('input', val);
+            this.$emit('change', val);
         },
         foreground(val) {
             this.stylesInit();
@@ -103,10 +110,10 @@ export default {
     },
     computed: {
         currentLeft() {
-            if(!this.thisValue) return 0;
+            if (!this.thisValue) return 0;
             let index = -1;
-            if(this.thisValue.key) index = this.thisItems.findIndex(item => item.key === this.thisValue.key);
-            else index = this.thisItems.findIndex(item => item.name === this.thisValue.name);
+            if (this.thisValue.key) index = this.thisItems.findIndex((item) => item.key === this.thisValue.key);
+            else index = this.thisItems.findIndex((item) => this.valueTrigger(item.name) === this.valueTrigger(this.thisValue.name));
             if (index < 0) return 0;
             let count = 0;
             for (let i = 0; i < index; i++) {
@@ -115,12 +122,10 @@ export default {
             return count;
         },
         currentWidth() {
-            return !this.thisValue || !this.thisValue.width
-                ? 0
-                : this.thisValue.width;
+            return !this.thisValue || !this.thisValue.width ? 0 : this.thisValue.width;
         },
         $theme() {
-            if (this.theme == "system") return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
     },
@@ -131,7 +136,7 @@ export default {
     methods: {
         itemsInit() {
             let model = {
-                name: "Pivot",
+                name: 'Pivot',
                 width: 60,
                 show: true,
                 disabled: false,
@@ -148,25 +153,20 @@ export default {
                 this.thisValue = this.thisItems[0];
             }
         },
-        findCurrentValue () {
-            if(!this.value) {
+        findCurrentValue() {
+            if (!this.value) {
                 this.thisValue = this.value;
                 return;
             }
-            if(this.value.key) {
-                let match = this.thisItems.find(item => item.key === this.value.key);
-                if(match)
-                    this.thisValue = match;
-                else
-                    this.thisValue = this.value;
+            if (this.value.key) {
+                let match = this.thisItems.find((item) => item.key === this.value.key);
+                if (match) this.thisValue = match;
+                else this.thisValue = this.value;
                 return;
-            }
-            else if(this.value.name) {
-                let match = this.thisItems.find(item => item.name === this.value.name);
-                if(match)
-                    this.thisValue = match;
-                else
-                    this.thisValue = this.value;
+            } else if (this.valueTrigger(this.value.name)) {
+                let match = this.thisItems.find((item) => this.valueTrigger(item.name) === this.valueTrigger(this.value.name));
+                if (match) this.thisValue = match;
+                else this.thisValue = this.value;
             }
             this.thisValue = this.value;
         },
@@ -178,18 +178,20 @@ export default {
             if (item.disabled) return 0;
             this.thisValue = item;
         },
-        itemWidth (item) {
-            if(!item.width)
-                return 0;
-            return item.width;
+        itemWidth(item) {
+            if (!item.width) return 0;
+            return this.valueTrigger(item.width);
         },
-        eqal (item) {
-            for(let key in this.thisValue) {
-                if(this.thisValue[key] !== item[key])
-                    return false;
+        eqal(item) {
+            for (let key in this.thisValue) {
+                if (this.thisValue[key] !== item[key]) return false;
             }
             return true;
-        }
+        },
+        valueTrigger(val) {
+            if (typeof val === 'function') return val();
+            return val;
+        },
     },
 };
 </script>
