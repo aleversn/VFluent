@@ -14,7 +14,7 @@
     </a>
 </p>
 
-## Fluent UI Components based on Vue Cli
+## Fluent UI Components based on Vue Client
 This repository provides a library of components based on [Microsoft's Fluent Design System](https://developer.microsoft.com/en-us/fluentui#/). We did our best to implement styling (such as the `Acrylic` and `Reveal` effects) of native system's (Windows 11/Windows 10) compoents on the Web.
 
 ### Project Structure
@@ -68,10 +68,11 @@ pnpm run bin:entry # 定制入口(Custom entry)
 
 ```js
 import Vue from "vue";
+import Vuex from "vuex"
 import VueFluent from "vfluentdesign";
 import "vfluentdesign/lib/index.css";
 
-Vue.use(VueFluent);
+Vue.use(VueFluent, Vuex);
 ```
 
 3. sample example
@@ -105,7 +106,7 @@ If you have some other creative ideas, we're happy to hear them from you.
 
 MIT License
 
-Copyright (c) 2022 Creator SN®
+Copyright (c) 2023 Creator SN®
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

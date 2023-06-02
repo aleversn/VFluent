@@ -1,8 +1,4 @@
-// Global Variable 
-import vuex from 'vuex'
-import vue from 'vue'
-vue.use(vuex)
-export default new vuex.Store({
+export default (Vuex)=> new Vuex.Store({
     state: {
         theme: 'light',
         imgUriList: [],  //{data:Base64String,key:String,state:('none'|'loading'|'done')}
@@ -27,7 +23,7 @@ export default new vuex.Store({
             if (item == undefined)
                 state.imgUriList.push({ data: imgUri.data, key: imgUri.key, state: imgUri.state });
             else
-                vue.set(state.imgUriList, state.imgUriList.indexOf(item), { data: imgUri.data, key: imgUri.key, state: imgUri.state });
+                state.imgUriList.splice(state.imgUriList.indexOf(item),1, { data: imgUri.data, key: imgUri.key, state: imgUri.state });
         },
         clearImgUri(state, key) {
             let item = state.imgUriList.find(item => key === item.key);
