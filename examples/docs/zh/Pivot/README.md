@@ -13,18 +13,12 @@ export default {
     data () {
         return {
             value: null,
-            c: 0,
             items: [
-                { name: "All", show: () => this.c % 2 === 0},
+                { name: "All"},
                 { name: "Unread", width: 80},
                 { name: "Flagged", width: 80, disabled: true },
                 { name: "Urgent", width: 80}
             ]
-        }
-    },
-    methods: {
-        del () {
-            this.c++;
         }
     }
 }
@@ -32,7 +26,6 @@ export default {
 
 <ClientOnly>
 
-<fv-button @click="del">Delete</fv-button>
 <fv-Pivot v-model="value" :items="items"></fv-Pivot>
 
 ```vue
