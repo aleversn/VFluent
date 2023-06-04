@@ -14,7 +14,7 @@
                     disabled: valueTrigger(item.disabled),
                 }"
                 :ref="`item_${index}`"
-                :style="{ width: computedWidth(item) }"
+                :style="{ width: itemWidth(item) }"
                 @click="itemClick(item)"
             >
                 <slot
@@ -109,7 +109,7 @@ export default {
         },
     },
     computed: {
-        computedWidth() {
+        itemWidth() {
             return (item) => {
                 if (!item.width) return 0;
                 if (isNaN(item.width)) {
@@ -142,6 +142,9 @@ export default {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
+    },
+    updated() {
+        if (!this.valueTrigger(this.thisValue.show)) this.thisValue = this.thisItems.find((it) => this.valueTrigger(it.show) && !this.valueTrigger(it.disabled));
     },
     mounted() {
         this.stylesInit();
@@ -193,10 +196,10 @@ export default {
             this.thisValue = item;
         },
         eqal(item) {
-            for (let key in this.thisValue) {
-                if (this.thisValue[key] !== item[key]) return false;
-            }
-            return true;
+            if (!this.thisValue) return false;
+            if (this.thisValue['key']) return this.thisValue['key'] === item['key'];
+            if (this.valueTrigger(this.thisValue['name'])) return this.valueTrigger(this.thisValue['name']) === this.valueTrigger(item['name']);
+            return false;
         },
         valueTrigger(val) {
             if (typeof val === 'function') return val();
