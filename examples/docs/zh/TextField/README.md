@@ -190,27 +190,29 @@ Customize background
 
 ### Propoties
 ---
-|        属性(attr)        |             类型(type)             | 必填(required) | 默认值(default) |               说明(statement)               |
-|:------------------------:|:----------------------------------:|:--------------:|:---------------:|:-------------------------------------------:|
-|          value           |              String              |       No       |                 |      Using v-model binding input value      |
-|       placeholder        |              String              |       No       |       N/A       |               等同HTML[input]               |
-|         readonly         |             Boolean              |       No       |      false      |               等同HTML[input]               |
-|        maxlength         |              Number              |       No       |       N/A       |               等同HTML[input]               |
-|        underline         |             Boolean              |       No       |      false      |      是否开启Underline风格的TextField       |
-|        background        |          [string(color)]           |       No       |       N/A       |                                             |
-|       borderWidth        |             Boolean              |       No       |       N/A       |                                             |
-|       borderColor        |          [string(color)]           |       No       |       N/A       |                                             |
-|     focusBorderColor     |          [string(color)]           |       No       |       N/A       |                                             |
-|         fontSize         |              Number              |       No       |      13.3       |                                             |
-|        fontWeight        |              [string               |    number]     |       No        |                   normal                    |
-|        foreground        |          [string(color)]           |       No       |       N/A       |                                             |
-|        textAlign         |              String              |       No       |      left       |                                             |
-|       borderRadius       |              Number              |       No       |        3        | TextField圆角大小, 启用revealBorder时将失效 |
-|       isBoxShadow        |             Boolean              |       No       |      false      |             开启`TextField`阴影             |
-|       revealBorder       |             Boolean              |       No       |      false      |                                             |
-|          status          |         ['warn','correct']         |       No       |       N/A       |     状态边框预设, 默认有警告和正确两种      |
-|         disabled         |             Boolean              |       No       |      false      |                                             |
-|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
+|      属性(attr)       |     类型(type)     | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:---------------------:|:------------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+|         value         |       String       |       No       |                 |             Using v-model binding input value             |
+|      placeholder      |       String       |       No       |       N/A       |                      等同HTML[input]                      |
+|       readonly        |      Boolean       |       No       |      false      |                      等同HTML[input]                      |
+|       maxlength       |       Number       |       No       |       N/A       |                      等同HTML[input]                      |
+|       underline       |      Boolean       |       No       |      false      |             是否开启Underline风格的TextField              |
+|      background       |  [string(color)]   |       No       |       N/A       |                                                           |
+|      borderWidth      |      Boolean       |       No       |       N/A       |                                                           |
+|      borderColor      |  [string(color)]   |       No       |       N/A       |                                                           |
+|   focusBorderColor    |  [string(color)]   |       No       |       N/A       |                                                           |
+|       fontSize        |       Number       |       No       |      13.3       |                                                           |
+|      fontWeight       |      [string       |    number]     |       No        |                          normal                           |
+|      foreground       |  [string(color)]   |       No       |       N/A       |                                                           |
+|       textAlign       |       String       |       No       |      left       |                                                           |
+|     borderRadius      |       Number       |       No       |        3        |        TextField圆角大小, 启用revealBorder时将失效        |
+|      isBoxShadow      |      Boolean       |       No       |      false      |                    开启`TextField`阴影                    |
+|     revealBorder      |      Boolean       |       No       |      false      |                                                           |
+|   revealBorderColor   |  [string(color)]   |       No       |       N/A       |                                                           |
+| revealBackgroundColor |  [string(color)]   |       No       |       N/A       |                                                           |
+|        status         | ['warn','correct'] |       No       |       N/A       |            状态边框预设, 默认有警告和正确两种             |
+|       disabled        |      Boolean       |       No       |      false      |                                                           |
+|         theme         |       String       |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Events
 ---

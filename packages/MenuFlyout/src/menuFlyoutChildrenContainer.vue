@@ -16,12 +16,12 @@
                 ref="co_items"
             >
                 <div
-                    v-for="(item) in computedOptions"
+                    v-for="(item, index) in computedOptions"
                     class="fv-menu-flyout-item"
                     :class="{hr:valueTrigger(item.type) == 'divider', normal: (valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined) && !valueTrigger(item.disabled), disabled: valueTrigger(item.disabled), choose: isChoosen(item), title: valueTrigger(item.type) == 'header'}"
                     :style="{background: isChoosen(item) ? choosenBackground : '', color: valueTrigger(item.type) === 'header' ? titleForeground : ''}"
                     @click="Choose($event, item)"
-                    :key="item"
+                    :key="`options: ${item.key ? item.key : index}`"
                     :title="valueTrigger(item.text)"
                 >
                     <slot :item="item" :choosenSliderBackground="choosenSliderBackground">

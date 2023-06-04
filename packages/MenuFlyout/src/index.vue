@@ -109,6 +109,12 @@ export default {
         pivotPlaceholder: {
             default: 'Please Choose',
         },
+        revealBorderColor: {
+            default: false,
+        },
+        revealBackgroundColor: {
+            default: false,
+        },
         disabled: {
             default: false,
         },
@@ -136,6 +142,7 @@ export default {
             return this.options.length == 0 || this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
         },
         borderLightColor() {
+            if(this.revealBorderColor) return this.revealBorderColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
@@ -145,6 +152,7 @@ export default {
             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor() {
+            if(this.revealBackgroundColor) return this.revealBackgroundColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }

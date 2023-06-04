@@ -1,9 +1,13 @@
 <template>
-<div class="slider">
-    <span class="fv-pivot-s" :class="[{'is-boxshadow': sliderBoxshadow}]" :style="{'margin-left': `${thisLeft}px`, width: `${thisWidth}px`}">
-        <p :style="{background: styles.slider.background}"></p>
-    </span>
-</div>
+    <div class="slider">
+        <span
+            class="fv-pivot-s"
+            :class="[{'is-boxshadow': sliderBoxshadow}]"
+            :style="{'margin-left': `${domLeft}px`, width: `${domWidth}px`}"
+        >
+            <p :style="{background: background}"></p>
+        </span>
+    </div>
 </template>
 
 <script>
@@ -11,103 +15,109 @@ import gsap from 'gsap';
 
 export default {
     props: {
-        left: {
-            default: 0
-        },
-        width: {
-            default: 60
+        els: {
+            default: () => null,
         },
         sliderBoxshadow: {
-            default: false
+            default: false,
         },
         background: {
-            default: ""
+            default: '',
         },
         theme: {
             type: String,
-            default: "system"
-        }
+            default: 'system',
+        },
     },
-    data () {
+    data() {
         return {
-            thisLeft: 0,
-            thisWidth: 60,
+            domLeft: 0,
+            domWidth: 60,
             styles: {
                 slider: {
-                    background: ""
-                }
-            }
-        }
+                    background: '',
+                },
+            },
+        };
     },
     watch: {
-        left (val) {
+        left(val) {
             this.moveInit();
         },
-        width (val) {
+        width(val) {
             this.moveInit();
         },
-        background (val) {
-            this.stylesInit();
-        }
     },
     computed: {
-        $theme () {
-          if (this.theme=='system')
-              return this.$fvGlobal.state.theme;
-          return this.theme;
-        }
+        left() {
+            let { els, index } = this.els();
+            let left = 0;
+            for (let i = 0; i < index; i++) {
+                let elItem = els[i];
+                if (!elItem.el || !elItem.show) left += 0;
+                else {
+                    let elWidth = elItem.el.clientWidth;
+                    left += elWidth;
+                }
+            }
+            return left;
+        },
+        width() {
+            let { els, index } = this.els();
+            let elItem = els[index];
+            if (elItem.el) return elItem.el.clientWidth;
+            return 60;
+        },
+        $theme() {
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
+            return this.theme;
+        },
     },
-    mounted () {
+    mounted() {
         this.moveInit();
-        this.stylesInit();
     },
     methods: {
-        moveInit () {
-            let disLeft = this.left - this.thisLeft;
-            if(disLeft > 0)
-                this.widthExpandToRight(disLeft);
-            else
-                this.widthExpandToLeft(disLeft);
+        moveInit() {
+            let disLeft = this.left - this.domLeft;
+            if (disLeft > 0) this.widthExpandToRight(disLeft);
+            else this.widthExpandToLeft(disLeft);
         },
-        stylesInit () {
-            this.styles.slider.background = this.background;
-        },
-        widthExpandToRight (disLeft) {
+        widthExpandToRight(disLeft) {
             let addWidth = Math.abs(disLeft) + this.width;
             gsap.to(this.$data, {
-				thisWidth: addWidth,
+                domWidth: addWidth,
                 duration: 0.3,
                 delay: 0.08,
-                ease: "expo.inOut",
-                onComplete: this.widthFormatToRight
-			});
+                ease: 'expo.inOut',
+                onComplete: this.widthFormatToRight,
+            });
         },
-        widthFormatToRight () {
+        widthFormatToRight() {
             gsap.to(this.$data, {
-                thisLeft: this.left,
-				thisWidth: this.width,
-				duration: 0.2,
-				ease: "power3.out"
-			});
+                domLeft: this.left,
+                domWidth: this.width,
+                duration: 0.2,
+                ease: 'power3.out',
+            });
         },
-        widthExpandToLeft (disLeft) {
+        widthExpandToLeft(disLeft) {
             let addWidth = Math.abs(disLeft) + this.width;
             gsap.to(this.$data, {
-                thisLeft: this.left,
-				thisWidth: addWidth,
+                domLeft: this.left,
+                domWidth: addWidth,
                 duration: 0.3,
                 delay: 0.08,
-                ease: "expo.inOut",
-                onComplete: this.widthFormatToLeft
-			});
+                ease: 'expo.inOut',
+                onComplete: this.widthFormatToLeft,
+            });
         },
-        widthFormatToLeft () {
+        widthFormatToLeft() {
             gsap.to(this.$data, {
-				thisWidth: this.width,
-				duration: 0.2,
-				ease: "power3.out"
-			});
-        }
-    }
-}
+                domWidth: this.width,
+                duration: 0.2,
+                ease: 'power3.out',
+            });
+        },
+    },
+};
 </script>

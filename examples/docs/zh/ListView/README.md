@@ -100,15 +100,18 @@ export default {
 
 ### Propoties
 ---
-|    属性(attr)     |   类型(type)    | 必填(required) | 默认值(default) |                      说明(statement)                      |
-|:-----------------:|:---------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
-|       value       |      Array      |      Yes       |       N/A       |                     ListView数据绑定                      |
-|     multiple      |     Boolean     |       No       |      false      |                       是否开启多选                        |
-|     rowHeight     |     Number      |       No       |       N/A       |                        每一项高度                         |
-| headerForeground  | [string(color)] |       No       |       N/A       |                        标题前景色                         |
-| choosenBackground | [string(color)] |       No       |       N/A       |                       选中项背景色                        |
-|    itemPadding    |     String      |       No       |       N/A       |                    每一项的`padding`值                    |
-|       theme       |     String      |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
+|      属性(attr)       |   类型(type)    | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:---------------------:|:---------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+|         value         |      Array      |      Yes       |       N/A       |                     ListView数据绑定                      |
+|       multiple        |     Boolean     |       No       |      false      |                       是否开启多选                        |
+|       rowHeight       |     Number      |       No       |       N/A       |                        每一项高度                         |
+|   headerForeground    | [string(color)] |       No       |       N/A       |                        标题前景色                         |
+|   choosenBackground   | [string(color)] |       No       |       N/A       |                       选中项背景色                        |
+|      itemPadding      |     String      |       No       |       N/A       |                    每一项的`padding`值                    |
+|   itemBorderRadius    |     Number      |       No       |       N/A       |                     每一项的边框圆角                      |
+|   revealBorderColor   | [string(color)] |       No       |       N/A       |                      Reveal边框颜色                       |
+| revealBackgroundColor | [string(color)] |       No       |       N/A       |                      Reveal背景颜色                       |
+|         theme         |     String      |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Events
 ---

@@ -50,6 +50,12 @@ export default {
         dropDownIconForeground: {
             default: ''
         },
+        revealBorderColor: {
+            default: false
+        },
+        revealBackgroundColor: {
+            default: false
+        },
         disabled: {
             default: false,
         },
@@ -88,6 +94,7 @@ export default {
             return result;
         },
         borderLightColor () {
+            if(this.revealBorderColor) return this.revealBorderColor;
             if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
@@ -97,6 +104,7 @@ export default {
             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor () {
+            if(this.revealBackgroundColor) return this.revealBackgroundColor;
             if(this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }

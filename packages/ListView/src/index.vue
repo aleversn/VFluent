@@ -13,7 +13,7 @@
                 :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled), selected: item.selected && showSelectedBorder}"
                 class="item"
                 :key="index"
-                :style="{ height: _rowHeight, background: valueTrigger(item.choosen) ? choosenBackground : '' }"
+                :style="{ height: _rowHeight, background: valueTrigger(item.choosen) ? choosenBackground : '', borderRadius: itemBorderRadius + 'px' }"
                 :ref="`list_item_${index}`"
                 @click="onClick($event, item)"
             >
@@ -26,8 +26,12 @@
                     :borderColor="borderLightColor"
                     :borderGradientSize="35"
                     :borderWidth="1"
+                    :borderRadius="itemBorderRadius"
                 ></fv-reveal-container>
-                <div class="item-content" :style="{padding: itemPadding}">
+                <div
+                    class="item-content"
+                    :style="{padding: itemPadding}"
+                >
                     <slot
                         name="listItem"
                         :item="item"
@@ -62,7 +66,16 @@ export default {
             default: '',
         },
         itemPadding: {
-            default: ''
+            default: '',
+        },
+        itemBorderRadius: {
+            default: 3,
+        },
+        revealBorderColor: {
+            default: false
+        },
+        revealBackgroundColor: {
+            default: false
         },
         theme: {
             type: String,
@@ -88,6 +101,7 @@ export default {
     },
     computed: {
         borderLightColor() {
+            if (this.revealBorderColor) return this.revealBorderColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
@@ -97,6 +111,7 @@ export default {
             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor() {
+            if (this.revealBackgroundColor) return this.revealBackgroundColor;
             if (this.$theme == 'light') {
                 return 'rgba(160, 160, 160, 0.2)';
             }

@@ -156,6 +156,12 @@ export default {
         revealBorder: {
             default: false,
         },
+        revealBorderColor: {
+            default: false,
+        },
+        revealBackgroundColor: {
+            default: false,
+        },
         status: {
             default: '',
         },
@@ -203,6 +209,7 @@ export default {
             return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
         },
         borderLightColor() {
+            if(this.revealBorderColor) return this.revealBorderColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
@@ -212,6 +219,7 @@ export default {
             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor() {
+            if(this.revealBackgroundColor) return this.revealBackgroundColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }

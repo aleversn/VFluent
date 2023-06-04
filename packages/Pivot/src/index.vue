@@ -13,7 +13,8 @@
                     choose: eqal(item),
                     disabled: valueTrigger(item.disabled),
                 }"
-                :style="{ width: `${itemWidth(item)}px` }"
+                :ref="`item_${index}`"
+                :style="{ width: computedWidth(item) }"
                 @click="itemClick(item)"
             >
                 <slot
@@ -28,8 +29,7 @@
             </span>
         </div>
         <slider
-            :left="currentLeft"
-            :width="currentWidth"
+            :els="currentEls"
             :sliderBoxshadow="sliderBoxshadow"
             :background="styles.slider.background"
         ></slider>
@@ -109,20 +109,34 @@ export default {
         },
     },
     computed: {
-        currentLeft() {
-            if (!this.thisValue) return 0;
-            let index = -1;
-            if (this.thisValue.key) index = this.thisItems.findIndex((item) => item.key === this.thisValue.key);
-            else index = this.thisItems.findIndex((item) => this.valueTrigger(item.name) === this.valueTrigger(this.thisValue.name));
-            if (index < 0) return 0;
-            let count = 0;
-            for (let i = 0; i < index; i++) {
-                if (this.thisItems[i].show) count += this.thisItems[i].width;
-            }
-            return count;
+        computedWidth() {
+            return (item) => {
+                if (!item.width) return 0;
+                if (isNaN(item.width)) {
+                    return this.valueTrigger(item.width);
+                }
+                return `${item.width}px`;
+            };
         },
-        currentWidth() {
-            return !this.thisValue || !this.thisValue.width ? 0 : this.thisValue.width;
+        currentEls() {
+            return () => {
+                let index = -1;
+                if (!this.thisValue) index = 0;
+                else if (this.thisValue.key) index = this.thisItems.findIndex((item) => item.key === this.thisValue.key);
+                else index = this.thisItems.findIndex((item) => this.valueTrigger(item.name) === this.valueTrigger(this.thisValue.name));
+                if (index < 0) index = 0;
+                let result = [];
+                for (let i = 0; i < this.thisItems.length; i++) {
+                    result.push({
+                        el: this.$refs[`item_${i}`] ? this.$refs[`item_${i}`][0] : null,
+                        show: this.valueTrigger(this.thisItems[i].show),
+                    });
+                }
+                return {
+                    index: index,
+                    els: result,
+                };
+            };
         },
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
@@ -177,10 +191,6 @@ export default {
         itemClick(item) {
             if (item.disabled) return 0;
             this.thisValue = item;
-        },
-        itemWidth(item) {
-            if (!item.width) return 0;
-            return this.valueTrigger(item.width);
         },
         eqal(item) {
             for (let key in this.thisValue) {
