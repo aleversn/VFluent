@@ -144,7 +144,7 @@
                 .fv-DatePicker__input-options-col-items {
                     height: 100%;
                     overflow-x: hidden;
-                    overflow-y: auto;
+                    overflow-y: overlay;
                     -ms-overflow-style: -ms-autohiding-scrollbar;
                     &::-webkit-scrollbar {
                         display: none;

@@ -55,6 +55,17 @@
 </fv-ToggleSwitch>
 ```
 
+### ToggleSwitch Inside Content
+---
+
+<fv-ToggleSwitch width="50" on="开" off="关" :insideContent="true">
+</fv-ToggleSwitch>
+
+```vue
+<fv-ToggleSwitch width="50" on="开" off="关" :insideContent="true">
+</fv-ToggleSwitch>
+```
+
 ### ToggleSwitch Custom Style
 ---
 
@@ -78,6 +89,8 @@
 |    onForeground    | [string(color)] |       No       |       N/A       |    Toggleswitch content foreground when value is true     |
 |   offForeground    | [string(color)] |       No       |       N/A       |    Toggleswitch content foreground when value is false    |
 |    borderColor     | [string(color)] |       No       |       N/A       |                                                           |
+|       width        |     Number      |       No       |       40        |                                                           |
+|   insideContent    |     Boolean     |       No       |      false      |                                                           |
 |   ringBackground   | [string(color)] |       No       |       N/A       |                                                           |
 | switchOnBackground | [string(color)] |       No       |       N/A       |                                                           |
 |      disabled      |     Boolean     |       No       |       N/A       |                                                           |

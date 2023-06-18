@@ -52,7 +52,7 @@ export default {
 			default: () => []
 		},
 		borderWidth: {
-			default: 2
+			default: 1
 		},
 		placeholder: {
 			default: "Combobox"

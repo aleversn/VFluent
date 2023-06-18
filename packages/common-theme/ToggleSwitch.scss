@@ -102,6 +102,17 @@
                 }
             }
         }
+
+        .fv-toggle-inside-content
+        {
+            position: absolute;
+            font-family: '微软雅黑';
+            font-size: 12px;
+            cursor: default;
+            user-select: none;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+        }
     }
     
     .fv-toggle-content

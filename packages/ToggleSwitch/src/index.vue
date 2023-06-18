@@ -8,7 +8,7 @@
             class="fv-toggle-border"
             :class="{'toggle-on': thisValue}"
             ref="border"
-            :style="[{background: thisValue ? switchOnBackground : '', borderColor: thisValue ? '' : borderColor}]"
+            :style="[{width: finalWidth, background: thisValue ? switchOnBackground : '', borderColor: thisValue ? '' : borderColor}]"
         >
             <toggle-ring
                 :value="thisValue"
@@ -22,8 +22,14 @@
                 @touchmove="toggleMove"
                 @mouseup="toggleUp"
             ></toggle-ring>
+            <p
+                v-show="insideContent"
+                class="fv-toggle-inside-content"
+                :style="{left: thisValue ? '10px' : '', right: !thisValue ? '10px' : '', color: thisValue ? 'white' : offForeground}"
+            >{{thisValue ? on: off}}</p>
         </div>
         <p
+            v-show="!insideContent"
             class="fv-toggle-content"
             :style="{color: thisValue ? onForeground : offForeground}"
         >{{thisValue ? on: off}}</p>
@@ -54,6 +60,9 @@ export default {
         offForeground: {
             default: '',
         },
+        width: {
+            default: 40,
+        },
         borderColor: {
             default: '',
         },
@@ -62,6 +71,9 @@ export default {
         },
         switchOnBackground: {
             default: '',
+        },
+        insideContent: {
+            default: false,
         },
         disabled: {
             default: false,
@@ -88,7 +100,7 @@ export default {
         },
         currentLeft() {
             this.toggleLeft = this.computedLeft;
-        },
+        }
     },
     computed: {
         $theme() {
@@ -104,6 +116,11 @@ export default {
             if (this.currentLeft > this.$refs.border.clientWidth - 17) return this.$refs.border.clientWidth - 17;
             return this.currentLeft;
         },
+        finalWidth() {
+            if (isNaN(this.width)) {
+                return this.width;
+            } else return `${this.width}px`;
+        }
     },
     methods: {
         toggleDown(event) {

@@ -61,6 +61,12 @@ export default {
         compact: {
             default: false
         },
+        revealBorderColor: {
+            default: false
+        },
+        revealBackgroundColor: {
+            default: false
+        },
         theme: {
             type: String,
             default: "system"
@@ -95,22 +101,24 @@ export default {
             return false;
         },
         borderLightColor () {
+            if(this.revealBorderColor) return this.revealBorderColor;
             if(this.$theme == 'light') {
-                return 'rgba(121, 119, 117, 0.3)';
+                return 'rgba(121, 119, 117, 0.1)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.3)';
+                return 'rgba(255, 255, 255, 0.1)';
             }
-            return 'rgba(121, 119, 117, 0.3)';
+            return 'rgba(121, 119, 117, 0.1)';
         },
         backgroundLightColor () {
+            if(this.revealBackgroundColor) return this.revealBackgroundColor;
             if(this.$theme == 'light') {
-                return 'rgba(121, 119, 117, 0.2)';
+                return 'rgba(121, 119, 117, 0.05)';
             }
             if(this.$theme == 'dark' || this.$theme == 'custom') {
-                return 'rgba(255, 255, 255, 0.2)';
+                return 'rgba(255, 255, 255, 0.05)';
             }
-            return 'rgba(121, 119, 117, 0.2)';
+            return 'rgba(121, 119, 117, 0.05)';
         },
         $theme () {
             if (this.theme=='system')

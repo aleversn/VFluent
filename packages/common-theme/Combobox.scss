@@ -116,9 +116,9 @@
         display: flex;
         flex-direction: column;
         box-shadow: $ms-depth-shadow-16;
-        overflow: auto;
+        overflow: overlay;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: overlay;
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
         -ms-overflow-style: -ms-autohiding-scrollbar;

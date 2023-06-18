@@ -75,7 +75,7 @@ export default {
 |:-----------------------:|:---------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
 |      value/v-model      |     Object      |       No       |       N/A       |                    Combobox当前项绑定                     |
 |         options         |      Array      |      Yes       |       N/A       |                       Combobox数据                        |
-|       borderWidth       |     Number      |       No       |        2        |                                                           |
+|       borderWidth       |     Number      |       No       |        1        |                                                           |
 |       placeholder       |     String      |       No       |    Combobox     |                                                           |
 |      borderRadius       |     Number      |       No       |        3        |                                                           |
 |       background        | [string(color)] |       No       |       N/A       |                                                           |
