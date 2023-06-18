@@ -49,6 +49,7 @@
         margin-right: 5px;
       }
       .fv-TreeView--item-expand {
+        min-width: 16px;
         width: 16px;
         margin-right: 10px;
         display: flex;
@@ -56,8 +57,10 @@
         justify-content: center;
         cursor: pointer;
         font-size: 10px;
+        flex-shrink: 0;
       }
       .fv-TreeView--item-label {
+        flex-shrink: 0;
         width: 100%;
         display: flex;
         align-items: center;
@@ -68,6 +71,7 @@
           margin: 0 4px;
           font-size: 16px;
           display: flex;
+          flex-shrink: 0;
           align-items: center;
           &img {
             object-fit: cover;
