@@ -8,7 +8,7 @@
             class="fv-toggle-border"
             :class="{'toggle-on': thisValue}"
             ref="border"
-            :style="[{width: finalWidth, background: thisValue ? switchOnBackground : '', borderColor: thisValue ? '' : borderColor}]"
+            :style="[{width: finalWidth, height: finalHeight, background: thisValue ? switchOnBackground : '', borderColor: thisValue ? '' : borderColor}]"
         >
             <toggle-ring
                 :value="thisValue"
@@ -63,6 +63,9 @@ export default {
         width: {
             default: 40,
         },
+        height: {
+            default: 20,
+        },
         borderColor: {
             default: '',
         },
@@ -100,7 +103,7 @@ export default {
         },
         currentLeft() {
             this.toggleLeft = this.computedLeft;
-        }
+        },
     },
     computed: {
         $theme() {
@@ -120,7 +123,12 @@ export default {
             if (isNaN(this.width)) {
                 return this.width;
             } else return `${this.width}px`;
-        }
+        },
+        finalHeight() {
+            if (isNaN(this.height)) {
+                return this.height;
+            } else return `${this.height}px`;
+        },
     },
     methods: {
         toggleDown(event) {

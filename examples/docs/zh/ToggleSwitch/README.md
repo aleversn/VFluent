@@ -90,6 +90,7 @@
 |   offForeground    | [string(color)] |       No       |       N/A       |    Toggleswitch content foreground when value is false    |
 |    borderColor     | [string(color)] |       No       |       N/A       |                                                           |
 |       width        |     Number      |       No       |       40        |                                                           |
+|       height       |     Number      |       No       |       20        |                                                           |
 |   insideContent    |     Boolean     |       No       |      false      |                                                           |
 |   ringBackground   | [string(color)] |       No       |       N/A       |                                                           |
 | switchOnBackground | [string(color)] |       No       |       N/A       |                                                           |
