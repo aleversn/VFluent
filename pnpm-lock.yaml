@@ -70,7 +70,7 @@ devDependencies:
     specifier: 3.0.0
     version: 3.0.0
   vue:
-    specifier: ^2.6.10
+    specifier: 2.6.10
     version: 2.6.10
   vue-template-compiler:
     specifier: 2.6.10
