@@ -62,6 +62,7 @@
       .fv-TreeView--item-label {
         flex-shrink: 0;
         width: 100%;
+        flex: 1;
         display: flex;
         align-items: center;
         .fv-TreeView--item-label-icon {
