@@ -142,6 +142,14 @@ export default {
                 }
                 return;
             }
+            if(event.keyCode === 86 && event.ctrlKey) {
+                navigator.clipboard.readText().then(data => {
+                    for(let i = 0; i < this.length; i++) {
+                        this.$set(this.thisValue, i, data[i]);
+                    }
+                });
+                return;
+            }
             if(event.keyCode === 13) {
                 this.$emit('confirm', this.thisValue.join(""));
             }
