@@ -103,6 +103,7 @@ export default {
 |      属性(attr)       |   类型(type)    | 必填(required) | 默认值(default) |                      说明(statement)                      |
 |:---------------------:|:---------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
 |         value         |      Array      |      Yes       |       N/A       |                     ListView数据绑定                      |
+|        choosen        |      Array      |       No       |       N/A       |                  外部设置ListView选中项                   |
 |       multiple        |     Boolean     |       No       |      false      |                       是否开启多选                        |
 |       rowHeight       |     Number      |       No       |       N/A       |                        每一项高度                         |
 |   headerForeground    | [string(color)] |       No       |       N/A       |                        标题前景色                         |

@@ -53,6 +53,9 @@ export default {
         value: {
             default: () => [],
         },
+        choosen: {
+            default: () => [],
+        },
         multiple: {
             default: false,
         },
@@ -72,10 +75,10 @@ export default {
             default: 3,
         },
         revealBorderColor: {
-            default: false
+            default: false,
         },
         revealBackgroundColor: {
-            default: false
+            default: false,
         },
         theme: {
             type: String,
@@ -97,6 +100,10 @@ export default {
     watch: {
         value(val) {
             this.valueInit();
+            this.setChoosen();
+        },
+        choosen(val) {
+            this.setChoosen();
         },
     },
     computed: {
@@ -151,6 +158,7 @@ export default {
     },
     mounted() {
         this.valueInit();
+        this.setChoosen();
         this.outSideClickInit();
         this.keyDownEventInit();
         window.addEventListener('click', () => {
@@ -232,6 +240,26 @@ export default {
             });
 
             this.$emit('choosen-items', this.currentChoosen);
+        },
+        setChoosen() {
+            for (let cur of this.choosen) {
+                if (this.valueTrigger(cur.disabled)) continue;
+                if (this.valueTrigger(cur.type) === 'header' || this.valueTrigger(cur.type) == 'divider') continue;
+                let item = this.thisValue.find((it) => it.key === cur.key);
+                if (item) {
+                    if (!this.multiple) {
+                        for (let it of this.currentChoosen) {
+                            it.choosen = false;
+                            this.$set(this.thisValue, this.thisValue.indexOf(it), it);
+                        }
+                    }
+
+                    item.choosen = true;
+                    this.$set(this.thisValue, this.thisValue.indexOf(item), item);
+                }
+
+                this.selectionFormat(item);
+            }
         },
         move($event, direction) {
             $event.preventDefault();
