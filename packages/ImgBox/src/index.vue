@@ -61,12 +61,18 @@ export default {
             return this.theme;
         },
         imgUri () {
-            if(this.$fvGlobal.getters.imgUri(this.url) == undefined)
+            if(!this.url || this.$fvGlobal.getters.imgUri(this.url) == undefined) {
                 this.$fvGlobal.commit('setImgUri', {
                     data: '',
                     key: this.url,
                     state: 'none'
                 });
+                return {
+                    data: '',
+                    key: this.url,
+                    state: 'none'
+                };
+            }
             return this.$fvGlobal.getters.imgUri(this.url);
         }
     },
