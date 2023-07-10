@@ -90,7 +90,7 @@ export default {
         progressSize() {
             if (this.width <= 20 || this.height <= 20)
                 return {
-                    r: this.width - 2,
+                    r: this.width - 2 > 0 ? this.width - 2 : 2,
                     borderWidth: 2,
                 };
             if (this.width <= 40 || this.height <= 40)
