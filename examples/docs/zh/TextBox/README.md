@@ -290,39 +290,40 @@ Customize background
 
 ### Propoties
 ---
-|      属性(attr)       |     类型(type)     | 必填(required) | 默认值(default) |                      说明(statement)                      |
-|:---------------------:|:------------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
-|         value         |       String       |       No       |                 |             Using v-model binding input value             |
-|         mode          | ['default','mask'] |       No       |     default     |                    Choose TextBox mode                    |
-|      placeholder      |       String       |       No       |       N/A       |                      等同HTML[input]                      |
-|         type          |       String       |       No       |      text       |                      等同HTML[input]                      |
-|         mask          |       String       |       No       |    mask:___     |               The mask mode input template                |
-|         flag          |       String       |       No       |        _        |                 The mask mode input flag                  |
-|        pattern        |       String       |       No       |     [\S\s]*     |            The pattern for limiting input char            |
-|       readonly        |      Boolean       |       No       |      false      |                      等同HTML[input]                      |
-|       maxlength       |       Number       |       No       |       N/A       |                      等同HTML[input]                      |
-|        prefix         |       String       |       No       |       N/A       |                           前缀                            |
-|        suffix         |       String       |       No       |       N/A       |                           后缀                            |
-|       leftIcon        |       String       |       No       |       N/A       |                          左图标                           |
-|         icon          |       String       |       No       |       N/A       |                          右图标                           |
-|       underline       |      Boolean       |       No       |      false      |              是否开启Underline风格的TextBox               |
-|      background       |  [string(color)]   |       No       |       N/A       |                                                           |
-|      borderWidth      |      Boolean       |       No       |       N/A       |                                                           |
-|      borderColor      |  [string(color)]   |       No       |       N/A       |                                                           |
-|   focusBorderColor    |  [string(color)]   |       No       |       N/A       |                                                           |
-|   revealBorderColor   |  [string(color)]   |       No       |       N/A       |                                                           |
-| revealBackgroundColor |  [string(color)]   |       No       |       N/A       |                                                           |
-|       fontSize        |       Number       |       No       |      13.3       |                                                           |
-|      fontWeight       |  [string,number]   |       No       |     normal      |                                                           |
-|      foreground       |  [string(color)]   |       No       |       N/A       |                                                           |
-|       textAlign       |       String       |       No       |      left       |                                                           |
-|     borderRadius      |       Number       |       No       |        3        |         Textbox圆角大小, 启用revealBorder时将失效         |
-|      isBoxShadow      |      Boolean       |       No       |      false      |                     开启`TextBox`阴影                     |
-|     revealBorder      |      Boolean       |       No       |      false      |                                                           |
-|        status         | ['warn','correct'] |       No       |       N/A       |            状态边框预设, 默认有警告和正确两种             |
-|     debounceDelay     |       Number       |       No       |       300       |                     搜索节流延迟时间                      |
-|       disabled        |      Boolean       |       No       |      false      |                                                           |
-|         theme         |       String       |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
+|      属性(attr)       |     类型(type)     | 必填(required) | 默认值(default) |                            说明(statement)                            |
+|:---------------------:|:------------------:|:--------------:|:---------------:|:---------------------------------------------------------------------:|
+|         value         |       String       |       No       |                 |                   Using v-model binding input value                   |
+|         mode          | ['default','mask'] |       No       |     default     |                          Choose TextBox mode                          |
+|       inputmode       |       String       |       No       |       N/A       | 输入模式, 可选值为`numeric`, `tel`, `text`, `decimal`, `email`, `url` |
+|      placeholder      |       String       |       No       |       N/A       |                            等同HTML[input]                            |
+|         type          |       String       |       No       |      text       |                            等同HTML[input]                            |
+|         mask          |       String       |       No       |    mask:___     |                     The mask mode input template                      |
+|         flag          |       String       |       No       |        _        |                       The mask mode input flag                        |
+|        pattern        |       String       |       No       |     [\S\s]*     |                  The pattern for limiting input char                  |
+|       readonly        |      Boolean       |       No       |      false      |                            等同HTML[input]                            |
+|       maxlength       |       Number       |       No       |       N/A       |                            等同HTML[input]                            |
+|        prefix         |       String       |       No       |       N/A       |                                 前缀                                  |
+|        suffix         |       String       |       No       |       N/A       |                                 后缀                                  |
+|       leftIcon        |       String       |       No       |       N/A       |                                左图标                                 |
+|         icon          |       String       |       No       |       N/A       |                                右图标                                 |
+|       underline       |      Boolean       |       No       |      false      |                    是否开启Underline风格的TextBox                     |
+|      background       |  [string(color)]   |       No       |       N/A       |                                                                       |
+|      borderWidth      |      Boolean       |       No       |       N/A       |                                                                       |
+|      borderColor      |  [string(color)]   |       No       |       N/A       |                                                                       |
+|   focusBorderColor    |  [string(color)]   |       No       |       N/A       |                                                                       |
+|   revealBorderColor   |  [string(color)]   |       No       |       N/A       |                                                                       |
+| revealBackgroundColor |  [string(color)]   |       No       |       N/A       |                                                                       |
+|       fontSize        |       Number       |       No       |      13.3       |                                                                       |
+|      fontWeight       |  [string,number]   |       No       |     normal      |                                                                       |
+|      foreground       |  [string(color)]   |       No       |       N/A       |                                                                       |
+|       textAlign       |       String       |       No       |      left       |                                                                       |
+|     borderRadius      |       Number       |       No       |        3        |               Textbox圆角大小, 启用revealBorder时将失效               |
+|      isBoxShadow      |      Boolean       |       No       |      false      |                           开启`TextBox`阴影                           |
+|     revealBorder      |      Boolean       |       No       |      false      |                                                                       |
+|        status         | ['warn','correct'] |       No       |       N/A       |                  状态边框预设, 默认有警告和正确两种                   |
+|     debounceDelay     |       Number       |       No       |       300       |                           搜索节流延迟时间                            |
+|       disabled        |      Boolean       |       No       |      false      |                                                                       |
+|         theme         |       String       |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式       |
 
 ### Events
 ---

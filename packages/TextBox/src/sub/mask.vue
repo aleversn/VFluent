@@ -1,6 +1,6 @@
 <template>
 <div class="text-box-container internal">
-    <input :type="type" class="fv-text-box-input" :readonly="isReadOnly" :disabled="isDisabled" ref="input" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight, color: foreground, 'text-align': textAlign}" @input="input" @keydown="keyDown" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)" @focus="$emit('focus', true)" @blur="$emit('blur', false)"/>
+    <input :inputmode="inputmode" :type="type" class="fv-text-box-input" :readonly="isReadOnly" :disabled="isDisabled" ref="input" :style="{'font-size': `${fontSize}px`, 'font-weight': fontWeight, color: foreground, 'text-align': textAlign}" @input="input" @keydown="keyDown" @keyup="$emit('keyup', $event)" @change="$emit('change', $event)" @paste="$emit('paste', $event)" @focus="$emit('focus', true)" @blur="$emit('blur', false)"/>
 </div>
 </template>
 
@@ -10,6 +10,9 @@ export default {
         value: {
             type: Array,
             default: () => []
+        },
+        inputmode: {
+            default: "text"
         },
         type: {
             default: "text"

@@ -16,7 +16,7 @@ export default {
             default: false
         },
         loadingColor: {
-            default: 'rgba(0, 90, 158, 1)'
+            default: 'rgba(36, 36, 36, 1)'
         },
         onbackground: {
             default: false

@@ -106,23 +106,23 @@ export default {
         borderLightColor() {
             return () => {
                 if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.6)";
-                }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.6)";
-                }
-                return "rgba(121, 119, 117, 0.6)";
-            }
-        },
-        backgroundLightColor() {
-            return () => {
-                if (this.$theme == "light") {
                     return "rgba(121, 119, 117, 0.3)";
                 }
                 if (this.$theme == "dark" || this.$theme == "custom") {
                     return "rgba(255, 255, 255, 0.3)";
                 }
                 return "rgba(121, 119, 117, 0.3)";
+            }
+        },
+        backgroundLightColor() {
+            return () => {
+                if (this.$theme == "light") {
+                    return "rgba(121, 119, 117, 0.1)";
+                }
+                if (this.$theme == "dark" || this.$theme == "custom") {
+                    return "rgba(255, 255, 255, 0.1)";
+                }
+                return "rgba(121, 119, 117, 0.1)";
             }
         },
     },

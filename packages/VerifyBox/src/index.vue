@@ -3,6 +3,7 @@
         <div v-if="thisValue.length === length" class="fv-verify-container" @paste="handlePaste($event)">
             <fv-text-box
                 :value="thisValue[idx]"
+                :inputmode="inputmode"
                 class="fv-verify-unit"
                 :theme="theme"
                 v-for="(i, idx) in length"
@@ -37,6 +38,9 @@ export default {
         },
         length: {
             default: 4
+        },
+        inputmode: {
+            default: "numeric"
         },
         underline: {
             default: false
@@ -131,9 +135,11 @@ export default {
         },
         handleKeyDown (event, idx) {
             event.preventDefault();
+            console.log(event)
             if(event.key.length === 1 && !event.ctrlKey) {
                 this.$set(this.thisValue, idx, event.key);
             }
+            // Backspace
             if(event.keyCode === 8) {
                 this.$set(this.thisValue, idx, "");
                 if(idx > 0) {
@@ -142,6 +148,7 @@ export default {
                 }
                 return;
             }
+            // Ctrl + V
             if(event.keyCode === 86 && event.ctrlKey) {
                 navigator.clipboard.readText().then(data => {
                     for(let i = 0; i < this.length; i++) {
@@ -162,6 +169,7 @@ export default {
             }
         },
         handlePaste(event) {
+            console.log(event)
             let data = event.clipboardData.getData('text/plain');
             for(let i = 0; i < this.length; i++) {
                 this.$set(this.thisValue, i, data[i]);

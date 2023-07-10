@@ -69,11 +69,13 @@ export default {
         lazyInit () {
             clearInterval(this.lazyTimer);
             this.lazyTimer = setInterval(() => {
-                if(this.$el.getBoundingClientRect().top < window.innerHeight)
-                {
-                    this.lazy = false;
-                    clearInterval(this.lazyTimer);
-                }
+                window.requestAnimationFrame(() => {
+                    if(this.$el.getBoundingClientRect().top < window.innerHeight)
+                    {
+                        this.lazy = false;
+                        clearInterval(this.lazyTimer);
+                    }
+                })
             }, 300);
         }
     },

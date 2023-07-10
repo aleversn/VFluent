@@ -35,6 +35,7 @@
                 v-model="thisValue"
                 ref="core"
                 :mode="mode"
+                :inputmode="inputmode"
                 :type="type"
                 :placeholder="placeholder"
                 :mask="mask"
@@ -83,6 +84,9 @@ export default {
         },
         mode: {
             default: 'default',
+        },
+        inputmode: {
+            default: 'text',
         },
         placeholder: {
             default: '',

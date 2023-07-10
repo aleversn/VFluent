@@ -3,7 +3,7 @@
     position: relative;
     width: 294px;
     height: 340px;
-    background: rgba(235, 235, 235, 0.6);
+    background: rgba(255, 255, 255, 0.6);
     border: rgba(120, 120, 120, 0.1) solid 2px;
     font-family: "微软雅黑";
     border-radius: 3px;
@@ -26,12 +26,13 @@
         .calendar-switcher
         {
             width: 100%;
-            height: 100%;
+            height: calc(100% - 10px);
             max-height: 39px;
+            margin: 5px;
             padding-left: 8px;
-            border: transparent solid 1.5px;
             border-radius: 3px;
-            font-weight: normal;
+            font-size: 13.8px;
+            font-weight: bold;
             color: rgba(50, 49, 48, 1);
             display: flex;
             justify-content: flex-start;
@@ -44,7 +45,12 @@
             
             &:hover
             {
-                border-color: rgba(120, 120, 120, 0.1);
+                background: rgba(120, 120, 120, 0.1);
+            }
+
+            &:active
+            {
+                opacity: 0.6;
             }
             
             &.dark
@@ -66,7 +72,6 @@
             {
                 width: 39px;
                 height: 100%;
-                border: transparent solid 1.5px;
                 border-radius: 3px;
                 display: flex;
                 justify-content: center;
@@ -79,7 +84,12 @@
                 
                 &:hover
                 {
-                    border-color: rgba(120, 120, 120, 0.1);
+                    background: rgba(120, 120, 120, 0.1);
+                }
+
+                &:active
+                {
+                    background: rgba(95, 95, 95, 0.1);
                 }
 
                 .ms-Icon
@@ -125,7 +135,9 @@
                     width: 41px;
                     height: 100%;
                     background: transparent;
-                    font-size: 15px;
+                    color: rgba(36, 36, 36, 1);
+                    font-size: 12px;
+                    font-weight: bold;
                     border: none;
                     box-sizing: border-box;
                     outline: none;
@@ -139,7 +151,7 @@
             width: 100%;
             height: 100%;
             flex: 1;
-            background: rgba(230, 230, 230, 1);
+            background: rgba(255, 255, 255, 1);
             display: flex;
             flex-wrap: wrap;
             overflow: overlay;
@@ -154,9 +166,11 @@
                 height: 70.5px;
                 margin: 1px;
                 padding: 0px;
-                background: rgba(245, 245, 245, 1);
-                font-size: 18px;
+                background: rgba(255, 255, 255, 1);
+                font-size: 15px;
+                color: rgba(36, 36, 36, 0.6);
                 border: rgba(120, 120, 120, 0) solid 2px;
+                border-radius: 3px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -179,7 +193,8 @@
                 
                 &.range
                 {
-                    background: rgba(230, 230, 230, 1);
+                    background: rgba(255, 255, 255, 1);
+                    color: rgba(36, 36, 36, 1);
                 }
                 
                 &.current

@@ -2,7 +2,6 @@
     <div
         :class="['fv-'+$theme+'-ToggleSwitch', isDisabled ? 'disabled' : '']"
         @mouseup="toggle"
-        @touchend="toggle"
     >
         <div
             class="fv-toggle-border"
@@ -21,6 +20,7 @@
                 @mousemove="toggleMove"
                 @touchmove="toggleMove"
                 @mouseup="toggleUp"
+                @touchend="toggleUp"
             ></toggle-ring>
             <p
                 v-show="insideContent"
@@ -148,8 +148,8 @@ export default {
             if (this.mouseMove) {
                 if (this.$refs.toggle.$el.offsetLeft + this.$refs.toggle.$el.clientWidth / 2 > this.$refs.border.clientWidth / 2) this.thisValue = true;
                 else this.thisValue = false;
-                this.mouseMove = false;
             } else this.thisValue = !this.thisValue;
+            this.mouseMove = false;
             this.$emit('toggle', this.thisValue);
             this.currentLeft = this.$refs.toggle.$el.offsetLeft;
             this.disX = 0;

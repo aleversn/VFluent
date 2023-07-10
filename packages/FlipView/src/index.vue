@@ -1,62 +1,115 @@
 <template>
-<div :class="'fv-'+$theme+'-FlipView'" @mouseenter="hoverTrigger = true" @mouseleave="hoverTrigger = false" @touchstart="hoverTrigger = true" @touchend="hoverTrigger = false">
-    <transition name="fade-in">
-        <div v-show="showControlPanel !== 'hidden' && hoverTrigger" class="control-panel" :style="styles.controlPanel">
-            <span class="slidebtn fst" :class="[direction]" @click="slidePrev">
-                <p class="icon" :class="[`ms-Icon ms-Icon--${firstBtn}`]"></p>
-            </span>
-            <span class="slidebtn sec" :class="[direction]" @click="slideNext">
-                    <p class="icon" :class="[`ms-Icon ms-Icon--${secondBtn}`]"></p>
+    <div
+        :class="'fv-'+$theme+'-FlipView'"
+        @mouseenter="hoverTrigger = true"
+        @mouseleave="hoverTrigger = false"
+        @touchstart="hoverTrigger = true"
+        @touchend="hoverTrigger = false"
+    >
+        <transition name="fade-in">
+            <div
+                v-show="showControlPanel !== 'hidden' && hoverTrigger"
+                class="control-panel"
+                :style="styles.controlPanel"
+            >
+                <span
+                    class="slidebtn fst"
+                    :class="[direction]"
+                    @click="slidePrev"
+                >
+                    <p
+                        class="icon"
+                        :class="[`ms-Icon ms-Icon--${firstBtn}`]"
+                    ></p>
                 </span>
-            <span class="bottom-controller" :class="[direction]">
-                <p v-for="(item, index) in thisValue" :key="`ring: ${index}`" class="fst ms-Icon" :class="[currentIndex == index ? 'ms-Icon--CircleFill' : 'ms-Icon--CircleRing']" @click="slideIndex(index)"></p>
-                <p class="sec ms-Icon" :class="[thisAutoPlay.toString() == 'true' ? 'ms-Icon--Pause' : 'ms-Icon--Play']" @click="thisAutoPlay = !thisAutoPlay"></p>
-            </span>
-        </div>
-    </transition>
-    <div class="container-panel">
-        <transition-group :name="currentAnimation" tag="div" class="container-panel">
-            <div v-show="currentIndex === index" v-for="(item, index) in thisValue" :key="`flipview: ${index}`" class="container-item" :style="styles.containerItem">
-                <slot name="item" :data="item" :index="index">
-                    <p style="font-size: 36px;">{{index + 1}}</p>
-                </slot>
+                <span
+                    class="slidebtn sec"
+                    :class="[direction]"
+                    @click="slideNext"
+                >
+                    <p
+                        class="icon"
+                        :class="[`ms-Icon ms-Icon--${secondBtn}`]"
+                    ></p>
+                </span>
+                <span
+                    class="bottom-controller"
+                    :class="[direction]"
+                >
+                    <div
+                        v-for="(item, index) in thisValue"
+                        :key="`ring: ${index}`"
+                        class="flip-view-ring"
+                        :class="[{choosen: currentIndex == index}]"
+                        @click="slideIndex(index)"
+                    >
+                        <i></i>
+                    </div>
+                    <p
+                        class="sec ms-Icon"
+                        :class="[thisAutoPlay.toString() == 'true' ? 'ms-Icon--PauseBold' : 'ms-Icon--PlaySolid']"
+                        @click="thisAutoPlay = !thisAutoPlay"
+                    ></p>
+                </span>
             </div>
-        </transition-group>
+        </transition>
+        <div class="container-panel">
+            <transition-group
+                :name="currentAnimation"
+                tag="div"
+                class="container-panel"
+            >
+                <div
+                    v-show="currentIndex === index"
+                    v-for="(item, index) in thisValue"
+                    :key="`flipview: ${index}`"
+                    class="container-item"
+                    :style="styles.containerItem"
+                >
+                    <slot
+                        name="item"
+                        :data="item"
+                        :index="index"
+                    >
+                        <p style="font-size: 36px;">{{index + 1}}</p>
+                    </slot>
+                </div>
+            </transition-group>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
 export default {
-    name: "FvFlipView",
+    name: 'FvFlipView',
     props: {
         value: {
-            default: () => []
+            default: () => [],
         },
         direction: {
-            default: 'horizontal'
+            default: 'horizontal',
         },
         animation: {
-            default: 'move'
+            default: 'move',
         },
         duration: {
-            default: 800
+            default: 800,
         },
         autoPlay: {
-            default: true
+            default: true,
         },
         autoPlayDuration: {
-            default: 5000
+            default: 5000,
         },
         showControlPanel: {
-            default: ''
+            default: '',
         },
         mask: {
-            default: ''
+            default: '',
         },
         theme: {
-            default: 'system'
-        }
+            default: 'system',
+        },
     },
     data() {
         return {
@@ -71,172 +124,153 @@ export default {
                 moveDifferent: 'move-different',
                 glue: 'rotate-glue',
                 push: 'rotate-push',
-                fold: 'rotate-fold'
+                fold: 'rotate-fold',
             },
             styles: {
                 containerItem: {
                     animationDuration: `0.8s`,
-                    animationTimingFunction: ''
+                    animationTimingFunction: '',
                 },
                 controlPanel: {
-                    background: ''
-                }
+                    background: '',
+                },
             },
             timer: {
                 autoPlay: {},
-                dis: {}
+                dis: {},
             },
             lock: {
                 slide: true,
-                slideIndex: true
-            }
+                slideIndex: true,
+            },
         };
     },
     watch: {
-        value (val) {
+        value(val) {
             this.thisValue = val;
         },
-        thisValue (val) {
+        thisValue(val) {
             this.$emit('input', val);
         },
-        autoPlay (val) {
+        autoPlay(val) {
             this.thisAutoPlay = val;
         },
-        thisAutoPlay () {
+        thisAutoPlay() {
             this.autoPlayInit();
         },
-        duration () {
+        duration() {
             this.durationInit();
         },
-        mask () {
+        mask() {
             this.stylesInit();
         },
-        currentIndex (val) {
+        currentIndex(val) {
             this.$emit('change', {
                 index: val,
-                duration: this.autoPlayDuration
+                duration: this.autoPlayDuration,
             });
-        }
+        },
     },
     computed: {
         $theme() {
-            if(this.theme == 'system')
-                return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
-        firstBtn () {
-            if(this.direction == 'horizontal')
-                return 'CaretLeftSolid8';
+        firstBtn() {
+            if (this.direction == 'horizontal') return 'CaretLeftSolid8';
             return 'CaretUpSolid8';
         },
-        secondBtn () {
-            if(this.direction == 'horizontal')
-                return 'CaretRightSolid8';
+        secondBtn() {
+            if (this.direction == 'horizontal') return 'CaretRightSolid8';
             return 'CaretDownSolid8';
         },
-        slideLeftAnimation () {
+        slideLeftAnimation() {
             return `${this.animationMap[this.animation]}-right-to-left`;
         },
-        slideRightAnimation () {
+        slideRightAnimation() {
             return `${this.animationMap[this.animation]}-left-to-right`;
         },
-        slideTopAnimation () {
+        slideTopAnimation() {
             return `${this.animationMap[this.animation]}-bottom-to-top`;
         },
-        slideBottomAnimation () {
+        slideBottomAnimation() {
             return `${this.animationMap[this.animation]}-top-to-bottom`;
-        }
+        },
     },
-    mounted () {
+    mounted() {
         this.durationInit();
         this.autoPlayInit();
         this.stylesInit();
     },
     methods: {
-        autoPlayInit () {
+        autoPlayInit() {
             clearInterval(this.timer.autoPlay);
-            if(this.thisAutoPlay.toString() != 'true')
-                return 0;
+            if (this.thisAutoPlay.toString() != 'true') return 0;
             this.timer.autoPlay = setInterval(() => {
                 this.slideNext();
             }, this.autoPlayDuration);
         },
-        durationInit () {
+        durationInit() {
             this.styles.containerItem.animationDuration = `${(parseFloat(this.duration.toString()) / 1000).toFixed(2)}s`;
         },
-        stylesInit () {
+        stylesInit() {
             this.styles.controlPanel.background = this.mask;
         },
-        slideNext () {
+        slideNext() {
             clearInterval(this.timer.autoPlay);
-            if(!this.lock.slide)
-                return 0;
+            if (!this.lock.slide) return 0;
             this.lock.slide = false;
-            if(this.currentIndex < this.thisValue.length - 1)
-                this.currentIndex++;
-            else
-                this.currentIndex = 0;
-            if(this.direction == 'horizontal')
-                this.currentAnimation = this.slideLeftAnimation;
-            else
-                this.currentAnimation = this.slideBottomAnimation;
+            if (this.currentIndex < this.thisValue.length - 1) this.currentIndex++;
+            else this.currentIndex = 0;
+            if (this.direction == 'horizontal') this.currentAnimation = this.slideLeftAnimation;
+            else this.currentAnimation = this.slideBottomAnimation;
             this.lock.slide = true;
             this.autoPlayInit();
         },
-        slidePrev () {
+        slidePrev() {
             clearInterval(this.timer.autoPlay);
-            if(!this.lock.slide)
-                return 0;
+            if (!this.lock.slide) return 0;
             this.lock.slide = false;
-            if(this.currentIndex > 0)
-                this.currentIndex--;
-            else
-                this.currentIndex = this.thisValue.length - 1;
-            if(this.direction == 'horizontal')
-                this.currentAnimation = this.slideRightAnimation;
-            else
-                this.currentAnimation = this.slideTopAnimation;
+            if (this.currentIndex > 0) this.currentIndex--;
+            else this.currentIndex = this.thisValue.length - 1;
+            if (this.direction == 'horizontal') this.currentAnimation = this.slideRightAnimation;
+            else this.currentAnimation = this.slideTopAnimation;
             this.lock.slide = true;
             this.autoPlayInit();
         },
-        async slideDelay (direction=true, dis_duration) {
-            if(direction)
-                this.slideNext();
-            else
-                this.slidePrev();
-            return await new Promise(resolve => {
+        async slideDelay(direction = true, dis_duration) {
+            if (direction) this.slideNext();
+            else this.slidePrev();
+            return await new Promise((resolve) => {
                 setTimeout(() => {
                     resolve(dis_duration);
                 }, dis_duration);
             });
         },
-        async slideIndex (index) {
-            if(!this.lock.slideIndex)
-                return 0;
+        async slideIndex(index) {
+            if (!this.lock.slideIndex) return 0;
             this.lock.slideIndex = false;
             clearInterval(this.timer.dis);
             let dis = index - this.currentIndex;
-            if(dis == 0)
-                return 0;
+            if (dis == 0) return 0;
             let d = dis > 0;
             dis = Math.abs(dis);
             let t = this.duration.toString();
             let dis_duration = (parseFloat(t) / dis).toFixed(2);
             this.styles.containerItem.animationDuration = `${(dis_duration / 1000).toFixed(2)}s`;
             this.styles.containerItem.animationTimingFunction = 'linear';
-            for(let i = 0; i < dis; i++) {
-                if(i == dis - 1)
-                    this.styles.containerItem.animationTimingFunction = '';
+            for (let i = 0; i < dis; i++) {
+                if (i == dis - 1) this.styles.containerItem.animationTimingFunction = '';
                 await this.slideDelay(d, dis_duration);
             }
-            await new Promise(resolve => {
+            await new Promise((resolve) => {
                 setTimeout(() => {
                     this.durationInit();
                     resolve(50);
                 }, 50);
             });
             this.lock.slideIndex = true;
-        }
-    }
+        },
+    },
 };
 </script>

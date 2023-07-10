@@ -14,7 +14,7 @@
 
             &:hover
             {
-                border-color: rgba(120, 120, 120, 0.3);
+                background: rgba(120, 120, 120, 0.3);
                 color: whitesmoke;
                 opacity: 1;
             }
@@ -26,7 +26,12 @@
             {
                 &:hover
                 {
-                    border-color: rgba(120, 120, 120, 0.3);
+                    background: rgba(120, 120, 120, 0.3);
+                }
+
+                &:active
+                {
+                    background: rgba(120, 120, 120, 0.2);
                 }
             }
         }
@@ -47,12 +52,12 @@
 
         .picker-container
         {
-            background: rgba(36, 36, 36, 1);
+            background: rgba(32, 32, 32, 1);
             
             button.picker-btn
             {
-                background: rgba(60, 60, 60, 1);
-                color: whitesmoke;
+                background: rgba(32, 32, 32, 1);
+                color: rgba(245, 245, 245, 0.6);
                 
                 &:hover
                 {
@@ -61,12 +66,13 @@
                 
                 &.range
                 {
-                    background: rgba(36, 36, 36, 1);
+                    background: rgba(32, 32, 32, 1);
+                    color: whitesmoke;
                 }
                 
                 &.current
                 {
-                    background: rgba(0, 120, 212, 0.8);
+                    background: rgba(118, 185, 237, 0.8);
                     color: whitesmoke;
                     
                     &:hover

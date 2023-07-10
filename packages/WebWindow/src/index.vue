@@ -1,6 +1,6 @@
 <template>
 	<div v-show="thisValue" :class="['fv-'+$theme+'-WebWindow', {'static-transition' : !freezeTransition, dark : theme == 'dark'}]" :style="{left: currentLeft, top: currentTop}" ref="block">
-		<div draggable="false" class="title-bar" @mousedown="forward" @mouseup="stop" @touchstart="forward($event.targetTouches[0])" @touchend="stop">
+		<div draggable="false" class="title-bar" @mousedown="forward" @mouseup="stop" @touchstart="forward" @touchend="stop">
 			<p style="margin-left: 10px; user-select: none;">{{title}}</p>
 			<button class="control-btn shut-down" @mousedown="stopPropagation" @click="close">
 				<i class="ms-Icon ms-Icon--Cancel"></i>
@@ -84,18 +84,18 @@ export default {
                 }
             }));
             this.timer = setInterval(() => {
-                if(this.xwidth != this.$el.clientWidth)
+                if(this.xWidth != this.$el.clientWidth)
                 {
                     this.posInit();
-                    this.xwidth = this.$el.clientWidth;
-                    this.xheight = this.$el.clientHeight;
+                    this.xWidth = this.$el.clientWidth;
+                    this.xHeight = this.$el.clientHeight;
                     return 0;
                 }
-                if(this.xheight != this.$el.clientHeight)
+                if(this.xHeight != this.$el.clientHeight)
                 {
                     this.posInit();
-                    this.xwidth = this.$el.clientWidth;
-                    this.xheight = this.$el.clientHeight;
+                    this.xWidth = this.$el.clientWidth;
+                    this.xHeight = this.$el.clientHeight;
                     return 0;
                 }
             }, 30);
@@ -111,8 +111,9 @@ export default {
             this.moveable = true;
             this.freezeTransition = true;
             event.preventDefault();
-            this.disX = event.clientX - this.$el.getBoundingClientRect().left;
-            this.disY = event.clientY - this.$el.getBoundingClientRect().top;
+            let {clientX, clientY} = event.targetTouches ? event.targetTouches[0] : event;
+            this.disX = clientX - this.$el.getBoundingClientRect().left;
+            this.disY = clientY - this.$el.getBoundingClientRect().top;
         },
         stop () {
             this.moveable = false;

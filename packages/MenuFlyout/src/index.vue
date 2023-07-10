@@ -39,6 +39,7 @@
             :background="background"
             :choosenBackground="choosenBackground"
             :titleForeground="titleForeground"
+            :theme="$theme"
             @choose-item="Choose"
         >
             <template v-slot:item="x">

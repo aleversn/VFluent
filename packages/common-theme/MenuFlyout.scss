@@ -126,7 +126,7 @@
             transition: height 0.3s;
             overflow: auto;
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: overlay;
 
             .fv-menu-flyout-item {
                 position: relative;

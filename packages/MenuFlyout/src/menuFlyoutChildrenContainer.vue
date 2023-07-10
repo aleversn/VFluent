@@ -3,6 +3,7 @@
         <div class="menu-flyout-list-container">
             <fv-pivot
                 v-model="pivotValue"
+                :theme="$theme"
                 :items="pivotItems"
                 :fontSize="12"
                 :sliderBackground="choosenSliderBackground"
@@ -66,6 +67,10 @@ export default {
         pivotPlaceholder: {
             default: 'Please Choose',
         },
+        theme: {
+            type: String,
+            default: 'system',
+        }
     },
     data() {
         return {
