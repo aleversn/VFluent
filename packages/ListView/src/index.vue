@@ -15,7 +15,8 @@
                 :key="index"
                 :style="{ height: _rowHeight, background: valueTrigger(item.choosen) ? choosenBackground : '', borderRadius: itemBorderRadius + 'px' }"
                 :ref="`list_item_${index}`"
-                @click="onClick($event, item)"
+                @click="handlerClick($event, item)"
+                @touchend="handlerClick($event, item)"
             >
                 <fv-reveal-container
                     v-if="(valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined) && !valueTrigger(item.disabled)"
@@ -95,6 +96,9 @@ export default {
             thisValue: [],
             focus: false,
             showSelectedBorder: false,
+            timer: {
+                debounce: null,
+            }
         };
     },
     watch: {
@@ -208,6 +212,12 @@ export default {
         valueTrigger(val) {
             if (typeof val === 'function') return val();
             return val;
+        },
+        handlerClick($event, cur) {
+            clearTimeout(this.timer.debounce);
+            this.timer.debounce = setTimeout(() => {
+                this.onClick($event, cur);
+            }, 200);
         },
         onClick($event, cur) {
             if (this.valueTrigger(cur.disabled)) return 0;
