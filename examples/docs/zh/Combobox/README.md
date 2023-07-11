@@ -91,6 +91,7 @@ export default {
 |     inputForeground     | [string(color)] |       No       |       N/A       |                                                           |
 |     inputBackground     | [string(color)] |       No       |       N/A       |                                                           |
 |     titleForeground     | [string(color)] |       No       |   ChevronDown   |                                                           |
+|       itemHeight        |     Number      |       No       |       40        |                    Combobox Item 高度                     |
 |      dropDownIcon       |     String      |       No       |       N/A       |                                                           |
 | dropDownIconForeground  | [string(color)] |       No       |       N/A       |                                                           |
 |    revealBorderColor    | [string(color)] |       No       |       N/A       |                                                           |
