@@ -34,7 +34,6 @@ export default {
 <ClientOnly>
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option">
 </fv-Combobox>
-</ClientOnly>
 
 ```vue
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option">
@@ -44,10 +43,8 @@ export default {
 ### Combobox-Disabled
 ---
 
-<ClientOnly>
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option" disabled>
 </fv-Combobox>
-</ClientOnly>
 
 ```vue
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option" disabled>
@@ -58,16 +55,26 @@ export default {
 ---
 <div style="width: 100%; background: black;">
     
-<ClientOnly>
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option" theme="dark">
 </fv-Combobox>
-</ClientOnly>
 </div>
 
 ```vue
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option" theme="dark">
 </fv-Combobox>
 ```
+
+### Combobox Customize
+---
+
+<fv-Combobox v-model="value" :options="options" placeholder="Pick a option"><template v-slot:default="x"><i>{{x.item.text}}</i></template></fv-Combobox>
+
+```vue
+<fv-Combobox v-model="value" :options="options" placeholder="Pick a option">
+</fv-Combobox>
+```
+
+</ClientOnly>
 
 ### Propoties
 ---

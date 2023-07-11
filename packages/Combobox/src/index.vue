@@ -187,7 +187,7 @@ export default {
                 return 0;
 			this.thisValue = item;
             let target = event.target;
-            while(target.getAttribute("class").indexOf("fv-combobox-item") < 0) {
+            while(!target.getAttribute("class") || target.getAttribute("class").indexOf("fv-combobox-item") < 0) {
                 target = target.parentNode;
             }
             this.$refs.co_items.scrollTop = target.offsetTop;
