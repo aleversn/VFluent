@@ -398,5 +398,13 @@
       "Dark": "@/dark-theme/Expander.scss",
       "Custom": "@/custom-theme/Expander.scss"
     }
+  },
+  "RatingControl": {
+    "entry": "@/RatingControl/index.js",
+    "theme": {
+      "Light": "@/light-theme/RatingControl.scss",
+      "Dark": "@/dark-theme/RatingControl.scss",
+      "Custom": "@/custom-theme/RatingControl.scss"
+    }
   }
 }

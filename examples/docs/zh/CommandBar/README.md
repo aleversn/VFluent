@@ -15,7 +15,7 @@ export default {
             value: {},
             options: [
                 { name: "Add", icon: "Add", iconColor: "rgba(0, 90, 158, 1)", func: this.customFunc, secondary: [
-                    { name: "Email Message", func: this.customFunc, icon: "Mail", iconColor: "rgba(0, 153, 204, 1)", disabled: true },
+                    { name: "Email Message", func: this.customFunc, icon: "Mail", iconColor: "rgba(0, 98, 158, 1)", disabled: true },
                     { type: "divider" },
                     { name: "Calendar event", func: this.customFunc, icon: "WebAppBuilderModule" }
                 ]},
@@ -136,13 +136,13 @@ Compact Mode
 <div style="width: 100%;">
     
 <ClientOnly>
-<fv-CommandBar :options="options" theme="dark" background="rgba(0, 153, 204, 1)" style="z-index: 2;"></fv-CommandBar>
+<fv-CommandBar :options="options" theme="dark" background="rgba(0, 98, 158, 1)" style="z-index: 2;"></fv-CommandBar>
 </ClientOnly>
 </div>
 
 ```vue
 <div style="width: 100%;">
-    <fv-CommandBar :options="options" theme="dark" background="rgba(0, 153, 204, 1)"></fv-CommandBar>
+    <fv-CommandBar :options="options" theme="dark" background="rgba(0, 98, 158, 1)"></fv-CommandBar>
 </div>
 ```
 
@@ -214,7 +214,7 @@ options: [
         name: "Email Message",
         func: this.customFunc,
         icon: "Mail",
-        iconColor: "rgba(0, 153, 204, 1)",
+        iconColor: "rgba(0, 98, 158, 1)",
         disabled: true
       },
       { type: "divider" },

@@ -1,44 +1,44 @@
 @import "../common-theme/Slider.scss";
 .fv-dark-slider {
-  @include fv-slider();
+    @include fv-slider();
 
-  color: white;
-  //region:color begin
-  .fv-slider__bar {
-    &.disable{
-      color:white;
-    }
-    .fv-slider__bar-bg {
-      background-color: #999999;
-    }
-    .fv-slider__button {
-      color: #0075d1;
-    }
-    .fv-slider__scale-up,
-    .fv-slider__scale-down {
-      background-color: #fff;
-    }
-    .fv-slider__progress {
-      background-color: #0075d1;
-    }
-  }
-  &:hover {
+    color: white;
+    //region:color begin
     .fv-slider__bar {
-      .fv-slider__bar-bg {
-        background-color: #d6d5d4;
-      }
-      .fv-slider__button {
-        color: #59c4ff;
-      }
+        &.disable {
+            color: white;
+        }
+        .fv-slider__bar-bg {
+            background-color: #999999;
+        }
+        .fv-slider__button {
+            color: rgba(118, 185, 237, 1);
+        }
+        .fv-slider__scale-up,
+        .fv-slider__scale-down {
+            background-color: #fff;
+        }
+        .fv-slider__progress {
+            background-color: rgba(118, 185, 237, 1);
+        }
     }
-  }
-  &.active {
-    .fv-slider__bar {
-      background-color: rgba(153, 153, 153, 1);
-      .fv-slider__button {
-        color: #0075d1;
-      }
+    &:hover {
+        .fv-slider__bar {
+            .fv-slider__bar-bg {
+                background-color: #d6d5d4;
+            }
+            .fv-slider__button {
+                color: #59c4ff;
+            }
+        }
     }
-  }
-  //region:end of color
+    &.active {
+        .fv-slider__bar {
+            background-color: rgba(153, 153, 153, 1);
+            .fv-slider__button {
+                color: rgba(118, 185, 237, 1);
+            }
+        }
+    }
+    //region:end of color
 }

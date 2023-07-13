@@ -1,0 +1,5 @@
+@import '../common-theme/RatingControl.scss';
+.fv-light-RatingControl{
+  @include fv-RatingControl();
+}
+    

@@ -22,6 +22,8 @@
 
 ### Radio
 
+---
+
 
 <ClientOnly>
 <div>
@@ -53,6 +55,8 @@ Disabled
 
 ### Radio-Dark
 
+---
+
 <ClientOnly>
 <div style="background:#000;height:30px;padding:20px;">
 <fv-radio v-model="value" label="Option" theme="dark">Option</fv-radio>
@@ -69,25 +73,29 @@ Disabled
 
 ### Radio With Icon
 
+---
+
 <ClientOnly>
 <div >
-<fv-radio v-model="value" label="Sort" icon="GroupedList">Sort</fv-radio>
-<fv-radio v-model="value" label="MSN" icon="MSNLogo" >MSN</fv-radio>
-<fv-radio v-model="value" label="MSN" icon="MSNLogo" disabled >Disabled</fv-radio>
+<fv-radio v-model="value" label="NUIIris" icon="NUIIris">NUIIris</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="NUIFace" >MSN</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="NUIFace" disabled >Disabled</fv-radio>
 
 </div>
 </ClientOnly>
 
 ```vue
 <div >
-<fv-radio v-model="value" label="Sort" icon="GroupedList">Sort</fv-radio>
-<fv-radio v-model="value" label="MSN" icon="MSNLogo" >MSN</fv-radio>
-<fv-radio v-model="value" label="MSN" icon="MSNLogo" disabled >Disabled</fv-radio>
+<fv-radio v-model="value" label="NUIIris" icon="NUIIris">NUIIris</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="NUIFace" >MSN</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="NUIFace" disabled >Disabled</fv-radio>
 
 </div>
 ```
 
 ### Radio With Image
+
+---
 
 <div>
 <ClientOnly>
@@ -103,31 +111,35 @@ Disabled
 
 ### Radio-Dark With Icon
 
+---
+
 <ClientOnly>
 <div style="background:#000;padding:20px;">
-<fv-radio v-model="value" label="Sort" icon="GroupedList" theme="dark">Sort</fv-radio>
-<fv-radio v-model="value" label="Sort" icon="GroupedList" theme="dark" disabled>disabled</fv-radio>
-<fv-radio v-model="value" label="MSN" icon="MSNLogo" theme="dark">MSN</fv-radio>
+<fv-radio v-model="value" label="NUIIris" icon="NUIIris" theme="dark">NUIIris</fv-radio>
+<fv-radio v-model="value" label="NUIIris" icon="NUIIris" theme="dark" disabled>disabled</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="NUIFace" theme="dark">MSN</fv-radio>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="background:#000;padding:20px;">
-<fv-radio v-model="value" label="Sort" icon="GroupedList" theme="dark">Sort</fv-radio>
-<fv-radio v-model="value" label="Sort" icon="GroupedList" theme="dark" disabled>disabled</fv-radio>
-<fv-radio v-model="value" label="MSN" icon="MSNLogo" theme="dark">MSN</fv-radio>
+<fv-radio v-model="value" label="NUIIris" icon="NUIIris" theme="dark">NUIIris</fv-radio>
+<fv-radio v-model="value" label="NUIIris" icon="NUIIris" theme="dark" disabled>disabled</fv-radio>
+<fv-radio v-model="value" label="MSN" icon="NUIFace" theme="dark">MSN</fv-radio>
 </div>
 ```
 
 ### Radio Custom Color
+
+---
 <ClientOnly>
-<fv-radio  icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" >Sort</fv-radio>
-<fv-radio icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" disabled>Disabled</fv-radio>
+<fv-radio  icon="NUIIris" v-model="value" label="NUIIris" style="background:#00cc99;" theme="dark" >NUIIris</fv-radio>
+<fv-radio icon="NUIIris" v-model="value" label="NUIIris" style="background:#00cc99;" theme="dark" disabled>Disabled</fv-radio>
 </ClientOnly>
 
 ```vue
-<fv-radio  icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" >Sort</fv-radio>
-<fv-radio icon="GroupedList" v-model="value" label="Sort" style="background:#00cc99;" theme="dark" disabled>Disabled</fv-radio>
+<fv-radio  icon="NUIIris" v-model="value" label="NUIIris" style="background:#00cc99;" theme="dark" >NUIIris</fv-radio>
+<fv-radio icon="NUIIris" v-model="value" label="NUIIris" style="background:#00cc99;" theme="dark" disabled>Disabled</fv-radio>
 ```
 
 

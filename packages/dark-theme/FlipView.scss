@@ -1,23 +1,18 @@
 @import "../common-theme/FlipView.scss";
 .fv-dark-FlipView {
-    
     @include fv-FlipView();
 
-    .control-panel
-    {
-        .slidebtn
-        {
+    .control-panel {
+        .slidebtn {
             background: rgba(36, 36, 36, 0.3);
             color: rgba(245, 245, 245, 0.6);
 
-            &:hover
-            {
+            &:hover {
                 color: whitesmoke;
             }
         }
 
-        .bottom-controller
-        {
+        .bottom-controller {
             .flip-view-ring {
                 width: 6px;
                 height: 6px;
@@ -59,13 +54,11 @@
                 }
             }
 
-            .sec
-            {
+            .sec {
                 color: whitesmoke;
 
-                &:hover
-                {
-                    background: rgba(242,242,242,0.1);
+                &:hover {
+                    background: rgba(242, 242, 242, 0.1);
                 }
             }
         }

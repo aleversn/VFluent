@@ -71,7 +71,7 @@ Extension
 
 <div>
 <ClientOnly>
-<fv-Expander background="rgba(0, 153, 204, 1)">
+<fv-Expander background="rgba(0, 98, 158, 1)">
 
     <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
 
@@ -80,7 +80,7 @@ Extension
 </div>
 
 ```vue
-<fv-Expander background="rgba(0, 153, 204, 1)">
+<fv-Expander background="rgba(0, 98, 158, 1)">
     <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
 </fv-Expander>
 ```
@@ -141,7 +141,7 @@ Extension
 定义下拉内容
 
 ```vue
-<fv-Expander background="rgba(0, 153, 204, 1)">
+<fv-Expander background="rgba(0, 98, 158, 1)">
     <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
 </fv-Expander>
 ```

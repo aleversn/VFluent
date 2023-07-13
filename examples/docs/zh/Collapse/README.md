@@ -71,7 +71,7 @@ Extension
 
 <div>
 <ClientOnly>
-<fv-Collapse background="rgba(0, 153, 204, 1)">
+<fv-Collapse background="rgba(0, 98, 158, 1)">
 
     <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
 
@@ -80,7 +80,7 @@ Extension
 </div>
 
 ```vue
-<fv-Collapse background="rgba(0, 153, 204, 1)">
+<fv-Collapse background="rgba(0, 98, 158, 1)">
     <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
 </fv-Collapse>
 ```
@@ -141,7 +141,7 @@ Extension
 定义下拉内容
 
 ```vue
-<fv-Collapse background="rgba(0, 153, 204, 1)">
+<fv-Collapse background="rgba(0, 98, 158, 1)">
     <div style="position: relative; height: 500px; background: black; transition: all 0.3s;"></div>
 </fv-Collapse>
 ```

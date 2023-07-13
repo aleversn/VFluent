@@ -17,7 +17,10 @@
             }"
             :class="[{actived:isActived},{disabled:isDisabled}]"
         />
-        <label class="fv-radio-label" :style="{color: color}">
+        <label
+            class="fv-radio-label"
+            :style="{color: color}"
+        >
             <template v-if="image">
                 <img :src="isActived?activeImage?activeImage:image:image" />
             </template>
@@ -35,15 +38,15 @@
 
 <script>
 export default {
-    name: "FvRadio",
+    name: 'FvRadio',
     props: {
         theme: {
             type: String,
-            default: "system",
+            default: 'system'
         },
         value: {},
         label: {
-            required: true,
+            required: true
         },
         color: {
             default: ''
@@ -53,36 +56,34 @@ export default {
         },
         icon: {
             type: String,
-            default: null,
+            default: null
         },
         iconBlockBorderRadius: {
-            default: 3
+            default: 6
         },
         iconBlockBorderWidth: {
             default: 2
         },
         image: {
             type: String,
-            default: null,
+            default: null
         },
         activeImage: {
             type: String,
-            default: null,
+            default: null
         },
         disabled: {
             type: Boolean,
-            default: false,
-        },
+            default: false
+        }
     },
 
     data() {
-        return {
-            
-        };
+        return {};
     },
     computed: {
         $theme() {
-            if (this.theme == "system") {
+            if (this.theme == 'system') {
                 if (this.isGroup) return this._group.$theme;
                 return this.$fvGlobal.state.theme;
             }
@@ -96,7 +97,7 @@ export default {
         isGroup() {
             let parent = this.$parent;
             while (parent) {
-                if (parent.$options.name != "FvRadioGroup") {
+                if (parent.$options.name != 'FvRadioGroup') {
                     parent = parent.$parent;
                 } else {
                     this.setGroup(parent);
@@ -116,31 +117,31 @@ export default {
             },
             set(val) {
                 if (this.isGroup) {
-                    this._group.$emit("input", val);
+                    this._group.$emit('input', val);
                 } else {
-                    this.$emit("input", val);
+                    this.$emit('input', val);
                 }
-            },
-        },
+            }
+        }
     },
     mounted() {},
     methods: {
         click() {
             if (this.isDisabled) return;
             if (!this.isGroup) {
-                this.$emit("input", this.label);
+                this.$emit('input', this.label);
             } else {
-                this._group.$emit("input", this.label);
+                this._group.$emit('input', this.label);
                 this._group.change(this.label);
             }
             if (this.isActived) {
-                this.$emit("actived");
+                this.$emit('actived');
             }
-            this.$emit("click");
+            this.$emit('click');
         },
         setGroup(parent) {
             this._group = parent;
-        },
-    },
+        }
+    }
 };
 </script>

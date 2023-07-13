@@ -1,0 +1,33 @@
+@mixin fv-RatingControl {
+    .fv-rating-container {
+        position: relative;
+        width: auto;
+        display: flex;
+        align-items: center;
+
+        .fv-rating-unit {
+            position: relative;
+            margin: 0px 5px;
+            color: rgba(43, 43, 43, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .fv-rating-mask {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                overflow: hidden;
+
+                i {
+                    color: rgba(0, 98, 158, 1);
+                }
+            }
+        }
+    }
+}

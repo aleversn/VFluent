@@ -1,13 +1,31 @@
 @mixin fv-radioGroup {
-  display: block;
-  padding: 5px;
-  label{
-    display: block;
-    height: 20px;
-    margin-bottom: 5px;
-    line-height: 20px;
-    &.inline{
-      display: inline-block;
+    position: relative;
+    height: auto;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+
+    &.inline {
+        flex-direction: row;
     }
-  }
+
+    label {
+        height: auto;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    .row-block {
+        margin: 3px 0px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .fv-light-radio,
+    .fv-dark-radio {
+        margin: 3px;
+    }
 }

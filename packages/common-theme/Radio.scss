@@ -1,14 +1,15 @@
 @mixin fv-radio {
     position: relative;
-    display: inline-flex;
+    display: flex;
     min-width: 20px;
     min-height: 20px;
     height: auto;
+    flex-shrink: 0;
     box-sizing: border-box;
     align-content: space-between;
     align-items: center;
     cursor: pointer;
-    
+
     .fv-radio-button {
         position: relative;
         height: 20px;
@@ -24,15 +25,15 @@
         cursor: pointer;
         outline: none;
         transition: all 0.3s;
-        
+
         &:hover {
-            border: 1px solid #484848;
+            border-color: rgba(130, 130, 130, 1);
         }
-        &:active
-        {
-            background-color: rgba(153, 153, 153, 1);
-            border: 1px solid #000000;
+        &:active {
+            background-color: rgba(153, 153, 153, 0.3);
+            border-color: rgba(130, 130, 130, 1);
         }
+
         &::before {
             content: "";
             position: absolute;
@@ -57,7 +58,7 @@
             }
         }
     }
-    
+
     .fv-radio-label {
         position: relative;
         height: 20px;
@@ -74,15 +75,16 @@
             line-height: 20px;
         }
     }
-    
+
     &.with-icon {
         position: relative;
         box-sizing: border-box;
         padding: 20px;
         width: 80px;
         height: 80px;
-        background: #f3f2f1;
+        background: rgba(255, 255, 255, 1);
         border: 1px solid transparent;
+        border-radius: 6px;
         justify-content: center;
         align-items: center;
         cursor: pointer;
@@ -94,22 +96,22 @@
             margin: 0;
             top: 4px;
             right: 4px;
-            
+
             &.actived {
                 display: inline-block;
             }
         }
         &:hover {
-            border: 1px solid rgba(58, 57, 56, 0.165);
-            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+            border-color: transparent;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 
             .fv-radio-button {
                 display: inline-block;
                 border: 1px solid rgba(58, 57, 56, 0.165);
             }
-            
+
             &.disabled {
-                border: none;
+                border-color: transparent;
                 filter: grayscale(1);
                 opacity: 0.6;
                 .fv-radio-button {
@@ -118,7 +120,7 @@
             }
         }
         &.actived {
-            border: 1px solid rgba(0, 120, 212, 0.829);
+            border-color: rgba(0, 120, 212, 0.829);
             .fv-radio-button {
                 border: none;
             }
@@ -135,8 +137,9 @@
             span {
                 width: 100%;
                 height: auto;
-                margin-top: 8px;
-                font-size: 13.8px;
+                margin-top: 5px;
+                font-size: 12px;
+                font-weight: bold;
                 display: block;
                 overflow: hidden;
             }
@@ -155,7 +158,7 @@
         cursor: not-allowed;
         .fv-radio-button {
             &:hover {
-                border-color: #afafaf;
+                border-color: transparent;
             }
         }
     }

@@ -58,6 +58,7 @@ import VerifyBox from '@/VerifyBox/index.js'
 import RevealContainer from '@/RevealContainer/index.js'
 import SwipeControl from '@/SwipeControl/index.js'
 import Expander from '@/Expander/index.js'
+import RatingControl from '@/RatingControl/index.js'
 
 import pkg from "../package.json"
 
@@ -112,6 +113,7 @@ let components = [
   RevealContainer,
   SwipeControl,
   Expander,
+  RatingControl,
 
 ]
 
@@ -202,6 +204,7 @@ export default {
   RevealContainer,
   SwipeControl,
   Expander,
+  RatingControl,
 
 }
 
