@@ -1,0 +1,137 @@
+@mixin fv-Expander {
+    position: relative;
+    border: 1px solid #e3e5e8;
+    border-radius: 6px;
+    user-select: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.3s;
+    overflow: hidden;
+    cursor: default;
+
+    &.visibleOverflow {
+        overflow: visible;
+
+        .expander-description-container {
+            overflow: visible;
+
+            .expander-description-box {
+                overflow: visible;
+            }
+        }
+    }
+
+    .expander-description-container {
+        position: relative;
+        width: 100%;
+        flex-shrink: 0;
+        padding: 5px 10px;
+        background: #fbfbfd;
+        border-bottom: rgba(120, 120, 120, 0.1) solid thin;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+
+        .expander-description-box {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            flex: 1;
+            padding-left: 10px;
+            display: flex;
+            overflow: hidden;
+
+            .expander-description {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                flex: 1;
+                line-height: 1.6rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                overflow: hidden;
+
+                .expander-text {
+                    position: relative;
+                    width: 100%;
+                    font-size: 0.9rem;
+                    line-height: inherit;
+                    overflow: hidden;
+                }
+            }
+
+            .expander-description-extension-block {
+                position: relative;
+                width: auto;
+                height: 100%;
+                padding: 5px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: visible;
+            }
+        }
+
+        .expander-expand-icon-block {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+
+            &:hover {
+                background: rgba(200, 200, 200, 0.1);
+            }
+
+            &:active {
+                background: rgba(180, 180, 180, 0.1);
+            }
+
+            i {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .expander-detail {
+        position: relative;
+        flex: 1;
+        flex-shrink: 0;
+        padding: 15px 10px;
+        background: #f5f6f8;
+        box-sizing: border-box;
+        overflow: auto;
+    }
+
+    .expander-expanded-enter-active {
+        transform-origin: 50% 0%;
+        animation: rotatePullTop 0.5s both ease;
+    }
+    .expander-expanded-leave-active {
+        transform-origin: 50% 0%;
+        animation: rotatePushBottom 0.5s both ease;
+    }
+    @keyframes rotatePullTop {
+        from {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+    }
+    @keyframes rotatePushBottom {
+        to {
+            opacity: 0;
+            transform: scaleY(0);
+        }
+    }
+}

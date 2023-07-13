@@ -1,0 +1,5 @@
+@import '../common-theme/Expander.scss';
+.fv-light-Expander{
+  @include fv-Expander();
+}
+    

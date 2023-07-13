@@ -49,6 +49,7 @@ import { FvTextField } from './textfield'
 import { FvVerifyBox } from './verifybox'
 import { FvRevealContainer } from './revealcontainer'
 import { FvSwipeControl } from './swipecontrol'
+import { FvExpander } from './expander'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -154,4 +155,6 @@ export type Theme = FluentVueTheme
   export class RevealContainer extends FvRevealContainer {}
 /** SwipeControl component */
   export class SwipeControl extends FvSwipeControl {}
+/** Expander component */
+  export class Expander extends FvExpander {}
 

@@ -1,92 +1,153 @@
 <template>
-<div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
-    <fv-NavigationPanel :title="title" :expand.sync="thisExpand" :expandMode="expandMode" :expandWidth="expandWidth" :expandDisplay="expandDisplay" :flyoutDisplay="flyoutDisplay" :fullSizeDisplay="fullSizeDisplay" :mobileDisplay="mobileDisplay" :showBack="showBack" :showNav="showNav" :showSearch="showSearch" :settingTitle="settingTitle" :showSetting="showSetting" :background="background" :theme="theme" ref="panel" @back="$emit('back', $event)" @expand-click="$emit('expand-click', $event)" @expand-change="expandChange" @setting-click="settingClick">
-        <template v-slot:searchBlock>
-            <fv-search-box :options="options" icon="Search" placeholder="Search" :theme="theme" class="nav-search" :revealBorder="true" borderRadius="3" :isBoxShadow="true" style="width: 95%;" @choose-result="onChooseSearch"></fv-search-box>
-        </template>
-        <template v-slot:panel>
-            <fv-list-view v-model="options" class="navigation-list" ref="listView" :theme="theme" :headerForeground="foreground" choosenBackground="transparent" @chooseItem="itemClick" @click.native="$emit('item-click', thisValue)">
-                <template v-slot:listItem="x">
-                    <slot name="listItem" :item="x.item" :index="x.index" :valueTrigger="x.valueTrigger">
-                        <i v-show="x.valueTrigger(x.item.icon) !== undefined" class="ms-Icon icon" :class="[`ms-Icon--${x.valueTrigger(x.item.icon)}`]"></i>
-                        <p class="name" :style="{ color: x.valueTrigger(x.item.type) == 'header' ? foreground : ''}">{{x.valueTrigger(x.item.name)}}</p>
-                    </slot>
-                </template>
-            </fv-list-view>
-        </template>
-    </fv-NavigationPanel>
-    <vertical-slider :top="currentTop" :height="currentHeight" :background="foreground"></vertical-slider>
-</div>
+    <div :class="['fv-'+$theme+'-NavigationView', {compact: !thisExpand}]">
+        <fv-NavigationPanel
+            :title="title"
+            :expand.sync="thisExpand"
+            :expandMode="expandMode"
+            :expandWidth="expandWidth"
+            :expandDisplay="expandDisplay"
+            :compactWidth="compactWidth"
+            :flyoutDisplay="flyoutDisplay"
+            :fullSizeDisplay="fullSizeDisplay"
+            :mobileDisplay="mobileDisplay"
+            :showBack="showBack"
+            :showNav="showNav"
+            :showSearch="showSearch"
+            :settingTitle="settingTitle"
+            :showSetting="showSetting"
+            :background="background"
+            :theme="theme"
+            ref="panel"
+            @back="$emit('back', $event)"
+            @expand-click="$emit('expand-click', $event)"
+            @expand-change="expandChange"
+            @setting-click="settingClick"
+        >
+            <template v-slot:searchBlock>
+                <fv-search-box
+                    :options="options"
+                    icon="Search"
+                    placeholder="Search"
+                    :theme="theme"
+                    class="nav-search"
+                    :revealBorder="true"
+                    borderRadius="3"
+                    :isBoxShadow="true"
+                    style="width: 95%;"
+                    @choose-result="onChooseSearch"
+                ></fv-search-box>
+            </template>
+            <template v-slot:panel>
+                <fv-list-view
+                    v-model="options"
+                    class="navigation-list"
+                    ref="listView"
+                    :theme="theme"
+                    :headerForeground="foreground"
+                    choosenBackground="transparent"
+                    @chooseItem="itemClick"
+                    @click.native="$emit('item-click', thisValue)"
+                >
+                    <template v-slot:listItem="x">
+                        <slot
+                            name="listItem"
+                            :item="x.item"
+                            :index="x.index"
+                            :valueTrigger="x.valueTrigger"
+                        >
+                            <i
+                                v-show="x.valueTrigger(x.item.icon) !== undefined"
+                                class="ms-Icon icon"
+                                :class="[`ms-Icon--${x.valueTrigger(x.item.icon)}`]"
+                            ></i>
+                            <p
+                                class="name"
+                                :style="{ color: x.valueTrigger(x.item.type) == 'header' ? foreground : ''}"
+                            >{{x.valueTrigger(x.item.name)}}</p>
+                        </slot>
+                    </template>
+                </fv-list-view>
+            </template>
+        </fv-NavigationPanel>
+        <vertical-slider
+            :top="currentTop"
+            :height="currentHeight"
+            :background="foreground"
+        ></vertical-slider>
+    </div>
 </template>
 
 <script>
 import verticalSlider from './sub/verticalSlider.vue';
 
 export default {
-    name:'FvNavigationView',
+    name: 'FvNavigationView',
     components: {
-        verticalSlider
+        verticalSlider,
     },
     props: {
         value: {
             default: () => {
-                return {}
-            }
+                return {};
+            },
         },
         options: {
-            default: () => []
+            default: () => [],
         },
         title: {
-            default: "NavigationView"
+            default: 'NavigationView',
         },
         expand: {
-            default: true
+            default: true,
         },
         expandMode: {
-            default: "relative"
+            default: 'relative',
         },
         expandWidth: {
-            default: 350
+            default: 350,
         },
         expandDisplay: {
-            default: 1024
+            default: 1024,
+        },
+        compactWidth: {
+            default: 46,
         },
         flyoutDisplay: {
-            default: 0
+            default: 0,
         },
         fullSizeDisplay: {
-            default: 800
+            default: 800,
         },
         mobileDisplay: {
-            default: 0
+            default: 0,
         },
         showBack: {
-            default: true
+            default: true,
         },
         showNav: {
-            default: true
+            default: true,
         },
         showSearch: {
-            default: true
+            default: true,
         },
         settingTitle: {
-            default: "Settings"
+            default: 'Settings',
         },
         showSetting: {
-            default: true
+            default: true,
         },
         foreground: {
-            default: ""
+            default: '',
         },
         background: {
-            default: ""
+            default: '',
         },
         theme: {
             type: String,
-            default: "system"
-        }
+            default: 'system',
+        },
     },
-    data () {
+    data() {
         return {
             thisValue: {},
             thisExpand: this.expand,
@@ -94,101 +155,102 @@ export default {
             currentTop: 0,
             currentHeight: 0,
             timer: {
-                slider: {}
-            }
-        }
+                slider: {},
+            },
+        };
     },
     watch: {
-        value (val, from) {
+        value(val, from) {
+            console.log(val);
             this.valueInit();
         },
-        thisValue (val, from) {
-            if(!(val.name === from.name && val.type === from.type && val.key === from.key)) {
+        thisValue(val, from) {
+            if (!(val.name === from.name && val.key === from.key)) {
                 this.$nextTick(() => {
                     this.onChooseSearch(val);
                 });
-                this.$emit("input", val);
+                this.$emit('input', val);
             }
         },
         expand(val) {
             this.thisExpand = val;
         },
         thisExpand(val) {
-            this.$emit("update:expand", val);
-        }
+            this.$emit('update:expand', val);
+        },
     },
     computed: {
-        $theme () {
-            if (this.theme=='system')
-                return this.$fvGlobal.state.theme;
+        $theme() {
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        }
+        },
     },
-    mounted () {
+    mounted() {
         this.valueInit();
         this.sliderRefreshInit();
     },
     methods: {
-        valueInit () {
-            if(this.value.type === 'setting') {
+        valueInit() {
+            if (this.value.type === 'setting') {
                 this.thisValue = this.value;
                 return 0;
             }
-            if(this.options.find(item => item.name === this.value.name && item.type === this.value.type && item.key === this.value.key) === undefined)
-                this.thisValue = this.options.find(item => item.type !== "header" && item.type !== "divider");
-            else
-                this.thisValue = this.value;
+            let thisValue = this.options.find((item) => item.name === this.value.name && item.key === this.value.key);
+            if (thisValue !== undefined) this.thisValue = thisValue;
+            else this.thisValue = this.options.find((item) => item.type !== 'header' && item.type !== 'divider');
         },
-        sliderRefreshInit () {
+        sliderRefreshInit() {
             this.timer.slider = setInterval(() => {
-                if(this.currentTarget !== undefined) {
+                if (this.currentTarget !== undefined) {
                     let target = this.currentTarget;
                     let elTop = this.$el.getBoundingClientRect().top;
                     let targetTop = target.getBoundingClientRect().top;
                     this.currentTop = targetTop - elTop;
-                }
-                else
-                    this.currentTop = 0;
-                if(this.currentTarget !== undefined) {
+                } else this.currentTop = 0;
+                if (this.currentTarget !== undefined) {
                     let target = this.currentTarget;
                     this.currentHeight = target.clientHeight;
-                }
-                else
-                    this.currentHeight = 0;
+                } else this.currentHeight = 0;
             }, 30);
         },
-        itemClick (event) {
+        itemClick(event) {
             let index = event.index;
-            this.currentTarget = (this.$refs.listView.$refs[`list_item_${index}`])[0];
+            this.currentTarget = this.$refs.listView.$refs[`list_item_${index}`][0];
             this.thisValue = event.item;
         },
-        settingClick (item) {
+        settingClick(item) {
             this.currentTarget = this.$refs.panel.$refs.setting.$el;
             this.thisValue = {
-                name: ">setting",
-                type: "setting"
+                key: '>setting',
+                name: '>setting',
+                type: 'setting',
             };
-            this.$emit("setting-click", item);
+            this.$emit('setting-click', item);
         },
-        expandChange (status) {
-            this.$emit("expand-change", status);
+        expandChange(status) {
+            this.$emit('expand-change', status);
         },
-        onChooseSearch (item) {
-            if(item.type === "setting") {
+        onChooseSearch(item) {
+            if (item.type === 'setting') {
                 this.currentTarget = this.$refs.panel.$refs.setting.$el;
+                this.thisValue = {
+                    key: '>setting',
+                    name: '>setting',
+                    type: 'setting',
+                };
                 return 0;
             }
-            let c = this.options.find(it => {
-                return it.name === item.name && it.type === item.type && it.key === item.key;
+            let c = this.options.find((it) => {
+                return it.name === item.name && it.key === item.key;
             });
             let index = this.options.indexOf(c);
-            if(index < 0)
-                return 0;
-            this.currentTarget = (this.$refs.listView.$refs[`list_item_${index}`])[0];
-        }
+            if (index < 0) return 0;
+            this.currentTarget = this.$refs.listView.$refs[`list_item_${index}`][0];
+            this.thisValue = c;
+        },
     },
-    beforeDestroy () {
+    beforeDestroy() {
         clearInterval(this.timer);
-    }
-}
+    },
+};
 </script>

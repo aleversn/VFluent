@@ -1,12 +1,26 @@
 <template>
-    <div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
+    <div
+        class="theme-container"
+        :class="pageClasses"
+        @touchstart="onTouchStart"
+        @touchend="onTouchEnd"
+    >
 
-        <NavPanel :show.sync="isSidebarOpen" @toggle-sidebar="toggleSidebar" :items="sidebarItems" :title="$description"
-            @expand-click="isSidebarOpen ^= true"></NavPanel>
+        <NavPanel
+            :show.sync="isSidebarOpen"
+            @toggle-sidebar="toggleSidebar"
+            :items="sidebarItems"
+            :title="$description"
+            @expand-click="isSidebarOpen ^= true"
+        ></NavPanel>
 
         <Home v-if="$page.frontmatter.home" />
 
-        <Page v-else :sidebar-items="sidebarItems" :expand="isSidebarOpen">
+        <Page
+            v-else
+            :sidebar-items="sidebarItems"
+            :expand="isSidebarOpen"
+        >
             <template #top>
                 <slot name="page-top" />
             </template>
@@ -110,27 +124,41 @@ export default {
 </script>
 
 <style lang="scss">
-*::-webkit-scrollbar {
+::-webkit-scrollbar {
+    width: 10px;
     height: 8px;
-    width: 8px;
-}
 
-*::-webkit-scrollbar-track {
-    background: rgb(239, 239, 239);
-    border-radius: 2px;
+    &:hover {
+        width: 16px;
+    }
 }
-
-*::-webkit-scrollbar-thumb {
-    background: #bfbfbf;
-    border-radius: 5px;
+/*定义滚动条轨道
+ 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    border-radius: 10px;
 }
+/*定义滑块
+ 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-right: rgba(191, 190, 189, 0.2) solid 5px;
+    background-color: rgba(191, 190, 189, 0);
+    transition: background-color 0.3s;
+    cursor: pointer;
 
-*::-webkit-scrollbar-thumb:hover {
-    background: #999;
-}
+    &:hover {
+        border-radius: 10px;
+        border-color: transparent;
+        background-color: rgba(191, 190, 189, 0.6);
+    }
 
-*::-webkit-scrollbar-corner {
-    background: #179a16;
+    &:active {
+        background-color: rgba(191, 190, 189, 0.5);
+    }
+
+    &:horizontal {
+        border-right: none;
+        border-bottom: rgba(191, 190, 189, 0.2) solid 5px;
+    }
 }
 
 body {

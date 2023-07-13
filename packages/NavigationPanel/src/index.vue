@@ -3,11 +3,28 @@
         :class="['fv-'+$theme+'-NavigationPanel', {compact: !thisExpand}, {flyout: isFlyout}, {mobile: isMobile}]"
         :style="{position: (this.screenWidth <= this.fullSizeDisplay) && thisExpand ? 'static' : '', width: panelWidth}"
     >
-        <div class="panel-container-mobile" :style="{background: !thisExpand ? background : ''}">
-            <fv-animated-icon v-show="showBack" value="backScale" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="$emit('back', $event)">
+        <div
+            class="panel-container-mobile"
+            :style="{background: !thisExpand ? background : ''}"
+        >
+            <fv-animated-icon
+                v-show="showBack"
+                value="backScale"
+                class="fv-nav-default-item"
+                :hideContent="true"
+                :style="{width: `${compactWidth}px`}"
+                @click="$emit('back', $event)"
+            >
                 <i class="ms-Icon ms-Icon--Back icon"></i>
             </fv-animated-icon>
-            <fv-animated-icon v-show="showNav" value="scaleXDown" class="fv-nav-default-item" :hideContent="true" style="width: 40px;" @click="expandClick">
+            <fv-animated-icon
+                v-show="showNav"
+                value="scaleXDown"
+                class="fv-nav-default-item"
+                :hideContent="true"
+                :style="{width: `${compactWidth}px`}"
+                @click="expandClick"
+            >
                 <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
             </fv-animated-icon>
         </div>
@@ -15,13 +32,27 @@
             class="panel-container"
             :style="{width: navWidth, background: background}"
         >
-            <fv-animated-icon v-show="showBack" value="backScale" class="fv-nav-default-item control" style="width: calc(100% - 10px);" @click="$emit('back', $event)">
+            <fv-animated-icon
+                v-show="showBack"
+                value="backScale"
+                class="fv-nav-default-item control"
+                :hideContent="!thisExpand"
+                style="width: calc(100% - 10px);"
+                @click="$emit('back', $event)"
+            >
                 <i class="ms-Icon ms-Icon--Back icon"></i>
                 <template v-slot:content>
                     <p class="name title">{{title}}</p>
                 </template>
             </fv-animated-icon>
-            <fv-animated-icon v-show="showNav" value="scaleXDown" class="fv-nav-default-item control" style="width: calc(100% - 10px);" @click="expandClick">
+            <fv-animated-icon
+                v-show="showNav"
+                value="scaleXDown"
+                class="fv-nav-default-item control"
+                :hideContent="!thisExpand"
+                style="width: calc(100% - 10px);"
+                @click="expandClick"
+            >
                 <i class="ms-Icon ms-Icon--GlobalNavButton icon"></i>
                 <template v-slot:content>
                     <p
@@ -51,7 +82,15 @@
             <div class="template">
                 <slot name="panel"></slot>
             </div>
-            <fv-animated-icon v-show="showSetting" ref="setting" value="bounceRotate" class="fv-nav-default-item" style="width: calc(100% - 10px);" @click="$emit('setting-click', { event: $event })">
+            <fv-animated-icon
+                v-show="showSetting"
+                ref="setting"
+                value="bounceRotate"
+                class="fv-nav-default-item"
+                :hideContent="!thisExpand"
+                style="width: calc(100% - 10px);"
+                @click="$emit('setting-click', { event: $event })"
+            >
                 <i class="ms-Icon ms-Icon--Settings icon"></i>
                 <template v-slot:content>
                     <p class="name">{{settingTitle}}</p>
@@ -63,22 +102,25 @@
 
 <script>
 export default {
-    name: "FvNavigationPanel",
+    name: 'FvNavigationPanel',
     props: {
         title: {
-            default: "NavigationPanel",
+            default: 'NavigationPanel',
         },
         expand: {
             default: true,
         },
         expandMode: {
-            default: "relative",
+            default: 'relative',
         },
         expandWidth: {
             default: 350,
         },
         expandDisplay: {
             default: 1024,
+        },
+        compactWidth: {
+            default: 50,
         },
         flyoutDisplay: {
             default: 0,
@@ -93,23 +135,23 @@ export default {
             default: true,
         },
         showNav: {
-            default: true
+            default: true,
         },
         showSearch: {
             default: true,
         },
         settingTitle: {
-            default: "Settings",
+            default: 'Settings',
         },
         showSetting: {
             default: true,
         },
         background: {
-            default: "",
+            default: '',
         },
         theme: {
             type: String,
-            default: "system",
+            default: 'system',
         },
     },
     data() {
@@ -128,8 +170,8 @@ export default {
             this.thisExpand = val;
         },
         thisExpand(val) {
-            this.$emit("update:expand", val);
-            this.$emit("expand-change", val);
+            this.$emit('update:expand', val);
+            this.$emit('expand-change', val);
         },
         screenWidth(val) {
             if (this.expandDisplay < this.screenWidth) {
@@ -140,23 +182,17 @@ export default {
     },
     computed: {
         panelWidth() {
-            if (this.isFlyout) return `${40}px`;
-            if (this.thisExpand)
-                return this.screenWidth <= this.fullSizeDisplay
-                    ? "100%"
-                    : `${this.expandWidth}px`;
-            return `${40}px`;
+            if (this.isFlyout) return `${this.compactWidth}px`;
+            if (this.thisExpand) return this.screenWidth <= this.fullSizeDisplay ? '100%' : `${this.expandWidth}px`;
+            return `${this.compactWidth}px`;
         },
         navWidth() {
-            let size =
-                this.screenWidth <= this.fullSizeDisplay
-                    ? "100%"
-                    : `${this.expandWidth}px`;
+            let size = this.screenWidth <= this.fullSizeDisplay ? '100%' : `${this.expandWidth}px`;
             if (this.thisExpand) return size;
-            return `${40}px`;
+            return `${this.compactWidth}px`;
         },
         isFlyout() {
-            if (this.expandMode == "flyout") return true;
+            if (this.expandMode == 'flyout') return true;
             if (this.flyoutDisplay > this.screenWidth) return true;
             return false;
         },
@@ -166,28 +202,28 @@ export default {
         },
         borderLightColor() {
             return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.6)";
+                if (this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.6)';
                 }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.6)";
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.6)';
                 }
-                return "rgba(121, 119, 117, 0.6)";
-            }
+                return 'rgba(121, 119, 117, 0.6)';
+            };
         },
         backgroundLightColor() {
             return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.3)";
+                if (this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.3)';
                 }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.3)";
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.3)';
                 }
-                return "rgba(121, 119, 117, 0.3)";
-            }
+                return 'rgba(121, 119, 117, 0.3)';
+            };
         },
         $theme() {
-            if (this.theme == "system") return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
     },
@@ -210,10 +246,10 @@ export default {
             }, 30);
         },
         outSideClickInit() {
-            window.addEventListener("click", (event) => {
+            window.addEventListener('click', (event) => {
                 let x = event.target;
                 let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
+                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
                     if (x == this.$el) {
                         _self = true;
                         break;
@@ -221,7 +257,6 @@ export default {
                     x = x.parentNode;
                 }
                 if (!_self) {
-                    
                     if (this.isFlyout || this.isMobile) this.thisExpand = false;
                 }
             });

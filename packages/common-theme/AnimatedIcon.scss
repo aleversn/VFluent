@@ -19,6 +19,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.hideContent
+        {
+            width: 100%;
+        }
     }
 
     .fv-animated-content-block

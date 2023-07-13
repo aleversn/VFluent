@@ -390,5 +390,13 @@
       "Dark": "@/dark-theme/SwipeControl.scss",
       "Custom": "@/custom-theme/SwipeControl.scss"
     }
+  },
+  "Expander": {
+    "entry": "@/Expander/index.js",
+    "theme": {
+      "Light": "@/light-theme/Expander.scss",
+      "Dark": "@/dark-theme/Expander.scss",
+      "Custom": "@/custom-theme/Expander.scss"
+    }
   }
 }

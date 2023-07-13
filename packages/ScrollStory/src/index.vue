@@ -1,7 +1,7 @@
 <template>
 <div :class="'fv-'+$theme+'-ScrollStory'">
     <transition :name="name">
-        <div v-show="show">
+        <div v-if="!trueRender || show" v-show="show">
             <slot>
                 <p>Scroll Story</p>
             </slot>
@@ -21,6 +21,9 @@ export default {
             default: false
         },
         infinite: {
+            default: false
+        },
+        trueRender: {
             default: false
         },
         theme: {

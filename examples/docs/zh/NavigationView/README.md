@@ -14,33 +14,41 @@ export default {
         return {
             value: {},
             options: [
-                { name: "Fruits", type: "header"},
-                { name: "Apple", icon: "WindowsLogo"},
-                { name: "Banana", icon: "DelveAnalyticsLogo"},
-                { name: "Orange", icon: "Guitar"},
-                { name: "Grape", icon: "HailDay"},
-                { name: "", type: "divider" },
-                { name: "Vegetables", type: "header"},
-                { name: "Broccoli", icon: "QuadColumn"},
-                { name: "Carrot", icon: "Quantity"},
-                { name: "Lettuce", icon: "TestBeaker"}
+                { key: 0, name: "Fruits", type: "header"},
+                { key: 1, name: "Apple", icon: "WindowsLogo"},
+                { key: 2, name: "Banana", icon: "DelveAnalyticsLogo"},
+                { key: 3, name: "Orange", icon: "Guitar"},
+                { key: 4, name: "Grape", icon: "HailDay"},
+                { key: 5, name: "", type: "divider" },
+                { key: 6, name: "Vegetables", type: "header"},
+                { key: 7, name: "Broccoli", icon: "QuadColumn"},
+                { key: 8, name: "Carrot", icon: "Quantity"},
+                { key: 9, name: "Lettuce", icon: "TestBeaker"}
             ]
         }
+    },
+    watch: {
+        value (val) {
+            console.log(val)
+        }
+    },
+    methods: {
+
     }
 }
 </script>
 
 <ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
-    <fv-NavigationView :options="options"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-NavigationView  v-model="value" :options="options"></fv-NavigationView>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/1444a25f-3e33-44a2-878f-a628342ad88f.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/1444a25f-3e33-44a2-878f-a628342ad88f.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 ```
 
@@ -50,15 +58,15 @@ export default {
 
 <ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
-    <fv-NavigationView :options="options" expandMode="flyout"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-NavigationView v-model="value" :options="options" expandMode="flyout"></fv-NavigationView>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/1444a25f-3e33-44a2-878f-a628342ad88f.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options" expandMode="flyout"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/1444a25f-3e33-44a2-878f-a628342ad88f.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 ```
 
@@ -69,14 +77,14 @@ export default {
 <ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options" mobileDisplay="100000000" flyoutDisplay="500"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="position: relative; width: 100%; height: 800px; display: flex;">
     <fv-NavigationView :options="options" mobileDisplay="100000000" flyoutDisplay="500"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 ```
 
@@ -89,14 +97,14 @@ export default {
 <ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" theme="dark"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" theme="dark"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 ```
 
@@ -105,14 +113,14 @@ export default {
 <ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" expandMode="flyout" theme="dark"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" expandMode="flyout" theme="dark"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 ```
 
@@ -121,14 +129,14 @@ export default {
 <ClientOnly>
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" mobileDisplay="100000000" flyoutDisplay="500" theme="dark"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 </ClientOnly>
 
 ```vue
 <div style="position: relative; width: 100%; height: 800px; background: black; display: flex;">
     <fv-NavigationView :options="options" mobileDisplay="100000000" flyoutDisplay="500" theme="dark"></fv-NavigationView>
-    <fv-img src="https://www.mam-e.it/wp-content/uploads/2017/07/mame-musica-coldplay-le-info-utili-e-le-norme-di-sicurezza.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
+    <fv-img src="https://rescreator.blob.core.windows.net/slider/f2fcea9e-e31b-4a1e-87be-9241531c7dc6.jpg" style="width: 350px; height: 100%; flex: 1;"></fv-img>
 </div>
 ```
 
@@ -136,25 +144,26 @@ export default {
 
 ---
 
-|   属性(attr)    |             类型(type)             | 必填(required) | 默认值(default) |                                说明(statement)                                 |
-|:---------------:|:----------------------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
-|      value      |              Array               |       No       |       N/A       |                          当前选中项, 用`v-model`绑定                           |
-|     options     |              Array               |      Yes       |       N/A       |                  选项数据, 参照`ListView`中的`items`数据格式                   |
-|      title      |              String              |       No       | NavigationView  |                              NavigationView 标题                               |
-|     expand      |             Boolean              |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
-|   expandMode    |       ['relative','flyout']        |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
-|   expandWidth   |              Number              |       No       |       350       |                             展开宽度, 以`px`为单位                             |
-|  expandDisplay  |              Number              |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
-|  flyoutDisplay  |              Number              |       No       |        0        | 浏览器宽度小于多少时开启浮动模式, 若`expandMode`设为`flyout`, 则始终为浮动模式 |
-| fullSizeDisplay |              Number              |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
-|  mobileDisplay  |              Number              |       No       |        0        |                       浏览器宽度小于多少时开启移动端模式                       |
-|    showBack     |             Boolean              |       No       |      true       |                                是否显示后退按钮                                |
-|   showSearch    |             Boolean              |       No       |      true       |                                 是否显示搜索框                                 |
-|  settingTitle   |              String              |       No       |    Settings     |                                 设置选项的标题                                 |
-|   showSetting   |             Boolean              |       No       |      true       |                                是否显示设置选项                                |
-|   foreground    |          [string(color)]           |       No       |       N/A       |                             NavigationView 前景色                              |
-|   background    |          [string(color)]           |       No       |       N/A       |                             NavigationView 背景色                              |
-|     theme     | String |       No       |     system      |       主题样式, 包含`light`, `dark`, `system`, `custom`几种样式              |
+|   属性(attr)    |      类型(type)       | 必填(required) | 默认值(default) |                                说明(statement)                                 |
+|:---------------:|:---------------------:|:--------------:|:---------------:|:------------------------------------------------------------------------------:|
+|      value      |         Array         |       No       |       N/A       |                          当前选中项, 用`v-model`绑定                           |
+|     options     |         Array         |      Yes       |       N/A       |                  选项数据, 参照`ListView`中的`items`数据格式                   |
+|      title      |        String         |       No       | NavigationView  |                              NavigationView 标题                               |
+|     expand      |        Boolean        |       No       |      true       |                    初始是否展开, 可通过 sync 方法来同步状态                    |
+|   expandMode    | ['relative','flyout'] |       No       |    relative     |                           展开模式, 有占位和浮动两种                           |
+|   expandWidth   |        Number         |       No       |       350       |                             展开宽度, 以`px`为单位                             |
+|  expandDisplay  |        Number         |       No       |      1024       |                            浏览器宽度大于多少时展开                            |
+|  compactWidth   |        Number         |       No       |       50        |                             折叠宽度, 以`px`为单位                             |
+|  flyoutDisplay  |        Number         |       No       |        0        | 浏览器宽度小于多少时开启浮动模式, 若`expandMode`设为`flyout`, 则始终为浮动模式 |
+| fullSizeDisplay |        Number         |       No       |       800       |                          浏览器宽度小于多少时全屏显示                          |
+|  mobileDisplay  |        Number         |       No       |        0        |                       浏览器宽度小于多少时开启移动端模式                       |
+|    showBack     |        Boolean        |       No       |      true       |                                是否显示后退按钮                                |
+|   showSearch    |        Boolean        |       No       |      true       |                                 是否显示搜索框                                 |
+|  settingTitle   |        String         |       No       |    Settings     |                                 设置选项的标题                                 |
+|   showSetting   |        Boolean        |       No       |      true       |                                是否显示设置选项                                |
+|   foreground    |    [string(color)]    |       No       |       N/A       |                             NavigationView 前景色                              |
+|   background    |    [string(color)]    |       No       |       N/A       |                             NavigationView 背景色                              |
+|      theme      |        String         |       No       |     system      |           主题样式, 包含`light`, `dark`, `system`, `custom`几种样式            |
 
 ### Events
 
@@ -202,16 +211,16 @@ options = [{ key: "", name: "", type: "", icon: "", disabled: "" }];
 //e.g.//
 
 options: [
-  { name: "Fruits", type: "header" },
-  { name: "Apple", icon: "WindowsLogo" },
-  { name: "Banana", icon: "DelveAnalyticsLogo" },
-  { name: "Orange", icon: "Guitar" },
-  { name: "Grape", icon: "HailDay" },
-  { name: "", type: "divider" },
-  { name: "Vegetables", type: "header" },
-  { name: "Broccoli", icon: "QuadColumn" },
-  { name: "Carrot", icon: "Quantity" },
-  { name: "Lettuce", icon: "TestBeaker" }
+    { key: 0, name: "Fruits", type: "header"},
+    { key: 1, name: "Apple", icon: "WindowsLogo"},
+    { key: 2, name: "Banana", icon: "DelveAnalyticsLogo"},
+    { key: 3, name: "Orange", icon: "Guitar"},
+    { key: 4, name: "Grape", icon: "HailDay"},
+    { key: 5, name: "", type: "divider" },
+    { key: 6, name: "Vegetables", type: "header"},
+    { key: 7, name: "Broccoli", icon: "QuadColumn"},
+    { key: 8, name: "Carrot", icon: "Quantity"},
+    { key: 9, name: "Lettuce", icon: "TestBeaker"}
 ];
 ```
 

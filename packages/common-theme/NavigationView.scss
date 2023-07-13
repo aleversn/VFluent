@@ -42,7 +42,7 @@
             @include narrow-scroll-bar;
         }
 
-        .item
+        .list-view-item
         {
             padding: 0px;
 
@@ -91,7 +91,7 @@
     {
         .navigation-list
         {
-            .item
+            .list-view-item
             {
                 &.header
                 {

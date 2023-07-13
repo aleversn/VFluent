@@ -11,7 +11,7 @@
                 v-show="valueTrigger(item.show) !== false"
                 v-for="(item, index) in thisValue"
                 :class="{choose: valueTrigger(item.choosen), header: valueTrigger(item.type) == 'header', hr: valueTrigger(item.type) == 'divider', normal: valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined, disabled: valueTrigger(item.disabled), selected: item.selected && showSelectedBorder}"
-                class="item"
+                class="list-view-item"
                 :key="index"
                 :style="{ height: _rowHeight, background: valueTrigger(item.choosen) ? choosenBackground : '', borderRadius: itemBorderRadius + 'px' }"
                 :ref="`list_item_${index}`"
@@ -367,7 +367,7 @@ export default {
             });
             let index = this.thisValue.indexOf(c);
             if (index < 0) return 0;
-            let items = this.$refs.container.querySelectorAll('.item');
+            let items = this.$refs.container.querySelectorAll('.list-view-item');
             this.onClick({ target: items[index] }, cur);
         },
     },

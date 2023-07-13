@@ -48,5 +48,6 @@
   "/zh/TextField/",
   "/zh/VerifyBox/",
   "/zh/RevealContainer/",
-  "/zh/SwipeControl/"
+  "/zh/SwipeControl/",
+  "/zh/Expander/"
 ]

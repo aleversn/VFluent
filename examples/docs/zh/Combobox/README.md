@@ -71,6 +71,20 @@ export default {
 
 ```vue
 <fv-Combobox v-model="value" :options="options" placeholder="Pick a option">
+    <template v-slot:default="x">
+        <i>{{x.item.text}}</i>
+    </template>
+</fv-Combobox>
+```
+
+Default Styles
+
+```vue
+<fv-Combobox v-model="value" :options="options" placeholder="Pick a option">
+    <template v-slot:default="x">
+        <i class="before-choosen" :style="{background: choosenSliderBackground}"></i>
+        {{valueTrigger(x.item.type) !== 'divider' ? valueTrigger(x.item.text) : ''}}
+    </template>
 </fv-Combobox>
 ```
 
