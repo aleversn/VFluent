@@ -155,7 +155,7 @@ export default {
         }
     },
     updated() {
-        if (!this.valueTrigger(this.thisValue.show))
+        if (!this.thisValue || !this.valueTrigger(this.thisValue.show))
             this.thisValue = this.thisItems.find(
                 (it) =>
                     this.valueTrigger(it.show) &&
