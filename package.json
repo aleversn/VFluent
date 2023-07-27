@@ -25,7 +25,7 @@
         "vetur"
     ],
     "dependencies": {
-        "core-js": "3.4.3",
+        "core-js": "3.31.1",
         "gsap": "3.1.1",
         "office-ui-fabric-core": "11.0.0",
         "onecolor": "3.1.0",
