@@ -29,6 +29,7 @@
             </span>
         </div>
         <slider
+            v-if="thisItems.length > 0"
             :els="currentEls"
             :sliderBoxshadow="sliderBoxshadow"
             :background="styles.slider.background"
@@ -179,7 +180,9 @@ export default {
                 Object.assign(m, item);
                 items.push(m);
             }
-            this.thisItems = items;
+            if (items.length > 0) {
+                this.thisItems = items;
+            } else this.thisItems = [model];
             this.findCurrentValue();
         },
         findCurrentValue() {
