@@ -79,7 +79,7 @@ export default {
     },
     data() {
         return {
-            thisItems: this.items,
+            thisItems: [{ name: 'Pivot', width: 80 }],
             thisValue: null,
             styles: {
                 slider: {
