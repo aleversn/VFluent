@@ -8,8 +8,8 @@ dependencies:
     specifier: 1.1.1
     version: 1.1.1
   gsap:
-    specifier: 3.1.1
-    version: 3.1.1
+    specifier: 3.6.0
+    version: 3.6.0
   office-ui-fabric-core:
     specifier: 11.0.0
     version: 11.0.0
@@ -3082,6 +3082,7 @@ packages:
 
   /bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -5511,6 +5512,7 @@ packages:
 
   /file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -5950,8 +5952,8 @@ packages:
       strip-bom-string: 1.0.0
     dev: true
 
-  /gsap@3.1.1:
-    resolution: {integrity: sha512-ISkCKuXMtBbmbchJxWXuZydXnnWVV9SqNqd8vAevvtq0yzyBapMbXLxwambK73S/2kpTIVzYW8eJXlDD7yHhvw==}
+  /gsap@3.6.0:
+    resolution: {integrity: sha512-0P3syv1TmYr+A/VZ8UMFzw+s0XoaKSzzDFs8NqkXiJTXI4E/VTi0zRjPgxaPBpiUPPycgRnFjLDe0Tb4dRRf+w==}
     dev: false
 
   /gzip-size@5.1.1:
@@ -7588,6 +7590,7 @@ packages:
 
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
