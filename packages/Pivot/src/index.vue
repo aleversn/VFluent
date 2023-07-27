@@ -79,7 +79,7 @@ export default {
     },
     data() {
         return {
-            thisItems: [{ name: 'Pivot', width: 80 }],
+            thisItems: [],
             thisValue: null,
             styles: {
                 slider: {
@@ -180,9 +180,7 @@ export default {
                 Object.assign(m, item);
                 items.push(m);
             }
-            if (items.length > 0) {
-                this.thisItems = items;
-            } else this.thisItems = [model];
+            this.thisItems = items;
             this.findCurrentValue();
         },
         findCurrentValue() {

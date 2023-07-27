@@ -161,7 +161,6 @@ export default {
     },
     watch: {
         value(val, from) {
-            console.log(val);
             this.valueInit();
         },
         thisValue(val, from) {
