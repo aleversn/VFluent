@@ -42,52 +42,52 @@ import slider from './sub/slider.vue';
 export default {
     name: 'FvPivot',
     components: {
-        slider,
+        slider
     },
     props: {
         value: {
             default: () => {
                 return null;
-            },
+            }
         },
         items: {
-            default: () => [{ name: 'Pivot', width: 80 }],
+            default: () => [{ name: 'Pivot', width: 80 }]
         },
         tab: {
-            default: false,
+            default: false
         },
         fontSize: {
-            default: '',
+            default: ''
         },
         foreground: {
-            default: '',
+            default: ''
         },
         sliderBackground: {
-            default: '',
+            default: ''
         },
         sliderBoxshadow: {
-            default: false,
+            default: false
         },
         background: {
-            default: '',
+            default: ''
         },
         theme: {
             type: String,
-            default: 'system',
-        },
+            default: 'system'
+        }
     },
     data() {
         return {
             thisItems: this.items,
-            thisValue: this.value,
+            thisValue: null,
             styles: {
                 slider: {
-                    background: '',
+                    background: ''
                 },
                 container: {
-                    color: '',
-                },
-            },
+                    color: ''
+                }
+            }
         };
     },
     watch: {
@@ -106,7 +106,7 @@ export default {
         },
         sliderBackground(val) {
             this.stylesInit();
-        },
+        }
     },
     computed: {
         itemWidth() {
@@ -122,29 +122,44 @@ export default {
             return () => {
                 let index = -1;
                 if (!this.thisValue) index = 0;
-                else if (this.thisValue.key) index = this.thisItems.findIndex((item) => item.key === this.thisValue.key);
-                else index = this.thisItems.findIndex((item) => this.valueTrigger(item.name) === this.valueTrigger(this.thisValue.name));
+                else if (this.thisValue.key)
+                    index = this.thisItems.findIndex(
+                        (item) => item.key === this.thisValue.key
+                    );
+                else
+                    index = this.thisItems.findIndex(
+                        (item) =>
+                            this.valueTrigger(item.name) ===
+                            this.valueTrigger(this.thisValue.name)
+                    );
                 if (index < 0) index = 0;
                 let result = [];
                 for (let i = 0; i < this.thisItems.length; i++) {
                     result.push({
-                        el: this.$refs[`item_${i}`] ? this.$refs[`item_${i}`][0] : null,
-                        show: this.valueTrigger(this.thisItems[i].show),
+                        el: this.$refs[`item_${i}`]
+                            ? this.$refs[`item_${i}`][0]
+                            : null,
+                        show: this.valueTrigger(this.thisItems[i].show)
                     });
                 }
                 return {
                     index: index,
-                    els: result,
+                    els: result
                 };
             };
         },
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
+        }
     },
     updated() {
-        if (!this.valueTrigger(this.thisValue.show)) this.thisValue = this.thisItems.find((it) => this.valueTrigger(it.show) && !this.valueTrigger(it.disabled));
+        if (!this.valueTrigger(this.thisValue.show))
+            this.thisValue = this.thisItems.find(
+                (it) =>
+                    this.valueTrigger(it.show) &&
+                    !this.valueTrigger(it.disabled)
+            );
     },
     mounted() {
         this.stylesInit();
@@ -156,7 +171,7 @@ export default {
                 name: 'Pivot',
                 width: 60,
                 show: true,
-                disabled: false,
+                disabled: false
             };
             let items = [];
             for (let item of this.items) {
@@ -166,26 +181,35 @@ export default {
             }
             this.thisItems = items;
             this.findCurrentValue();
-            if (!this.thisValue || !this.value) {
-                this.thisValue = this.thisItems[0];
-            }
         },
         findCurrentValue() {
             if (!this.value) {
-                this.thisValue = this.value;
+                let defaultItem = this.thisItems.find(
+                    (it) =>
+                        this.valueTrigger(it.show) &&
+                        !this.valueTrigger(it.disabled)
+                );
+                if (defaultItem) this.thisValue = defaultItem;
+                else {
+                    this.thisValue = {};
+                    console.warn('No visible item in ItemList.');
+                }
                 return;
             }
             if (this.value.key) {
-                let match = this.thisItems.find((item) => item.key === this.value.key);
+                let match = this.thisItems.find(
+                    (item) => item.key === this.value.key
+                );
                 if (match) this.thisValue = match;
-                else this.thisValue = this.value;
                 return;
             } else if (this.valueTrigger(this.value.name)) {
-                let match = this.thisItems.find((item) => this.valueTrigger(item.name) === this.valueTrigger(this.value.name));
+                let match = this.thisItems.find(
+                    (item) =>
+                        this.valueTrigger(item.name) ===
+                        this.valueTrigger(this.value.name)
+                );
                 if (match) this.thisValue = match;
-                else this.thisValue = this.value;
             }
-            this.thisValue = this.value;
         },
         stylesInit() {
             this.styles.slider.background = this.sliderBackground;
@@ -197,14 +221,19 @@ export default {
         },
         eqal(item) {
             if (!this.thisValue) return false;
-            if (this.thisValue['key']) return this.thisValue['key'] === item['key'];
-            if (this.valueTrigger(this.thisValue['name'])) return this.valueTrigger(this.thisValue['name']) === this.valueTrigger(item['name']);
+            if (this.thisValue['key'])
+                return this.thisValue['key'] === item['key'];
+            if (this.valueTrigger(this.thisValue['name']))
+                return (
+                    this.valueTrigger(this.thisValue['name']) ===
+                    this.valueTrigger(item['name'])
+                );
             return false;
         },
         valueTrigger(val) {
             if (typeof val === 'function') return val();
             return val;
-        },
-    },
+        }
+    }
 };
 </script>

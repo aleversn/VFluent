@@ -14,10 +14,10 @@ export default {
         return {
             value: null,
             items: [
-                { name: "All"},
-                { name: "Unread", width: 80},
-                { name: "Flagged", width: 80, disabled: true },
-                { name: "Urgent", width: 80}
+                { key: 0, name: "All"},
+                { key: 1, name: "Unread", width: 80},
+                { key: 2, name: "Flagged", width: 80, disabled: true },
+                { key: 3, name: "Urgent", width: 80}
             ]
         }
     }
