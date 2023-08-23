@@ -291,7 +291,8 @@ export default {
                 index,
                 event: $event
             });
-            this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
+            if (this.$refs[`list_item_${index}`])
+                this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
 
             this.$emit('choosen-items', this.currentChoosen);
         },
@@ -317,11 +318,11 @@ export default {
                     }
 
                     item.choosen = true;
-                    this.$set(
-                        this.thisValue,
-                        this.thisValue.indexOf(item),
-                        item
-                    );
+                    let index = this.thisValue.indexOf(item);
+                    this.$set(this.thisValue, index, item);
+                    if (this.$refs[`list_item_${index}`])
+                        this.thisSliderTarget =
+                            this.$refs[`list_item_${index}`][0];
                 }
 
                 this.selectionFormat(item);
@@ -415,7 +416,8 @@ export default {
                 index,
                 event: $event
             });
-            this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
+            if (this.$refs[`list_item_${index}`])
+                this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
 
             this.$emit('choosen-items', this.currentChoosen);
         },
