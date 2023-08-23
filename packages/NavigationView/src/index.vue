@@ -14,7 +14,7 @@
             :showNav="showNav"
             :showSearch="showSearch"
             :settingTitle="settingTitle"
-            :showSetting="showSetting"
+            :showSetting="false"
             :background="background"
             :theme="theme"
             ref="panel"
@@ -45,6 +45,8 @@
                     :theme="theme"
                     :headerForeground="foreground"
                     choosenBackground="transparent"
+                    :sliderTarget.sync="currentTarget"
+                    :showSlider="true"
                     @chooseItem="itemClick"
                     @click.native="$emit('item-click', thisValue)"
                 >
@@ -66,86 +68,92 @@
                             >{{x.valueTrigger(x.item.name)}}</p>
                         </slot>
                     </template>
+                    <template v-slot:footer>
+                        <fv-animated-icon
+                            v-show="showSetting"
+                            ref="setting"
+                            value="bounceRotate"
+                            class="fv-nav-default-item"
+                            :hideContent="!thisExpand"
+                            style="width: calc(100% - 10px);"
+                            @click="settingClick({event: $event})"
+                        >
+                            <i class="ms-Icon ms-Icon--Settings icon"></i>
+                            <template v-slot:content>
+                                <p class="name">{{settingTitle}}</p>
+                            </template>
+                        </fv-animated-icon>
+                    </template>
                 </fv-list-view>
             </template>
         </fv-NavigationPanel>
-        <vertical-slider
-            :top="currentTop"
-            :height="currentHeight"
-            :background="foreground"
-        ></vertical-slider>
     </div>
 </template>
 
 <script>
-import verticalSlider from './sub/verticalSlider.vue';
-
 export default {
     name: 'FvNavigationView',
-    components: {
-        verticalSlider,
-    },
     props: {
         value: {
             default: () => {
                 return {};
-            },
+            }
         },
         options: {
-            default: () => [],
+            default: () => []
         },
         title: {
-            default: 'NavigationView',
+            default: 'NavigationView'
         },
         expand: {
-            default: true,
+            default: true
         },
         expandMode: {
-            default: 'relative',
+            default: 'relative'
         },
         expandWidth: {
-            default: 350,
+            default: 350
         },
         expandDisplay: {
-            default: 1024,
+            default: 1024
         },
         compactWidth: {
-            default: 46,
+            default: 46
         },
         flyoutDisplay: {
-            default: 0,
+            default: 0
         },
         fullSizeDisplay: {
-            default: 800,
+            default: 800
         },
         mobileDisplay: {
-            default: 0,
+            default: 0
         },
         showBack: {
-            default: true,
+            default: true
         },
         showNav: {
-            default: true,
+            default: true
         },
         showSearch: {
-            default: true,
+            default: true
         },
         settingTitle: {
-            default: 'Settings',
+            default: 'Settings'
         },
         showSetting: {
-            default: true,
+            default: true
         },
         foreground: {
-            default: '',
+            default: ''
         },
         background: {
-            default: '',
+            default: ''
         },
         theme: {
             type: String,
-            default: 'system',
-        },
+            default: 'system'
+        }
     },
     data() {
         return {
@@ -155,8 +163,8 @@ export default {
             currentTop: 0,
             currentHeight: 0,
             timer: {
-                slider: {},
-            },
+                slider: {}
+            }
         };
     },
     watch: {
@@ -176,17 +184,16 @@ export default {
         },
         thisExpand(val) {
             this.$emit('update:expand', val);
-        },
+        }
     },
     computed: {
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
+        }
     },
     mounted() {
         this.valueInit();
-        this.sliderRefreshInit();
     },
     methods: {
         valueInit() {
@@ -194,35 +201,25 @@ export default {
                 this.thisValue = this.value;
                 return 0;
             }
-            let thisValue = this.options.find((item) => item.name === this.value.name && item.key === this.value.key);
+            let thisValue = this.options.find(
+                (item) =>
+                    item.name === this.value.name && item.key === this.value.key
+            );
             if (thisValue !== undefined) this.thisValue = thisValue;
-            else this.thisValue = this.options.find((item) => item.type !== 'header' && item.type !== 'divider');
-        },
-        sliderRefreshInit() {
-            this.timer.slider = setInterval(() => {
-                if (this.currentTarget !== undefined) {
-                    let target = this.currentTarget;
-                    let elTop = this.$el.getBoundingClientRect().top;
-                    let targetTop = target.getBoundingClientRect().top;
-                    this.currentTop = targetTop - elTop;
-                } else this.currentTop = 0;
-                if (this.currentTarget !== undefined) {
-                    let target = this.currentTarget;
-                    this.currentHeight = target.clientHeight;
-                } else this.currentHeight = 0;
-            }, 30);
+            else
+                this.thisValue = this.options.find(
+                    (item) => item.type !== 'header' && item.type !== 'divider'
+                );
         },
         itemClick(event) {
-            let index = event.index;
-            this.currentTarget = this.$refs.listView.$refs[`list_item_${index}`][0];
             this.thisValue = event.item;
         },
         settingClick(item) {
-            this.currentTarget = this.$refs.panel.$refs.setting.$el;
+            this.currentTarget = this.$refs.setting.$el;
             this.thisValue = {
                 key: '>setting',
                 name: '>setting',
-                type: 'setting',
+                type: 'setting'
             };
             this.$emit('setting-click', item);
         },
@@ -231,11 +228,11 @@ export default {
         },
         onChooseSearch(item) {
             if (item.type === 'setting') {
-                this.currentTarget = this.$refs.panel.$refs.setting.$el;
+                this.currentTarget = this.$refs.setting.$el;
                 this.thisValue = {
                     key: '>setting',
                     name: '>setting',
-                    type: 'setting',
+                    type: 'setting'
                 };
                 return 0;
             }
@@ -244,12 +241,13 @@ export default {
             });
             let index = this.options.indexOf(c);
             if (index < 0) return 0;
-            this.currentTarget = this.$refs.listView.$refs[`list_item_${index}`][0];
+            this.currentTarget =
+                this.$refs.listView.$refs[`list_item_${index}`][0];
             this.thisValue = c;
-        },
+        }
     },
     beforeDestroy() {
         clearInterval(this.timer);
-    },
+    }
 };
 </script>

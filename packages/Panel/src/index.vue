@@ -7,7 +7,7 @@
                 <div v-show="showTitleBar" class="fv-panel-control-block">
                     <slot name="header">
                         <p class="panel-title" :style="{'font-size': `${titleSize}px`, 'font-weight': titleWeight, color: titleColor}">{{title}}</p>
-                        <i class="ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
+                        <i class="control-btn ms-Icon ms-Icon--Cancel" @click="thisValue = !thisValue"></i>
                     </slot>
                 </div>
                 <div class="fv-panel-main-container">

@@ -1,43 +1,44 @@
-@import '../common-theme/ListView.scss';
+@import "../common-theme/ListView.scss";
 .fv-dark-ListView {
-
     @include fv-ListView();
 
-    .list-view-container
-    {
-        .list-view-item
-        {
-            span, p, i {
+    .list-view-container {
+        .list-view-item {
+            span,
+            p,
+            i {
                 color: whitesmoke;
             }
 
-            &:hover
-            {
+            &:hover {
                 background: $row-dark-hover-glass;
             }
 
-            &.header
-            {
-                *{
+            &.header {
+                * {
                     color: rgba(118, 185, 237, 1);
                 }
             }
 
-            &.choose
-            {
+            &.choose {
                 background: rgba(0, 120, 212, 0.6);
             }
 
-            &.hr
-            {
+            &.hr {
                 border-bottom: rgba(216, 216, 216, 0.3) solid thin;
             }
 
-            &.selected
-            {
+            &.selected {
                 border: rgba(200, 200, 200, 0.2) solid 2px;
             }
         }
     }
+
+    .fv-listview-slider {
+        .s {
+            p {
+                background: rgba(118, 185, 237, 1);
+            }
+        }
+    }
 }
-    

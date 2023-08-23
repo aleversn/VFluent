@@ -33,14 +33,14 @@ export default {
 <div style="width: 100%; height: 500px; padding: 15px;">
     
 <ClientOnly>
-<fv-ListView v-model="items">
+<fv-ListView v-model="items" :showSlider="true">
 </fv-ListView>
 </ClientOnly>
 </div>
 
 ```vue
 <div style="width: 100%; height: 500px; padding: 15px;">
-    <fv-ListView v-model="items">
+    <fv-ListView v-model="items" :showSlider="true">
     </fv-ListView>
 </div>
 ```
@@ -100,19 +100,21 @@ export default {
 
 ### Propoties
 ---
-|      属性(attr)       |   类型(type)    | 必填(required) | 默认值(default) |                      说明(statement)                      |
-|:---------------------:|:---------------:|:--------------:|:---------------:|:---------------------------------------------------------:|
-|         value         |      Array      |      Yes       |       N/A       |                     ListView数据绑定                      |
-|        choosen        |      Array      |       No       |       N/A       |                  外部设置ListView选中项                   |
-|       multiple        |     Boolean     |       No       |      false      |                       是否开启多选                        |
-|       rowHeight       |     Number      |       No       |       N/A       |                        每一项高度                         |
-|   headerForeground    | [string(color)] |       No       |       N/A       |                        标题前景色                         |
-|   choosenBackground   | [string(color)] |       No       |       N/A       |                       选中项背景色                        |
-|      itemPadding      |     String      |       No       |       N/A       |                    每一项的`padding`值                    |
-|   itemBorderRadius    |     Number      |       No       |       N/A       |                     每一项的边框圆角                      |
-|   revealBorderColor   | [string(color)] |       No       |       N/A       |                      Reveal边框颜色                       |
-| revealBackgroundColor | [string(color)] |       No       |       N/A       |                      Reveal背景颜色                       |
-|         theme         |     String      |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
+|      属性(attr)       |   类型(type)    | 必填(required) | 默认值(default) |                             说明(statement)                              |
+|:---------------------:|:---------------:|:--------------:|:---------------:|:------------------------------------------------------------------------:|
+|         value         |      Array      |      Yes       |       N/A       |                             ListView数据绑定                             |
+|        choosen        |      Array      |       No       |       N/A       |                          外部设置ListView选中项                          |
+|       multiple        |     Boolean     |       No       |      false      |                               是否开启多选                               |
+|       rowHeight       |     Number      |       No       |       N/A       |                                每一项高度                                |
+|   headerForeground    | [string(color)] |       No       |       N/A       |                                标题前景色                                |
+|   choosenBackground   | [string(color)] |       No       |       N/A       |                               选中项背景色                               |
+|      itemPadding      |     String      |       No       |       N/A       |                           每一项的`padding`值                            |
+|   itemBorderRadius    |     Number      |       No       |       N/A       |                             每一项的边框圆角                             |
+|   revealBorderColor   | [string(color)] |       No       |       N/A       |                              Reveal边框颜色                              |
+| revealBackgroundColor | [string(color)] |       No       |       N/A       |                              Reveal背景颜色                              |
+|      showSlider       |     Boolean     |       No       |      false      |                           是否显示选中项滑动条                           |
+|     sliderTarget      |     String      |       No       |       N/A       | 修改滑动条绑定元素, 可通过`sync`方法同步, 注意元素需要存在于`ListView`中 |
+|         theme         |     String      |       No       |     system      |        主题样式, 包含`light`, `dark`, `system`, `custom`几种样式         |
 
 ### Events
 ---
@@ -132,6 +134,26 @@ export default {
 
 ```vue
 <template v-slot:listItem="x">
+    <p></p>
+</template>
+```
+
+2. Header
+
+ListView前置内容
+
+```vue
+<template v-slot:header>
+    <p></p>
+</template>
+```
+
+3. Footer
+
+ListView后置内容
+
+```vue
+<template v-slot:footer>
     <p></p>
 </template>
 ```
