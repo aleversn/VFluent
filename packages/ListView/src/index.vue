@@ -204,6 +204,9 @@ export default {
         window.addEventListener('click', () => {
             this.showSelectedBorder = false;
         });
+        setTimeout(() => {
+            this.setSliderTarget();
+        }, 300);
     },
     methods: {
         valueInit() {
@@ -291,8 +294,7 @@ export default {
                 index,
                 event: $event
             });
-            if (this.$refs[`list_item_${index}`])
-                this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
+            this.setSliderTarget(index);
 
             this.$emit('choosen-items', this.currentChoosen);
         },
@@ -320,9 +322,7 @@ export default {
                     item.choosen = true;
                     let index = this.thisValue.indexOf(item);
                     this.$set(this.thisValue, index, item);
-                    if (this.$refs[`list_item_${index}`])
-                        this.thisSliderTarget =
-                            this.$refs[`list_item_${index}`][0];
+                    this.setSliderTarget(index);
                 }
 
                 this.selectionFormat(item);
@@ -416,8 +416,7 @@ export default {
                 index,
                 event: $event
             });
-            if (this.$refs[`list_item_${index}`])
-                this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
+            this.setSliderTarget(index);
 
             this.$emit('choosen-items', this.currentChoosen);
         },
@@ -444,6 +443,18 @@ export default {
                     this.$set(this.thisValue, idx, el);
                 }
             });
+        },
+        setSliderTarget(index = null) {
+            if (!index) {
+                for (let i = 0; i < this.thisValue.length; i++) {
+                    if (this.thisValue[i].choosen) {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+            if (this.$refs[`list_item_${index}`])
+                this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
         },
         sliderRefreshInit() {
             this.timer.slider = setInterval(() => {

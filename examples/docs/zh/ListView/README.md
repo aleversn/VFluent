@@ -14,7 +14,7 @@ export default {
         return {
             items: [
                 { key: "fruitsHeader", name: "Fruits", type: "header" },
-                { key: "apple", name: "Apple" },
+                { key: "apple", name: "Apple", choosen: true },
                 { key: "banana", name: "Banana" },
                 { key: "orange", name: "Orange", disabled: true },
                 { key: "grape", name: "Grape" },
