@@ -406,5 +406,13 @@
       "Dark": "@/dark-theme/RatingControl.scss",
       "Custom": "@/custom-theme/RatingControl.scss"
     }
+  },
+  "IconElement": {
+    "entry": "@/IconElement/index.js",
+    "theme": {
+      "Light": "@/light-theme/IconElement.scss",
+      "Dark": "@/dark-theme/IconElement.scss",
+      "Custom": "@/custom-theme/IconElement.scss"
+    }
   }
 }

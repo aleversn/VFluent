@@ -1,0 +1,16 @@
+@import "../common-theme/IconElement.scss";
+.fv-dark-IconElement {
+    @include fv-IconElement();
+
+    &.icon-element-btn {
+        border-radius: 3px;
+
+        &:hover {
+            background: rgba(200, 200, 200, 0.3);
+        }
+
+        &:active {
+            background: rgba(200, 200, 200, 0.1);
+        }
+    }
+}

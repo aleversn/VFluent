@@ -59,6 +59,7 @@ import RevealContainer from '@/RevealContainer/index.js'
 import SwipeControl from '@/SwipeControl/index.js'
 import Expander from '@/Expander/index.js'
 import RatingControl from '@/RatingControl/index.js'
+import IconElement from '@/IconElement/index.js'
 
 import pkg from "../package.json"
 
@@ -114,6 +115,7 @@ let components = [
   SwipeControl,
   Expander,
   RatingControl,
+  IconElement,
 
 ]
 
@@ -205,6 +207,7 @@ export default {
   SwipeControl,
   Expander,
   RatingControl,
+  IconElement,
 
 }
 

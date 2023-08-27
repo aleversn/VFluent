@@ -1,0 +1,75 @@
+@mixin fv-IconElement {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon-element-item {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon-element {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &.left {
+            transform: scale(0.7);
+            transform-origin: left;
+        }
+
+        &.right {
+            transform: scale(0.7);
+            transform-origin: right;
+        }
+
+        &.top {
+            transform: scale(0.7);
+            transform-origin: top;
+        }
+
+        &.bottom {
+            transform: scale(0.7);
+            transform-origin: bottom;
+        }
+
+        &.top-left {
+            transform: scale(0.5);
+            transform-origin: top left;
+        }
+
+        &.top-right {
+            transform: scale(0.5);
+            transform-origin: top right;
+        }
+
+        &.bottom-left {
+            transform: scale(0.5);
+            transform-origin: bottom left;
+        }
+
+        &.bottom-right {
+            transform: scale(0.5);
+            transform-origin: bottom right;
+        }
+    }
+
+    &.icon-element-btn {
+        border-radius: 3px;
+        
+        &:hover {
+            background: rgba(200, 200, 200, 0.3);
+        }
+    
+        &:active {
+            background: rgba(200, 200, 200, 0.6);
+        }
+    }
+}
