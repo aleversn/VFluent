@@ -36,11 +36,14 @@ export default {
 
 ### Propoties
 ---
-|  属性(attr)   | 类型(type) | 必填(required) | 默认值(default) |                      说明(statement)                      |
-|:-------------:|:----------:|:--------------:|:---------------:|:---------------------------------------------------------:|
-| value/v-model | Boolean  |       No       |      true       |                    开启或关闭WebWindow                    |
-|     title     |  String  |       No       |       N/A       |                       WebWindow标题                       |
-|     theme     |  String  |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
+|   属性(attr)    | 类型(type) | 必填(required) | 默认值(default) |                      说明(statement)                      |
+|:---------------:|:----------:|:--------------:|:---------------:|:---------------------------------------------------------:|
+|  value/v-model  |  Boolean   |       No       |      true       |                    开启或关闭WebWindow                    |
+|      title      |   String   |       No       |       N/A       |                       WebWindow标题                       |
+|      left       |   Number   |       No       |        0        |                WebWindow默认距离左边的距离                |
+|       top       |   Number   |       No       |        0        |                WebWindow默认距离顶部的距离                |
+| refreshPosition |  Boolean   |       No       |      false      |               是否在WebWindow打开时刷新位置               |
+|      theme      |   String   |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Events
 ---
