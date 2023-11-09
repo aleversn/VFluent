@@ -114,12 +114,14 @@ export default {
 | revealBackgroundColor | [string(color)] |       No       |       N/A       |                              Reveal背景颜色                              |
 |      showSlider       |     Boolean     |       No       |      false      |                           是否显示选中项滑动条                           |
 |     sliderTarget      |     String      |       No       |       N/A       | 修改滑动条绑定元素, 可通过`sync`方法同步, 注意元素需要存在于`ListView`中 |
+|      sliderIndex      |     Number      |       No       |       N/A       |               修改滑动条绑定元素索引, 可通过`sync`方法同步               |
 |         theme         |     String      |       No       |     system      |        主题样式, 包含`light`, `dark`, `system`, `custom`几种样式         |
 
 ### Events
 ---
 |   事件名(Name)   | 参数类型(args) |       说明(statement)        |
 |:----------------:|:--------------:|:----------------------------:|
+|    item-click    |     object     |     选中项点击后返回选项     |
 |    chooseItem    |     object     |     选中项点击后返回选项     |
 |  choosen-items   |     array      | 选中项点击后返回所有被选中项 |
 | selection-change |     object     |  光标选择某一项后返回选中项  |

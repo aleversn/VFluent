@@ -27,7 +27,7 @@
                 <fv-search-box
                     :options="options"
                     icon="Search"
-                    placeholder="Search"
+                    :placeholder="searchPlaceholder"
                     :theme="theme"
                     class="nav-search"
                     :revealBorder="true"
@@ -48,7 +48,7 @@
                     :sliderTarget.sync="currentTarget"
                     :showSlider="true"
                     @chooseItem="itemClick"
-                    @click.native="$emit('item-click', thisValue)"
+                    @item-click="$emit('item-click', $event.item)"
                 >
                     <template v-slot:listItem="x">
                         <slot
@@ -143,6 +143,9 @@ export default {
         },
         showSetting: {
             default: true
+        },
+        searchPlaceholder: {
+            default: 'Search'
         },
         foreground: {
             default: ''

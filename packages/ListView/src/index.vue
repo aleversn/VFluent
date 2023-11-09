@@ -104,6 +104,9 @@ export default {
         sliderTarget: {
             default: () => {}
         },
+        sliderIndex: {
+            default: -1
+        },
         theme: {
             type: String,
             default: 'system'
@@ -120,6 +123,7 @@ export default {
             focus: false,
             showSelectedBorder: false,
             thisSliderTarget: null,
+            thisSliderIndex: this.sliderIndex,
             currentTop: 0,
             currentHeight: 0,
             timer: {
@@ -140,6 +144,13 @@ export default {
         },
         thisSliderTarget(val) {
             this.$emit('update:sliderTarget', val);
+        },
+        sliderIndex(val) {
+            this.thisSliderIndex = val;
+            this.setSliderTarget(val);
+        },
+        thisSliderIndex(val) {
+            this.$emit('update:sliderIndex', val);
         }
     },
     computed: {
@@ -255,10 +266,22 @@ export default {
         handlerClick($event, cur) {
             clearTimeout(this.timer.debounce);
             this.timer.debounce = setTimeout(() => {
-                this.onClick($event, cur);
+                this.onChoosen($event, cur);
+                if (this.valueTrigger(cur.disabled)) return;
+                if (
+                    this.valueTrigger(cur.type) === 'header' ||
+                    this.valueTrigger(cur.type) == 'divider'
+                )
+                    return;
+                let index = this.thisValue.indexOf(cur);
+                this.$emit('item-click', {
+                    item: cur,
+                    index,
+                    event: $event
+                });
             }, 200);
         },
-        onClick($event, cur) {
+        onChoosen($event, cur) {
             if (this.valueTrigger(cur.disabled)) return 0;
             if (
                 this.valueTrigger(cur.type) === 'header' ||
@@ -453,8 +476,10 @@ export default {
                     }
                 }
             }
-            if (this.$refs[`list_item_${index}`])
+            if (this.$refs[`list_item_${index}`]) {
                 this.thisSliderTarget = this.$refs[`list_item_${index}`][0];
+                this.thisSliderIndex = index;
+            }
         },
         sliderRefreshInit() {
             this.timer.slider = setInterval(() => {
@@ -484,7 +509,7 @@ export default {
             if (index < 0) return 0;
             let items =
                 this.$refs.container.querySelectorAll('.list-view-item');
-            this.onClick({ target: items[index] }, cur);
+            this.onChoosen({ target: items[index] }, cur);
         }
     },
     beforeDestroy() {
