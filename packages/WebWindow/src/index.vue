@@ -1,8 +1,8 @@
 <template>
     <div
         v-show="thisValue"
-        :class="['fv-'+$theme+'-WebWindow', {'static-transition' : !freezeTransition, dark : theme == 'dark'}]"
-        :style="{left: currentLeft, top: currentTop}"
+        :class="['fv-'+$theme+'-WebWindow', {'static-transition' : !freezeTransition, 'enabled-resize': isResize, dark : theme == 'dark', 'is-acrylic': isAcrylic}]"
+        :style="{left: currentLeft, top: currentTop, width: currentWidth == 0 ? '' : `${currentWidth}px`, height: currentHeight == 0 ? '' : `${currentHeight}px`}"
         ref="block"
     >
         <div
@@ -23,12 +23,40 @@
             </button>
         </div>
         <slot></slot>
+        <spliter
+            v-if="isResize"
+            @mousedown="resizeStart"
+            @touchstart="resizeStart"
+            @mousemove="resizeMove"
+            @touchmove="resizeMove"
+        ></spliter>
+        <spliter
+            v-if="isResize"
+            :type="'vertical'"
+            @mousedown="resizeStart($event, 'v')"
+            @touchstart="resizeStart($event, 'v')"
+            @mousemove="resizeMove($event, 'v')"
+            @touchmove="resizeMove($event, 'v')"
+        ></spliter>
+        <spliter
+            v-if="isResize"
+            :type="'both'"
+            @mousedown="resizeStart($event, 'both')"
+            @touchstart="resizeStart($event, 'both')"
+            @mousemove="resizeMove($event, 'both')"
+            @touchmove="resizeMove($event, 'both')"
+        ></spliter>
     </div>
 </template>
 
 <script>
+import spliter from './sub/spliter.vue';
+
 export default {
     name: 'FvWebWindow',
+    components: {
+        spliter
+    },
     props: {
         value: {
             default: true
@@ -46,6 +74,12 @@ export default {
         refreshPos: {
             default: false
         },
+        isResize: {
+            default: false
+        },
+        isAcrylic: {
+            default: false
+        },
         theme: {
             type: String,
             default: 'system'
@@ -58,8 +92,13 @@ export default {
             freezeTransition: true,
             disX: 0,
             disY: 0,
+            disWidth: 0,
+            disHeight: 0,
             currentLeft: '0px',
-            currentTop: '0px'
+            currentTop: '0px',
+            currentWidth: 0,
+            currentHeight: 0,
+            isInit: true
         };
     },
     watch: {
@@ -131,7 +170,12 @@ export default {
                 //     const { contentRect, target } = entry;
                 //     const { width } = contentRect;
                 // }
-                this.posInit();
+                if (!this.isResize || this.isInit) this.posInit();
+                if (this.isInit) {
+                    this.currentWidth = this.$el.clientWidth;
+                    this.currentHeight = this.$el.clientHeight;
+                    this.isInit = false;
+                }
             });
             resizeObserver.observe(el);
         },
@@ -169,6 +213,34 @@ export default {
             setTimeout(() => {
                 this.freezeTransition = true;
             }, 300);
+        },
+        resizeStart(event, type = 'h') {
+            let { clientX, clientY } = event.targetTouches
+                ? event.targetTouches[0]
+                : event;
+            if (type !== 'v')
+                this.disWidth =
+                    clientX - this.$el.getBoundingClientRect().right;
+            if (type !== 'h')
+                this.disHeight =
+                    clientY - this.$el.getBoundingClientRect().bottom;
+        },
+        resizeMove(event, type = 'h') {
+            let { clientX, clientY } = event.targetTouches
+                ? event.targetTouches[0]
+                : event;
+            if (type !== 'v')
+                this.currentWidth =
+                    clientX -
+                    this.$el.getBoundingClientRect().left +
+                    this.disWidth +
+                    15;
+            if (type !== 'h')
+                this.currentHeight =
+                    clientY -
+                    this.$el.getBoundingClientRect().top +
+                    this.disHeight +
+                    15;
         },
         stopPropagation(event) {
             event.stopPropagation();

@@ -1,32 +1,39 @@
 @mixin fv-WebWindow {
-
-    position: fixed;    /*new*/
-	width: 560px;
+    position: fixed; /*new*/
+    min-width: 120px;
+    width: 560px;
+    max-width: 100%;
     min-height: 200px;
-	height: auto;
+    height: auto;
     max-height: 100%;
-	left: calc(50% - 280px);
-	background: white;
-	color: rgba(95,95,95,1);
-    border: rgba(0,0,0,0.1) solid thin;
+    left: calc(50% - 280px);
+    background: white;
+    color: rgba(95, 95, 95, 1);
+    border: rgba(0, 0, 0, 0.1) solid thin;
     border-radius: 8px;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-	align-items: center;
-	box-shadow: $ms-depth-shadow-16;
-	transition: height 0.3s;
+    align-items: center;
+    box-shadow: $ms-depth-shadow-16;
+    transition: height 0.3s;
     overflow: auto;
-    z-index: 30;    /*new*/
+    z-index: 30; /*new*/
 
-    &.static-transition
-    {
+    &.is-acrylic {
+        backdrop-filter: blur(50px);
+    }
+
+    &.enabled-resize {
+        transition: height 0s;
+    }
+
+    &.static-transition {
         transition: all 0.3s;
     }
 
-    .title-bar
-    {
+    .title-bar {
         position: absolute;
         left: 0px;
         top: 0px;
@@ -43,53 +50,112 @@
         cursor: move;
         z-index: 2;
 
-        &:hover
-        {
+        &:hover {
             background: rgba(160, 160, 160, 0.1);
         }
 
-        &:active
-        {
+        &:active {
             background: rgba(75, 75, 75, 0.1);
         }
 
-        .control-btn
-        {
+        .control-btn {
             position: relative;
             width: 46px;
             height: 100%;
             border: thin;
             background: transparent;
             font-size: 13.8px;
-            color: rgba(56,56,56,1);
+            color: rgba(56, 56, 56, 1);
             outline: none;
             display: flex;
             justify-content: center;
             align-items: center;
 
-            &.shut-down
-            {
-                &:hover
-                {
+            &.shut-down {
+                &:hover {
                     background: rgba(214, 33, 33, 0.973);
                     color: whitesmoke;
                 }
 
-                &:active
-                {
+                &:active {
                     background: rgba(247, 88, 88, 0.979);
                 }
             }
 
-            &:hover
-            {
-                background: rgba(0,0,0,0.1);
+            &:hover {
+                background: rgba(0, 0, 0, 0.1);
             }
 
-            &:active
-            {
-                background: rgba(0,0,0,0.2);
+            &:active {
+                background: rgba(0, 0, 0, 0.2);
             }
+        }
+    }
+
+    .fv-web-window-spliter {
+        position: absolute;
+        min-width: 6px;
+        width: 6px;
+        height: 60px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+        cursor: ew-resize;
+
+        &.horizontal {
+            right: 2px;
+            top: calc(50% - 60px);
+            height: 120px;
+        }
+
+        &.vertical {
+            width: 120px;
+            height: 6px;
+            right: calc(50% - 60px);
+            bottom: 5px;
+            cursor: ns-resize;
+        }
+
+        &.both {
+            width: 0px;
+            height: 0px;
+            right: 3px;
+            bottom: 3px;
+            border-left: 15px solid transparent;
+            border-top: 15px solid transparent;
+            border-right: 15px solid transparent; /* 你可以更改颜色 */
+            cursor: nwse-resize;
+
+            &:hover {
+                border-right-color: rgba(200, 198, 196, 0.6);
+            }
+
+            &:active {
+                border-right-color: rgba(150, 150, 150, 0.6);
+            }
+        }
+
+        &:hover {
+            i {
+                background: rgba(200, 198, 196, 0.6);
+            }
+        }
+
+        &:active {
+            i {
+                background: rgba(150, 150, 150, 0.6);
+                box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        i {
+            position: relative;
+            width: 80%;
+            height: 90%;
+            border-radius: 3px;
+            transition: all 0.3s;
         }
     }
 }

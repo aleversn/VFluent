@@ -174,7 +174,7 @@ export default {
 ---
 |       属性(attr)       |   类型(type)    | 必填(required) |      默认值(default)       |                      说明(statement)                      |
 |:----------------------:|:---------------:|:--------------:|:--------------------------:|:---------------------------------------------------------:|
-|         value          |      Array      |       No       |            N/A             |                       Choosed Value                       |
+|         value          |      Array      |       No       |            N/A             |                       Choosen Value                       |
 |        options         |      Array      |       No       |            N/A             |                  Dropdown options array                   |
 |        multiple        |     Boolean     |       No       |            N/A             |                 Is enable multiple select                 |
 |      borderWidth       |     Number      |       No       |             2              |                   Dropdown border width                   |
@@ -248,7 +248,7 @@ export default {
 1. options
 
 ```javascript
-options = [{key: '', text: '', type: '', disabled: '', choosed: ''}]
+options = [{key: '', text: '', type: '', disabled: '', choosen: ''}]
 
 //e.g.//
 
