@@ -1,121 +1,117 @@
 <template>
-    <draggable-component tag="ul" :class="[`fv-${$theme}-TreeView`]" :style="listStyle" :list="value"
-        v-bind="dragOptions">
-        <!-- Tree -->
-        <item v-for="(item, index) in value" :key="index" :item="item" :checkable="checkable" :space="space"
-            :expandedIcon="expandedIcon" :unexpandedIcon="unexpandedIcon" :foreground="foreground"
-            :draggable="draggable" @handle-click="onClickItem" @single-select="onSingleSelect" :expandClickMode="expandClickMode">
-            <template v-slot:default="prop">
-                <slot :item="prop.item">
-                </slot>
-            </template>
-        </item>
-    </draggable-component>
+    <div :class="['fv-'+$theme+'-TreeView']">
+        <tree-view-item
+            v-for="(item, index) in thisValue"
+            :key="`parent: root, self: ${index}`"
+            :value="item"
+            :parent="null"
+            :kIndex="index"
+            :deep="0"
+            :space="space"
+            :draggable="draggable"
+            :checkable="checkable"
+            :expandClickMode="expandClickMode"
+            :foreground="foreground"
+            :expandedIcon="expandedIcon"
+            :unexpandedIcon="unexpandedIcon"
+            :backgroundColorHover="backgroundColorHover"
+            :backgroundColorActive="backgroundColorActive"
+            :itemHeight="itemHeight"
+            :expandedIconPosition="expandedIconPosition"
+            :dragItem="dragItem"
+            :theme="$theme"
+            @selected-change="clearSelected"
+            @set-drag-item="dragItem = $event"
+            @drop-item="$emit('drop-item', {root: thisValue, ...$event})"
+            @handle-click="$emit('click', $event)"
+        ></tree-view-item>
+    </div>
 </template>
 
 <script>
-import draggableComponent from 'vuedraggable';
-import Item from "./components/item.vue"
+import TreeViewItem from './sub/TreeViewItem.vue';
+
 export default {
     name: 'FvTreeView',
     components: {
-        Item,
-        draggableComponent
+        TreeViewItem
     },
     props: {
-        theme: {
-            type: String,
-            default: "system"
-        },
-        checkable: {
-            type: Boolean,
-            default: false
-        },
         value: {
-            required: true,
             type: Array,
             default: () => []
         },
-        itemHeight: {
-            type: [String, Number],
-        },
         space: {
-            type: Number,
             default: 20
         },
-        foreground: {
-            type: String
-        },
-        background: {
-            type: String
-        },
-        expandedIcon: {
-            type: String,
-            default: "ChevronDownSmall"
-        },
-        unexpandedIcon: {
-            type: String,
-            default: "ChevronRightSmall"
-        },
-        backgroundColorHover: {
-            type: String
-        },
-        backgroundColorActive: {
-            type: String
-        },
         draggable: {
-            type: Boolean,
             default: false
         },
-        leftIconForeground: {
-            type: String,
+        checkable: {
+            default: false
+        },
+        expandedIcon: {
+            default: 'ChevronDownSmall'
+        },
+        unexpandedIcon: {
+            default: 'ChevronRightSmall'
+        },
+        foreground: {
+            default: 'rgba(0, 90, 158, 1)'
+        },
+        backgroundColorHover: {
+            default: ''
+        },
+        backgroundColorActive: {
+            default: ''
         },
         expandClickMode: {
+            default: 'normal'
+        },
+        expandedIconPosition: {
+            default: 'left'
+        },
+        itemHeight: {
+            default: 30
+        },
+        theme: {
             type: String,
-            default: 'icon'
+            default: 'system'
+        }
+    },
+    data() {
+        return {
+            thisValue: this.value,
+            dragItem: {
+                item: null,
+                parent: null
+            }
+        };
+    },
+    watch: {
+        value() {
+            this.thisValue = this.value;
         }
     },
     computed: {
         $theme() {
-            if (this.theme === 'system') return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
-        listStyle() {
-            return {
-                "--fv-TreeView--item-field-height": this.itemHeight === undefined ? undefined : typeof this.itemHeight === 'string' ? this.itemHeight : `${this.itemHeight}px`,
-                "--fv-TreeView--item-field-color": this.foreground,
-                "--fv-TreeView--background": this.background,
-                "--fv-TreeView--item-field-hover-bg-color": this.backgroundColorHover,
-                "--fv-TreeView--item-field-active-bg-color": this.backgroundColorActive,
-                "--fv-TreeView--item-field-left-icon-color": this.leftIconForeground
-            }
-        },
-        dragOptions() {
-            return {
-                animation: 100,
-                group: 'TreeView',
-                disabled: !this.draggable,
-                ghostClass: 'ghost',
-            };
         }
     },
     methods: {
-        onClickItem(item) {
-            this.$emit("click", item)
-        },
-        onSingleSelect(item) {
-            this.toggleDescendants(this.value, item);
-        },
-        toggleDescendants(children, target) {
-            if (Array.isArray(children)) {
-                for (let child of children) {
-                    if (child !== target) {
-                        this.$set(child, "selected", false);
-                    }
-                    this.toggleDescendants(child.children, target)
+        clearSelected(target) {
+            let children = this.thisValue;
+            for (let i = 0; i < children.length; i++) {
+                let item = children[i];
+                if (item !== target) {
+                    this.$set(item, 'selected', false);
+                }
+                if (item.children) {
+                    children = children.concat(item.children);
                 }
             }
-        },
+        }
     }
-}
+};
 </script>
