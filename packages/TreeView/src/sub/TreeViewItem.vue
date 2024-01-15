@@ -138,6 +138,12 @@
                     @drop-item="$emit('drop-item', $event)"
                     @handle-click="$emit('handle-click', $event)"
                 >
+                    <template v-slot:default="x">
+                        <slot
+                            :item="x.item"
+                            :deep="x.deep"
+                        ></slot>
+                    </template>
                 </tree-view-item>
             </div>
         </transition>
