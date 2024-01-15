@@ -63,7 +63,7 @@
                     ></fv-progress-ring>
                 </div>
                 <div class="fv-tree-view-item-content">
-                    <slot name="tree-item" :item="value" :deep="deep">
+                    <slot :item="value" :deep="deep">
                         <i
                             v-show="value.icon && !isURL(valueTrigger(value.icon))"
                             class="ms-Icon fv-tree-view-item-std-icon"
