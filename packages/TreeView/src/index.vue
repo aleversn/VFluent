@@ -18,13 +18,21 @@
             :backgroundColorActive="backgroundColorActive"
             :itemHeight="itemHeight"
             :expandedIconPosition="expandedIconPosition"
+            :showLoading="showLoading"
             :dragItem="dragItem"
             :theme="$theme"
             @selected-change="clearSelected"
             @set-drag-item="dragItem = $event"
             @drop-item="$emit('drop-item', {root: thisValue, ...$event})"
             @handle-click="$emit('click', $event)"
-        ></tree-view-item>
+        >
+            <template v-slot:default="x">
+                <slot
+                    :item="x.item"
+                    :deep="x.deep"
+                ></slot>
+            </template>
+        </tree-view-item>
     </div>
 </template>
 
@@ -73,6 +81,9 @@ export default {
         },
         itemHeight: {
             default: 30
+        },
+        showLoading: {
+            default: false
         },
         theme: {
             type: String,

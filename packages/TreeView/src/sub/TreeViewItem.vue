@@ -46,7 +46,7 @@
                     style="margin-right: 10px;"
                 >
                     <i
-                        v-if="!valueTrigger(value.loading)"
+                        v-if="!valueTrigger(value.loading) || !showLoading"
                         v-show="value.children"
                         class="ms-Icon fv-tree-view-item-expander-icon"
                         :class="[`ms-Icon--${value.expanded ? expandedIcon : unexpandedIcon}`]"
@@ -63,7 +63,10 @@
                     ></fv-progress-ring>
                 </div>
                 <div class="fv-tree-view-item-content">
-                    <slot :item="value" :deep="deep">
+                    <slot
+                        :item="value"
+                        :deep="deep"
+                    >
                         <i
                             v-show="value.icon && !isURL(valueTrigger(value.icon))"
                             class="ms-Icon fv-tree-view-item-std-icon"
@@ -85,7 +88,7 @@
                     class="fv-tree-view-item-expander"
                 >
                     <i
-                        v-if="!valueTrigger(value.loading)"
+                        v-if="!valueTrigger(value.loading) || !showLoading"
                         v-show="value.children"
                         class="ms-Icon fv-tree-view-item-expander-icon"
                         :class="[`ms-Icon--${value.expanded ? expandedIcon : unexpandedIcon}`]"
@@ -127,13 +130,15 @@
                     :backgroundColorActive="backgroundColorActive"
                     :itemHeight="itemHeight"
                     :expandedIconPosition="expandedIconPosition"
+                    :showLoading="showLoading"
                     :dragItem="dragItem"
                     :theme="theme"
                     @selected-change="$emit('selected-change', $event)"
                     @set-drag-item="$emit('set-drag-item', $event)"
                     @drop-item="$emit('drop-item', $event)"
                     @handle-click="$emit('handle-click', $event)"
-                ></tree-view-item>
+                >
+                </tree-view-item>
             </div>
         </transition>
     </div>
@@ -189,6 +194,9 @@ export default {
         },
         itemHeight: {
             default: 30
+        },
+        showLoading: {
+            default: false
         },
         expandedIconPosition: {
             default: 'left'

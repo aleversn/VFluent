@@ -15,6 +15,7 @@ sidebarDepth: 2
                 {
                     label: 'Img Folder',
                     icon: 'https://img.icons8.com/bubbles/2x/folder-invoices.png',
+                    loading: true,
                     children: [
                         {
                             label: 'Folder',
@@ -287,6 +288,7 @@ foregroundColor:
 | backgroundColorHover  |               String               |       No       |         N/A         |    子项Hover的颜色     |
 | backgroundColorActive |               String               |       No       |         N/A         |     子项激活的颜色     |
 |      itemHeight       |               String               |       No       |         30          |        子项高度        |
+|      showLoading      |              Boolean               |       No       |        false        |  加载时是否显示进度条  |
 | expandedIconPosition  |          ['left','right']          |       No       |       'left'        |      扩展箭头位置      |
 |    expandClickMode    |         ['icon','normal']          |       No       |      'normal'       |     点击展开的方式     |
 |         theme         | ['system','dark','light','custom'] |       No       |      'system'       |         主题色         |
