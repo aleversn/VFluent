@@ -21,6 +21,7 @@
             :showLoading="showLoading"
             :dragItem="dragItem"
             :theme="$theme"
+            @require-render="pushRender"
             @selected-change="clearSelected"
             @set-drag-item="dragItem = $event"
             @drop-item="$emit('drop-item', {root: thisValue, ...$event})"
@@ -96,12 +97,30 @@ export default {
             dragItem: {
                 item: null,
                 parent: null
+            },
+            queueFunction: [],
+            lock: {
+                isQueueRunning: true
             }
         };
     },
     watch: {
         value() {
             this.thisValue = this.value;
+        },
+        async 'queueFunction.length'() {
+            if (this.queueFunction.length === 0) return;
+            if (!this.lock.isQueueRunning) return;
+            this.lock.isQueueRunning = false;
+            while (this.queueFunction.length > 0) {
+                let func = this.queueFunction.shift();
+                try {
+                    await func();
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+            this.lock.isQueueRunning = true;
         }
     },
     computed: {
@@ -122,6 +141,9 @@ export default {
                     children = children.concat(item.children);
                 }
             }
+        },
+        pushRender(item) {
+            this.queueFunction.push(item);
         }
     }
 };

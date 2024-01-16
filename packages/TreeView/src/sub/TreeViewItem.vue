@@ -1,5 +1,6 @@
 <template>
     <div
+        v-if="isRender"
         v-show="valueTrigger(value.show) !== false"
         class="fv-tree-view-item"
         :draggable="draggable"
@@ -133,6 +134,7 @@
                     :showLoading="showLoading"
                     :dragItem="dragItem"
                     :theme="theme"
+                    @require-render="$emit('require-render', $event)"
                     @selected-change="$emit('selected-change', $event)"
                     @set-drag-item="$emit('set-drag-item', $event)"
                     @drop-item="$emit('drop-item', $event)"
@@ -220,12 +222,14 @@ export default {
     },
     data() {
         return {
+            isRender: false,
             cssMode: 'normal',
             dropMode: 'none',
             dragMode: false,
             timer: {
                 drop: null,
-                delayExpand: null
+                delayExpand: null,
+                requireRender: null
             }
         };
     },
@@ -240,8 +244,32 @@ export default {
             return '';
         }
     },
-    mounted() {},
+    mounted() {
+        this.requireRenderInit();
+    },
     methods: {
+        requireRenderInit() {
+            clearInterval(this.timer.requireRender);
+            this.timer.requireRender = setInterval(() => {
+                if (this.isRender) {
+                    clearInterval(this.timer.requireRender);
+                    return;
+                }
+                if (!this.parent || this.parent.expanded) {
+                    this.$emit('require-render', async () => {
+                        this.isRender = true;
+                        while (!this.$el.style) {
+                            await new Promise((resolve) => {
+                                setTimeout(() => {
+                                    resolve(1);
+                                }, 30);
+                            });
+                        }
+                    });
+                    clearInterval(this.timer.requireRender);
+                }
+            }, 100);
+        },
         expandClick(mode = 'icon', event) {
             if (this.valueTrigger(this.value.disabled)) return;
             let x = event.target;
@@ -363,6 +391,9 @@ export default {
             }
             this.dropMode = 'leave';
         }
+    },
+    beforeDestroy() {
+        clearInterval(this.timer.requireRender);
     }
 };
 </script>
