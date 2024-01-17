@@ -2,6 +2,7 @@
     position: relative;
     width: 200px;
     height: auto;
+    padding-left: 2px;
     overflow-x: hidden;
 
     .fv-tree-view-item {
@@ -13,12 +14,11 @@
 
         .fv-tree-view-item-container {
             position: relative;
-            width: 100%;
+            width: calc(100% - 20px);
             height: 30px;
             margin-bottom: 3px;
             padding: 0px 10px;
             border-radius: 6px;
-            box-sizing: border-box;
             display: flex;
             align-items: center;
             transition:

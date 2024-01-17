@@ -20,6 +20,9 @@
                 :ref="`list_item_${index}`"
                 @click="handlerClick($event, item)"
                 @touchend="handlerClick($event, item)"
+                @dragover="dragOver(event, item)"
+                @dragleave="dragLeave(event, item)"
+                @drop="dropItem(event, item)"
             >
                 <fv-reveal-container
                     v-if="(valueTrigger(item.type) == 'default' || valueTrigger(item.type) == undefined) && !valueTrigger(item.disabled)"
@@ -494,6 +497,32 @@ export default {
                     this.currentHeight = target.clientHeight;
                 } else this.currentHeight = 0;
             }, 30);
+        },
+        dragOver(event, item) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (this.valueTrigger(item.disabled)) return;
+            this.$emit('item-drag-over', {
+                drop: item,
+                root: this.thisValue
+            });
+        },
+        dragLeave(event, item) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.$emit('item-drag-leave', {
+                drop: item,
+                root: this.thisValue
+            });
+        },
+        dropItem(event, item) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (this.valueTrigger(item.disabled)) return;
+            this.$emit('item-drop', {
+                drop: item,
+                root: this.thisValue
+            });
         },
         inspectItemAPI(cur) {
             let c = this.thisValue.find((it) => {

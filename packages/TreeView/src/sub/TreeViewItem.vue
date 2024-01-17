@@ -139,6 +139,9 @@
                     @set-drag-item="$emit('set-drag-item', $event)"
                     @drop-item="$emit('drop-item', $event)"
                     @handle-click="$emit('handle-click', $event)"
+                    @item-drag-over="$emit('item-drag-over', $event)"
+                    @item-drag-leave="$emit('item-drag-leave', $event)"
+                    @item-drop="$emit('item-drop', $event)"
                 >
                     <template v-slot:default="x">
                         <slot
@@ -349,6 +352,10 @@ export default {
             event.stopPropagation();
             if (this.valueTrigger(this.value.disabled)) return;
             if (this.dragItem.item === this.value) return;
+            this.$emit('item-drag-over', {
+                drop: this.value,
+                dropParent: this.parent
+            });
             const { clientY } = event;
             const { top, height } = this.$refs.item.getBoundingClientRect();
             if (clientY - top < height / 2) {
@@ -368,6 +375,10 @@ export default {
         dragLeave(event) {
             event.preventDefault();
             event.stopPropagation();
+            this.$emit('item-drag-leave', {
+                drop: this.value,
+                dropParent: this.parent
+            });
             clearTimeout(this.timer.drop);
             this.timer.drop = setTimeout(() => {
                 this.dropMode = 'leave';
@@ -380,6 +391,10 @@ export default {
                 this.dropMode = 'leave';
                 return;
             }
+            this.$emit('item-drop', {
+                drop: this.value,
+                dropParent: this.parent
+            });
             if (this.dragItem) {
                 this.$emit('drop-item', {
                     drop: this.value,

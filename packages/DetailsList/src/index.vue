@@ -1,12 +1,8 @@
 <template>
 <div :class="'fv-'+$theme+'-DetailsList'">
     <div class="fv-details-list-head" :class="{'fv-custom-head': true}" ref="list_head">
-        <span v-show="multiSelection" class="icon-block" :style="styles.listHead" @click="chooseAll">
-            <span class="icon" :class="{choose:currentChoosenAll}">
-                <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
-                <i class="ms-Icon ms-Icon--CircleRing ll"></i>
-                <i class="ms-Icon ms-Icon--Completed ll"></i>
-            </span>
+        <span v-show="multiSelection" class="fv-details-list-icon-block" :style="styles.listHead" @click="chooseAll">
+            <selector v-model="currentChoosenAll" :color="foreground"></selector>
         </span>
         <span v-show="showGroup" class="col" style="width: 36px; padding: 0px;" :style="styles.listHead">
             <span class="expand" :class="{choose: currentExpandAll}" @click="expandAll">
@@ -26,12 +22,8 @@
     <div v-if="!showGroup" class="fv-details-list-content" ref="l1" :class="{compact: compact, 'auto-height': autoHeight}">
         <transition-group name="details-list" tag="div">
         <div v-show="item.show" v-for="(item, index) in thisValue" class="content-row" :key="`row: ${index}`" :draggable="allowDrag" :class="[{choose: item.choosen, 'fv-custom-row': true}, rowCss]" @drag="drag($event, item)" @dragover="$event.preventDefault()" @drop="drop(item)" @contextmenu="rightClick($event, item)">
-            <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="itemChooseClick(item)">
-                <span class="icon" :class="{choose: item.choosen}">
-                    <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
-                    <i class="ms-Icon ms-Icon--CircleRing ll"></i>
-                    <i class="ms-Icon ms-Icon--Completed ll"></i>
-                </span>
+            <span v-show="multiSelection" class="fv-details-list-icon-block" key="multi-col" @click="itemChooseClick(item)">
+                <selector v-model="item.choosen" :color="foreground"></selector>
             </span>
             <span v-show="col.show && valueTrigger(col.visible)" v-for="(col, idx) in thisHead" class="col" :key="`row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
                 <slot :name="`column_${idx}`" :item="item" :row_index="index" :col_index="idx">
@@ -46,12 +38,8 @@
         <div v-for="(gi, i) in thisGroup" :key="`group: ${i}`">
             <div class="content-row" :class="{choose: isGroupChooseAll(gi), 'fv-custom-group-row': true}">
                 <slot name="group" :item="gi" :index="i" :isMulti="multiSelection" :isChoose="isGroupChooseAll(gi)">
-                    <span v-show="multiSelection" class="icon-block icon" key="multi-col" @click="chooseGroup(gi)">
-                        <span class="icon" :class="{choose: isGroupChooseAll(gi)}">
-                            <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
-                            <i class="ms-Icon ms-Icon--CircleRing ll"></i>
-                            <i class="ms-Icon ms-Icon--Completed ll"></i>
-                        </span>
+                    <span v-show="multiSelection" class="fv-details-list-icon-block" key="multi-col" @click="chooseGroup(gi)">
+                        <selector :value="isGroupChooseAll(gi)" :color="foreground"></selector>
                     </span>
                     <span class="expand" :class="{choose: gi.expand}" @click="expandGroup(gi)">
                         <i class="ms-Icon ms-Icon--ChevronRight"></i>
@@ -66,12 +54,8 @@
             <transition name="zoom-in-top">
             <div v-show="gi.expand">
             <div v-show="item.show" v-for="(item, index) in gi.data" class="content-row" :key="`group: ${i} row: ${index}`" :class="[{choose: item.choosen, 'fv-custom-row': true}, rowCss]" @contextmenu="rightClick($event, item)">
-                <span v-show="multiSelection" class="icon-block icon" key="multi-col">
-                    <span class="icon" :class="{choose:item.choosen}" @click="itemChooseClick(item)">
-                        <i class="ms-Icon ms-Icon--FullCircleMask ll"></i>
-                        <i class="ms-Icon ms-Icon--CircleRing ll"></i>
-                        <i class="ms-Icon ms-Icon--Completed ll"></i>
-                    </span>
+                <span v-show="multiSelection" class="fv-details-list-icon-block" key="multi-col">
+                    <selector v-model="item.choosen" @click.native="itemChooseClick(item)" :color="foreground"></selector>
                 </span>
                 <span class="col" style="width: 36px;" @click="chooseCurrent(item)"></span>
                 <span v-show="col.show && valueTrigger(col.visible)" v-for="(col, idx) in thisHead" class="col" :key="`group: ${i} row: ${index} col: ${idx}`" :style="{width: colWidth[idx]}" @click="chooseCurrent(item)">
@@ -101,11 +85,13 @@
 
 <script>
 import spliter from './sub/spliter.vue';
+import selector from './sub/selector.vue';
 
 export default {
     name: "FvDetailsList",
     components: {
-        spliter
+        spliter,
+        selector
     },
 	props: {
         value: {
@@ -130,6 +116,9 @@ export default {
         },
         autoHeight: {
             default: false
+        },
+        foreground: {
+            default: ""
         },
         headBackground: {
             default: ""

@@ -1,6 +1,14 @@
 <template>
-    <div class="fv-details-list-selector">
-        <i class="ms-Icon ms-Icon--Completed fv-details-list-icon"></i>
+    <div
+        class="fv-details-list-selector"
+        :class="[{choosen: checked}]"
+    >
+        <div
+            class="fv-details-list-icon-ring"
+            :style="{background: checked ? color : ''}"
+        >
+            <i class="ms-Icon ms-Icon--StatusCircleCheckmark fv-details-list-icon-accept"></i>
+        </div>
     </div>
 </template>
 

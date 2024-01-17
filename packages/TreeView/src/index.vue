@@ -26,6 +26,9 @@
             @set-drag-item="dragItem = $event"
             @drop-item="$emit('drop-item', {root: thisValue, ...$event})"
             @handle-click="$emit('click', $event)"
+            @item-drag-over="$emit('item-drag-over', {root: thisValue, ...$event})"
+            @item-drag-leave="$emit('item-drag-leave', {root: thisValue, ...$event})"
+            @item-drop="$emit('item-drop', {root: thisValue, ...$event})"
         >
             <template v-slot:default="x">
                 <slot

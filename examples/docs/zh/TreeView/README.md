@@ -296,10 +296,13 @@ foregroundColor:
 ### Events
 ---
 
-| 事件名(Name) |                  参数类型(args)                  |           说明(statement)            |
-|:------------:|:------------------------------------------------:|:------------------------------------:|
-|    click     |                       item                       | 当点击时触发，第一个参数为点击的item |
-|  drop-item   | {root, drop, dropParent, drag, dragParent, mode} |           拖动放置回调函数           |
+|  事件名(Name)   |                  参数类型(args)                  |           说明(statement)            |
+|:---------------:|:------------------------------------------------:|:------------------------------------:|
+|      click      |                       item                       | 当点击时触发，第一个参数为点击的item |
+|    drop-item    | {root, drop, dropParent, drag, dragParent, mode} |        项目间拖动放置回调函数        |
+| item-drag-over  |             {root, drop, dropParent}             |           当前项被放置进入           |
+| item-drag-leave |             {root, drop, dropParent}             |           当前项被放置离开           |
+|    item-drop    |             {root, drop, dropParent}             |             当前项被放置             |
 
 
 ### Slots

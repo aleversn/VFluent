@@ -125,6 +125,9 @@ export default {
 |    chooseItem    |     object     |     选中项点击后返回选项     |
 |  choosen-items   |     array      | 选中项点击后返回所有被选中项 |
 | selection-change |     object     |  光标选择某一项后返回选中项  |
+|  item-drag-over  |  {root, drop}  |       当前项被放置进入       |
+| item-drag-leave  |  {root, drop}  |       当前项被放置离开       |
+|    item-drop     |  {root, drop}  |         当前项被放置         |
 
 ### Slot
 ---

@@ -1,13 +1,11 @@
 @mixin fv-DetailsList {
-
     position: relative;
     width: 600px;
     height: 600px;
     display: flex;
     flex-direction: column;
 
-    .fv-details-list-spliter
-    {
+    .fv-details-list-spliter {
         position: relative;
         min-width: 6px;
         width: 6px;
@@ -19,25 +17,20 @@
         transition: all 0.3s;
         cursor: ew-resize;
 
-        &:hover
-        {
-            i
-            {
+        &:hover {
+            i {
                 background: rgba(200, 198, 196, 0.6);
             }
         }
 
-        &:active
-        {
-            i
-            {
+        &:active {
+            i {
                 background: rgba(200, 198, 196, 1);
                 box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
             }
         }
 
-        i
-        {
+        i {
             position: relative;
             width: 80%;
             height: 90%;
@@ -46,8 +39,7 @@
         }
     }
 
-    .fv-details-list-head
-    {
+    .fv-details-list-head {
         position: relative;
         width: 100%;
         height: 45px;
@@ -57,8 +49,7 @@
         display: flex;
         overflow: hidden;
 
-        .icon-block
-        {
+        .fv-details-list-icon-block {
             position: relative;
             width: 48px;
             height: 100%;
@@ -68,23 +59,23 @@
             justify-content: center;
             align-items: center;
             float: left;
-            
-            .icon
-            {
+
+            .fv-details-list-selector {
                 @include multi-selection;
             }
         }
 
-        &:hover
-        {
-            .icon-block .ll:nth-child(2)
-            {
-                opacity: 1;
+        &:hover {
+            .fv-details-list-icon-block {
+                .fv-details-list-selector {
+                    .fv-details-list-icon-ring {
+                        border-color: rgba(0, 0, 0, 1);
+                    }
+                }
             }
         }
 
-        .col
-        {
+        .col {
             position: relative;
             width: 60px;
             height: 100%;
@@ -100,8 +91,7 @@
             user-select: none;
             float: left;
 
-            .col-content
-            {
+            .col-content {
                 position: relative;
                 width: 100%;
                 height: 100%;
@@ -113,26 +103,22 @@
                 align-items: center;
                 overflow: hidden;
 
-                &:hover
-                {
+                &:hover {
                     background: rgba(243, 242, 241, 1);
                 }
 
-                &:active
-                {
+                &:active {
                     background: rgba(237, 235, 233, 1);
                 }
 
-                p.default-title
-                {
+                p.default-title {
                     @include nowrap;
-                    
+
                     font-size: 13.8px;
                     font-weight: 600;
                 }
 
-                i.sort
-                {
+                i.sort {
                     padding: 0px 0px 0px 5px;
                     font-size: 12px;
                     font-weight: 400;
@@ -140,8 +126,7 @@
                 }
             }
 
-            .expand
-            {
+            .expand {
                 position: relative;
                 width: 36px;
                 height: 100%;
@@ -153,35 +138,29 @@
                 transition: all 0.3s;
                 float: left;
 
-                &:hover
-                {
+                &:hover {
                     background: rgba(243, 242, 241, 1);
                 }
 
-                &:active
-                {
+                &:active {
                     background: rgba(237, 235, 233, 1);
                 }
 
-                &.choose
-                {
-                    i
-                    {
+                &.choose {
+                    i {
                         transform: rotate(90deg);
                         transition: all 0.3s;
                     }
                 }
 
-                i
-                {
+                i {
                     transition: all 0.3s;
                 }
             }
         }
     }
 
-    .fv-details-list-content
-    {
+    .fv-details-list-content {
         position: relative;
         width: 100%;
         height: 100%;
@@ -191,8 +170,7 @@
         overflow-x: hidden;
         -ms-overflow-style: -ms-autohiding-scrollbar;
 
-        .content-row
-        {
+        .content-row {
             position: relative;
             width: calc(100% + 30px);
             height: 43px;
@@ -201,60 +179,54 @@
             box-sizing: border-box;
             overflow: visible;
 
-            .icon-block
-            {
+            .fv-details-list-icon-block {
                 position: relative;
                 width: 48px;
                 height: 100%;
-                flex-shrink: 0;
                 box-sizing: border-box;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 float: left;
-                
-                .icon
-                {
+
+                .fv-details-list-selector {
                     @include multi-selection;
                 }
             }
 
-            &:hover
-            {
+            &:hover {
                 background: rgba(243, 242, 241, 1);
                 border-bottom: 1px solid rgba(237, 235, 233, 0);
 
-                .col
-                {
-                    *{
+                .col {
+                    * {
                         font-weight: 600;
-                        
-                        &.sec
-                        {
+
+                        &.sec {
                             font-weight: 400;
                             opacity: 1;
                         }
                     }
                 }
 
-                .icon-block .ll:nth-child(2)
-                {
-                    opacity: 1;
+                .fv-details-list-icon-block {
+                    .fv-details-list-selector {
+                        .fv-details-list-icon-ring {
+                            border-color: rgba(0, 0, 0, 1);
+                        }
+                    }
                 }
             }
 
-            &.choose
-            {
+            &.choose {
                 background: rgba(243, 242, 241, 1);
                 border-bottom: 1px solid white;
 
-                .col
-                {
-                    *{
+                .col {
+                    * {
                         font-weight: 600;
-                        
-                        &.sec
-                        {
+
+                        &.sec {
                             font-weight: 400;
                             opacity: 1;
                         }
@@ -262,8 +234,7 @@
                 }
             }
 
-            .col
-            {
+            .col {
                 position: relative;
                 width: 60px;
                 height: 100%;
@@ -277,23 +248,21 @@
                 user-select: none;
                 float: left;
 
-                *{
+                * {
                     @include nowrap;
-                    
+
                     font-size: 13.8px;
                     font-weight: 400;
                     user-select: text;
 
-                    &.sec
-                    {
+                    &.sec {
                         font-size: 12px;
                         opacity: 0.8;
                     }
                 }
             }
 
-            .expand
-            {
+            .expand {
                 position: relative;
                 width: 36px;
                 height: 100%;
@@ -305,67 +274,55 @@
                 transition: all 0.3s;
                 float: left;
 
-                &:hover
-                {
+                &:hover {
                     background: rgba(238, 237, 236, 1);
                 }
 
-                &:active
-                {
+                &:active {
                     background: rgba(237, 235, 233, 1);
                 }
 
-                &.choose
-                {
-                    i
-                    {
+                &.choose {
+                    i {
                         transform: rotate(90deg);
                         transition: all 0.3s;
                     }
                 }
 
-                i
-                {
+                i {
                     transition: all 0.3s;
                 }
             }
         }
 
-        &.compact
-        {
-            .content-row
-            {
+        &.compact {
+            .content-row {
                 height: 32px;
                 border-bottom: transparent solid 1px;
             }
         }
 
-        &.auto-height
-        {
-            .content-row
-            {
+        &.auto-height {
+            .content-row {
                 min-height: 43px;
                 height: auto;
 
-                .col
-                {
-                    *{
+                .col {
+                    * {
                         text-overflow: inherit;
                         white-space: pre-wrap;
                         overflow: visible;
                     }
                 }
 
-                .icon-block
-                {
+                .fv-details-list-icon-block {
                     height: 32px;
                 }
             }
         }
     }
 
-    .fv-rightMenu
-    {
+    .fv-rightMenu {
         position: fixed;
         top: 100%;
         width: 200px;
@@ -374,16 +331,16 @@
         background: rgba(239, 239, 239, 1);
         border-radius: 3px;
         box-sizing: border-box;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), 0px 3px 10px rgba(0, 0, 0, 0.3);
+        box-shadow:
+            0px 0px 0px rgba(0, 0, 0, 0.1),
+            0px 3px 10px rgba(0, 0, 0, 0.3);
         display: flex;
         flex-direction: column;
 
-        div
-        {
+        div {
             padding: 1px 0px;
 
-            span
-            {
+            span {
                 width: calc(100% - 10px);
                 margin-left: 5px;
                 padding: 6px 10px;
@@ -396,19 +353,16 @@
                 align-items: center;
                 user-select: none;
 
-                &:hover
-                {
+                &:hover {
                     background: rgba(200, 200, 200, 0.3);
                     cursor: pointer;
                 }
-    
-                &:active
-                {
+
+                &:active {
                     background: rgba(200, 200, 200, 0.5);
                 }
 
-                p
-                {
+                p {
                     @include nowrap;
 
                     width: 100%;
@@ -420,8 +374,7 @@
                 }
             }
 
-            hr
-            {
+            hr {
                 margin: 8px 15px;
                 border: thin;
                 border-bottom: rgba(0, 0, 0, 0.1) solid thin;
@@ -429,43 +382,42 @@
         }
     }
 
-    .zoom-in-top-enter-active,.zoom-in-top-leave-active {
+    .zoom-in-top-enter-active,
+    .zoom-in-top-leave-active {
         opacity: 1;
         transform: scaleY(1);
-        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        transition:
+            transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+            opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
         transform-origin: center top;
     }
-    .zoom-in-top-enter,.zoom-in-top-leave-active {
+    .zoom-in-top-enter,
+    .zoom-in-top-leave-active {
         opacity: 0;
         transform: scaleY(0);
     }
 
-    .m-list-move
-    {
+    .m-list-move {
         transition: all 0.2s;
         -webkit-transition: all 0.2s;
     }
 
-    .details-list-enter-active
-    {
+    .details-list-enter-active {
         opacity: 0;
         transition: all 0.2s;
         transition-delay: 0.1s;
     }
-    .details-list-enter-to
-    {
+    .details-list-enter-to {
         opacity: 1;
         transition: all 0.2s;
         transition-delay: 0.1s;
     }
-    .details-list-leave-active
-    {
+    .details-list-leave-active {
         opacity: 1;
         transform: translateX(0px);
         transition: all 0.2s;
     }
-    .details-list-leave-to
-    {
+    .details-list-leave-to {
         opacity: 0;
         transform: translateX(-75px);
         transition: all 0.2s;
@@ -473,68 +425,56 @@
 }
 
 @mixin multi-selection {
-
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: subpixel-antialiased;
 
-    &:hover
-    {
-        .ll:nth-child(2)
-        {
-            display: none;
+    &:hover {
+        .fv-details-list-icon-ring {
+            border-color: rgba(0, 0, 0, 1);
+
+            .fv-details-list-icon-accept {
+                color: rgba(0, 0, 0, 1);
+            }
         }
+    }
 
-        .ll:nth-child(3)
-        {
-            display: flex;
+    &.choosen {
+        .fv-details-list-icon-ring {
+            background: rgba(0, 90, 158, 1);
+            border-color: rgba(0, 0, 0, 0);
+
+            .fv-details-list-icon-accept {
+                color: rgba(255, 255, 255, 1);
+            }
         }
     }
 
-    &.choose
-    {
-        .ll:nth-child(1)
-        {
-            display: flex;
-        }
-
-        .ll:nth-child(2)
-        {
-            display: none;
-        }
-
-        .ll:nth-child(3)
-        {
-            color: whitesmoke;
-            display: flex;
-        }
-    }
-    
-    .ll
-    {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        font-size: 16px;
+    .fv-details-list-icon-ring {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0);
         display: flex;
         justify-content: center;
         align-items: center;
-        -webkit-font-smoothing: subpixel-antialiased;
 
-        &:nth-child(1)
-        {
-            color: rgba(0, 120, 212, 1);
-            display: none;
-        }
-
-        &:nth-child(2)
-        {
-            opacity: 0;
-        }
-
-        &:nth-child(3)
-        {
-            display: none;
+        .fv-details-list-icon-accept {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            color: rgba(0, 0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

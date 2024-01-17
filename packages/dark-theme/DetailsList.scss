@@ -1,180 +1,174 @@
 @import "../common-theme/DetailsList.scss";
 .fv-dark-DetailsList {
-	@include fv-DetailsList();
+    @include fv-DetailsList();
 
-	.fv-details-list-spliter
-	{
-		&:hover
-		{
-			i
-			{
-				background: rgba(72, 70, 68, 1);
-			}
-		}
+    .fv-details-list-spliter {
+        &:hover {
+            i {
+                background: rgba(72, 70, 68, 1);
+            }
+        }
 
-		&:active
-		{
-			i
-			{
-				background: rgba(200, 198, 196, 1);
-				box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.3);
-			}
-		}
-	}
+        &:active {
+            i {
+                background: rgba(200, 198, 196, 1);
+                box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
 
-	.fv-details-list-head
-	{
-		border-bottom: 1px solid rgba(41, 40, 39, 1);
+    .fv-details-list-head {
+        border-bottom: 1px solid rgba(41, 40, 39, 1);
 
-		.icon-block
-		{
-			background: rgba(0, 0, 0, 0.6);
+        &:hover {
+            .fv-details-list-icon-block {
+                .fv-details-list-selector {
+                    .fv-details-list-icon-ring {
+                        border-color: rgba(200, 200, 200, 1);
+                    }
+                }
+            }
+        }
 
-			.icon
-			{
-				.ll
-				{
-					color: rgba(161, 159, 157, 1);
-				}
-			}
-		}
+        .fv-details-list-icon-block {
+            background: rgba(0, 0, 0, 0.6);
 
-		.col
-		{
+            .fv-details-list-selector {
+                &:hover {
+                    .fv-details-list-icon-ring {
+                        border-color: rgba(200, 200, 200, 1);
 
-			background: rgba(0, 0, 0, 0.6);
+                        .fv-details-list-icon-accept {
+                            color: rgba(200, 200, 200, 1);
+                        }
+                    }
+                }
+            }
+        }
 
-			.col-content
-			{
-				&:hover
-				{
-					background: rgba(37, 36, 35, 1);
-				}
+        .col {
+            background: rgba(0, 0, 0, 0.6);
 
-				&:active
-				{
-					background: rgba(41, 40, 39, 1);
-				}
+            .col-content {
+                &:hover {
+                    background: rgba(37, 36, 35, 1);
+                }
 
-				p.default-title
-				{
-					color: rgba(243, 242, 241, 1);
-				}
+                &:active {
+                    background: rgba(41, 40, 39, 1);
+                }
 
-				i.sort
-				{
-					color: rgba(235, 235, 235, 1);
-				}
-			}
+                p.default-title {
+                    color: rgba(243, 242, 241, 1);
+                }
 
-			.expand
-			{
-				color: rgba(243, 242, 241, 1);
-				
-				&:hover
-				{
-					background: rgba(37, 36, 35, 1);
-				}
+                i.sort {
+                    color: rgba(235, 235, 235, 1);
+                }
+            }
 
-				&:active
-				{
-					background: rgba(41, 40, 39, 1);
-				}
-			}
-		}
-	}
+            .expand {
+                color: rgba(243, 242, 241, 1);
 
-	.fv-details-list-content
-	{
-		.content-row
-		{
-			border-bottom: 1px solid rgba(50, 49, 48, 1);
+                &:hover {
+                    background: rgba(37, 36, 35, 1);
+                }
 
-			.icon-block
-			{
-				.icon
-				{
-					.ll
-					{
-						color: rgba(161, 159, 157, 1);
-					}
-				}
-			}
+                &:active {
+                    background: rgba(41, 40, 39, 1);
+                }
+            }
+        }
+    }
 
-			&:hover
-			{
-				background: rgba(37, 36, 35, 1);
-				border-bottom: 1px solid rgba(50, 49, 48, 1);
-			}
+    .fv-details-list-content {
+        .content-row {
+            border-bottom: 1px solid rgba(50, 49, 48, 1);
 
-			&.choose
-			{
-				background: rgba(37, 36, 35, 1);
-				border-bottom: 1px solid rgba(50, 49, 48, 1);
-			}
+            &:hover {
+                .fv-details-list-icon-block {
+                    .fv-details-list-selector {
+                        .fv-details-list-icon-ring {
+                            border-color: rgba(200, 200, 200, 1);
+                        }
+                    }
+                }
+            }
 
-			.col
-			{
-				*{
-					color: rgba(243, 242, 241, 1);
-				}
-			}
+            .fv-details-list-icon-block {
+                .fv-details-list-selector {
+                    &:hover {
+                        .fv-details-list-icon-ring {
+                            border-color: rgba(200, 200, 200, 1);
 
-			.expand
-			{
-				color: rgba(243, 242, 241, 1);
-				
-				&:hover
-				{
-					background: rgba(37, 36, 35, 1);
-				}
+                            .fv-details-list-icon-accept {
+                                color: rgba(200, 200, 200, 1);
+                            }
+                        }
+                    }
+                }
+            }
 
-				&:active
-				{
-					background: rgba(41, 40, 39, 1);
-				}
-			}
-		}
+            &:hover {
+                background: rgba(37, 36, 35, 1);
+                border-bottom: 1px solid rgba(50, 49, 48, 1);
+            }
 
-		&.compact
-		{
-			.content-row
-			{
-				border-bottom: transparent solid 1px;
-			}
-		}
-	}
+            &.choose {
+                background: rgba(37, 36, 35, 1);
+                border-bottom: 1px solid rgba(50, 49, 48, 1);
+            }
 
-	.fv-rightMenu
-    {
-		background: rgba(36, 36, 36, 1);
-		box-shadow: 0px 0px 0px rgba(36, 36, 36, 0.1), 0px 3px 10px rgba(36, 36, 36, 0.3);
+            .col {
+                * {
+                    color: rgba(243, 242, 241, 1);
+                }
+            }
 
-        div
-        {
-			
-            span
-            {
+            .expand {
+                color: rgba(243, 242, 241, 1);
+
+                &:hover {
+                    background: rgba(37, 36, 35, 1);
+                }
+
+                &:active {
+                    background: rgba(41, 40, 39, 1);
+                }
+            }
+        }
+
+        &.compact {
+            .content-row {
+                border-bottom: transparent solid 1px;
+            }
+        }
+    }
+
+    .fv-rightMenu {
+        background: rgba(36, 36, 36, 1);
+        box-shadow:
+            0px 0px 0px rgba(36, 36, 36, 0.1),
+            0px 3px 10px rgba(36, 36, 36, 0.3);
+
+        div {
+            span {
                 background: rgba(36, 36, 36, 1);
 
-                &:hover
-                {
+                &:hover {
                     background: rgba(49, 49, 49, 1);
                 }
 
-                &:active
-                {
+                &:active {
                     background: rgba(45, 45, 45, 1);
                 }
 
-                p
-                {
+                p {
                     color: whitesmoke;
                 }
             }
 
-            hr
-            {
+            hr {
                 border-bottom: rgba(50, 49, 48, 1) solid thin;
             }
         }
