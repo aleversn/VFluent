@@ -3,17 +3,14 @@
     display: inline-block;
     width: 300px;
     height: 30px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 3px;
-    border-color: inherit;
     padding: 0;
     margin: 0;
+    color: #000;
     line-height: 0px;
     user-select: none;
     cursor: pointer;
     min-width: 250px;
-    
+
     button {
         //default clear
         background: none;
@@ -31,7 +28,26 @@
         height: 100%;
         padding: 0;
         margin: 0;
+        background-color: rgba(250, 250, 250, 1);
+        border-style: solid;
+        border-width: thin;
+        border-radius: 6px;
+        border-color: rgba(200, 200, 200, 0.6);
+        box-sizing: border-box;
+        opacity: 0.6;
         display: inline-flex;
+        box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.3);
+        cursor: default;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:active {
+            opacity: 0.8;
+            box-shadow: none;
+        }
+
         .fv-DatePicker__input-month {
             flex: 3;
             text-align: left;
@@ -62,15 +78,17 @@
         left: 0;
         width: 100%;
         height: 400px;
-        border-radius: 2px;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #000;
+        border-color: rgba(200, 200, 200, 0.5);
+        border-radius: 6px;
         z-index: 2000;
-        transform: translate(0, -165px);
+        transform: translateY(-50%) translateY(35px);
         overflow: hidden;
         box-sizing: border-box;
-        box-shadow: 0 0 5px #aaa;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
-        border-color: inherit;
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
 
@@ -83,8 +101,11 @@
             .fv-DatePicker__input-center-mask {
                 position: absolute;
                 height: 40px;
-                width: 100%;
+                width: calc(100% - 6px);
                 top: 50%;
+                left: 3px;
+                background-color: rgba(0, 90, 158, 1);
+                border-radius: 6px;
                 opacity: 0.8;
                 transform: translate(0, -50%);
             }
@@ -141,6 +162,24 @@
                     transform: translate(0, -100%);
                     cursor: pointer;
                 }
+
+                &:hover {
+                    .fv-DatePicker__input-options-col-up {
+                        background-color: rgba(250, 250, 250, 1);
+                        display: block;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                    .fv-DatePicker__input-options-col-down {
+                        background-color: rgba(250, 250, 250, 1);
+                        display: block;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+
                 .fv-DatePicker__input-options-col-items {
                     height: 100%;
                     overflow-x: hidden;
@@ -162,6 +201,10 @@
                         -webkit-user-select: none;
                         -ms-user-select: none;
                         user-select: none;
+
+                        &:hover {
+                            background-color: rgba(200, 200, 200, 0.1);
+                        }
                     }
                 }
             }
@@ -169,16 +212,57 @@
         .fv-DatePicker__input-options-bottom-bar {
             height: 40px;
             width: inherit;
-            display: inline-flex;
+            padding: 3px 0px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             border-top-style: solid;
             border-top-width: 1px;
             border-color: inherit;
             z-index: 1;
-            button {
+
+            .fv-DatePicker__input-options-accept,
+            .fv-DatePicker__input-options-cancel {
+                width: 100%;
+                height: 100%;
+                margin: 0px 1px;
+                border-radius: 6px;
                 flex: 1;
                 font-size: 16px;
                 font-weight: bold;
+
+                &:hover {
+                    background-color: rgba(200, 200, 200, 0.3);
+                }
+
+                &:active {
+                    background-color: rgba(200, 200, 200, 0.2);
+                }
             }
         }
+    }
+
+    &.disabled {
+        filter: grayscale(100%);
+        opacity: 0.6;
+
+        .fv-DatePicker__input {
+            opacity: 0.8;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+    }
+
+    .fv-DatePicker__options-enter {
+        height: 0;
+    }
+
+    .fv-DatePicker__options-enter-to {
+        height: 400px;
+    }
+
+    .fv-DatePicker__options-enter-active {
+        transition: height 0.1s ease-out;
     }
 }

@@ -1,42 +1,86 @@
 <template>
     <div :class="['fv-' + $theme + '-timePicker', { disabled: disabled }]">
-        <div class="fv-TimePicker__input" @click="focus()">
+        <div
+            class="fv-TimePicker__input"
+            :style="{ background: inputBackground }"
+            @click="focus()"
+        >
             <button class="fv-TimePicker__input-item">{{ showTime(0, value.getHours()) }}</button>
-            <button class="fv-TimePicker__input-item" :style="{ borderColor: innerBorderColor }">{{ showTime(1,
+            <button
+                class="fv-TimePicker__input-item"
+                :style="{ borderColor: innerBorderColor }"
+            >{{ showTime(1,
                     value.getMinutes())
             }}</button>
-            <button :style="{ borderColor: innerBorderColor }" class="fv-TimePicker__input-item"
-                v-if="timeType == 12">{{ showTime(2, Math.floor(value.getHours() / 11.9)) }}</button>
+            <button
+                :style="{ borderColor: innerBorderColor }"
+                class="fv-TimePicker__input-item"
+                v-if="timeType == 12"
+            >{{ showTime(2, Math.floor(value.getHours() / 11.9)) }}</button>
         </div>
-        <div v-show="show" class="fv-TimePicker__options" :style="optionsStyle">
-            <div class="fv-TimePicker__options-body">
-                <div class="fv-TimePicker__options-body-mask" :style="selectStyle"></div>
-                <div v-for="(col, index1) in data" :key="`options-col${index1}`" class="fv-TimePicker__options-body-col"
-                    v-hover="hoverUpAndDown">
-                    <div class="fv-TimePicker__options-body-col-up" @click="clickItem(`col${index1}`, 4)">
-                        <i class="ms-Icon ms-Icon--ChevronUp"></i>
-                    </div>
-                    <div class="fv-TimePicker__options-body-items" :ref="`col${index1}`">
-                        <div class="fv-TimePicker__options-body-item" v-hover="hover" v-for="(item, index) in col"
-                            :key="`options-col-item${index1}-${item}-${index}`"
-                            @click="clickItem(`col${index1}`, index)">
-                            {{ showTime(index1, item) }}
+        <transition name="fv-TimePicker__options">
+            <div
+                v-show="show"
+                class="fv-TimePicker__options"
+                :style="{background: optionBackground}"
+            >
+                <div class="fv-TimePicker__options-body">
+                    <div
+                        class="fv-TimePicker__options-body-mask"
+                        :style="{background: selectedBackground}"
+                    ></div>
+                    <div
+                        v-for="(col, index1) in data"
+                        :key="`options-col${index1}`"
+                        class="fv-TimePicker__options-body-col"
+                        v-hover="hoverUpAndDown"
+                    >
+                        <div
+                            class="fv-TimePicker__options-body-col-up"
+                            @click="clickItem(`col${index1}`, 4)"
+                        >
+                            <i class="ms-Icon ms-Icon--CaretUpSolid8"></i>
+                        </div>
+                        <div
+                            class="fv-TimePicker__options-body-items"
+                            :ref="`col${index1}`"
+                        >
+                            <div
+                                class="fv-TimePicker__options-body-item"
+                                v-hover="hover"
+                                v-for="(item, index) in col"
+                                :key="`options-col-item${index1}-${item}-${index}`"
+                                @click="clickItem(`col${index1}`, index)"
+                            >
+                                {{ showTime(index1, item) }}
+                            </div>
+                        </div>
+                        <div
+                            class="fv-TimePicker__options-body-col-down"
+                            @click="clickItem(`col${index1}`, 6)"
+                        >
+                            <i class="ms-Icon ms-Icon--CaretDownSolid8"></i>
                         </div>
                     </div>
-                    <div class="fv-TimePicker__options-body-col-down" @click="clickItem(`col${index1}`, 6)">
-                        <i class="ms-Icon ms-Icon--ChevronDown"></i>
-                    </div>
+                </div>
+                <div class="fv-TimePicker__options-bar">
+                    <button
+                        class="fv-TimePicker__options-bar-accept"
+                        v-hover="hover"
+                        @click="accept"
+                    >
+                        <i class="ms-Icon ms-Icon--Accept"></i>
+                    </button>
+                    <button
+                        class="fv-TimePicker__options-bar-cancel"
+                        v-hover="hover"
+                        @click="cancel"
+                    >
+                        <i class="ms-Icon ms-Icon--Cancel"></i>
+                    </button>
                 </div>
             </div>
-            <div class="fv-TimePicker__options-bar">
-                <button class="fv-TimePicker__options-bar-accept" v-hover="hover" @click="accept">
-                    <i class="ms-Icon ms-Icon--Accept"></i>
-                </button>
-                <button class="fv-TimePicker__options-bar-cancel" v-hover="hover" @click="cancel">
-                    <i class="ms-Icon ms-Icon--Cancel"></i>
-                </button>
-            </div>
-        </div>
+        </transition>
     </div>
 </template>
 
@@ -61,44 +105,54 @@ export default {
                 }
             },
             unbind(el) {
-                if (el.enterFunction !== undefined && typeof el.enterFunction == 'function') {
+                if (
+                    el.enterFunction !== undefined &&
+                    typeof el.enterFunction == 'function'
+                ) {
                     el.removeEventListener('mouseover', el.hoverFunction);
                     el.removeEventListener('mouseleave', el.leaveFunction);
                 }
-            },
-        },
+            }
+        }
     },
     props: {
         theme: {
             type: String,
-            default: 'system',
+            default: 'system'
         },
         timeType: {
             type: Number,
-            default: 12,
+            default: 12
         },
         value: {
             type: Date,
-            default: () => new Date(),
+            default: () => new Date()
         },
         period: {
             type: Array,
-            default: () => ['A.M.', 'P.M.'],
+            default: () => ['A.M.', 'P.M.']
         },
-        optionsStyle: {},
-        selectStyle: {},
+        inputBackground: {
+            default: ''
+        },
         innerBorderColor: {
             type: String,
-            default: '#cccccc',
+            default: 'rgba(200, 200, 200, 0.3)'
+        },
+        selectedBackground: {
+            default: ''
+        },
+        optionBackground: {
+            default: ''
         },
         disabled: {
             type: Boolean,
-            default: false,
+            default: false
         },
         hoverColor: {
             type: String,
-            default: undefined,
-        },
+            default: undefined
+        }
     },
     data() {
         return {
@@ -106,7 +160,7 @@ export default {
             data: [
                 // data 1st=>hours,2nd=>minutes,3rd=>period
                 [],
-                [],
+                []
             ],
             window: {
                 event: {
@@ -123,24 +177,24 @@ export default {
                         if (!inside) {
                             this.show = false;
                         }
-                    },
-                },
+                    }
+                }
             },
             config: {
                 optionCount: 9,
-                buffer: 1,
+                buffer: 1
             },
             selected: {
-                date: this.value,
+                date: this.value
             },
-            options: {},
+            options: {}
         };
     },
     computed: {
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
+        }
     },
     watch: {
         show(val) {
@@ -150,7 +204,7 @@ export default {
             } else {
                 this.config.clickLock = false;
             }
-        },
+        }
     },
     mounted() {
         this.init();
@@ -166,7 +220,7 @@ export default {
         },
         accept() {
             this.$emit('input', new Date(this.selected.date));
-            this.$emit("change", new Date(this.selected.date));
+            this.$emit('change', new Date(this.selected.date));
             this.show = false;
         },
         cancel() {
@@ -205,13 +259,29 @@ export default {
             let date = this.selected.date;
             switch (index) {
                 case 0:
-                    num = this.nPrev(date.getHours(), size, Math.floor(count / 2), 0);
+                    num = this.nPrev(
+                        date.getHours(),
+                        size,
+                        Math.floor(count / 2),
+                        0
+                    );
                     break;
                 case 1:
-                    num = this.nPrev(date.getMinutes(), size, Math.floor(count / 2), 0, 0);
+                    num = this.nPrev(
+                        date.getMinutes(),
+                        size,
+                        Math.floor(count / 2),
+                        0,
+                        0
+                    );
                     break;
                 case 2:
-                    num = this.nPrev(Math.floor(date.getHours() / 11.9), size, Math.floor(count / 2), 0);
+                    num = this.nPrev(
+                        Math.floor(date.getHours() / 11.9),
+                        size,
+                        Math.floor(count / 2),
+                        0
+                    );
                     break;
             }
             for (let i = 0; i < count; ++i) {
@@ -232,10 +302,14 @@ export default {
         },
         loadSlide(size, index) {
             let refName = `col${index}`;
-            let origin = (this.$refs[refName][0].scrollTop = 40 * this.config.buffer);
+            let origin = (this.$refs[refName][0].scrollTop =
+                40 * this.config.buffer);
             this.options[refName] = {};
             if (this.options[refName].scroll) {
-                this.$refs[refName][0].removeEventListener('scroll', this.options[refName].scroll);
+                this.$refs[refName][0].removeEventListener(
+                    'scroll',
+                    this.options[refName].scroll
+                );
             }
             this.options[refName].scroll = () => {
                 if (index == 2) {
@@ -260,20 +334,50 @@ export default {
                         let temp;
                         switch (index) {
                             case 0:
-                                temp = this.timeType == 12 ? (this.selected.date.getHours() >= 12 ? 12 : 0) : 1;
-                                num = this.nNext(this.selected.date.getHours(), size, 0);
-                                this.selected.date.setHours(this.nNext(num, size, 1, temp));
+                                temp =
+                                    this.timeType == 12
+                                        ? this.selected.date.getHours() >= 12
+                                            ? 12
+                                            : 0
+                                        : 1;
+                                num = this.nNext(
+                                    this.selected.date.getHours(),
+                                    size,
+                                    0
+                                );
+                                this.selected.date.setHours(
+                                    this.nNext(num, size, 1, temp)
+                                );
                                 break;
                             case 1:
-                                num = this.nNext(this.selected.date.getMinutes(), size, 0, 0);
-                                this.selected.date.setMinutes(this.nNext(num, size, 1, 0));
+                                num = this.nNext(
+                                    this.selected.date.getMinutes(),
+                                    size,
+                                    0,
+                                    0
+                                );
+                                this.selected.date.setMinutes(
+                                    this.nNext(num, size, 1, 0)
+                                );
                                 break;
                             case 2:
-                                num = Math.floor(this.selected.date.getHours() / 11.9);
-                                if (num == 0) this.selected.date.setHours(this.selected.date.getHours() + 12);
+                                num = Math.floor(
+                                    this.selected.date.getHours() / 11.9
+                                );
+                                if (num == 0)
+                                    this.selected.date.setHours(
+                                        this.selected.date.getHours() + 12
+                                    );
                                 break;
                         }
-                        let next = this.nNext(num, size, (this.config.optionCount - 1) / 2 + this.config.buffer + 1, 0);
+                        let next = this.nNext(
+                            num,
+                            size,
+                            (this.config.optionCount - 1) / 2 +
+                                this.config.buffer +
+                                1,
+                            0
+                        );
                         if (index == 2) {
                             next = -1;
                         }
@@ -284,20 +388,50 @@ export default {
                         let num, temp;
                         switch (index) {
                             case 0:
-                                temp = this.timeType == 12 ? (this.selected.date.getHours() >= 12 ? 12 : 0) : 1;
-                                num = this.nNext(this.selected.date.getHours(), size, 0);
-                                this.selected.date.setHours(this.nPrev(num, size, 1, temp));
+                                temp =
+                                    this.timeType == 12
+                                        ? this.selected.date.getHours() >= 12
+                                            ? 12
+                                            : 0
+                                        : 1;
+                                num = this.nNext(
+                                    this.selected.date.getHours(),
+                                    size,
+                                    0
+                                );
+                                this.selected.date.setHours(
+                                    this.nPrev(num, size, 1, temp)
+                                );
                                 break;
                             case 1:
-                                num = this.nNext(this.selected.date.getMinutes(), size, 0, 0);
-                                this.selected.date.setMinutes(this.nPrev(num, size, 1, 0));
+                                num = this.nNext(
+                                    this.selected.date.getMinutes(),
+                                    size,
+                                    0,
+                                    0
+                                );
+                                this.selected.date.setMinutes(
+                                    this.nPrev(num, size, 1, 0)
+                                );
                                 break;
                             case 2:
-                                num = Math.floor(this.selected.date.getHours() / 12);
-                                if (num == 1) this.selected.date.setHours(this.selected.date.getHours() - 12);
+                                num = Math.floor(
+                                    this.selected.date.getHours() / 12
+                                );
+                                if (num == 1)
+                                    this.selected.date.setHours(
+                                        this.selected.date.getHours() - 12
+                                    );
                                 break;
                         }
-                        let next = this.nPrev(num, size, (this.config.optionCount - 1) / 2 + this.config.buffer + 1, 0);
+                        let next = this.nPrev(
+                            num,
+                            size,
+                            (this.config.optionCount - 1) / 2 +
+                                this.config.buffer +
+                                1,
+                            0
+                        );
                         if (index == 2) {
                             next = -1;
                         }
@@ -305,7 +439,10 @@ export default {
                     }
                 );
             };
-            this.$refs[refName][0].addEventListener('scroll', this.options[refName].scroll);
+            this.$refs[refName][0].addEventListener(
+                'scroll',
+                this.options[refName].scroll
+            );
         },
         removeEvent() {
             for (let key in this.window.event) {
@@ -313,7 +450,10 @@ export default {
                 window.removeEventListener(key, event);
             }
             for (let key in this.options) {
-                this.$refs[key][0].removeEventListener('scroll', this.options[key].scroll);
+                this.$refs[key][0].removeEventListener(
+                    'scroll',
+                    this.options[key].scroll
+                );
             }
         },
         slideCol(origin, refName, nxtCallback, preCallback) {
@@ -362,7 +502,12 @@ export default {
         },
         showTime(col, item) {
             if (col == 0) {
-                return this.nNext(item, this.timeType == 12 ? 12 : 24, 0, this.timeType == 12 ? 1 : 0);
+                return this.nNext(
+                    item,
+                    this.timeType == 12 ? 12 : 24,
+                    0,
+                    this.timeType == 12 ? 1 : 0
+                );
             } else if (col == 1) {
                 return this.numberFixTwo(this.nNext(item, 60, 0, 0));
             } else {
@@ -372,14 +517,20 @@ export default {
         hover(isHover, element) {
             if (this.hoverColor !== undefined) {
                 if (isHover) {
-                    if (element.hoverStatus === false || element.hoverStatus === undefined) {
+                    if (
+                        element.hoverStatus === false ||
+                        element.hoverStatus === undefined
+                    ) {
                         // store if inner style background is set
-                        if (element.style.backgroundColor) element.backgroundColor = element.style.backgroundColor;
+                        if (element.style.backgroundColor)
+                            element.backgroundColor =
+                                element.style.backgroundColor;
                         element.style.backgroundColor = this.hoverColor;
                     }
                 } else {
                     // restore inner style background
-                    if (element.backgroundColor !== undefined) element.style.backgroundColor = element.backgroundColor;
+                    if (element.backgroundColor !== undefined)
+                        element.style.backgroundColor = element.backgroundColor;
                     // restore if inner style is not set, set null to use external css
                     else element.style.backgroundColor = null;
                 }
@@ -388,31 +539,42 @@ export default {
         },
         hoverUpAndDown(isHover, element) {
             // find btn.fv-TimePicker__options-body-col-down or btn.fv-TimePicker__options-body-col-up
-            let up = element.querySelector('.fv-TimePicker__options-body-col-down');
-            let down = element.querySelector('.fv-TimePicker__options-body-col-up');
+            let up = element.querySelector(
+                '.fv-TimePicker__options-body-col-down'
+            );
+            let down = element.querySelector(
+                '.fv-TimePicker__options-body-col-up'
+            );
             if (isHover) {
                 if (up.hoverStatus === false || up.hoverStatus === undefined) {
                     // store if inner style background is set
-                    if (up.style.backgroundColor) up.backgroundColor = up.style.backgroundColor;
+                    if (up.style.backgroundColor)
+                        up.backgroundColor = up.style.backgroundColor;
                     up.style.backgroundColor = this.hoverColor;
                 }
-                if (down.hoverStatus === false || down.hoverStatus === undefined) {
+                if (
+                    down.hoverStatus === false ||
+                    down.hoverStatus === undefined
+                ) {
                     // store if inner style background is set
-                    if (down.style.backgroundColor) down.backgroundColor = down.style.backgroundColor;
+                    if (down.style.backgroundColor)
+                        down.backgroundColor = down.style.backgroundColor;
                     down.style.backgroundColor = this.hoverColor;
                 }
             } else {
                 // restore inner style background
-                if (up.backgroundColor !== undefined) up.style.backgroundColor = up.backgroundColor;
+                if (up.backgroundColor !== undefined)
+                    up.style.backgroundColor = up.backgroundColor;
                 // restore if inner style is not set, set null to use external css
                 else up.style.backgroundColor = null;
-                if (down.backgroundColor !== undefined) down.style.backgroundColor = down.backgroundColor;
+                if (down.backgroundColor !== undefined)
+                    down.style.backgroundColor = down.backgroundColor;
                 // restore if inner style is not set, set null to use external css
                 else down.style.backgroundColor = null;
             }
             up.hoverStatus = isHover;
             down.hoverStatus = isHover;
-        },
-    },
+        }
+    }
 };
 </script>

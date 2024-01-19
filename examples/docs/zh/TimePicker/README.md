@@ -5,18 +5,6 @@
   
 [[toc]]
 
-<style>
-  .custom_style{
-    background-color: rgb(0, 204, 153);
-    border:1px solid rgb(0, 204, 153);
-    color:white;
-  }
-  .custom_style:hover{
-    border:1px solid rgb(0, 204, 153);
-    background-color: rgb(0, 204, 153,0.8);
-  }
-</style>
-
 <script>
   export default {
     data(){
@@ -86,10 +74,9 @@
 <fv-TimePicker 
 v-model="date" 
 class="custom_style" 
-innerBorderColor="rgb(0, 204, 153)"
-hoverColor="rgba(0, 204, 153,0.7)"
-:optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
-:selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
+inputBackground="rgba(0, 90, 204, 0.6)"
+innerBorderColor="rgb(0, 90, 153, 0.1)"
+hoverColor="rgba(0, 204, 153, 0.1)"
 >
 </fv-TimePicker>
 </ClientOnly>
@@ -99,7 +86,7 @@ hoverColor="rgba(0, 204, 153,0.7)"
 v-model="date" 
 class="custom_style" 
 innerBorderColor="rgb(0, 204, 153)"
-hoverColor="rgba(0, 204, 153,0.7)"
+hoverColor="rgba(0, 204, 153, 0.7)"
 :optionsStyle="{backgroundColor:'rgba(0, 204, 153,0.3)',color:'white',borderColor:'rgba(0, 204, 153,0.3)'}"
 :selectStyle="{backgroundColor:'rgb(0, 204, 153)'}"
 >
@@ -112,16 +99,17 @@ hoverColor="rgba(0, 204, 153,0.7)"
 
 ### Propoties
 ---
-|  属性(attr)  |              类型(type)               | 必填(required) | 默认值(default) |     说明(statement)      |
-|:------------:|:-------------------------------------:|:--------------:|:---------------:|:------------------------:|
-|   v-model    |                                       |       No       |     Date()      |        绑定的时间        |
-|   timeType   |                Number                 |       No       |       12        |   时间制（可选12，24）   |
-|    period    |                 Array                 |       No       | ['A.M.','P.M.'] |       上午下午显示       |
-| optionsStyle |                Object                 |       No       |       {}        |       选项菜单样式       |
-| selectStyle  |                Object                 |       No       |       {}        | 选项菜单中间选项蒙版样式 |
-|   disabled   |                Boolean                |       No       |      false      |      是否禁用选项框      |
-|  hoverColor  |                String                 |       No       |    undefined    |      选项的Hover值       |
-|    theme     | ['light', 'dark', 'custom', 'system'] |       No       |     system      |       Custom theme       |
+|     属性(attr)     |              类型(type)               | 必填(required) | 默认值(default) |   说明(statement)    |
+|:------------------:|:-------------------------------------:|:--------------:|:---------------:|:--------------------:|
+|      v-model       |                                       |       No       |     Date()      |      绑定的时间      |
+|      timeType      |                Number                 |       No       |       12        | 时间制（可选12，24） |
+|       period       |                 Array                 |       No       | ['A.M.','P.M.'] |     上午下午显示     |
+|  inputBackground   |                String                 |       No       |       N/A       |     输入框背景色     |
+| selectedBackground |                String                 |       No       |       N/A       |   当前选中框背景色   |
+|  optionBackground  |                String                 |       No       |       N/A       |     选择器背景色     |
+|      disabled      |                Boolean                |       No       |      false      |    是否禁用选项框    |
+|     hoverColor     |                String                 |       No       |    undefined    |    选项的Hover值     |
+|       theme        | ['light', 'dark', 'custom', 'system'] |       No       |     system      |     Custom theme     |
 
 
 ### Events

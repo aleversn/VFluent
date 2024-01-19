@@ -1,52 +1,48 @@
-@import '../common-theme/TimePicker.scss';
-.fv-dark-timePicker{
-  @include fv-timePicker();
-  background-color: #000;
-  color:#fff;
-  border-color: #999999;
-  &:hover{
-    border-color: #cccccc;
-  }
-  .fv-TimePicker__options{
-    background-color: rgba(30, 30, 30, 0.95);
-    border-color: #333;
-    .fv-TimePicker__options-body{
-      background-color: inherit;
-      .fv-TimePicker__options-body-mask{
-        background-color: #393837;
+@import "../common-theme/TimePicker.scss";
+.fv-dark-timePicker {
+    @include fv-timePicker();
 
-      }
-      .fv-TimePicker__options-body-col{
-        &:hover{
-          .fv-TimePicker__options-body-col-up,.fv-TimePicker__options-body-col-down{
-            display: block;
-            background-color: #1f1f1f;
+    .fv-TimePicker__input {
+        background-color: rgba(50, 50, 50, 1);
+        color: #fff;
+        border-color: rgba(55, 55, 55, 1);
+    }
 
-            &:hover{
-              background-color: #353535;
+    .fv-TimePicker__options {
+        background-color: rgba(46, 46, 46, 1);
+        border-color: rgba(200, 200, 200, 0.1);
+        color: whitesmoke;
 
+        .fv-TimePicker__options-body {
+            background-color: inherit;
+
+            .fv-TimePicker__options-body-mask {
+                background-color: rgba(118, 185, 237, 1);
             }
-          }
-          .fv-TimePicker__options-body-item{
-            &:hover {
-              background-color: #343434;
+
+            .fv-TimePicker__options-body-col {
+                &:hover {
+                    .fv-TimePicker__options-body-col-up,
+                    .fv-TimePicker__options-body-col-down {
+                        background-color: rgba(46, 46, 46, 1);
+                    }
+
+                    .fv-TimePicker__options-body-item {
+                        &:hover {
+                            background-color: rgba(120, 120, 120, 0.1);
+                        }
+                    }
+                }
             }
-          }
         }
-      }
-    }
-    .fv-TimePicker__options-bar-accept,.fv-TimePicker__options-bar-cancel{
-      &:hover{
-        background-color: #343434;
-      }
-    }
-  }
-  &.disabled{
-    background-color: rgb(48, 47, 46);
-    cursor: not-allowed;
-    color:#999;
-  }
-}
-    
 
-    
+        .fv-TimePicker__options-bar {
+            .fv-TimePicker__options-bar-accept,
+            .fv-TimePicker__options-bar-cancel {
+                &:hover {
+                    background-color: rgba(120, 120, 120, 0.1);
+                }
+            }
+        }
+    }
+}

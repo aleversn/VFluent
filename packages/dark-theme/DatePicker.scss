@@ -8,44 +8,48 @@
         border-color: #cccccc;
     }
     .fv-DatePicker__input {
+        background-color: rgba(50, 50, 50, 1);
+        color: #fff;
+        border-color: rgba(55, 55, 55, 1);
+        
         .fv-DatePicker__input-day {
-            border-left-color: #333;
+            border-left-color: rgba(200, 200, 200, 0.1);
         }
         .fv-DatePicker__input-year {
-            border-left-color: #333;
+            border-left-color: rgba(200, 200, 200, 0.1);
         }
     }
 
     .fv-DatePicker__input-options {
-        background-color: rgba(30, 30, 30, 0.95);
-        color: #fff;
-        border-color: #444;
+        background-color: rgba(46, 46, 46, 1);
+        border-color: rgba(200, 200, 200, 0.1);
+        color: whitesmoke;
         .fv-DatePicker__input-body {
             background-color: inherit;
             .fv-DatePicker__input-center-mask {
-                background-color: #393837;
+                background-color: rgba(118, 185, 237, 1);
             }
             .fv-DatePicker__input-options-col {
                 .fv-DatePicker__input-options-col-items {
                     border-color: inherit;
                 }
                 .fv-DatePicker__input-options-col-up {
-                    background-color: #1f1f1f;
+                    background-color: rgba(46, 46, 46, 1);
                 }
                 .fv-DatePicker__input-options-col-down {
-                    background-color: #1f1f1f;
+                    background-color: rgba(46, 46, 46, 1);
                 }
                 &:hover {
-                    > .fv-DatePicker__input-options-col-up {
-                        display: block;
+                    .fv-DatePicker__input-options-col-up {
+                        background-color: rgba(46, 46, 46, 1);
                         &:hover {
-                            background-color: #353535;
+                            background-color: rgba(46, 46, 46, 1);
                         }
                     }
-                    > .fv-DatePicker__input-options-col-down {
-                        display: block;
+                    .fv-DatePicker__input-options-col-down {
+                        background-color: rgba(46, 46, 46, 1);
                         &:hover {
-                            background-color: #353535;
+                            background-color: rgba(46, 46, 46, 1);
                         }
                     }
                 }
@@ -74,16 +78,20 @@
             }
         }
         .fv-DatePicker__input-options-bottom-bar {
-            background-color: inherit;
-            border-top: 1px solid inherit;
-            button:hover {
-                background-color: #343434;
+            .fv-DatePicker__input-options-accept,
+            .fv-DatePicker__input-options-cancel {
+                width: 100%;
+                height: 100%;
+                margin: 0px 1px;
+                border-radius: 6px;
+                flex: 1;
+                font-size: 16px;
+                font-weight: bold;
+
+                &:hover {
+                    background-color: rgba(120, 120, 120, 0.1);
+                }
             }
         }
-    }
-    &.disabled {
-        background-color: rgb(48, 47, 46);
-        cursor: not-allowed;
-        color: #999;
     }
 }
