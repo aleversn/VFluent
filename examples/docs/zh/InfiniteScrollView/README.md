@@ -74,6 +74,8 @@ export default {
 - thisValue: 传入数组
 - dynamicValue: 已动态加载的数组
 
+```vue
 <template v-slot:default="x">
     <p v-for="(item, index) in x.dynamicValue" :key="index">{{item}}</p>
 </template>
+```
