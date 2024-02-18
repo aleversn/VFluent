@@ -130,17 +130,15 @@ export default {
             let color = this.color;
             if (this.vertical) {
                 return {
-                    top: this.progress + "%",
-                    transform: "translate(-50%,-50%) rotate(90deg)",
-                    left: "2px",
-                    color,
+                    top: this.progress + '%',
+                    transform: `translateX(-${this.buttonHeight / 2 - 1}px) translateY(-${this.buttonHeight / 2}px) rotate(90deg)`,
+                    color
                 };
             } else {
                 return {
-                    left: this.progress + "%",
-                    transform: "translate(-50%,-50%)",
-                    top: "2px",
-                    color,
+                    left: this.progress + '%',
+                    transform: `translateX(-${this.buttonHeight / 2}px) translateY(-${this.buttonHeight / 2 - 3}px)`,
+                    color
                 };
             }
         },
@@ -179,8 +177,15 @@ export default {
     mounted() {
         // set client height/width
         this.resize();
+        this.widthObserverInit();
     },
     methods: {
+        widthObserverInit() {
+            let observer = new ResizeObserver(() => {
+                this.buttonHeight = this.$refs.button ? this.$refs.button.clientHeight : 0;
+            });
+            observer.observe(this.$refs.button);
+        },
         click(evt) {
             if (this.isActive || this.disabled) return false;
             let box = this.$refs.bar.getBoundingClientRect();
