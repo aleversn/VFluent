@@ -70,6 +70,7 @@ export default {
             progress: 0, //percent
             isActive: false,
             rejust: false,
+            buttonHeight: 0,
             style: {
                 bar: {},
             },
