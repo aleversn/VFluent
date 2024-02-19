@@ -287,7 +287,7 @@ export default {
 ---
 | 事件名(Name)  | 参数类型(args) |                           说明(statement)                            |
 |:-------------:|:--------------:|:--------------------------------------------------------------------:|
-| status-change |     String     | 内部滑动状态, 包含`normal`, `lef`t, `right`, `leftFull`, `rightFull` |
+| status-change |     String     | 内部滑动状态, 包含`normal`, `left`, `right`, `leftFull`, `rightFull` |
 
 ### Slot
 ---
