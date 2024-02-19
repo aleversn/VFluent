@@ -5,13 +5,13 @@
     background: transparent;
 
     &:hover {
-        .fv-text-box-wrapper-container {
+        .text-field-wrapper-container {
             border: rgba(36, 36, 36, 1) solid thin;
         }
     }
 
     &.focus {
-        .fv-text-box-wrapper-container {
+        .text-field-wrapper-container {
             border: rgba(36, 36, 36, 1) solid thin;
         }
     }
@@ -21,7 +21,7 @@
     }
 
     &.underline {
-        .fv-text-box-wrapper-container {
+        .text-field-wrapper-container {
             border-left: none;
             border-top: none;
             border-right: none;
