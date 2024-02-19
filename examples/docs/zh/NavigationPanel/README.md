@@ -128,6 +128,7 @@ sidebarDepth: 2
 |:-------------:|:--------------:|:-----------------------------------------------------:|
 | setting-click |     Object     | 设置选项被点击后触发事件, 返回`{ event: MouseEvent }` |
 | update:expand |    boolean     |         当折叠或展开时同步外界传入的`expand`          |
+| expand-click  |                |                                                       |
 | expand-change |    boolean     |         当折叠或展开时触发事件并提供当前状态          |
 |     back      |   MouseEvent   |               返回选项被点击后触发事件                |
 
