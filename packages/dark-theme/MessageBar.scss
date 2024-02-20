@@ -2,61 +2,59 @@
 .fv-dark-MessageBar {
     @include fv-MessageBar();
 
-    &.dark {
-        border: rgba(39, 39, 39, 0.6) solid thin;
+    border: rgba(39, 39, 39, 0.6) solid thin;
 
-        &.normal {
-            background: rgba(39, 39, 39, 0.8);
-        }
+    &.normal {
+        background: rgba(39, 39, 39, 0.8);
+    }
 
-        &.warning {
-            background: rgba(67, 53, 25, 0.5);
-        }
+    &.warning {
+        background: rgba(67, 53, 25, 0.5);
+    }
 
-        &.correct {
-            background: rgba(57, 61, 27, 0.9);
-        }
+    &.correct {
+        background: rgba(57, 61, 27, 0.9);
+    }
 
-        &.error {
-            background: rgba(68, 39, 38, 0.9);
-        }
+    &.error {
+        background: rgba(68, 39, 38, 0.9);
+    }
 
-        .msg-bar-block {
-            .icon-block {
-                color: black;
+    .msg-bar-block {
+        .icon-block {
+            color: black;
 
-                &.normal {
-                    background: rgba(76, 195, 255, 1);
-                }
-
-                &.warning {
-                    background: rgba(252, 225, 0, 1);
-                }
-
-                &.correct {
-                    background: rgba(108, 203, 95, 1);
-                }
-
-                &.error {
-                    background: rgba(255, 153, 164, 1);
-                }
+            &.normal {
+                background: rgba(76, 195, 255, 1);
             }
 
-            .msg-content-block {
-                color: whitesmoke;
+            &.warning {
+                background: rgba(252, 225, 0, 1);
+            }
+
+            &.correct {
+                background: rgba(108, 203, 95, 1);
+            }
+
+            &.error {
+                background: rgba(255, 153, 164, 1);
             }
         }
 
-        .close-block {
+        .msg-content-block {
             color: whitesmoke;
+        }
+    }
 
-            &:hover {
-                background: rgba(200, 200, 200, 0.1);
-            }
+    .close-block {
+        color: whitesmoke;
 
-            &:active {
-                opacity: 0.8;
-            }
+        &:hover {
+            background: rgba(200, 200, 200, 0.1);
+        }
+
+        &:active {
+            opacity: 0.8;
         }
     }
 }
