@@ -43,9 +43,6 @@
 ```
 
 
-</ClientOnly>
-
-
 ### Propoties
 ---
 |  属性(attr)  |     类型(type)     |   必填(required)    |                   默认值(default)                    |                 说明(statement)                  |
