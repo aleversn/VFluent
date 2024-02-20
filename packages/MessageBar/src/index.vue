@@ -46,11 +46,11 @@ export default {
 	data() {
 		return {
             iconList: {
-                default: { icon: 'Error', iconColor: 'normal' },
-                warning: { icon: 'Warning', iconColor: 'warning' },
-                correct: { icon: 'Completed', iconColor: 'correct' },
-                blocked: { icon: 'Blocked12   ', iconColor: 'error' },
-                error: { icon: 'ErrorBadge', iconColor: 'error' }
+                default: { icon: 'Info2', iconColor: 'normal' },
+                warning: { icon: 'Info2', iconColor: 'warning' },
+                correct: { icon: 'CheckMark', iconColor: 'correct' },
+                blocked: { icon: 'Remove   ', iconColor: 'error' },
+                error: { icon: 'ErrorBadge12', iconColor: 'error' }
             }
         };
 	},

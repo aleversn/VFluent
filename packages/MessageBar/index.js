@@ -14,7 +14,8 @@ MessageBar.install = function (Vue)
             showClose: true,
             control: null,
             mode: 'fixed',
-            autoClose: 3000
+            autoClose: 3000,
+            theme: 'light'
         };
         thisOptions = Object.assign(thisOptions, options);
         if (currentMsgBar)

@@ -1,13 +1,12 @@
 @mixin fv-MessageBar {
-
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
     height: auto;
-    padding: 3px 12px;
-	background: rgba(243, 242, 241, 0.8);
-    border: rgba(229, 229, 229, 1) solid thin;
+    padding: 12px 12px;
+    background: rgba(245, 245, 245, 0.8);
+    border: rgba(229, 229, 229, 0.6) solid thin;
     border-radius: 3px;
     box-sizing: border-box;
     display: flex;
@@ -16,118 +15,115 @@
     -webkit-backdrop-filter: blur(15px);
     z-index: 900;
 
-    &.relative
-    {
+    &.relative {
         position: relative;
         z-index: 0;
     }
 
-    &.normal
-    {
-        background: rgba(243, 242, 241, 0.8);
+    &.normal {
+        background: rgba(245, 245, 245, 0.8);
     }
 
-    &.warning
-    {
+    &.warning {
         background: rgba(255, 200, 10, 0.5);
-        border-color: rgba(255, 200, 10, 0.6);
     }
 
-    &.correct
-    {
-        background: rgba(95, 210, 85, 0.5);
-        border-color: rgba(95, 210, 85, 0.6);
+    &.correct {
+        background: rgba(223, 246, 221, 0.9);
     }
 
-    &.error
-    {
-        background: rgba(250, 65, 0, 0.5);
-        border-color: rgba(250, 65, 0, 0.5);
+    &.error {
+        background: rgba(253, 231, 233, 0.9);
     }
-    
-    .msg-bar-block
-    {
+
+    .msg-bar-block {
         position: relative;
         height: auto;
-        padding: 6px 0px;
         font-size: 15px;
-		color: rgba(50, 49, 48, 1);
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
+        color: rgba(50, 49, 48, 1);
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
         z-index: 999;
-        
-        .icon-block
-        {
-            margin-top: 2px;
-            
-            &.normal
-            {
-                color: rgba(50, 49, 48, 1);
+
+        .icon-block {
+            width: 16px;
+            height: 16px;
+            margin-top: 5px;
+            border-radius: 50%;
+            font-size: 9px;
+            background: rgba(0, 120, 212, 1);
+            color: whitesmoke;
+            display: flex;
+            align-items: center;
+
+            &::before {
+                width: 16px;
+                height: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
-            &.warning
-            {
-                color: rgba(173, 38, 45, 1);
+            &.normal {
+                background: rgba(0, 120, 212, 1);
             }
 
-            &.correct
-            {
-                color: rgba(0, 204, 153, 1);
+            &.warning {
+                background: rgba(157, 93, 0, 1);
+                transform: rotate(180deg);
             }
 
-            &.error
-            {
-                color: rgba(164, 38, 45, 1);
+            &.correct {
+                background: rgba(15, 123, 15, 1);
+            }
+
+            &.error {
+                background: rgba(196, 43, 28, 1);
             }
         }
 
-        .msg-content-block
-        {
+        .msg-content-block {
+            padding-top: 2px;
             flex: 1;
             margin-left: 5px;
             color: rgba(50, 49, 48, 1);
             text-align: justify;
 
-            .header
-            {
+            .header {
                 font-weight: 600;
             }
 
-            a
-            {
+            a {
                 color: rgba(0, 90, 158, 1);
                 text-decoration: none;
                 cursor: pointer;
 
-                &:hover
-                {
+                &:hover {
                     text-decoration: underline;
                 }
             }
         }
 
-        .close-block
-        {
-            padding: 5px;
+        .close-block {
+            width: 30px;
+            padding: 3px;
             margin-left: 3px;
             border-radius: 3px;
             font-size: 13.8px;
+            text-align: center;
 
-            &:hover
-            {
+            &:hover {
                 background: rgba(36, 36, 36, 0.1);
             }
 
-            &:active
-            {
+            &:active {
                 opacity: 0.8;
             }
         }
     }
 
-    .control-block
-    {
+    .control-block {
         padding: 6px 0px;
         box-sizing: border-box;
         display: flex;
