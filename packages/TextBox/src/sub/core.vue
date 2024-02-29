@@ -126,6 +126,7 @@ export default {
         keyDown (event) {
             this.$emit("keydown", event);
             if(!event.key) return;
+            if (event.key.length > 1) return;
             if(!this.thisPattern.test(event.key))
                 event.preventDefault();
         },
