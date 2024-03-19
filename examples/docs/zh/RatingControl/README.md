@@ -127,4 +127,5 @@ export default {
 |:------------:|:--------------:|:---------------:|
 |    change    |     Number     | 分值改变时触发  |
 |    hover     |     Object     | 鼠标悬浮时触发  |
+|    leave     |     Number     | 鼠标离开时触发  |
   
