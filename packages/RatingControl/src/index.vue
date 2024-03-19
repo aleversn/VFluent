@@ -142,9 +142,14 @@ export default {
                 ? event.targetTouches[0]
                 : event;
             let ratio = ((mouseLeft - elLeft) / elWidth) * 100;
+            let finalRatio = ratio > 50 || !this.halfRate ? 100 : 50;
+            this.$emit('hover', {
+                index: index,
+                ratio: finalRatio
+            });
             this.$set(this.hover, index, {
                 status: true,
-                ratio: ratio > 50 || !this.halfRate ? 100 : 50
+                ratio: finalRatio
             });
         },
         handlerClick(event, index) {

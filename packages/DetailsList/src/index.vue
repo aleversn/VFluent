@@ -12,7 +12,7 @@
         <span v-show="item.show && valueTrigger(item.visible)" v-for="(item, index) in thisHead" class="col" :key="`head: ${index}`" :style="{'min-width': colWidth[index], width: colWidth[index], background: styles.listHead.background}">
             <span class="col-content" @click="sortClick(item)">
                 <slot name="head" :item="item" :index="index">
-                    <p class="default-title">{{item.content}}</p>
+                    <p class="default-title">{{valueTrigger(item.content)}}</p>
                 </slot>
                 <i v-show="item.sortName === sort.name" class="ms-Icon sort" :class="[`ms-Icon--${sort.desc ? 'Down' : 'Up'}`]"></i>
             </span>

@@ -6,7 +6,23 @@
 [[toc]]
 
 ### RatingControl-DEMO
---- 
+---
+
+<script>
+export default {
+
+    data () {
+        return {
+            value: 2.5
+        }
+    },
+    methods: {
+        hoverValue (target) {
+            this.value = target.index + (target.ratio > 50 ? 0.5 : 0);
+        }
+    }
+}
+</script>
 
 <fv-RatingControl value="3">
 </fv-RatingControl>
@@ -25,6 +41,34 @@
 ```vue
 <fv-RatingControl value="2.5" :halfRate="true">
 </fv-RatingControl>
+```
+
+with Hover Title
+
+<fv-RatingControl v-model="value" :halfRate="true" @hover="hoverValue">
+</fv-RatingControl>
+
+<p>{{value}}</p>
+
+```vue
+<fv-RatingControl v-model="value" :halfRate="true" @hover="hoverValue">
+</fv-RatingControl>
+
+<script>
+export default {
+
+    data () {
+        return {
+            value: 2.5
+        }
+    },
+    methods: {
+        hoverValue (target) {
+            this.value = target.index + (target.ratio > 50 ? 0.5 : 0);
+        }
+    }
+}
+</script>
 ```
 
 ### RatingControl-Clearable
@@ -82,4 +126,5 @@
 | 事件名(Name) | 参数类型(args) | 说明(statement) |
 |:------------:|:--------------:|:---------------:|
 |    change    |     Number     | 分值改变时触发  |
+|    hover     |     Object     | 鼠标悬浮时触发  |
   
