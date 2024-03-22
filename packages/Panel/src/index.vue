@@ -215,7 +215,6 @@ export default {
             const body = document.querySelector('body');
             body.removeChild(this.$el);
         } catch (e) {
-            console.warn('Remove Failed', e);
         }
     }
 };
