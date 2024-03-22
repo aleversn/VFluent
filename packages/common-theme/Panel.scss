@@ -1,5 +1,4 @@
 @mixin fv-Panel {
-
     position: fixed;
     left: 0px;
     top: 0px;
@@ -10,8 +9,7 @@
     align-items: center;
     z-index: 20;
 
-    .fv-panel-back-board
-    {
+    .fv-panel-back-board {
         position: absolute;
         left: 0px;
         top: 0px;
@@ -20,58 +18,70 @@
         background: rgba(255, 255, 255, 0.45);
     }
 
-    .fv-panel-container
-    {
+    .fv-panel-container {
         position: absolute;
-        top: 0px;
-        right: 0px;
-        width: 340px;
-        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
         background: rgba(255, 255, 255, 1);
         display: flex;
         flex-direction: column;
         box-shadow: $ms-depth-shadow-64;
 
-        &.near-side
-        {
+        &.default-side {
+            top: 0px;
+            right: 0px;
+            width: 340px;
+            height: 100%;
+        }
+
+        &.near-side {
             left: 0px;
             right: none;
         }
 
-        &.central-side
-        {
+        &.top-side {
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 500px;
+        }
+
+        &.bottom-side {
+            top: none;
+            bottom: 0px;
+            width: 100%;
+            height: 500px;
+        }
+
+        &.central-side {
             position: relative;
             height: calc(100% - 20px);
             border-radius: 8px;
         }
 
-        &.acrylic-style
-        {
+        &.acrylic-style {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
         }
 
-        .fv-panel-control-block
-        {
+        .fv-panel-control-block {
             position: relative;
             width: 100%;
             height: 75px;
-            padding: 0px 20px;
+            padding: 0px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
             align-items: center;
 
-            .panel-title
-            {
+            .panel-title {
                 font-size: 20px;
                 font-weight: 600;
                 color: rgba(50, 49, 48, 1);
             }
 
-            .control-btn
-            {
+            .control-btn {
                 position: relative;
                 width: 35px;
                 height: 35px;
@@ -80,15 +90,13 @@
                 justify-content: center;
                 align-items: center;
 
-                &:hover
-                {
+                &:hover {
                     background: rgba(0, 0, 0, 0.05);
                 }
             }
         }
 
-        .fv-panel-main-container
-        {
+        .fv-panel-main-container {
             position: relative;
             width: 100%;
             flex: 1;
@@ -97,19 +105,16 @@
             overflow: hidden;
         }
 
-        .fv-panel-footer
-        {
+        .fv-panel-footer {
             position: relative;
             width: 100%;
             height: 80px;
-            padding: 15px 20px;
             background: rgba(245, 245, 245, 0.6);
             border-top: rgba(36, 36, 36, 0.1) solid thin;
             box-sizing: border-box;
             display: flex;
             align-items: center;
         }
-
     }
 
     /***************** scale *******************/
@@ -133,7 +138,7 @@
             transform: scale(0.8);
         }
     }
-    
+
     /* scale-up-to-up */
     .fv-panel-scale-up-to-up-enter-active {
         animation: scaleUp 0.3s ease both;

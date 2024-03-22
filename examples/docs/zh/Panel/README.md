@@ -15,6 +15,8 @@ export default {
             basic: false,
             nearSide: false,
             centralSide: false,
+            topSide: false,
+            bottomSide: false,
             lightDismiss: false,
             acrylic: false,
             footer: false,
@@ -53,14 +55,44 @@ export default {
 ### Panel Central Side
 ---
 
+Global Append
+
 <ClientOnly>
 <fv-button style="width: 200px;" @click="centralSide = true">Open Panel</fv-button>
-<fv-Panel v-model="centralSide" :isCentralSide="true" width="calc(90% - 50px)" height="calc(90% - 50px)">
+<fv-Panel v-model="centralSide" :isCentralSide="true" :teleport="true" width="calc(90% - 50px)" height="calc(90% - 50px)">
 </fv-Panel>
 </ClientOnly>
 
 ```vue
-<fv-Panel v-model="centralSide" :isCentralSide="true" width="calc(90% - 50px)" height="calc(90% - 50px)">
+<fv-Panel v-model="centralSide" :isCentralSide="true" :teleport="true" width="calc(90% - 50px)" height="calc(90% - 50px)">
+</fv-Panel>
+```
+
+### Panel Top Side
+---
+
+<ClientOnly>
+<fv-button style="width: 200px;" @click="topSide = true">Open Panel</fv-button>
+<fv-Panel v-model="topSide" :isTopSide="true" :isLightDismiss="true" width="100%" height="500px">
+</fv-Panel>
+</ClientOnly>
+
+```vue
+<fv-Panel v-model="topSide" :isTopSide="true" :isLightDismiss="true" width="100%" height="500px">
+</fv-Panel>
+```
+
+### Panel Bottom Side
+---
+
+<ClientOnly>
+<fv-button style="width: 200px;" @click="bottomSide = true">Open Panel</fv-button>
+<fv-Panel v-model="bottomSide" :isBottomSide="true" :isLightDismiss="true" width="100%" height="500px">
+</fv-Panel>
+</ClientOnly>
+
+```vue
+<fv-Panel v-model="bottomSide" :isBottomSide="true" :isLightDismiss="true" width="100%" height="500px">
 </fv-Panel>
 ```
 
@@ -161,6 +193,11 @@ Acrylic
 |  showTitleBar  |     Boolean     |       No       |      false      |                      是否显示标题栏                       |
 |    isFooter    |     Boolean     |       No       |      false      |                     是否显示底部控制                      |
 |   isAcrylic    |     Boolean     |       No       |      false      |                   是否开启`Acrylic`效果                   |
+| controlPadding |     String      |       No       |      10px       |                    标题和控制栏内边距                     |
+| contentPadding |     String      |       No       |       0px       |                        内容内边距                         |
+|  isBottomSide  |     Boolean     |       No       |      false      |                        从底部显式                         |
+|   isTopSide    |     Boolean     |       No       |      false      |                        从顶部显示                         |
+|    teleport    |     Boolean     |       No       |      false      |                  穿越当前父容器全局放置                   |
 |     theme      |     String      |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Slot

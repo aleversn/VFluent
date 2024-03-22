@@ -1,7 +1,7 @@
 @mixin fv-drawer {
-    
     position: fixed;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(239, 239, 239,0.99);
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(50px);
     overflow: hidden;
     transition: transform 0.3s;
