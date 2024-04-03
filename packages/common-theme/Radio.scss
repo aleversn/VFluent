@@ -3,6 +3,7 @@
     display: flex;
     min-width: 20px;
     min-height: 20px;
+    width: auto;
     height: auto;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -61,7 +62,7 @@
 
     .fv-radio-label {
         position: relative;
-        height: 20px;
+        height: auto;
         margin: 0px 8px;
         display: flex;
         flex-direction: column;
@@ -73,6 +74,8 @@
             height: 100%;
             font-size: 16px;
             line-height: 20px;
+            display: flex;
+            align-items: center;
         }
     }
 

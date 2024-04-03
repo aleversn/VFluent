@@ -21,7 +21,7 @@ export default {
                 ]},
                 { name: "Edit", func: this.customFunc, icon: "Edit", disabled: true },
                 { type: "divider" },
-                { name: "Share", func: this.customFunc, icon: "Share" },
+                { name: "Share", background: "rgba(0, 90, 158, 1)", foreground: "white", func: this.customFunc, icon: "Share" },
                 { type: "more", secondary: [
                     { name: "Move to", func: this.customFunc, icon: "MoveToFolder"},
                     { name: "Copy to", func: this.customFunc, icon: "Copy"},
@@ -198,7 +198,7 @@ Compact Mode
 
 ```javascript
 options = [
-  { name: "", icon: "", iconColor: "", type: "", func: {}, show: true, secondary: [], disabled: false }
+  { name: "", icon: "", iconColor: "", foreground: "", background: "", type: "", func: {}, show: true, secondary: [], disabled: false }
 ];
 
 //e.g.//

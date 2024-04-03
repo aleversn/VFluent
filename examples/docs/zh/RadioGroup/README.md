@@ -28,7 +28,7 @@
 <ClientOnly>
 <fv-radioGroup v-model="value" label="Options:">
 <div class="row-block">
-  <fv-radio label="option1">Option1</fv-radio>
+  <fv-radio label="option1"><fv-text-box></fv-text-box></fv-radio>
   <fv-radio label="option2">Option2</fv-radio>
 </div>
 <div class="row-block">
