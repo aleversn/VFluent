@@ -60,6 +60,8 @@ import SwipeControl from '@/SwipeControl/index.js'
 import Expander from '@/Expander/index.js'
 import RatingControl from '@/RatingControl/index.js'
 import IconElement from '@/IconElement/index.js'
+import Affix from '@/Affix/index.js'
+import ResizeWatcher from '@/ResizeWatcher/index.js'
 
 import pkg from "../package.json"
 
@@ -116,6 +118,8 @@ let components = [
   Expander,
   RatingControl,
   IconElement,
+  Affix,
+  ResizeWatcher,
 
 ]
 
@@ -208,6 +212,8 @@ export default {
   Expander,
   RatingControl,
   IconElement,
+  Affix,
+  ResizeWatcher,
 
 }
 

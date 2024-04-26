@@ -51,5 +51,7 @@
   "/zh/SwipeControl/",
   "/zh/Expander/",
   "/zh/RatingControl/",
-  "/zh/IconElement/"
+  "/zh/IconElement/",
+  "/zh/Affix/",
+  "/zh/ResizeWatcher/"
 ]

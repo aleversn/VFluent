@@ -414,5 +414,21 @@
       "Dark": "@/dark-theme/IconElement.scss",
       "Custom": "@/custom-theme/IconElement.scss"
     }
+  },
+  "Affix": {
+    "entry": "@/Affix/index.js",
+    "theme": {
+      "Light": "@/light-theme/Affix.scss",
+      "Dark": "@/dark-theme/Affix.scss",
+      "Custom": "@/custom-theme/Affix.scss"
+    }
+  },
+  "ResizeWatcher": {
+    "entry": "@/ResizeWatcher/index.js",
+    "theme": {
+      "Light": "@/light-theme/ResizeWatcher.scss",
+      "Dark": "@/dark-theme/ResizeWatcher.scss",
+      "Custom": "@/custom-theme/ResizeWatcher.scss"
+    }
   }
 }

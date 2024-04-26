@@ -52,6 +52,8 @@ import { FvSwipeControl } from './swipecontrol'
 import { FvExpander } from './expander'
 import { FvRatingControl } from './ratingcontrol'
 import { FvIconElement } from './iconelement'
+import { FvAffix } from './affix'
+import { FvResizeWatcher } from './resizewatcher'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -163,4 +165,8 @@ export type Theme = FluentVueTheme
   export class RatingControl extends FvRatingControl {}
 /** IconElement component */
   export class IconElement extends FvIconElement {}
+/** Affix component */
+  export class Affix extends FvAffix {}
+/** ResizeWatcher component */
+  export class ResizeWatcher extends FvResizeWatcher {}
 

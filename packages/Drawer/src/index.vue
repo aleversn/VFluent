@@ -1,5 +1,10 @@
 <template>
-    <div v-show="initShow" ref="drawer" :class="['fv-' + $theme + '-drawer']" :style="[style.drawer, { background: background }]">
+    <div
+        v-show="initShow"
+        ref="drawer"
+        :class="['fv-' + $theme + '-drawer']"
+        :style="[style.drawer, { background: background }]"
+    >
         <slot></slot>
     </div>
 </template>
@@ -10,44 +15,44 @@ export default {
     props: {
         position: {
             type: String,
-            default: 'bottom',
+            default: 'bottom'
         },
         length: {
-            default: 300,
+            default: 300
         },
         background: {
-            default: undefined,
+            default: undefined
         },
         value: {
-            default: undefined,
+            default: undefined
         },
         zIndex: {
             type: Number,
-            default: 10,
+            default: 10
         },
         focusTrap: {
             type: Boolean,
-            default: false,
+            default: false
         },
         theme: {
             type: String,
-            default: 'system',
+            default: 'system'
         },
         appendBody: {
             type: Boolean,
-            default: false,
-        },
+            default: false
+        }
     },
     data() {
         return {
             lock: false,
             style: {
                 drawer: {
-                    zIndex: this.zIndex,
-                },
+                    zIndex: this.zIndex
+                }
             },
             show: {
-                drawer: this.value == undefined ? false : this.value,
+                drawer: this.value == undefined ? false : this.value
             },
             initShow: this.computeVisible,
             window: {
@@ -64,8 +69,8 @@ export default {
                         else break;
                     }
                     if (!_self) this.computeVisible = false;
-                },
-            },
+                }
+            }
         };
     },
     computed: {
@@ -80,8 +85,8 @@ export default {
             set(val) {
                 this.show.drawer = val;
                 this.$emit('input', val);
-            },
-        },
+            }
+        }
     },
     watch: {
         computeVisible() {
@@ -91,7 +96,7 @@ export default {
             setTimeout(() => {
                 this.lock = false;
             }, 50);
-        },
+        }
     },
     mounted() {
         this.init();
@@ -130,8 +135,14 @@ export default {
                     bottom: '0',
                     height: length,
                     width: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                     zIndex: this.zIndex,
-                    transform: ` ${this.computeVisible ? 'translateY(0%)' : 'translateY(110%)'}`,
+                    transform: ` ${
+                        this.computeVisible
+                            ? 'translateY(0%)'
+                            : 'translateY(110%)'
+                    }`
                 };
             } else if (this.position == 'top') {
                 this.style.drawer = {
@@ -139,8 +150,14 @@ export default {
                     top: '0',
                     height: length,
                     width: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                     zIndex: this.zIndex,
-                    transform: `${this.computeVisible ? 'translateY(0%)' : 'translateY(-110%)'}`,
+                    transform: `${
+                        this.computeVisible
+                            ? 'translateY(0%)'
+                            : 'translateY(-110%)'
+                    }`
                 };
             } else if (this.position == 'left') {
                 this.style.drawer = {
@@ -148,8 +165,14 @@ export default {
                     top: '0',
                     width: length,
                     height: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                     zIndex: this.zIndex,
-                    transform: `${this.computeVisible ? 'translateX(0%)' : 'translateX(-110%)'}`,
+                    transform: `${
+                        this.computeVisible
+                            ? 'translateX(0%)'
+                            : 'translateX(-110%)'
+                    }`
                 };
             } else {
                 this.style.drawer = {
@@ -157,14 +180,20 @@ export default {
                     top: '0',
                     width: length,
                     height: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                     zIndex: this.zIndex,
-                    transform: `${this.computeVisible ? 'translateX(0%)' : 'translateX(110%)'}`,
+                    transform: `${
+                        this.computeVisible
+                            ? 'translateX(0%)'
+                            : 'translateX(110%)'
+                    }`
                 };
             }
         },
         close() {
             this.computeVisible = false;
-        },
+        }
     },
     beforeDestroy() {
         for (let key in this.window) {
@@ -173,8 +202,7 @@ export default {
         try {
             const body = document.querySelector('body');
             body.removeChild(this.$el);
-        } catch (e) {
-        }
+        } catch (e) {}
     }
 };
 </script>

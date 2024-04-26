@@ -1,0 +1,5 @@
+@import '../common-theme/ResizeWatcher.scss';
+.fv-custom-ResizeWatcher{
+  @include fv-ResizeWatcher();
+}
+    

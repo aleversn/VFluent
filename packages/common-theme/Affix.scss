@@ -1,0 +1,11 @@
+@mixin fv-Affix {
+    position: relative;
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+
+    .fv-affix-container {
+        position: fixed;
+        isolation: isolate;
+    }
+}

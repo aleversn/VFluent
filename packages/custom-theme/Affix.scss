@@ -1,0 +1,5 @@
+@import '../common-theme/Affix.scss';
+.fv-custom-Affix{
+  @include fv-Affix();
+}
+    
