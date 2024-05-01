@@ -1,10 +1,8 @@
 @mixin fv-Tag {
-
     position: relative;
     display: flex;
 
-    .fv-tag-item
-    {
+    .fv-tag-item {
         position: relative;
         width: auto;
         height: 25px;
@@ -21,73 +19,74 @@
         justify-content: center;
         align-items: center;
 
-        &.success
-        {
+        &.success {
             background: rgba(0, 204, 153, 0.1);
             border-color: rgba(0, 204, 153, 0.1) solid thin;
             color: rgba(0, 204, 153, 1);
         }
 
-        &.warning
-        {
+        &.warning {
             background: rgba(255, 200, 10, 0.1);
             border-color: rgba(255, 200, 10, 0.1) solid thin;
             color: rgba(255, 200, 10, 1);
         }
 
-        &.error
-        {
+        &.error {
             background: rgba(173, 38, 45, 0.1);
             border-color: rgba(173, 38, 45, 0.1) solid thin;
             color: rgba(173, 38, 45, 1);
         }
 
-        &.medium
-        {
+        &.medium {
             height: 20px;
             font-size: 13.8px;
         }
 
-        &.small
-        {
+        &.small {
             height: 15px;
             font-size: 13px;
         }
 
-        &.xsmall
-        {
+        &.xsmall {
             height: 12px;
             font-size: 12px;
         }
 
-        &.disabled
-        {
+        &.disabled {
             filter: grayscale(1);
             opacity: 0.6;
         }
 
-        .fv-tag-icon
-        {
+        .fv-tag-icon {
             position: relative;
             width: 20px;
-            height: 20px;
-            padding: 3px;
+            height: 100%;
             margin-left: 5px;
             font-size: 12px;
-            border-radius: 50%;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
 
-            &:hover
-            {
-                background: rgba(36, 36, 36, 0.1);
+            .fv-tag-icon-btn {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                padding: 0px;
+                margin: 0px;
+                border-radius: 50%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover {
+                    background: rgba(36, 36, 36, 0.1);
+                }
             }
         }
 
-        .fv-tag-content
-        {
+        .fv-tag-content {
             position: relative;
             width: auto;
             height: 100%;
@@ -95,28 +94,36 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            .fv-tag-default-content {
+                position: relative;
+                width: auto;
+                height: 100%;
+                margin: 0px;
+                line-height: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
 
-        &.controller
-        {
-            &:hover
-            {
+        &.controller {
+            &:hover {
                 opacity: 0.8;
             }
-            
-            .fv-tag-icon
-            {
+
+            .fv-tag-icon {
                 margin-left: 0px;
                 margin-right: 5px;
 
-                &:hover
-                {
-                    background: transparent;
+                .fv-tag-icon-btn {
+                    &:hover {
+                        background: transparent;
+                    }
                 }
             }
 
-            .fv-tag-content
-            {
+            .fv-tag-content {
                 user-select: none;
             }
         }
