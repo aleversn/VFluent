@@ -20,6 +20,10 @@ export default {
             type: Array,
             default: () => [],
         },
+        popperContentClass: {
+            type: Array,
+            default: () => [],
+        },
         show: {
             type: Boolean,
             default: false,
@@ -70,7 +74,7 @@ export default {
                     <div class="fv-callout-bg"></div>
                     <div class="beak" style={this.style.beak}></div>
                     {(this.show || this.keepalive) ? (
-                        <div>
+                        <div class={[this.popperContentClass]}>
                             <div class="header" v-show={this.nodes.header.length} key="header">
                                 {this.nodes.header}
                             </div>

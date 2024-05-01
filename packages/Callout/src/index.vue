@@ -53,6 +53,11 @@ export default {
                 return [];
             },
         },
+        popperContentClass: {
+            default: () => {
+                return [];
+            },
+        },
         keepalive: {
             type: Boolean,
             default: true,
@@ -117,7 +122,7 @@ export default {
         return (
             <div>
                 {target}
-                <Popper ref="popper" keepalive={this.keepalive} theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} nodes={slots} />
+                <Popper ref="popper" keepalive={this.keepalive} theme={this.$theme} show={this.popperShow} popperStyle={this.popperStyle} popperClass={this.popperClass} popperContentClass={this.popperContentClass} nodes={slots} />
             </div>
         );
     },
