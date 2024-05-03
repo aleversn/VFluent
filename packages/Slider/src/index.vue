@@ -125,11 +125,9 @@ export default {
         };
     },
     watch: {
-        value(val, old) {
-            this.$nextTick(() => {
-                this.progress = this.getValue(val);
-                this.setPos();
-            });
+        value(val) {
+            this.progress = this.getValue(val);
+            if (!this.moveable) this.setPos();
         },
         progress(val) {
             this.$emit('input', val);
