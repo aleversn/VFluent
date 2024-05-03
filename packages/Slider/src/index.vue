@@ -1,304 +1,333 @@
 <template>
-    <div
-        :class="[
+    <div :class="[
             'fv-' + $theme + '-slider',
-            { active: isActive },
-            { vertical: vertical },
-        ]"
-        ref="slider"
-    >
+            {vertical, disabled: isDisabled}
+        ]">
         <div
-            class="fv-slider__bar"
-            @mousedown="click($event) && moveable($event)"
-            @touchstart="
-                click($event.targetTouches[0]) &&
-                    moveable($event.targetTouches[0])
-            "
-            :class="[{ vertical: vertical }, { disabled: disabled }]"
-            :style="style.bar"
+            class="fv-slider-main"
             ref="bar"
+            :style="{background: progress >= 100 ? color : background ? background : ''}"
         >
-            <template v-if="scale">
-                <div
-                    class="fv-slider__scale-up"
-                    v-for="index in (maxinum - mininum) / scaleUnit() - 1"
-                    :key="'scale:' + index"
-                    :style="scaleStyle(index, true)"
-                ></div>
-                <div
-                    class="fv-slider__scale-down"
-                    v-for="index in (maxinum - mininum) / scaleUnit() - 1"
-                    :key="'scale-d:' + index"
-                    :style="scaleStyle(index, false)"
-                ></div>
-            </template>
-            <div class="fv-slider__bar-bg"></div>
             <div
-                class="fv-slider__progress"
-                ref="progress"
-                :style="progressStyle"
-                :class="[{ anime: rejust }]"
+                ref="btn"
+                class="fv-slider-ring-container"
+                :style="{left: finalLeft + 'px', top: finalTop + 'px', background: iconWrapperBackground}"
+                @mousedown="forward"
+                @mouseup="stop"
+                @touchstart="forward"
+                @touchend="stop"
+            >
+                <i
+                    class="ms-Icon fv-slider-ring-icon"
+                    :class="[`ms-Icon--${icon}`]"
+                    :style="{color: color}"
+                ></i>
+            </div>
+            <div
+                class="fv-slider-loaded"
+                :style="{width: !vertical ? finalLeft + btnEl.width / 2 + 'px' : '', height: vertical ? finalTop + btnEl.height / 2 + 'px' : '', background: color}"
             ></div>
             <div
-                class="fv-slider__button ms-Icon"
-                :class="[
-                    `ms-Icon--${icon}`,
-                    { disabled: disabled },
-                    { anime: rejust },
-                ]"
-                :style="buttonStyle"
-                ref="button"
-                @mousedown="moveable"
-            ></div>
-        </div>
-        <div
-            class="fv-slider__label"
-            :class="{ vertical: vertical }"
-            v-if="showLabel"
-        >
-            <slot :value="getValue(progress, mininum, maxinum)"></slot>
+                v-show="isShowLabel && moveable"
+                class="fv-slider-label"
+                :title="progress"
+                :style="{left: !vertical ? finalLeft - 20 + btnEl.width / 2 + 'px' : '', top: vertical ? finalTop - 14 + btnEl.height / 2 + 'px' : ''}"
+            >
+                <slot :value="progress">
+                    <p>{{progress}}</p>
+                </slot>
+            </div>
+            <div class="fv-slider-unit-container">
+                <i
+                    v-for="(item, index) in scaleList"
+                    :key="`top: ${index}`"
+                    class="fv-slider-unit-item first"
+                    :style="{left: !vertical ? `calc(${item.ratio * (barEl.width - btnEl.width) + btnEl.width / 2}px)` : '', top: vertical ? `calc(${item.ratio * (barEl.height - btnEl.height) + btnEl.height / 2}px)` : ''}"
+                ></i>
+                <i
+                    v-for="(item, index) in scaleList"
+                    :key="`bottom: ${index}`"
+                    class="fv-slider-unit-item second"
+                    :style="{left: !vertical ? `calc(${item.ratio * (barEl.width - btnEl.width) + btnEl.width / 2}px)` : '', top: vertical ? `calc(${item.ratio * (barEl.height - btnEl.height) + btnEl.height / 2}px)` : ''}"
+                ></i>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import "../../office-ui-fabric-core/dist/css/fabric.min.css";
+import '../../office-ui-fabric-core/dist/css/fabric.min.css';
 export default {
-    name: "FvSlider",
-    data() {
-        return {
-            progress: 0, //percent
-            isActive: false,
-            rejust: false,
-            buttonHeight: 0,
-            style: {
-                bar: {},
-            },
-        };
-    },
+    name: 'FvSlider',
     props: {
         theme: {
             type: String,
-            default: "system",
+            default: 'system'
         },
         disabled: {
-            type: Boolean,
-            default: false,
+            default: false
         },
         value: {
-            type: Number,
-            default: 0,
+            default: 0
         },
         unit: {
-            type: Number,
-            default: 1,
+            default: 1
         },
         maxinum: {
-            type: Number,
-            default: 100,
+            default: 100
         },
         mininum: {
-            type: Number,
-            default: 0,
+            default: 0
         },
         icon: {
             type: String,
-            default: "StatusCircleOuter",
-            // default:"StatusCircleOuter"
+            default: 'CircleFill'
         },
         vertical: {
-            type: Boolean,
-            default: false,
+            default: false
         },
         showLabel: {
-            type: Boolean,
-            default: false,
+            default: false
         },
         scale: {
             type: [Boolean, Number],
-            default: false,
+            default: false
         },
         color: {
-            type: String,
+            default: ''
         },
+        background: {
+            default: ''
+        },
+        iconWrapperBackground: {
+            default: ''
+        }
     },
-    computed: {
-        $theme() {
-            if (this.theme === "system") return this.$fvGlobal.state.theme;
-            return this.theme;
-        },
-        buttonStyle() {
-            let color = this.color;
-            if (this.vertical) {
-                return {
-                    top: this.progress + '%',
-                    transform: `translateX(-${this.buttonHeight / 2 - 1}px) translateY(-${this.buttonHeight / 2}px) rotate(90deg)`,
-                    color
-                };
-            } else {
-                return {
-                    left: this.progress + '%',
-                    transform: `translateX(-${this.buttonHeight / 2}px) translateY(-${this.buttonHeight / 2 - 3}px)`,
-                    color
-                };
+    data() {
+        return {
+            progress: 0, //percent,
+            moveable: false,
+            mouseDownPos: {
+                disX: 0,
+                disY: 0
+            },
+            currentLeft: 0,
+            currentTop: 0,
+            freezeTransition: false,
+            btnEl: {
+                width: 0,
+                height: 0
+            },
+            barEl: {
+                width: 0,
+                height: 0
             }
-        },
-        progressStyle() {
-            let color = this.color;
-            if (this.vertical) {
-                return {
-                    height: this.progress + "%",
-                    backgroundColor: color,
-                };
-            } else {
-                return {
-                    width: this.progress + "%",
-                    backgroundColor: color,
-                };
-            }
-        },
+        };
     },
     watch: {
         value(val) {
-            // sync progress
-            if (!this.isActive)
-                this.setProgress(val, this.mininum, this.maxinum);
+            if (val < this.mininum) this.progress = this.mininum;
+            else if (val > this.maxinum) this.progress = this.maxinum;
+            else this.progress = val;
         },
         progress(val) {
-            this.$emit(
-                "change",
-                this.getValue(val, this.mininum, this.maxinum)
-            );
-            // sync Value
-            if (this.isActive) {
-                this.setValue(val, this.mininum, this.maxinum);
+            this.$emit('input', val);
+            this.$emit('change', val);
+        },
+        finalLeft() {
+            if (!this.vertical) {
+                let ratio =
+                    this.finalLeft / (this.barEl.width - this.btnEl.width);
+                ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
+                this.progress = ratio.toFixed(0);
             }
         },
+        finalTop() {
+            if (this.vertical) {
+                let ratio =
+                    this.finalTop / (this.barEl.height - this.btnEl.height);
+                ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
+                this.progress = ratio.toFixed(0);
+            }
+        }
+    },
+    computed: {
+        $theme() {
+            if (this.theme === 'system') return this.$fvGlobal.state.theme;
+            return this.theme;
+        },
+        isDisabled() {
+            return (
+                this.disabled.toString() == 'true' ||
+                this.disabled == 'disabled' ||
+                this.disabled === ''
+            );
+        },
+        isShowLabel() {
+            return this.showLabel.toString() == 'true' || this.showLabel === '';
+        },
+        finalLeft() {
+            if (this.vertical) return -7.5;
+            if (this.currentLeft < 0) return 0;
+            if (this.currentLeft > this.barEl.width - this.btnEl.width)
+                return this.barEl.width - this.btnEl.width;
+            return this.currentLeft;
+        },
+        finalTop() {
+            if (!this.vertical) return -7.5;
+            if (this.currentTop < 0) return 0;
+            if (this.currentTop > this.barEl.height - this.btnEl.height)
+                return this.barEl.height - this.btnEl.height;
+            return this.currentTop;
+        },
+        scaleList() {
+            if (!this.scale) return [];
+            let result = [];
+            let i = 0;
+            let max = this.maxinum - this.mininum;
+            while (i <= max) {
+                result.push({
+                    ratio: i / max
+                });
+                i += this.scale;
+            }
+            return result;
+        },
+        unitList() {
+            let result = [];
+            let i = 0;
+            let max = this.maxinum - this.mininum;
+            while (i <= max) {
+                result.push({
+                    ratio: i / max,
+                    value: this.mininum + i
+                });
+                i += this.unit;
+            }
+            return result;
+        }
     },
     mounted() {
-        // set client height/width
-        this.resize();
-        this.widthObserverInit();
+        this.Init();
+        this.resizeInit();
     },
     methods: {
-        widthObserverInit() {
-            let observer = new ResizeObserver(() => {
-                this.buttonHeight = this.$refs.button ? this.$refs.button.clientHeight : 0;
-            });
-            observer.observe(this.$refs.button);
-        },
-        click(evt) {
-            if (this.isActive || this.disabled) return false;
-            let box = this.$refs.bar.getBoundingClientRect();
-            let button = this.$refs.button.getBoundingClientRect();
-            let x = this.vertical
-                ? evt.clientY - box.top
-                : evt.clientX - box.left;
-            let origin = this.vertical
-                ? button.top - box.top
-                : button.left - box.left;
-            this.move(x, origin);
-            return true;
-        },
-        scaleUnit() {
-            let unit =
-                !this.scale || this.scale == true ? this.unit : this.scale;
-            return unit;
-        },
-        scaleStyle(index, up) {
-            let unit = Math.round(
-                (this.scaleUnit() / (this.maxinum - this.mininum)) * 100
-            );
-            return this.vertical
-                ? {
-                      left: up ? "7px" : "-7px",
-                      top: index * unit + "%",
-                      height: "1px",
-                      width: "5px",
-                  }
-                : {
-                      top: up ? "7px" : "-7px",
-                      left: index * unit + "%",
-                      height: "5px",
-                      width: "1px",
-                  };
-        },
-        resize() {
-            this.setProgress(this.value, this.mininum, this.maxinum);
-        },
-        moveable(evt) {
-            if (event.preventDefault) {
-                this.$refs.button.ondragenter = event.preventDefault();
-                this.$refs.button.ondragover = event.preventDefault();
-            }
-
-            if (this.isActive || this.disabled) return;
-            this.$emit("click");
-            this.isActive = true;
-            let origin = this.vertical ? evt.clientY : evt.clientX;
-            let move = (evt) => {
-                if (evt.type === "touchmove") {
-                    evt = evt.targetTouches[0];
+        Init() {
+            window.addEventListener('mousemove', (event) => {
+                if (this.moveable) {
+                    this.currentLeft = event.clientX - this.mouseDownPos.disX;
+                    this.currentTop = event.clientY - this.mouseDownPos.disY;
                 }
-                let x = this.vertical ? evt.clientY : evt.clientX;
-                this.move(x, origin);
-                origin = x;
-            };
-            let removeMove = () => {
-                this.isActive = false;
-                this.rejustProgress();
-                window.removeEventListener("mousemove", move);
-                window.removeEventListener("mouseup", removeMove);
-                window.removeEventListener("mouseleave", removeMove);
-                window.removeEventListener("touchmove", move);
-                window.removeEventListener("touchend", removeMove);
-            };
-            window.addEventListener("mousemove", move);
-            window.addEventListener("mouseleave", removeMove);
-            window.addEventListener("mouseup", removeMove);
-            window.addEventListener("touchmove", move);
-            window.addEventListener("touchend", removeMove);
+            });
+            window.addEventListener('touchmove', (event) => {
+                event = event.targetTouches[0];
+                if (this.moveable) {
+                    this.currentLeft = event.clientX - this.mouseDownPos.disX;
+                    this.currentTop = event.clientY - this.mouseDownPos.disY;
+                }
+            });
+            window.addEventListener('mouseup', (event) => {
+                if (this.moveable) {
+                    this.stop();
+                }
+            });
+            window.addEventListener('touchup', (event) => {
+                if (this.moveable) {
+                    this.stop();
+                }
+            });
         },
-        setProgress(value, min, max) {
-            this.progress = ((value - min) / (max - min)) * 100;
-            this.progress = Math.max(0, this.progress);
-            this.progress = Math.min(100, this.progress);
+        resizeInit() {
+            const btnObserver = new ResizeObserver(() => {
+                if (this.$refs.btn) {
+                    this.btnEl.width = this.$refs.btn.clientWidth;
+                    this.btnEl.height = this.$refs.btn.clientHeight;
+                }
+            });
+            btnObserver.observe(this.$refs.btn);
+            const barObserver = new ResizeObserver(() => {
+                if (this.$refs.bar) {
+                    this.barEl.width = this.$refs.bar.clientWidth;
+                    this.barEl.height = this.$refs.bar.clientHeight;
+                }
+            });
+            barObserver.observe(this.$refs.bar);
         },
-        setValue(value, min, max) {
-            this.$emit("input", this.getValue(value, min, max));
+        forward(event) {
+            if (this.isDisabled) return;
+            this.moveable = true;
+            this.freezeTransition = true;
+            event.preventDefault();
+            let { clientX, clientY } = event.targetTouches
+                ? event.targetTouches[0]
+                : event;
+            this.mouseDownPos.disX = clientX - this.$refs.btn.offsetLeft;
+            this.mouseDownPos.disY = clientY - this.$refs.btn.offsetTop;
         },
-        getValue(value, min, max) {
-            return Math.round((value * (max - min)) / 100) + min;
+        correctPos() {
+            if (this.$refs.btn.offsetLeft < -this.$refs.btn.clientWidth / 2)
+                this.currentLeft = 0;
+            if (this.$refs.btn.offsetTop < -this.$refs.btn.clientHeight / 2)
+                this.currentTop = 0;
+            if (
+                this.$refs.btn.offsetLeft + this.$refs.btn.clientWidth >
+                this.$refs.bar.clientWidth
+            )
+                this.currentLeft =
+                    this.$refs.bar.clientWidth - this.$refs.btn.clientWidth;
+            if (
+                this.$refs.btn.offsetTop + this.$refs.btn.clientHeight >
+                this.$refs.bar.clientHeight
+            )
+                this.currentTop =
+                    this.$refs.bar.clientHeight - this.$refs.btn.clientHeight;
+            for (let i = 0; i < this.unitList.length; i++) {
+                let curRatio =
+                    this.currentLeft / (this.barEl.width - this.btnEl.width);
+                let fromRatio = this.unitList[i].ratio;
+                let toRatio = this.unitList[i + 1]
+                    ? this.unitList[i + 1].ratio
+                    : 1;
+                if (curRatio >= fromRatio && curRatio <= toRatio) {
+                    if (curRatio - fromRatio < toRatio - curRatio) {
+                        this.currentLeft =
+                            fromRatio * (this.barEl.width - this.btnEl.width);
+                    } else {
+                        this.currentLeft =
+                            toRatio * (this.barEl.width - this.btnEl.width);
+                    }
+                    break;
+                }
+            }
+            for (let i = 0; i < this.unitList.length; i++) {
+                let curRatio =
+                    this.currentTop / (this.barEl.height - this.btnEl.height);
+                let fromRatio = this.unitList[i].ratio;
+                let toRatio = this.unitList[i + 1]
+                    ? this.unitList[i + 1].ratio
+                    : 1;
+                if (curRatio >= fromRatio && curRatio <= toRatio) {
+                    if (curRatio - fromRatio < toRatio - curRatio) {
+                        this.currentTop =
+                            fromRatio * (this.barEl.height - this.btnEl.height);
+                    } else {
+                        this.currentTop =
+                            toRatio * (this.barEl.height - this.btnEl.height);
+                    }
+                    break;
+                }
+            }
         },
-        rejustProgress() {
-            if (this.rejust) return;
-            this.rejust = true;
-            this.isActive = true;
-            let value = this.getValue(
-                this.progress,
-                this.mininum,
-                this.maxinum
-            );
-            if (value < this.maxinum)
-                value =
-                    Math.round((value - this.mininum) / this.unit) * this.unit +
-                    this.mininum;
-            else value = this.maxinum;
-            this.setProgress(value, this.mininum, this.maxinum);
+        stop() {
+            if (this.isDisabled) return;
+            this.moveable = false;
+            this.freezeTransition = false;
+            this.correctPos();
+            this.$emit('click', this.progress);
             setTimeout(() => {
-                this.rejust = false;
-                this.isActive = false;
+                this.freezeTransition = true;
             }, 300);
-        },
-        move(x, origin) {
-            let length = this.vertical
-                ? this.$refs.bar.clientHeight
-                : this.$refs.bar.clientWidth;
-            let val = this.progress + ((x - origin) * 100) / length;
-            val = Math.max(val, 0);
-            val = Math.min(val, 100);
-            this.progress = val;
-        },
-    },
+        }
+    }
 };
 </script>

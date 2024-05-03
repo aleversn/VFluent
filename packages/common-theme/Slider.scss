@@ -1,91 +1,193 @@
 @mixin fv-slider {
     position: relative;
-    display: inline-flex;
-    height: 50px;
     width: 300px;
-    justify-content: space-between;
+    height: auto;
+    display: flex;
     align-items: center;
-    // align-content: space-between;
-    .fv-slider__bar {
-        &.disabled {
-            cursor: not-allowed;
-            .fv-slider__button {
-                color: #999;
-            }
-        }
-    }
-    &:hover {
-        .fv-slider__bar {
-            &.disabled {
+
+    &.disabled {
+        filter: grayscale(100%);
+        opacity: 0.6;
+
+        .fv-slider-main {
+            .fv-slider-ring-container {
                 cursor: not-allowed;
-                .fv-slider__bar-bg {
-                    background-color: #d6d5d4;
+
+                &:hover {
+                    .fv-slider-ring-icon {
+                        scale: 1;
+                    }
                 }
-                .fv-slider__button {
-                    color: #999;
+
+                &:active {
+                    .fv-slider-ring-icon {
+                        scale: 1;
+                        opacity: 1;
+                    }
                 }
-            }
-        }
-    }
-    &.vertical {
-        min-height: 100px;
-        width: 50px;
-        flex-direction: column;
-    }
-    .fv-slider__scale-up,
-    .fv-slider__scale-down {
-        position: absolute;
-    }
-    .fv-slider__bar {
-        position: relative;
-        height: 4px;
-        width: 100%;
-        border-radius: 20px;
-        cursor: pointer;
-        .fv-slider__bar-bg {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            border-radius: inherit;
-        }
-        .fv-slider__button {
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            font-size: 25px;
-            cursor: pointer;
-            &.disabled {
-                cursor: not-allowed;
-            }
-        }
-        .fv-slider__progress {
-            position: absolute;
-            height: 100%;
-            border-radius: 2.5px;
-        }
-        .fv-slider__progress,
-        .fv-slider__button {
-            &.anime {
-                transition-duration: 0.3s;
-                transition-timing-function: ease-in-out;
-            }
-        }
-        &.vertical {
-            width: 4px;
-            min-height: 80px;
-            .fv-slider__bar-bg {
-                height: 100%;
-                width: 4px;
-            }
-            .fv-slider__progress {
-                width: 4px;
             }
         }
     }
 
-    .fv-slider__label {
-        height: 25px;
-        width: 25px;
-        padding: 0 5px;
+    &.vertical {
+        flex-direction: column;
+        width: auto;
+        height: 150px;
+
+        .fv-slider-main {
+            width: 5px;
+            height: 10px;
+
+            .fv-slider-loaded {
+                width: 100%;
+                height: 0px;
+            }
+
+            .fv-slider-label {
+                left: 30px;
+                top: 10px;
+            }
+
+            .fv-slider-unit-container {
+                left: -5px;
+                top: 0px;
+                width: 15px;
+                height: 100%;
+                flex-direction: column;
+
+                .fv-slider-unit-item {
+                    width: 3px;
+                    height: 1px;
+
+                    &.first {
+                        left: 0px;
+                        top: 10px;
+                    }
+
+                    &.second {
+                        left: 12px;
+                        top: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .fv-slider-main {
+        position: relative;
+        width: 10px;
+        height: 5px;
+        flex: 1;
+        background-color: rgba(134, 134, 134, 1);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        overflow: visible;
+
+        .fv-slider-ring-container {
+            position: absolute;
+            width: auto;
+            height: auto;
+            padding: 3px;
+            background: rgba(255, 255, 255, 1);
+            font-size: 12px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+
+            .fv-slider-ring-icon {
+                width: 100%;
+                height: 100%;
+                color: rgba(15, 95, 156, 1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.1s;
+            }
+
+            &:hover {
+                .fv-slider-ring-icon {
+                    scale: 1.2;
+                }
+            }
+
+            &:active {
+                .fv-slider-ring-icon {
+                    scale: 0.8;
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .fv-slider-loaded {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0px;
+            height: 100%;
+            background-color: rgba(0, 90, 158, 1);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .fv-slider-label {
+            position: absolute;
+            left: 0;
+            top: -50px;
+            width: 40px;
+            height: 28px;
+            font-size: 13.8px;
+            background-color: rgba(247, 247, 247, 1);
+            border: rgba(90, 90, 90, 0.1) solid thin;
+            border-radius: 3px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0px 1px 3px rgba(0, 0, 0, 0.1),
+                3px 6px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 1;
+
+            * {
+                max-width: 100%;
+                max-height: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        .fv-slider-unit-container {
+            position: absolute;
+            left: 0px;
+            top: -5px;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+
+            .fv-slider-unit-item {
+                position: absolute;
+                width: 1px;
+                height: 3px;
+                background-color: rgba(134, 134, 134, 1);
+
+                &.first {
+                    left: 10px;
+                    top: 0px;
+                }
+
+                &.second {
+                    left: 10px;
+                    top: 12px;
+                }
+            }
+        }
     }
 }
