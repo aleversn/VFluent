@@ -136,25 +136,10 @@ export default {
             this.$emit('change', val);
         },
         finalLeft() {
-            if (!this.vertical) {
-                let ratio =
-                    this.finalLeft / (this.barEl.width - this.btnEl.width);
-                ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
-                if (this.moveable) {
-                    this.progress = ratio.toFixed(0);
-                }
-            }
+            if (this.moveable) this.progress = this.setProgress();
         },
         finalTop() {
-            if (!this.barEl.height || !this.btnEl.height) return;
-            if (this.vertical) {
-                let ratio =
-                    this.finalTop / (this.barEl.height - this.btnEl.height);
-                ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
-                if (this.moveable) {
-                    this.progress = ratio.toFixed(0);
-                }
-            }
+            if (this.moveable) this.progress = this.setProgress(true);
         }
     },
     computed: {
@@ -304,6 +289,7 @@ export default {
                         this.currentLeft =
                             toRatio * (this.barEl.width - this.btnEl.width);
                     }
+                    if (!this.vertical) this.progress = this.setProgress();
                     break;
                 }
             }
@@ -322,6 +308,7 @@ export default {
                         this.currentTop =
                             toRatio * (this.barEl.height - this.btnEl.height);
                     }
+                    if (this.vertical) this.progress = this.setProgress(true);
                     break;
                 }
             }
@@ -352,6 +339,17 @@ export default {
                 this.currentLeft =
                     (this.progress / (this.maxinum - this.mininum)) *
                     (this.barEl.width - this.btnEl.width);
+        },
+        setProgress(vertical = false) {
+            if (!vertical) {
+                let ratio =
+                    this.finalLeft / (this.barEl.width - this.btnEl.width);
+                ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
+                return ratio.toFixed(0);
+            }
+            let ratio = this.finalTop / (this.barEl.height - this.btnEl.height);
+            ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
+            return ratio.toFixed(0);
         }
     }
 };
