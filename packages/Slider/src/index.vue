@@ -105,7 +105,7 @@ export default {
     },
     data() {
         return {
-            progress: 0, //percent,
+            progress: this.getValue(this.value), //percent,
             moveable: false,
             mouseDownPos: {
                 disX: 0,
@@ -125,10 +125,11 @@ export default {
         };
     },
     watch: {
-        value(val) {
-            if (val < this.mininum) this.progress = this.mininum;
-            else if (val > this.maxinum) this.progress = this.maxinum;
-            else this.progress = val;
+        value(val, old) {
+            this.$nextTick(() => {
+                this.progress = this.getValue(val);
+                this.setPos();
+            });
         },
         progress(val) {
             this.$emit('input', val);
@@ -139,15 +140,20 @@ export default {
                 let ratio =
                     this.finalLeft / (this.barEl.width - this.btnEl.width);
                 ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
-                this.progress = ratio.toFixed(0);
+                if (this.moveable) {
+                    this.progress = ratio.toFixed(0);
+                }
             }
         },
         finalTop() {
+            if (!this.barEl.height || !this.btnEl.height) return;
             if (this.vertical) {
                 let ratio =
                     this.finalTop / (this.barEl.height - this.btnEl.height);
                 ratio = ratio * (this.maxinum - this.mininum) + this.mininum;
-                this.progress = ratio.toFixed(0);
+                if (this.moveable) {
+                    this.progress = ratio.toFixed(0);
+                }
             }
         }
     },
@@ -242,6 +248,7 @@ export default {
                 if (this.$refs.btn) {
                     this.btnEl.width = this.$refs.btn.clientWidth;
                     this.btnEl.height = this.$refs.btn.clientHeight;
+                    this.setPos();
                 }
             });
             btnObserver.observe(this.$refs.btn);
@@ -249,6 +256,7 @@ export default {
                 if (this.$refs.bar) {
                     this.barEl.width = this.$refs.bar.clientWidth;
                     this.barEl.height = this.$refs.bar.clientHeight;
+                    this.setPos();
                 }
             });
             barObserver.observe(this.$refs.bar);
@@ -327,6 +335,23 @@ export default {
             setTimeout(() => {
                 this.freezeTransition = true;
             }, 300);
+        },
+        getValue(val) {
+            if (val < this.mininum) val = this.mininum;
+            else if (val > this.maxinum) val = this.maxinum;
+            val = parseFloat(val).toFixed(0);
+            return val;
+        },
+        setPos() {
+            if (!this.btnEl.width || !this.barEl.width) return;
+            if (this.vertical)
+                this.currentTop =
+                    (this.progress / (this.maxinum - this.mininum)) *
+                    (this.barEl.height - this.btnEl.height);
+            else
+                this.currentLeft =
+                    (this.progress / (this.maxinum - this.mininum)) *
+                    (this.barEl.width - this.btnEl.width);
         }
     }
 };
