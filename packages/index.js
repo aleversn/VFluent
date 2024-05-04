@@ -62,6 +62,7 @@ import RatingControl from '@/RatingControl/index.js'
 import IconElement from '@/IconElement/index.js'
 import Affix from '@/Affix/index.js'
 import ResizeWatcher from '@/ResizeWatcher/index.js'
+import RightMenu from '@/RightMenu/index.js'
 
 import pkg from "../package.json"
 
@@ -120,6 +121,7 @@ let components = [
   IconElement,
   Affix,
   ResizeWatcher,
+  RightMenu,
 
 ]
 
@@ -214,6 +216,7 @@ export default {
   IconElement,
   Affix,
   ResizeWatcher,
+  RightMenu,
 
 }
 

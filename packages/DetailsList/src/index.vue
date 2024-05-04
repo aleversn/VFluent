@@ -69,17 +69,13 @@
             </transition>
         </div>
     </div>
-    <transition name="zoom-in-top">
-        <div v-show="show.rightMenu" class="fv-rightMenu" ref="rightMenu" :style="{left: posX + 'px', top: posY + 'px', width: rightMenuWidth + 'px'}">
-            <slot name="menu">
-                <div>
-                    <span>
-                        <p>{{currentChoosenNum}} Selected</p>
-                    </span>
-                </div>
-            </slot>
-        </div>
-    </transition>
+    <fv-right-menu ref="rightMenu" :theme="theme" :rightMenuWidth="rightMenuWidth" :background="rightMenuBackground" :fullExpandAnimation="rightMenuFullExpand">
+        <slot name="menu">
+            <span>
+                <p>{{currentChoosenNum}} Selected</p>
+            </span>
+        </slot>
+    </fv-right-menu>
 </div>
 </template>
 
@@ -135,8 +131,17 @@ export default {
         rowCss: {
             default: ""
         },
+        showRightMenu: {
+            default: true
+        },
         rightMenuWidth: {
             default: 200
+        },
+        rightMenuBackground: {
+            default: ''
+        },
+        rightMenuFullExpand: {
+            default: false
         },
 		theme: {
 			type: String,
@@ -149,9 +154,6 @@ export default {
             listWidth: 0,
             thisHead: [],
             thisGroup: [],
-            posX: 0,
-            posY: 0,
-            rightMenuHeight: 0,
             windowResize: {
                 trigger: false,
                 width: 0
@@ -162,9 +164,6 @@ export default {
             },
             dragTransfer: {},
             FR_Table_Head: null,
-            show: {
-                rightMenu: false
-            },
             styles: {
                 listHead: {
                     background: ""
@@ -218,10 +217,6 @@ export default {
         },
         listWidth (val) {
             this.widthFormat(0);
-        },
-        "show.rightMenu" (val) {
-            if(this.rightMenuHeight == 0)
-                this.rightMenuHeight = this.$refs.rightMenu.clientHeight;
         }
     },
 	computed: {
@@ -294,7 +289,6 @@ export default {
         this.valueInit();
         this.groupInit();
         this.lazyLoadInit();
-        this.rightMenuClearInit();
         this.listWidthRefreshInit();
         this.watchWindowResizeInit();
         this.filterValue();
@@ -417,13 +411,6 @@ export default {
             });
             this.$SUtility.ScrollToLoadInit(this.$refs.l2, () => {
                 this.$emit('lazyload', this.thisValue);
-            });
-        },
-        rightMenuClearInit () {
-            window.addEventListener('click', event => {
-                let x = event.target;
-                if(x !== this.$refs.rightMenu)
-                    this.show.rightMenu = false;
             });
         },
         filterValue () {
@@ -589,22 +576,10 @@ export default {
             }
         },
         rightClick (event, item) {
+            if(!this.showRightMenu) return;
             event.preventDefault();
-            this.show.rightMenu = true;
-            let bounding = this.$el.getBoundingClientRect();
-            let targetPos = {};
-            targetPos.x = event.x;
-            targetPos.y = event.y;
-            if(targetPos.x < bounding.left)
-                targetPos.x = bounding.left;
-            if(targetPos.x + this.rightMenuWidth > bounding.right)
-                targetPos.x = bounding.right - this.rightMenuWidth;
-            if(targetPos.y < bounding.top)
-                targetPos.y = bounding.top;
-            if(targetPos.y + this.rightMenuHeight > bounding.bottom)
-                targetPos.y = bounding.bottom - this.rightMenuHeight;
-            this.posX = targetPos.x;
-            this.posY = targetPos.y;
+            event.stopPropagation();
+            this.$refs.rightMenu.rightClick(event, this.$el);
 
             this.$emit('rightclick', item);
         },

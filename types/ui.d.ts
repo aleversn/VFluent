@@ -54,6 +54,7 @@ import { FvRatingControl } from './ratingcontrol'
 import { FvIconElement } from './iconelement'
 import { FvAffix } from './affix'
 import { FvResizeWatcher } from './resizewatcher'
+import { FvRightMenu } from './rightmenu'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -169,4 +170,6 @@ export type Theme = FluentVueTheme
   export class Affix extends FvAffix {}
 /** ResizeWatcher component */
   export class ResizeWatcher extends FvResizeWatcher {}
+/** RightMenu component */
+  export class RightMenu extends FvRightMenu {}
 

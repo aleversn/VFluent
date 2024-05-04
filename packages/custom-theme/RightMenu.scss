@@ -1,0 +1,5 @@
+@import '../common-theme/RightMenu.scss';
+.fv-custom-RightMenu{
+  @include fv-RightMenu();
+}
+    

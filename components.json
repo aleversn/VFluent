@@ -430,5 +430,13 @@
       "Dark": "@/dark-theme/ResizeWatcher.scss",
       "Custom": "@/custom-theme/ResizeWatcher.scss"
     }
+  },
+  "RightMenu": {
+    "entry": "@/RightMenu/index.js",
+    "theme": {
+      "Light": "@/light-theme/RightMenu.scss",
+      "Dark": "@/dark-theme/RightMenu.scss",
+      "Custom": "@/custom-theme/RightMenu.scss"
+    }
   }
 }
