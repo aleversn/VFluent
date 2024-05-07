@@ -43,7 +43,10 @@
             @choose-item="Choose"
         >
             <template v-slot:item="x">
-                <slot :item="x.item" :choosenSliderBackground="x.choosenSliderBackground">
+                <slot
+                    :item="x.item"
+                    :choosenSliderBackground="x.choosenSliderBackground"
+                >
                     <i
                         class="before-choosen"
                         :style="{background: x.choosenSliderBackground}"
@@ -69,65 +72,65 @@ export default {
         value: {
             default: () => {
                 return [];
-            },
+            }
         },
         options: {
-            default: () => [],
+            default: () => []
         },
         borderWidth: {
-            default: 2,
+            default: 2
         },
         placeholder: {
-            default: 'menuFlyout',
+            default: 'menuFlyout'
         },
         borderRadius: {
-            default: '3',
+            default: '3'
         },
         background: {
-            default: '',
+            default: ''
         },
         choosenBackground: {
-            default: '',
+            default: ''
         },
         choosenSliderBackground: {
-            default: '',
+            default: ''
         },
         inputForeground: {
-            default: '',
+            default: ''
         },
         inputBackground: {
-            default: '',
+            default: ''
         },
         titleForeground: {
-            default: '',
+            default: ''
         },
         dropDownIcon: {
-            default: 'ChevronDown',
+            default: 'ChevronDown'
         },
         dropDownIconForeground: {
-            default: '',
+            default: ''
         },
         pivotPlaceholder: {
-            default: 'Please Choose',
+            default: 'Please Choose'
         },
         revealBorderColor: {
-            default: false,
+            default: false
         },
         revealBackgroundColor: {
-            default: false,
+            default: false
         },
         disabled: {
-            default: false,
+            default: false
         },
         theme: {
             type: String,
-            default: 'system',
-        },
+            default: 'system'
+        }
     },
     data() {
         return {
             thisValue: this.value,
-            status: false,
+            status: false
         };
     },
     watch: {
@@ -136,14 +139,19 @@ export default {
         },
         thisValue(val) {
             this.$emit('input', val);
-        },
+        }
     },
     computed: {
         isDisabled() {
-            return this.options.length == 0 || this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
+            return (
+                this.options.length == 0 ||
+                this.disabled.toString() == 'true' ||
+                this.disabled == 'disabled' ||
+                this.disabled === ''
+            );
         },
         borderLightColor() {
-            if(this.revealBorderColor) return this.revealBorderColor;
+            if (this.revealBorderColor) return this.revealBorderColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.6)';
             }
@@ -153,7 +161,7 @@ export default {
             return 'rgba(121, 119, 117, 0.6)';
         },
         backgroundLightColor() {
-            if(this.revealBackgroundColor) return this.revealBackgroundColor;
+            if (this.revealBackgroundColor) return this.revealBackgroundColor;
             if (this.$theme == 'light') {
                 return 'rgba(121, 119, 117, 0.3)';
             }
@@ -172,37 +180,27 @@ export default {
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
+        }
     },
     mounted() {
         this.outSideClickInit();
     },
     methods: {
         outSideClickInit() {
-            window.addEventListener('click', (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
-                    if (x == this.$el) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
+            window.addEventListener('click', this.outSideClickEvent);
+            window.addEventListener('touchend', this.outSideClickEvent);
+        },
+        outSideClickEvent(event) {
+            let x = event.target;
+            let _self = false;
+            while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                if (x == this.$el) {
+                    _self = true;
+                    break;
                 }
-                if (!_self) this.status = false;
-            });
-            window.addEventListener('touchend', (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
-                    if (x == this.$el) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
-                }
-                if (!_self) this.status = false;
-            });
+                x = x.parentNode;
+            }
+            if (!_self) this.status = false;
         },
         valueTrigger(val) {
             if (typeof val === 'function') return val();
@@ -219,7 +217,11 @@ export default {
                 this.status = false;
             }
             this.$emit('choose-item', this.thisValue);
-        },
+        }
     },
+    beforeDestroy() {
+        window.removeEventListener('click', this.outSideClickEvent);
+        window.removeEventListener('touchend', this.outSideClickEvent);
+    }
 };
 </script>

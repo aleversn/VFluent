@@ -3,8 +3,17 @@
         :class="['fv-'+$theme+'-DropDown', isDisabled ? 'disabled' : '']"
         :style="styles.dropDown"
     >
-        <div class="fv-drop-down-input-container" ref="input" @click="show.listContainer = !isDisabled ? !show.listContainer : false">
-            <slot name="drop-carrier" :value="choosenValue" :placeholoder="placeholder" :theme="$theme">
+        <div
+            class="fv-drop-down-input-container"
+            ref="input"
+            @click="show.listContainer = !isDisabled ? !show.listContainer : false"
+        >
+            <slot
+                name="drop-carrier"
+                :value="choosenValue"
+                :placeholoder="placeholder"
+                :theme="$theme"
+            >
                 <drop-down-input
                     v-model="choosenValue"
                     :placeholder="placeholder"
@@ -61,11 +70,11 @@
 </template>
 
 <script>
-import dropDownInput from "./input/input.vue";
-import listContainer from "./list/listContainer.vue";
+import dropDownInput from './input/input.vue';
+import listContainer from './list/listContainer.vue';
 
 export default {
-    name: "FvDropDown",
+    name: 'FvDropDown',
     components: {
         dropDownInput,
         listContainer
@@ -84,43 +93,43 @@ export default {
             default: 1
         },
         borderRadius: {
-            default: "6"
+            default: '6'
         },
         placeholder: {
-            default: "Dropdown"
+            default: 'Dropdown'
         },
         maxHeight: {
-            default: ""
+            default: ''
         },
         inputForeground: {
-            default: ""
+            default: ''
         },
         inputBorderColor: {
-            default: ""
+            default: ''
         },
         checkBoxBackground: {
-            default: ""
+            default: ''
         },
         dropDownListForeground: {
-            default: ""
+            default: ''
         },
         dropDownListBackground: {
-            default: ""
+            default: ''
         },
         inputBackground: {
-            default: ""
+            default: ''
         },
         dropDownIcon: {
-            default: "ChevronDown"
+            default: 'ChevronDown'
         },
         dropDownIconForeground: {
-            default: ""
+            default: ''
         },
         showError: {
             default: false
         },
         errorMessage: {
-            default: "This dropdown has an error"
+            default: 'This dropdown has an error'
         },
         disabled: {
             default: false
@@ -129,7 +138,7 @@ export default {
             default: false
         },
         theme: {
-            default: "system"
+            default: 'system'
         }
     },
     data() {
@@ -154,12 +163,12 @@ export default {
             this.choosenValue = val;
         },
         choosenValue(val) {
-            this.$emit("input", val);
+            this.$emit('input', val);
         },
-        setFocus (val) {
+        setFocus(val) {
             this.show.listContainer = val;
         },
-        "show.listContainer"(val) {
+        'show.listContainer'(val) {
             if (val) {
                 this.styles.dropDown.zIndex = 1;
             } else this.styles.dropDown.zIndex = 0;
@@ -168,15 +177,15 @@ export default {
     },
     computed: {
         $theme() {
-            if (this.theme == "system") return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
         isDisabled() {
             return (
                 this.options.length == 0 ||
-                this.disabled.toString() == "true" ||
-                this.disabled == "disabled" ||
-                this.disabled === ""
+                this.disabled.toString() == 'true' ||
+                this.disabled == 'disabled' ||
+                this.disabled === ''
             );
         },
         dropDownListHeight() {
@@ -185,34 +194,34 @@ export default {
         dropDownListShowStatus() {
             if (this.dropDownListHeight < this.bottomRemainHeight)
                 return {
-                    position: "bottom",
-                    top: "100%",
-                    bottom: "",
-                    height: "auto",
-                    overflow: "hidden"
+                    position: 'bottom',
+                    top: '100%',
+                    bottom: '',
+                    height: 'auto',
+                    overflow: 'hidden'
                 };
             if (this.dropDownListHeight < this.topRemainHeight)
                 return {
-                    position: "top",
-                    top: "",
-                    bottom: "100%",
-                    height: "auto",
-                    overflow: "hidden"
+                    position: 'top',
+                    top: '',
+                    bottom: '100%',
+                    height: 'auto',
+                    overflow: 'hidden'
                 };
             if (this.topRemainHeight > this.bottomRemainHeight)
                 return {
-                    position: "top",
-                    top: "",
-                    bottom: "100%",
+                    position: 'top',
+                    top: '',
+                    bottom: '100%',
                     height: `${this.topRemainHeight}px`,
-                    overflow: "auto"
+                    overflow: 'auto'
                 };
             return {
-                position: "bottom",
-                top: "100%",
-                bottom: "",
+                position: 'bottom',
+                top: '100%',
+                bottom: '',
                 height: `${this.bottomRemainHeight}px`,
-                overflow: "auto"
+                overflow: 'auto'
             };
         }
     },
@@ -222,24 +231,26 @@ export default {
     },
     methods: {
         outSideClickInit() {
-            window.addEventListener("click", event => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != "body") {
-                    if (x == this.$el) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
+            window.addEventListener('click', this.outSideClickEvent);
+        },
+        outSideClickEvent(event) {
+            let x = event.target;
+            let _self = false;
+            while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                if (x == this.$el) {
+                    _self = true;
+                    break;
                 }
-                if (!_self) this.show.listContainer = false;
-            });
+                x = x.parentNode;
+            }
+            if (!_self) this.show.listContainer = false;
         },
         heightSenseInit() {
             clearInterval(this.timer);
             this.timer = setInterval(() => {
                 try {
-                    this.topRemainHeight = this.$refs.input.getBoundingClientRect().top;
+                    this.topRemainHeight =
+                        this.$refs.input.getBoundingClientRect().top;
                 } catch (e) {
                     this.topRemainHeight = window.innerHeight;
                 }
@@ -254,11 +265,12 @@ export default {
         },
         onChange(event) {
             this.show.listContainer = this.multiple;
-            this.$emit("change", event);
+            this.$emit('change', event);
         }
     },
     beforeDestroy() {
         clearInterval(this.timer);
+        window.removeEventListener('click', this.outSideClickEvent);
     }
 };
 </script>

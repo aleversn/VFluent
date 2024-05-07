@@ -105,54 +105,54 @@ export default {
     name: 'FvNavigationPanel',
     props: {
         title: {
-            default: 'NavigationPanel',
+            default: 'NavigationPanel'
         },
         expand: {
-            default: true,
+            default: true
         },
         expandMode: {
-            default: 'relative',
+            default: 'relative'
         },
         expandWidth: {
-            default: 350,
+            default: 350
         },
         expandDisplay: {
-            default: 1024,
+            default: 1024
         },
         compactWidth: {
-            default: 50,
+            default: 50
         },
         flyoutDisplay: {
-            default: 0,
+            default: 0
         },
         fullSizeDisplay: {
-            default: 800,
+            default: 800
         },
         mobileDisplay: {
-            default: 0,
+            default: 0
         },
         showBack: {
-            default: true,
+            default: true
         },
         showNav: {
-            default: true,
+            default: true
         },
         showSearch: {
-            default: true,
+            default: true
         },
         settingTitle: {
-            default: 'Settings',
+            default: 'Settings'
         },
         showSetting: {
-            default: true,
+            default: true
         },
         background: {
-            default: '',
+            default: ''
         },
         theme: {
             type: String,
-            default: 'system',
-        },
+            default: 'system'
+        }
     },
     data() {
         return {
@@ -161,8 +161,8 @@ export default {
             thisExpandBackup: this.expand,
             screenWidth: window.innerWidth,
             timer: {
-                widthTimer: {},
-            },
+                widthTimer: {}
+            }
         };
     },
     watch: {
@@ -178,16 +178,22 @@ export default {
                 if (!this.isFlyout) this.thisExpand = this.thisExpandBackup;
                 else this.thisExpand = false;
             } else this.thisExpand = false;
-        },
+        }
     },
     computed: {
         panelWidth() {
             if (this.isFlyout) return `${this.compactWidth}px`;
-            if (this.thisExpand) return this.screenWidth <= this.fullSizeDisplay ? '100%' : `${this.expandWidth}px`;
+            if (this.thisExpand)
+                return this.screenWidth <= this.fullSizeDisplay
+                    ? '100%'
+                    : `${this.expandWidth}px`;
             return `${this.compactWidth}px`;
         },
         navWidth() {
-            let size = this.screenWidth <= this.fullSizeDisplay ? '100%' : `${this.expandWidth}px`;
+            let size =
+                this.screenWidth <= this.fullSizeDisplay
+                    ? '100%'
+                    : `${this.expandWidth}px`;
             if (this.thisExpand) return size;
             return `${this.compactWidth}px`;
         },
@@ -225,7 +231,7 @@ export default {
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
+        }
     },
     mounted() {
         this.screenWidthInit();
@@ -237,7 +243,7 @@ export default {
                 selector: `.fv-${this.$theme}-NavigationPanel .panel-container .fv-nav-default-item`,
                 borderGradientSize: 60,
                 borderLightColor: this.borderLightColor,
-                backgroundLightColor: this.backgroundLightColor,
+                backgroundLightColor: this.backgroundLightColor
             });
         },
         screenWidthInit() {
@@ -246,31 +252,32 @@ export default {
             }, 30);
         },
         outSideClickInit() {
-            window.addEventListener('click', (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
-                    if (x == this.$el) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
+            window.addEventListener('click', this.outSideClickEvent);
+        },
+        outSideClickEvent(event) {
+            let x = event.target;
+            let _self = false;
+            while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                if (x == this.$el) {
+                    _self = true;
+                    break;
                 }
-                if (!_self) {
-                    if (this.isFlyout || this.isMobile) this.thisExpand = false;
-                }
-            });
+                x = x.parentNode;
+            }
+            if (!_self) {
+                if (this.isFlyout || this.isMobile) this.thisExpand = false;
+            }
         },
         expandClick() {
             this.thisExpandBackup = !this.thisExpand;
             this.thisExpand = !this.thisExpand;
             this.$emit('expand-click', this.thisExpand);
-        },
+        }
     },
     beforeDestroy() {
         clearInterval(this.timer.widthTimer);
-
         this.$RevealDirect.destroy(this.FR);
-    },
+        window.removeEventListener('click', this.outSideClickEvent);
+    }
 };
 </script>

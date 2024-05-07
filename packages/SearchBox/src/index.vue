@@ -32,7 +32,10 @@
                     v-show="resultPlaceholder.length > 0"
                     class="search-box-placeholder"
                 >
-                    <slot name="resultPlaceholder" :resultPlaceholder="resultPlaceholder"></slot>
+                    <slot
+                        name="resultPlaceholder"
+                        :resultPlaceholder="resultPlaceholder"
+                    ></slot>
                 </div>
             </transition>
             <div class="search-box-container">
@@ -94,87 +97,87 @@ export default {
     name: 'FvSearchBox',
     props: {
         value: {
-            default: '',
+            default: ''
         },
         options: {
-            default: () => [],
+            default: () => []
         },
         placeholder: {
-            default: '',
+            default: ''
         },
         type: {
-            default: 'text',
+            default: 'text'
         },
         readonly: {
-            default: false,
+            default: false
         },
         maxlength: {
-            default: '',
+            default: ''
         },
         customFilter: {
-            default: false,
+            default: false
         },
         resultPlaceholder: {
-            default: false,
+            default: false
         },
         focusShow: {
-            default: false,
+            default: false
         },
         leftIcon: {
-            default: '',
+            default: ''
         },
         icon: {
-            default: '',
+            default: ''
         },
         underline: {
-            default: false,
+            default: false
         },
         background: {
-            default: '',
+            default: ''
         },
         borderWidth: {
-            default: 1,
+            default: 1
         },
         borderColor: {
-            default: '',
+            default: ''
         },
         focusBorderColor: {
-            default: '',
+            default: ''
         },
         foreground: {
-            default: '',
+            default: ''
         },
         fontSize: {
-            default: 13.3,
+            default: 13.3
         },
         fontWeight: {
-            default: 'normal',
+            default: 'normal'
         },
         textAlign: {
-            default: 'left',
+            default: 'left'
         },
         borderRadius: {
-            default: 3,
+            default: 3
         },
         isBoxShadow: {
-            default: false,
+            default: false
         },
         revealBorder: {
-            default: false,
+            default: false
         },
         status: {
-            default: '',
+            default: ''
         },
         debounceDelay: {
-            default: 300,
+            default: 300
         },
         disabled: {
-            default: false,
+            default: false
         },
         theme: {
             type: String,
-            default: 'system',
-        },
+            default: 'system'
+        }
     },
     data() {
         return {
@@ -183,11 +186,11 @@ export default {
             isFocus: false,
             filterOptions: this.options,
             show: {
-                searchResult: false,
+                searchResult: false
             },
             timer: {
-                debounce: null,
-            },
+                debounce: null
+            }
         };
     },
     watch: {
@@ -211,25 +214,33 @@ export default {
             if (this.isUnderline) {
                 if (this.isFocus)
                     return {
-                        borderBottomColor: this.focusBorderColor,
+                        borderBottomColor: this.focusBorderColor
                     };
                 return {
-                    borderBottomColor: this.borderColor,
+                    borderBottomColor: this.borderColor
                 };
             }
             if (this.isFocus)
                 return {
-                    borderColor: this.focusBorderColor,
+                    borderColor: this.focusBorderColor
                 };
             return {
-                borderColor: this.borderColor,
+                borderColor: this.borderColor
             };
         },
         isUnderline() {
-            return this.underline.toString() == 'true' || this.underline == 'underline' || this.underline === '';
+            return (
+                this.underline.toString() == 'true' ||
+                this.underline == 'underline' ||
+                this.underline === ''
+            );
         },
         isDisabled() {
-            return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
+            return (
+                this.disabled.toString() == 'true' ||
+                this.disabled == 'disabled' ||
+                this.disabled === ''
+            );
         },
         borderLightColor() {
             if (this.$theme == 'light') {
@@ -250,15 +261,23 @@ export default {
             return 'rgba(121, 119, 117, 0.3)';
         },
         isReadOnly() {
-            return this.readonly.toString() == 'true' || this.readonly == 'readonly' || this.readonly === '';
+            return (
+                this.readonly.toString() == 'true' ||
+                this.readonly == 'readonly' ||
+                this.readonly === ''
+            );
         },
         isDisabled() {
-            return this.disabled.toString() == 'true' || this.disabled == 'disabled' || this.disabled === '';
+            return (
+                this.disabled.toString() == 'true' ||
+                this.disabled == 'disabled' ||
+                this.disabled === ''
+            );
         },
         $theme() {
             if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
-        },
+        }
     },
     mounted() {
         this.lazyLoadInit();
@@ -271,25 +290,33 @@ export default {
             });
         },
         outSideClickInit() {
-            window.addEventListener('click', (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
-                    if (x == this.$el) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
+            window.addEventListener('click', this.outSideClickEvent);
+        },
+        outSideClickEvent(event) {
+            let x = event.target;
+            let _self = false;
+            while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                if (x == this.$el) {
+                    _self = true;
+                    break;
                 }
-                if (!_self) this.show.searchResult = false;
-            });
+                x = x.parentNode;
+            }
+            if (!_self) this.show.searchResult = false;
         },
         refreshFilter() {
             let result = [];
-            if (this.customFilter !== false) result = this.customFilter(this.options);
+            if (this.customFilter !== false)
+                result = this.customFilter(this.options);
             else {
                 for (let item of this.options) {
-                    if (item.name.toString().toLowerCase().indexOf(this.thisValue.toLowerCase()) > -1) result.push(item);
+                    if (
+                        item.name
+                            .toString()
+                            .toLowerCase()
+                            .indexOf(this.thisValue.toLowerCase()) > -1
+                    )
+                        result.push(item);
                 }
             }
             this.filterOptions = result;
@@ -310,7 +337,10 @@ export default {
             this.thisValue = '';
             this.$emit('update:resultPlaceholder', []);
             this.$emit('clear-click');
-        },
+        }
+    },
+    beforeDestroy() {
+        window.removeEventListener('click', this.outSideClickEvent);
     }
 };
 </script>

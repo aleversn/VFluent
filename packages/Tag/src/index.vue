@@ -124,34 +124,22 @@ export default {
     },
     methods: {
         outSideClickInit() {
-            window.addEventListener('click', (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
-                    if (x == this.$refs.add) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
+            window.addEventListener('click', this.outSideClickEvent);
+            window.addEventListener('touchend', this.outSideClickEvent);
+        },
+        outSideClickEvent(event) {
+            let x = event.target;
+            let _self = false;
+            while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
+                if (x == this.$refs.add) {
+                    _self = true;
+                    break;
                 }
-                if (!_self) {
-                    this.edit = false;
-                }
-            });
-            window.addEventListener('touchend', (event) => {
-                let x = event.target;
-                let _self = false;
-                while (x && x.tagName && x.tagName.toLowerCase() != 'body') {
-                    if (x == this.$refs.add) {
-                        _self = true;
-                        break;
-                    }
-                    x = x.parentNode;
-                }
-                if (!_self) {
-                    this.edit = false;
-                }
-            });
+                x = x.parentNode;
+            }
+            if (!_self) {
+                this.edit = false;
+            }
         },
         editable() {
             this.edit = true;
@@ -187,6 +175,10 @@ export default {
                 color: color.alpha(1).cssa()
             };
         }
+    },
+    beforeDestroy() {
+        window.removeEventListener('click', this.outSideClickEvent);
+        window.removeEventListener('touchend', this.outSideClickEvent);
     }
 };
 </script>

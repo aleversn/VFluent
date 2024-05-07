@@ -123,6 +123,7 @@ export default {
     <div></div>
 </fv-affix>
 ```
-  
+
+**特别地** 若需要进行性能优化, 可以考虑在元素被隐藏时, 将`mode`设置为`relative`.
 
   

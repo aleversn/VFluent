@@ -182,7 +182,7 @@ export default {
     },
     data() {
         return {
-            thisValue: this.value,
+            thisValue: this.value.toString(),
             isFocus: false,
             timer: {
                 debounce: null,
@@ -191,7 +191,7 @@ export default {
     },
     watch: {
         value(val) {
-            this.thisValue = val;
+            this.thisValue = val.toString();
         },
         thisValue(val) {
             clearTimeout(this.timer.debounce);
