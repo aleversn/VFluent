@@ -26,6 +26,7 @@
                     :lan="lan"
                     :theme="theme"
                     @choosen-dates="chooseDates"
+                    @choosen-dates-obj="$emit('choosen-dates-obj', $event)"
                 ></fv-calendar-view>
             </div>
         </transition>

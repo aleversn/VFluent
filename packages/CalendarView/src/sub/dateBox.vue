@@ -376,6 +376,10 @@ export default {
             }
             this.$emit("choosen-dates", this.currentChoose);
             this.$emit("choose", item);
+            let cur_dates = this.currentChoose.map((it) => {
+                return new Date(it.year, it.month, it.no);
+            });
+            this.$emit('choosen-dates-obj', cur_dates);
         },
         async delay(millionseconds) {
             return await new Promise((resolve) => {

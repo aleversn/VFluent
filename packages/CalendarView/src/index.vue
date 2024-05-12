@@ -15,7 +15,7 @@
         <transition-group :name="transitionName">
             <year-box v-if="status == 'year'" v-model="thisValue" :theme="$theme" :lan="lan" ref="year" key="1" @range-change="yearRange = $event" @choose="chooseYear"></year-box>
             <month-box v-if="status == 'month'" v-model="thisValue" :theme="$theme" :lan="lan" ref="month" key="2" @range-change="monthRange = $event" @choose="chooseMonth"></month-box>
-            <date-box v-if="status == 'date'" v-model="thisValue" :theme="$theme" :lan="lan" :multiple="multiple" ref="day" key="3" @range-change="dayRange = $event" @choosen-dates="$emit('choosen-dates', $event)" @choose="chooseDate"></date-box>
+            <date-box v-if="status == 'date'" v-model="thisValue" :theme="$theme" :lan="lan" :multiple="multiple" ref="day" key="3" @range-change="dayRange = $event" @choosen-dates="$emit('choosen-dates', $event)" @choosen-dates-obj="$emit('choosen-dates-obj', $event)" @choose="chooseDate"></date-box>
         </transition-group>
     </div>
 </div>
