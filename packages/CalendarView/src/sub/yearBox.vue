@@ -1,10 +1,26 @@
 <template>
-<div class="picker-container" ref="main">
-    <button v-for="(item, index) in years" :key="`year: ${index}`" class="picker-btn" :class="{range: item >= currentRange && item - currentRange < 10, current: item == nowYear}" @click="choose(item)">{{item}}</button>
-</div>
+    <div class="picker-container" ref="main">
+        <button
+            v-for="(item, index) in years"
+            :key="`year: ${index}`"
+            class="picker-btn"
+            :class="{
+                range: item >= currentRange && item - currentRange < 10,
+                current: item == nowYear
+            }"
+            :style="{
+                background: computedBackground(item)
+            }"
+            @click="choose(item)"
+        >
+            {{ item }}
+        </button>
+    </div>
 </template>
 
 <script>
+import gsap from 'gsap';
+
 export default {
     props: {
         value: {
@@ -19,11 +35,14 @@ export default {
         size: {
             default: 72.5
         },
+        background: {
+            default: ''
+        },
         theme: {
             default: 'system'
         }
     },
-    data () {
+    data() {
         return {
             thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             years: [],
@@ -39,58 +58,63 @@ export default {
         };
     },
     watch: {
-        currentRange (val) {
+        currentRange(val) {
             this.$emit('range-change', val);
         }
     },
     computed: {
         $theme() {
-            if(this.theme == 'system')
-                return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
-        year () {
+        year() {
             return this.thisValue.getFullYear();
         },
-        month () {
+        month() {
             return this.thisValue.getMonth();
         },
-        date () {
+        date() {
             return this.thisValue.getDate();
         },
-        nowYear () {
+        nowYear() {
             return new Date().getFullYear();
         },
-        nowMonth () {
+        nowMonth() {
             return new Date().getMonth();
         },
-        nowDate () {
+        nowDate() {
             return new Date().getDate();
         },
-        borderLightColor () {
+        borderLightColor() {
             return () => {
-                if(this.$theme == 'light') {
+                if (this.$theme == 'light') {
                     return 'rgba(121, 119, 117, 0.3)';
                 }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
                     return 'rgba(255, 255, 255, 0.3)';
                 }
                 return 'rgba(121, 119, 117, 0.3)';
-            }
+            };
         },
-        backgroundLightColor () {
+        backgroundLightColor() {
             return () => {
-                if(this.$theme == 'light') {
+                if (this.$theme == 'light') {
                     return 'rgba(121, 119, 117, 0.1)';
                 }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
                     return 'rgba(255, 255, 255, 0.1)';
                 }
                 return 'rgba(121, 119, 117, 0.1)';
-            }
+            };
+        },
+        computedBackground() {
+            return (item) => {
+                if (item == this.nowYear) return this.background;
+                return '';
+            };
         }
     },
-    mounted () {
+    mounted() {
         this.FRInit();
         this.yearsInit();
         this.scrollBottomToLoadInit(80);
@@ -98,7 +122,7 @@ export default {
         this.rangeTimerInit();
     },
     methods: {
-        FRInit () {
+        FRInit() {
             this.FR = this.$RevealMasked.apply(this.$el, {
                 maskedSelector: this.$refs.main,
                 selector: [],
@@ -108,110 +132,127 @@ export default {
                 backgroundLightColor: this.backgroundLightColor
             });
         },
-        yearsInit () {
+        yearsInit() {
             let y = [];
             let num = this.year - 8;
-            for(let i = 0; i < 28; i++) {
+            for (let i = 0; i < 28; i++) {
                 y.push(num);
                 num++;
             }
             this.years = y;
         },
-        scrollBottomToLoadInit(offset=0) {
+        scrollBottomToLoadInit(offset = 0) {
             let target = this.$refs.main;
-            target.addEventListener("scroll", event => {
-                if(target.scrollTop + offset >= target.scrollHeight - target.clientHeight)
+            target.addEventListener('scroll', (event) => {
+                if (
+                    target.scrollTop + offset >=
+                    target.scrollHeight - target.clientHeight
+                )
                     this.loadNext();
             });
         },
-        scrollTopToLoadInit(offset=0) {
+        scrollTopToLoadInit(offset = 0) {
             let target = this.$refs.main;
-            target.addEventListener("scroll", event => {
-                if(target.scrollTop <= 80)
-                    this.loadPrev();
+            target.addEventListener('scroll', (event) => {
+                if (target.scrollTop <= 80) this.loadPrev();
             });
         },
-        rangeTimerInit () {
+        rangeTimerInit() {
             clearInterval(this.timer.updateRange);
             this.timer.updateRange = setInterval(() => {
-                try
-                {
+                try {
                     let scrollTop = this.$refs.main.scrollTop;
                     scrollTop = scrollTop + this.size * 2;
-                    scrollTop = scrollTop / this.size * 4;
+                    scrollTop = (scrollTop / this.size) * 4;
                     scrollTop = Math.floor(scrollTop);
-                    this.currentRange = Math.floor(this.years[scrollTop] / 10) * 10;
-                }
-                catch (e)
-                {
+                    this.currentRange =
+                        Math.floor(this.years[scrollTop] / 10) * 10;
+                } catch (e) {
                     this.currentRange = 0;
                 }
             }, 300);
         },
-        async loadPrev () {
+        async loadPrev() {
             let num = this.years[0];
-            if(num == this.start)
-                return 0;
+            if (num == this.start) return 0;
             for (let i = 0; i < 16; i++) {
-                if(num <= this.start)
-                    return 0;
+                if (num <= this.start) return 0;
                 num--;
                 this.years.splice(0, 0, num);
             }
             await this.delay(30);
-            this.$refs.main.scrollTop = this.$refs.main.scrollTop + 16 / 4 * this.size;
+            this.$refs.main.scrollTop =
+                this.$refs.main.scrollTop + (16 / 4) * this.size;
         },
-        async loadNext () {
+        async loadNext() {
             let num = this.years[this.years.length - 1];
-            if(num == this.end)
-                return 0;
+            if (num == this.end) return 0;
             for (let i = 0; i < 16; i++) {
-                if(num >= this.end)
-                    return 0;
+                if (num >= this.end) return 0;
                 num++;
                 this.years.push(num);
             }
             await this.delay(30);
         },
-        async slide (val) {
-            if(!this.lock.slide)
-                return 0;
+        async slide(val) {
+            if (!this.lock.slide) return 0;
             this.lock.slide = false;
             clearInterval(this.timer.scroller);
-            return await new Promise(resolve => {
-                this.timer.scroller = setInterval(() => {
+            // return await new Promise(resolve => {
+            //     this.timer.scroller = setInterval(() => {
+            //         let index = this.years.indexOf(val);
+            //         if(index == -1) {
+            //             if(val < this.currentRange) {
+            //                 this.loadPrev();
+            //             }
+            //             else
+            //                 this.loadNext();
+            //         }
+            //         let height = Math.floor(index / 4) * this.size;
+            //         console.log(index, height);
+            //         let speed = -Math.floor((this.$refs.main.scrollTop - height) / 7);
+            //         this.$refs.main.scrollTop = this.$refs.main.scrollTop + speed;
+            //         if(speed == 0) {
+            //             this.$refs.main.scrollTop = height;
+            //             this.lock.slide = true;
+            //             resolve(0);
+            //             clearInterval(this.timer.scroller);
+            //         }
+            //     }, 30);
+            // });
+            let index = this.years.indexOf(val);
+            if (index == -1) {
+                if (val < this.currentRange) {
+                    await this.loadPrev();
+                } else await this.loadNext();
+            }
+            await new Promise((resolve) => {
+                this.$nextTick(() => {
                     let index = this.years.indexOf(val);
-                    if(index == -1) {
-                        if(val < this.currentRange) {
-                            this.loadPrev();
-                        }
-                        else
-                            this.loadNext();
-                    }
                     let height = Math.floor(index / 4) * this.size;
-                    let speed = -Math.floor((this.$refs.main.scrollTop - height) / 7);
-                    this.$refs.main.scrollTop = this.$refs.main.scrollTop + speed;
-                    if(speed == 0) {
-                        this.$refs.main.scrollTop = height;
-                        this.lock.slide = true;
-                        resolve(0);
-                        clearInterval(this.timer.scroller);
-                    }
-                }, 30);
+                    gsap.to(this.$refs.main, {
+                        scrollTop: height,
+                        duration: 0.3,
+                        onComplete: () => {
+                            this.lock.slide = true;
+                            resolve(0);
+                        }
+                    });
+                });
             });
         },
-        async delay (millionseconds) {
-            return await new Promise(resolve => {
+        async delay(millionseconds) {
+            return await new Promise((resolve) => {
                 setTimeout(() => {
                     resolve(millionseconds);
                 }, millionseconds);
             });
         },
-        choose (item) {
+        choose(item) {
             this.$emit('choose', item);
         }
     },
-    beforeDestroy () {
+    beforeDestroy() {
         clearInterval(this.timer.updateRange);
         this.$RevealMasked.destroy(this.FR);
     }

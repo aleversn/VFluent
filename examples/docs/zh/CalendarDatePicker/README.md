@@ -91,6 +91,8 @@ export default {
 |    disabled     |             Boolean             |       No       |      false      |                                                           |
 |    multiple     | ['single', 'multiple', 'range'] |       No       |     single      |           多选模式, 有单选、多选和范围日期选择            |
 |       lan       |          ['en', 'zh']           |       No       |       en        |               CalendarDatePicker language.                |
+|  choosenDates   |              Array              |       No       |       []        |                 CalendarView初始选中日期                  |
+|   foreground    |         [string(color)]         |       No       |       N/A       |                  CalendarView主题前景色                   |
 |      theme      |             String              |       No       |     system      | 主题样式, 包含`light`, `dark`, `system`, `custom`几种样式 |
 
 ### Events
@@ -100,4 +102,28 @@ export default {
 |:-----------------:|:--------------:|:---------------------------------:|
 |   choosen-dates   |     array      | 返回[{year, month, no}]类型的数组 |
 | choosen-dates-obj |     array      |       返回[Date]类型的数组        |
-  
+
+### Slot
+---
+1. Statement
+
+`CalendarView`的显式栏描述内容
+- value: 原文描述内容
+- dayRange: 当前日期数据对象
+
+```vue
+<template v-slot:statement="x">
+    <p></p>
+</template>
+```
+
+2. Weekday Content
+
+日期上方星期栏描述内容
+- value: 默认星期描述内容
+
+```vue
+<template v-slot:weekday_content>
+    <p></p>
+</template>
+```

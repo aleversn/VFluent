@@ -1,5 +1,10 @@
 <template>
-    <div :class="['fv-'+$theme+'-CalendarDatePicker', {disabled: isDisabled}]">
+    <div
+        :class="[
+            'fv-' + $theme + '-CalendarDatePicker',
+            { disabled: isDisabled }
+        ]"
+    >
         <picker-input
             v-model="dates"
             :placeholder="placeholder"
@@ -14,23 +19,37 @@
             @click.native="show.calendar = !isDisabled ? !show.calendar : false"
         ></picker-input>
         <transition name="fv-calendar-container">
-            <div
-                v-if="show.calendar"
-                class="calendar-container"
-            >
+            <div v-if="show.calendar" class="calendar-container">
                 <fv-calendar-view
                     v-model="thisValue"
                     :multiple="multiple"
                     :start="start"
                     :end="end"
                     :lan="lan"
+                    :choosen-dates="dates"
+                    :foreground="foreground"
                     :theme="theme"
                     @choosen-dates="chooseDates"
                     @choosen-dates-obj="$emit('choosen-dates-obj', $event)"
-                ></fv-calendar-view>
+                >
+                    <template v-slot:statement="x">
+                        <slot
+                            name="statement"
+                            :value="x.value"
+                            :dayRange="x.dayRange"
+                        >
+                            {{ x.value }}
+                        </slot>
+                    </template>
+                    <template v-slot:weekday_content="x">
+                        <slot name="weekday_content" :value="x.value">
+                            {{ x.value }}
+                        </slot>
+                    </template>
+                </fv-calendar-view>
             </div>
         </transition>
-        {{value}}
+        {{ value }}
     </div>
 </template>
 
@@ -78,6 +97,12 @@ export default {
         },
         multiple: {
             default: 'single'
+        },
+        choosenDates: {
+            default: () => []
+        },
+        foreground: {
+            default: ''
         },
         disabled: {
             default: false

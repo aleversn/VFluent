@@ -5,20 +5,36 @@
                 v-for="(weekday, index) in weekdays[lan]"
                 class="weekday"
                 :key="`weekday: ${index}`"
-            >{{weekday}}</button>
+            >
+                <slot name="weekday_content" :value="weekday">
+                    {{ weekday }}
+                </slot>
+            </button>
         </div>
-        <div
-            class="picker-container"
-            ref="main"
-        >
+        <div class="picker-container" ref="main">
             <button
                 v-for="(item, index) in days"
                 :key="`day: ${index}`"
                 class="picker-btn day"
-                :class="{range: item.year == currentRange.year && item.month == currentRange.month, current: item.year == nowYear && item.month == nowMonth && item.no == nowDate, choose: isChoose(item)}"
+                :class="{
+                    range:
+                        item.year == currentRange.year &&
+                        item.month == currentRange.month,
+                    current:
+                        item.year == nowYear &&
+                        item.month == nowMonth &&
+                        item.no == nowDate,
+                    choose: isChoosenFirstOrLast(item)
+                }"
                 :title="`${item.year}/${item.month + 1}/${item.no}`"
+                :style="{
+                    background: computedBackground(item),
+                    'border-color': computedBorderColor(item)
+                }"
                 @click="choose(item)"
-            >{{item.no}}</button>
+            >
+                {{ item.no }}
+            </button>
         </div>
     </div>
 </template>
@@ -27,26 +43,38 @@
 export default {
     props: {
         value: {
-            default: () => new Date(),
+            default: () => new Date()
         },
         start: {
-            default: 1900,
+            default: 1900
         },
         end: {
-            default: 3000,
+            default: 3000
         },
         multiple: {
-            default: "single",
+            default: 'single'
         },
         size: {
-            default: 41,
+            default: 41
         },
         lan: {
-            default: "en",
+            default: 'en'
+        },
+        background: {
+            default: ''
+        },
+        selectedBackground: {
+            default: ''
+        },
+        selectedBorderColor: {
+            default: ''
+        },
+        choosenDates: {
+            default: () => []
         },
         theme: {
-            default: "system",
-        },
+            default: 'system'
+        }
     },
     data() {
         return {
@@ -54,35 +82,41 @@ export default {
             thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             days: [],
             weekdays: {
-                en: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-                zh: ["日", "一", "二", "三", "四", "五", "六"],
+                en: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                zh: ['日', '一', '二', '三', '四', '五', '六']
             },
             dayList: {
                 leap: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-                default: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+                default: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
             },
             currentRange: 0,
             currentChoose: [],
             timer: {
                 updateRange: {},
-                scroller: {},
+                scroller: {}
             },
             lock: {
-                slide: true,
-            },
+                slide: true
+            }
         };
     },
     watch: {
+        choosenDates: {
+            handler(val) {
+                this.currentChoose = JSON.parse(JSON.stringify(val));
+            },
+            immediate: true
+        },
         currentRange(val) {
-            this.$emit("range-change", val);
+            this.$emit('range-change', val);
         },
         multiple(val) {
-            if (val == "single") this.currentChoose = [this.currentChoose[0]];
-        },
+            if (val == 'single') this.currentChoose = [this.currentChoose[0]];
+        }
     },
     computed: {
         $theme() {
-            if (this.theme == "system") return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
         year() {
@@ -105,26 +139,45 @@ export default {
         },
         borderLightColor() {
             return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.3)";
+                if (this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.3)';
                 }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.3)";
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.3)';
                 }
-                return "rgba(121, 119, 117, 0.3)";
-            }
+                return 'rgba(121, 119, 117, 0.3)';
+            };
         },
         backgroundLightColor() {
             return () => {
-                if (this.$theme == "light") {
-                    return "rgba(121, 119, 117, 0.1)";
+                if (this.$theme == 'light') {
+                    return 'rgba(121, 119, 117, 0.1)';
                 }
-                if (this.$theme == "dark" || this.$theme == "custom") {
-                    return "rgba(255, 255, 255, 0.1)";
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
+                    return 'rgba(255, 255, 255, 0.1)';
                 }
-                return "rgba(121, 119, 117, 0.1)";
-            }
+                return 'rgba(121, 119, 117, 0.1)';
+            };
         },
+        computedBackground() {
+            return (item) => {
+                if (
+                    item.year == this.nowYear &&
+                    item.month == this.nowMonth &&
+                    item.no == this.nowDate
+                )
+                    return this.background;
+                if (this.isChoose(item)) return this.selectedBackground;
+                return '';
+            };
+        },
+        computedBorderColor() {
+            return (item) => {
+                if (this.isChoosenFirstOrLast(item))
+                    return this.selectedBorderColor;
+                return '';
+            };
+        }
     },
     mounted() {
         this.FRInit();
@@ -145,6 +198,9 @@ export default {
             });
         },
         async daysInit() {
+            this.thisValue = this.$SDate.Parse(
+                this.$SDate.DateToString(this.value)
+            );
             let d = [];
             let nowday = this.$SDate.Parse(
                 this.$SDate.DateToString(this.thisValue)
@@ -168,7 +224,7 @@ export default {
                 d.push({
                     year: lastday.getFullYear(),
                     month: lastday.getMonth(),
-                    no: j + 1,
+                    no: j + 1
                 });
             }
             for (let i = 0; i < 2; i++) {
@@ -183,7 +239,7 @@ export default {
                     d.push({
                         year: nowday.getFullYear(),
                         month: nowday.getMonth(),
-                        no: j + 1,
+                        no: j + 1
                     });
                 }
                 nowday.setMonth(nowday.getMonth() + 1);
@@ -196,7 +252,7 @@ export default {
         },
         scrollBottomToLoadInit(offset = 0) {
             let target = this.$refs.main;
-            target.addEventListener("scroll", (event) => {
+            target.addEventListener('scroll', (event) => {
                 if (
                     target.scrollTop + offset >=
                     target.scrollHeight - target.clientHeight
@@ -206,7 +262,7 @@ export default {
         },
         scrollTopToLoadInit(offset = 0) {
             let target = this.$refs.main;
-            target.addEventListener("scroll", (event) => {
+            target.addEventListener('scroll', (event) => {
                 if (target.scrollTop <= 80) this.loadPrev();
             });
         },
@@ -235,7 +291,7 @@ export default {
                     this.days.splice(0, 0, {
                         year: nowday.getFullYear(),
                         month: nowday.getMonth(),
-                        no: j + 1,
+                        no: j + 1
                     });
                     count++;
                 }
@@ -255,7 +311,7 @@ export default {
                 this.days.splice(0, 0, {
                     year: nowday.getFullYear(),
                     month: nowday.getMonth(),
-                    no: j + 1,
+                    no: j + 1
                 });
                 count++;
             }
@@ -278,7 +334,7 @@ export default {
                 this.days.splice(0, 0, {
                     year: lastday.getFullYear(),
                     month: lastday.getMonth(),
-                    no: j + 1,
+                    no: j + 1
                 });
                 count++;
             }
@@ -307,7 +363,7 @@ export default {
                 this.days.push({
                     year: nowday.getFullYear(),
                     month: nowday.getMonth(),
-                    no: j + 1,
+                    no: j + 1
                 });
             }
             await this.delay(30);
@@ -355,27 +411,72 @@ export default {
             });
         },
         leapYear(num) {
-            if (num % 4 == 0 && num % 100 != 0) return "leap";
-            else if (num % 400 == 0) return "leap";
-            else return "default";
+            if (num % 4 == 0 && num % 100 != 0) return 'leap';
+            else if (num % 400 == 0) return 'leap';
+            else return 'default';
+        },
+        getDaysInMonth(month, year) {
+            // month is 1 based
+            return new Date(year, month, 0).getDate();
         },
         choose(item) {
-            if (this.multiple == "single") this.currentChoose = [item];
-            else if (this.multiple == "multiple") this.currentChoose.push(item);
-            else if (this.multiple == "range") {
-                let item_index = this.days.indexOf(item);
-                let last_index = this.days.indexOf(
-                    this.currentChoose[this.currentChoose.length - 1]
-                );
-                if (this.currentChoose.length == 0) this.currentChoose = [item];
-                else if (item_index >= last_index) {
-                    for (let i = last_index + 1; i <= item_index; i++) {
-                        this.currentChoose.push(this.days[i]);
+            if (this.multiple == 'single') this.currentChoose = [item];
+            else if (this.multiple == 'multiple') this.currentChoose.push(item);
+            else if (this.multiple == 'range') {
+                this.currentChoose.sort((a, b) => {
+                    if (a.year != b.year) return a.year - b.year;
+                    if (a.month != b.month) return a.month - b.month;
+                    return a.no - b.no;
+                });
+                let result =
+                    this.currentChoose.length > 0
+                        ? [this.currentChoose[0]]
+                        : [item];
+                if (
+                    new Date(result[0].year, result[0].month, result[0].no) >=
+                        new Date(item.year, item.month, item.no) ||
+                    this.currentChoose.length > 1
+                ) {
+                    result = [item];
+                } else result.push(item);
+                if (result.length === 1) {
+                    this.currentChoose = result;
+                } else {
+                    let final = [];
+                    for (let i = result[0].year; i <= result[1].year; i++) {
+                        let start = 0;
+                        let end = 11;
+                        if (i == result[0].year) start = result[0].month;
+                        if (i == result[1].year) end = result[1].month;
+                        for (let j = start; j <= end; j++) {
+                            let days = this.getDaysInMonth(j + 1, i);
+                            for (let k = 1; k <= days; k++) {
+                                let target = {
+                                    year: i,
+                                    month: j,
+                                    no: k
+                                };
+                                if (
+                                    i === result[0].year &&
+                                    start === result[0].month &&
+                                    k < result[0].no
+                                )
+                                    continue;
+                                if (
+                                    i === result[1].year &&
+                                    end === result[1].month &&
+                                    k > result[1].no
+                                )
+                                    continue;
+                                final.push(target);
+                            }
+                        }
                     }
-                } else this.currentChoose = [item];
+                    this.currentChoose = final;
+                }
             }
-            this.$emit("choosen-dates", this.currentChoose);
-            this.$emit("choose", item);
+            this.$emit('choosen-dates', this.currentChoose);
+            this.$emit('choose', item);
             let cur_dates = this.currentChoose.map((it) => {
                 return new Date(it.year, it.month, it.no);
             });
@@ -388,9 +489,37 @@ export default {
                 }, millionseconds);
             });
         },
-        isChoose(item) {
-            return this.currentChoose.indexOf(item) > -1;
+        isEqualItem(item1, item2) {
+            return (
+                item1.year == item2.year &&
+                item1.month == item2.month &&
+                item1.no == item2.no
+            );
         },
+        isChoose(item) {
+            return (
+                this.currentChoose.findIndex(
+                    (it) =>
+                        it.year == item.year &&
+                        it.month == item.month &&
+                        it.no == item.no
+                ) != -1
+            );
+        },
+        isChoosenFirstOrLast(item) {
+            if (this.multiple === 'range') {
+                if (this.currentChoose.length == 0) return false;
+                if (this.isEqualItem(this.currentChoose[0], item)) return true;
+                if (
+                    this.isEqualItem(
+                        this.currentChoose[this.currentChoose.length - 1],
+                        item
+                    )
+                )
+                    return true;
+                return false;
+            } else return this.isChoose(item);
+        }
     },
     beforeDestroy() {
         clearInterval(this.timer.updateRange);

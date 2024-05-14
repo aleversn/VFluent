@@ -1,7 +1,21 @@
 <template>
-<div class="picker-container" ref="main">
-    <button v-for="(item, index) in months" :key="`year: ${index}`" class="picker-btn" :class="{range: item.year === currentRange.year, current: item.year === nowYear && item.no === nowMonth}" @click="choose(item)">{{item.name}}</button>
-</div>
+    <div class="picker-container" ref="main">
+        <button
+            v-for="(item, index) in months"
+            :key="`year: ${index}`"
+            class="picker-btn"
+            :class="{
+                range: item.year === currentRange.year,
+                current: item.year === nowYear && item.no === nowMonth
+            }"
+            :style="{
+                background: computedBackground(item)
+            }"
+            @click="choose(item)"
+        >
+            {{ item.name }}
+        </button>
+    </div>
 </template>
 
 <script>
@@ -22,27 +36,30 @@ export default {
         lan: {
             default: 'en'
         },
+        background: {
+            default: ''
+        },
         theme: {
             default: 'system'
         }
     },
-    data () {
+    data() {
         return {
             thisValue: this.$SDate.Parse(this.$SDate.DateToString(this.value)),
             months: [],
             monthList: [
-                { en: 'Jan', zh: '一月'},
-                { en: 'Feb', zh: '二月'},
-                { en: 'Mar', zh: '三月'},
-                { en: 'Apr', zh: '四月'},
-                { en: 'May', zh: '五月'},
-                { en: 'Jun', zh: '六月'},
-                { en: 'Jul', zh: '七月'},
-                { en: 'Aug', zh: '八月'},
-                { en: 'Set', zh: '九月'},
-                { en: 'Oct', zh: '十月'},
-                { en: 'Nov', zh: '十一月'},
-                { en: 'Dec', zh: '十二月'}
+                { en: 'Jan', zh: '一月' },
+                { en: 'Feb', zh: '二月' },
+                { en: 'Mar', zh: '三月' },
+                { en: 'Apr', zh: '四月' },
+                { en: 'May', zh: '五月' },
+                { en: 'Jun', zh: '六月' },
+                { en: 'Jul', zh: '七月' },
+                { en: 'Aug', zh: '八月' },
+                { en: 'Set', zh: '九月' },
+                { en: 'Oct', zh: '十月' },
+                { en: 'Nov', zh: '十一月' },
+                { en: 'Dec', zh: '十二月' }
             ],
             currentRange: 0,
             FR: null,
@@ -56,58 +73,63 @@ export default {
         };
     },
     watch: {
-        currentRange (val) {
+        currentRange(val) {
             this.$emit('range-change', val);
         }
     },
     computed: {
         $theme() {
-            if(this.theme == 'system')
-                return this.$fvGlobal.state.theme;
+            if (this.theme == 'system') return this.$fvGlobal.state.theme;
             return this.theme;
         },
-        year () {
+        year() {
             return this.thisValue.getFullYear();
         },
-        month () {
+        month() {
             return this.thisValue.getMonth();
         },
-        date () {
+        date() {
             return this.thisValue.getDate();
         },
-        nowYear () {
+        nowYear() {
             return new Date().getFullYear();
         },
-        nowMonth () {
+        nowMonth() {
             return new Date().getMonth();
         },
-        nowDate () {
+        nowDate() {
             return new Date().getDate();
         },
-        borderLightColor () {
+        borderLightColor() {
             return () => {
-                if(this.$theme == 'light') {
+                if (this.$theme == 'light') {
                     return 'rgba(121, 119, 117, 0.3)';
                 }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
                     return 'rgba(255, 255, 255, 0.3)';
                 }
                 return 'rgba(121, 119, 117, 0.3)';
-            }
+            };
         },
-        backgroundLightColor () {
+        backgroundLightColor() {
             return () => {
-                if(this.$theme == 'light') {
+                if (this.$theme == 'light') {
                     return 'rgba(121, 119, 117, 0.1)';
                 }
-                if(this.$theme == 'dark' || this.$theme == 'custom') {
+                if (this.$theme == 'dark' || this.$theme == 'custom') {
                     return 'rgba(255, 255, 255, 0.1)';
                 }
                 return 'rgba(121, 119, 117, 0.1)';
-            }
+            };
+        },
+        computedBackground() {
+            return (item) => {
+                if (item.year == this.nowYear && item.no === this.nowMonth) return this.background;
+                return '';
+            };
         }
     },
-    mounted () {
+    mounted() {
         this.FRInit();
         this.monthsInit();
         this.scrollBottomToLoadInit(80);
@@ -115,7 +137,7 @@ export default {
         this.rangeTimerInit();
     },
     methods: {
-        FRInit () {
+        FRInit() {
             this.FR = this.$RevealMasked.apply(this.$el, {
                 maskedSelector: this.$refs.main,
                 selector: [],
@@ -125,95 +147,110 @@ export default {
                 backgroundLightColor: this.backgroundLightColor
             });
         },
-        monthsInit () {
+        monthsInit() {
             let m = [];
             let num = this.year - 1;
-            for(let i = 0; i < 3; i++) {
-                for(let j = 0; j < this.monthList.length; j++) {
-                    m.push({ year: num, no: j, name: this.monthList[j][this.lan]});
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < this.monthList.length; j++) {
+                    m.push({
+                        year: num,
+                        no: j,
+                        name: this.monthList[j][this.lan]
+                    });
                 }
                 num++;
             }
             this.months = m;
             setTimeout(() => {
-                this.$refs.main.scrollTop = this.$refs.main.scrollTop + this.size * 3;
+                this.$refs.main.scrollTop =
+                    this.$refs.main.scrollTop + this.size * 3;
             }, 50);
         },
-        scrollBottomToLoadInit(offset=0) {
+        scrollBottomToLoadInit(offset = 0) {
             let target = this.$refs.main;
-            target.addEventListener("scroll", event => {
-                if(target.scrollTop + offset >= target.scrollHeight - target.clientHeight)
+            target.addEventListener('scroll', (event) => {
+                if (
+                    target.scrollTop + offset >=
+                    target.scrollHeight - target.clientHeight
+                )
                     this.loadNext();
             });
         },
-        scrollTopToLoadInit(offset=0) {
+        scrollTopToLoadInit(offset = 0) {
             let target = this.$refs.main;
-            target.addEventListener("scroll", event => {
-                if(target.scrollTop <= 80)
-                    this.loadPrev();
+            target.addEventListener('scroll', (event) => {
+                if (target.scrollTop <= 80) this.loadPrev();
             });
         },
-        rangeTimerInit () {
+        rangeTimerInit() {
             clearInterval(this.timer.updateRange);
             this.timer.updateRange = setInterval(() => {
-                try
-                {
+                try {
                     let scrollTop = this.$refs.main.scrollTop;
                     scrollTop = scrollTop + this.size * 2;
-                    scrollTop = scrollTop / this.size * 4;
+                    scrollTop = (scrollTop / this.size) * 4;
                     scrollTop = Math.floor(scrollTop);
                     this.currentRange = this.months[scrollTop + 3];
-                }
-                catch (e)
-                {
-                    this.currentRange = { year: 0, no: 0, name: this.monthList[0][this.lan]};
+                } catch (e) {
+                    this.currentRange = {
+                        year: 0,
+                        no: 0,
+                        name: this.monthList[0][this.lan]
+                    };
                 }
             }, 300);
         },
-        async loadPrev () {
+        async loadPrev() {
             let num = this.months[0].year;
-            if(num == this.start)
-                return 0;
+            if (num == this.start) return 0;
             num--;
-            for(let j = this.monthList.length - 1; j >= 0; j--) {
-                this.months.splice(0, 0, { year: num, no: j, name: this.monthList[j][this.lan]});
+            for (let j = this.monthList.length - 1; j >= 0; j--) {
+                this.months.splice(0, 0, {
+                    year: num,
+                    no: j,
+                    name: this.monthList[j][this.lan]
+                });
             }
             await this.delay(30);
-            this.$refs.main.scrollTop = this.$refs.main.scrollTop + 12 / 4 * this.size;
+            this.$refs.main.scrollTop =
+                this.$refs.main.scrollTop + (12 / 4) * this.size;
         },
-        async loadNext () {
+        async loadNext() {
             let num = this.months[this.months.length - 1].year;
-            if(num == this.end)
-                return 0;
+            if (num == this.end) return 0;
             num++;
-            for(let j = 0; j < this.monthList.length; j++) {
-                this.months.push({ year: num, no: j, name: this.monthList[j][this.lan]});
+            for (let j = 0; j < this.monthList.length; j++) {
+                this.months.push({
+                    year: num,
+                    no: j,
+                    name: this.monthList[j][this.lan]
+                });
             }
             await this.delay(30);
         },
-        async slide (val) {
-            if(!this.lock.slide)
-                return 0;
+        async slide(val) {
+            if (!this.lock.slide) return 0;
             this.lock.slide = false;
             clearInterval(this.timer.scroller);
-            return await new Promise(resolve => {
+            return await new Promise((resolve) => {
                 this.timer.scroller = setInterval(() => {
                     let target = this.months.find(
-                        item => item.year == val.year && item.no == 0
+                        (item) => item.year == val.year && item.no == 0
                     );
-                    if(target == undefined) {
-                        if(val < this.currentRange.year) {
+                    if (target == undefined) {
+                        if (val < this.currentRange.year) {
                             this.loadPrev();
-                        }
-                        else
-                            this.loadNext();
+                        } else this.loadNext();
                         return 0;
                     }
                     let index = this.months.indexOf(target);
                     let height = Math.floor(index / 4) * this.size;
-                    let speed = -Math.floor((this.$refs.main.scrollTop - height) / 7);
-                    this.$refs.main.scrollTop = this.$refs.main.scrollTop + speed;
-                    if(speed == 0) {
+                    let speed = -Math.floor(
+                        (this.$refs.main.scrollTop - height) / 7
+                    );
+                    this.$refs.main.scrollTop =
+                        this.$refs.main.scrollTop + speed;
+                    if (speed == 0) {
                         this.$refs.main.scrollTop = height;
                         this.lock.slide = true;
                         resolve(0);
@@ -222,18 +259,18 @@ export default {
                 }, 30);
             });
         },
-        async delay (millionseconds) {
-            return await new Promise(resolve => {
+        async delay(millionseconds) {
+            return await new Promise((resolve) => {
                 setTimeout(() => {
                     resolve(millionseconds);
                 }, millionseconds);
             });
         },
-        choose (item) {
+        choose(item) {
             this.$emit('choose', item);
         }
     },
-    beforeDestroy () {
+    beforeDestroy() {
         clearInterval(this.timer.updateRange);
         this.$RevealMasked.destroy(this.FR);
     }
