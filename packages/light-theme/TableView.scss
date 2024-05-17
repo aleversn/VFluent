@@ -1,0 +1,5 @@
+@import '../common-theme/TableView.scss';
+.fv-light-TableView{
+  @include fv-TableView();
+}
+    

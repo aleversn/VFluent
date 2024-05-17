@@ -55,6 +55,7 @@ import { FvIconElement } from './iconelement'
 import { FvAffix } from './affix'
 import { FvResizeWatcher } from './resizewatcher'
 import { FvRightMenu } from './rightmenu'
+import { FvTableView } from './tableview'
 
 export function install (vue: typeof Vue): void
 export type ComponentSize = FluentVueComponentSize
@@ -172,4 +173,6 @@ export type Theme = FluentVueTheme
   export class ResizeWatcher extends FvResizeWatcher {}
 /** RightMenu component */
   export class RightMenu extends FvRightMenu {}
+/** TableView component */
+  export class TableView extends FvTableView {}
 

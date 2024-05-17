@@ -438,5 +438,13 @@
       "Dark": "@/dark-theme/RightMenu.scss",
       "Custom": "@/custom-theme/RightMenu.scss"
     }
+  },
+  "TableView": {
+    "entry": "@/TableView/index.js",
+    "theme": {
+      "Light": "@/light-theme/TableView.scss",
+      "Dark": "@/dark-theme/TableView.scss",
+      "Custom": "@/custom-theme/TableView.scss"
+    }
   }
 }

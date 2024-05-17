@@ -1,0 +1,181 @@
+@import "../common-theme/TableView.scss";
+.fv-dark-TableView {
+    @include fv-TableView();
+
+    color: rgba(255, 255, 255, 0.443);
+
+    .fv-tableview-main-wrapper {
+        .fv-tableview-head-row {
+            .fv-tableview-head-item {
+                border-left: rgba(0, 0, 0, 0) solid 2px;
+
+                &:hover {
+                    background: rgba(120, 120, 120, 0.1);
+                }
+
+                &:active {
+                    background: rgba(120, 120, 120, 0.2);
+                }
+
+                &.onDrop {
+                    border-color: rgba(0, 90, 159, 0.3);
+                }
+            }
+        }
+
+        .fv-tableview-data-row {
+            &.newline {
+                border-top: rgba(47, 47, 47, 1) solid thin;
+                border-bottom: rgba(47, 47, 47, 1) solid thin;
+
+                &:hover {
+                    background: rgba(120, 120, 120, 0.1);
+                }
+
+                &:active {
+                    background: rgba(120, 120, 120, 0.2);
+                }
+            }
+
+            &.choosen {
+                .fv-tableview-cell-item {
+                    background: rgba(118, 185, 237, 0.1);
+
+                    &.check-box {
+                        * {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .fv-tableview-quick-tool {
+                    opacity: 1;
+                }
+            }
+
+            .onDrop {
+                background: rgba(0, 90, 159, 0);
+
+                &.show {
+                    background: rgba(0, 90, 159, 0.3);
+                }
+            }
+
+            .fv-tableview-cell-item {
+                border: rgba(47, 47, 47, 1) solid thin;
+
+                &.first-selected {
+                    outline: rgba(118, 185, 237, 0.6) solid 2px;
+                }
+
+                .fv-tableview-cell-content {
+                    .fv-tableview-default-content {
+                        color: rgba(255, 255, 255, 0.81);
+                    }
+                }
+
+                .fv-tableview-cell-sync-btn {
+                    border: rgba(118, 185, 237, 1) solid 2px;
+                }
+            }
+
+            .fv-tableview-quick-tool {
+                color: rgba(255, 255, 255, 0.7);
+            }
+        }
+    }
+
+    .fv-tableview-edit-wrapper-background {
+        .fv-tableview-edit-wrapper-container {
+            background: rgba(36, 36, 36, 1);
+            border: rgba(90, 90, 90, 0.1) solid thin;
+            color: rgba(255, 255, 255, 0.81);
+
+            .fv-tableview-default-edittool-row {
+                &.lighter {
+                    &:hover {
+                        background: rgba(120, 120, 120, 0.1);
+                    }
+
+                    &:active {
+                        background: rgba(120, 120, 120, 0.2);
+                    }
+                }
+            }
+
+            .fv-tableview-number-edittool-inside-block {
+                .number-edittool-title {
+                    color: rgba(120, 120, 120, 1);
+                }
+
+                .hor-block {
+                    .hor-item {
+                        border: rgba(90, 90, 90, 1) solid thin;
+
+                        &:hover {
+                            background: rgba(50, 50, 50, 1);
+                        }
+
+                        &:active {
+                            background: rgba(36, 36, 36, 1);
+                        }
+                    }
+                }
+
+                .show-as-config-block {
+                    background: rgba(20, 20, 20, 1);
+
+                    .show-as-config-item {
+                        .show-as-config-custom-drop-down {
+                            &:hover {
+                                background: rgba(200, 200, 200, 0.1);
+                            }
+
+                            &:active {
+                                background: rgba(200, 200, 200, 0.2);
+                            }
+                        }
+
+                        .color-block {
+                            border: rgba(120, 120, 120, 0.1) solid thin;
+                        }
+                    }
+                }
+            }
+
+            hr {
+                border-bottom: rgba(90, 90, 90, 0.1) solid thin;
+            }
+        }
+    }
+
+    .fv-tableview-spliter {
+        &:hover {
+            i {
+                background: rgba(200, 198, 196, 0.6);
+            }
+        }
+
+        &:active {
+            i {
+                background: rgba(200, 198, 196, 1);
+                box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    .fv-tableview-icon-block {
+        background: rgba(200, 200, 200, 0.1);
+        border: rgba(90, 90, 90, 0.1) solid thin;
+
+        &:hover {
+            background: rgba(120, 120, 120, 0.1);
+        }
+
+        &:active {
+            background: rgba(120, 120, 120, 0.2);
+        }
+    }
+}

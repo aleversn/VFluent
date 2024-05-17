@@ -63,6 +63,7 @@ import IconElement from '@/IconElement/index.js'
 import Affix from '@/Affix/index.js'
 import ResizeWatcher from '@/ResizeWatcher/index.js'
 import RightMenu from '@/RightMenu/index.js'
+import TableView from '@/TableView/index.js'
 
 import pkg from "../package.json"
 
@@ -122,6 +123,7 @@ let components = [
   Affix,
   ResizeWatcher,
   RightMenu,
+  TableView,
 
 ]
 
@@ -217,6 +219,7 @@ export default {
   Affix,
   ResizeWatcher,
   RightMenu,
+  TableView,
 
 }
 

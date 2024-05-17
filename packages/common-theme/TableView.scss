@@ -1,0 +1,640 @@
+@mixin fv-TableView {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    color: rgba(55, 53, 47, 0.651);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    .fv-tableview-main-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-left: 50px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow-x: overlay;
+
+        .fv-tableview-head-row {
+            position: relative;
+            width: auto;
+            height: 30px;
+            display: flex;
+
+            .fv-tableview-head-item {
+                position: relative;
+                width: 60px;
+                height: 100%;
+                flex-shrink: 0;
+                border-left: rgba(0, 0, 0, 0) solid 2px;
+                font-size: 13.8px;
+                box-sizing: border-box;
+                display: flex;
+                transition: border-color 0.3s;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgba(120, 120, 120, 0.1);
+                }
+
+                &:active {
+                    background: rgba(120, 120, 120, 0.2);
+                }
+
+                &.onDrop {
+                    border-color: rgba(0, 90, 159, 0.3);
+                }
+
+                &.fixed {
+                    position: sticky;
+                    left: 0px;
+                    z-index: 3;
+                }
+
+                &.check-box {
+                    width: 30px;
+                    height: auto;
+                    padding-left: 2px;
+                    border-left: none;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    * {
+                        transition: opacity 0.3s;
+                        opacity: 0;
+                    }
+
+                    &:hover {
+                        * {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &.op-tools {
+                    width: 60px;
+                    height: 100%;
+                    border-right: none;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &:hover {
+                        background: none;
+                    }
+
+                    &:active {
+                        background: none;
+                    }
+                }
+
+                .fv-tableview-head-content {
+                    position: relative;
+                    width: 10px;
+                    height: 100%;
+                    flex: 1;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    display: flex;
+                    align-items: center;
+                    overflow: hidden;
+                    user-select: none;
+                }
+            }
+        }
+
+        .fv-tableview-data-row {
+            position: relative;
+            width: auto;
+            height: auto;
+            display: flex;
+
+            &.newline {
+                position: sticky;
+                left: 0px;
+                width: auto;
+                max-width: 100%;
+                height: 30px;
+                border-top: rgba(223, 223, 231, 1) solid thin;
+                border-bottom: rgba(223, 223, 231, 1) solid thin;
+                font-size: 13.8px;
+                user-select: none;
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    background: rgba(120, 120, 120, 0.1);
+                }
+
+                &:active {
+                    background: rgba(120, 120, 120, 0.2);
+                }
+
+                .ms-Icon {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .new-line-title {
+                    height: 100%;
+                    margin: 0px;
+                    margin-left: 5px;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            &.choosen {
+                .fv-tableview-cell-item {
+                    background: rgba(0, 90, 158, 0.1);
+
+                    &.check-box {
+                        * {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .fv-tableview-quick-tool {
+                    opacity: 1;
+                }
+            }
+
+            .onDrop {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 5px;
+                margin: 0px;
+                background: rgba(0, 90, 159, 0);
+                transition: all 0.3s;
+
+                &.show {
+                    background: rgba(0, 90, 159, 0.3);
+                }
+            }
+
+            .fv-tableview-cell-item {
+                position: relative;
+                width: 60px;
+                height: auto;
+                flex-shrink: 0;
+                border: rgba(223, 223, 231, 1) solid thin;
+                border-right: none;
+                border-bottom: none;
+                font-size: 13.8px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                &.wrappable {
+                    height: auto;
+
+                    .fv-tableview-cell-content {
+                        height: auto;
+                        white-space: normal;
+                        word-wrap: break-word;
+                    }
+                }
+
+                &.fixed {
+                    position: sticky;
+                    left: 0px;
+                    z-index: 3;
+                }
+
+                &.check-box {
+                    width: 30px;
+                    height: auto;
+                    padding-left: 2px;
+                    border-left: none;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    * {
+                        transition: opacity 0.3s;
+                        opacity: 0;
+                    }
+
+                    &:hover {
+                        * {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &.op-tools {
+                    width: 60px;
+                    height: auto;
+                    border-right: none;
+                    box-sizing: border-box;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &.first-selected {
+                    outline: rgba(0, 90, 158, 0.6) solid 2px;
+                    border-radius: 3px;
+                }
+
+                .fv-tableview-cell-content {
+                    position: relative;
+                    width: 10px;
+                    height: 30px;
+                    flex: 1;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    box-sizing: border-box;
+                    display: flex;
+                    align-items: center;
+                    overflow: hidden;
+                    user-select: none;
+
+                    .fv-tableview-default-content {
+                        color: rgba(55, 53, 47, 1);
+                        padding: 0px 5px;
+                        box-sizing: border-box;
+                    }
+                }
+
+                .fv-tableview-cell-sync-btn {
+                    position: absolute;
+                    right: -4.5px;
+                    bottom: -4.5px;
+                    width: 9px;
+                    height: 9px;
+                    margin: 0px;
+                    background: white;
+                    border-radius: 50%;
+                    border: rgba(0, 90, 158, 1) solid 2px;
+                    box-sizing: border-box;
+                    transition: scale 0.3s;
+                    cursor: n-resize;
+
+                    &:active {
+                        scale: 1.3;
+                    }
+                }
+            }
+
+            .fv-tableview-quick-tool {
+                position: absolute;
+                left: -50px;
+                top: 0px;
+                width: 50px;
+                height: 30px;
+                isolation: isolate;
+                color: rgba(55, 53, 47, 0.7);
+                display: flex;
+                align-items: center;
+                transition: all 0.3s;
+                z-index: 2;
+                opacity: 0;
+            }
+        }
+    }
+
+    .fv-tableview-edit-wrapper-background {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        isolation: isolate;
+        z-index: 3;
+
+        .fv-tableview-edit-wrapper-container {
+            position: relative;
+            width: 300px;
+            min-height: 30px;
+            height: auto;
+            isolation: isolate;
+            background: rgba(255, 255, 255, 1);
+            border: rgba(90, 90, 90, 0.1) solid thin;
+            color: rgba(55, 53, 47, 1);
+            border-radius: 6px;
+            box-shadow:
+                rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
+                rgba(15, 15, 15, 0.1) 0px 3px 6px,
+                rgba(15, 15, 15, 0.2) 0px 9px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+
+            .fv-tableview-default-edittool-row {
+                position: relative;
+                width: calc(100% - 20px);
+                height: 30px;
+                margin: 2px 0px;
+                border-radius: 6px;
+                flex-shrink: 0;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                user-select: none;
+
+                &.lighter {
+                    height: 28px;
+                    padding: 0px 10px;
+
+                    &:hover {
+                        background: rgba(120, 120, 120, 0.1);
+                    }
+
+                    &:active {
+                        background: rgba(120, 120, 120, 0.2);
+                    }
+                }
+
+                &.between {
+                    justify-content: space-between;
+                }
+            }
+
+            .fv-tableview-number-edittool-inside-block {
+                position: relative;
+                width: calc(100% - 20px);
+                height: auto;
+                margin: 2px 0px;
+                border-radius: 6px;
+                flex-shrink: 0;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                user-select: none;
+
+                .number-edittool-title {
+                    font-size: 12px;
+                    color: rgba(120, 120, 120, 1);
+                }
+
+                .hor-block {
+                    position: relative;
+                    width: 100%;
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .hor-item {
+                        position: relative;
+                        width: 75px;
+                        height: 55px;
+                        border: rgba(200, 200, 200, 1) solid thin;
+                        border-radius: 6px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        &:hover {
+                            background: rgba(200, 200, 200, 1);
+                        }
+
+                        &:active {
+                            background: rgba(180, 180, 180, 1);
+                        }
+
+                        .icon-block {
+                            font-size: 24px;
+                        }
+
+                        .title-block {
+                            margin: 0px;
+                            margin-top: 1.5px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .show-as-config-block {
+                    position: relative;
+                    width: 100%;
+                    margin-top: 10px;
+                    padding: 0px 10px;
+                    background: rgba(249, 249, 248, 1);
+                    border-radius: 12px;
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .show-as-config-item {
+                        position: relative;
+                        width: 100%;
+                        height: 40px;
+                        font-size: 13.8px;
+                        box-sizing: border-box;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .show-as-config-custom-drop-down {
+                            position: relative;
+                            width: 100%;
+                            height: 35px;
+                            padding: 0px 5px;
+                            box-sizing: border-box;
+                            border-radius: 6px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            &:hover {
+                                background: rgba(200, 200, 200, 0.1);
+                            }
+
+                            &:active {
+                                background: rgba(200, 200, 200, 0.2);
+                            }
+                        }
+
+                        .color-block {
+                            position: relative;
+                            width: 15px;
+                            height: 15px;
+                            border: rgba(120, 120, 120, 0.1) solid thin;
+                            border-radius: 6px;
+                        }
+                    }
+                }
+            }
+
+            .row-icon {
+                font-size: 13.8px;
+            }
+
+            .row-title {
+                margin-left: 15px;
+                font-size: 13.8px;
+            }
+
+            hr {
+                width: 100%;
+                height: 3px;
+                margin: 1.5px 0px;
+                border: thin;
+                border-bottom: rgba(0, 0, 0, 0.1) solid thin;
+            }
+        }
+    }
+
+    .fv-tableview-spliter {
+        position: relative;
+        min-width: 6px;
+        width: 6px;
+        height: 42px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+        cursor: ew-resize;
+
+        &:hover {
+            i {
+                background: rgba(200, 198, 196, 0.6);
+            }
+        }
+
+        &:active {
+            i {
+                background: rgba(200, 198, 196, 1);
+                box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        i {
+            position: relative;
+            width: 80%;
+            height: 90%;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+    }
+
+    .fv-tableview-icon-block {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        flex-shrink: 0;
+        background: rgba(200, 200, 200, 0.1);
+        border: rgba(90, 90, 90, 0.1) solid thin;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &.fade {
+            background: transparent;
+            border: none;
+        }
+
+        &:hover {
+            background: rgba(120, 120, 120, 0.1);
+        }
+
+        &:active {
+            background: rgba(120, 120, 120, 0.2);
+        }
+    }
+}
+
+.fv-tableview-edit-wrapper-enter-active,
+.fv-tableview-edit-wrapper-leave-active {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+        transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+        opacity 200ms cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: left top;
+}
+.fv-tableview-edit-wrapper-enter,
+.fv-tableview-edit-wrapper-leave-active {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.fv-tableview-addmenu {
+    .addmenu-title-block {
+        position: relative;
+        height: 30px;
+        padding: 0px 15px;
+        font-size: 15px;
+        user-select: none;
+    }
+
+    span {
+        position: relative;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .addmenu-left-block {
+        position: relative;
+        width: 10px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .addmenu-right-block {
+        position: relative;
+        width: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-block {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        flex-shrink: 0;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(120, 120, 120, 0.1);
+        }
+
+        &:active {
+            background: rgba(120, 120, 120, 0.2);
+        }
+    }
+
+    .onDrop {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 3px;
+        margin: 0px;
+        background: rgba(0, 90, 159, 0);
+        transition: all 0.3s;
+
+        &.show {
+            background: rgba(0, 90, 159, 0.3);
+        }
+    }
+}
